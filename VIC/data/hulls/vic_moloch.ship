@@ -1,0 +1,173 @@
+{
+  "hullName": "Moloch",
+  "hullId": "vic_moloch",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/vic_moloch.png",
+  "style": "VIC",
+  "height": 212,
+  "width": 130,
+  "center": [65, 106],
+  "collisionRadius": 125,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 114,
+  "viewOffset": 0,
+  "builtInMods": [
+    "vic_dynamicshields",
+    "vic_aerodynamicdesign"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": 0,
+      "locations": [-39, -26]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": -0,
+      "locations": [-39, 26]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 139,
+      "angle": -43,
+      "locations": [28, -11]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 139,
+      "angle": 43,
+      "locations": [28, 11]
+    },
+    {
+      "id": "WS0005",
+      "size": "MEDIUM",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-25.5, -49]
+    },
+    {
+      "id": "WS0006",
+      "size": "MEDIUM",
+      "type": "MISSILE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-25.5, 49]
+    },
+    {
+      "id": "WS0007",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "HARDPOINT",
+      "arc": 5,
+      "angle": 0,
+      "locations": [61, -0]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-91, -14],
+      "length": 60,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-91, 14],
+      "length": 60,
+      "width": 15,
+      "angle": -180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-75, -31],
+      "length": 50,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 10,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-75, 31],
+      "length": 50,
+      "width": 10,
+      "angle": -180,
+      "contrailSize": 10,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    }
+  ],
+  "bounds": [
+    -71, 3,
+    -98, 3,
+    -104, 9.5,
+    -95, 9.5,
+    -95, 21,
+    -60, 21,
+    -62.5, 24,
+    -78, 24,
+    -78, 37.5,
+    -63, 37.5,
+    -53, 42,
+    -65, 50.5,
+    -52.5, 65.5,
+    -46.5, 60.5,
+    -41.5, 61,
+    -24, 45,
+    -15, 45,
+    -5.5, 35,
+    -14.5, 30,
+    -1.5, 23.5,
+    45, 23.5,
+    48.5, 18.5,
+    103.5, 18.5,
+    93.5, 6,
+    67.5, 6,
+    67.5, -6,
+    93.5, -6,
+    103.5, -18.5,
+    48.5, -18.5,
+    45, -23.5,
+    -1.5, -23.5,
+    -14.5, -30,
+    -5.5, -35,
+    -15, -45,
+    -24, -45,
+    -41.5, -61,
+    -46.5, -60.5,
+    -52.5, -65.5,
+    -65, -50.5,
+    -53, -42,
+    -63, -37.5,
+    -78, -37.5,
+    -78, -24,
+    -62.5, -24,
+    -60, -21,
+    -95, -21,
+    -95, -9.5,
+    -104, -9.5,
+    -98, -3,
+    -71, -3
+  ]
+}

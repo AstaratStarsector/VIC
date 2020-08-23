@@ -1,0 +1,39 @@
+{
+  "variantId": "vic_pruflas_skirmish",
+  "hullId": "vic_pruflas",
+  "displayName": "Skirmish",
+  "goalVariant": false,
+  "fluxCapacitors": 10,
+  "fluxVents": 10,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "missleracks"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "lightneedler",
+        "WS0002": "lightneedler",
+        "WS0003": "reaper",
+        "WS0004": "reaper"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0005": "phasebeam"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

@@ -1,0 +1,11 @@
+    float targetAngle = 270f;
+    float maximumArc = 200f;
+    float minimumArc = 90f;
+    
+    float rotationToTargetAngle = 180f - MathUtils.getShortestRotation(shipFacing, targetAngle); //gets a rotation angle domain -180 -> 0 -> 180, but inverts it so that 180 is closest possible
+
+    float fraction = rotationToTargetAngle / 180f; //fraction from -1 to 1 where -1/1 is facing as close as possible and 0 is farthest away fromtarget angle
+    fraction = Math.abs(fraction); //fraction now between 0 and 1
+
+    float arcLength = MathUtils.clamp(maximumArc * fraction, minimumArc, maximumArc); //output arc is equal to maximumArc when fraction is 1, and cannot go below minimumArc when fraction = 0
+    ship.getShield().setArc(arcLength);

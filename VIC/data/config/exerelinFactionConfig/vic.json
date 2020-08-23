@@ -1,0 +1,78 @@
+{
+    "playableFaction":true,
+    "corvusCompatible":true,
+    
+    "rebelFleetSuffix":"Dissidents",
+    
+    "directoryUseShortName":true,
+     
+    "startRelationships":{ 
+	    "exalted": 0.6,
+		"blackjack": 0.4,
+		"persean": 0.2,
+		"hegemony": 0, 
+		"anvil_industries": 0,
+		"pirates": 0,
+		"sindrian_diktat": 0,
+		"independent": -0.3,
+		"tritachyon": -0.75,
+		"shadow_industry": -0.8,
+		"luddic_church":-1, 
+		"luddic_path":-1,
+		
+		
+		
+
+		},
+    "maxRelationships":{},
+    "diplomacyPositiveChance":{},
+    "diplomacyNegativeChance":{},
+    "morality":"evil",
+    
+    "alignments":{
+        "corporate":1,
+        "technocratic":1,
+		"diplomatic":1,
+		"militarist":1,
+		"ideological":1,
+		
+    },
+	
+    "diplomacyTraits":["irredentist", "stalwart", "envious", "monopolist"],
+
+	
+	
+	"vengeanceLevelNames":["MieShi", "XunChou", "ZhanCao"],
+    "vengeanceFleetNames":["ChuanJiaoShi", "SiShi", "ChuGen"],
+    
+     "startShipsSolo":[["vigilance_Standard"]],
+    "startShipsCombatSmall":[
+      ["swp_striker_luddic_church_sup", "lasher_luddic_church_Standard", "centurion_Assault"],
+      ["enforcer_Balanced", "lasher_luddic_church_Standard", "centurion_Assault"]
+    ],
+    "startShipsTradeSmall":[["tarsus_Standard", "cerberus_Standard", "lasher_CS"]],
+    "startShipsCombatLarge":[
+      ["swp_vulture_sta", "swp_albatross_sta", "kite_Standard"],
+      ["dominator_Support", "enforcer_Outdated", "kite_Support"]
+    ],
+     "startShipsTradeLarge":[["colossus_Standard", "mule_Standard", "wayfarer_Standard"]],
+    "startShipsExplorerLarge":[["venture_Balanced", "buffalo_luddic_church_Standard", "hound_luddic_church_Standard"]],
+    "startShipsCarrierSmall":[["condor_Attack", "lasher_luddic_church_Standard", "hound_luddic_church_Standard"]],
+    "startShipsSuper":[["swp_cathedral_gra"]],
+    
+    "startSpecialItems":[
+        [["LC_package", ""]],
+        [["low_tech_package", ""]],
+    ],
+
+    "defenceStations":[
+        {"ids":["orbitalstation", "battlestation", "starfortress"]},
+    ],
+	
+    
+    "colonyExpeditionChance":0.5,	
+    "colonyTargetValuator":"exerelin.campaign.colony.IndustrialColonyTargetValuator",
+        
+
+   
+}

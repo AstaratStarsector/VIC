@@ -1,0 +1,14 @@
+{
+"designTypeColors":{
+        "Volkov Industrial Conglomerate":[238,158,0,255],
+    },
+	"graphics":{
+		
+		"blueprint_packages":{
+			"vic_hulls_package":"graphics/icons/cargo/vic_blueprint.png",
+			"vic_weapons_package":"graphics/icons/cargo/vic_blueprint.png",
+		
+		}
+	}
+}
+	

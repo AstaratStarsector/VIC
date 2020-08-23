@@ -1,0 +1,26 @@
+id,trigger,conditions,script,text,options,notes
+"# default commission conversation strings, copy and adjust this section for faction-specific conversation flavor",,,,,,
+CMSNTextRejectHostile_default,CMSNTextRejectHostile,$faction.id == vic,,"""Is this some kind of joke? If you are who you say you are, you're on several $faction wanted lists.""",,
+CMSNTextHasOther_default,CMSNTextHasOther,$faction.id == vic,,"""You're already commissioned by $theOtherCommissionFaction. You'll have to resign that commission before you can be commissioned by $theFaction.""",,
+CMSNTextUnsuited_default,CMSNTextUnsuited,$faction.id == vic,,"""I'm sorry, but you don't meet our criteria for receiving a commission.""",,
+CMSNTextSuitedPart1_default,CMSNTextSuitedPart1,$faction.id == vic,,"""Hmm, yes, you're a suitable candidate.
+
+Accepting a commission is a serious matter. You will be required to fight enemies of $theFaction, wherever they may be found.
+
+You'll be able to resign your commission at any time, though I don't imagine doing so would win you any friends.""",,
+CMSNTextSuitedPart2_default,CMSNTextSuitedPart2,$faction.id == vic,,"""So, how about it? Still want to sign on?""",,
+CMSNTextWelcomePart1_default,CMSNTextWelcomePart1,$faction.id == vic,,"""Excellent! Welcome to the service.""",,
+CMSNTextWelcomePart2_default,CMSNTextWelcomePart2,$faction.id == vic,,"""Anything else I can do for you?""",,
+CMSNTextChangeMind_default,CMSNTextChangeMind,$faction.id == vic,,"""Yes, not everyone has it in them to uphold the values of $theFaction to such a high standard. No shame in it.
+
+Anything else I can do for you?""",,
+CMSNResignAskToConfirm_default,CMSNResignAskToConfirm,$faction.id == vic,,"""Are you sure? $TheFaction needs people it can rely on, and turning your back like this won't be easily forgotten.""",,
+CMSNResignConfirmed_default,CMSNResignConfirmed,$faction.id == vic,,"""I can see there's no changing your mind. Well, at least you had the courtesy to tender your resignation in person.""",,
+CMSNResignCancelled_default,CMSNResignCancelled,$faction.id == vic,,"""A good decision. We can use people like you.""",,
+,,,,,,
+beaconOpenDialogSiaubas,OpenInteractionDialog,"$tag:warning_beacon
+$pelenulaukas","ShowDefaultVisual
+SetShortcut beaconLeave ""ESCAPE""","This autonomous warning beacon emits a looping message.
+
+""WARNING!!! Citizens of the Domain, this planet is heavily contaminated by indigenous viral agents. Extreme precautions and biological protection measures required. All infected must be isolated and cremated IMMEDIATELY. Any malicious attempts to spread the disease are punishable by death. For additional information citizens are to contact the local department of the Domain Interplanetary Sanitary-Epidemiological Control Service (DISECS).""
+ ",beaconLeave:Leave,

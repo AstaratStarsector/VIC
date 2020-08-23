@@ -1,0 +1,71 @@
+{
+	
+	
+	"star_yellow_supergiant":{
+		"name":"Yellow Supergiant",
+		"tilt":-10, # left-right (>0 tilts to the left)
+		"pitch":0, # towards-away from the viewer (>0 pitches towards)
+		"rotation":-3, # degrees/second
+		"planetColor":[255,255,255,255],
+		"atmosphereThickness":0.5, # as fraction of radius.  Set to 0 for no atmosphere
+		"atmosphereThicknessMin":10, #  minimum thickness in pixels
+		"atmosphereColor":[255,179,0,212],
+		"texture":"graphics/planets/star_yellow-orange.jpg",
+		"icon":"graphics/warroom/icon_star.png",
+		"iconColor":[255,179,0,255],
+		"isStar":true,
+		"lightPosition":[0,0,8], # in planet radii.  Not used for stars.  z > 0 is above the playing field.
+		"starCoronaSprite":"graphics/fx/star_halo.png", # optional, defaults to really bright particle
+		"starCoronaColor":[255,241,110,100], # optional, defaults to white
+		"starCoronaSizeMult":5.12, # required, multiplier for star's radius
+	},
+	
+	"cocytus_islands":{
+		"name":"Archipelago",
+		"tilt":-30, # left-right (>0 tilts to the left)
+		"pitch":15, # towards-away from the viewer (>0 pitches towards)
+		"rotation":-3, # degrees/second
+		"planetColor":[255,255,255,255],
+		"atmosphereThickness":0.2, # as fraction of radius.  Set to 0 for no atmosphere
+		"atmosphereThicknessMin":62, #  minimum thickness in pixels - used when radius * atmosphereThickness is really low
+		"atmosphereColor":[30,90,140,130],
+		"texture":"graphics/planets/cocytus_islands.jpg",
+		"icon":"graphics/warroom/icon_planet.png",
+		"iconColor":[45,98,174,255],
+		"isStar":false,
+		"lightPosition":[-10,-10,1], # in planet radii.  Not used for stars.  z > 0 is above the playing field.
+		"cloudTexture":"graphics/planets/cocytus_clouds.png", # omit for no cloud layer
+		"cloudColor":[255,255,255,200],
+		"cloudRotation":-5, # degrees/second, optional
+	},
+	
+"quasar":{
+		"name":"Quasar",
+		"tilt":0, # left-right (>0 tilts to the left)
+		"pitch":0, # towards-away from the viewer (>0 pitches towards)
+		"rotation":-3, # degrees/second
+		"planetColor":[0,0,0,255],
+		"atmosphereThickness":0.25, # as fraction of radius.  Set to 0 for no atmosphere
+		"atmosphereThicknessMin":10, #  minimum thickness in pixels
+		"atmosphereColor":[255,200,165,255],
+		"texture":"graphics/planets/star_white.jpg",
+		"icon":"graphics/icons/blackhole.png",
+		#"icon":"graphics/icons/icon_portal.png",
+		"starscapeIcon":"graphics/starscape/blackhole.png",
+		"iconColor":[255,180,75,255],
+		"starCoronaSprite":"graphics/fx/star_halo.png", # optional, defaults to really bright particle
+		"starCoronaColor":[255,200,165,255], # optional, defaults to white
+		"starCoronaSizeMult":5.12, # required, multiplier for star's radius
+		"isStar":true,
+		"isBlackHole":true,
+		"scaleMultMapIcon":2.5,
+		"scaleMultStarscapeIcon":2.5,
+		"lightPosition":[0,0,10], # in planet radii.  Not used for stars.  z > 0 is above the playing field.
+	},
+	
+}
+
+
+
+
+

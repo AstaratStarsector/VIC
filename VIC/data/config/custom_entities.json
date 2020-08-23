@@ -1,0 +1,83 @@
+{
+	
+	
+	
+    "vic_archangel_mining_beam":{
+        "defaultName":"Archangel Mining Beam", # used if name=null in addCustomEntity()
+        "nameInText":"archangel mining beam",
+        "shortName":"archangel beam",
+        "icon":"graphics/icons/relay_makeshift.png",
+        "iconWidth":12,
+        "iconHeight":12,
+        "sprite":"graphics/custom entities/archangel_beam2.png",
+        "spriteWidth":50,
+        "spriteHeight":435,
+        "customDescriptionId":"int_array",
+        "interactionImage":"graphics/illustrations/comm_relay.jpg",
+        "defaultRadius":0, # used if radius<0 in addCustomEntity()
+        "showInCampaign":true, # show in campaign layer
+        "showIconOnMap":false,
+        "showNameOnMap":false,
+		"renderShadow":false, #true,
+		"useLightColor":false,
+        "nameFontScale":1,
+        "nameAngle":0,
+        "nameColor":[70,200,255,0],
+        "nameShadowColor":[0,0,0,0],
+        "scaleNameWithZoom":false,
+        "scaleIconWithZoom":true,
+        "renderCircleIndicator":false, # make clickable
+        "renderCircleIndicatorSelectionFlash":false,
+        "layers":[TERRAIN_1], # what layer(s) to render in. See CampaignEngineLayers.java for possible values,
+       
+       
+    },
+	
+	"vic_archangel_mining_station":{
+		"defaultName":"Archangel Mining Station", # used if name=null in addCustomEntity()
+		"defaultRadius":70, # used if radius<0 in addCustomEntity()
+		"customDescriptionId":"vic_archangel",
+		"interactionImage":"graphics/illustrations/orbital.jpg",
+		"icon":"graphics/icons/station2.png",
+		"iconWidth":28,
+		"iconHeight":28,
+		"sprite":"graphics/stations/station_hightech3.png",
+		"spriteWidth":120,
+		"spriteHeight":125,
+		"renderShadow":true,
+		"useLightColor":true,
+		"showInCampaign":true,
+		"showIconOnMap":true,
+		"showNameOnMap":false,
+		"scaleNameWithZoom":false,
+		"scaleIconWithZoom":true,
+		"tags":["station"],
+		"layers":[STATIONS], # what layer(s) to render in. See CampaignEngineLayers.java for possible values
+       
+       
+    },
+	
+	"vic_jump_point_stabilizer":{
+		"defaultName":"Hyperspace Coherence Adjustment Unit", # used if name=null in addCustomEntity()
+		"defaultRadius":70, # used if radius<0 in addCustomEntity()
+		"customDescriptionId":"vic_jump_point_stabilizer",
+		"interactionImage":"graphics/illustrations/sensor_array.jpg",
+		"icon":"graphics/icons/sensor_array.png",
+		"iconWidth":24,
+		"iconHeight":24,
+		"sprite":"graphics/ships/sensor_array.png",
+		"spriteWidth":86,
+		"spriteHeight":86,
+		"renderShadow":true,
+		"useLightColor":true,
+		"showInCampaign":true,
+		"showIconOnMap":true,
+		"showNameOnMap":false,
+		"scaleNameWithZoom":false,
+		"scaleIconWithZoom":true,
+		"tags":["station"],
+		"layers":[STATIONS], # what layer(s) to render in. See CampaignEngineLayers.java for possible values
+       
+       
+    },
+}

@@ -1,0 +1,11 @@
+{
+	"id":"vic",
+	"name":"VIC",
+	"author":"Astarat",
+	"version":"0.1",
+	"description":"Transhumanism, son",
+	"gameVersion":"0.9.1a-RC8",
+	"jars": ["jars/VIC.jar"],
+	"modPlugin":"data.scripts.VIC_ModPlugin"
+}
+	

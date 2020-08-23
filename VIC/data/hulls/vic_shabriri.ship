@@ -1,0 +1,56 @@
+{
+  "hullName": "Shabriri Drone",
+  "hullId": "vic_shabriri",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/fighters/Shabriri.png",
+  "style": "VIC",
+  "height": 79,
+  "width": 96,
+  "center": [48, 39.5],
+  "collisionRadius": 27.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 24.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "vic_dynamicshields"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 5,
+      "angle": 0,
+      "locations": [6.5, 8.5]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 5,
+      "angle": -0,
+      "locations": [6.5, -8.5]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-3.5, -0],
+      "length": 41.5,
+      "width": 7,
+      "angle": 180,
+      "contrailSize": 7,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    }
+  ],
+  "bounds": [
+    -3.5, 3,
+    1.5, 12,
+    14.5, 3,
+    14.5, -3,
+    1.5, -12,
+    -3.5, -3
+  ]
+}

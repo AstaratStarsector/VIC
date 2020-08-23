@@ -1,0 +1,15 @@
+id,age,tags,freqYOUNG,freqAVERAGE,freqOLD,minRadius,maxRadius,habZoneStart,probOrbits,minOrbits,maxOrbits,coronaMin,coronaMult,coronaVar,solarWind,minFlare,maxFlare,crLossMult,lightColorMin,lightColorMax
+star_yellow_supergiant,AVERAGE,,6,5,1,1300,1750,5,0.95,3,10,500,1,0.5,10,0,2,5,255 225 155,255 250 220
+quasar,ANY,,0,0,0,150,200,-20,1,2,10,1000,1,0.5,-10,0,0,15,125 100 90,125 100 90
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,

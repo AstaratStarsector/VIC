@@ -1,0 +1,77 @@
+id,type,text1,text2,text3,notes
+#Factions,,,,,
+vic,FACTION,"Volkov Industrial Conglomerate (VIC), also referred to as simply The Conglomerate, is an ambitious and rather aggressive corporate state that ardently promotes the ideas of transhumanism and specializes in heavy industry and gene-modifying technologies, selling both to anyone who desires to break free of their natural limits. Having an extremely controversial history and grim reputation and assumed to be destroyed in the wake of the Collapse, VIC suddenly returned to the Sector in c+202 from the previously inaccessible Empyrean star system, which was thought to be irrevertibly lost after its Jump Points violently imploded just a couple of years after the Collapse. Living up to their old ruthless public image, VIC swiftly conquered a small independent colony in their vicinity and informed rest of the Sector of their resurgence. With a society changed beyond recognition, fully adopting genetech which in some cases leaves little to none of what could be seen as “human”, VIC are now dead set on spreading their influence by all means to ensure humanity's survival in the ongoing sector- or even galaxy-wide crisis, and its evolution through genetic modification. Even if in end it'll require to reject all that could be considered ""humane"".
+
+
+Detailed information excerpted from an essay of a renowned Chicomoztoc's historian Joselyn Frye on VIC's origins, banned from further publishing by COMSEC with unusual haste:
+According to surviving data, the history of VIC goes back to as far as about 400 years. Founded long before the Collapse by business partners and longtime friends Victor Volkov and Marcus Tellen, the company was initially called “Frontier Dynamics” and focused on supporting colonization effort of the Domain. An important turning point in the history of the growing business was the acquisition of Atagara MedTech, at that time actively engaged in genetic research and human life extension projects. A few months after the merger, Marcus Tellen suddenly left the company on what was reportedly an “ideological disagreement” with the CEO V. Volkov.
+
+Merging and acquiring more and more firms under its wing and renamed to VIC, the corporation soon started working even more closely with the Domain’s higher echelons, receiving hefty financial infusions and juridical privileges in return for merciless suppression of numerous rebellions and providing other services, including medical ones, details of which are still unknown up to this day. During that period, after accusing VIC of mass kidnappings and conduction of illegal human experiments in various fringe sectors, Marcus Tellen was found dead in his own house. According to official statements, the cause of death was suicide, and the investigations against the VIC were hastily terminated by the Domain’s officials the next month.
+
+Thanks to the Collapse and prolonged isolation in their headquarter star system due to the “Jump Point Accident”, the Conglomerate has surely gone through some radical changes. Nowadays, led by an enigmatic entity, which is referred to by the top management as “The Old One”, VIC attempt to both cooperate with similar-sized organizations and stay out of conflicts with the bigger powers of the Sector with the help of bribery and scheming, while at the same time having a disturbing tendency to predate on weaker colonies and factions alike, merging them into the corporate system. Going as far as working with outlaws, criminals and pirates, VIC grow in power with every passing day and do not shun backstabbing their temporary allies as soon as the balance of power turns in the megacorp's favour, as long as it serves to further their own goals. Despite their sugar-coated PR statements and attempts to appease potential sources of threat, one thing still stays certain nonetheless – VIC won't allow anyone to stand in what they consider the only true way to the survival of mankind. ",,,
+,,,,,
+,,,,,
+#Ships,,,,,
+vic_apollyon,SHIP,"VIC-A71 ""Apollyon"" - ""The Destroyer"", a shining symbol of VIC's heavy industry, an unusually mobile capital ship for its significant size, equipped with just enough weaponry to obliterate entire enemy fleets on its own. However, due to the design being focused on raw offense and speed, Apollyon lacks capital-grade armour and is incapable of withstanding focused enemy attacks even with the help of a powerful shield generator.
+
+Conceived out of spite towards Tri-Tachyon and with a goal to overthrow the Paragon's reign in the Domain's Navy, the Apollyon project ended up being one of the most ambitious and expensive endeavours of the Conglomerate, with the developement costs nearing the price of a couple of outback planets combined. Unsurprisingly, most of the time and budget were spent on calculating how to apply jet-fighter principles to the hull of such size.
+
+Unfortunately for VIC and despite all their efforts, the project still didn't manage to make its way into the Navy. The main reason for that - the Collapse happening right in the middle of Apollyon's first official presentation, mere seconds after the prototype turned a Paragon test target into a melted metallic mess to thunderous applause of the Admiralty's officials. 
+
+To the great delight of the surviving Central Design Bureau, the project wasn't scrapped after the Collapse and eventually entered mass production to serve both as VIC's most potent assault vessel and as one of its main propaganda tools. Nowadays the imposing Apollyon-class shturmcapitals proudly roam the Sector at the head of the Conglomerate's fleets, playing the role of a compelling argument during numerous diplomatic negotiations and truly living up to their old biblical name in battles. ",,,
+vic_nybbas,SHIP,"VIC-X04 ""Nybbas"" - ""The manager of dreams and visions"", also dubbed ""The Weaver of Nightmares"" by both its pilots and those who face it in battle. Going beyond all reasonable, this unusual phase hyperfrigate at its core is nothing more but a giant chain of energy systems powering its weaponry, phase coils and teleportation drive. 
+
+Created a couple of years prior to the Collapse as the ultimate ""hunter-assasin"" vessel, the Nybbas project is a great example of why the design bureau should never be given too much budget and freedom in decision-making.
+
+Attempts to fit so much into the smallest possible hull led to the fact that Nybbas is almost completely devoid of any armor and even crew accomodation. And huge amplitudes of energy surges during flight and active fighting make this ship absolutely unsuitable, dangerous and sometimes even fatal for long-term piloting.
+
+All crews who were unlucky enough to be assigned to Nybbas frigates are advised to take significant doses of painkillers and should immediately report any psychological or physiological abnormalities after prolonged combat operations.",,,
+vic_pruflas,SHIP,"VIC-S75 ""Pruflas"" - ""Provoker of wars and discord"", a reconaissance frigate of novel design with paper-thin armour but unmatched mobility and decent firepower. 
+
+Entering the service not until after the Collapse, Pruflas frigates are the fastest vessels at the megacorp's disposal. Their spectacular speed and impressive fuel-to-distance ratio secured their role not only of the main scouting unit, but also of a courier, capable of quickly delivering valuable information and ""special gifts"" to the Hegemony's officials, pirate warlords and leaders/higher-ups of many other factions. In many cases such generous ""signs of goodwill"" still do not ensure proper cooperation between the addressees and the Conglomerate, but usually it's just enough to prevent full-fledged military confrontation, even if hatred and disgust towards the megacorp remain in their fullest. ",,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+#Planets,,,,,
+vic_cocytus,CUSTOM,"Arguably one of the most extensive and expensive private terraforming projects ever conducted prior to the Collapse. Turned from a lifeless rock into a sprawling garden to serve not only as the new corporate headquarters but also as the top management's ""vacation paradise"", Cocytus is a warm planet home to the infamous Volkov Industrial Conglomerate, which gained full ownership of it thanks to yet another shady deal with the Domain.
+
+Its endless summer and sandy beaches, picturesque golden sunsets and neversleeping island megapolises make it one of the most idyllic and desirable planets to live on in the entire Sector according to some, putting it on par with the dedicated ""Pleasure planets"" of the pre-Collapse times.",,,
+vic_purgatory,CUSTOM,"Another terraforming project which, unlike Cocytus, went terribly wrong soon after the Collapse and the Jump Point accident. However, instead of completely abandoning the doomed world, VIC seized the opportunity and gave it a new, much more horrifying purpose.
+
+Nowadays unwelcoming Purgatory is where the corporation's ""chimera"" armies are made and trained. And where all those with ""valuable genetic material"" are brought en masse to the Conglomerate's biggest genetech research and production facilities. For those unfortunate ones Purgatory, ironically, is the Hell itself. ",,,
+vic_phlegethon,CUSTOM,"""Are you looking for a high-paying job? Are you not afraid of breathtaking magma rivers and giant orbital lasers? Are you ready to face the Inferno and prove your worth? If the answer is ""Yes"", then We at VIC invite you to enlist in our famous Extractor Corps! Join today, experience true comaraderie and contribute to the building of a brighter future for all the Humanity!"" - ""This message was brought to you by VIC's department of advertising and public relations. For all queries please contact your local recruiting center.""
+""Days without a workplace accident: 0""
+
+",,,
+vic_archangel,CUSTOM,"The pride of VIC and a true technological marvel, ""Archangel"" mining station, positioned in the Lagrangian Point between Empyrean and Phlegethon, concentrates supergiant's light with the help of enormous Reflector Arrays™ and produces what could possibly be one the most devastating laser beams in the Sector. 
+
+Scraping off useless exterior crust of Phlegeton, ""Archangel"" allows the miners to easily access exposed minerals and collect them by more conventional means. Thankfully, this is the only practical application the station is capable of, and the one it was initially built for. At least, according to the official statements of the Conglomerate. ",,,
+vic_dis,CUSTOM,tba,,,
+vic_tisiphone,CUSTOM,tba,,,
+vic_megaera,CUSTOM,tba,,,
+vic_alecto,CUSTOM,tba,,,
+vic_fortuna,CUSTOM,tba,,,
+vic_dismay,CUSTOM,tba,,,
+vic_kalada,CUSTOM,"A formerly independent colony which became the first victim of VIC after the corporation's sudden resurgence. Despite the initial rioting, the local populace is beginning to slowly accept the new regime that was brought in by the new supervisors. After all, with the steadily increasing quality of life, it becomes harder to deny that the Conglomerate does indeed care about the prosperity of its own people.
+
+However, not everyone accepts the current situation, with a vigilante resistance group ""Kaladian Swordsmen"" becoming increasingly prominent and popular among the opposition forces, much to the displeasure of VIC's newly appointed planetary managers. ",,,
+vic_mithos,CUSTOM,tba,,,
+vic_bernadian,CUSTOM,tba,,,
+vic_lemtis,CUSTOM,tba,,,
+vic_ramus,CUSTOM,tba,,,
+vic_boerefuge,CUSTOM,tba,,,
+vic_siaubas,CUSTOM,"A relatively small outback planet, mostly known for being the center of a massive rebellion of the days long gone. Unrest and armed riots led to the destruction of water treatment plants, which subsequently became one of the main causes of mass epidemic. Humanitarian aid and evacuation of the populace were quickly organized by the conjoined effort of the Domain and a local fleet of VIC, with the megacorp gladly volunteered to help fellow citizens in need. 
+
+Once populous and promising colony, nowadays Siaubas is nothing more but a place of interest for archaeologists, historians and biologists of all kinds. Some of the latter occasionally report that the local fauna, which dwells the ruined, decaying cities, often shows unnerving, almost human-like patterns in behaviour and vocalizations. ",,,
+vic_maria,CUSTOM,tba,,,
+vic_jump_point_stabilizer,CUSTOM,"An extremely complex device capable of stabilizing hyperspace Jump Points by exploiting convoluted quantum processes too inextricable for all but the most experienced physicists of the current era. It is with the help of these devices VIC's prolonged period of total isolation was ended. 
+
+Potential results of using this technology on the stable working Jump Points are still being actively debated among the Sector's scientific community. ",,,
+,,,,,
+#commodities,,,,,
+vic_genetech,RESOURCE,"That which made the Domain's higher-ups and the rich drool and turned VIC from a small backwater company into an enormous megacorporation. With the help of masterfully engineered DNA-modifying viruses, administered via relatively painless injections, anything is possible - from simply changing the color of eyes and hair to lifespan extension, enhancement of physical and intellectual abilities, and even outright transforming one's anatomy and physiology with little to none limitations. Back in the days, the Conglomerate was looking forward to finally reveal these to the public and start selling them en masse; lobbying for the necessary laws wasn't that much of an issue - generous gifts to the powers that be were paying off in the end. 
+
+All reports on negative side effects, including genemod addiction, heightened aggression, violent and animalistic tendencies, and other mental deviations are surely nothing but pathetic anti-VIC propaganda.",,,

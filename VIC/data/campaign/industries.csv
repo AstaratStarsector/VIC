@@ -1,0 +1,3 @@
+id,name,cost mult,build time,income,upkeep,downgrade,upgrade,tags,data,image,plugin,desc,order
+victourism,Trade & Tourism Infrastructure,90,60,8,1,,,structure,,graphics/icons/industry/commerce.png,data.campaign.econ.vic_tourism,tba,
+vicbiolabs,Biolaboratories,90,60,,8,,,structure,,graphics/icons/industry/commerce.png,data.campaign.econ.vic_biolabs,tba,

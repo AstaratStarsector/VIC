@@ -1,0 +1,24 @@
+{
+
+"music":{
+		####################################
+		# "source" can also be a directory #
+		####################################
+
+		
+
+		"music_vic_market_neutral":[
+			{
+				"source":"sounds/music",
+				"volume":0.2,
+				"files":[
+					"Psiklaw's VIC neutral market.ogg",
+				],
+				"randomStart":false, 
+			},
+		],
+		
+		
+	},
+	
+}

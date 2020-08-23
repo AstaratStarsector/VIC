@@ -1,0 +1,192 @@
+{
+  "hullName": "Cresil",
+  "hullId": "vic_cresil",
+  "hullSize": "CRUISER",
+  "spriteName": "graphics/ships/vic_cresil.png",
+  "style": "VIC",
+  "height": 303,
+  "width": 128,
+  "center": [64, 151.5],
+  "collisionRadius": 184,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 164.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "vic_dynamicshields",
+    "vic_aerodynamicdesign"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 226,
+      "angle": 45,
+      "locations": [103, 30]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 226,
+      "angle": -45,
+      "locations": [103, -30]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 134,
+      "angle": -90,
+      "locations": [-4.5, -38]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 134,
+      "angle": 90,
+      "locations": [-4.5, 38]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 128,
+      "angle": -143.5,
+      "locations": [-104.5, -32]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 128,
+      "angle": 143.5,
+      "locations": [-104.5, 32]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        22.5, 7,
+        24.5, 7
+      ]
+    },
+    {
+      "id": "LB 2",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        41, 18,
+        42, 15.5
+      ]
+    },
+    {
+      "id": "LB 3",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        22.5, -7,
+        24.5, -7
+      ]
+    },
+    {
+      "id": "LB 4",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        41, -18,
+        42, -15.5
+      ]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-129, 8],
+      "length": 90,
+      "width": 20,
+      "angle": 180,
+      "contrailSize": 20,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-129, -8],
+      "length": 90,
+      "width": 20,
+      "angle": -180,
+      "contrailSize": 20,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-67.5, 56],
+      "length": 75,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-67.5, -56],
+      "length": 75,
+      "width": 15,
+      "angle": -180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    }
+  ],
+  "bounds": [
+    -133.5, 16.5,
+    -150, 16.5,
+    -122.5, 46,
+    -73, 46,
+    -69.5, 49,
+    -69.5, 62,
+    42, 59,
+    48, 50.5,
+    71, 50.5,
+    76, 45.5,
+    132, 45.5,
+    150.5, 27,
+    150.5, 24,
+    146.5, 18,
+    134.5, 16.5,
+    134.5, -16.5,
+    146.5, -18,
+    150.5, -24,
+    150.5, -27,
+    132, -45.5,
+    76, -45.5,
+    71, -50.5,
+    48, -50.5,
+    42, -59,
+    -69.5, -62,
+    -69.5, -49,
+    -73, -46,
+    -122.5, -46,
+    -150, -16.5,
+    -133.5, -16.5
+  ]
+}

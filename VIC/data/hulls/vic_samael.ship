@@ -1,0 +1,195 @@
+{
+  "hullName": "Samael",
+  "hullId": "vic_samael",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/vic_gargoyle.png",
+  "style": "VIC",
+  "height": 160,
+  "width": 216,
+  "center": [108, 81],
+  "collisionRadius": 140.5,
+  "shieldCenter": [13.5, -23],
+  "shieldRadius": 128,
+  "viewOffset": 0,
+  "builtInMods": [
+    "vic_aerodynamicdesign",
+    "vic_dynamicshields"
+  ],
+  "builtInWings": [
+    "vic_shabriri_wing"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "SYNERGY",
+      "mount": "HARDPOINT",
+      "arc": 5,
+      "angle": 0,
+      "locations": [66, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 130,
+      "angle": 0,
+      "locations": [21, -0]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": 180,
+      "locations": [0, -0]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 110,
+      "angle": 34.5,
+      "locations": [12, 32]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 110,
+      "angle": -34.5,
+      "locations": [12, -32]
+    },
+    {
+      "id": "WS0006",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": 18,
+      "locations": [-12, 50.5]
+    },
+    {
+      "id": "WS0007",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": -18,
+      "locations": [-12, -50.5]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 213,
+      "angle": 90,
+      "locations": [-43, 96]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 213,
+      "angle": -90,
+      "locations": [-43, -96]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -22.5, 0,
+        -22.5, 0
+      ]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-79.5, 0],
+      "length": 40,
+      "width": 25,
+      "angle": -180,
+      "contrailSize": 25,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-54.5, 28],
+      "length": 25,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-45.5, 54],
+      "length": 25.5,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-45.5, -54.5],
+      "length": 25,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-54.5, -28.5],
+      "length": 25,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    }
+  ],
+  "bounds": [
+    -80, 7.5,
+    -73.5, 11,
+    -68.5, 19.5,
+    -54, 20,
+    -54, 34,
+    -64.5, 36.5,
+    -59, 44,
+    -45, 44,
+    -45, 62,
+    -36.5, 63,
+    -64, 106.5,
+    -35.5, 106.5,
+    45, 17,
+    59, 17,
+    77, 8,
+    77, -8,
+    59, -17,
+    45, -17,
+    -35.5, -106.5,
+    -64, -106.5,
+    -36.5, -63,
+    -45, -62,
+    -45, -44,
+    -59, -44,
+    -64.5, -36.5,
+    -54, -34,
+    -54, -20,
+    -68.5, -19.5,
+    -73.5, -11,
+    -80, -7.5
+  ]
+}

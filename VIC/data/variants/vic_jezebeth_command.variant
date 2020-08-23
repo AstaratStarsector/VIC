@@ -1,0 +1,42 @@
+{
+  "variantId": "vic_jezebeth_command",
+  "hullId": "vic_jezebeth",
+  "displayName": "Command",
+  "goalVariant": false,
+  "fluxCapacitors": 4,
+  "fluxVents": 20,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "vic_aerodynamicdesign",
+    "advancedoptics"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "heavyneedler"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0004": "vulcan",
+        "WS0005": "vulcan"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0006": "tachyonlance"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": [
+    "vic_shabriri_wing"
+  ]
+}

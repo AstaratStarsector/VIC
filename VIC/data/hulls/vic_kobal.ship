@@ -1,0 +1,138 @@
+{
+  "hullName": "Kobal",
+  "hullId": "vic_kobal",
+  "hullSize": "FRIGATE",
+  "spriteName": "graphics/ships/Kobal/vic_Kobal.png",
+  "style": "VIC",
+  "height": 84,
+  "width": 154,
+  "center": [77, 45],
+  "collisionRadius": 87.5,
+  "shieldCenter": [0, -0],
+  "shieldRadius": 81,
+  "viewOffset": 0,
+  "builtInMods": [
+    "vic_aerodynamicdesign",
+    "vic_dynamicshields"
+  ],
+  "builtInWeapons": {
+    "WS0001": "vic_KobalDecoLeft",
+    "WS0002": "vic_KobalDecoRight",
+    "WS0003t": "vic_KobalDecoMiddle"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [8.5, 34]
+    },
+    {
+      "id": "WS0002",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [8.5, -33]
+    },
+    {
+      "id": "WS0003t",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [18, 0]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "SYNERGY",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": 0,
+      "locations": [18, 0]
+    },
+    {
+      "id": "WS0005",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": -0,
+      "locations": [6.5, 34]
+    },
+    {
+      "id": "WS0006",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": 0,
+      "locations": [6.5, -34]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-21, 34],
+      "length": 30,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-21, -34],
+      "length": 30,
+      "width": 15,
+      "angle": -180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-42, 0],
+      "length": 50,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    }
+  ],
+  "bounds": [
+    -42.5, 6.5,
+    -35, 7.5,
+    -37.5, 12.5,
+    -45.5, 20.5,
+    -9, 21,
+    -9, 27,
+    -21, 27,
+    -21, 41,
+    -10.5, 41,
+    -9.5, 55,
+    -5, 61,
+    -6, 69,
+    5.5, 77,
+    37.5, 9,
+    37.5, -9,
+    5.5, -77,
+    -6, -69,
+    -5, -61,
+    -9.5, -55,
+    -10.5, -41,
+    -21, -41,
+    -21, -27,
+    -9, -27,
+    -9, -21,
+    -45.5, -20.5,
+    -37.5, -12.5,
+    -35, -7.5,
+    -42.5, -6.5
+  ]
+}

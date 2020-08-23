@@ -1,0 +1,20 @@
+{
+	"id":"vic_heavylaidlawaccelerator_shot",
+	"specClass":"projectile",
+	"spawnType":"BALLISTIC_AS_BEAM",
+	"collisionClass":"RAY",
+	"collisionClassByFighter":"RAY_FIGHTER",	
+	#"collisionClass":"PROJECTILE_FF",
+	#"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"length":200.0,
+	"hitGlowRadius":72,
+	"width":8.0,
+	"fadeTime":0.05,
+	"fringeColor":[95,75,255,0],
+	"coreColor":[235,235,255,0],
+	#"fringeColor":[38,150,255,255],
+	#"coreColor":[225,225,255,255],
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":5.0,
+	"bulletSprite":"graphics/missiles/vic_heavylaidlawaccelerator_bullet.png"
+}

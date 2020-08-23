@@ -1,0 +1,18 @@
+{
+    "VOLKOV-LAIDLAW'S":{  #ID of engine's style, you have to specify the same into .ship files on engine slots
+      #style used in colors are RGBa red green blue alpha
+        "engineColor":[145,255,255,255],  #engines in combat
+        "engineCampaignColor":[145,255,255,255], #engines on campaign layer, very similar to combat version
+        #these are these in-combat engine trails, such as smoke and such
+        "contrailParticleSizeMult":2,
+        "contrailParticleDuration":3, 
+        "contrailParticleFinalSizeMult":2.5,
+        "contrailMaxSpeedMult":0.5,
+        "contrailAngularVelocityMult":0.5,
+        "contrailColor":[50,50,50,0], #the long trail in combat, usually slightly different?
+        "contrailCampaignColor":[145,255,255,75], #these long trails on campaign layer
+        "type":"GLOW" # GLOW or SMOKE; it's either engine with glows or that spits out smoke
+    },
+	}
+
+	
