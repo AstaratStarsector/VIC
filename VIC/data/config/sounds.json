@@ -20,5 +20,8 @@
 		
 		
 	},
+		"mhm_imaginebreaker":[
+			{"file": "sounds/effects/mhm_imaginebreaker.ogg", "pitch": 1, "volume": 1}
+		],
 	
 }
