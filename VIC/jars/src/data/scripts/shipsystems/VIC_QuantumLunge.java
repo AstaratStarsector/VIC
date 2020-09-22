@@ -74,7 +74,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 		//Lines list
 		if (DoOnce) {
 			cheesyLinesList.add("Nothing personnel kid");
-			cheesyLinesList.add("Another worthless cut");
+			cheesyLinesList.add("Another excellent cut");
 			cheesyLinesList.add("Executed in a singular strike!");
 			MaxTime = new IntervalUtil(1f, 1f);
 			DoOnce = false;
@@ -115,6 +115,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 			stats.getAcceleration().modifyFlat(id, 80000f);
 			ship.setPhased(true);
 			ship.setExtraAlphaMult(0.25f);
+
 			if (!isActive) {
 				StartPos = new Vector2f(ship.getLocation().x, ship.getLocation().y);
 				StarFacing = ship.getFacing();
@@ -217,7 +218,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 					Color.WHITE,
 					Color.CYAN);
 
-			Global.getSoundPlayer().playSound("mhm_imaginebreaker",1,1,ship.getLocation(),new Vector2f(0,0));
+			Global.getSoundPlayer().playSound("vic_imaginebreaker",1,1,ship.getLocation(),new Vector2f(0,0));
 
 		}
 		isActive = false;

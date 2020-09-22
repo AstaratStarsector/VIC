@@ -8,12 +8,11 @@
 		"vic_pruflas_skirmish":10,
 		"vic_kobal_artillery":10,
 		"vic_xaphan_assault":10,	
-		"vic_nybbas_killer":5,	
+			
 		
 	},
 	"combatMedium":{
 		"vic_moloch_enforcer":5,
-		"vic_jezebeth_command":5,
 		"vic_samael_siege":5,
 
 	},
@@ -44,6 +43,7 @@
 
 	},
 	"carrierMedium":{
+	"vic_jezebeth_command":5,
 	
 	},
 	"carrierLarge":{
@@ -52,6 +52,8 @@
 
 	# phase ships
 	"phaseSmall":{
+	"vic_nybbas_killer":5,
+	
 	},
 	"phaseMedium":{
 	},

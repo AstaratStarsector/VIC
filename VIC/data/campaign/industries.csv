@@ -1,3 +1,9 @@
 id,name,cost mult,build time,income,upkeep,downgrade,upgrade,tags,data,image,plugin,desc,order
 victourism,Trade & Tourism Infrastructure,90,60,8,1,,,structure,,graphics/icons/industry/commerce.png,data.campaign.econ.vic_tourism,tba,
 vicbiolabs,Biolaboratories,90,60,,8,,,structure,,graphics/icons/industry/commerce.png,data.campaign.econ.vic_biolabs,tba,
+vicgmofood,Advanced GMO Food Industry,15,60,,1,,,"farming, industry, rural",,graphics/icons/industry/farming.png,data.campaign.econ.vic_gmofood,"Every organism, even an artificial one, has its limits. Yet with just a little bit of creativity and a few questionable modifications, it is possible to push life even further, beyond its usual boundaries. 
+
+The majority of such rampant alterations were created (and, of course, copyrighted) by ""Chapelle & Telgenhof Co."" - one of the more profitable agricultural corporations of the Domain, and a subsidiary to a bigger enterprise. 
+
+Interestingly enough, the modified organisms require a constant supply of surprisingly specific DNA-calibrating treatments to stay alive and productive. The treatments provided exclusively by the Conglomerate.  ",200
+,,,,,,,,,,,,,

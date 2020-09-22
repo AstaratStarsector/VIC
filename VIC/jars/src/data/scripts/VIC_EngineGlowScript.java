@@ -30,7 +30,7 @@ public class VIC_EngineGlowScript implements EveryFrameWeaponEffectPlugin {
             runOnce = true;
             SHIP = weapon.getShip();
             for(ShipEngineControllerAPI.ShipEngineAPI e : SHIP.getEngineController().getShipEngines()){
-                if(MathUtils.isWithinRange(e.getLocation(), weapon.getLocation(), 2)){
+                if(MathUtils.isWithinRange(e.getLocation(), weapon.getLocation(), 4)){
                     thruster=e;
                 }
             }

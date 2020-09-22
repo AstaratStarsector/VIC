@@ -20,8 +20,8 @@
 		
 		
 	},
-		"mhm_imaginebreaker":[
-			{"file": "sounds/effects/mhm_imaginebreaker.ogg", "pitch": 1, "volume": 1}
+		"vic_imaginebreaker":[
+			{"file": "sounds/effects/vic_quantum_lunge.ogg", "pitch": 1, "volume": 1}
 		],
 	
 }

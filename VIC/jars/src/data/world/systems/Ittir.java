@@ -91,10 +91,10 @@ public class Ittir {
                                 Industries.SPACEPORT,
                                 Industries.MINING,
                                 Industries.GROUNDDEFENSES,
-                                Industries.FARMING,
                                 Industries.WAYSTATION,
                                 Industries.STARFORTRESS,
-                                Industries.MILITARYBASE
+                                Industries.MILITARYBASE,
+                                ("vicgmofood")
                         )
                 ),
                 //tariffs

@@ -119,7 +119,6 @@ public class Empyrean {
 
 
 
-
         // Archangel Mining Station
         SectorEntityToken Archangel = system.addCustomEntity("vic_archangel",
                 "\"Archangel\" Orbital Mining Station",
@@ -181,6 +180,7 @@ public class Empyrean {
                         Arrays.asList(
                                 Submarkets.SUBMARKET_OPEN,
                                 Submarkets.SUBMARKET_STORAGE,
+                                Submarkets.GENERIC_MILITARY,
                                 Submarkets.SUBMARKET_BLACK
                         )
                 ),
@@ -188,11 +188,11 @@ public class Empyrean {
                         Arrays.asList(
                                 Industries.POPULATION,
                                 Industries.MEGAPORT,
-                                Industries.FARMING,
                                 Industries.STARFORTRESS,
                                 Industries.HEAVYBATTERIES,
                                 Industries.HIGHCOMMAND,
                                 Industries.WAYSTATION,
+                                ("vicgmofood"),
                                 ("victourism"),
                                 Industries.LIGHTINDUSTRY,
                                 Industries.ORBITALWORKS
@@ -206,7 +206,8 @@ public class Empyrean {
                 true);
         //Gives  Pristine Nanoforged to OrbitalWorks
         ((HeavyIndustry) Cocytus_market.getIndustry(Industries.ORBITALWORKS)).setNanoforge(new SpecialItemData(Items.PRISTINE_NANOFORGE, null));
-
+        CargoAPI cargo = Cocytus_market.getSubmarket(Submarkets.GENERIC_MILITARY).getCargo();
+        cargo.addSpecial(new SpecialItemData("industry_bp", "vicgmofood"), 1);
 
 //Inner Jump Point
         JumpPointAPI innerJumpPoint = Global.getFactory().createJumpPoint(
@@ -314,6 +315,7 @@ public class Empyrean {
                 true,
                 //junk and chatter
                 false);
+
 
 
         // add Sensor Array
