@@ -1,0 +1,12 @@
+{
+	"VIC_VBomb":{
+		"VIC_conf_desc":"Starship fuel can be easily destabilized, unlocking the destructive potential of the antimatter it contains. Ground defenses can counter a bombardment, though in practice it only means that more fuel is required to achieve the same result.",
+		"UMO_desc0":"ATTENTION!!!",
+		"UMO_desc1":"According to the decree 'On the use of Weapons of Mass Destruction' No.43-81-116.a, testing and usage of weapon systems based on biological principles of action is prohibited on the territory of the Domain of Man. These types of weapons include (but are not limited to): bacteriological, viral, parasitic, prion, etc.",
+		"UMO_desc2":"Violation of this decree is punishable by death.",
+		"VBomb_desc0":"The use of militarized infectious agents allows one to 'neutralize' even the most well-protected colonies without causing serious damage to their infrastructure. Heavy contamination not only guarantees the collapse of both military and civilian institutions in a short period of time, but  also makes the bombarded territory nigh inhabitable for years at best, decades or even centuries at worst.",
+		"VBomb_desc1":"More hazardous environments tend to increase both the density of dispersion and the amount of organics and genetech required for a successful bombardment.",
+		"VBomb_conf0":"Viral bombardment will make the colony permanently contaminated. Are you sure?",
+		"VBomb_end0":"Commencing Viral bombardment. Impact in 3... 2... 1...",
+	},
+}

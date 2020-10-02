@@ -10,6 +10,7 @@ import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 import org.omg.PortableServer.POAManagerPackage.State;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.Map;
 public class VIC_QuantumLungeWeapon implements EveryFrameWeaponEffectPlugin {
 
     private boolean runOnce = false;
+    private boolean runOnce2 = false;
     private ShipSystemAPI SYSTEM;
     private ShipAPI SHIP;
     private float ElapsedTIme = 0f;
@@ -45,14 +47,19 @@ public class VIC_QuantumLungeWeapon implements EveryFrameWeaponEffectPlugin {
         }
 
         if (this.SYSTEM != null && !engine.isPaused() && this.SHIP.isAlive()) {
-            //engine.maintainStatusForPlayerShip("Jump time", "graphics/icons/hullsys/ammo_feeder.png", "Debug 1", ElapsedTIme + "" , false);
+            engine.maintainStatusForPlayerShip("Jump time", "graphics/icons/hullsys/ammo_feeder.png", "Debug 1", ElapsedTIme + "" , false);
+            engine.maintainStatusForPlayerShip("Jump time", "graphics/icons/hullsys/ammo_feeder.png", "Debug 1", this.SYSTEM.getState().toString() , false);
             if (this.SYSTEM.isStateActive()){
                 ElapsedTIme += amount;
-                if (ElapsedTIme >= this.SYSTEM.getChargeActiveDur()){
+                if (!this.runOnce2 && ElapsedTIme >= this.SYSTEM.getChargeActiveDur()){
                     this.SHIP.useSystem();
+                    engine.addFloatingText(this.SHIP.getLocation(), "aaaaaaaaaaaaaaaaaaaaaaa", 60, Color.WHITE, this.SHIP, 1, 2);
+                    this.runOnce2 = true;
                 }
             }
             if (this.SYSTEM.isChargedown()) {
+                this.runOnce2 = false;
+
                 ElapsedTIme = 0f;
 
                 Iterator<CombatEntityAPI> i$ = CombatUtils.getEntitiesWithinRange(this.SHIP.getLocation(), 550.0F).iterator();

@@ -96,71 +96,11 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         return (Math.abs(MathUtils.getShortestRotation(angleToTarget, ship.getFacing())) <= DEGREES);
     }
 
-    private boolean nothingCanStopMe(ShipAPI ship) {
-
-        // setup
-        Vector2f curr = ship.getLocation();
-        float facing = ship.getFacing();
-        boolean hasTakenHullDamage = ship.getHullLevel() < 0.99f;
-        boolean safe = true;
-
-        // scan everything within x range
-        List<CombatEntityAPI> consider = CombatUtils.getEntitiesWithinRange(curr, SCAN_RANGE);
-        for (CombatEntityAPI test : consider) {
-            float angle = VectorUtils.getAngle(curr, test.getLocation());
-
-            // ignore everything outside of a y degree cone
-            if (MathUtils.getShortestRotation(angle, facing) > DEGREES) {
-                continue;
-            }
-
-            if (test instanceof DamagingProjectileAPI) {
-                DamagingProjectileAPI proj = (DamagingProjectileAPI) test;
-                float armor = ship.getArmorGrid().getArmorRating();
-                float armorDamage = proj.getDamageAmount();
-                float hullDamage = proj.getDamageAmount();
-                switch (proj.getDamageType()) {
-                    case KINETIC:
-                        armorDamage *= 0.5f;
-                        break;
-                    case FRAGMENTATION:
-                        armorDamage *= 0.25f;
-                        hullDamage *= 0.25f;
-                        break;
-                    case HIGH_EXPLOSIVE:
-                        armorDamage *= 2f;
-                        break;
-                }
-
-                if (armorDamage >= armor) {
-                    safe = false;
-                }
-                if (hasTakenHullDamage && hullDamage >= WOUNDED_DAMAGE_THRESHOLD) {
-                    safe = false;
-                }
-                
-            } else if (test instanceof ShipAPI) {
-                ShipAPI other = (ShipAPI) test;
-                HullSize size = ship.getHullSize();
-                HullSize otherSize = other.getHullSize();
-                
-                if (otherSize.compareTo(size) >= 1) {
-                    safe = false;
-                }
-                if (hasTakenHullDamage && otherSize.compareTo(size) >= 0) {
-                    safe = false;
-                }
-            }
-        }
-
-        return safe;
-    }
-
     public float canIFlankThisFucker (ShipAPI ship, ShipAPI target){
         float flankingScore = 0f;
         if(target == null|| ship == null)return -10f;
         if(target.isCapital() && !rightDirection(target, ship.getLocation()))return -10f;
-        if (target.getFleetMember().isStation()){
+        if (target.isStation() || target.isFighter()){
             return -100f;
         }
 
@@ -194,7 +134,10 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
                 enemyScore += toCheck.getFleetMember().getDeploymentPointsCost();
             }
         }
-        allyScore += ship.getFleetMember().getDeploymentPointsCost();
+
+        if (ship.getFleetMember().getDeploymentPointsCost() > 0){
+            allyScore += ship.getFleetMember().getDeploymentPointsCost();
+        }
         float totalScore = allyScore - enemyScore;
         flankingScore += totalScore;
 
@@ -344,5 +287,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
     public void spawnText (String text, Float offset){
         engine.addFloatingText(new Vector2f(ship.getLocation().x,ship.getLocation().y + offset), text, 60, Color.WHITE, ship, 0.25f, 0.25f);
     }
+
+
 
 }

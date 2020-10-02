@@ -24,3 +24,14 @@ SetShortcut beaconLeave ""ESCAPE""","This autonomous warning beacon emits a loop
 
 ""WARNING!!! Citizens of the Domain, this planet is heavily contaminated by indigenous viral agents. Extreme precautions and biological protection measures required. All infected must be isolated and cremated IMMEDIATELY. Any malicious attempts to spread the disease are punishable by death. For additional information citizens are to contact the local department of the Domain Interplanetary Sanitary-Epidemiological Control Service (DISECS).""
  ",beaconLeave:Leave,
+,,,,,,
+vic_UMO,PopulateOptions,"$hasMarket
+$menuState == main
+$faction.id != player
+!haveNex","SetShortcut VICUMOMenu ""V"" true",,21:UMOMenu:Unconventional military option,
+vic_UMOwithNEX,ExerelinMarketSpecial,,"SetShortcut VICUMOMenu ""V"" true",,9:UMOMenu:Unconventional military option,
+,,,,,,
+vic_UMOMenu,DialogOptionSelected,$option == UMOMenu,VIC_MarketCMD UMOMenu,,,
+vic_VBombMenu,DialogOptionSelected,$option == VBombMenu,VIC_MarketCMD VBombMenu,,,
+vic_VBombConfirm,DialogOptionSelected,$option == VBombConfirm,VIC_MarketCMD VBombConfirm,,,
+vic_VBombResults,DialogOptionSelected,$option == VBombResults,VIC_MarketCMD VBombResults,,,

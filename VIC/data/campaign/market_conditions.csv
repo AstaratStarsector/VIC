@@ -1,0 +1,2 @@
+name,id,planetary,decivRemove,script,desc,icon,order
+Extreme Viral Contamination,VIC_VBomb_scar,,FALSE,data.scripts.conditions.VIC_VBomb_scar,"An artificial military virus has claimed $market. Without focusing most, if not all their efforts on costly and time-consuming decontamination procedures, the population is doomed to succumb to the merciless infection. $market is beyond any use, hope and salvation.",graphics/icons/markets/D_gaseous_eruption.png,1000
