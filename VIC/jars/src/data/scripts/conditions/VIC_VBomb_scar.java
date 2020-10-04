@@ -61,6 +61,7 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
             planet.getSpec().setAtmosphereColor(toxinColor);
             planet.getSpec().setCloudTexture("graphics/planets/clouds_banded01.png");
             planet.getSpec().setCloudColor(toxinColor);
+            planet.applySpecChanges();
         }
 
         VIC_TimeTracker.addMarketTimeTagTracker(market, getModId());
