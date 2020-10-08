@@ -1,0 +1,64 @@
+{
+  "hullName": "Sonneilon Artillery Fighter",
+  "hullId": "vic_sonneilon",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/fighters/Sonneilon.png",
+  "style": "VIC",
+  "height": 81,
+  "width": 46,
+  "center": [23, 32.5],
+  "collisionRadius": 45.5,
+  "shieldCenter": [0, -0],
+  "shieldRadius": 40.5,
+  "viewOffset": 0,
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 5,
+      "angle": 0,
+      "locations": [1.5, -0]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-24.5, 9.5],
+      "length": 37.5,
+      "width": 4,
+      "angle": 180,
+      "contrailSize": 4,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-24.5, -9.5],
+      "length": 37.5,
+      "width": 4,
+      "angle": -180,
+      "contrailSize": 4,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-27.5, -0],
+      "length": 24.5,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 8,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    }
+  ],
+  "bounds": [
+    32.5, -5.5,
+    -2, -5.5,
+    -22, -20.5,
+    -29.5, 0,
+    -29.5, -0,
+    -22, 20.5,
+    -2, 5.5,
+    32.5, 5.5
+  ]
+}

@@ -6,15 +6,13 @@
 		"blueprint_packages":{
 			"vic_hulls_package":"graphics/icons/cargo/vic_blueprint.png",
 			"vic_weapons_package":"graphics/icons/cargo/vic_blueprint.png",
+				
 		},
 		"campaignEntities":{
 			"vic_archangel_beam":"graphics/custom entities/archangel_beam2.png",
 			"vic_archangel_beam_glow2":"graphics/custom entities/archangel_beam_glow2.png",
-			"vic_archangel_beam_core":"graphics/custom entities/archangel_beam_core.png",
-			"vic_archangel_planetary_glow1":"graphics/custom entities/VIC_archangel_planetaryGlow1.png",
-			"vic_archangel_flare":"graphics/custom entities/VIC_flare.png",
-			"vic_archangel_flare2":"graphics/custom entities/VIC_flare2.png",
-			}
+			"vic_archangel_beam_core":"graphics/custom entities/archangel_beam_core.png",		
+		}
 	}
 }
 	

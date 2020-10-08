@@ -1,5 +1,7 @@
 {
 	
+	
+	
     "vic_archangel_mining_beam":{
         "defaultName":"Archangel Mining Beam", # used if name=null in addCustomEntity()
         "nameInText":"archangel mining beam",
@@ -26,39 +28,8 @@
         "scaleIconWithZoom":true,
         "renderCircleIndicator":false, # make clickable
         "renderCircleIndicatorSelectionFlash":false,
-        "layers":[TERRAIN_4], # what layer(s) to render in. See CampaignEngineLayers.java for possible values,
+        "layers":[TERRAIN_1], # what layer(s) to render in. See CampaignEngineLayers.java for possible values,
        	"pluginClass":"data.scripts.starmapentities.VIC_ArchangelBeamEffect",
-       
-    },
-	
-	"vic_archangel_planetary_effect":{
-        "defaultName":"Archangel Planetary effect", # used if name=null in addCustomEntity()
-        "nameInText":"archangel planetary effect",
-        "shortName":"archangel planetary effect",
-        "icon":"graphics/icons/relay_makeshift.png",
-        "iconWidth":12,
-        "iconHeight":12,
-        #"sprite":"graphics/custom entities/archangel_beam2.png",
-        "spriteWidth":260,
-        "spriteHeight":260,
-        "customDescriptionId":"int_array",
-        "interactionImage":"graphics/illustrations/comm_relay.jpg",
-        "defaultRadius":0, # used if radius<0 in addCustomEntity()
-        "showInCampaign":true, # show in campaign layer
-        "showIconOnMap":false,
-        "showNameOnMap":false,
-		"renderShadow":false, #true,
-		"useLightColor":false,
-        "nameFontScale":1,
-        "nameAngle":0,
-        "nameColor":[70,200,255,0],
-        "nameShadowColor":[0,0,0,0],
-        "scaleNameWithZoom":false,
-        "scaleIconWithZoom":true,
-        "renderCircleIndicator":false, # make clickable
-        "renderCircleIndicatorSelectionFlash":false,
-        "layers":[TERRAIN_3], # what layer(s) to render in. See CampaignEngineLayers.java for possible values,
-       	"pluginClass":"data.scripts.starmapentities.VIC_ArchangelPlanetaryEffect",
        
     },
 	
@@ -82,6 +53,8 @@
 		"scaleIconWithZoom":true,
 		"tags":["station"],
 		"layers":[STATIONS], # what layer(s) to render in. See CampaignEngineLayers.java for possible values
+       		
+       
     },
 	
 	"vic_jump_point_stabilizer":{

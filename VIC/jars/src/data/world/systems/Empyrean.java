@@ -32,9 +32,11 @@ public class Empyrean {
 
     public void generate(SectorAPI sector) {
 
+
         StarSystemAPI system = sector.createStarSystem("Empyrean");
         system.getLocation().set(-2400, -19000);
         system.setBackgroundTextureFilename("graphics/backgrounds/empyrean_background.jpg");
+
 
         // create the star and generate the hyperspace anchor for this system
         PlanetAPI EmpyreanStar = system.initStar("vic_star_empyrean", // unique id for this star
@@ -54,6 +56,7 @@ public class Empyrean {
                 system, // location to add to
                 "terrain", "nebula", //"nebula_blue", // texture to use, uses xxx_map for map
                 4, 4, StarAge.AVERAGE); // number of cells in texture
+
 
 
         // Phlegethon: "Happy Labour" Summer Camp
@@ -115,6 +118,7 @@ public class Empyrean {
                 true);
 
 
+
         // Archangel Mining Station
         SectorEntityToken Archangel = system.addCustomEntity("vic_archangel",
                 "\"Archangel\" Orbital Mining Station",
@@ -123,18 +127,19 @@ public class Empyrean {
         Archangel.setCircularOrbitPointingDown(EmpyreanStar,50f,  2200f,60f);
         Archangel.setCustomDescriptionId("vic_archangel");
 
+
         //Archangel Mining Beam
         SectorEntityToken MiningBeam = system.addCustomEntity("vic_archangel_beam", null, "vic_archangel_mining_beam", null); //add the thing orbiting the market
         MiningBeam.setCircularOrbitPointingDown(EmpyreanStar, 50f, 2455f, 60f); //set as circular orbit
 
-        //Archangel Planetary effect
-        SectorEntityToken PlanetaryEffect = system.addCustomEntity("vic_archangel_planetary_effect", null, "vic_archangel_planetary_effect", null); //add the thing orbiting the market
-        PlanetaryEffect.setCircularOrbitPointingDown(EmpyreanStar, 50f, 2800f, 60f); //set as circular orbit
+
+
 
 
         // add  Nav Buoy
         SectorEntityToken CocytusNavBuoy = system.addCustomEntity("cocytus_nav_buoy", "Cocytus Navigation Buoy", "nav_buoy", "vic");
         CocytusNavBuoy.setCircularOrbitPointingDown( EmpyreanStar, 360f * (float) Math.random(), 4300, 185);
+
 
 
         // Cocytus: Archipelago Homeworld
@@ -204,7 +209,7 @@ public class Empyrean {
         CargoAPI cargo = Cocytus_market.getSubmarket(Submarkets.GENERIC_MILITARY).getCargo();
         cargo.addSpecial(new SpecialItemData("industry_bp", "vicgmofood"), 1);
 
-        //Inner Jump Point
+//Inner Jump Point
         JumpPointAPI innerJumpPoint = Global.getFactory().createJumpPoint(
 
                 "inner_jump_point",
@@ -216,7 +221,8 @@ public class Empyrean {
         system.addEntity(innerJumpPoint);
 
 
-        //Hyperspace controversy
+//Hyperspace controversy
+
         SectorEntityToken Hyperspace_Stabilizer1 = system.addCustomEntity("vic_stabilizer1",
                 "Hyperspace Coherence Adjustment Unit",
                 "vic_jump_point_stabilizer",
@@ -239,12 +245,18 @@ public class Empyrean {
         Hyperspace_Stabilizer3.setCustomDescriptionId("vic_jump_point_stabilizer");
 
 
+
+
+
+
         //Inner asteroid ring
         system.addAsteroidBelt(EmpyreanStar, 1000, 5700, 800, 250, 400, Terrain.ASTEROID_BELT, "Inner Band");
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 3, Color.gray, 256f, 5700f - 200, 250f);
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 0, Color.gray, 256f, 5700f, 350f);
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 5700f + 200, 400f);
         system.addRingBand(EmpyreanStar, "misc", "rings_ice0", 600 + 256f, 1, Color.blue, 600 + 256f, 5700, 450f);
+
+
 
 
         // Purgatory: Hell Toxic World
@@ -311,9 +323,11 @@ public class Empyrean {
         PurgatorySensorArray.setCircularOrbitPointingDown( EmpyreanStar, 360f * (float) Math.random(), 7400, 200);
 
 
+
         //Empyrean Inactive Gate
         SectorEntityToken EmpyreanGate = system.addCustomEntity("empyrean_gate", "Empyrean Gate", "inactive_gate", null); //add the thing orbiting the market
         EmpyreanGate.setCircularOrbitPointingDown(EmpyreanStar, 360f * (float) Math.random(), 7750f, 220f); //set as circular orbit
+
 
 
         //add Comm relay
@@ -324,12 +338,15 @@ public class Empyrean {
         OuterRelay.setCircularOrbitPointingDown(EmpyreanStar, 360f * (float) Math.random(), 9500, 250);
 
 
-        //Malebolge and the Giants
+
+
+      //Malebolge and the Giants
         PlanetAPI Malebolge = system.addPlanet("vic_Empyrean_malebolge", EmpyreanStar, "Malebolge", "gas_giant", 180f, 420, 11000, 265);
 
         Malebolge.getMarket().addCondition(Conditions.DENSE_ATMOSPHERE);
         Malebolge.getMarket().addCondition(Conditions.HIGH_GRAVITY);
         Malebolge.getMarket().addCondition(Conditions.VOLATILES_ABUNDANT);
+
 
 
         PlanetAPI Nimrod = system.addPlanet("vic_Empyrean_nimrod", Malebolge, "Nimrod", "frozen2", 360f * (float) Math.random(), 100, 800, 12);
@@ -385,6 +402,10 @@ public class Empyrean {
         Malebolge_magfield.setCircularOrbit(Malebolge, 0, 0, 100);
 
 
+
+
+
+
         //Dis and its Furies (Tisiphone, Megaera, Alecto)
         PlanetAPI Dis = system.addPlanet("vic_Empyrean_dis", EmpyreanStar, "Dis", "ice_giant", 360f, 400, 11000, 265);
 
@@ -397,6 +418,7 @@ public class Empyrean {
         Dis.getMarket().addCondition(Conditions.RARE_ORE_SPARSE);
 
 
+
         PlanetAPI Tisiphone = system.addPlanet("vic_Empyrean_tisiphone", Dis, "Tisiphone", "cryovolcanic", 45, 80, 700, 15);
 
 
@@ -407,6 +429,7 @@ public class Empyrean {
         Tisiphone.getMarket().addCondition(Conditions.VOLATILES_ABUNDANT);
         Tisiphone.getMarket().addCondition(Conditions.ORE_MODERATE);
         Tisiphone.getMarket().addCondition(Conditions.RARE_ORE_SPARSE);
+
 
 
         system.addAsteroidBelt(Dis, 50, 1100, 128, 40, 80, Terrain.ASTEROID_BELT, "Dis Inner Ring");
@@ -465,6 +488,8 @@ public class Empyrean {
          Megaera_market.getIndustry(Industries.FUELPROD).setSpecialItem(new SpecialItemData(Items.SYNCHROTRON, null));
 
 
+
+
         system.addAsteroidBelt(Dis, 80, 1600, 150, 50, 100, Terrain.ASTEROID_BELT, "Dis Outer Ring");
         system.addRingBand(Dis, "misc", "rings_special0", 256f, 0, Color.red, 256f, 1600, 55f);
 
@@ -478,8 +503,10 @@ public class Empyrean {
         Alecto.getMarket().addCondition(Conditions.ORE_MODERATE);
 
 
+
         system.addRingBand(Dis, "misc", "rings_asteroids0", 256f, 0, Color.gray, 256f, 2200, 50f);
         system.addRingBand(Dis, "misc", "rings_ice0", 256f, 0, Color.yellow, 256f, 2220, 30f);
+
 
 
         //Outer Asteroid belt
@@ -494,6 +521,9 @@ public class Empyrean {
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 3, Color.gray, 256f, 15100f - 200, 350f);
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 0, Color.gray, 256f, 15100f, 340f);
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 15100f + 200, 400f);
+
+
+
 
 
         //Pather vanguard planet Fortuna
@@ -547,6 +577,8 @@ public class Empyrean {
                 true);
 
 
+
+
         //Fringe planet Dismay
         PlanetAPI Dismay = system.addPlanet("vic_planet_dismay", EmpyreanStar, "Dismay", "frozen2", 360f * (float) Math.random(), 120, 18000f, 330);
 
@@ -558,12 +590,17 @@ public class Empyrean {
         Dismay.getMarket().addCondition(Conditions.VOLATILES_PLENTIFUL);
 
 
+
         // Let's procgen some stuff here cause fuck doing that manually
         float ProcgenRadius = StarSystemGenerator.addOrbitingEntities(system, EmpyreanStar, StarAge.YOUNG,
                 3, 5, // min/max entities to add
                 19000, // radius to start adding at
                 3, // name offset - next planet will be <system name> <roman numeral of this parameter + 1>
                 true); // whether to use custom or system-name based names
+
+
+
+
 
 
         // generates hyperspace destinations for in-system jump points
@@ -574,6 +611,9 @@ public class Empyrean {
 
 
     }
+
+
+
 
     //Learning from Tart scripts
     //Clean nearby Nebula

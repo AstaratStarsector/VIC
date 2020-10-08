@@ -99,8 +99,8 @@ public class VIC_MiscGatlingBeamerScript implements EveryFrameWeaponEffectPlugin
         //beams and spawn a fake beam on each of them
         if (!runOnceOn) {
             runOnceOn = true;
-            for (BeamAPI beam : beams) {
-                applyFakeBeam(beam);
+            for (int i = 0; i < beams.size(); i++) {
+                applyFakeBeam(beams.get(i));
             }
         }
     }
