@@ -1,33 +1,28 @@
 package data.scripts.weapons;
 
 import com.fs.starfarer.api.combat.*;
-import com.fs.starfarer.api.plugins.ShipSystemStatsScript;
-import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
-import org.omg.PortableServer.POAManagerPackage.State;
 
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 //Made by PureTilt for Astarat
 public class VIC_QuantumLungeWeapon implements EveryFrameWeaponEffectPlugin {
 
+    private final IntervalUtil timer = new IntervalUtil(0.5f, 0.5f);
+    private final Map<ShipAPI.HullSize, Float> MULT = new HashMap<>();
     private boolean runOnce = false;
     private boolean runOnce2 = false;
     private ShipSystemAPI SYSTEM;
     private ShipAPI SHIP;
     private float ElapsedTIme = 0f;
 
-    private final IntervalUtil timer = new IntervalUtil(0.5f, 0.5f);
-
-    private final Map<ShipAPI.HullSize, Float> MULT = new HashMap<>();
     {
         MULT.put(ShipAPI.HullSize.DEFAULT, 1.0F);
         MULT.put(ShipAPI.HullSize.FIGHTER, 0.75F);
@@ -47,13 +42,13 @@ public class VIC_QuantumLungeWeapon implements EveryFrameWeaponEffectPlugin {
         }
 
         if (this.SYSTEM != null && !engine.isPaused() && this.SHIP.isAlive()) {
-            engine.maintainStatusForPlayerShip("Jump time", "graphics/icons/hullsys/ammo_feeder.png", "Debug 1", ElapsedTIme + "" , false);
-            engine.maintainStatusForPlayerShip("Jump time", "graphics/icons/hullsys/ammo_feeder.png", "Debug 1", this.SYSTEM.getState().toString() , false);
-            if (this.SYSTEM.isStateActive()){
+            //engine.maintainStatusForPlayerShip("Jump time", "graphics/icons/hullsys/ammo_feeder.png", "Debug 1", ElapsedTIme + "", false);
+            //engine.maintainStatusForPlayerShip("Jump time", "graphics/icons/hullsys/ammo_feeder.png", "Debug 1", this.SYSTEM.getState().toString(), false);
+            if (this.SYSTEM.isStateActive()) {
                 ElapsedTIme += amount;
-                if (!this.runOnce2 && ElapsedTIme >= this.SYSTEM.getChargeActiveDur()){
+                if (!this.runOnce2 && ElapsedTIme >= this.SYSTEM.getChargeActiveDur()) {
                     this.SHIP.useSystem();
-                    engine.addFloatingText(this.SHIP.getLocation(), "aaaaaaaaaaaaaaaaaaaaaaa", 60, Color.WHITE, this.SHIP, 1, 2);
+                    //engine.addFloatingText(this.SHIP.getLocation(), "aaaaaaaaaaaaaaaaaaaaaaa", 60, Color.WHITE, this.SHIP, 1, 2);
                     this.runOnce2 = true;
                 }
             }
@@ -85,7 +80,7 @@ public class VIC_QuantumLungeWeapon implements EveryFrameWeaponEffectPlugin {
                         Vector2f.add(cLoc, repulsion, cLoc);
                         Vector2f push = new Vector2f(repulsion);
                         if (c instanceof ShipAPI) {
-                            push.scale(this.MULT.get(((ShipAPI)c).getHullSize()));
+                            push.scale(this.MULT.get(((ShipAPI) c).getHullSize()));
                         }
 
                         Vector2f cVel = c.getVelocity();

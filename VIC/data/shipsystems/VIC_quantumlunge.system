@@ -1,13 +1,10 @@
 {
-	"id":"VIC_quantumlunge",
+	"id":"vic_quantumlunge",
 	"type":"STAT_MOD",
 	"aiType":"CUSTOM",
 	"aiScript":"data.scripts.shipsystems.ai.VIC_QuantumLungeAI",
 	
 	"statsScript":"data.scripts.shipsystems.VIC_QuantumLunge",
-	
-	"phaseHighlight":"_glow1",
-	"phaseDiffuse":"_glow2",
 	
 	"effectColor1":[255,175,255,255],
 	"effectColor2":[255,0,255,150],

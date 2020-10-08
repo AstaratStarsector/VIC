@@ -4,7 +4,7 @@ import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 
-public class vic_toneddownweapon extends BaseHullMod {
+public class vic_tonedDownWeapon extends BaseHullMod {
 
 	public final float RANGE_DECREASE = 0.5f;
 	public final float FLUX_REDUCTION = 0.5f;

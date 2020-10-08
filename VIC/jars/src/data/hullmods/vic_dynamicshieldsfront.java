@@ -9,7 +9,7 @@ import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import org.lazywizard.lazylib.MathUtils;
 
-public class vic_dynamicshieldsfront extends BaseHullMod {
+public class vic_dynamicShieldsFront extends BaseHullMod {
 
     public final float MAX_ARC_MULT = 2f;    // Maximum multiplier applied to the base shield arc
     public final float IDEAL_ANGLE = 180f;   // The angle of deflection at which the shield is at max arc

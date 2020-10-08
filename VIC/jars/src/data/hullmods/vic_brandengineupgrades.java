@@ -10,22 +10,15 @@ import com.fs.starfarer.api.util.Misc;
 import java.util.HashMap;
 import java.util.Map;
 
-public class vic_brandengineupgrades extends BaseHullMod {
+public class vic_brandEngineUpgrades extends BaseHullMod {
 
-    private final Map<HullSize, Float> mag = new HashMap<>();
-    {
-        mag.put(ShipAPI.HullSize.FRIGATE, 0f);
-        mag.put(ShipAPI.HullSize.DESTROYER, 0f);
-        mag.put(ShipAPI.HullSize.CRUISER, 0f);
-        mag.put(ShipAPI.HullSize.CAPITAL_SHIP, 1f);
-    }
-
+    private final float burnBoost = 1f;
     private final float FUEL_EFFICIENCY = 0.9f;
     private final float PROFILE_PENALTY = 25f;
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-
-        stats.getMaxBurnLevel().modifyFlat(id, mag.get(hullSize));
+        if (hullSize == HullSize.CAPITAL_SHIP)
+            stats.getMaxBurnLevel().modifyFlat(id, burnBoost);
         stats.getFuelUseMod().modifyMult(id, FUEL_EFFICIENCY);
         stats.getSensorProfile().modifyPercent(id,  PROFILE_PENALTY);
     }
@@ -35,7 +28,7 @@ public class vic_brandengineupgrades extends BaseHullMod {
     }
 
     public String getDescriptionParam ( int index, HullSize hullSize){
-        if (index == 0) return Math.round(1f) + "";
+        if (index == 0) return Math.round(burnBoost) + "";
         if (index == 1) return Math.round(100f - (FUEL_EFFICIENCY * 100f)) + "%";
         if (index == 2) return PROFILE_PENALTY + "%";
         return null;

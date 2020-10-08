@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//Made by PureTilt for Astarat
+//Made by PureTilt
 public class VIC_QuantumLunge extends BaseShipSystemScript {
 
 	public boolean isActive = false;
@@ -30,8 +30,8 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 	
 	public final float DistPerExp = 50f;
 	public final boolean ArcAimAtShips = true; //for secondary arcs
-	public final float EmpArcDmg = 500;
-	public final float EmpArcEmp = 200;
+	public final float EmpArcDmg = 400;
+	public final float EmpArcEmp = 50;
 	public final float AllyMult = 0.15f;
 	public  final DamageType EmpArmDmgType = DamageType.ENERGY;
 

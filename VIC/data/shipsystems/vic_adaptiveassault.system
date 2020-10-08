@@ -1,0 +1,18 @@
+{
+	"id":"vic_adaptiveassault",
+	"type":"STAT_MOD",
+	#"aiType":"HIGH_ENERGY_FOCUS",
+	"aiType":"WEAPON_BOOST",
+	
+	"statsScript":"data.scripts.shipsystems.VIC_AdaptiveAssault",
+	
+	"weaponGlowColor":[0,255,255,255],
+	"weaponTypes":[ENERGY, BALLISTIC],
+	
+	
+	"useSound":"system_high_energy_focus_activate",
+	"deactivateSound":"system_high_energy_focus_deactivate",
+	
+	"outOfUsesSound":"gun_out_of_ammo",
+	"loopSound":"system_high_energy_focus_loop",	
+}

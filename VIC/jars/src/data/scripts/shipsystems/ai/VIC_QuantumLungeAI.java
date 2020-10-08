@@ -1,52 +1,27 @@
 package data.scripts.shipsystems.ai;
 
-import com.fs.starfarer.api.combat.CombatAssignmentType;
-import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.CombatEntityAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.CombatFleetManagerAPI.AssignmentInfo;
-import com.fs.starfarer.api.combat.DamagingProjectileAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
-import com.fs.starfarer.api.combat.ShipSystemAIScript;
-import com.fs.starfarer.api.combat.ShipSystemAPI;
-import com.fs.starfarer.api.combat.ShipwideAIFlags;
 import com.fs.starfarer.api.combat.ShipwideAIFlags.AIFlags;
 import com.fs.starfarer.api.fleet.FleetGoal;
 import com.fs.starfarer.api.mission.FleetSide;
 import com.fs.starfarer.api.util.IntervalUtil;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import static data.scripts.shipsystems.VIC_QuantumLunge.SPEED_BOOST;
 
-//Base made by Vayra, modified by PureTilt for Astarat
+//Base made by Vayra, modified by PureTilt
 public class VIC_QuantumLungeAI implements ShipSystemAIScript {
-
-    private ShipAPI ship;
-    private ShipwideAIFlags flags;
-    private CombatEngineAPI engine;
-
-    private boolean
-            DoIFlick = false,
-            TargShip = false;
-
-    public float
-            minPointsToFlank = 0f,
-            NeededDur = 0f,
-            TimeElapsed = 0f;
-
-    private final IntervalUtil
-            FlickTimer = new IntervalUtil(0.2f, 0.4f),
-            timer = new IntervalUtil(0.5f, 1f);
 
     // setup
     private static final float
@@ -73,7 +48,21 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         //CON.add(AIFlags.KEEP_SHIELDS_ON);
     }
 
+    private final IntervalUtil
+            FlickTimer = new IntervalUtil(0.2f, 0.4f),
+            timer = new IntervalUtil(0.5f, 1f);
     private final HashMap<HullSize, Float> TurnMult = new HashMap<>();
+    public float
+            minPointsToFlank = 0f,
+            NeededDur = 0f,
+            TimeElapsed = 0f;
+    private ShipAPI ship;
+    private ShipwideAIFlags flags;
+    private CombatEngineAPI engine;
+    private boolean
+            DoIFlick = false,
+            TargShip = false;
+
     {
         TurnMult.put(ShipAPI.HullSize.FRIGATE, 0.1f);
         TurnMult.put(ShipAPI.HullSize.DESTROYER, 0.25f);
@@ -96,11 +85,11 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         return (Math.abs(MathUtils.getShortestRotation(angleToTarget, ship.getFacing())) <= DEGREES);
     }
 
-    public float canIFlankThisFucker (ShipAPI ship, ShipAPI target){
+    public float canIFlankThisFucker(ShipAPI ship, ShipAPI target) {
         float flankingScore = 0f;
-        if(target == null|| ship == null)return -10f;
-        if(target.isCapital() && !rightDirection(target, ship.getLocation()))return -10f;
-        if (target.isStation() || target.isFighter()){
+        if (target == null || ship == null) return -100f;
+        if (target.isCapital() && !rightDirection(target, ship.getLocation())) return -100f;
+        if (target.isStation() || target.isFighter()) {
             return -100f;
         }
 
@@ -108,10 +97,10 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         float targetSide = target.getOwner();
 
         //how fast we rotate 🤔
-        float TimeToMaxSpeedYou = ship.getMaxTurnRate()/ship.getTurnAcceleration();
-        float TimeToTurn180You = ((180 - (ship.getMaxTurnRate() * TimeToMaxSpeedYou * 0.5f))/ship.getMaxTurnRate()) + TimeToMaxSpeedYou;
-        float TimeToMaxSpeedTarget = target.getMaxTurnRate()/target.getTurnAcceleration();
-        float TimeToTurn180Target = ((180 - (target.getMaxTurnRate() * TimeToMaxSpeedTarget * 0.5f))/target.getMaxTurnRate()) + TimeToMaxSpeedTarget;
+        float TimeToMaxSpeedYou = ship.getMaxTurnRate() / ship.getTurnAcceleration();
+        float TimeToTurn180You = ((180 - (ship.getMaxTurnRate() * TimeToMaxSpeedYou * 0.5f)) / ship.getMaxTurnRate()) + TimeToMaxSpeedYou;
+        float TimeToMaxSpeedTarget = target.getMaxTurnRate() / target.getTurnAcceleration();
+        float TimeToTurn180Target = ((180 - (target.getMaxTurnRate() * TimeToMaxSpeedTarget * 0.5f)) / target.getMaxTurnRate()) + TimeToMaxSpeedTarget;
         //Turn advantage add to score
         flankingScore += (TimeToTurn180Target - TimeToTurn180You) * TurnMult.get(target.getHullSize());
 
@@ -125,48 +114,48 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         float enemyScore = 0f;
         float allyScore = 0f;
         List<ShipAPI> shipInExitRange = CombatUtils.getShipsWithinRange(ExitPos, distPastTarget + 750);
-        for (ShipAPI toCheck : shipInExitRange){
-            if (toCheck.getOwner() == shipSide){
-                if (toCheck != ship){
+        for (ShipAPI toCheck : shipInExitRange) {
+            if (toCheck.getOwner() == shipSide) {
+                if (toCheck != ship) {
                     allyScore += toCheck.getFleetMember().getDeploymentPointsCost();
                 }
-            } else if (toCheck.getOwner() == targetSide){
+            } else if (toCheck.getOwner() == targetSide) {
                 enemyScore += toCheck.getFleetMember().getDeploymentPointsCost();
             }
         }
 
-        if (ship.getFleetMember().getDeploymentPointsCost() > 0){
+        if (ship.getFleetMember().getDeploymentPointsCost() > 0) {
             allyScore += ship.getFleetMember().getDeploymentPointsCost();
         }
         float totalScore = allyScore - enemyScore;
         flankingScore += totalScore;
 
         //how much of target's HP left
-        float targetDmgMult = 400/(target.getArmorGrid().getArmorRating() + 400);
+        float targetDmgMult = 400 / (target.getArmorGrid().getArmorRating() + 400);
         float HullPercent = (target.getHitpoints() / targetDmgMult) / (target.getMaxHitpoints() / targetDmgMult);
         float HPLeft = HullPercent;
-        if (target.getShield() != null){
-            float shieldPercent = ((target.getMaxFlux() - target.getCurrFlux()) * target.getShield().getFluxPerPointOfDamage())/(target.getMaxFlux() * target.getShield().getFluxPerPointOfDamage());
+        if (target.getShield() != null) {
+            float shieldPercent = ((target.getMaxFlux() - target.getCurrFlux()) * target.getShield().getFluxPerPointOfDamage()) / (target.getMaxFlux() * target.getShield().getFluxPerPointOfDamage());
             float HullToShieldRatio = ((target.getMaxFlux() - target.getCurrFlux()) / (target.getMaxHitpoints() / targetDmgMult));
             HPLeft = shieldPercent * HullToShieldRatio + HullPercent * (1 - HullToShieldRatio);
         }
 
         flankingScore -= target.getFleetMember().getDeploymentPointsCost() - (target.getFleetMember().getDeploymentPointsCost() * HPLeft);
 
-        spawnText(flankingScore + "",60f);
+        //spawnText(flankingScore + "", 60f);
         return flankingScore;
     }
 
     @Override
     public void advance(float amount, Vector2f missileDangerDir, Vector2f collisionDangerDir, ShipAPI target) {
-        
+
         // don't check if paused
         if (engine.isPaused()) {
             return;
         }
-        if (ship.getSystem().isStateActive() && TargShip){
+        if (ship.getSystem().isStateActive() && TargShip) {
             TimeElapsed += amount;
-            if (TimeElapsed >= NeededDur){
+            if (TimeElapsed >= NeededDur) {
                 ship.useSystem();
                 TargShip = false;
                 TimeElapsed = 0f;
@@ -174,13 +163,13 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         }
 
         //Disable system if use it not for movement
-        if (DoIFlick){
+        if (DoIFlick) {
             FlickTimer.advance(amount);
-            if (FlickTimer.intervalElapsed()){
+            if (FlickTimer.intervalElapsed()) {
                 ship.useSystem();
                 DoIFlick = false;
                 FlickTimer.setElapsed(0f);
-                spawnText("flick",0f);
+                //spawnText("flick", 0f);
             } else {
                 return;
             }
@@ -196,17 +185,11 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         if (!AIUtils.canUseSystemThisFrame(ship)) {
             return;
         }
-        
-        // don't use if unsafe
-        /*
-        if (!nothingCanStopMe(ship)) {
-            return;
-        }
-        */
-        if (!DoIFlick && ship.getEngineController().isFlamedOut() && Math.abs(ship.getAngularVelocity()) > 5){
+
+        if (!DoIFlick && ship.getEngineController().isFlamedOut() && Math.abs(ship.getAngularVelocity()) > 5) {
             ship.useSystem();
             DoIFlick = true;
-            spawnText("DoFlick",0f);
+            //spawnText("DoFlick", 0f);
             return;
         }
 
@@ -225,7 +208,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
             }
             if (rightDirection(ship, targetLocation)) {
                 ship.useSystem();
-                spawnText("retreat",0f);
+                //spawnText("retreat", 0f);
             }
             return;  // prevents the AI from activating the ship's system while retreating and facing the wrong direction
             // thanks, Starsector forums user Morathar
@@ -236,7 +219,6 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
                 return;
             }
         }
-
 
         // if we have an assignment, set our target loc to it
         // otherwise, if we have a hostile target, set our target loc to intercept it
@@ -252,16 +234,16 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
             return;
         }
 
-        if (canIFlankThisFucker(ship,target) > minPointsToFlank && rightDirection(ship, targetLocation)){
+        if (canIFlankThisFucker(ship, target) > minPointsToFlank && rightDirection(ship, targetLocation)) {
             useMe = true;
-            spawnText("Flank",0f);
+            //spawnText("Flank", 0f);
         }
 
 
         for (AIFlags f : TOWARDS) {
             if (flags.hasFlag(f) && rightDirection(ship, targetLocation)) {
                 useMe = true;
-                spawnText("towards",0f);
+                //spawnText("towards", 0f);
             }
         }
 
@@ -269,25 +251,22 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         for (AIFlags f : AWAY) {
             if (flags.hasFlag(f) && !rightDirection(ship, targetLocation)) {
                 useMe = true;
-                spawnText("away",0f);
+                //spawnText("away",0f);
             }
         }
         */
 
         if (useMe) {
             ship.useSystem();
-            if (TargShip){
-                NeededDur = (MathUtils.getDistance(ship.getLocation(), targetLocation)+ (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
+            if (TargShip) {
+                NeededDur = (MathUtils.getDistance(ship.getLocation(), targetLocation) + (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
                 if (NeededDur > ship.getSystem().getChargeActiveDur())
                     NeededDur = ship.getSystem().getChargeActiveDur();
             }
         }
     }
 
-    public void spawnText (String text, Float offset){
-        engine.addFloatingText(new Vector2f(ship.getLocation().x,ship.getLocation().y + offset), text, 60, Color.WHITE, ship, 0.25f, 0.25f);
+    public void spawnText(String text, Float offset) {
+        engine.addFloatingText(new Vector2f(ship.getLocation().x, ship.getLocation().y + offset), text, 60, Color.WHITE, ship, 0.25f, 0.25f);
     }
-
-
-
 }

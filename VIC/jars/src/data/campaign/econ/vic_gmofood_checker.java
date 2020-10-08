@@ -24,7 +24,6 @@ public class vic_gmofood_checker extends Farming {
                         Global.getSector().getPlayerFaction().knowsIndustry(getId()));
 
         return canBuild;
-
     }
 
     @Override
@@ -34,7 +33,6 @@ public class vic_gmofood_checker extends Farming {
 
     @Override
     public boolean showWhenUnavailable() {
-
         return false;
     }
 }

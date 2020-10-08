@@ -1,41 +1,27 @@
 package data.campaign.econ;
 
-import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.SubmarketPlugin;
-import com.fs.starfarer.api.campaign.econ.CommodityOnMarketAPI;
-import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
-import com.fs.starfarer.api.campaign.econ.Industry;
-import com.fs.starfarer.api.campaign.econ.Industry.AICoreDescriptionMode;
-import com.fs.starfarer.api.campaign.econ.Industry.IndustryTooltipMode;
-import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
-import com.fs.starfarer.api.combat.MutableStat;
-import com.fs.starfarer.api.impl.campaign.econ.CommRelayCondition;
-import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
-import com.fs.starfarer.api.impl.campaign.submarkets.LocalResourcesSubmarketPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
-import java.awt.Color;
-import data.campaign.econ.vic_items;
 
 
 public class vic_gmofood extends Farming {
 
-    private int getSupplyForCondition(){
-        if(market.hasCondition(Conditions.FARMLAND_POOR)) return 1;
-        if(market.hasCondition(Conditions.FARMLAND_ADEQUATE)) return 2;
-        if(market.hasCondition(Conditions.FARMLAND_RICH)) return 3;
-        if(market.hasCondition(Conditions.FARMLAND_BOUNTIFUL)) return 4;
+    private int getSupplyForCondition() {
+        if (market.hasCondition(Conditions.FARMLAND_POOR)) return 1;
+        if (market.hasCondition(Conditions.FARMLAND_ADEQUATE)) return 2;
+        if (market.hasCondition(Conditions.FARMLAND_RICH)) return 3;
+        if (market.hasCondition(Conditions.FARMLAND_BOUNTIFUL)) return 4;
 
         return 0;
     }
 
-    private int getSupplyForConditionWater(){
-        if(market.hasCondition(Conditions.WATER_SURFACE)) return 1;
+    private int getSupplyForConditionWater() {
+        if (market.hasCondition(Conditions.WATER_SURFACE)) return 1;
 
         return 0;
     }
@@ -50,16 +36,15 @@ public class vic_gmofood extends Farming {
             supply(Commodities.FOOD, size + getSupplyForConditionWater());
         }
         if (getSupplyForCondition() > 0) {
-            supply(Commodities.FOOD, size + getSupplyForCondition() );
-        }
-        else {
-            supply(Commodities.FOOD, 0 );
+            supply(Commodities.FOOD, size + getSupplyForCondition());
+        } else {
+            supply(Commodities.FOOD, 0);
         }
 
         String desc = this.getNameForModifier();
-        Pair<String, Integer> deficit = this.getMaxDeficit(new String[]{"organics", "vic_genetech"});
+        Pair<String, Integer> deficit = this.getMaxDeficit("organics", "vic_genetech");
         int maxDeficit = size + 4;
-        if ((Integer)deficit.two > maxDeficit) {
+        if (deficit.two > maxDeficit) {
             deficit.two = maxDeficit;
         }
         applyDeficitToProduction(1, deficit, Commodities.FOOD);
@@ -72,7 +57,6 @@ public class vic_gmofood extends Farming {
         MemoryAPI memory = this.market.getMemoryWithoutUpdate();
         Misc.setFlagWithReason(memory, "$population", this.getModId(), false, -1.0F);
     }
-
 
 
     protected void addPostDescriptionSection(TooltipMakerAPI tooltip, IndustryTooltipMode mode) {

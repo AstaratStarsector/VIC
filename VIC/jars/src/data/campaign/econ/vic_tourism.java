@@ -1,25 +1,10 @@
 package data.campaign.econ;
 
-import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.SubmarketPlugin;
-import com.fs.starfarer.api.campaign.econ.CommodityOnMarketAPI;
-import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
-import com.fs.starfarer.api.campaign.econ.Industry;
-import com.fs.starfarer.api.campaign.econ.Industry.AICoreDescriptionMode;
-import com.fs.starfarer.api.campaign.econ.Industry.IndustryTooltipMode;
-import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
-import com.fs.starfarer.api.combat.MutableStat;
-import com.fs.starfarer.api.impl.campaign.econ.CommRelayCondition;
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
-import com.fs.starfarer.api.impl.campaign.submarkets.LocalResourcesSubmarketPlugin;
-import com.fs.starfarer.api.ui.TooltipMakerAPI;
-import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
-import java.awt.Color;
-import data.campaign.econ.vic_items;
 
 public class vic_tourism extends BaseIndustry {
     public static final float BASE_ACCESSIBILITY = 0.1F;
@@ -36,8 +21,7 @@ public class vic_tourism extends BaseIndustry {
         return Math.max(max, 0);
     }
 
-    public void apply()
-    {
+    public void apply() {
         super.apply(true);
         int size = this.market.getSize();
         demand(Commodities.DOMESTIC_GOODS, size - 4);
@@ -45,12 +29,11 @@ public class vic_tourism extends BaseIndustry {
         supply(vic_items.GENETECH, size - 4);
 
 
-
         int maxDeficit = getMaxDeficit();
 
-        income.modifyMult(getModId(),  1 - (MULT_PER_DEFICIT * maxDeficit), "Reduced income (Deficit)");
+        income.modifyMult(getModId(), 1 - (MULT_PER_DEFICIT * maxDeficit), "Reduced income (Deficit)");
 
-        if (market.hasCondition(Conditions.RECENT_UNREST)){
+        if (market.hasCondition(Conditions.RECENT_UNREST)) {
             income.modifyMult(getModId(), 0, "Closed due to unrest");
         } else if (market.getStabilityValue() < 10.0f) {
             float reduction = market.getStabilityValue() < 6 ? 0 : (0.25f * (market.getStabilityValue() - 6));
@@ -59,19 +42,11 @@ public class vic_tourism extends BaseIndustry {
         }
     }
 
-
-
     public void unapply() {
         super.unapply();
         MemoryAPI memory = this.market.getMemoryWithoutUpdate();
         income.unmodify(getModId());
-
     }
-
-
-
-
-
 
     public boolean isAvailableToBuild() {
         return false;
