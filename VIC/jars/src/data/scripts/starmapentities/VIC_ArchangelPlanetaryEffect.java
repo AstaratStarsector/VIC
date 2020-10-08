@@ -15,11 +15,14 @@ import java.awt.*;
 public class VIC_ArchangelPlanetaryEffect extends BaseCustomEntityPlugin {
 
 
-    public float GLOW_FREQUENCY = 1f;
+    public static float GLOW_FREQUENCY = 1f; // on/off cycles per second
+
+
+    //private SectorEntityToken entity;
 
     transient private SpriteAPI glow;
     private float phase = 0f;
-
+    private float phase2 = 0f;
 
     public void init(SectorEntityToken entity, Object pluginParams) {
         super.init(entity, pluginParams);
@@ -36,19 +39,21 @@ public class VIC_ArchangelPlanetaryEffect extends BaseCustomEntityPlugin {
         float freqMult = 1f;
         phase += amount * GLOW_FREQUENCY * freqMult * 0.3f;
         while (phase > 1f) phase--;
+        phase2 += amount * GLOW_FREQUENCY * freqMult * 0.1f;
+        while (phase2 > 1f) phase2--;
     }
 
     public float getRenderRange() {
-        return entity.getRadius() + 200f;
+        return entity.getRadius() + 100f;
     }
 
     public void render(CampaignEngineLayers layer, ViewportAPI viewport) {
-
         float alphaMult = viewport.getAlphaMult();
         if (alphaMult <= 0f) return;
 
         CustomEntitySpecAPI spec = entity.getCustomEntitySpec();
         if (spec == null) return;
+
 
         Vector2f loc = entity.getLocation();
 
@@ -59,13 +64,13 @@ public class VIC_ArchangelPlanetaryEffect extends BaseCustomEntityPlugin {
 
         float w = 290f;
         float h = 290f;
+
         glow.setSize(w, h);
         glow.setAlphaMult(alphaMult * glowAlpha);
         glow.setAngle(entity.getFacing() + 90f);
         glow.setColor(glowColor);
         glow.setAdditiveBlend();
         glow.renderAtCenter(loc.x, loc.y);
-
     }
 }
 
