@@ -1,7 +1,9 @@
 name,id,designation,tech/manufacturer,system id,fleet pts,hitpoints,armor rating,max flux,8/6/5/4%,flux dissipation,ordnance points,fighter bays,max speed,acceleration,deceleration,max turn rate,turn acceleration,mass,shield type,defense id,shield arc,shield upkeep,shield efficiency,phase cost,phase upkeep,min crew,max crew,cargo,fuel,fuel/ly,range,max burn,base value,cr %/day,CR to deploy,peak CR sec,CR loss/sec,supplies/rec,supplies/mo,hints,tags,rarity,breakProb,minPieces,maxPieces,number
 #fighters,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 VIC-F11 Shabriri,vic_shabriri,Interceptor Drone,Volkov Industrial Conglomerate,,,120,15,500,,100,,,450,500,100,200,500,5,OMNI,,90,0,0.7,,,0,0,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+VIC-F25 Asmoday,vic_asmoday,Heavy Shturmfighter,Volkov Industrial Conglomerate,,,500,100,1500,,300,,,200,250,100,125,250,15,OMNI,,90,0,1,,,2,2,,,,,,,,,,,,,,,,,,,
+VIC-F04 Sonneilon,vic_sonneilon,Artillery Fighter,Volkov Industrial Conglomerate,,,350,75,1000,,200,,,175,300,200,150,300,10,OMNI,,90,0,1,,,2,2,,,,,,,,,,,,,,,,,,,
+VIC-F33 Uvall,vic_uvall,Interceptor Fighter,Volkov Industrial Conglomerate,,,225,50,1000,,200,,,300,400,300,175,350,8,OMNI,,90,0,1,,,2,2,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
