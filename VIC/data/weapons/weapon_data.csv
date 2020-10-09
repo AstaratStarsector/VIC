@@ -4,12 +4,10 @@ Abyssus Sabot MIRV,vic_abyssalfangs,0,,100000,2000,,100,,5,,,,,,KINETIC,0,,0,40,
 Heavy Laidlaw Accelerator,vic_heavylaidlawaccelerator,0,,100000,900,,400,200,10,25,24,,,,ENERGY,500,,0,0.2,1,,5,15,1,10,,10000,,,75,,"energy18, he17, kinetic17, remnant, rare_bp",,,,General,,,,,,,,,,7.5
 Gatling Beam,vic_gatlingbeam,3,0.5,8000,1000,900,,0,0,7,25,,,,ENERGY,,600,0,0.2,0.2,0,,,,,100000,,,,,FIRE_WHEN_INEFFICIENT,"energy20, beam15, LR, rare_bp",,,,Suppression,,,,,"Hits on hull or armor frequently arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,,,27
 Phase Lance (Shortranged),vic_phaselance,0,,1,250,1000,,,0,20,10,,,,ENERGY,,1200,0.25,0.5,1,4,,,,,3200,,,,,SYSTEM,"energy14, beam10, rare_bp",,,,General,,,,,,,,,,20
-Scatter Blaster,vic_scatterblaster,0,,1,500,,100,,3,20,1,18,,,ENERGY,50,,0,0.75,,,2,16,0.3,6,,800,,,,"STRIKE, DO_NOT_CONSERVE, SYSTEM",energy13,,,,General,,,,,,,,,,4
+Scatter Blaster,vic_scatterblaster,0,,1,500,,100,,3,60,69,18,,,ENERGY,50,,0,0.5,,,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, SYSTEM",energy13,,,,General,,,,,,,,,,4
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#Decos with Scripts,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,VIC_AppolSystem,,,,1,1,,,,,,,,,,,,,10,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Deco Weapons,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Nybbas Weapon Cover Right,vic_NybbasWeaponCoverRight,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
@@ -22,7 +20,6 @@ Jezebeth Wing Left,vic_jezebethWingLeft,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,
 Xaphan Deco Front,vic_xaphandecofront,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Xaphan Deco Right,vic_xaphandecoright,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Xaphan Deco Left,vic_xaphandecoleft,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Apollyon Rear Right,vic_apollyon_rear_right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Apollyon Rear Left,vic_apollyon_rear_left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,

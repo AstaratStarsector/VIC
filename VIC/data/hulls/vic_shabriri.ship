@@ -20,7 +20,7 @@
       "size": "SMALL",
       "type": "ENERGY",
       "mount": "HIDDEN",
-      "arc": 5,
+      "arc": 15,
       "angle": 0,
       "locations": [6.5, 8.5]
     },
@@ -29,7 +29,7 @@
       "size": "SMALL",
       "type": "ENERGY",
       "mount": "HIDDEN",
-      "arc": 5,
+      "arc": 15,
       "angle": -0,
       "locations": [6.5, -8.5]
     }
