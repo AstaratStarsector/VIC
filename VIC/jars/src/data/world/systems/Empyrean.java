@@ -34,7 +34,7 @@ public class Empyrean {
 
         StarSystemAPI system = sector.createStarSystem("Empyrean");
         system.getLocation().set(-2400, -19000);
-        system.setBackgroundTextureFilename("graphics/backgrounds/empyrean_background.jpg");
+        system.setBackgroundTextureFilename("graphics/backgrounds/empyrean_background_blue.jpg");
 
         // create the star and generate the hyperspace anchor for this system
         PlanetAPI EmpyreanStar = system.initStar("vic_star_empyrean", // unique id for this star
