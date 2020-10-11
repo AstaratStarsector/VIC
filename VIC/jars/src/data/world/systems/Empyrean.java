@@ -146,7 +146,7 @@ public class Empyrean {
                 220f,
                 4700f,
                 120f);
-        Cocytus.getSpec().setGlowTexture(Global.getSettings().getSpriteName("hab_glows", "volturn"));
+        Cocytus.getSpec().setGlowTexture(Global.getSettings().getSpriteName("hab_glows", "cocytus"));
         Cocytus.getSpec().setGlowColor(new Color(255,255,255,255));
         Cocytus.getSpec().setUseReverseLightForGlow(true);
         Cocytus.applySpecChanges();
