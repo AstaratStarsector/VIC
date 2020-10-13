@@ -12,8 +12,9 @@
   "shieldRadius": 297,
   "viewOffset": 0,
   "builtInMods": [
-    "vic_dynamicshields",
-    "vic_aerodynamicdesign"
+	"vic_aerodynamicdesign",
+	"vic_dynamicshields",
+	"vic_adaptiveWarfare"
   ],
   "builtInWeapons": {
     "WS0023": "vic_abyssalfangs",

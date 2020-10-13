@@ -29,7 +29,7 @@ vic_UMO,PopulateOptions,"$hasMarket
 $menuState == main
 $faction.id != player
 !haveNex","SetShortcut VICUMOMenu ""V"" true",,21:UMOMenu:Unconventional military option,
-vic_UMOwithNEX,ExerelinMarketSpecial,,"SetShortcut VICUMOMenu ""V"" true",,9:UMOMenu:Unconventional military option,
+# vic_UMOwithNEX,ExerelinMarketSpecial,,"SetShortcut VICUMOMenu ""V"" true",,9:UMOMenu:Unconventional military option,
 ,,,,,,
 vic_UMOMenu,DialogOptionSelected,$option == UMOMenu,VIC_MarketCMD UMOMenu,,,
 vic_VBombMenu,DialogOptionSelected,$option == VBombMenu,VIC_MarketCMD VBombMenu,,,

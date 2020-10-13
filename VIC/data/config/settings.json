@@ -1,6 +1,7 @@
 {
 "designTypeColors":{
         "Volkov Industrial Conglomerate":[238,158,0,255],
+	"Volkov Industrial":[238,158,0,255],
     },
 	"graphics":{		
 		"blueprint_packages":{

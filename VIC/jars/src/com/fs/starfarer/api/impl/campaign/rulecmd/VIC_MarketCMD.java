@@ -45,7 +45,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
             VBombConfirm = "VBombConfirm",
             VBombResults = "VBombResults",
             GO_BACK = "mktGoBack",
-            NEX_GO_BACK = "exerelinMarketSpecialBack",
+            NEX_GO_BACK = "marketConsiderHostile",
             MOD_TO_CHECK = "vic_vBombHmod";
     protected static VIC_TempData temp = new VIC_TempData();
     protected CampaignFleetAPI playerFleet;
@@ -210,7 +210,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
 
         String stationType = "station";
 
-        MarketCMD.StationState state = getStationState();
+        StationState state = getStationState();
 
         if (market != null) {
             Global.getSector().getEconomy().tripleStep();
@@ -222,7 +222,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         text.addPara(StringHelper.getString("VIC_VBomb", "UMO_desc2"));
 
         if (primary == null) {
-            if (state != MarketCMD.StationState.NONE) {
+            if (state != StationState.NONE) {
                 printStationState();
                 text.addPara("There are no nearby fleets to defend the colony.");
             }
@@ -456,7 +456,13 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
 
         options.clearOptions();
         options.addOption("Commence Viral Bombardment", VBombConfirm);
-        options.addOption("Go back", UMOMenu);
+
+
+        if (ModManager.getInstance().isModEnabled("nexerelin")) {
+            options.addOption("Go back", NEX_GO_BACK);
+        } else {
+            options.addOption("Go back", UMOMenu);
+        }
 
         if (DebugFlags.MARKET_HOSTILITIES_DEBUG) {
             canBombard = true;
@@ -610,7 +616,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
 
     }
 
-    protected MarketCMD.StationState getStationState() {
+    protected StationState getStationState() {
         CampaignFleetAPI fleet = Misc.getStationFleet(market);
         boolean destroyed = false;
         if (fleet == null) {
@@ -620,27 +626,27 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
             }
         }
 
-        if (fleet == null) return MarketCMD.StationState.NONE;
+        if (fleet == null) return StationState.NONE;
 
         MarketAPI market = Misc.getStationMarket(fleet);
         if (market != null) {
             for (Industry ind : market.getIndustries()) {
                 if (ind.getSpec().hasTag(Industries.TAG_STATION)) {
                     if (ind.isBuilding() && !ind.isDisrupted() && !ind.isUpgrading()) {
-                        return MarketCMD.StationState.UNDER_CONSTRUCTION;
+                        return StationState.UNDER_CONSTRUCTION;
                     }
                 }
             }
         }
 
-        if (destroyed) return MarketCMD.StationState.REPAIRS;
+        if (destroyed) return StationState.REPAIRS;
 
-        return MarketCMD.StationState.OPERATIONAL;
+        return StationState.OPERATIONAL;
     }
 
     protected void printStationState() {
-        MarketCMD.StationState state = getStationState();
-        if (state == MarketCMD.StationState.REPAIRS || state == MarketCMD.StationState.UNDER_CONSTRUCTION) {
+        StationState state = getStationState();
+        if (state == StationState.REPAIRS || state == StationState.UNDER_CONSTRUCTION) {
             CampaignFleetAPI fleet = Misc.getStationBaseFleet(market);
             String name = "orbital station";
             if (fleet != null) {
@@ -649,7 +655,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
                     name = flagship.getVariant().getDesignation().toLowerCase();
                 }
             }
-            if (state == MarketCMD.StationState.REPAIRS) {
+            if (state == StationState.REPAIRS) {
                 text.addPara("The " + name + " has suffered extensive damage and is not currently combat-capable.");
             } else {
                 text.addPara("The " + name + " is under construction and is not currently combat-capable.");
@@ -698,7 +704,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         return station;
     }
 
-    public static enum StationState {
+    public enum StationState {
         NONE,
         OPERATIONAL,
         UNDER_CONSTRUCTION,

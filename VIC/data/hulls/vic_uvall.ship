@@ -7,9 +7,9 @@
   "height": 58,
   "width": 26,
   "center": [13, 29],
-  "collisionRadius": 39.5,
+  "collisionRadius": 35.5,
   "shieldCenter": [0, 0],
-  "shieldRadius": 35.5,
+  "shieldRadius": 31.5,
   "viewOffset": 0,
   "weaponSlots": [
     {
@@ -46,6 +46,6 @@
     1, 12,
     27.5, -0,
     1, -12,
-    -25.5, -0
+    -18.5, -0.5
   ]
 }

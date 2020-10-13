@@ -12,8 +12,8 @@
   "shieldRadius": 95,
   "viewOffset": 0,
   "builtInMods": [
-    "vic_toneddownweapon",
-    "vic_aerodynamicdesign"
+	"vic_aerodynamicdesign",
+    "vic_toneddownweapon"    
   ],
   "builtInWeapons": {
     "WS0001": "vic_NybbasWeaponCoverLeft",

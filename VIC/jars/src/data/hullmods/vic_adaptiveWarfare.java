@@ -112,7 +112,7 @@ public class vic_adaptiveWarfare extends BaseHullMod {
         ShieldPower = ((ShieldPower - FloatDecay * amount * 2f) - (ShieldPower * PercentDecay * amount * 2f));
         if (ShieldPower < 0) ShieldPower = 0;
         if (distanceTravel != 0) {
-            ShieldPower += distanceTravel * 2f;
+            ShieldPower += distanceTravel * PerSU;
             if (ShieldPower > 100) ShieldPower = 100;
             ShieldPowerTime = timer;
         }

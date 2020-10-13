@@ -106,7 +106,9 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 			}//end once
 			shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 5);
 			ship.setExtraAlphaMult(0.25f + (0.75f * (1 - effectLevel)));
-			stats.getMaxSpeed().modifyFlat(id, 100f);
+			stats.getMaxSpeed().modifyFlat(id, 50f);
+			stats.getMaxTurnRate().modifyMult(id,1.5f);
+			stats.getTurnAcceleration().modifyMult(id,1.5f);
 		}
 
 		if (state == State.ACTIVE) {
@@ -121,6 +123,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 				StarFacing = ship.getFacing();
 				isActive = true;
 			}
+			stats.getCombatEngineRepairTimeMult().modifyMult(id,0);
 			ship.addAfterimage(new Color(255,255,255,40),0f ,0f ,-ship.getVelocity().x * 0.5f, -ship.getVelocity().y * 0.5f,0,0,0.2f, 0f,false, false, false);
 		}
 
