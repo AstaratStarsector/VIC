@@ -15,7 +15,12 @@
 			"vic_archangel_planetary_glow1":"graphics/custom entities/VIC_archangel_planetaryGlow1.png",
 			"vic_archangel_flare":"graphics/custom entities/VIC_flare.png",
 			"vic_archangel_flare2":"graphics/custom entities/VIC_flare2.png",
-			}
+			},
+			
+		"hab_glows":{
+			"cocytus":"graphics/planets/vic_cocytus_glow.png",
+			
+		}
 	}
 }
 	

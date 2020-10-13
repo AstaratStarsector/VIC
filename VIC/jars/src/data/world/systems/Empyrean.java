@@ -34,7 +34,7 @@ public class Empyrean {
 
         StarSystemAPI system = sector.createStarSystem("Empyrean");
         system.getLocation().set(-2400, -19000);
-        system.setBackgroundTextureFilename("graphics/backgrounds/empyrean_background.jpg");
+        system.setBackgroundTextureFilename("graphics/backgrounds/empyrean_background_blue.jpg");
 
         // create the star and generate the hyperspace anchor for this system
         PlanetAPI EmpyreanStar = system.initStar("vic_star_empyrean", // unique id for this star
@@ -146,7 +146,7 @@ public class Empyrean {
                 220f,
                 4700f,
                 120f);
-        Cocytus.getSpec().setGlowTexture(Global.getSettings().getSpriteName("hab_glows", "volturn"));
+        Cocytus.getSpec().setGlowTexture(Global.getSettings().getSpriteName("hab_glows", "cocytus"));
         Cocytus.getSpec().setGlowColor(new Color(255,255,255,255));
         Cocytus.getSpec().setUseReverseLightForGlow(true);
         Cocytus.applySpecChanges();
