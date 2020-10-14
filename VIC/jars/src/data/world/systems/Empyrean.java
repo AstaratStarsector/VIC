@@ -45,8 +45,7 @@ public class Empyrean {
                 0.5f, // flare probability
                 5f); // cr loss mult
 
-        system.setLightColor(new Color(255, 174, 33)); // light color in entire system, affects all entities
-
+        system.setLightColor(new Color(255, 199, 98)); // light color in entire system, affects all entities
 
         //adds Nebulas into the system
         SectorEntityToken empyrean_nebula = Misc.addNebulaFromPNG("data/campaign/terrain/empyrean_nebula.png",
@@ -466,9 +465,9 @@ public class Empyrean {
 
 
         system.addAsteroidBelt(Dis, 80, 1600, 150, 50, 100, Terrain.ASTEROID_BELT, "Dis Outer Ring");
-        system.addRingBand(Dis, "misc", "rings_special0", 256f, 0, Color.red, 256f, 1600, 55f);
+        system.addRingBand(Dis, "misc", "rings_special0", 256f, 0, Color.red, 256f, 1650, 55f);
 
-        PlanetAPI Alecto = system.addPlanet("vic_planet_alecto", Dis, "Alecto", "frozen", 360f * (float) Math.random(), 110, 1900, 70);
+        PlanetAPI Alecto = system.addPlanet("vic_planet_alecto", Dis, "Alecto", "frozen", 360f * (float) Math.random(), 110, 2000, 70);
 
 
         Alecto.getMarket().addCondition(Conditions.COLD);
@@ -478,8 +477,8 @@ public class Empyrean {
         Alecto.getMarket().addCondition(Conditions.ORE_MODERATE);
 
 
-        system.addRingBand(Dis, "misc", "rings_asteroids0", 256f, 0, Color.gray, 256f, 2200, 50f);
-        system.addRingBand(Dis, "misc", "rings_ice0", 256f, 0, Color.yellow, 256f, 2220, 30f);
+        system.addRingBand(Dis, "misc", "rings_asteroids0", 256f, 0, Color.gray, 256f, 2300, 50f);
+        system.addRingBand(Dis, "misc", "rings_ice0", 256f, 0, Color.yellow, 256f, 2320, 30f);
 
 
         //Outer Asteroid belt

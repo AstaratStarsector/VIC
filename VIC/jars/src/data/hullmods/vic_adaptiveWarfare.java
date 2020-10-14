@@ -132,9 +132,9 @@ public class vic_adaptiveWarfare extends BaseHullMod {
         stats.getBallisticWeaponFluxCostMod().modifyPercent("vic_adaptiveWarfare", (1 / (1 + currRoFBonus / 100) - 1) * 100f);
 
         if (ship == Global.getCombatEngine().getPlayerShip()) {
-            Global.getCombatEngine().maintainStatusForPlayerShip("vic_adaptiveWarfare3", "graphics/icons/hullsys/fortress_shield.png", "Speed power", Math.round(SpeedPower) + "%", false);
-            Global.getCombatEngine().maintainStatusForPlayerShip("vic_adaptiveWarfare2", "graphics/icons/hullsys/fortress_shield.png", "Damage Power", Math.round(DamagePower) + "%", false);
-            Global.getCombatEngine().maintainStatusForPlayerShip("vic_adaptiveWarfare1", "graphics/icons/hullsys/fortress_shield.png", "Shield Power", Math.round(ShieldPower) + "%", false);
+            Global.getCombatEngine().maintainStatusForPlayerShip("vic_adaptiveWarfare3", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "Speed power", Math.round(SpeedPower) + "%", false);
+            Global.getCombatEngine().maintainStatusForPlayerShip("vic_adaptiveWarfare2", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "Damage Power", Math.round(DamagePower) + "%", false);
+            Global.getCombatEngine().maintainStatusForPlayerShip("vic_adaptiveWarfare1", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "Shield Power", Math.round(ShieldPower) + "%", false);
 
         }
 

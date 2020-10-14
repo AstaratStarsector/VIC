@@ -1,6 +1,7 @@
 {
 	"id":"vic_heavylaidlawaccelerator_shot",
 	"specClass":"projectile",
+	"onHitEffect":"data.scripts.weapons.vic_laidlawacceleratorOnHit",
 	"spawnType":"BALLISTIC_AS_BEAM",
 	"collisionClass":"RAY",
 	"collisionClassByFighter":"RAY_FIGHTER",	
@@ -10,8 +11,8 @@
 	"hitGlowRadius":72,
 	"width":8.0,
 	"fadeTime":0.05,
-	"fringeColor":[95,75,255,0],
-	"coreColor":[235,235,255,0],
+	"fringeColor":[0,255,235,0],
+	"coreColor":[0,166,255,0],
 	#"fringeColor":[38,150,255,255],
 	#"coreColor":[225,225,255,255],
 	"textureScrollSpeed":64.0,

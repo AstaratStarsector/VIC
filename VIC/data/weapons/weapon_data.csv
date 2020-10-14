@@ -1,11 +1,18 @@
 name,id,tier,rarity,base value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,hints,tags,groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
-Testgun,vic_testgun,2,0.5,600,700,,100,,10,30,7,,,,KINETIC,90,,0,0.3,1,0.3,,,,,,1000,,,50,,kinetic,,,,Anti Shield,,,,,,,,,,3.75
-Abyssus Sabot MIRV,vic_abyssalfangs,0,,100000,2000,,100,,5,,,,,,KINETIC,0,,0,40,24,0.05,0,0,0,0,,500,1000,10,100," DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8, rare_bp",,,,Anti Small Craft,Fast,Excellent,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",25% | 400,,,TRUE,12.1
-Heavy Laidlaw Accelerator,vic_heavylaidlawaccelerator,0,,100000,900,,400,200,10,25,24,,,,ENERGY,500,,0,0.2,1,,5,15,1,10,,10000,,,75,,"energy18, he17, kinetic17, remnant, rare_bp",,,,General,,,,,,,,,,7.5
-Gatling Beam,vic_gatlingbeam,3,0.5,8000,1000,900,,0,0,7,25,,,,ENERGY,,600,0,0.2,0.2,0,,,,,100000,,,,,FIRE_WHEN_INEFFICIENT,"energy20, beam15, LR, rare_bp",,,,Suppression,,,,,"Hits on hull or armor frequently arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,,,27
-Phase Lance (Shortranged),vic_phaselance,0,,1,250,1000,,,0,20,10,,,,ENERGY,,1200,0.25,0.5,1,4,,,,,3200,,,,,SYSTEM,"energy14, beam10, rare_bp",,,,General,,,,,,,,,,20
-Scatter Blaster,vic_scatterblaster,0,,1,500,,100,,3,60,69,18,,,ENERGY,50,,0,0.5,,,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, SYSTEM",energy13,,,,General,,,,,,,,,,4
-Capacitons Discharger,vic_prismcoil,3,,5000,600,,125,40,0,15,30,,,,KINETIC,187.5,,0.25,,,,,,,,,5000,,,100,,energy13,,,,General,,,,,Fires electric arcs that can chain to %s additional small targets dealing %s weapons damage.,3 | 15%,,,,
+Testgun,vic_testgun,2,0.5,600,700,,100,,10,30,7,,,,KINETIC,90,,0,0.3,1,0.3,,,,,,1000,,,50,,kinetic,,Volkov Industries,,Anti Shield,,,,,,,,,,3.75
+Heavy Laidlaw Accelerator,vic_heavylaidlawaccelerator,0,,100000,900,,400,50,10,20,24,,,,ENERGY,500,,0,1,,,1,10,1.9,10,,5000,,,75,,"energy18, he17, kinetic17, remnant, rare_bp",,Volkov Industries,,General,,,,,Hits on hull or armor creates explosion dealing additional %s fragmentation damage.,150,,,,7.5
+Gatling Beam,vic_gatlingbeam,3,0.5,8000,1000,900,,0,0,7,25,,,,ENERGY,,600,0,0.2,0.2,0,,,,,100000,,,,,FIRE_WHEN_INEFFICIENT,"energy20, beam15, LR, rare_bp",,Volkov Industries,,Suppression,,,,,"Hits on hull or armor frequently arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,,,27
+Capacitons Discharger,vic_prismcoil,3,,5000,600,,125,40,0,15,30,,,,KINETIC,187.5,,0.25,,,,,,,,,5000,,,100,,energy13,,Volkov Industries,,General,,,,,Fires electric arcs that can chain to %s additional small targets dealing %s weapons damage.,3 | 15%,,,,
+Chain Flak,vic_chainflak,1,,69,400,,100,,0,40,5,,,,FRAGMENTATION,20,,0,1.7,4,0.1,5,15,3,10,,800,,,,"PD, PD_ALSO",pd1,,Volkov Industries,,General,,,,,,,,,,
+Besomar Scattercannon,vic_devastator,1,,3500,800,,100,,40,12,21,21,4.2,21,HIGH_EXPLOSIVE,75,,0,0.5,,,5,15,0.5,5,,700,,,100,"PD,PD_ALSO","he16, pd14, lowtech_bp",,,,Anti Fighter (Area),,,,,"Each shell has a fuse set to explode at a random distance, resulting in a barrage that's increasingly more deadly at closer ranges.
+
+Will target missiles if no other targets are in range.",,,,,7.4
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#Build-ins,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Volkov Industries,,,,,,,,,,,,
+Phase Lance (Shortranged),vic_phaselance,0,,1,250,1000,,,0,20,10,,,,ENERGY,,1200,0.25,0.5,1,4,,,,,3200,,,,,SYSTEM,"energy14, beam10, rare_bp",,Volkov Industries,,General,,,,,,,,,,20
+Scatter Blaster,vic_scatterblaster,0,,1,500,,100,,3,60,69,18,,,ENERGY,50,,0,0.5,,,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
+Abyssus Sabot MIRV,vic_abyssalfangs,0,,100000,2000,,100,,5,,,,,,KINETIC,0,,0,40,24,0.05,0,0,0,0,,500,1000,10,100," DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8, rare_bp",,Volkov Industries,,Anti Small Craft,Fast,Excellent,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",25% | 400,,,TRUE,12.1
+Melter,vic_melter,2,,69,400,750,,,0,100,7,,,,HIGH_EXPLOSIVE,,750,0,0,0.25,4.85,,,,,1000000,,,,,"PD_ALSO, ANTI_FTR, SYSTEM","pd9, beam6",,Volkov Industries,,Point Defense,,,,,,,,,,15.6
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Decos with Scripts,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

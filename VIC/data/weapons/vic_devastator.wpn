@@ -1,0 +1,85 @@
+{
+  "id": "vic_devastator",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_devastator_shot",
+  "type": "BALLISTIC",
+  "size": "LARGE",
+  "turretSprite": "graphics/weapons/vic_devastator.png",
+  "turretGunSprite": "graphics/weapons/vic_devastator_turret_recoil.png",
+  "hardpointSprite": "graphics/weapons/vic_devastator_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/vic_devastator_hardpoint_recoil.png",
+  "renderAboveAllWeapons": 0,
+  "visualRecoil": 8,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    21,
+    0,
+    19,
+    2,
+    18,
+    -2,
+    16,
+    3,
+    15,
+    -3,
+    13,
+    4,
+    12,
+    -4
+  ],
+  "turretAngleOffsets": [
+    0,
+    -0.5,
+    0.5,
+    -1,
+    1,
+    -1.5,
+    1.5
+  ],
+  "hardpointOffsets": [
+    21,
+    0,
+    18.5,
+    2,
+    17.5,
+    -2,
+    15.5,
+    3,
+    14.5,
+    -3,
+    12.5,
+    4,
+    11.5,
+    -4
+  ],
+  "hardpointAngleOffsets": [
+    0,
+    -0.5,
+    0.5,
+    -1,
+    1,
+    -1.5,
+    1.5
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "MUZZLE_FLASH",
+  "muzzleFlashSpec": {
+    "length": 45,
+    "spread": 35,
+    "particleSizeMin": 12,
+    "particleSizeRange": 22,
+    "particleDuration": 0.20,
+    "particleCount": 5,
+    "particleColor": [
+      255,
+      225,
+      165,
+      175
+    ]
+  },
+  "textureType": ROUGH,
+  "fireSoundTwo": "devastator_fire",
+  "everyFrameEffect":"data.scripts.weapons.vic_devostatorFire"
+}

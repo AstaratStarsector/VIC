@@ -19,8 +19,8 @@ public class tahlan_SmartBoltScript implements EveryFrameWeaponEffectPlugin {
     public static float TARGET_FIND_STEP_LENGTH = 0.05f;
     public static float LIGHTNING_JUMP_RANGE_PERCENTAGE = 0.15f;
 
-    public static Color LIGHTNING_CORE_COLOR = new Color(200, 250, 255);
-    public static Color LIGHTNING_FRINGE_COLOR = new Color(14, 133, 195);
+    public static Color LIGHTNING_CORE_COLOR = new Color(252, 252, 224);
+    public static Color LIGHTNING_FRINGE_COLOR = new Color(243, 222, 22);
 
     private float damageThisShot = 0f;
     private List<CombatEntityAPI> alreadyDamagedTargets = new ArrayList<CombatEntityAPI>();
@@ -54,6 +54,11 @@ public class tahlan_SmartBoltScript implements EveryFrameWeaponEffectPlugin {
         if (engine.isPaused() || weapon == null) {
             return;
         }
+        new Color(0, 255, 235);
+        new Color(0,166,255);
+
+        new Color(125,95,255);
+        new Color(95,75,255);
 
         //Wait one frame if we are changing our projectile this frame, and ensure our spawned projectiles loose their collision after one frame (+reduce projectile speed)
         if (!fireNextFrame) {
