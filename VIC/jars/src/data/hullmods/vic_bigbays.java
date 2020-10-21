@@ -51,6 +51,7 @@ public class vic_bigbays extends BaseHullMod {
             //Global.getCombatEngine().maintainStatusForPlayerShip("info", "graphics/icons/hullsys/ammo_feeder.png", "Debug", ship.getFullTimeDeployed() + "" , false);
         }
 
+
     }
 
 

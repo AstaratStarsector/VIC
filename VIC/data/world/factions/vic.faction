@@ -14,13 +14,8 @@
   "crest": "graphics/factions/vic_crest.png",
   "shipNamePrefix": "VIC",
   "shipNameSources": {
-    "JAPANESE":2,
-		"EGYPTIAN":2,
-		"NORDIC":1,
-		"MERCANTILE":2,
-		"SPACE":2,
-		"GENERAL":1,
-		"ABRAHAMIC": 2,
+	"vic":10,
+	"vic_memes":0.5,
   },
   "names": {
     "modern": 1,
@@ -191,9 +186,9 @@
     "commanderSkillsShuffleProbability": 0,
     "commanderSkills": [
    	"ship_design",
+			"officer_management",
 			"electronic_warfare",
 			"fighter_doctrine",
-			"officer_management",
 			"coordinated_maneuvers",
     ],
   },

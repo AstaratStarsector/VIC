@@ -17,8 +17,8 @@
 	"alwaysAccelerate":true,
 
 	"fadeActivationSoundOnChargedown":false,
-	"useSound":"system_maneuvering_jets",
-	"loopSound":"system_maneuvering_jets_loop",
+	"useSound":"vic_quantum_lunge_start",
+	"loopSound":"vic_quantum_lunge_loop",
 	"outOfUsesSound":"engine_disabled",
 	
 	"soundFilterType":"LOWPASS",

@@ -1,0 +1,52 @@
+{
+  "id": "vic_lightlaidlawaccelerator",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_heavylaidlawaccelerator_shot",
+  "type": "BALLISTIC",
+  "size": "MEDIUM",
+  "displayArcRadius": 450,
+  "turretSprite": "graphics/weapons/vic_light_laidlaw_accelerator_base_turret.png",
+  "turretGunSprite": "graphics/weapons/vic_light_laidlaw_accelerator_barrel_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_light_laidlaw_accelerator_base_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/vic_light_laidlaw_accelerator_barrel_hardpoint.png",
+  "renderAboveAllWeapons": 0,
+  "visualRecoil": 10,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    30.5,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    54,
+    -5.5,
+    54,
+    5.5
+  ],
+  "hardpointAngleOffsets": [
+    0,
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "MUZZLE_FLASH",
+  "muzzleFlashSpec": {
+    "length": 34,
+    "spread": 10,
+    "particleSizeMin": 18,
+    "particleSizeRange": 24,
+    "particleDuration": 0.12,
+    "particleCount": 12,
+    "particleColor": [
+      255,
+      185,
+      215,
+      215
+    ]
+  },
+  "textureType": ROUGH,
+  "fireSoundTwo": "mjolnir_fire"
+}

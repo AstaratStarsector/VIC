@@ -65,7 +65,7 @@ public class vic_adaptiveWarfare extends BaseHullMod {
         if (customCombatData.get("vic_adaptiveWarfareShield" + id) instanceof Float)
             ShieldPower = (float) customCombatData.get("vic_adaptiveWarfareShield" + id);
 
-        //Last triggered timer
+        //Last triggered  timer
         if (customCombatData.get("vic_adaptiveWarfareSpeedTime" + id) instanceof Float)
             SpeedPowerTime = (float) customCombatData.get("vic_adaptiveWarfareSpeedTime" + id);
 

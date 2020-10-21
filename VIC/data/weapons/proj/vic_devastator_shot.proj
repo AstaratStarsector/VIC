@@ -15,10 +15,10 @@
 	"bulletSprite":"graphics/missiles/shell_large_devastator.png",
 	"behaviorSpec":{"behavior":"PROXIMITY_FUSE",
 					"shotRangeVariance":0.25,
-					"range":25,
+					"range":20,
 					"explosionSpec":{"duration":0.12f,
 									 "radius":50,
-									 "coreRadius":25, # full damage within core radius - also equal to proximity fuse range
+									 "coreRadius":35, # full damage within core radius - also equal to proximity fuse range
 									 "collisionClass":PROJECTILE_FF,
 									 "collisionClassByFighter":PROJECTILE_FIGHTER,
 									 "particleSizeMin":8.0,

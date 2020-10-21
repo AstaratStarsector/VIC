@@ -167,6 +167,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 			for (int i = 0; i < ExpNum; i++) {
 				Vector2f ExpPos = new Vector2f(StartPos.x + (DistPerExp * expDir.x * i), StartPos.y + (DistPerExp * expDir.y * i));
                 List<CombatEntityAPI> entitiesMain = CombatUtils.getEntitiesWithinRange(ExpPos, 50f);
+				Global.getSoundPlayer().playSound("vic_quantum_lunge_explosion",1,0.8f,ExpPos,new Vector2f(0,0));
 
                 for (CombatEntityAPI EmpTarget : entitiesMain) {
                     if (!(EmpTarget instanceof DamagingProjectileAPI) && EmpTarget != ship) {
@@ -221,7 +222,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 					Color.WHITE,
 					Color.CYAN);
 
-			Global.getSoundPlayer().playSound("vic_imaginebreaker",1,1,ship.getLocation(),new Vector2f(0,0));
+			//Global.getSoundPlayer().playSound("vic_quantum_lunge_explosion",1,1,ship.getLocation(),new Vector2f(0,0));
 
 		}
 		isActive = false;

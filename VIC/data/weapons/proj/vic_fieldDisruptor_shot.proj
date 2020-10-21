@@ -1,0 +1,17 @@
+{
+	"id":"vic_fieldDisruptor_shot",
+	"specClass":"missile",	
+	"missileType":"ROCKET",
+	"sprite":"graphics/fx/vic_exsilium_fx_wave.png",
+	"size":[0,0],	
+	"center":[44,44],
+	"collisionRadius":0,
+	"collisionClass":"MISSILE_FF",
+	"explosionColor":[50,165,255,255],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":150, # purely visual
+	"engineSpec":{"turnAcc":0,
+                        "turnRate":0,
+                        "acc":1,
+                        "dec":0},
+	"engineSlots":[],				    
+}

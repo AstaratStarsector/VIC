@@ -3,6 +3,7 @@
 	"specClass":"beam",
 	"type":"DECORATIVE",
 	"size":"MEDIUM",
+	"renderHints":["RENDER_ADDITIVE"],
 	"everyFrameEffect":"data.scripts.VIC_EngineGlowScript",
 	"turretSprite":"graphics/ships/Apollyon/Engine glow/vic_apollyon_engine_glow_test2.png",
 	"hardpointSprite":"graphics/ships/Apollyon/Engine glow/vic_apollyon_engine_glow_test2.png",

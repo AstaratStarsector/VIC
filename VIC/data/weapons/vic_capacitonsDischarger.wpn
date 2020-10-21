@@ -1,10 +1,10 @@
 {
-  "id": "vic_prismcoil",
+  "id": "vic_capacitonsDischarger",
   "specClass": "projectile",
-  "projectileSpecId": "tahlan_prismcoil_dummy",
+  "projectileSpecId": "vic_dummy_proj",
   "type": "ENERGY",
   "size": "LARGE",
-  "everyFrameEffect": "data.scripts.weapons.tahlan_SmartBoltScript",
+  "everyFrameEffect": "data.scripts.weapons.vic_capacitonsDischargerFire",
   "turretSprite": "graphics/weapons/vic_tesla_cannon_base_turret.png",
   "hardpointSprite": "graphics/weapons/vic_tesla_cannon_base.png",
   "hardpointGlowSprite": "graphics/weapons/vic_tesla_cannon_glow.png",
@@ -33,5 +33,6 @@
   "barrelMode": "ALTERNATING",
   "animationType": "GLOW",
   "textureType": ROUGH,
-  "fireSoundTwo": "tachyon_lance_emp_impact"
+  "fireSoundTwo": "tachyon_lance_emp_impact",
+  "autocharge":true,
 }

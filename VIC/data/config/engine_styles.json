@@ -13,6 +13,6 @@
         "contrailCampaignColor":[145,255,255,75], #these long trails on campaign layer
         "type":"GLOW" # GLOW or SMOKE; it's either engine with glows or that spits out smoke
     },
-	}
+}
 
 	

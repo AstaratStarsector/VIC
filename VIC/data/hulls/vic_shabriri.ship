@@ -37,10 +37,10 @@
   "engineSlots": [
     {
       "location": [-3.5, -0],
-      "length": 41.5,
-      "width": 7,
+      "length": 21.5,
+      "width": 5,
       "angle": 180,
-      "contrailSize": 7,
+      "contrailSize": 5,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }

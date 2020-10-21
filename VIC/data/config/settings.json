@@ -21,7 +21,11 @@
 		},
 		"systems":{
 			"vic_adaptiveWarfareSystem":"graphics/icons/hullsys/vic_adaptiveWarfareSystem.png",
-		}		
+		},
+		"fx":{
+			"vic_rubicon_river":"graphics/fx/vic_rubicon_river.png",
+			"vic_exsilium_fx_trail":"graphics/fx/vic_exsilium_fx_trail.png",
+		}
 	}
 }
 	

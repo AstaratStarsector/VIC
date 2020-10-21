@@ -25,28 +25,28 @@
   "engineSlots": [
     {
       "location": [-24.5, 9.5],
-      "length": 37.5,
-      "width": 4,
+      "length": 18,
+      "width": 3,
       "angle": 180,
-      "contrailSize": 4,
+      "contrailSize": 3,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-24.5, -9.5],
-      "length": 37.5,
-      "width": 4,
+      "length": 18,
+      "width": 3,
       "angle": -180,
-      "contrailSize": 4,
+      "contrailSize": 3,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-27.5, -0],
-      "length": 24.5,
-      "width": 8,
+      "length": 19.5,
+      "width": 6,
       "angle": 180,
-      "contrailSize": 8,
+      "contrailSize": 6,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }

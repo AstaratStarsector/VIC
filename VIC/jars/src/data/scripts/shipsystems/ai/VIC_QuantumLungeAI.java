@@ -115,6 +115,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         float allyScore = 0f;
         List<ShipAPI> shipInExitRange = CombatUtils.getShipsWithinRange(ExitPos, distPastTarget + 750);
         for (ShipAPI toCheck : shipInExitRange) {
+            if (toCheck.getFleetMember() == null) continue;
             if (toCheck.getOwner() == shipSide) {
                 if (toCheck != ship) {
                     allyScore += toCheck.getFleetMember().getDeploymentPointsCost();

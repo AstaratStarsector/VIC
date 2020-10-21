@@ -14,7 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class tahlan_SmartBoltScript implements EveryFrameWeaponEffectPlugin {
+public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugin {
 
     public static float TARGET_FIND_STEP_LENGTH = 0.05f;
     public static float LIGHTNING_JUMP_RANGE_PERCENTAGE = 0.15f;
@@ -22,11 +22,9 @@ public class tahlan_SmartBoltScript implements EveryFrameWeaponEffectPlugin {
     public static Color LIGHTNING_CORE_COLOR = new Color(252, 252, 224);
     public static Color LIGHTNING_FRINGE_COLOR = new Color(243, 222, 22);
 
-    private float damageThisShot = 0f;
-    private List<CombatEntityAPI> alreadyDamagedTargets = new ArrayList<CombatEntityAPI>();
-    private float empFactor = 0f;
+    private final List<CombatEntityAPI> alreadyDamagedTargets = new ArrayList<CombatEntityAPI>();
 
-    private List<DamagingProjectileAPI> registeredLightningProjectiles = new ArrayList<DamagingProjectileAPI>();
+    private final List<DamagingProjectileAPI> registeredLightningProjectiles = new ArrayList<DamagingProjectileAPI>();
     private boolean fireNextFrame = false;
 
     public static List<CombatEntityAPI> getNonSteroidEntitiesWithinRange(Vector2f location, float range) {
@@ -54,11 +52,6 @@ public class tahlan_SmartBoltScript implements EveryFrameWeaponEffectPlugin {
         if (engine.isPaused() || weapon == null) {
             return;
         }
-        new Color(0, 255, 235);
-        new Color(0,166,255);
-
-        new Color(125,95,255);
-        new Color(95,75,255);
 
         //Wait one frame if we are changing our projectile this frame, and ensure our spawned projectiles loose their collision after one frame (+reduce projectile speed)
         if (!fireNextFrame) {
@@ -87,8 +80,8 @@ public class tahlan_SmartBoltScript implements EveryFrameWeaponEffectPlugin {
 
         //If we actually fire this frame, run the rest of the script
         fireNextFrame = false;
-        damageThisShot = weapon.getDamage().getDamage();
-        empFactor = weapon.getDerivedStats().getEmpPerShot();
+        float damageThisShot = weapon.getDamage().getDamage();
+        float empFactor = weapon.getDerivedStats().getEmpPerShot();
         alreadyDamagedTargets.clear();
 
         //Declare a variable for weapon range and position to fire from, so we have a shorthand

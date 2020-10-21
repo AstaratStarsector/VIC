@@ -25,7 +25,7 @@ import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin.Mag
 import com.fs.starfarer.combat.entities.terrain.Planet;
 import org.lazywizard.lazylib.MathUtils;
 
-import static data.scripts.world.VICGen.addMarketplace;
+import static data.world.VICGen.addMarketplace;
 
 
 public class Empyrean {

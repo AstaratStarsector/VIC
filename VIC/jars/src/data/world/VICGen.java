@@ -1,4 +1,4 @@
-package data.scripts.world;
+package data.world;
 
 
 

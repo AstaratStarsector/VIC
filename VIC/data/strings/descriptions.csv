@@ -30,8 +30,8 @@ vic_pruflas,SHIP,"VIC-S75 ""Pruflas"" - ""Provoker of wars and discord"", a reco
 
 Entering the service not until after the Collapse, Pruflas frigates are the fastest vessels at the megacorp's disposal. Their spectacular speed and impressive fuel-to-distance ratio secured their role not only of the main scouting unit, but also of a courier, capable of quickly delivering valuable information and the so-called ""special gifts"" to the Hegemony's officials, pirate warlords and leaders/higher-ups of many other factions. In many cases such generous ""signs of goodwill"" still do not ensure proper cooperation between the addressees and the Conglomerate, but usually it's just enough to prevent full-fledged military confrontation, even if hatred and disgust towards the megacorp remain in their fullest. ",,,
 ,,,,,
-,,,,,
-,,,,,
+#weapons,,,,,
+vic_rubicon,WEAPON,"The Rubicon's projectile exists in a state of quantum uncertainty, occupying many possible locations at any given time. When the projectile impacts against a target, the trigger mechanism keeping it from fully entering reality is destroyed. Due to a quirk of quantum mechanics' interactions with p-space, several copies of what are all technically the same projectile appear soon after it, dramatically multiplying the damage of what is still, from a scientific perspectice, a single shell.",,,
 ,,,,,
 ,,,,,
 ,,,,,

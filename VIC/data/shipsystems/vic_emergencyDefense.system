@@ -1,0 +1,16 @@
+{
+	"id":"vic_emergencyDefense",
+	"type":"STAT_MOD",
+	"aiType":"CUSTOM",
+	"aiScript":"data.scripts.shipsystems.ai.vic_emergencyDefenseAI",
+	
+	"statsScript":"data.scripts.shipsystems.vic_emergencyDefense",
+	
+	"useSound":"system_targeting_feed",
+	#"loopSound":"system_targeting_feed_loop",
+	"deactivateSound":"gun_out_of_ammo",
+	"outOfUsesSound":"gun_out_of_ammo",
+	
+	"aiHints":{
+	}
+}

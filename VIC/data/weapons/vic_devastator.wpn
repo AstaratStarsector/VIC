@@ -4,29 +4,30 @@
   "projectileSpecId": "vic_devastator_shot",
   "type": "BALLISTIC",
   "size": "LARGE",
-  "turretSprite": "graphics/weapons/vic_devastator.png",
-  "turretGunSprite": "graphics/weapons/vic_devastator_turret_recoil.png",
-  "hardpointSprite": "graphics/weapons/vic_devastator_hardpoint.png",
-  "hardpointGunSprite": "graphics/weapons/vic_devastator_hardpoint_recoil.png",
+  "everyFrameEffect": "data.scripts.weapons.vic_devostatorFire",
+  "turretSprite": "graphics/weapons/vic_besomar_base_turret.png",
+  "turretGunSprite": "graphics/weapons/vic_besomar_barrel_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_besomar_base_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/vic_besomar_barrel_hardpoint.png",
   "renderAboveAllWeapons": 0,
   "visualRecoil": 8,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    21,
+    38.5,
     0,
-    19,
-    2,
-    18,
+    34.5,
+    1,
+    35.5,
     -2,
-    16,
-    3,
-    15,
-    -3,
-    13,
+    31.5,
+    2.5,
+    32.5,
+    -2.5,
+    28.5,
     4,
-    12,
+    29.5,
     -4
   ],
   "turretAngleOffsets": [
@@ -39,19 +40,19 @@
     1.5
   ],
   "hardpointOffsets": [
-    21,
+    39,
     0,
-    18.5,
+    35.5,
     2,
-    17.5,
+    36,
     -2,
-    15.5,
+    32.5,
     3,
-    14.5,
+    33,
     -3,
-    12.5,
+    29.5,
     4,
-    11.5,
+    30,
     -4
   ],
   "hardpointAngleOffsets": [
@@ -70,7 +71,7 @@
     "spread": 35,
     "particleSizeMin": 12,
     "particleSizeRange": 22,
-    "particleDuration": 0.20,
+    "particleDuration": 0.2,
     "particleCount": 5,
     "particleColor": [
       255,
@@ -80,6 +81,5 @@
     ]
   },
   "textureType": ROUGH,
-  "fireSoundTwo": "devastator_fire",
-  "everyFrameEffect":"data.scripts.weapons.vic_devostatorFire"
+  "fireSoundTwo": "vic_besomar_shot"
 }
