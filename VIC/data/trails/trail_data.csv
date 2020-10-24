@@ -3,3 +3,4 @@ trails_vic_heavylaidlawaccelerator_shot_glow,vic_heavylaidlawaccelerator_shot,tr
 trails_vic_heavylaidlawaccelerator_shot_core,vic_heavylaidlawaccelerator_shot,trails_trail_zappy,10,0,0.05,0.35,18,8,"[0,166,255]","[0,255,235]",1,200,-3000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 trails_vic_heavylaidlawaccelerator_shot_contrail,vic_heavylaidlawaccelerator_shot,trails_trail_contrail,10,0,0.2,0.5,40,20,"[0,166,255]","[0,255,235]",1,200,-2000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 trails_vic_psotnik_shot_trail,vic_psotnik_shot,trails_trail_smooth,2,0,0.05,0.1,2,1,"[0,190,255]","[0,190,255]",1,50,0,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+,,,,,,,,,,,,,,,,,,,,,,,,,,,

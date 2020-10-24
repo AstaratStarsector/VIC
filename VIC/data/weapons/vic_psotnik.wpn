@@ -47,6 +47,7 @@
     0
   ],
   "barrelMode": "DUAL",
+  "separateRecoilForLinkedBarrels":"FALSE",
   "animationType": "MUZZLE_FLASH",
   "muzzleFlashSpec": {
     "length": 20,

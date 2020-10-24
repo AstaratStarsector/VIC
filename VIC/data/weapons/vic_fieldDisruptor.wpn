@@ -15,12 +15,12 @@
 	"barrelMode":"ALTERNATING", # or LINKED.  whether barrels fire at the same time or alternate.
 	"animationType":"GLOW_AND_FLASH",
 	"muzzleFlashSpec":{"length":60.0,   # only used if animationType = MUZZLE_FLASH
-                            "spread":10.0,
+                            "spread":60.0,
                             "particleSizeMin":20.0,
                             "particleSizeRange":20.0,
-                            "particleDuration":0.2,
+                            "particleDuration":0.4,
                             "particleCount":10,
-                            "particleColor":[100,100,255,255]},
+                            "particleColor":[255,228,50,255]},
 	"projectileSpecId":"vic_fieldDisruptor_shot",  # projectile that will be fired
 	"fireSoundTwo":"",
 }

@@ -1,8 +1,11 @@
 {
-"designTypeColors":{
+	"designTypeColors":{
         "Volkov Industrial Conglomerate":[238,158,0,255],
 	"Volkov Industries":[238,158,0,255],
     },
+	"plugins":{
+		"vic_combatPlugin":"data.scripts.plugins.vic_combatPlugin",
+	},
 	"graphics":{		
 		"blueprint_packages":{
 			"vic_hulls_package":"graphics/icons/cargo/vic_blueprint.png",
@@ -24,7 +27,7 @@
 		},
 		"fx":{
 			"vic_rubicon_river":"graphics/fx/vic_rubicon_river.png",
-			"vic_exsilium_fx_trail":"graphics/fx/vic_exsilium_fx_trail.png",
+			"vic_virlioka_trail":"graphics/fx/vic_virlioka_trail.png",
 		}
 	}
 }
