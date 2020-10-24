@@ -27,7 +27,7 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
 					  Vector2f point, boolean shieldHit, CombatEngineAPI engine) {
 		if (!shieldHit && target instanceof ShipAPI) {
 			explosion.setDamageType(DamageType.FRAGMENTATION);
-			explosion.setShowGraphic(false);
+			//explosion.setShowGraphic(false);
 			engine.spawnDamagingExplosion(explosion,projectile.getSource(),point);
 		}
 	}

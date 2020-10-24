@@ -40,7 +40,6 @@ public  class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 entry.getKey().setJitter(entry.getKey(), new Color(44, 255, 255), 3, 6, 1);
                 entry.getKey().getVelocity().scale(0.79f);
                 Global.getCombatEngine().applyDamage(entry.getKey(), entry.getKey().getLocation(), 85 * amount, DamageType.FRAGMENTATION, 0f, false, false, null);
-                entry.getKey().getMaxSpeed().
             }
         }
         timer.advance(amount);
