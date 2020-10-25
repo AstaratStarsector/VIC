@@ -4,9 +4,14 @@ import java.awt.Color;
 
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
+import com.fs.starfarer.launcher.ModManager;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.WaveDistortion;
 import org.lwjgl.util.vector.Vector2f;
 
 public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
+
+	private static final Vector2f ZERO = new Vector2f();
 
 	private DamagingExplosionSpec explosion = new DamagingExplosionSpec(0.05f,
 			25,
@@ -19,7 +24,7 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
 			3,
 			0.5f,
 			10,
-			new Color(255, 214, 33, 255),
+			new Color(33, 255, 122, 255),
 			new Color(255, 150, 35, 255)
 	);
 
@@ -27,8 +32,19 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
 					  Vector2f point, boolean shieldHit, CombatEngineAPI engine) {
 		if (!shieldHit && target instanceof ShipAPI) {
 			explosion.setDamageType(DamageType.FRAGMENTATION);
-			//explosion.setShowGraphic(false);
+			explosion.setShowGraphic(false);
 			engine.spawnDamagingExplosion(explosion,projectile.getSource(),point);
+		}
+		if (ModManager.getInstance().isModEnabled("shaderLib")) {
+			WaveDistortion wave = new WaveDistortion(point, ZERO);
+			wave.setIntensity(15f);
+			wave.setSize(150f);
+			wave.flip(true);
+			wave.fadeOutIntensity(0.3f);
+			wave.setLifetime(0.2f);
+			wave.fadeOutIntensity(0.3f);
+			wave.setLocation(projectile.getLocation());
+			DistortionShader.addDistortion(wave);
 		}
 	}
 }

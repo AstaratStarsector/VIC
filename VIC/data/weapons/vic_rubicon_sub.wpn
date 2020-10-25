@@ -1,7 +1,7 @@
 {
-  "id": "vic_rubicon",
+  "id": "vic_rubicon_sub",
   "specClass": "projectile",
-  "projectileSpecId": "vic_rubicon_shot",
+  "projectileSpecId": "vic_rubicon_sub",
   "type": "BALLISTIC",
   "size": "MEDIUM",
   "displayArcRadius": 450,
@@ -10,7 +10,12 @@
   "hardpointSprite": "graphics/weapons/vic_rubicon_base_hardpoint.png",
   "hardpointGlowSprite": "graphics/weapons/vic_rubicon_base_hardpoint_glow.png",
   "renderAboveAllWeapons": 0,
-  "glowColor": [178,95,229,191],
+  "glowColor": [
+    255,
+    255,
+    255,
+    255
+  ],
   "visualRecoil": 10,
   "renderHints": [
     RENDER_BARREL_BELOW

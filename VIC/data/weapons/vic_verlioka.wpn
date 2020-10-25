@@ -1,12 +1,12 @@
 {
-	"id":"vic_fieldDisruptor",  # this id must match what's in the spreadsheet
+	"id":"vic_verlioka",  # this id must match what's in the spreadsheet
 	"specClass":"projectile",
 	"type":"ENERGY",
 	"size":"MEDIUM",
-	"turretSprite":"",
-	"turretGlowSprite":"",
-	"hardpointSprite":"",
-	"hardpointGlowSprite":"",
+	"turretSprite": "graphics/weapons/vic_verlioka_base_turret.png",
+	"hardpointSprite": "graphics/weapons/vic_verlioka_base_hardpoint.png",
+	"hardpointGlowSprite": "graphics/weapons/vic_verlioka_glow_hardpoint.png",
+	"turretGlowSprite": "graphics/weapons/vic_verlioka_glow_turret.png",
 	"glowColor":[100,100,255,255],
 	"turretOffsets":[5, 0],
 	"turretAngleOffsets":[0],
@@ -21,6 +21,6 @@
                             "particleDuration":0.4,
                             "particleCount":10,
                             "particleColor":[255,228,50,255]},
-	"projectileSpecId":"vic_fieldDisruptor_shot",  # projectile that will be fired
+	"projectileSpecId":"vic_verlioka_shot",  # projectile that will be fired
 	"fireSoundTwo":"",
 }

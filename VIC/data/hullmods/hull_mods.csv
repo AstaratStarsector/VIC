@@ -15,6 +15,9 @@ Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,defensive,0,true,,,,0,
 Ballistic weapons: %s rate of fire increase and %s flux cost reduction 
 Energy weapons: %s damage increase",Apollyon in build,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
+VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,,,0,0,0,0,data.hullmods.vic_shieldsChanger,,ShieldChanger,graphics/hullmods/vic_adaptiveWarfare.png
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
 #Commissioned Crews,,,,,,,,,,,,,,,,,,
 Military-grade Genetic Modifications,vic_geneticmodifications,,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_geneticModifications,"Most VIC's soldiers are filled to the brim with top-notch genetech, endowing them with unnatural capabilities. In the case of VIC Aerospace Corps - inhuman reflexes and impressive resistance to G-overloads. 
 

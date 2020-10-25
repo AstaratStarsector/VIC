@@ -1,5 +1,5 @@
 {
-	"id":"vic_fieldDisruptor_shot",
+	"id":"vic_verlioka_shot",
 	"specClass":"missile",	
 	"missileType":"ROCKET",
 	"sprite":"graphics/fx/vic_exsilium_fx_wave.png",

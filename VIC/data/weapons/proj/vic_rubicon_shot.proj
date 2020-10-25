@@ -5,15 +5,15 @@
 	"onHitEffect":"data.scripts.weapons.vic_rubiconOnHit",
 	"collisionClass":"PROJECTILE_FF",
 	"collisionClassByFighter":"PROJECTILE_FIGHTER",
-	"length":40.0,
+	"length":60.0,
 	"hitGlowRadius":38,
-	"width":6.5,
+	"width":8.5,
 	"fadeTime":0.20,
 	#"fringeColor":[255,255,100,255],
 	#"coreColor":[255,255,200,150],
-	"fringeColor":[235,255,215,235],
-	"coreColor":[225,255,205,200],	
+	"fringeColor":[196, 157, 255,235],
+	"coreColor":[255, 255, 255,200],	
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,
-	"bulletSprite":"graphics/missiles/shell_large_green.png"
+	"bulletSprite":"graphics/missiles/vic_rubicon_shell.png"
 }

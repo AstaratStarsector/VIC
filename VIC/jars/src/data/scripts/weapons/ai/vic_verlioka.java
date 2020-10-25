@@ -16,7 +16,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vic_fieldDisruptor implements MissileAIPlugin, GuidedMissileAI {
+public class vic_verlioka implements MissileAIPlugin, GuidedMissileAI {
 
     private final MissileAPI missile;
     private final IntervalUtil timer = new IntervalUtil(0.05f, 0.15f);
@@ -25,7 +25,7 @@ public class vic_fieldDisruptor implements MissileAIPlugin, GuidedMissileAI {
 
     private Vector2f firstLoc;
 
-    public vic_fieldDisruptor(MissileAPI missile, ShipAPI launchingShip) {
+    public vic_verlioka(MissileAPI missile, ShipAPI launchingShip) {
         if (engine != Global.getCombatEngine()) {
             this.engine = Global.getCombatEngine();
         }
@@ -146,6 +146,7 @@ public class vic_fieldDisruptor implements MissileAIPlugin, GuidedMissileAI {
         missile.getSpriteAPI().setColor(new Color(255, 255, 255, 200));
         missile.setJitter(missile, new Color(255, 255, 255, 200), 3 * ((1 - disLEft) * 3), 10, 1.5f * ((1 - disLEft) * 2.5f));
 
+
         int flipTrail = 1;
         if (Math.random() > 0.5) {
             flipTrail = -1;
@@ -176,6 +177,7 @@ public class vic_fieldDisruptor implements MissileAIPlugin, GuidedMissileAI {
         trail.setCenter((flipTrail * size) / 2, size * 0.85f / 2f);
         MagicRender.singleframe(trail, trailLoc, trailSize, missile.getFacing() - 90, new Color(255, 255, 255, 40), false);
 
+
         int flip = 1;
         if (Math.random() > 0.5) {
             flip = -1;
@@ -183,14 +185,14 @@ public class vic_fieldDisruptor implements MissileAIPlugin, GuidedMissileAI {
 
         missile.getSpriteAPI().setSize(
                 flip * size,
-                range
+                range / 2
         );
 
         missile.getSpriteAPI().setCenter(
                 missile.getSpriteAPI().getWidth() / 2,
                 missile.getSpriteAPI().getHeight() / 2
         );
-
+        
         timer.advance(amount);
 
         missile.setFacing(VectorUtils.getFacing(missile.getVelocity()));

@@ -28,6 +28,12 @@
 		"fx":{
 			"vic_rubicon_river":"graphics/fx/vic_rubicon_river.png",
 			"vic_virlioka_trail":"graphics/fx/vic_virlioka_trail.png",
+			"vic_shieldsInner256":"graphics/fx/shield/vic_shields256.png",
+			"vic_shieldsRing256":"graphics/fx/shield/vic_shields256ring.png",
+			"vic_shieldsInner128":"graphics/fx/shield/vic_shields128.png",
+			"vic_shieldsRing128":"graphics/fx/shield/vic_shields128ring.png",
+			"vic_shieldsInner64":"graphics/fx/shield/vic_shields64.png",
+			"vic_shieldsRing64":"graphics/fx/shield/vic_shields64ring.png",
 		}
 	}
 }
