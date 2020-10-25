@@ -4,31 +4,32 @@
   "projectileSpecId": "vic_heavylaidlawaccelerator_shot",
   "type": "BALLISTIC",
   "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.VIC_LaidlawAcceleratorMuzzleFlash",
   "displayArcRadius": 450,
   "turretSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_base_turret.png",
   "turretGunSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_barrel_turret.png",
   "hardpointSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_base.png",
   "hardpointGunSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_barrel.png",
   "renderAboveAllWeapons": 0,
-  "visualRecoil": 20,
+  "visualRecoil": 10,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    53.5,
-    -5.5,
-    53.5,
-    5.5
+    31,
+    4.5,
+    31,
+    -4.5
   ],
   "turretAngleOffsets": [
     0,
     0
   ],
   "hardpointOffsets": [
-    54,
-    -5.5,
-    54,
-    5.5
+    46.5,
+    -4.5,
+    46.5,
+    4.5
   ],
   "hardpointAngleOffsets": [
     0,
@@ -37,19 +38,19 @@
   "barrelMode": "ALTERNATING",
   "animationType": "MUZZLE_FLASH",
   "muzzleFlashSpec": {
-    "length": 34,
+    "length": 50,
     "spread": 10,
     "particleSizeMin": 18,
     "particleSizeRange": 24,
     "particleDuration": 0.12,
-    "particleCount": 12,
+    "particleCount": 18,
     "particleColor": [
       255,
-      185,
-      215,
-      215
+      255,
+      255,
+      255
     ]
   },
   "textureType": ROUGH,
-  "fireSoundTwo": "mjolnir_fire"
+  "fireSoundTwo": "vic_laidlaw_accelerator_shot"
 }
