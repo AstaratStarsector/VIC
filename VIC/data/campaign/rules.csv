@@ -35,3 +35,7 @@ vic_UMOMenu,DialogOptionSelected,$option == UMOMenu,VIC_MarketCMD UMOMenu,,,
 vic_VBombMenu,DialogOptionSelected,$option == VBombMenu,VIC_MarketCMD VBombMenu,,,
 vic_VBombConfirm,DialogOptionSelected,$option == VBombConfirm,VIC_MarketCMD VBombConfirm,,,
 vic_VBombResults,DialogOptionSelected,$option == VBombResults,VIC_MarketCMD VBombResults,,,
+,,,,,,
+vic_portraitChanging,PopulateOptions,"$hasMarket
+$menuState == main",,,22:VICPCMenu:Change personality,
+vic_portraitChangingMenu,DialogOptionSelected,$option == VICPCMenu,VIC_ChangePersonality ChangePortrait,,,

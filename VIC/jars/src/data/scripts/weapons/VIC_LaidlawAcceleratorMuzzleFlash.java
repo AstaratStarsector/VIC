@@ -5,6 +5,8 @@ package data.scripts.weapons;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.WeaponAPI;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
@@ -296,66 +298,67 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
         for (String ID : USED_IDS) {
             //Screenspace check: simplified but should do the trick 99% of the time
             float screenspaceCullingDistance = PARTICLE_SCREENSPACE_CULL_DISTANCE.get("default");
-            if (PARTICLE_SCREENSPACE_CULL_DISTANCE.keySet().contains(ID)) { screenspaceCullingDistance = PARTICLE_SCREENSPACE_CULL_DISTANCE.get(ID); }
+            if (PARTICLE_SCREENSPACE_CULL_DISTANCE.containsKey(ID)) { screenspaceCullingDistance = PARTICLE_SCREENSPACE_CULL_DISTANCE.get(ID); }
             if (!engine.getViewport().isNearViewport(weapon.getLocation(), screenspaceCullingDistance)) {continue;}
 
             //Store all the values used for this check, and use default values if we don't have specific values for our ID specified
             //Note that particle count, specifically, is not declared here and is only used in more local if-cases
             boolean affectedByChargeLevel = AFFECTED_BY_CHARGELEVEL.get("default");
-            if (AFFECTED_BY_CHARGELEVEL.keySet().contains(ID)) { affectedByChargeLevel = AFFECTED_BY_CHARGELEVEL.get(ID); }
+            if (AFFECTED_BY_CHARGELEVEL.containsKey(ID)) { affectedByChargeLevel = AFFECTED_BY_CHARGELEVEL.get(ID); }
 
             String particleSpawnMoment = PARTICLE_SPAWN_MOMENT.get("default");
-            if (PARTICLE_SPAWN_MOMENT.keySet().contains(ID)) { particleSpawnMoment = PARTICLE_SPAWN_MOMENT.get(ID); }
+            if (PARTICLE_SPAWN_MOMENT.containsKey(ID)) { particleSpawnMoment = PARTICLE_SPAWN_MOMENT.get(ID); }
 
             boolean spawnPointAnchorAlternation = SPAWN_POINT_ANCHOR_ALTERNATION.get("default");
-            if (SPAWN_POINT_ANCHOR_ALTERNATION.keySet().contains(ID)) { spawnPointAnchorAlternation = SPAWN_POINT_ANCHOR_ALTERNATION.get(ID); }
+            if (SPAWN_POINT_ANCHOR_ALTERNATION.containsKey(ID)) { spawnPointAnchorAlternation = SPAWN_POINT_ANCHOR_ALTERNATION.get(ID); }
 
             //Here, we only store one value, depending on if we're a hardpoint or not
             Vector2f particleSpawnPoint = PARTICLE_SPAWN_POINT_TURRET.get("default");
             if (weapon.getSlot().isHardpoint()) {
                 particleSpawnPoint = PARTICLE_SPAWN_POINT_HARDPOINT.get("default");
-                if (PARTICLE_SPAWN_POINT_HARDPOINT.keySet().contains(ID)) { particleSpawnPoint = PARTICLE_SPAWN_POINT_HARDPOINT.get(ID); }
+                if (PARTICLE_SPAWN_POINT_HARDPOINT.containsKey(ID)) { particleSpawnPoint = PARTICLE_SPAWN_POINT_HARDPOINT.get(ID); }
             } else {
-                if (PARTICLE_SPAWN_POINT_TURRET.keySet().contains(ID)) { particleSpawnPoint = PARTICLE_SPAWN_POINT_TURRET.get(ID); }
+                if (PARTICLE_SPAWN_POINT_TURRET.containsKey(ID)) { particleSpawnPoint = PARTICLE_SPAWN_POINT_TURRET.get(ID); }
             }
 
             String particleType = PARTICLE_TYPE.get("default");
-            if (PARTICLE_TYPE.keySet().contains(ID)) { particleType = PARTICLE_TYPE.get(ID); }
+            if (PARTICLE_TYPE.containsKey(ID)) { particleType = PARTICLE_TYPE.get(ID); }
 
             Color particleColor = PARTICLE_COLOR.get("default");
-            if (PARTICLE_COLOR.keySet().contains(ID)) { particleColor = PARTICLE_COLOR.get(ID); }
+            if (PARTICLE_COLOR.containsKey(ID)) { particleColor = PARTICLE_COLOR.get(ID); }
 
             float particleSizeMin = PARTICLE_SIZE_MIN.get("default");
-            if (PARTICLE_SIZE_MIN.keySet().contains(ID)) { particleSizeMin = PARTICLE_SIZE_MIN.get(ID); }
+            if (PARTICLE_SIZE_MIN.containsKey(ID)) { particleSizeMin = PARTICLE_SIZE_MIN.get(ID); }
             float particleSizeMax = PARTICLE_SIZE_MAX.get("default");
-            if (PARTICLE_SIZE_MAX.keySet().contains(ID)) { particleSizeMax = PARTICLE_SIZE_MAX.get(ID); }
+            if (PARTICLE_SIZE_MAX.containsKey(ID)) { particleSizeMax = PARTICLE_SIZE_MAX.get(ID); }
 
             float particleVelocityMin = PARTICLE_VELOCITY_MIN.get("default");
-            if (PARTICLE_VELOCITY_MIN.keySet().contains(ID)) { particleVelocityMin = PARTICLE_VELOCITY_MIN.get(ID); }
+            if (PARTICLE_VELOCITY_MIN.containsKey(ID)) { particleVelocityMin = PARTICLE_VELOCITY_MIN.get(ID); }
             float particleVelocityMax = PARTICLE_VELOCITY_MAX.get("default");
-            if (PARTICLE_VELOCITY_MAX.keySet().contains(ID)) { particleVelocityMax = PARTICLE_VELOCITY_MAX.get(ID); }
+            if (PARTICLE_VELOCITY_MAX.containsKey(ID)) { particleVelocityMax = PARTICLE_VELOCITY_MAX.get(ID); }
 
             float particleDurationMin = PARTICLE_DURATION_MIN.get("default");
-            if (PARTICLE_DURATION_MIN.keySet().contains(ID)) { particleDurationMin = PARTICLE_DURATION_MIN.get(ID); }
+            if (PARTICLE_DURATION_MIN.containsKey(ID)) { particleDurationMin = PARTICLE_DURATION_MIN.get(ID); }
             float particleDurationMax = PARTICLE_DURATION_MAX.get("default");
-            if (PARTICLE_DURATION_MAX.keySet().contains(ID)) { particleDurationMax = PARTICLE_DURATION_MAX.get(ID); }
+            if (PARTICLE_DURATION_MAX.containsKey(ID)) { particleDurationMax = PARTICLE_DURATION_MAX.get(ID); }
 
             float particleOffsetMin = PARTICLE_OFFSET_MIN.get("default");
-            if (PARTICLE_OFFSET_MIN.keySet().contains(ID)) { particleOffsetMin = PARTICLE_OFFSET_MIN.get(ID); }
+            if (PARTICLE_OFFSET_MIN.containsKey(ID)) { particleOffsetMin = PARTICLE_OFFSET_MIN.get(ID); }
             float particleOffsetMax = PARTICLE_OFFSET_MAX.get("default");
-            if (PARTICLE_OFFSET_MAX.keySet().contains(ID)) { particleOffsetMax = PARTICLE_OFFSET_MAX.get(ID); }
+            if (PARTICLE_OFFSET_MAX.containsKey(ID)) { particleOffsetMax = PARTICLE_OFFSET_MAX.get(ID); }
 
             float particleArc = PARTICLE_ARC.get("default");
-            if (PARTICLE_ARC.keySet().contains(ID)) { particleArc = PARTICLE_ARC.get(ID); }
+            if (PARTICLE_ARC.containsKey(ID)) { particleArc = PARTICLE_ARC.get(ID); }
             float particleArcFacing = PARTICLE_ARC_FACING.get("default");
-            if (PARTICLE_ARC_FACING.keySet().contains(ID)) { particleArcFacing = PARTICLE_ARC_FACING.get(ID); }
+            if (PARTICLE_ARC_FACING.containsKey(ID)) { particleArcFacing = PARTICLE_ARC_FACING.get(ID); }
             //---------------------------------------END OF DECLARATIONS-----------------------------------------
 
             //First, spawn "on full firing" particles, since those ignore sequence state
             if (chargeLevel >= 1f && !hasFiredThisCharge) {
+                spawnDistortion(weapon);
                 //Count spawned particles: only trigger if the spawned particles are more than 0
                 float particleCount = ON_SHOT_PARTICLE_COUNT.get("default");
-                if (ON_SHOT_PARTICLE_COUNT.keySet().contains(ID)) { particleCount = ON_SHOT_PARTICLE_COUNT.get(ID); }
+                if (ON_SHOT_PARTICLE_COUNT.containsKey(ID)) { particleCount = ON_SHOT_PARTICLE_COUNT.get(ID); }
 
                 if (particleCount > 0) {
                     spawnParticles(engine, weapon, particleCount, particleType, spawnPointAnchorAlternation, particleSpawnPoint, particleColor, particleSizeMin, particleSizeMax, particleVelocityMin, particleVelocityMax,
@@ -367,7 +370,7 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
             if (particleSpawnMoment.contains(sequenceState)) {
                 //Get how many particles should be spawned this frame
                 float particleCount = PARTICLES_PER_SECOND.get("default");
-                if (PARTICLES_PER_SECOND.keySet().contains(ID)) { particleCount = PARTICLES_PER_SECOND.get(ID); }
+                if (PARTICLES_PER_SECOND.containsKey(ID)) { particleCount = PARTICLES_PER_SECOND.get(ID); }
                 particleCount *= amount;
                 if (affectedByChargeLevel && (sequenceState.contains("CHARGEUP") || sequenceState.contains("CHARGEDOWN"))) { particleCount *= chargeLevel; }
                 if (affectedByChargeLevel && sequenceState.contains("COOLDOWN")) { particleCount *= (weapon.getCooldownRemaining()/weapon.getCooldown()); }
@@ -414,21 +417,16 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
         //First, ensure we take barrel position into account if we use Anchor Alternation (note that the spawn location is actually rotated 90 degrees wrong, so we invert their x and y values)
         Vector2f trueCenterLocation = new Vector2f(spawnPoint.y, spawnPoint.x);
         float trueArcFacing = arcFacing;
-        int trueCurrentBarrel = currentBarrel;
-        if (currentBarrel > 0 && shouldOffsetBarrelExtra) { trueCurrentBarrel -= 1; }
         if (anchorAlternation) {
             if (weapon.getSlot().isHardpoint()) {
-                if (currentBarrel <= 0 && shouldOffsetBarrelExtra) { trueCurrentBarrel = weapon.getSpec().getHardpointAngleOffsets().size()-1; }
                 trueCenterLocation.x += weapon.getSpec().getHardpointFireOffsets().get(currentBarrel).x;
                 trueCenterLocation.y += weapon.getSpec().getHardpointFireOffsets().get(currentBarrel).y;
                 trueArcFacing += weapon.getSpec().getHardpointAngleOffsets().get(currentBarrel);
             } else if (weapon.getSlot().isTurret()) {
-                if (currentBarrel <= 0 && shouldOffsetBarrelExtra) { trueCurrentBarrel = weapon.getSpec().getTurretAngleOffsets().size()-1; }
                 trueCenterLocation.x += weapon.getSpec().getTurretFireOffsets().get(currentBarrel).x;
                 trueCenterLocation.y += weapon.getSpec().getTurretFireOffsets().get(currentBarrel).y;
                 trueArcFacing += weapon.getSpec().getTurretAngleOffsets().get(currentBarrel);
             } else {
-                if (currentBarrel <= 0 && shouldOffsetBarrelExtra) { trueCurrentBarrel = weapon.getSpec().getHiddenAngleOffsets().size()-1; }
                 trueCenterLocation.x += weapon.getSpec().getHiddenFireOffsets().get(currentBarrel).x;
                 trueCenterLocation.y += weapon.getSpec().getHiddenFireOffsets().get(currentBarrel).y;
                 trueArcFacing += weapon.getSpec().getHiddenAngleOffsets().get(currentBarrel);
@@ -475,5 +473,35 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
                     break;
             }
         }
+    }
+
+    public void spawnDistortion (WeaponAPI weapon) {
+
+        Vector2f trueCenterLocation = new Vector2f();
+        if (weapon.getSlot().isHardpoint()) {
+            trueCenterLocation.x += weapon.getSpec().getHardpointFireOffsets().get(currentBarrel).x;
+            trueCenterLocation.y += weapon.getSpec().getHardpointFireOffsets().get(currentBarrel).y;
+        } else if (weapon.getSlot().isTurret()) {
+            trueCenterLocation.x += weapon.getSpec().getTurretFireOffsets().get(currentBarrel).x;
+            trueCenterLocation.y += weapon.getSpec().getTurretFireOffsets().get(currentBarrel).y;
+        } else {
+            trueCenterLocation.x += weapon.getSpec().getHiddenFireOffsets().get(currentBarrel).x;
+            trueCenterLocation.y += weapon.getSpec().getHiddenFireOffsets().get(currentBarrel).y;
+        }
+
+        //Then, we offset the true position and facing with our weapon's position and facing, while also rotating the position depending on facing
+        trueCenterLocation = VectorUtils.rotate(trueCenterLocation, weapon.getCurrAngle(), new Vector2f(0f, 0f));
+        trueCenterLocation.x += weapon.getLocation().x;
+        trueCenterLocation.y += weapon.getLocation().y;
+
+        WaveDistortion wave = new WaveDistortion(trueCenterLocation, new Vector2f());
+        wave.setIntensity(5f);
+        wave.setSize(50f);
+        wave.flip(true);
+        wave.fadeOutIntensity(0.2f);
+        wave.setLifetime(0.1f);
+        wave.fadeOutIntensity(0.2f);
+        wave.setLocation(trueCenterLocation);
+        DistortionShader.addDistortion(wave);
     }
 }

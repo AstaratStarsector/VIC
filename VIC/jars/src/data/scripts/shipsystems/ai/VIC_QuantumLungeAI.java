@@ -89,9 +89,8 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         float flankingScore = 0f;
         if (target == null || ship == null) return -100f;
         if (target.isCapital() && !rightDirection(target, ship.getLocation())) return -100f;
-        if (target.isStation() || target.isFighter()) {
-            return -100f;
-        }
+        if (target.isStation() || target.isFighter()) return -100f;
+        if (target.isHulk()) return - 100;
 
         float shipSide = ship.getOwner();
         float targetSide = target.getOwner();
@@ -187,7 +186,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
             return;
         }
 
-        if (!DoIFlick && ship.getEngineController().isFlamedOut() && Math.abs(ship.getAngularVelocity()) > 5) {
+        if (!DoIFlick && ship.getEngineController().isFlamedOut()) {
             ship.useSystem();
             DoIFlick = true;
             //spawnText("DoFlick", 0f);
