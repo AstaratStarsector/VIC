@@ -86,7 +86,8 @@
 		"COPS": 0.2,                                     #Their investigations of our less legal connections might prove troublesome. 
         "roider": -0.3,                                  #Yet even more assets to acquite and merge. The Department is going to beat the record.
 		"fringe_defence_syndicate": 0.5,                 #Loyal Domain scientists. Should keep the eyes of Hegemony from them. Relocation to Empyrean is to be considered.
-		
+		"air": -0.8,                                     #Deranged "justice fighters". Fire at will.
+		"aic": -0.4,                                     #Additional gifts will keep them at bay for the time being. Prepare acquisition scenarios in the meantime. 
 		
 		},
 		
