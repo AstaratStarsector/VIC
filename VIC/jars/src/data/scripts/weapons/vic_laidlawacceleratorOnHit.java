@@ -38,8 +38,8 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
 		if (ModManager.getInstance().isModEnabled("shaderLib")) {
 			WaveDistortion wave = new WaveDistortion(point, ZERO);
 			wave.setIntensity(15f);
-			wave.setSize(150f);
-			wave.flip(true);
+			wave.setSize(100f);
+			wave.flip(false);
 			wave.fadeOutIntensity(0.3f);
 			wave.setLifetime(0.2f);
 			wave.fadeOutIntensity(0.3f);
