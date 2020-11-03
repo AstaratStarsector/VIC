@@ -1,7 +1,6 @@
 package data.hullmods;
 
 import com.fs.starfarer.api.combat.BaseHullMod;
-import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import com.fs.starfarer.api.combat.WeaponAPI;
@@ -18,11 +17,6 @@ public class vic_adaptiveAssault extends BaseHullMod {
         pointsPerSize.put(WeaponAPI.WeaponSize.SMALL, 1);
         pointsPerSize.put(WeaponAPI.WeaponSize.MEDIUM, 2);
         pointsPerSize.put(WeaponAPI.WeaponSize.LARGE, 4);
-    }
-
-    @Override
-    public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-
     }
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {

@@ -13,7 +13,8 @@
   "viewOffset": 0,
   "builtInMods": [
     "vic_aerodynamicdesign",
-    "vic_dynamicshields"
+    "vic_dynamicshields",
+	"vic_adaptiveAssault"
   ],
   "builtInWeapons": {
     "WS0001": "vic_KobalDecoLeft",

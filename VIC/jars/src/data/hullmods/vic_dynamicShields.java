@@ -18,8 +18,8 @@ public class vic_dynamicShields extends BaseHullMod {
     @Override
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
         super.applyEffectsBeforeShipCreation(hullSize, stats, id);
-        stats.getShieldUnfoldRateMult().modifyMult(id,shieldSpeed);
-        stats.getShieldTurnRateMult().modifyMult(id,shieldSpeed);
+        stats.getShieldUnfoldRateMult().modifyMult(id, shieldSpeed);
+        stats.getShieldTurnRateMult().modifyMult(id, shieldSpeed);
     }
 
     //shieldsChanger
@@ -61,12 +61,14 @@ public class vic_dynamicShields extends BaseHullMod {
         }
 
         float shieldBaseArc = ship.getHullSpec().getShieldSpec().getArc();
+        float extshield = 0f;
+        if (ship.getVariant().hasHullMod("extendedshieldemitter")) extshield += 60;
 
         float shieldRelFacing = Math.abs(MathUtils.getShortestRotation(ship.getShield().getFacing(), ship.getFacing()));
         //float normalizedAngle = scaleArcToIdealAngle(IDEAL_ANGLE, shieldRelFacing);
         float shieldArcMult = 1 + ((shieldRelFacing / IDEAL_ANGLE) * (MAX_ARC_MULT - shipArcMult - 1f));
 
-        ship.getShield().setArc(shieldBaseArc * shieldArcMult);
+        ship.getShield().setArc(shieldBaseArc * shieldArcMult + extshield);
     }
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
@@ -75,6 +77,7 @@ public class vic_dynamicShields extends BaseHullMod {
         switch (ship.getHullSpec().getHullId()) {
             case "vic_thamuz":
             case "vic_samael":
+            case "vic_kobal":
                 shipArcMult = 0.5f;
                 //do stuff for case 1 and 2
                 break;
@@ -84,6 +87,7 @@ public class vic_dynamicShields extends BaseHullMod {
 
         if (index == 0)
             return Math.round(ship.getHullSpec().getShieldSpec().getArc() * (MAX_ARC_MULT - shipArcMult)) + "";
+        if (index == 1 || index == 2) return ((shieldSpeed - 1) * 100) + "%";
         return null;
     }
 }

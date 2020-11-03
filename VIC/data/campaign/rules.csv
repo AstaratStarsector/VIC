@@ -36,6 +36,19 @@ vic_VBombMenu,DialogOptionSelected,$option == VBombMenu,VIC_MarketCMD VBombMenu,
 vic_VBombConfirm,DialogOptionSelected,$option == VBombConfirm,VIC_MarketCMD VBombConfirm,,,
 vic_VBombResults,DialogOptionSelected,$option == VBombResults,VIC_MarketCMD VBombResults,,,
 ,,,,,,
-vic_portraitChanging,PopulateOptions,"$hasMarket
-$menuState == main",,,22:VICPCMenu:Change personality,
-vic_portraitChangingMenu,DialogOptionSelected,$option == VICPCMenu,VIC_ChangePersonality ChangePortrait,,,
+vic_PersonaChange,PopulateOptions,"$hasMarket
+$menuState == main
+$faction.id == vic
+RepIsAtWorst $faction.id SUSPICIOUS",,,22:VICPCMenu:Change personality,
+vic_portraitChangingMenu,DialogOptionSelected,$option == VICPCMenu,vic_PersonaChange vic_PersonaChangeMenu,,,
+vic_portraitChangingMale,DialogOptionSelected,$option == vic_PersonaChangeMale,vic_PersonaChange vic_PersonaChangeMale,,,
+vic_portraitChangingFemale,DialogOptionSelected,$option == vic_PersonaChangeFemale,vic_PersonaChange vic_PersonaChangeFemale,,,
+vic_portraitChangingConfirm,PickGreeting,$tag:vic_PortraitHolder == true,"ShowPersonVisual
+vic_PersonaChange vic_PersonaChangeConfirm
+",,,
+vic_portraitChangingConfirm2,OpenCDE,$tag:vic_PortraitHolder == true,FireBest PickGreeting,,,
+vic_PersonaChangeResult,DialogOptionSelected,$option == vic_PersonaChangeResult,vic_PersonaChange vic_PersonaChangeResult,,,
+vic_PersonaChangeEnd,DialogOptionSelected,"$option == vic_PersonaChangeEnd
+","ShowDefaultVisual
+EndConversation
+",,,

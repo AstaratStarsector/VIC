@@ -13,7 +13,8 @@
   "viewOffset": 0,
   "builtInMods": [
     "vic_aerodynamicdesign",
-    "vic_dynamicshields"
+    "vic_dynamicshields",
+	"vic_adaptiveAssault"
   ],
   "builtInWings": [
     "vic_shabriri_wing"

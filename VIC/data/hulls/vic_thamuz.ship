@@ -13,7 +13,8 @@
   "viewOffset": 0,
   "builtInMods": [
     "vic_aerodynamicdesign",
-    "vic_dynamicshields"
+    "vic_dynamicshields",
+    "vic_adaptiveAssault"
   ],
   "weaponSlots": [
     {
@@ -58,7 +59,7 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 92,
-      "angle": -0,
+      "angle": 0,
       "locations": [3, 97]
     },
     {
@@ -94,22 +95,13 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 92,
-      "angle": 0,
-      "locations": [3, -97]
-    },
-    {
-      "id": "WS0008",
-      "size": "MEDIUM",
-      "type": "ENERGY",
-      "mount": "TURRET",
-      "arc": 0,
       "angle": -0,
-      "locations": [3, 97]
+      "locations": [3, -97]
     },
     {
       "id": "WS0001",
       "size": "LARGE",
-      "type": "ENERGY",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 139,
       "angle": 0,
@@ -118,7 +110,7 @@
     {
       "id": "WS0005",
       "size": "LARGE",
-      "type": "BALLISTIC",
+      "type": "HYBRID",
       "mount": "HARDPOINT",
       "arc": 5,
       "angle": 0,
@@ -127,7 +119,7 @@
     {
       "id": "WS0013",
       "size": "LARGE",
-      "type": "BALLISTIC",
+      "type": "HYBRID",
       "mount": "HARDPOINT",
       "arc": 5,
       "angle": -0,

@@ -22,9 +22,9 @@ public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugi
     public static Color LIGHTNING_CORE_COLOR = new Color(252, 252, 224);
     public static Color LIGHTNING_FRINGE_COLOR = new Color(243, 222, 22);
 
-    private final List<CombatEntityAPI> alreadyDamagedTargets = new ArrayList<CombatEntityAPI>();
+    private final List<CombatEntityAPI> alreadyDamagedTargets = new ArrayList<>();
 
-    private final List<DamagingProjectileAPI> registeredLightningProjectiles = new ArrayList<DamagingProjectileAPI>();
+    private final List<DamagingProjectileAPI> registeredLightningProjectiles = new ArrayList<>();
     private boolean fireNextFrame = false;
 
     public static List<CombatEntityAPI> getNonSteroidEntitiesWithinRange(Vector2f location, float range) {

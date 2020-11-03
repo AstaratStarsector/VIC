@@ -14,10 +14,9 @@ public class vic_Rubicon implements EveryFrameWeaponEffectPlugin {
         if (engine.isPaused() || weapon.getShip().getOriginalOwner() == -1) return;
 
         weapon.getSpec().setMinSpread(weapon.getSpec().getMinSpread() + amount);
-        
 
 
-        if (weapon.getCurrSpread() >= weapon.getSpec().getMaxSpread()){
+        if (weapon.getCurrSpread() >= weapon.getSpec().getMaxSpread()) {
             weapon.ensureClonedSpec();
             Global.getCombatEngine().maintainStatusForPlayerShip("vic_spread" + weapon.getSlot(), "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "spread", "no bread", false);
             weapon.getSpec().setSpreadDecayRate(0);
@@ -28,7 +27,5 @@ public class vic_Rubicon implements EveryFrameWeaponEffectPlugin {
         }
         Global.getCombatEngine().maintainStatusForPlayerShip("vic_spread" + weapon.getSlot(), "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "spread dec", weapon.getSpec().getMinSpread() + "", false);
         //weapon.getSpec().setSpreadDecayRate(1);
-
-
     }
 }

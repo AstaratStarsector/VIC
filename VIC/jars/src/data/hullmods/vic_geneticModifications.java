@@ -1,9 +1,7 @@
 package data.hullmods;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 
 public class vic_geneticModifications extends BaseHullMod {
@@ -23,13 +21,10 @@ public class vic_geneticModifications extends BaseHullMod {
 
     }
 
-    public void advanceInCombat(ShipAPI ship, float amount) {
-        String id = "vic_geneticModifications";
-
-        if (ship == Global.getCombatEngine().getPlayerShip()) {
-            Global.getCombatEngine().getTimeMult().modifyMult(id, 1f / timeAcellBonus);
-        } else {
-            Global.getCombatEngine().getTimeMult().unmodify(id);
-        }
+    public String getDescriptionParam(int index, HullSize hullSize) {
+        if (index == 0) return Math.round((timeAcellBonus - 1) * 100) + "";
+        if (index == 1) return Math.round(acellBonus) + "%";
+        if (index == 2) return damageTaken + "%";
+        return null;
     }
 }

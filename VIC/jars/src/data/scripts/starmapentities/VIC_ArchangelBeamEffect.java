@@ -24,7 +24,7 @@ public class VIC_ArchangelBeamEffect extends BaseCustomEntityPlugin {
     private float phase = 0f;
     private float phase2 = 0f;
     private float FlareSizeRandom = 0f;
-    private float freqMult = 1f;
+    private final float freqMult = 1f;
 
     public void init(SectorEntityToken entity, Object pluginParams) {
         super.init(entity, pluginParams);
@@ -66,7 +66,7 @@ public class VIC_ArchangelBeamEffect extends BaseCustomEntityPlugin {
 
         Vector2f facing = Misc.getUnitVectorAtDegreeAngle(entity.getFacing());
         float moveRange;
-        float tmp = 0;
+        float tmp;
 
         sprite.setSize(w / 1.5f, h);
         sprite.setAlphaMult(alphaMult);
@@ -104,7 +104,7 @@ public class VIC_ArchangelBeamEffect extends BaseCustomEntityPlugin {
         else tmp = phase2 - 1f;
         moveRange = tmp * glow.getHeight() + 0.5f;
         glow.renderRegionAtCenter(loc.x + facing.x * moveRange, loc.y + facing.y * moveRange, 0, 1, 1, -phase2);
-        
+
         //Flare
         flare.setSize(256f * (0.9f + 0.3f * FlareSizeRandom) * 0.50f, 128f * (0.9f + 0.3f * FlareSizeRandom) * 0.75f);
         flare.setAlphaMult(alphaMult);

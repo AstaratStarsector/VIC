@@ -23,18 +23,21 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addBriefingItem("Eradicate the enemy fleet");
         api.addBriefingItem("TTDS Automata must survive");
 
-		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_dominator", FleetMemberType.SHIP, "SIN Falen", true);
-        api.addToFleet(FleetSide.PLAYER, "vic_cresil_support", FleetMemberType.SHIP, "TEST subject", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_jezebeth_command", FleetMemberType.SHIP, "TEST subject vector trusters", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_kobal_artillery", FleetMemberType.SHIP, "TEST subject vector lunge", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_moloch_enforcer", FleetMemberType.SHIP, "TEST subject vector lunge", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_nybbas_killer", FleetMemberType.SHIP, "TEST subject vector lunge", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_pruflas_skirmish", FleetMemberType.SHIP, "TEST subject vector lunge", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_samael_siege", FleetMemberType.SHIP, "TEST subject vector lunge", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_shabriri_drone", FleetMemberType.SHIP, "TEST subject vector lunge", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_thamuz_siege", FleetMemberType.SHIP, "TEST subject vector lunge", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_valafar_assault", FleetMemberType.SHIP, "TEST subject vector lunge", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_xaphan_assault", FleetMemberType.SHIP, "TEST subject vector lunge", false);
+		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_dominator", FleetMemberType.SHIP, "VIC Sun eater", true);
+
+        api.addToFleet(FleetSide.PLAYER, "vic_valafar_assault", FleetMemberType.SHIP, "VIC Void Reaver", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_thamuz_siege", FleetMemberType.SHIP, "VIC Despoiler", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_cresil_support", FleetMemberType.SHIP, "VIC 13", false);
+
+
+        api.addToFleet(FleetSide.PLAYER, "vic_moloch_enforcer", FleetMemberType.SHIP, "VIC Maw of the Void", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_samael_siege", FleetMemberType.SHIP, "VIC Scarab", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_jezebeth_command", FleetMemberType.SHIP, "VIC Beast", false);
+
+        api.addToFleet(FleetSide.PLAYER, "vic_xaphan_assault", FleetMemberType.SHIP, "VIC Abyss Walker", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_kobal_artillery", FleetMemberType.SHIP, "VIC Repressor", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_pruflas_skirmish", FleetMemberType.SHIP, "VIC Keeper of Peace", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_nybbas_killer", FleetMemberType.SHIP, "VIC Warden", false);
 
 
         FactionAPI hegemony = Global.getSettings().createBaseFaction(Factions.HEGEMONY);

@@ -34,6 +34,8 @@
 			"vic_shieldsRing128":"graphics/fx/shield/vic_shields128ring.png",
 			"vic_shieldsInner64":"graphics/fx/shield/vic_shields64.png",
 			"vic_shieldsRing64":"graphics/fx/shield/vic_shields64ring.png",
+			"vic_disruptorInnerRing":"graphics/fx/vic_disruptorInerRing.png",
+			"vic_disruptorOuterRing":"graphics/fx/vic_disruptorOuterRing.png",
 		}
 	}
 }

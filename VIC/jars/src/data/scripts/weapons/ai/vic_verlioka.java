@@ -192,7 +192,7 @@ public class vic_verlioka implements MissileAIPlugin, GuidedMissileAI {
                 missile.getSpriteAPI().getWidth() / 2,
                 missile.getSpriteAPI().getHeight() / 2
         );
-        
+
         timer.advance(amount);
 
         missile.setFacing(VectorUtils.getFacing(missile.getVelocity()));

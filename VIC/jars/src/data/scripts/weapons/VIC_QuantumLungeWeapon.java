@@ -7,7 +7,6 @@ import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;

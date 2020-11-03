@@ -14,9 +14,7 @@ import java.awt.*;
 
 public class VIC_ArchangelPlanetaryEffect extends BaseCustomEntityPlugin {
 
-
     public static float GLOW_FREQUENCY = 1f; // on/off cycles per second
-
 
     //private SectorEntityToken entity;
 

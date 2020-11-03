@@ -25,22 +25,20 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
 
     // setup
     private static final float
-            DEGREES = 3f,
-            SCAN_RANGE = 1000f, // how far ahead of us to scan for (and avoid) targets
-            WOUNDED_DAMAGE_THRESHOLD = 500f; // how much hull damage does a proj have to do before we are scared of it
+            DEGREES = 3f;
 
     // list of flags to check for using TOWARDS target, using AWAY from target, and NOT USING
     private static final ArrayList<AIFlags>
             TOWARDS = new ArrayList<>(),
-            AWAY = new ArrayList<>(),
+            //AWAY = new ArrayList<>(),
             CON = new ArrayList<>();
 
     static {
         TOWARDS.add(AIFlags.PURSUING);
         TOWARDS.add(AIFlags.HARASS_MOVE_IN);
-        AWAY.add(AIFlags.RUN_QUICKLY);
-        AWAY.add(AIFlags.TURN_QUICKLY);
-        AWAY.add(AIFlags.NEEDS_HELP);
+        //AWAY.add(AIFlags.RUN_QUICKLY);
+        //AWAY.add(AIFlags.TURN_QUICKLY);
+        //AWAY.add(AIFlags.NEEDS_HELP);
         CON.add(AIFlags.BACK_OFF);
         CON.add(AIFlags.BACK_OFF_MIN_RANGE);
         CON.add(AIFlags.BACKING_OFF);
@@ -90,7 +88,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         if (target == null || ship == null) return -100f;
         if (target.isCapital() && !rightDirection(target, ship.getLocation())) return -100f;
         if (target.isStation() || target.isFighter()) return -100f;
-        if (target.isHulk()) return - 100;
+        if (target.isHulk()) return -100;
 
         float shipSide = ship.getOwner();
         float targetSide = target.getOwner();

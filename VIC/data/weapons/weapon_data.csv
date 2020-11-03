@@ -5,7 +5,7 @@ Capacitons Discharger,vic_capacitonsDischarger,3,,5000,600,,125,40,0,15,30,,,,KI
 Besomar Scattercannon,vic_devastator,1,,3500,800,,100,,40,12,21,21,4.2,21,HIGH_EXPLOSIVE,75,,0,0.5,,,5,15,0.5,5,,700,,,100,ANTI_FTR,"he16, pd14, lowtech_bp",,Volkov Industries,,Anti Fighter (Area),,,,,"Each shell has a fuse set to explode at a random distance, resulting in a barrage that's increasingly more deadly at closer ranges.
 
 Will target missiles if no other targets are in range.",,,,,7.4
-Psotnik Interference Autocannon,vic_psotnik,2,,5000,900,,50,50,5,15,25,,,,KINETIC,55,,0,0.25,,,0,10,2,10,,850,,,50,"PD,PD_ALSO","pd20, lowtech_bp",,Volkov Industries,,Anti Shield,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",25% | 80,,,,7.8
+Psotnik Interference Autocannon,vic_psotnik,2,,5000,900,,50,40,5,15,25,,,,KINETIC,55,,0,0.25,,,0,10,2,10,,850,,,50,"PD,PD_ALSO","pd20, lowtech_bp",,Volkov Industries,,Anti Shield,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",25% | 60,,,,7.8
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Rubicon,vic_rubicon,1,,1000,800,,200,,10,14,12,,,,KINETIC,200,,0,1.7391304347826086956521739130435,,,1,5,2,10,,800,,,30,,kinetic14,,Volkov Industries,,Anti Shield,,,,,"On successful hit %s projectiles appear close to target, each projectile deal %s kinetic damage, generates %s flux.",4 | 60 | 200,,,,5
@@ -22,6 +22,10 @@ Phase Lance (Shortranged),vic_phaselance,0,,1,250,1000,,,0,20,10,,,,ENERGY,,1200
 Scatter Blaster,vic_scatterblaster,0,,1,500,,100,,3,60,69,18,,,ENERGY,50,,0,0.5,,,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
 Abyssus Sabot MIRV,vic_abyssalfangs,0,,100000,2000,,100,,5,,,,,,KINETIC,0,,0,40,24,0.05,0,0,0,0,,500,1000,10,100,"DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8, rare_bp",,Volkov Industries,,Anti Small Craft,Fast,Excellent,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",25% | 400,,,TRUE,12.1
 Melter,vic_melter,2,,69,400,750,,,0,100,7,,,,HIGH_EXPLOSIVE,,750,0,0,0.25,4.85,,,,,1000000,,,,,"PD_ALSO, ANTI_FTR, SYSTEM","pd9, beam6",,Volkov Industries,,Point Defense,,,,,,,,,,15.6
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#systems,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Disruptor,vic_disruptor_system,0,,200000,1000,,2000,,25,30,12,30,,,ENERGY,0,,0,3,1,,0,0,0,0,,300,300,10,500,SYSTEM,,,,,,,,,,,,,,,38.7
+quantum Lunge Marker Weapon,vic_quantumLungeMarkerWeapon,0,,200000,1000,,4000,50,25,30,12,30,,,HIGH_EXPLOSIVE,0,,0,3,1,,0,0,0,0,,50,,,500,SYSTEM,,,,,,,,,,,,,,,38.7
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Decos with Scripts,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

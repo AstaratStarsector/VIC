@@ -11,7 +11,6 @@ public class vic_vBombHmod extends BaseHullMod {
     public static String
             MOD_TO_CHECK = "vic_vBombHmod";
 
-
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
     }
 

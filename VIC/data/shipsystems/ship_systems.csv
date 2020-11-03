@@ -2,4 +2,5 @@ name,id,flux/second,f/s (base rate),f/s (base cap),flux/use,f/u (base rate),f/u 
 Quantum Lunge,vic_quantumlunge,,,,,,,,,,0.4,0.5,0.5,5,TRUE,,,,TRUE,TRUE,TRUE,,TRUE,,graphics/icons/hullsys/displacer.png
 Adaptive Assault,vic_adaptiveassault,,,,,,,,,,1,5,1,10,,,,,,,,,,,graphics/icons/hullsys/vic_adaptive_assault.png
 Emergency Defense,vic_emergencyDefense,,,,,,,,,,2,15,2,20,,,,,,,,,,,graphics/icons/hullsys/displacer.png
-,,,,,,,,,,,,,,,,,,,,,,,,,
+drift booster,vic_DriftBoost,,,,,,,,,,0.5,0.5,0.5,5,,,,,,,,,,,graphics/icons/hullsys/displacer.png
+Disruptor shot,vic_disruptorShot,,,,,,0.1,,2,0.5,0.25,,2,0,,,,,,,,,,,graphics/icons/hullsys/interdictor_array.png

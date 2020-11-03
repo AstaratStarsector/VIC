@@ -17,7 +17,6 @@ import com.fs.starfarer.api.impl.campaign.FleetInteractionDialogPluginImpl;
 import com.fs.starfarer.api.impl.campaign.econ.RecentUnrest;
 import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin;
-import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.MarketCMD;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -60,6 +59,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
     protected InteractionDialogAPI dialog;
     protected Map<String, MemoryAPI> memoryMap;
     protected FactionAPI faction;
+
     public VIC_MarketCMD() {
     }
 
@@ -77,14 +77,14 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         return Math.round(result * hazardMult * HmodBonus());
     }
 
-    public static float HmodBonus () {
+    public static float HmodBonus() {
         int HmodsAmount = 0;
         for (FleetMemberAPI shipToCheck : Global.getSector().getPlayerFleet().getFleetData().getMembersListCopy()) {
             if (shipToCheck.getVariant().hasHullMod(MOD_TO_CHECK)) {
                 HmodsAmount++;
             }
         }
-        return (float) (1 * Math.pow( 0.9f, HmodsAmount - 1));
+        return (float) (1 * Math.pow(0.9f, HmodsAmount - 1));
     }
 
     public static float getDefenderStr(MarketAPI market) {
@@ -395,8 +395,8 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         }
         hazardMult.modifyMult("VIC_PlanetHazad", hazardMultClamp, "Planet hazard rating");
 
-		StatBonus HmodBonus = new StatBonus();
-		HmodBonus.modifyMult("VIC_PlanetHazad", HmodBonus(),"Fleet capability for virus bombing");
+        StatBonus HmodBonus = new StatBonus();
+        HmodBonus.modifyMult("VIC_PlanetHazad", HmodBonus(), "Fleet capability for virus bombing");
 
         float defenderStr = (int) Math.round(defender.computeEffective(0f));
         defenderStr -= bomardBonus;
@@ -440,19 +440,18 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         text.addTooltip();
 
         temp.bombardCostOrganics = Math.round(getBombardmentCost(market, playerFleet) * 0.2f);
-		temp.bombardCostGenetech = Math.round(getBombardmentCost(market, playerFleet) * 0.05f);
-
+        temp.bombardCostGenetech = Math.round(getBombardmentCost(market, playerFleet) * 0.05f);
 
 
         int organics = (int) playerFleet.getCargo().getCommodityQuantity("organics");
-		int genetech = (int) playerFleet.getCargo().getCommodityQuantity("vic_genetech");
+        int genetech = (int) playerFleet.getCargo().getCommodityQuantity("vic_genetech");
         boolean canBombard = organics >= temp.bombardCostOrganics && genetech >= temp.bombardCostGenetech;
 
         LabelAPI label = text.addPara("A bombardment requires %s organics and %s genetechs. " +
                         "You have %s organics and %s genetechs.",
                 h, "" + temp.bombardCostOrganics, "" + temp.bombardCostGenetech, "" + organics, "" + genetech);
         //label.setHighlight("" + temp.bombardCostOrganics, "" + temp.bombardCostGenetech, "" + organics, "" + genetech);
-        label.setHighlightColors(canBombard ? h : b, canBombard ? h : b,h);
+        label.setHighlightColors(canBombard ? h : b, canBombard ? h : b, h);
 
         options.clearOptions();
         options.addOption("Commence Viral Bombardment", VBombConfirm);
@@ -731,6 +730,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         SectorEntityToken target;
         int added = 0;
         float elapsed = 0;
+
         public ViralBombardmentAnimation(int num, SectorEntityToken target) {
             this.num = num;
             this.target = target;

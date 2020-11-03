@@ -10,7 +10,6 @@ import com.fs.starfarer.api.impl.campaign.ids.Stats;
 
 public class vic_aeroDynamicDesign extends BaseHullMod {
 
-    //list of values with "names" of the values in our case ships sizes put values there
 	private final Map<HullSize, Float> mag = new HashMap<>();
 	{
 		mag.put(HullSize.FRIGATE, 10f);
@@ -18,9 +17,8 @@ public class vic_aeroDynamicDesign extends BaseHullMod {
 		mag.put(HullSize.CRUISER, 30f);
 		mag.put(HullSize.CAPITAL_SHIP, 40f);
 	}
-	
+
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-	    //add bonus to ground support
 		stats.getDynamic().getMod(Stats.FLEET_GROUND_SUPPORT).modifyFlat(id, mag.get(hullSize));
 	}
 
