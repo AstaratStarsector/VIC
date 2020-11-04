@@ -12,9 +12,9 @@
   "shieldRadius": 297,
   "viewOffset": 0,
   "builtInMods": [
-	"vic_aerodynamicdesign",
-	"vic_dynamicshields",
-	"vic_adaptiveWarfare"
+    "vic_aerodynamicdesign",
+    "vic_dynamicshields",
+    "vic_adaptiveWarfare"
   ],
   "builtInWeapons": {
     "WS0023": "vic_abyssalfangs",
@@ -34,10 +34,12 @@
     "WS0037": "vic_apollyon_front_right",
     "WS0038": "vic_apollyon_front_left",
     "WS0039": "vic_apollyon_front_shadow",
-    "WS0040": "vic_apollyon_rear_right",
-    "WS0041": "vic_apollyon_rear_left",
+    "WS0040": "vic_apollyon_rear_right_top",
+    "WS0041": "vic_apollyon_rear_left_top",
     "WS0042": "vic_apollyon_rear_wing_right",
-    "WS0043": "vic_apollyon_rear_wing_left"
+    "WS0043": "vic_apollyon_rear_wing_left",
+    "WS0044": "vic_apollyon_rear_left_bottom",
+    "WS0045": "vic_apollyon_rear_right_bottom"
   },
   "weaponSlots": [
     {
@@ -410,7 +412,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [-182, -16.5]
+      "locations": [-130.5, -16]
     },
     {
       "id": "WS0041",
@@ -419,7 +421,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": -0,
-      "locations": [-182, 16.5]
+      "locations": [-130.5, 16]
     },
     {
       "id": "WS0042",
@@ -438,6 +440,24 @@
       "arc": 0,
       "angle": -0,
       "locations": [-101.5, 75]
+    },
+    {
+      "id": "WS0044",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-233.5, 16.5]
+    },
+    {
+      "id": "WS0045",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-233.5, -16.5]
     }
   ],
   "engineSlots": [

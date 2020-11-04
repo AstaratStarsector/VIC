@@ -2,7 +2,7 @@
   "hullName": "Nybbas",
   "hullId": "vic_nybbas",
   "hullSize": "FRIGATE",
-  "spriteName": "graphics/ships/vic_nybbas.png",
+  "spriteName": "graphics/ships/Nybbas/vic_nybbas.png",
   "style": "VIC",
   "height": 165,
   "width": 74,
@@ -12,12 +12,14 @@
   "shieldRadius": 95,
   "viewOffset": 0,
   "builtInMods": [
-	"vic_aerodynamicdesign",
-    "vic_toneddownweapon"    
+    "vic_aerodynamicdesign",
+    "vic_toneddownweapon"
   ],
   "builtInWeapons": {
-    "WS0001": "vic_NybbasWeaponCoverLeft",
-    "WS0003": "vic_NybbasWeaponCoverRight"
+    "WS0001": "vic_nybbas_front_left",
+    "WS0002": "vic_nybbas_engine_glow_left",
+    "WS0003": "vic_nybbas_front_right",
+    "WS0004": "vic_nybbas_engine_glow_right"
   },
   "weaponSlots": [
     {
@@ -36,7 +38,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [33.5, 25]
+      "locations": [34, 17]
     },
     {
       "id": "WS0003",
@@ -45,7 +47,25 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [33.5, -23.5]
+      "locations": [34, -17]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-60.5, 19]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-60.5, -19]
     }
   ],
   "engineSlots": [

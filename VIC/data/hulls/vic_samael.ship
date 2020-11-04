@@ -2,7 +2,7 @@
   "hullName": "Samael",
   "hullId": "vic_samael",
   "hullSize": "DESTROYER",
-  "spriteName": "graphics/ships/vic_gargoyle.png",
+  "spriteName": "graphics/ships/Samael/vic_samael.png",
   "style": "VIC",
   "height": 160,
   "width": 216,
@@ -19,6 +19,13 @@
   "builtInWings": [
     "vic_shabriri_wing"
   ],
+  "builtInWeapons": {
+    "WS0010": "vic_engine_glow_universal_big",
+    "WS0011": "vic_samael_engine_glow_2",
+    "WS0012": "vic_samael_engine_glow_3",
+    "WS0013": "vic_samael_engine_glow_1",
+    "WS0014": "vic_samael_engine_glow_4"
+  },
   "weaponSlots": [
     {
       "id": "WS0001",
@@ -112,51 +119,96 @@
         -22.5, 0,
         -22.5, 0
       ]
+    },
+    {
+      "id": "WS0010",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": 0,
+      "locations": [-79, -0]
+    },
+    {
+      "id": "WS0011",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": 0,
+      "locations": [-54, 28]
+    },
+    {
+      "id": "WS0012",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": -0,
+      "locations": [-54, -28]
+    },
+    {
+      "id": "WS0013",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": -0,
+      "locations": [-45, 54]
+    },
+    {
+      "id": "WS0014",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": 0,
+      "locations": [-45, -54]
     }
   ],
   "engineSlots": [
     {
-      "location": [-79.5, 0],
+      "location": [-76, -0],
+      "length": 80,
+      "width": 20,
+      "angle": 180,
+      "contrailSize": 20,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-51, 28],
       "length": 40,
-      "width": 25,
-      "angle": -180,
-      "contrailSize": 25,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 8,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-54.5, 28],
-      "length": 25,
-      "width": 15,
+      "location": [-42, 54],
+      "length": 40,
+      "width": 8,
       "angle": 180,
-      "contrailSize": 15,
+      "contrailSize": 8,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-45.5, 54],
-      "length": 25.5,
-      "width": 15,
+      "location": [-42, -54],
+      "length": 40,
+      "width": 8,
       "angle": 180,
-      "contrailSize": 15,
+      "contrailSize": 8,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-45.5, -54.5],
-      "length": 25,
-      "width": 15,
+      "location": [-51, -28],
+      "length": 40,
+      "width": 8,
       "angle": 180,
-      "contrailSize": 15,
-      "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
-    },
-    {
-      "location": [-54.5, -28.5],
-      "length": 25,
-      "width": 15,
-      "angle": 180,
-      "contrailSize": 15,
+      "contrailSize": 8,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }

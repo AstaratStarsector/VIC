@@ -2,7 +2,7 @@
   "hullName": "Thamuz",
   "hullId": "vic_thamuz",
   "hullSize": "CRUISER",
-  "spriteName": "graphics/ships/Thamuz/Thamuz.png",
+  "spriteName": "graphics/ships/Thamuz/vic_thamuz.png",
   "style": "VIC",
   "height": 216,
   "width": 350,
@@ -16,6 +16,16 @@
     "vic_dynamicshields",
     "vic_adaptiveAssault"
   ],
+ "builtInWeapons": {
+    "WS0014": "vic_thamuz_deco_left",
+    "WS0015": "vic_thamuz_deco_right",
+    "WS0016": "vic_thamuz_engine_glow_sides",
+    "WS0017": "vic_thamuz_engine_glow_sides",
+    "WS0018": "vic_thamuz_engine_glow_sides",
+    "WS0019": "vic_thamuz_engine_glow_sides",
+    "WS0020": "vic_engine_glow_universal_big",
+    "WS0021": "vic_engine_glow_universal_big"
+  },
   "weaponSlots": [
     {
       "id": "WS0002",
@@ -24,7 +34,8 @@
       "mount": "TURRET",
       "arc": 81,
       "angle": 0,
-      "locations": [34, -28]
+      "locations": [34, -28],
+      "renderOrderMod": 4
     },
     {
       "id": "WS0003",
@@ -32,8 +43,9 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 81,
-      "angle": -0,
-      "locations": [34, 28]
+      "angle": 0,
+      "locations": [34, 28],
+      "renderOrderMod": 4
     },
     {
       "id": "WS0006",
@@ -59,8 +71,9 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 92,
-      "angle": 0,
-      "locations": [3, 97]
+      "angle": -0,
+      "locations": [3, 97],
+      "renderOrderMod": 4
     },
     {
       "id": "WS0010",
@@ -95,8 +108,9 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 92,
-      "angle": -0,
-      "locations": [3, -97]
+      "angle": 0,
+      "locations": [3, -97],
+      "renderOrderMod": 4
     },
     {
       "id": "WS0001",
@@ -105,7 +119,8 @@
       "mount": "TURRET",
       "arc": 139,
       "angle": 0,
-      "locations": [-2, -0]
+      "locations": [-2, -0],
+      "renderOrderMod": 9
     },
     {
       "id": "WS0005",
@@ -114,7 +129,7 @@
       "mount": "HARDPOINT",
       "arc": 5,
       "angle": 0,
-      "locations": [19.5, -61]
+      "locations": [21, -61]
     },
     {
       "id": "WS0013",
@@ -123,7 +138,81 @@
       "mount": "HARDPOINT",
       "arc": 5,
       "angle": -0,
-      "locations": [19.5, 61]
+      "locations": [21, 61]
+    },
+    {
+      "id": "WS0014",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": -0,
+      "locations": [45.5, 53.5],
+      "renderOrderMod": 3
+    },
+    {
+      "id": "WS0015",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": 0,
+      "locations": [45.5, -53.5],
+      "renderOrderMod": 3
+    },
+    {
+      "id": "WS0016",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": 0,
+      "locations": [-34, -61]
+    },
+    {
+      "id": "WS0017",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": -0,
+      "locations": [-34, 61]
+    },
+    {
+      "id": "WS0018",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": 0,
+      "locations": [-34, -91]
+    },
+    {
+      "id": "WS0019",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": -0,
+      "locations": [-34, 91]
+    },
+    {
+      "id": "WS0020",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": 0,
+      "locations": [-36, -31]
+    },
+    {
+      "id": "WS0021",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": -0,
+      "locations": [-36, 31]
     }
   ],
   "engineSlots": [

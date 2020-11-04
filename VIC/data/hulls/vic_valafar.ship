@@ -2,7 +2,7 @@
   "hullName": "Valafar",
   "hullId": "vic_valafar",
   "hullSize": "CRUISER",
-  "spriteName": "graphics/ships/vic_valafar.png",
+  "spriteName": "graphics/ships/Valafar/vic_valafar.png",
   "style": "VIC",
   "height": 262,
   "width": 180,
@@ -15,6 +15,18 @@
     "vic_aerodynamicdesign",
     "vic_dynamicshields"
   ],
+  "builtInWeapons": {
+    "WS0010": "vic_engine_glow_universal_big",
+    "WS0011": "vic_engine_glow_universal_big",
+    "WS0012": "vic_valafar_engine_glow_left",
+    "WS0013": "vic_valafar_engine_glow_right",
+    "WS0014": "vic_valafar_tail_left",
+    "WS0015": "vic_valafar_tail_right",
+    "WS0016": "vic_valafar_wing_left",
+    "WS0017": "vic_valafar_wing_right",
+    "WS0018": "vic_valafar_front_left",
+    "WS0019": "vic_valafar_front_right"
+  },
   "weaponSlots": [
     {
       "id": "WS0001",
@@ -96,6 +108,96 @@
       "arc": 0,
       "angle": -0,
       "locations": [-21, 66]
+    },
+    {
+      "id": "WS0010",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 85,
+      "angle": -0,
+      "locations": [-115, -8]
+    },
+    {
+      "id": "WS0011",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 85,
+      "angle": 0,
+      "locations": [-115, 8]
+    },
+    {
+      "id": "WS0012",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 85,
+      "angle": 0,
+      "locations": [-70, 37]
+    },
+    {
+      "id": "WS0013",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 85,
+      "angle": -0,
+      "locations": [-70, -37]
+    },
+    {
+      "id": "WS0014",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 85,
+      "angle": 0,
+      "locations": [-79.5, 29]
+    },
+    {
+      "id": "WS0015",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 85,
+      "angle": -0,
+      "locations": [-79.5, -29]
+    },
+    {
+      "id": "WS0016",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-24, 63]
+    },
+    {
+      "id": "WS0017",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-24, -63]
+    },
+    {
+      "id": "WS0018",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": 0,
+      "locations": [73.5, 21]
+    },
+    {
+      "id": "WS0019",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": -0,
+      "locations": [73.5, -21]
     }
   ],
   "engineSlots": [

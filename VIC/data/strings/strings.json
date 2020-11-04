@@ -9,9 +9,4 @@
 		"VBomb_conf0":"Viral bombardment will make the colony permanently contaminated. Are you sure?",
 		"VBomb_end0":"Commencing Viral bombardment. Impact in 3... 2... 1...",
 	},
-	"vic_PersonaChange":{
-		"Choose gender":"Choose your gender",
-		"Confirm":"Confirm choose of new face.",
-		"Result":"Enjoy your new face.",		
-	},
 }

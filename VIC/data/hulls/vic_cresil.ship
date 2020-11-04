@@ -16,6 +16,12 @@
     "vic_dynamicshields",
     "vic_vBombHmod"
   ],
+  "builtInWeapons": {
+    "WS0007": "vic_engine_glow_universal_big",
+    "WS0008": "vic_engine_glow_universal_big",
+    "WS0009": "vic_engine_glow_universal_small",
+    "WS0010": "vic_engine_glow_universal_small"
+  },
   "weaponSlots": [
     {
       "id": "WS0001",
@@ -118,11 +124,47 @@
         41, -18,
         42, -15.5
       ]
+    },
+    {
+      "id": "WS0007",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 128,
+      "angle": 0,
+      "locations": [-132.5, 8]
+    },
+    {
+      "id": "WS0008",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 128,
+      "angle": -0,
+      "locations": [-132.5, -8]
+    },
+    {
+      "id": "WS0009",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 128,
+      "angle": 0,
+      "locations": [-70.5, 56]
+    },
+    {
+      "id": "WS0010",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 128,
+      "angle": -0,
+      "locations": [-70.5, -56]
     }
   ],
   "engineSlots": [
     {
-      "location": [-129, 8],
+      "location": [-129.5, 8],
       "length": 90,
       "width": 20,
       "angle": 180,
@@ -131,7 +173,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-129, -8],
+      "location": [-129.5, -8],
       "length": 90,
       "width": 20,
       "angle": -180,

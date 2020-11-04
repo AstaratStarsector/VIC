@@ -2,7 +2,7 @@
   "hullName": "Moloch",
   "hullId": "vic_moloch",
   "hullSize": "DESTROYER",
-  "spriteName": "graphics/ships/vic_moloch.png",
+  "spriteName": "graphics/ships/Moloch/vic_moloch.png",
   "style": "VIC",
   "height": 212,
   "width": 130,
@@ -15,6 +15,18 @@
     "vic_aerodynamicdesign",
     "vic_dynamicshields"
   ],
+  "builtInWeapons": {
+    "WS0008": "vic_moloch_tail_left",
+    "WS0009": "vic_moloch_tail_right",
+    "WS0010": "vic_moloch_engine_glow_2",
+    "WS0011": "vic_moloch_engine_glow_3",
+    "WS0012": "vic_moloch_engine_glow_1",
+    "WS0013": "vic_moloch_engine_glow_4",
+    "WS0014": "vic_moloch_wing_left",
+    "WS0015": "vic_moloch_wing_right",
+    "WS0016": "vic_moloch_front_left",
+    "WS0017": "vic_moloch_front_right"
+  },
   "weaponSlots": [
     {
       "id": "WS0001",
@@ -23,7 +35,8 @@
       "mount": "TURRET",
       "arc": 90,
       "angle": 0,
-      "locations": [-39, -26]
+      "locations": [-39, -26],
+      "renderOrderMod": 2
     },
     {
       "id": "WS0002",
@@ -32,7 +45,8 @@
       "mount": "TURRET",
       "arc": 90,
       "angle": -0,
-      "locations": [-39, 26]
+      "locations": [-39, 26],
+      "renderOrderMod": 2
     },
     {
       "id": "WS0003",
@@ -41,7 +55,8 @@
       "mount": "TURRET",
       "arc": 139,
       "angle": -43,
-      "locations": [28, -11]
+      "locations": [28, -11],
+      "renderOrderMod": 2
     },
     {
       "id": "WS0004",
@@ -50,7 +65,8 @@
       "mount": "TURRET",
       "arc": 139,
       "angle": 43,
-      "locations": [28, 11]
+      "locations": [28, 11],
+      "renderOrderMod": 2
     },
     {
       "id": "WS0005",
@@ -77,12 +93,106 @@
       "mount": "HARDPOINT",
       "arc": 5,
       "angle": 0,
-      "locations": [61, -0]
+      "locations": [53.5, -0]
+    },
+    {
+      "id": "WS0008",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": -0,
+      "locations": [-76, 6]
+    },
+    {
+      "id": "WS0009",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": 0,
+      "locations": [-76, -6]
+    },
+    {
+      "id": "WS0010",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": -0,
+      "locations": [-96, 14]
+    },
+    {
+      "id": "WS0011",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": 0,
+      "locations": [-96, -14]
+    },
+    {
+      "id": "WS0012",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": -0,
+      "locations": [-78, 31]
+    },
+    {
+      "id": "WS0013",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 90,
+      "angle": 0,
+      "locations": [-78, -31]
+    },
+    {
+      "id": "WS0014",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-35, 47],
+      "renderOrderMod": 1
+    },
+    {
+      "id": "WS0015",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-35, -47],
+      "renderOrderMod": 1
+    },
+    {
+      "id": "WS0016",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 139,
+      "angle": -0,
+      "locations": [58, 11],
+      "renderOrderMod": 1
+    },
+    {
+      "id": "WS0017",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 139,
+      "angle": 0,
+      "locations": [58, -11],
+      "renderOrderMod": 1
     }
   ],
   "engineSlots": [
     {
-      "location": [-91, -14],
+      "location": [-93, -14],
       "length": 60,
       "width": 15,
       "angle": 180,
@@ -91,7 +201,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-91, 14],
+      "location": [-93, 14],
       "length": 60,
       "width": 15,
       "angle": -180,

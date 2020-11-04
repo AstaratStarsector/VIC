@@ -2,7 +2,7 @@
   "hullName": "Jezebeth",
   "hullId": "vic_jezebeth",
   "hullSize": "DESTROYER",
-  "spriteName": "graphics/ships/vic_jezebeth.png",
+  "spriteName": "graphics/ships/Jezebeth/vic_jezebeth.png",
   "style": "VIC",
   "height": 232,
   "width": 138,
@@ -16,8 +16,14 @@
     "vic_dynamicshields"
   ],
   "builtInWeapons": {
-    "WS0002": "vic_jezebethWingLeft",
-    "WS0003": "vic_jezebethWingRight"
+    "WS0002": "vic_jezebeth_wing_left",
+    "WS0003": "vic_jezebeth_wing_right",
+    "WS0007": "vic_jezebeth_engine_glow_left",
+    "WS0008": "vic_jezebeth_engine_glow_right",
+    "WS0009": "vic_engine_glow_universal_small",
+    "WS0010": "vic_engine_glow_universal_small",
+    "WS0011": "vic_jezebeth_front_left",
+    "WS0012": "vic_jezebeth_front_right"
   },
   "weaponSlots": [
     {
@@ -86,6 +92,60 @@
         -53, 7.5,
         -53, -7.5
       ]
+    },
+    {
+      "id": "WS0007",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-20, 47]
+    },
+    {
+      "id": "WS0008",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-20, -47]
+    },
+    {
+      "id": "WS0009",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-31, 31]
+    },
+    {
+      "id": "WS0010",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-31, -31]
+    },
+    {
+      "id": "WS0011",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": 0,
+      "locations": [76.5, 11]
+    },
+    {
+      "id": "WS0012",
+      "size": "LARGE",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": -0,
+      "locations": [76.5, -11]
     }
   ],
   "engineSlots": [
