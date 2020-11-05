@@ -20,7 +20,6 @@ public class vic_devostatorFire implements EveryFrameWeaponEffectPlugin {
             return;
         }
 
-
         if (MagicRender.screenCheck(0.25f, weapon.getLocation())) {
             if (shot == 1) shot = 2;
             if (weapon.getChargeLevel() == 1) shot = 1;

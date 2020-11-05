@@ -14,7 +14,6 @@ import java.util.Map;
 //Made by PureTilt for Astarat
 public class VIC_QuantumLungeWeapon implements EveryFrameWeaponEffectPlugin {
 
-    private final IntervalUtil timer = new IntervalUtil(0.5f, 0.5f);
     private final Map<ShipAPI.HullSize, Float> MULT = new HashMap<>();
     private boolean runOnce = false;
     private boolean runOnce2 = false;
@@ -41,13 +40,12 @@ public class VIC_QuantumLungeWeapon implements EveryFrameWeaponEffectPlugin {
         }
 
         if (this.SYSTEM != null && !engine.isPaused() && this.SHIP.isAlive()) {
-            //engine.maintainStatusForPlayerShip("Jump time", "graphics/icons/hullsys/ammo_feeder.png", "Debug 1", ElapsedTIme + "", false);
-            //engine.maintainStatusForPlayerShip("Jump time", "graphics/icons/hullsys/ammo_feeder.png", "Debug 1", this.SYSTEM.getState().toString(), false);
             if (this.SYSTEM.isStateActive()) {
+                if (ElapsedTIme > this.SYSTEM.getChargeActiveDur() * 1.2f)
+                    this.SHIP.getFluxTracker().beginOverloadWithTotalBaseDuration(3f);
                 ElapsedTIme += amount;
                 if (!this.runOnce2 && ElapsedTIme >= this.SYSTEM.getChargeActiveDur()) {
                     this.SHIP.useSystem();
-                    //engine.addFloatingText(this.SHIP.getLocation(), "aaaaaaaaaaaaaaaaaaaaaaa", 60, Color.WHITE, this.SHIP, 1, 2);
                     this.runOnce2 = true;
                 }
             }

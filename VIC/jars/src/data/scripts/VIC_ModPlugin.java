@@ -7,11 +7,10 @@ import com.fs.starfarer.api.campaign.CampaignPlugin;
 import com.fs.starfarer.api.combat.MissileAIPlugin;
 import com.fs.starfarer.api.combat.MissileAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.combat.entities.Missile;
 import data.scripts.plugins.timer.VIC_TimeTracker;
 import data.scripts.plugins.vic_brandEngineUpgradesDetectionRange;
+import data.scripts.weapons.ai.VIC_SwarmMirvAI;
 import data.scripts.weapons.ai.vic_disruptorShot_AI;
-import data.scripts.weapons.ai.vic_noMissilesAI;
 import data.scripts.weapons.ai.vic_verlioka;
 import data.world.VICGen;
 import exerelin.campaign.SectorManager;
@@ -21,7 +20,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
     public static final String VERLIOKA = "vic_verlioka_shot";
     public static final String DISRUPTOR = "vic_disruptorShot_mie";
-    public static final String QLMARKER = "vic_quantumLungeMarker";
+    public static final String ABYSSAL = "vic_abyssalfangs_srm";
 
     @Override
     public PluginPick<MissileAIPlugin> pickMissileAI(MissileAPI missile, ShipAPI launchingShip) {
@@ -29,9 +28,9 @@ public class VIC_ModPlugin extends BaseModPlugin {
             case VERLIOKA:
                 return new PluginPick<MissileAIPlugin>(new vic_verlioka(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case DISRUPTOR:
-                return new PluginPick<MissileAIPlugin>(new vic_disruptorShot_AI((Missile) missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
-            case QLMARKER:
-                return new PluginPick<MissileAIPlugin>(new vic_noMissilesAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+                return new PluginPick<MissileAIPlugin>(new vic_disruptorShot_AI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            case ABYSSAL:
+                return new PluginPick<MissileAIPlugin>(new VIC_SwarmMirvAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             default:
         }
         return null;
