@@ -5,7 +5,6 @@
     },
 	"plugins":{
 		"vic_combatPlugin":"data.scripts.plugins.vic_combatPlugin",
-		"vic_shipExplosion":"data.scripts.plugins.vic_shipExplosion",
 	},
 	"graphics":{		
 		"blueprint_packages":{

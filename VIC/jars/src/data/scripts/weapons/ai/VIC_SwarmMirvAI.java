@@ -1,7 +1,15 @@
 package data.scripts.weapons.ai;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.combat.CollisionClass;
+import com.fs.starfarer.api.combat.CombatEntityAPI;
+import com.fs.starfarer.api.combat.DamageType;
+import com.fs.starfarer.api.combat.DamagingProjectileAPI;
+import com.fs.starfarer.api.combat.MissileAPI;
+import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.ShipCommand;
+import java.awt.Color;
+import java.util.List;
 import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.FastTrig;
 import org.lazywizard.lazylib.MathUtils;
@@ -9,11 +17,8 @@ import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lwjgl.util.vector.Vector2f;
 
-import java.awt.*;
-import java.util.List;
-
-public class VIC_SwarmMirvAI extends VIC_BaseMissile {
-
+public class VIC_SwarmMirvAI extends VIC_BaseMissile
+{
     private static final float ENGINE_DEAD_TIME_MAX = 0.75f; // Max time until engine burn starts
     private static final float ENGINE_DEAD_TIME_MIN = 0.25f; // Min time until engine burn starts
     private static final float LEAD_GUIDANCE_FACTOR = 0.4f;
@@ -34,7 +39,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
     private static final int NUMBER_SUBMUNITIONS = 1;
     private static final float SUBMUNITION_RELATIVE_OFFSET = 0f; // How much each submunition's aim point is offset relative to others if multiple
     private static final float SUBMUNITION_INACCURACY = 0f; // How much much random offset from the ^ aim point if multiple
-    private static final String STAGE_TWO_WEAPON_ID = "vic_psotnik";
+    private static final String STAGE_TWO_WEAPON_ID = "WEAPON ID GOES HERE";
     private static final String STAGE_TWO_SOUND_ID = "SOUND ID GOES HERE";
     private static final float VELOCITY_DAMPING_FACTOR = 0.15f;
     private static final float WEAVE_FALLOFF_DISTANCE = 1000f; // Weaving stops entirely at 0 distance
@@ -43,15 +48,16 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
     private static final float WEAVE_SINE_B_AMPLITUDE = 13f; // Degrees offset
     private static final float WEAVE_SINE_B_PERIOD = 8f;
     private static final Vector2f ZERO = new Vector2f();
-    protected final float eccmMult;
+    private float engineDeadTimer;
+    private float timeAccum = 0f;
     private final float weaveSineAPhase;
     private final float weaveSineBPhase;
     private final float inaccuracy;
-    private float engineDeadTimer;
-    private float timeAccum = 0f;
     private boolean readyToFly = false;
+    protected final float eccmMult;
 
-    public VIC_SwarmMirvAI(MissileAPI missile, ShipAPI launchingShip) {
+    public VIC_SwarmMirvAI(MissileAPI missile, ShipAPI launchingShip)
+    {
         super(missile, launchingShip);
 
         weaveSineAPhase = (float) (Math.random() * Math.PI * 2.0);
@@ -64,12 +70,15 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
         inaccuracy = MathUtils.getRandomNumberInRange(-FIRE_INACCURACY, FIRE_INACCURACY);
     }
 
-    public float getInaccuracyAfterECCM() {
+    public float getInaccuracyAfterECCM()
+    {
         float eccmEffectMult = 1;
-        if (launchingShip != null) {
+        if (launchingShip != null)
+        {
             eccmEffectMult = 1 - eccmMult * launchingShip.getMutableStats().getMissileGuidance().getModifiedValue();
         }
-        if (eccmEffectMult < 0) {
+        if (eccmEffectMult < 0)
+        {
             eccmEffectMult = 0;
         }
 
@@ -83,15 +92,16 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
      * {@code AIM_THRESHOLD}.
      *
      * @param missilePos
-     * @param targetPos  Target position (not necessarily the target ship's
-     *                   actual position, more usually the computed intercept point)
-     * @param distance   Distance between missile and target.
-     * @param heading    Missile's heading.
-     * @param radius     Target's collision radius.
+     * @param targetPos Target position (not necessarily the target ship's
+     * actual position, more usually the computed intercept point)
+     * @param distance Distance between missile and target.
+     * @param heading Missile's heading.
+     * @param radius Target's collision radius.
      * @return
      */
     public boolean isWithinMIRVAngle(Vector2f missilePos, Vector2f targetPos,
-                                     float distance, float heading, float radius) {
+            float distance, float heading, float radius)
+    {
         Vector2f endpoint = MathUtils.getPointOnCircumference(missilePos, distance, heading);
         radius = radius * AIM_THRESHOLD;
 
@@ -99,22 +109,28 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
     }
 
     @Override
-    public void advance(float amount) {
-        if (Global.getCombatEngine().isPaused()) {
+    public void advance(float amount)
+    {
+        if (Global.getCombatEngine().isPaused())
+        {
             return;
         }
 
-        if (missile.isFading() || missile.isFizzling()) {
+        if (missile.isFading() || missile.isFizzling())
+        {
             return;
         }
 
         boolean mirvNow = false;
 
         // Do not fly forwards until we have finished engineDeadTimer
-        if (!readyToFly) {
-            if (engineDeadTimer > 0f) {
+        if (!readyToFly)
+        {
+            if (engineDeadTimer > 0f)
+            {
                 engineDeadTimer -= amount;
-                if (engineDeadTimer <= 0f) {
+                if (engineDeadTimer <= 0f)
+                {
                     readyToFly = true;
                 }
             }
@@ -123,15 +139,18 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
         timeAccum += amount;
 
         // If we have a valid target, turn to face desired intercept point
-        if (acquireTarget(amount)) {
+        if (acquireTarget(amount))
+        {
             float distance = MathUtils.getDistance(target.getLocation(), missile.getLocation());
             float guidance = LEAD_GUIDANCE_FACTOR;
-            if (missile.getSource() != null) {
+            if (missile.getSource() != null)
+            {
                 guidance += Math.min(missile.getSource().getMutableStats().getMissileGuidance().getModifiedValue()
                         - missile.getSource().getMutableStats().getMissileGuidance().getBaseValue(), 1f) * LEAD_GUIDANCE_FACTOR_FROM_ECCM;
             }
             Vector2f guidedTarget = intercept(missile.getLocation(), missile.getVelocity().length(), target.getLocation(), target.getVelocity());
-            if (guidedTarget == null) {
+            if (guidedTarget == null)
+            {
                 Vector2f projection = new Vector2f(target.getVelocity());
                 float scalar = distance / (missile.getVelocity().length() + 1f);
                 projection.scale(scalar);
@@ -150,13 +169,15 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
             float absDAng = Math.abs(angularDistance);
 
             // Apply thrust, but only if engine dead time is over
-            if (readyToFly) {
+            if (readyToFly)
+            {
                 missile.giveCommand(ShipCommand.ACCELERATE);
             }
 
             missile.giveCommand(angularDistance < 0 ? ShipCommand.TURN_RIGHT : ShipCommand.TURN_LEFT);
 
-            if (absDAng < Math.abs(missile.getAngularVelocity()) * VELOCITY_DAMPING_FACTOR) {
+            if (absDAng < Math.abs(missile.getAngularVelocity()) * VELOCITY_DAMPING_FACTOR)
+            {
                 missile.setAngularVelocity(angularDistance / VELOCITY_DAMPING_FACTOR);
             }
 
@@ -166,24 +187,30 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
             if ((timeAccum >= TIME_BEFORE_CAN_MIRV) && (target.getCollisionClass() != CollisionClass.NONE)
                     && (distance <= neededDist)
                     && isWithinMIRVAngle(missile.getLocation(), guidedTarget, distance,
-                    missile.getFacing(), target.getCollisionRadius())) {
+                            missile.getFacing(), target.getCollisionRadius()))
+            {
                 mirvNow = true;
             }
         }
 
         // Launch submunitions
-        if (mirvNow) {
+        if (mirvNow)
+        {
             Vector2f submunitionVelocityMod = new Vector2f(0, MathUtils.getRandomNumberInRange(
                     SUBMUNITION_VELOCITY_MOD_MAX, SUBMUNITION_VELOCITY_MOD_MIN));
 
             float initialOffset = -(NUMBER_SUBMUNITIONS - 1) / 2f * SUBMUNITION_RELATIVE_OFFSET;
-            DamagingProjectileAPI submunition;
-            for (int i = 0; i < NUMBER_SUBMUNITIONS; i++) {
+            DamagingProjectileAPI submunition = null;
+            for (int i = 0; i < NUMBER_SUBMUNITIONS; i++)
+            {
                 float angle = missile.getFacing() + initialOffset + i * SUBMUNITION_RELATIVE_OFFSET
                         + MathUtils.getRandomNumberInRange(-SUBMUNITION_INACCURACY, SUBMUNITION_INACCURACY);
-                if (angle < 0f) {
+                if (angle < 0f)
+                {
                     angle += 360f;
-                } else if (angle >= 360f) {
+                }
+                else if (angle >= 360f)
+                {
                     angle -= 360f;
                 }
 
@@ -210,33 +237,42 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
                 }
             }
              */
-            //Global.getSoundPlayer().playSound(STAGE_TWO_SOUND_ID, 1f, 1f, missile.getLocation(), missile.getVelocity());
+            Global.getSoundPlayer().playSound(STAGE_TWO_SOUND_ID, 1f, 1f, missile.getLocation(), missile.getVelocity());
 
             // GFX on the spot of the switcheroo if desired
             // Remove old missile
-            if (STAGE_ONE_EXPLODE) {
+            if (STAGE_ONE_EXPLODE)
+            {
                 Global.getCombatEngine().addSmokeParticle(missile.getLocation(), missile.getVelocity(), 60f, 0.75f, 0.75f, SMOKE_COLOR);
                 Global.getCombatEngine().applyDamage(missile, missile.getLocation(), missile.getHitpoints() * 100f,
                         DamageType.FRAGMENTATION, 0f, false, false, missile);
-            } else if (STAGE_ONE_FLARE) {
+            }
+            else if (STAGE_ONE_FLARE)
+            {
                 Vector2f offset = new Vector2f(FLARE_OFFSET, 0f);
                 VectorUtils.rotate(offset, missile.getFacing(), offset);
                 Vector2f.add(offset, missile.getLocation(), offset);
                 Global.getCombatEngine().addHitParticle(offset, missile.getVelocity(), 100f, 0.5f, 0.25f, FLARE_COLOR);
                 Global.getCombatEngine().removeEntity(missile);
-            } else {
+            }
+            else
+            {
                 Global.getCombatEngine().removeEntity(missile);
             }
         }
     }
 
     @Override
-    protected boolean acquireTarget(float amount) {
+    protected boolean acquireTarget(float amount)
+    {
         // If our current target is totally invalid, look for a new one
-        if (!isTargetValid(target)) {
-            if (target instanceof ShipAPI) {
+        if (!isTargetValid(target))
+        {
+            if (target instanceof ShipAPI)
+            {
                 ShipAPI ship = (ShipAPI) target;
-                if (ship.isPhased() && ship.isAlive()) {
+                if (ship.isPhased() && ship.isAlive())
+                {
                     // We were locked onto a ship that has now phased, do not attempt to acquire a new target
                     return false;
                 }
@@ -244,24 +280,33 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
             // Look for a target that is not a drone or fighter, if available
             setTarget(findBestTarget(false));
             // No such target, look again except this time we allow drones and fighters
-            if (target == null) {
+            if (target == null)
+            {
                 setTarget(findBestTarget(true));
             }
-            return target != null;
+            if (target == null)
+            {
+                return false;
+            }
         }
 
         // If our target is valid but a drone or fighter, see if there's a bigger ship we can aim for instead
-        else {
-            if (isDroneOrFighter(target)) {
-                if (target instanceof ShipAPI) {
+        else
+        {
+            if (isDroneOrFighter(target))
+            {
+                if (target instanceof ShipAPI)
+                {
                     ShipAPI ship = (ShipAPI) target;
-                    if (ship.isPhased() && ship.isAlive()) {
+                    if (ship.isPhased() && ship.isAlive())
+                    {
                         // We were locked onto a ship that has now phased, do not attempt to acquire a new target
                         return false;
                     }
                 }
                 CombatEntityAPI newTarget = findBestTarget();
-                if (newTarget != null) {
+                if (newTarget != null)
+                {
                     target = newTarget;
                 }
             }
@@ -270,7 +315,8 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
     }
 
     @Override
-    protected ShipAPI findBestTarget() {
+    protected ShipAPI findBestTarget()
+    {
         return findBestTarget(false);
     }
 
@@ -278,24 +324,32 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
      * This is some bullshit weighted random picker that favors larger ships
      *
      * @param allowDroneOrFighter True if looking for an alternate target
-     *                            (normally it refuses to target fighters or drones)
+     * (normally it refuses to target fighters or drones)
      * @return
      */
-    protected ShipAPI findBestTarget(boolean allowDroneOrFighter) {
+    protected ShipAPI findBestTarget(boolean allowDroneOrFighter)
+    {
         ShipAPI best = null;
         float weight, bestWeight = 0f;
         List<ShipAPI> ships = AIUtils.getEnemiesOnMap(missile);
-        for (ShipAPI tmp : ships) {
+        int size = ships.size();
+        for (int i = 0; i < size; i++)
+        {
+            ShipAPI tmp = ships.get(i);
             float mod;
             // This is a valid target if:
             //   It is NOT a (drone or fighter), OR we're in alternate mode
             //   It passes the valid target check
             boolean valid = allowDroneOrFighter || !isDroneOrFighter(target);
             valid = valid && isTargetValid(tmp);
-            if (!valid) {
+            if (!valid)
+            {
                 continue;
-            } else {
-                switch (tmp.getHullSize()) {
+            }
+            else
+            {
+                switch (tmp.getHullSize())
+                {
                     default:
                     case FIGHTER:
                         mod = 1f;
@@ -315,7 +369,8 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
                 }
             }
             weight = (4000f / Math.max(MathUtils.getDistance(tmp, missile.getLocation()), 750f)) * mod;
-            if (weight > bestWeight) {
+            if (weight > bestWeight)
+            {
                 best = tmp;
                 bestWeight = weight;
             }
@@ -323,10 +378,15 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
         return best;
     }
 
-    protected boolean isDroneOrFighter(CombatEntityAPI target) {
-        if (target instanceof ShipAPI) {
+    protected boolean isDroneOrFighter(CombatEntityAPI target)
+    {
+        if (target instanceof ShipAPI)
+        {
             ShipAPI ship = (ShipAPI) target;
-            return ship.isFighter() || ship.isDrone();
+            if (ship.isFighter() || ship.isDrone())
+            {
+                return true;
+            }
         }
         return false;
     }

@@ -28,9 +28,9 @@
 	"aiHints":{
 		"averageSpeedIncrease":8000,
 		"burstMovementPotential":1600,		
-		"threatRange":1600,
+		"threatRange":1200,
 		"threatAmount":100000000,
 		"threatAngle":0,
-		"threatArc":5,		
+		"threatArc":360,		
 	}
 }

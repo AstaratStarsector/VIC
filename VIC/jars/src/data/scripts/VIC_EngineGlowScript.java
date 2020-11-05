@@ -56,9 +56,6 @@ public class VIC_EngineGlowScript implements EveryFrameWeaponEffectPlugin {
         if (thruster.isDisabled()) {
             currentBrightness = 0f;
         }
-        if (SHIP.isHulk()){
-            currentBrightness = 0f;
-        }
 
         //make color and apply it to sprite
         //Color colorToUse = new Color(COLOR_NORMAL[0], COLOR_NORMAL[1], COLOR_NORMAL[2], currentBrightness * MAX_OPACITY);

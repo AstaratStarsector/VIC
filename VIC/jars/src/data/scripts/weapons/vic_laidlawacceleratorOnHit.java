@@ -28,23 +28,23 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
             new Color(255, 150, 35, 255)
     );
 
-    public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target,
-                      Vector2f point, boolean shieldHit, CombatEngineAPI engine) {
-        if (!shieldHit && target instanceof ShipAPI) {
-            explosion.setDamageType(DamageType.FRAGMENTATION);
-            explosion.setShowGraphic(false);
-            engine.spawnDamagingExplosion(explosion, projectile.getSource(), point);
-        }
-        if (ModManager.getInstance().isModEnabled("shaderLib")) {
-            WaveDistortion wave = new WaveDistortion(point, ZERO);
-            wave.setIntensity(15f);
-            wave.setSize(150f);
-            wave.flip(true);
-            wave.fadeOutIntensity(0.3f);
-            wave.setLifetime(0.2f);
-            wave.fadeOutIntensity(0.3f);
-            wave.setLocation(projectile.getLocation());
-            DistortionShader.addDistortion(wave);
-        }
-    }
+	public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target,
+					  Vector2f point, boolean shieldHit, CombatEngineAPI engine) {
+		if (!shieldHit && target instanceof ShipAPI) {
+			explosion.setDamageType(DamageType.FRAGMENTATION);
+			explosion.setShowGraphic(false);
+			engine.spawnDamagingExplosion(explosion,projectile.getSource(),point);
+		}
+		if (ModManager.getInstance().isModEnabled("shaderLib")) {
+			WaveDistortion wave = new WaveDistortion(point, ZERO);
+			wave.setIntensity(15f);
+			wave.setSize(100f);
+			wave.flip(false);
+			wave.fadeOutIntensity(0.3f);
+			wave.setLifetime(0.2f);
+			wave.fadeOutIntensity(0.3f);
+			wave.setLocation(projectile.getLocation());
+			DistortionShader.addDistortion(wave);
+		}
+	}
 }

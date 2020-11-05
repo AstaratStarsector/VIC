@@ -8,8 +8,8 @@
 	"hitGlowRadius":50,
 	"width":7.5,
 	"fadeTime":0.20,
-	"fringeColor":[243, 56, 56, 104],
-	"coreColor":[250, 83, 18, 226],	
+	"fringeColor":[255,235,155,205],
+	"coreColor":[255,205,155,200],	
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,
 	"bulletSprite":"graphics/missiles/shell_large_devastator.png",
@@ -26,7 +26,7 @@
 									 "particleDuration":1,
 									 "particleCount":13,
 									 "particleColor":[255,225,125,255],
-									 "explosionColor":[250, 83, 18, 150],
+									 "explosionColor":[255,225,125,125],
 									 "sound":"devastator_explosion"},
 					}
 }
