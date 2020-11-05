@@ -121,11 +121,6 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
     private static final Map<String, Color> PARTICLE_COLOR = new HashMap<>();
     static {
         PARTICLE_COLOR.put("default", new Color(155, 255, 255, 165));
-        PARTICLE_COLOR.put("FLASH_ID_1", new Color(155, 255, 255, 50));
-        PARTICLE_COLOR.put("FLASH_ID_2", new Color(155, 255, 255, 50));
-        PARTICLE_COLOR.put("FLASH_ID_3", new Color(155, 255, 255, 165));
-        PARTICLE_COLOR.put("FLASH_ID_4", new Color(155, 255, 255, 165));
-        PARTICLE_COLOR.put("FLASH_ID_5", new Color(155, 255, 255, 165));
         PARTICLE_COLOR.put("RING0", new Color(255, 255, 255, 100));
         PARTICLE_COLOR.put("RING", new Color(255, 255, 255, 100));
         PARTICLE_COLOR.put("RING2", new Color(255, 255, 255, 100));
@@ -197,8 +192,6 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
     private static final Map<String, Float> PARTICLE_DURATION_MAX = new HashMap<>();
     static {
         PARTICLE_DURATION_MAX.put("default", 1.5f);
-        PARTICLE_DURATION_MAX.put("FLASH_ID_1", 1f);
-        PARTICLE_DURATION_MAX.put("FLASH_ID_2", 1f);
         PARTICLE_DURATION_MAX.put("RING0", 0.55f);
         PARTICLE_DURATION_MAX.put("RING", 0.65f);
         PARTICLE_DURATION_MAX.put("RING2", 0.75f);
@@ -502,12 +495,12 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
         trueCenterLocation.y += weapon.getLocation().y;
 
         WaveDistortion wave = new WaveDistortion(trueCenterLocation, new Vector2f());
-        wave.setIntensity(3f);
+        wave.setIntensity(5f);
         wave.setSize(50f);
-        wave.flip(false);
-        wave.fadeOutIntensity(0.3f);
-        wave.setLifetime(0.3f);
-        wave.fadeOutIntensity(0.3f);
+        wave.flip(true);
+        wave.fadeOutIntensity(0.2f);
+        wave.setLifetime(0.1f);
+        wave.fadeOutIntensity(0.2f);
         wave.setLocation(trueCenterLocation);
         DistortionShader.addDistortion(wave);
     }

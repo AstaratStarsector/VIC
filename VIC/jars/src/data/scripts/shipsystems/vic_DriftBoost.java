@@ -45,17 +45,16 @@ public class vic_DriftBoost extends BaseShipSystemScript {
 
         if (stats.getEntity() instanceof ShipAPI) {
             if (state == State.IN) {
-                ship.getEngineController().extendFlame(this, 2f * effectLevel, 0f * effectLevel, 0f * effectLevel);
+                ship.getEngineController().extendFlame(this, 2f * effectLevel, 1.5f * effectLevel, 1.5f * effectLevel);
+
             }
             if (state == State.ACTIVE) {
-                ship.getEngineController().extendFlame(this, 2f * effectLevel, 0f * effectLevel, 0f * effectLevel);
+                ship.getEngineController().extendFlame(this, 2f * effectLevel, 1.5f * effectLevel, 1.5f * effectLevel);
             }
 
-            ship.getEngineController().fadeToOtherColor(this, color, new Color(0, 0, 0, 0), effectLevel, 0.67f);
+            //ship.getEngineController().fadeToOtherColor(this, color, new Color(0, 0, 0, 0), effectLevel, 0.67f);
             //ship.getEngineController().fadeToOtherColor(this, Color.white, new Color(0,0,0,0), effectLevel, 0.67f);
 
-            Global.getCombatEngine().maintainStatusForPlayerShip("vic_DriftBoost", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "Speed", stats.getEntity().getVelocity() + "", false);
-            Global.getCombatEngine().maintainStatusForPlayerShip("vic_DriftBoost", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "Max Speed", ship.getEngineController().getMaxSpeedWithoutBoost() + "", false);
         }
 
     }

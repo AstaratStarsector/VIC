@@ -8,24 +8,22 @@
   "displayArcRadius": 450,
   "turretSprite": "graphics/weapons/vic_light_laidlaw_accelerator_base_turret.png",
   "turretGunSprite": "graphics/weapons/vic_light_laidlaw_accelerator_barrel_turret.png",
-  "turretUnderSprite": "graphics/weapons/vic_light_laidlaw_accelerator_underbase_turret.png",
   "hardpointSprite": "graphics/weapons/vic_light_laidlaw_accelerator_base_hardpoint.png",
   "hardpointGunSprite": "graphics/weapons/vic_light_laidlaw_accelerator_barrel_hardpoint.png",
-  "hardpointUnderSprite": "graphics/weapons/vic_light_laidlaw_accelerator_underbase_hardpoint.png",
   "renderAboveAllWeapons": 0,
   "visualRecoil": 10,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    26,
+    22,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    25,
+    21,
     0
   ],
   "hardpointAngleOffsets": [

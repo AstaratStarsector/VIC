@@ -286,7 +286,7 @@
     },
   },
   "fleetTypeNames": {
-    "trade": "Grand Investment Fleet",
+    "trade": "Corporate Trader",
     "smallTrader": "Distribution Convoy",
 	"tradeSmuggler":"Freelance Courier",
     "tradeLiner": "VIC Spaceline Flight",
@@ -296,10 +296,10 @@
     "patrolMedium": "Aerospace Corps Fleet",
     "patrolLarge": "Aerospace Corps Armada",
 	
-    "inspectionFleet": "Strategic Auditory Expedition",
-    "taskForce": "Special Procedures Fleet",
+    "inspectionFleet": "Corporate Inspector-Auditor",
+    "taskForce": "Strategic Task Force",
 	
-	"foodReliefFleet":"Financial Infusion Fleet",
+	"foodReliefFleet":"Humanitarian Aid Fleet",
   },
 }
 

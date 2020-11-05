@@ -6,102 +6,25 @@
     
     "directoryUseShortName":true,
      
-	 
-	 
-	 
-	 
-	#		Favorable/Suspicious:	±0.15
-	#		Welcoming/Inhospitable:	±0.35
-	#		Friendly/Hostile:		±0.6
-	#		Cooperative/Vengeful:	±0.8
     "startRelationships":{ 
-	    # Vanilla Factions		 
-		"hegemony": 0.9,                                 #Gullible and spoiled. True successors of our old friends.
-		"persean": 0.3,                                  #A good back-up plan, even if a bit scattered and chaotic.
-		"pirates": 0,                                    #Unexpectedly cooperative. Procurement of testing material has never been so easy with their help.
-		"sindrian_diktat": -0.1,                         #Has certain potential, worth keeping an eye on.
-        "lions_guard": -0.1,		                     #Loyal hound dogs. Respectable. In a way.
-		"independent": -0.3,                             #Unification efforts are of the top priority. Re-education of newly acquired assets is a must though.
-		"tritachyon": -0.9,                              #Let's settle this once and for all, shall we?
-		"luddic_church":-1,                              #Blind, ignorant, foolish and too stubborn. No point in showing them the right way.
-		"luddic_path":-1,                                #Degeneracy incarnate. Death won't be enough for these.
+	    "exalted": 0.6,
+		"blackjack": 0.4,
+		"persean": 0.2,
+		"hegemony": 0, 
+		"anvil_industries": 0,
+		"pirates": 0,
+		"sindrian_diktat": 0,
+		"independent": -0.3,
+		"tritachyon": -0.75,
+		"shadow_industry": -0.8,
+		"luddic_church":-1, 
+		"luddic_path":-1,
 		
-		# Mod factions
-		"anvil_industries": 0,                           #Good mechanics, their services are surely of use.
-		"exalted": 0.6,                                  #One of the few who truly understand the value of progress.
-		"blackjack": 0.4,                                #Profitable partners. Good suppliers of resources and spare testing material.
-		"shadow_industry": -1,                           #Unfinished business. Now this will be fun...
-		"new_galactic_order":-1,			             #Everyone is born equal. Descrimination should be based on some other attributes rather than inherited ones.
-	    "SCY": -0.1,                                     #Data is the key to victory. No need to cut ties with these.
-		"diableavionics": 0.3,                           #Our legal team is always in touch with our fellow partners.
-		"ORA": -0.5,                                     #Brainwashed horde behind sweet lies. Disgusting.
-		"interstellarimperium": -1.0,			         #Their so-called "gods" are in dire need of thorough research and reconfiguration.
-		"ii_imperial_guard": -1.0,			             #No need in pitying the faith-blinded soldiers.
-		"mayasura": 0.1,                                 #Those shipyards of theirs look quite inviting...
-		"xhanempire": -1.0,                              #Something is wrong with these. Really wrong.
-		"unitedpamed": 0.6,                              #Not that much different from the Domain's rich. On another note, our terraforming project is also better.
-		"galaxytigers": -0.4,                            #Could be allies if not for ties with Tri-Tachyon. Shame, shame.
-		"galaxytigers_derelict": -0.4,                   #Old machines serving new purposes. Maybe some valuable data is still intact.
-		"galaxytigers_drone_guard": -0.4,                #Mindless things. No value.
-		"al_ars": -1,                                    #Terrorist scum. Should have dealth with them way before.
-		"pearson_exotronics": -0.7,                      #Drone-loving rivals. Mergers and Acquisition Department's not fond of them especially.
-		"blackrock_driveyards": -0.7,			         #One more rival ro assimilate. Their tech could be of great use.
-		"br_consortium":-0.7,					         #Will be interesting to test our weapons on them.
-		"dassault_mikoyan": -0.8,	                     #The Cloud War was not the end. No one left to interrupt us now.
-		"6eme_bureau":-0.8,					             #The elites. Should be taken care of first and foremost.
-		"united_security":-0.8,			                 #Just mercenaries. Disposable as the rest.
-		"blade_breakers":-1,		                     #All attempts of peaceful contact failed. Well, so be it.		 
-		"gmda":-0.6,						             #Bothersome "policemen". Mergering of independent assets will be easier without them.
-		"gmda_patrol":-0.6,					             #Bothersome "policemen". Mergering of independent assets will be easier without them.
-		"draco":-0.4,						             #Curious... Should be examined with special thoroughness. Lots of potential,
-		"fang":-0.4,						             #Curious... Should be examined with special thoroughness. Lots of potential.
-		"HMI":0.2,						                 #Trusted suppliers of resources and fringe zones' data.
-		"brighton": -0.5,                                #More assets to acquire and merge. 
-		"fpe": -0.7,                                     #An agressive nuisance with no respect towards simple people. Some of their weapons are to be examined though.
-		"mess":-1,						                 #Dangerous anomaly. Eliminate at all costs. 
-		"junk_pirates":0,				                 #Easily hireable, easily exploitable. Junk thingies.
-		"junk_pirates_hounds":0,			             #Easily hireable, easily exploitable. Cute junk thingies.
-		"junk_pirates_junkboys":0,		                 #Easily hireable, easily exploitable. Cuter junk thingies.
-		"junk_pirates_technicians":0,	                 #Easily hireable, easily exploitable. The cutest junk thingies. Should buy one for personal collection.
-		"pack":0,						                 #A weird bunch, but still are of use when given proper offers.
-		"syndicate_asp":-0.2,				             #Time to see who's couriers are better. 
-		"syndicate_asp_familia":-0.2,		             #Time to see who's special couriers are better. 
-		"metelson":-0.3,					             #Not much of interest themselves. Their industrial assets though...
-		"sylphon":-0.5,						             #One more company to merge. Their technologies are intriguing.
-		"templars":-1,					                 #Should be eliminated on sight. Capturing vessels is prioritised.
-		"cabal":-1, 					                 #Tasteless. Arrogant. Irritating. And with ties to the Tri-Tachyon. No need for diplomacy.
-		"neutrinocorp":0.3,				                 #Their rivalry with Tri-Tachyon could prove to be useful.
-		"cmc":-1,							             #Acquire any valuable markets and industries, send the children to re-education centers. Transfer the rest to Purgatory.
-		"kadur_remnant":-1,				                 #Baikal will be glad to see them gone. More opportunities for bio-weapon testing as well...
-		"tahlan_greathouses":-0.4,			             #Interesting technologies. Would be a shame if someone attempted to expropriate them.
-		"tahlan_legioinfernalis":0.6,		             #Not all old friends are gone, it seems. Quite an interesting turn of events.
-		"vass_shipyards": -0.5,                          #Capture their ships at ALL costs. 
-	    "rb": 0,                                         #The Sector is full of cheap gray-zone contractors, isn't it?
-		"prv": 0.3,                                      #Could be partnered with. For the time being, of course. 
-		"xlu": 0.1,                                      #In other circumstances a conflict would be inevitable. Thankfully, profittable connections have been established.
-        "ocua": -0.1,                                    #We should order more of those bakeries from them. For research purposes, obviously.
-		"Coalition": 0.1,                                #Their shipyards and the grudge against Hegemony could be of use down the line... 
-		"scalartech": -0.2,                              #Curious technologoies. Worth the possible trouble. Acquisition is in plans.
-		"tiandong": -0.15,                               #One more supplier of resources. Should be kept at a distance though.
-		"COPS": 0.2,                                     #Their investigations of our less legal connections might prove troublesome. 
-        "roider": -0.3,                                  #Yet even more assets to acquite and merge. The Department is going to beat the record.
-		"fringe_defence_syndicate": 0.5,                 #Loyal Domain scientists. Should keep the eyes of Hegemony from them. Relocation to Empyrean is to be considered.
-		"air": -0.8,                                     #Deranged "justice fighters". Fire at will.
-		"aic": -0.4,                                     #Additional gifts will keep them at bay for the time being. Prepare acquisition scenarios in the meantime. 
 		
+		
+
 		},
-		
-		
-		
-    "maxRelationships":{
-	
-	"interstellarimperium": -0.2,
-	"ii_imperial_guard": -0.2,
-	"al_ars": -0.2,
-	
-	},
-	
-	
+    "maxRelationships":{},
     "diplomacyPositiveChance":{},
     "diplomacyNegativeChance":{},
     "morality":"evil",
@@ -115,28 +38,12 @@
 		
     },
 	
-    "diplomacyTraits":["lowprofile", "stalwart", "envious", "monopolist"],
+    "diplomacyTraits":["irredentist", "stalwart", "envious", "monopolist"],
 
-	"allowAgentActions":true,
-    "allowPrisonerActions":true,
-	
-	"vengeanceLevelNames":["Rancor", "Vengeance", "Nemesis"],
-	"vengeanceFleetNames":["Dissolution Unit","Liquidation Fleet","Termination Armada"],
-    "vengeanceFleetNamesSingle":["a Dissolution Unit","a Liquidation Fleet","a Termination Armada"],
-    "vengeanceFleetSizeMult":2.5,
-	
-	"invasionFleetName":"Asset Mergers&Acquisitions Armada",
-	"invasionSupportFleetName":"Threat Assessment Fleet",
-    "responseFleetName":"Rapid Complaints Response Unit",
-    "defenceFleetName":"Interests&Property Protection Fleet",	
-	"suppressionFleetName":"Asset Pacification Unit",
-	"asteroidMiningFleetName":"Resource Extraction Corps Unit",
 	
 	
-	"freeMarket":true,
-	
-    "colonyExpeditionChance":1.5,	# baseline expansion behaviour
-    "colonyTargetValuator":"exerelin.campaign.colony.IndustrialColonyTargetValuator",
+	"vengeanceLevelNames":["MieShi", "XunChou", "ZhanCao"],
+    "vengeanceFleetNames":["ChuanJiaoShi", "SiShi", "ChuGen"],
     
      "startShipsSolo":[["vigilance_Standard"]],
     "startShipsCombatSmall":[
@@ -162,5 +69,10 @@
         {"ids":["orbitalstation", "battlestation", "starfortress"]},
     ],
 	
+    
+    "colonyExpeditionChance":0.5,	
+    "colonyTargetValuator":"exerelin.campaign.colony.IndustrialColonyTargetValuator",
+        
+
    
 }
