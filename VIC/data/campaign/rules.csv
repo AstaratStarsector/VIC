@@ -1,22 +1,97 @@
 id,trigger,conditions,script,text,options,notes
 "# default commission conversation strings, copy and adjust this section for faction-specific conversation flavor",,,,,,
-CMSNTextRejectHostile_default,CMSNTextRejectHostile,$faction.id == vic,,"""Is this some kind of joke? If you are who you say you are, you're on several $faction wanted lists.""",,
-CMSNTextHasOther_default,CMSNTextHasOther,$faction.id == vic,,"""You're already commissioned by $theOtherCommissionFaction. You'll have to resign that commission before you can be commissioned by $theFaction.""",,
-CMSNTextUnsuited_default,CMSNTextUnsuited,$faction.id == vic,,"""I'm sorry, but you don't meet our criteria for receiving a commission.""",,
-CMSNTextSuitedPart1_default,CMSNTextSuitedPart1,$faction.id == vic,,"""Hmm, yes, you're a suitable candidate.
+CMSNTextRejectHostile_vic,CMSNTextRejectHostile,$faction.id == vic,,"""Wonderful! I'm sure our board of directors will be delighted that you've signed up for human testing! I know they've been looking forward to seeing what you're made of (quite literally), so this should come as a fantastic development. I might even get promoted for bringing them some of your organs! So, why, exactly, did you want to collect on your own bounty? Did you have family you wanted to make the payout to?
 
-Accepting a commission is a serious matter. You will be required to fight enemies of $theFaction, wherever they may be found.
+I’m sorry, you aren’t here to turn yourself in and collect on your bounty? You want to be commissioned with the Conglomerate?!?”
 
-You'll be able to resign your commission at any time, though I don't imagine doing so would win you any friends.""",,
-CMSNTextSuitedPart2_default,CMSNTextSuitedPart2,$faction.id == vic,,"""So, how about it? Still want to sign on?""",,
-CMSNTextWelcomePart1_default,CMSNTextWelcomePart1,$faction.id == vic,,"""Excellent! Welcome to the service.""",,
-CMSNTextWelcomePart2_default,CMSNTextWelcomePart2,$faction.id == vic,,"""Anything else I can do for you?""",,
-CMSNTextChangeMind_default,CMSNTextChangeMind,$faction.id == vic,,"""Yes, not everyone has it in them to uphold the values of $theFaction to such a high standard. No shame in it.
+The representatives stares at you incredulously, then breaks out into about twenty seconds of uninterrupted, boisterous laughter. They do not give you the courtesy of even slightly trying to hide it.
 
-Anything else I can do for you?""",,
-CMSNResignAskToConfirm_default,CMSNResignAskToConfirm,$faction.id == vic,,"""Are you sure? $TheFaction needs people it can rely on, and turning your back like this won't be easily forgotten.""",,
-CMSNResignConfirmed_default,CMSNResignConfirmed,$faction.id == vic,,"""I can see there's no changing your mind. Well, at least you had the courtesy to tender your resignation in person.""",,
-CMSNResignCancelled_default,CMSNResignCancelled,$faction.id == vic,,"""A good decision. We can use people like you.""",,
+“Oh dear, oh dear. I’ll be frank with you: the only thing preventing me from personally dragging you back to headquarters in multiple, still-living pieces is that it takes a while for the launch authorization forms to process. If you don’t want that to happen, I suggest you leave. Quickly.”",,
+CMSNTextHasOther_vic,CMSNTextHasOther,$faction.id == vic,,"“I would recommend you reconsider your application. It seems you already have a commission with $theOtherCommissionFaction, which would be an immediate violation of your contract, should we accept you. This wouldn’t be a problem for us, per se, but it would activate the standard breach-of-contract clause. I’m not allowed to divulge the details of this clause due to a company-wide NDA, but save to say it would be… invasive. Feel free to return when you are without any such unfortunate legal obstacles.”",,
+CMSNTextUnsuited_vic,CMSNTextUnsuited,$faction.id == vic,,"“Hmm, it seems you don’t have enough VolkovPoints accumulated on your profile to qualify for a commission. Don’t feel bad, though, you can accumulate more by purchasing some of our many genetic modification therapies. Visit one of our soothing gene spas, perhaps? You’ll feel 30 years younger afterwards (and, biologically speaking, you will be)!
+
+If you for some reason don’t find yourself currently in need of improvements--don’t worry, you will in time--, you can always acquire more points by participating in VIC’s Fair Competition program, where we pay you to adjust certain opposing parties’ asset portfolios in our favor while improving the sector's economic growth. For more information, please visit our Asset Adjustment office, which you can find under the directory for ‘bounties.’”",,
+CMSNTextSuitedPart1_vic,CMSNTextSuitedPart1,$faction.id == vic,,"“Fan-tastic! It seems your Net Benefit Assessment score was in the highest quartile - you have an amazing profile here. As a side note, did you know you’ve accumulated enough VolkovPoints to qualify for a free cellular manicure? You should really spend those soon, they expire at the end of every cycle.
+
+Down to business, then: you want to be commissioned. What does this entail, you ask? Well, here at the Volkov Industrial Conglomerate, we have a vision for the sector. You hear a lot in our advertisement about ‘making the future’ and ‘paradise.’ Now, the marketing department may not really believe in those things, but I do. It’s been more than 200 cycles since this sector collapsed, and we haven’t survived on empty promises.
+
+I’ll be frank: the sector doesn’t have the assets left to transform the scant selection of technically-habitable planets into places where humans can thrive. Eridani-Utopia is long dead around these parts. But, we here at VIC do have the technology, and the drive, to make humans that can thrive here, more so than even on the fabled old Earth. Your job would be to help the Conglomerate achieve this goal.
+
+It won’t always be clean; as a Volkov commission-holder, you may be asked to kill, to assassinate, to invade, to destroy the competition. But I can promise that everything you do for us is in service of helping VIC secure a better future for humanity.”",,
+CMSNTextSuitedPart2_vic,CMSNTextSuitedPart2,$faction.id == vic,,"“Now, are you prepared to sign up with VIC and do your service to humanity? Note that this contract includes the standard provision where we retain the rights to your genetic profile in perpetuity, but that shouldn’t be a problem. This right would be retained if you were to exit the contract, which you’re free to do so at any time, not that you would want to. Please submit your identity verification where indicated, and we can get to work.”",,
+CMSNTextWelcomePart1_vic,CMSNTextWelcomePart1,$faction.id == vic,,"“Welcome to the family! I have a feeling you’re going to love your time at VIC.
+
+Do take advantage of the 25% employee discount to all genetic services. Try the new face you’ve been thinking about. Get a new skin texture. Have the body you always wanted. Go nuts!”",,
+CMSNTextWelcomePart2_vic,CMSNTextWelcomePart2,$faction.id == vic,,"“Oh, and make sure to subscribe to the company playlist on VICtify. It has some excellent synthwave!”",,
+CMSNTextChangeMind_vic,CMSNTextChangeMind,$faction.id == vic,,"“Unfortunate, but we here at VIC bear you no ill will for your decision. Besides, I’m sure you’ll come around. They always do.
+
+Even though you aren’t an employee, I should remind you that you’re still contractually obligated not to share any of the company details I’ve divulged here. I’d stick to that contract; the penalties for breaching it are… unpleasant, to say the least.”",,
+CMSNResignAskToConfirm_vic,CMSNResignAskToConfirm,$faction.id == vic,,"The manager places their head in their not-quite-a-human-hand, and sighs heavily.
+
+“Are you certain you want to do this? You should know that former employees are not exempt to VIC 'testing campaigns.' I’d strenuously urge you to reconsider your resignation. The patrol supervisors have been known to show a certain… vindictiveness to ex-employees.”",,
+CMSNResignConfirmed_vic,CMSNResignConfirmed,$faction.id == vic,,"“Very, very unfortunate, but we will survive your resignation. Make no mistake, VIC will bring the future to the sector. I can’t understand why you wouldn’t want to be a part of it, but perhaps paradise isn’t for everyone. We’ll keep your genetic profile on hand, to know what to avoid from now on.”",,
+CMSNResignCancelled_vic,CMSNResignCancelled,$faction.id == vic,,"“Oh, thank God you aren’t going through with it. That was unpleasant to even think about. You must be under a lot of stress - bringing the sector into the future can be a tough job, after all.
+
+Maybe take a break, go relax at a gene-spa? Have a nice meal at VICtuals. Take some time off.”",,
+,,,,,,
+greetingVICFriendly,OpenCommLink,"$faction.id == vic
+$faction.friendlyToPlayer","$menuState = fleetConvMain 0
+FireAll PopulateOptions","The $PersonRank smiles at the screen with inhumanly sharp teeth.  
+
+""Glory to Mankind, colleague! Always nice to see a friendly face in these regions. How may we assist you?""
+OR
+""Identify yourself immediately and state your busi... Oh, excuse me, Commander $playerName, I didn't mean to! The scanners lagged for a bit and... Allow me to make up for my mistake, I'm sending you an invitation to a private premium lofi hip-hop group on VICtify. Trust me, you won't regret that!""
+
+You can almost physically feel the nervousness in the air. Then the comm officer's console pings. 
+OR
+The $PersonRank seems to be busy looking at something on one of the adjucent screens. After a couple of seconds of uneasy silence $heOrShe finally notices you, salutes you in a classic VIC manner and cuts the link. Your comm officer shrugs at you. 
+OR
+""Greetings on behalf of the Volkov Industrial Conglomerate. Unfortunately, our fleet is currently on a mission. I hope we'll get to meet again and work together on another occasion, Commander. Safe travels.""
+OR
+""Secure connection established. I hope everything's alright, Commander? Otherwise, we'll have to call for a Rapid Complaint Response Unit, ha-ha! Ahem. In all seriousness though... Don't. You wouldn't want to deal with those guys.""
+OR
+""Hello? Oh! $playerName, it's you! What a coincidence, I was going to contact you in a minute myself! Would you like to go to a bar on Cocytus next week? I know one gre-e-eat place near the Dawn Spire. Drinks are on me. And, well, if you don't mind... We could go to a genemod party together after that...""
+
+The $PersonRank starts blushing heavily. 
+OR
+""Identification complete, a-a-and... Done. Everything seems to be in order. Burn bright, friend. Over and out."" 
+
+The $PersonRank salutes and signs off with a short flicker of VIC logo. 
+OR
+The $PersonRank salutes you in a rather official manner, VIC insignia glistening on their uniform. 
+
+""Hail, colleague. You have something to report?""
+
+OR
+
+""Greetings, $playerName! Heard the news? They're paying extra for bringing test material to Purgatory this month. Better not miss the opportunity.""
+",,
+greetingVICHostileWeaker,OpenCommLink,"$faction.id == vic
+$entity.isHostile
+$entity.relativeStrength < 0",$entity.ignorePlayerCommRequests = true 1,"""Attention. Your vessel has been scanned and identified as hostile to the Tri-Tachyon corporation. Further attempts at aggression will be recorded.""
+OR
+""Any attempt to hinder or damage this Tri-Tachyon owned and operated vessel will result in legal consequences."" The Tri-Tachyon $personRank looks nervous. ""Trust me, these people don't mess around, you really ought to leave me alone.""",cutCommLink:Cut the comm link,
+greetingVICHostileWeakerDefiant,OpenCommLink,"$faction.id == vic
+$entity.isHostile
+$entity.relativeStrength < 0
+$entity.weakerThanPlayerButHolding",$entity.ignorePlayerCommRequests = true 1,"The Tri-Tachyon $personRank looks grim but defiant. ""Corporate regulation 313.33, section A, states that combat-capable vessels must defend themselves in a vigorous manner at all times,"" $heOrShe says.",cutCommLink:Cut the comm link,
+greetingVICHostileStronger,OpenCommLink,"$faction.id == vic
+$entity.isHostile
+$entity.relativeStrength >= 0",$entity.ignorePlayerCommRequests = true 1,"""Attention. Your vessel has been scanned and identified as hostile to the Tri-Tachyon corporation. Prepare for annihilation.""
+OR
+""On behalf of the Tri-Tachyon corporation I would like to thank you for providing this opportunity to prove the superiority of our branded line of space defense products.""
+OR
+""On behalf of the Tri-Tachyon corporation it is my duty to inform you that this engagement will be recorded. As a presumed belligerent engaged in destruction of wholly owned Company property, you automatically refuse all rights to distribution and profit-sharing."" The Tri-Tachyon $personRank grins and cuts the comm-link.",cutCommLink:Cut the comm link,
+greetingVICNeutral,OpenCommLink,"$faction.id == vic
+$faction.neutralToPlayer","$menuState = fleetConvMain 0
+FireAll PopulateOptions","""On behalf of the Tri-Tachyon corporation it is my pleasure to inform you that your $shipOrFleet has been scanned and its tactical loadout evaluated. Please maintain your distance and have a nice day.""
+OR
+""Greetings on behalf of the Tri-Tachyon corporation. Feel free to admire our Tri-Tachyon modified ships equipped with the latest in Tri-Tachyon branded space defense products, but please maintain a safe distance. The Company takes property damage very seriously.""
+OR
+The comm opens to a spinning Tri-Tachyon logo.""The Tri-Tachyon corporation prioritizes the needs of every customer and value-partner, however all of our service representatives are currently-""
+
+You cut the link. They don't seem interested in talking right now.",,
+,,,,,,
 ,,,,,,
 beaconOpenDialogSiaubas,OpenInteractionDialog,"$tag:warning_beacon
 $pelenulaukas","ShowDefaultVisual

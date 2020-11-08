@@ -5,17 +5,27 @@ Dynamic Shields Front,vic_dynamicshieldsfront,1,,Volkov Industries,,,,,TRUE,,0,0
 """Hellstorm"" Weapon System (exp.)",vic_hellstorm,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_hellStorm,Extreme modifications to weapon systems which increase ballistic weapons' fire rate by %s and both energy weapons' damage and flux cost by %s.,Faster rate of fire and less flux cost for ballistic weapons. ,graphics/hullmods/expanded_magazines2.png
 """Hellstorm"" Weapon System ",vic_hellstormV2,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_hellStormV2,"Extreme modifications to weapon systems which increase ballistic weapons' fire rate by %s, both energy weapons' damage and flux cost by %s and max missile ammo by %s. However, such significant alterations increase all weapon OP costs by %s.",Better weapon stats for increased OP.,graphics/hullmods/expanded_magazines2.png
 Big Bays ,vic_bigbays,1,,Volkov Industries,Fighters,,,,TRUE,,0,0,0,0,data.hullmods.vic_bigbays,tba,tba,graphics/hullmods/converted_hangar.png
-Phase Overcharge,vic_toneddownweapon,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_tonedDownWeapon,"Allows ship to be partially in phase permanently, accelerating the ship's timeflow by %s and reducing phase cloak cooldown by %s, phased power grid decreases weapon flux costs by %s. Due to interferences, weapons effective range decreased by %s.",,graphics/hullmods/vic_pahseOvercharge2.png
-VBomb,vic_vBombHmod,,,Volkov Industries,,,,TRUE,TRUE,,0,0,0,0,data.hullmods.vic_vBombHmod,"Green bombs go boom haha 
-Cost of virus bombing: %s.",Green cool like it,graphics/hullmods/vic_VBombHmod.png
-Adaptive Assault,vic_adaptiveAssault,4,,Volkov Industries,defensive,0,true,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveAssault,"Bonuses from ship system:
-Ballistic weapons: %s rate of fire increase and %s flux cost reduction 
-Energy weapons: %s damage increase",,graphics/hullmods/vic_adaptiveAssault.png
-Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,defensive,0,true,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveWarfare,"Bonuses from ship system:
-Ballistic weapons: %s rate of fire increase and %s flux cost reduction 
-Energy weapons: %s damage increase",Apollyon in build,graphics/hullmods/vic_adaptiveWarfare.png
+Experimental Phase Drive,vic_toneddownweapon,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_tonedDownWeapon,"Allows the ship to be partially in P-Space on a constant basis, which accelerates the ship's timeflow by %s and reduces phase cloak cooldown by %s. Partially phased power grid also decreases weapon flux costs by %s.
+
+However, due to the strong P-Space interference in the ship's systems, weapons' effective range is decreased by %s.",Less weapon range in exchange for stats boosts.,graphics/hullmods/vic_pahseOvercharge2.png
+Viral Bombardment Systems,vic_vBombHmod,,,Volkov Industries,,,,TRUE,TRUE,,0,0,0,0,data.hullmods.vic_vBombHmod,"The ship's modernized cargo cooling and containment systems allow it to transport and employ special biological ordnance. With this ship in the fleet it becomes possible to commence Viral Bombardment against the inhabited colonies. 
+
+Having additional ships with V-Bombardment systems in the fleet reduces the cost of such bombardments. The current cost is %s.","""Impact in 3... 2... 1...""",graphics/hullmods/vic_VBombHmod.png
+Adaptive Assault Configuration,vic_adaptiveAssault,4,,Volkov Industries,defensive,0,true,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveAssault,"Adaptive Assault system's effect depends on the loadout of the ship, with the bonuses increasing in accordance to the skew towards either ballistic- or energy-focused loadout.
+
+With the current loadout of the ship the bonuses provided by the ship system are:
+Ballistic weapons: %s rate of fire increase and %s flux cost reduction.
+Energy weapons: %s damage increase.",Ship System explanaition.,graphics/hullmods/vic_adaptiveAssault.png
+Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,defensive,0,true,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveWarfare,"Novel energy distribution system increases the ship's effectiveness in the thick of the battle. The ship receives bonuses to its stats under certain conditions. The bonuses decay quickly if the criteria are not met for a short time. 
+
+
+- Up to %s increase in Shield Efficency when moving. 
+
+- Up to %s increase in Damage dealt based on the amount of hard flux. 
+
+- Up to %s increase in Speed when hit on the hull.",Get brawlin' and get rollin'.,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
-VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,,0,0,0,0,data.hullmods.vic_shieldsChanger,,ShieldChanger,graphics/hullmods/vic_adaptiveWarfare.png
+VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,,0,0,0,0,data.hullmods.vic_shieldsChanger,,Shield Changer,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #Commissioned Crews,,,,,,,,,,,,,,,,,,

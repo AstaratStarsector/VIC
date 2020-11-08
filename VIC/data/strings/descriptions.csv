@@ -30,7 +30,17 @@ vic_pruflas,SHIP,"VIC-S75 ""Pruflas"" - ""Provoker of wars and discord"", a reco
 
 Entering the service not until after the Collapse, Pruflas frigates are the fastest vessels at the megacorp's disposal. Their spectacular speed and impressive fuel-to-distance ratio secured their role not only of the main scouting unit, but also of a courier, capable of quickly delivering valuable information and the so-called ""special gifts"" to the Hegemony's officials, pirate warlords and leaders/higher-ups of many other factions. In many cases such generous ""signs of goodwill"" still do not ensure proper cooperation between the addressees and the Conglomerate, but usually it's just enough to prevent full-fledged military confrontation, even if hatred and disgust towards the megacorp remain in their fullest. ",,,
 ,,,,,
-#weapons,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+#Ship Systems,,,,,
+vic_quantumlunge,SHIP_SYSTEM,"Propels ship forward, ignoring collission with ships, projectiles and other obstacles. After movement is finished, releases a beam behind the ship, dealing damage to all non-allied entities. Lunge reignites the engines and can be canceled at any time.",,,
+vic_adaptiveassault,SHIP_SYSTEM,"Temporarily increases ballistic weapons' rate of fire and decreases their flux generation, and also increases energy weapons' damage. The bonus strength depends on the loadout of the ship.",,,
+vic_emergencyDefense,SHIP_SYSTEM,Temporarily forces all fighters to Regroup mode and substantially increases their stats. ,,,
+vic_DriftBoost,SHIP_SYSTEM,Allows the ship to make a rapid dash into any desired direction.,,,
+,,,,,
+#Weapons,,,,,
 vic_rubicon,WEAPON,"The Rubicon's projectile exists in a state of quantum uncertainty, occupying many possible locations at any given time. When the projectile impacts against a target, the trigger mechanism keeping it from fully entering reality is destroyed. Due to a quirk of quantum mechanics' interactions with p-space, several copies of what are all technically the same projectile appear soon after it, dramatically multiplying the damage of what is still, from a scientific perspectice, a single shell.",,,
 ,,,,,
 ,,,,,
@@ -71,7 +81,7 @@ vic_jump_point_stabilizer,CUSTOM,"An extremely complex device capable of stabili
 
 Potential results of using this technology on the stable working Jump Points are still being actively debated among the Sector's scientific community. ",,,
 ,,,,,
-#commodities,,,,,
+#Commodities,,,,,
 vic_genetech,RESOURCE,"That which made the Domain's higher-ups and the rich drool and turned VIC from a small backwater company into an enormous megacorporation. With the help of masterfully engineered DNA-modifying viruses, administered via relatively painless injections, anything is possible - from simply changing the color of eyes and hair to lifespan extension, enhancement of physical and intellectual abilities, and even outright transforming one's anatomy and physiology with little to none limitations. Back in the days, the Conglomerate was looking forward to finally reveal these to the public and start selling them en masse; lobbying for the necessary laws wasn't that much of an issue - generous gifts to the powers that be were paying off in the end. 
 
 All reports on negative side effects, including genemod addiction, heightened aggression, violent and animalistic tendencies, and other mental deviations are surely nothing but pathetic anti-VIC propaganda.",,,

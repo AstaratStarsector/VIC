@@ -31,6 +31,9 @@ public class vic_adaptiveWarfare extends BaseHullMod {
             PercentDecay = 0.1f;
 
     public String getDescriptionParam(int index, HullSize hullSize) {
+        if (index == 0) return 20f + "%";
+        if (index == 1) return 20f + "%";
+        if (index == 2) return 20f + "%";
         return null;
     }
 
