@@ -28,7 +28,10 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             female = "vic_PersonaChangeFemale",
             result = "vic_PersonaChangeResult",
             NEX_GO_BACK = "vic_PersonaChangeEnd",
-            GO_BACK = "vic_PersonaChangeEnd";
+            GO_BACK = "vic_PersonaChangeEnd",
+            NEX_GO_BACK_NEW = "vic_PersonaChangeEndNew",
+            GO_BACK_NEW = "vic_PersonaChangeEndNew";
+
     protected CampaignFleetAPI playerFleet;
     protected SectorEntityToken entity;
     protected FactionAPI playerFaction;
@@ -133,8 +136,8 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         options.clearOptions();
 
-        options.addOption("Male", male);
-        options.addOption("Female", female);
+        options.addOption("Open \"Male\" section", male);
+        options.addOption("Open \"Female\" section", female);
 
         if (playerCargo.getCredits().get() < 10000) {
             options.setEnabled(male, false);
@@ -144,9 +147,9 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         }
 
         if (ModManager.getInstance().isModEnabled("nexerelin")) {
-            options.addOption("Never mind", NEX_GO_BACK);
+            options.addOption("Leave the Centre", NEX_GO_BACK);
         } else {
-            options.addOption("Never mind", GO_BACK);
+            options.addOption("Leave the Centre", GO_BACK);
         }
     }
 
@@ -172,13 +175,14 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     //portrait menu
     protected void PersonaChangeConfirm() {
 
-        text.addPara(StringHelper.getString("vic_PersonaChange", "Confirm"));
-
         options.clearOptions();
 
-        options.addOption("Confirm", result);
+        options.addOption("Confirm your choice", result);
 
-        options.addOption("Never mind", GO_BACK);
+        options.addOption("Return to the \"Male\" section", male);
+        options.addOption("Return to the \"Female\" section", female);
+
+        options.addOption("Close the list and leave the Centre", GO_BACK);
     }
 
     //result screen
@@ -194,7 +198,14 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         options.clearOptions();
 
-        options.addOption("Continue", GO_BACK);
+        options.addOption("Return to the \"Male\" section of the list", male);
+        options.addOption("Return to the \"Female\" section of the list", female);
+
+        if (ModManager.getInstance().isModEnabled("nexerelin")) {
+            options.addOption("Leave the Centre", NEX_GO_BACK_NEW);
+        } else {
+            options.addOption("Leave the Centre", GO_BACK_NEW);
+        }
     }
 
 }
