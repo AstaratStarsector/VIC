@@ -39,7 +39,11 @@
     "WS0042": "vic_apollyon_rear_wing_right",
     "WS0043": "vic_apollyon_rear_wing_left",
     "WS0044": "vic_apollyon_rear_left_bottom",
-    "WS0045": "vic_apollyon_rear_right_bottom"
+    "WS0045": "vic_apollyon_rear_right_bottom",
+    "WS0046": "vic_blonkerRed",
+    "WS0047": "vic_blonkerRed",
+    "WS0048": "vic_blonkerRed",
+    "WS0049": "vic_blonkerRed"
   },
   "weaponSlots": [
     {
@@ -458,6 +462,44 @@
       "arc": 0,
       "angle": 0,
       "locations": [-233.5, -16.5]
+    },
+    {
+      "id": "WS0046",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-19, -96.5],
+      "renderOrderMod": 10
+    },
+    {
+      "id": "WS0047",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-19, 96.5],
+      "renderOrderMod": 10
+    },
+    {
+      "id": "WS0048",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [94.5, 14.5]
+    },
+    {
+      "id": "WS0049",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [94.5, -14.5]
     }
   ],
   "engineSlots": [

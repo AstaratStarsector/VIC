@@ -39,7 +39,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
     private static final int NUMBER_SUBMUNITIONS = 1;
     private static final float SUBMUNITION_RELATIVE_OFFSET = 0f; // How much each submunition's aim point is offset relative to others if multiple
     private static final float SUBMUNITION_INACCURACY = 0f; // How much much random offset from the ^ aim point if multiple
-    private static final String STAGE_TWO_WEAPON_ID = "WEAPON ID GOES HERE";
+    private static final String STAGE_TWO_WEAPON_ID = "vic_psotnik";
     private static final String STAGE_TWO_SOUND_ID = "SOUND ID GOES HERE";
     private static final float VELOCITY_DAMPING_FACTOR = 0.15f;
     private static final float WEAVE_FALLOFF_DISTANCE = 1000f; // Weaving stops entirely at 0 distance
@@ -237,7 +237,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
                 }
             }
              */
-            Global.getSoundPlayer().playSound(STAGE_TWO_SOUND_ID, 1f, 1f, missile.getLocation(), missile.getVelocity());
+            //Global.getSoundPlayer().playSound(STAGE_TWO_SOUND_ID, 1f, 1f, missile.getLocation(), missile.getVelocity());
 
             // GFX on the spot of the switcheroo if desired
             // Remove old missile

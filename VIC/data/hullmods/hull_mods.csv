@@ -17,6 +17,16 @@ Energy weapons: %s damage increase",Apollyon in build,graphics/hullmods/vic_adap
 ,,,,,,,,,,,,,,,,,,
 VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,,0,0,0,0,data.hullmods.vic_shieldsChanger,,ShieldChanger,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
+#modular,,,,,,,,,,,,,,,,,,
+VIC assault,vic_assault,3,,Volkov Industries,offensive,Weapons,15000,,,,4,8,15,25,data.hullmods.vic_assault,"Extends the range of ballistic and energy weapons by %s/%s/%s/%s, depending on hull size. Increases ship max speed by %s SU.
+
+incompatibel with Integrated Targeting Unit and Dedicated Targeting Core.",,graphics/hullmods/vic_assault.png
+VIC Death Protocol,vic_deathProtocol,3,,Volkov Industries,offensive,Weapons,25000,,,,5,10,20,30,data.hullmods.vic_deathProtocol,Increases damage of all weapons by %s but increased damage taken by %s.,,graphics/hullmods/vic_deathProtocol.png
+VIC Brand Shield Emitter,vic_allRoundShieldUpgrade,3,,Volkov Industries,offensive,Weapons,25000,,,,7,14,21,35,data.hullmods.vic_allRoundShieldUpgrade,"Reduces the amount of damage taken by shields by %s.
+Reduces the amount of soft flux raised shields generate per second by %s
+Increases the turn rate of the ship's shields by %s and the rate at which the shields are raised by %s.
+Increases the shield's coverage by %s degrees.",,graphics/hullmods/vic_shiledPack.png
+,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #Commissioned Crews,,,,,,,,,,,,,,,,,,
 Commissioned Crew Bundle,vic_commissionedCrewBundle,,,,,,,,,,0,0,0,0,data.hullmods.vic_commissionedCrewBundle,,,graphics/hullmods/vic_geneticmodifications.png

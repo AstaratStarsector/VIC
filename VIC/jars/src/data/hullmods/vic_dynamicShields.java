@@ -1,5 +1,6 @@
 package data.hullmods;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShieldAPI;
@@ -48,6 +49,11 @@ public class vic_dynamicShields extends BaseHullMod {
         if (ship.getShield() == null || ship.getShield().getType() != ShieldAPI.ShieldType.OMNI || ship.getShield().isOff()) {
             return;
         }
+        float baseShieldArc =
+                (ship.getHullSpec().getShieldSpec().getArc() +
+                        ship.getMutableStats().getShieldArcBonus().getFlatBonus()) *
+                        ship.getMutableStats().getShieldArcBonus().getMult() *
+                        (ship.getMutableStats().getShieldArcBonus().getPercentMod() + 1);
 
         float shipArcMult = 0f;
         switch (ship.getHullSpec().getHullId()) {
@@ -60,15 +66,13 @@ public class vic_dynamicShields extends BaseHullMod {
                 break;
         }
 
-        float shieldBaseArc = ship.getHullSpec().getShieldSpec().getArc();
-        float extshield = 0f;
-        if (ship.getVariant().hasHullMod("extendedshieldemitter")) extshield += 60;
-
         float shieldRelFacing = Math.abs(MathUtils.getShortestRotation(ship.getShield().getFacing(), ship.getFacing()));
         //float normalizedAngle = scaleArcToIdealAngle(IDEAL_ANGLE, shieldRelFacing);
-        float shieldArcMult = 1 + ((shieldRelFacing / IDEAL_ANGLE) * (MAX_ARC_MULT - shipArcMult - 1f));
+        float shieldArcMult = ((shieldRelFacing / IDEAL_ANGLE) * (MAX_ARC_MULT - shipArcMult - 1f));
 
-        ship.getShield().setArc(shieldBaseArc * shieldArcMult + extshield);
+        ship.getShield().setArc(baseShieldArc + (ship.getHullSpec().getShieldSpec().getArc() * shieldArcMult));
+
+        Global.getCombatEngine().maintainStatusForPlayerShip("vic_shieldShit", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "shieldShit",  baseShieldArc + "", false);
     }
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
@@ -84,9 +88,11 @@ public class vic_dynamicShields extends BaseHullMod {
             default:
                 break;
         }
+        float extshield = 0f;
+        if (ship.getVariant().hasHullMod("extendedshieldemitter")) extshield += 60;
 
         if (index == 0)
-            return Math.round(ship.getHullSpec().getShieldSpec().getArc() * (MAX_ARC_MULT - shipArcMult)) + "";
+            return Math.round(ship.getHullSpec().getShieldSpec().getArc() * (MAX_ARC_MULT - shipArcMult) + extshield) + "";
         if (index == 1 || index == 2) return ((shieldSpeed - 1) * 100) + "%";
         return null;
     }

@@ -14,7 +14,7 @@
   "builtInMods": [
     "vic_aerodynamicdesign",
     "vic_dynamicshields",
-	"vic_adaptiveAssault"
+    "vic_adaptiveAssault"
   ],
   "builtInWeapons": {
     "WS0001": "vic_kobal_deco_left",
@@ -50,7 +50,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [18, 0]
+      "locations": [18, -0]
     },
     {
       "id": "WS0004",
@@ -59,7 +59,7 @@
       "mount": "HARDPOINT",
       "arc": 10,
       "angle": 0,
-      "locations": [18, 0]
+      "locations": [23.5, -0]
     },
     {
       "id": "WS0005",

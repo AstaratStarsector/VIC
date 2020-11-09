@@ -30,7 +30,7 @@ public class vic_hellStormV2 extends BaseHullMod {
 
 
     public String getDescriptionParam(int index, HullSize hullSize) {
-        if (index == 0) return "" + (int) ((ROF_BONUS) * 100) + "%";
+        if (index == 0) return "" + (int) ((ROF_BONUS - 1) * 100) + "%";
         if (index == 1) return "" + (int) ((ENERGY_WEAPON_DAMAGE_BONUS - 1) * 100) + "%";
         if (index == 2) return "" + (int) ((MISSILE_AMMO_BONUS - 1) * 100) + "%";
         if (index == 3) return "" + (int) ((WEAPON_OP_INCREASE_MULT - 1) * 100) + "%";

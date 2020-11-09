@@ -14,7 +14,7 @@ public class VIC_EngineGlowScript implements EveryFrameWeaponEffectPlugin {
     private boolean runOnce = false;
     private ShipAPI SHIP;
     private float currentBrightness = 0.5f;
-    private float timeToChange = 0.25f;
+    private float timeToChange = 0.5f;
     private ShipEngineControllerAPI.ShipEngineAPI thruster;
 
     @Override

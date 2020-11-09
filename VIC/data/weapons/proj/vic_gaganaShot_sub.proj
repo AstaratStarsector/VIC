@@ -1,0 +1,16 @@
+{
+	"id":"vic_gaganaShot_sub",
+	"specClass":"missile",	
+	"missileType":"MISSILE",
+	"size":[7,19],	
+	"center":[3.5,11],
+	"collisionRadius":9,
+	"collisionClass":"NONE",
+	"explosionColor":[255,100,100,255],
+	"explosionRadius":150,
+	"engineSpec":{"turnAcc":0,
+                      "turnRate":0,
+                      "acc":0,
+                      "dec":0},
+	"sprite":"graphics/missiles/Ichor_Dart.png",
+}
