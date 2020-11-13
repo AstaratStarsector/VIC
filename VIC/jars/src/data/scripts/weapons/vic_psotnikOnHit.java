@@ -10,7 +10,7 @@ public class vic_psotnikOnHit implements OnHitEffectPlugin {
 
     public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target,
                       Vector2f point, boolean shieldHit, CombatEngineAPI engine) {
-        if (!shieldHit && target instanceof ShipAPI) {
+        if (!shieldHit && !projectile.isFading() && target instanceof ShipAPI) {
             if (Math.random() > 0.75f) {
                 engine.spawnEmpArc(projectile.getSource(),
                         point,

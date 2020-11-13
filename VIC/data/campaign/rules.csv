@@ -115,7 +115,7 @@ vic_PersonaChange,PopulateOptions,"$hasMarket
 $menuState == main
 $faction.id == vic
 RepIsAtWorst $faction.id SUSPICIOUS",,,22:VICPCMenu:Visit a local VIC Revitalization Centre,
-vic_portraitChangingMenu,DialogOptionSelected,$option == VICPCMenu,vic_PersonaChange vic_PersonaChangeMenu,"After a short trip on a shuttle, it doesn't take you much time to find a tall slick-looking building covered in the Conglomerate's imposing logos and various holo-ads promoting ""endless opportunities"", as the corporation likes to call them. 
+vic_portraitChangingMenu,DialogOptionSelected,$option == VICPCMenu,vic_PersonaChange vic_PerconaChangeChose,"After a short trip on a shuttle, it doesn't take you much time to find a tall slick-looking building covered in the Conglomerate's imposing logos and various holo-ads promoting ""endless opportunities"", as the corporation likes to call them. 
 
 The insides of the Centre greet you with sterile cleanliness, overly polite personnel (some of which clearly sport non-human features and bodyparts) and even more ads with quite propagandistic statements and rather ""exotic"" options of bodily transformations. As usual, all the customers, including you, are given a short run-down on the procedure and its nuances, as well as a list of possible side effects and the basic non-responsibility agreement from the corporation. A brightly-eyed manager proudly reminds that the Conglomerate's geneticists and cyberneticists are the best in the field of personal Modification and Transfiguration and that it's nigh-impossible to find any kind of analogues anywhere else in the whole Sector.
 
@@ -143,8 +143,10 @@ EndConversation
 ","You leave the Revitalization Centre with a new appearance, just like thousands, if not millions before you. You can almost feel the power surging in your artificially engineered veins and the world seems oh so bright and ripe with new opportunities.
 
 And the holo-ad behind your back reminds you that all of that, of course, is owed to VIC.",,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
+vic_PersonaChangeOtherPersona,OpenCDE,$tag:vic_personToChange == true,"ShowPersonVisual
+vic_PersonaChange vic_PerconaChangeNotPLayer
+",,,
+vic_PersonaChangeYou,DialogOptionSelected,$option == vic_PersonaChangeYou,vic_PersonaChange vic_PersonaChangeYou,,,
+vic_PersonaChangeAdmin,DialogOptionSelected,$option == vic_PersonaChangeAdmin,vic_PersonaChange vic_PersonaChangeAdmin,,,
+vic_PersonaChangeOfficer,DialogOptionSelected,$option == vic_PersonaChangeOfficer,vic_PersonaChange vic_PersonaChangeOfficer,,,
 ,,,,,,

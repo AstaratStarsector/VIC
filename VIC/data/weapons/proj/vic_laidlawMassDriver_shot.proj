@@ -1,0 +1,21 @@
+{
+	"id":"vic_laidlawMassDriver_shot",
+	"specClass":"projectile",
+	"onHitEffect":"data.scripts.weapons.vic_laidlawMassDriverOnHit",
+	"spawnType":"BALLISTIC_AS_BEAM",
+	"collisionClass":"RAY",
+	"collisionClassByFighter":"RAY_FIGHTER",	
+	#"collisionClass":"PROJECTILE_FF",
+	#"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"length":100.0,
+	"hitGlowRadius":36,
+	"width":4,
+	"fadeTime":0.05,
+	"fringeColor":[0,255,235,0],
+	"coreColor":[0,166,255,0],
+	#"fringeColor":[38,150,255,255],
+	#"coreColor":[225,225,255,255],
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":5.0,
+	"bulletSprite":"graphics/missiles/vic_heavylaidlawaccelerator_bullet.png"
+}

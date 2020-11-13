@@ -15,6 +15,8 @@ Gagana,vic_gagana,1,,2000,900,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,1,5,2
 Gagana sub,vic_gagana_sub,1,,2000,900,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,1,5,2,10,,100,100,3,30,,kinetic14,,Volkov Industries,,Anti Shield,,,,,,,,,,5
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Chain Flak,vic_chainflak,1,,69,400,,100,,0,40,5,,,,FRAGMENTATION,20,,0,1.7,4,0.1,5,15,3,10,,800,,,,"PD, PD_ALSO",pd1,,Volkov Industries,,General,,,,,,,,,,
+Rarog,vic_rarog,2,,500,400,150,,,0,100,6,,,,HIGH_EXPLOSIVE,,150,0.1,0.1,,,,,,,10000,,,,,ANTI_FTR,"pd9, beam6",,Volkov Industries,,Point Defense,,,,,,,,,,15.6
+Laidlaw Mass Driver,vic_laidlawMassDriver,0,,2500,700,,250,,2,20,7,,,,ENERGY,300,,0,2,,,1,10,1.9,10,,3500,,,25,,"energy18, he17, kinetic17",,Volkov Industries,,General,,,,,Hits on hull or armor creates explosion dealing additional %s fragmentation damage.,75,,,,7.5
 Testgun,vic_testgun,2,0.5,600,700,,100,,10,30,7,,,,KINETIC,90,,0,0.3,1,0.3,,,,,,1000,,,50,,kinetic,,Volkov Industries,,Anti Shield,,,,,,,,,,3.75
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Build-ins,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Volkov Industries,,,,,,,,,,,,

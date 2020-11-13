@@ -8,19 +8,19 @@ import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
-public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
+public class vic_laidlawMassDriverOnHit implements OnHitEffectPlugin {
 
     private static final Vector2f ZERO = new Vector2f();
 
     private final DamagingExplosionSpec explosion = new DamagingExplosionSpec(0.05f,
-            25,
-            12.5f,
-            150,
+            20,
+            10,
             75,
+            37.5f,
             CollisionClass.PROJECTILE_FF,
             CollisionClass.PROJECTILE_FIGHTER,
-            3,
-            3,
+            2,
+            2,
             0.5f,
             10,
             new Color(33, 255, 122, 255),
@@ -36,7 +36,7 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
         }
         WaveDistortion wave = new WaveDistortion(point, ZERO);
         wave.setIntensity(15f);
-        wave.setSize(100f);
+        wave.setSize(50f);
         wave.flip(false);
         wave.fadeOutIntensity(0.3f);
         wave.setLifetime(0.2f);

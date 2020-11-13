@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffectPlugin {
+public class VIC_LaidlawMassDriverMuzzleFlash implements EveryFrameWeaponEffectPlugin {
 
     /*
         HOW TO USE:
@@ -168,7 +168,7 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
     //What's the highest velocity a particle can spawn with (can be negative)?
     private static final Map<String, Float> PARTICLE_VELOCITY_MAX = new HashMap<>();
     static {
-        PARTICLE_VELOCITY_MAX.put("default", 20f);
+        PARTICLE_VELOCITY_MAX.put("default", 15f);
         PARTICLE_VELOCITY_MAX.put("FLASH_ID_3", 10f);
         PARTICLE_VELOCITY_MAX.put("FLASH_ID_4", 10f);
         PARTICLE_VELOCITY_MAX.put("FLASH_ID_5", 50f);
@@ -207,28 +207,28 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
     //The shortest along their velocity vector any individual particle is allowed to spawn (can be negative to spawn behind their origin point)
     private static final Map<String, Float> PARTICLE_OFFSET_MIN = new HashMap<>();
     static {
-        PARTICLE_OFFSET_MIN.put("default", 5f);
-        PARTICLE_OFFSET_MIN.put("RING0", -15f);
-        PARTICLE_OFFSET_MIN.put("RING", -13f);
-        PARTICLE_OFFSET_MIN.put("RING2", -10f);
+        PARTICLE_OFFSET_MIN.put("default", 2.5f);
+        PARTICLE_OFFSET_MIN.put("RING0", -7.5f);
+        PARTICLE_OFFSET_MIN.put("RING", -6.5f);
+        PARTICLE_OFFSET_MIN.put("RING2", -5f);
     }
 
     //The furthest along their velocity vector any individual particle is allowed to spawn (can be negative to spawn behind their origin point)
     private static final Map<String, Float> PARTICLE_OFFSET_MAX = new HashMap<>();
     static {
-        PARTICLE_OFFSET_MAX.put("default", 10f);
-        PARTICLE_OFFSET_MAX.put("RING0", 15f);
-        PARTICLE_OFFSET_MAX.put("RING", 13f);
-        PARTICLE_OFFSET_MAX.put("RING2", 10f);
+        PARTICLE_OFFSET_MAX.put("default", 5f);
+        PARTICLE_OFFSET_MAX.put("RING0", 7.5f);
+        PARTICLE_OFFSET_MAX.put("RING", 6.5f);
+        PARTICLE_OFFSET_MAX.put("RING2", 5f);
     }
 
     //The width of the "arc" the particles spawn in; affects both offset and velocity. 360f = full circle, 0f = straight line
     private static final Map<String, Float> PARTICLE_ARC = new HashMap<>();
     static {
-        PARTICLE_ARC.put("default", 10f);
-        PARTICLE_ARC.put("FLASH_ID_3", 80f);
-        PARTICLE_ARC.put("FLASH_ID_4", 80f);
-        PARTICLE_ARC.put("FLASH_ID_5", 5f);
+        PARTICLE_ARC.put("default", 5f);
+        PARTICLE_ARC.put("FLASH_ID_3", 40f);
+        PARTICLE_ARC.put("FLASH_ID_4", 40f);
+        PARTICLE_ARC.put("FLASH_ID_5", 2.5f);
         PARTICLE_ARC.put("RING0", 0f);
         PARTICLE_ARC.put("RING", 0f);
         PARTICLE_ARC.put("RING2", 0f);
@@ -270,7 +270,7 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
     private boolean shouldOffsetBarrelExtra = false;
 
     //Instantiator
-    public VIC_LaidlawAcceleratorMuzzleFlash() {}
+    public VIC_LaidlawMassDriverMuzzleFlash() {}
 
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         //Don't run while paused, or without a weapon
@@ -501,7 +501,7 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
 
         WaveDistortion wave = new WaveDistortion(trueCenterLocation, new Vector2f());
         wave.setIntensity(3f);
-        wave.setSize(50f);
+        wave.setSize(25f);
         wave.flip(false);
         wave.fadeOutIntensity(0.3f);
         wave.setLifetime(0.3f);

@@ -1,0 +1,4 @@
+id,type,size,intensity,fadeout,color,hit size,hit intensity,hit fadeout,hit color,flash size,flash intensity,flash fadeout,flash color,chance
+vic_laidlawMassDriver_shot,projectile,20,0.15,0.05,"[0,255,235]",25,0.2,0.4,"[0,255,235]",60,1,0.2,"[0,255,235]",1
+vic_heavylaidlawaccelerator_shot,projectile,40,0.15,0.05,"[0,255,235]",50,0.2,0.4,"[0,255,235]",60,1,0.2,"[0,255,235]",1
+,,,,,,,,,,,,,,

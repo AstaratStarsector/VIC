@@ -15,6 +15,7 @@ public class vic_rubiconOnHit implements OnHitEffectPlugin {
                       Vector2f point, boolean shieldHit, CombatEngineAPI engine) {
 
         if (!(target instanceof ShipAPI)) return;
+        if (projectile.isFading()) return;
         for (int i = 0; i < 4; i++) {
 
             float toDaysRandom = MathUtils.getRandomNumberInRange(-30, 30);

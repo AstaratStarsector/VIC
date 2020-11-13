@@ -1,0 +1,29 @@
+{
+	"id":"vic_rarog",  # this id must match what's in the spreadsheet
+	"specClass":"beam",
+	"type":"ENERGY",
+	"size":"SMALL",
+	"displayArcRadius":400,
+	"turretSprite":"graphics/weapons/tactical_laser_turret.png",
+	"turretGlowSprite":"graphics/weapons/tactical_laser_turret_glow.png",
+	"hardpointSprite":"graphics/weapons/tactical_laser_hardpoint.png",
+	"hardpointGlowSprite":"graphics/weapons/tactical_laser_hardpoint_glow.png",
+	"glowColor":[255,119,220,255],
+	"hardpointOffsets":[1, 0],
+	"turretOffsets":[1, 0],
+	"hardpointAngleOffsets":[0],
+	"turretAngleOffsets":[0],
+	#"convergeOnPoint":true,
+	"darkCore":falce,
+	"coreColor":[255,255,255,255],
+	"fringeColor":[255,0,0,125],
+	"width":40,
+	"textureScrollSpeed": 210,
+	"textureType": [
+		"graphics/fx/vic_rarogBeam.png",
+		"graphics/fx/vic_rarogBeam.png"
+	],
+	"pixelsPerTexel":2,
+	"fireSoundOne":"laser_intro",
+	"fireSoundTwo":"laser_loop",
+}

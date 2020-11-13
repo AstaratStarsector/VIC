@@ -1,0 +1,49 @@
+{
+  "id": "vic_laidlawMassDriver",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_laidlawMassDriver_shot",
+  "type": "BALLISTIC",
+  "size": "SMALL",
+  "everyFrameEffect": "data.scripts.weapons.VIC_LaidlawMassDriverMuzzleFlash",
+  "displayArcRadius": 450,
+  "turretSprite": "graphics/weapons/vic_laidlawMassDriver_turret_base.png",
+  "turretGunSprite": "graphics/weapons/vic_laidlawMassDriver_turret_barrel.png",
+  "turretUnderSprite": "graphics/weapons/vic_laidlawMassDriver_turret_underbase.png",
+  "hardpointSprite": "graphics/weapons/vic_laidlawMassDriver_hardpoint_base.png",
+  "hardpointGunSprite": "graphics/weapons/vic_laidlawMassDriver_hardpoint_barrel.png",
+  "hardpointUnderSprite": "graphics/weapons/vic_laidlawMassDriver_hardpoint_underbase.png",
+  "renderAboveAllWeapons": 0,
+  "visualRecoil": 4,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    23,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    23,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "MUZZLE_FLASH",
+  "muzzleFlashSpec": {
+    "length": 50,
+    "spread": 10,
+    "particleSizeMin": 18,
+    "particleSizeRange": 24,
+    "particleDuration": 0.12,
+    "particleCount": 18,
+    "particleColor": [
+      0,255,235,255
+    ]
+  },
+  "textureType": ROUGH,
+  "fireSoundTwo": "vic_laidlaw_accelerator_shot"
+}

@@ -15,14 +15,32 @@ import data.scripts.weapons.ai.vic_gaganaStuckAI;
 import data.scripts.weapons.ai.vic_verlioka;
 import data.world.VICGen;
 import exerelin.campaign.SectorManager;
+import org.dark.shaders.light.LightData;
+import org.dark.shaders.util.ShaderLib;
 
 
 public class VIC_ModPlugin extends BaseModPlugin {
 
-    public static final String VERLIOKA = "vic_verlioka_shot",
-    DISRUPTOR = "vic_disruptorShot_mie",
-    ABYSSAL = "vic_abyssalfangs_srm",
-    GAGANA = "vic_gaganaShot_sub";
+    public static final String
+            VERLIOKA = "vic_verlioka_shot",
+            DISRUPTOR = "vic_disruptorShot_mie",
+            ABYSSAL = "vic_abyssalfangs_srm",
+            GAGANA = "vic_gaganaShot_sub";
+
+    public static boolean hasShaderLib;
+
+    @Override
+    public void onApplicationLoad() {
+        hasShaderLib = Global.getSettings().getModManager().isModEnabled("shaderLib");
+
+        if (hasShaderLib) {
+            ShaderLib.init();
+            if (ShaderLib.areShadersAllowed() && ShaderLib.areBuffersAllowed()) {
+                LightData.readLightDataCSV("data/lights/vic_light_data.csv");
+                //TextureData.readTextureDataCSV("data/lights/vic_texture_data.csv");
+            }
+        }
+    }
 
     @Override
     public PluginPick<MissileAIPlugin> pickMissileAI(MissileAPI missile, ShipAPI launchingShip) {

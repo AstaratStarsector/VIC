@@ -4,7 +4,10 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
+import com.fs.starfarer.api.characters.AdminData;
 import com.fs.starfarer.api.characters.FullName;
+import com.fs.starfarer.api.characters.OfficerDataAPI;
+import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.MutableStat;
 import com.fs.starfarer.api.impl.campaign.ids.Strings;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -23,6 +26,7 @@ import java.util.Map;
 public class vic_PersonaChange extends BaseCommandPlugin {
 
     public static Logger log = Global.getLogger(vic_PersonaChange.class);
+    protected static vic_personaChangeData temp = new vic_personaChangeData();
     public String
             male = "vic_PersonaChangeMale",
             female = "vic_PersonaChangeFemale",
@@ -30,8 +34,10 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             NEX_GO_BACK = "vic_PersonaChangeEnd",
             GO_BACK = "vic_PersonaChangeEnd",
             NEX_GO_BACK_NEW = "vic_PersonaChangeEndNew",
-            GO_BACK_NEW = "vic_PersonaChangeEndNew";
-
+            GO_BACK_NEW = "vic_PersonaChangeEndNew",
+            changeSelf = "vic_PersonaChangeYou",
+            changeOfficer = "vic_PersonaChangeOfficer",
+            changeAdmin = "vic_PersonaChangeAdmin";
     protected CampaignFleetAPI playerFleet;
     protected SectorEntityToken entity;
     protected FactionAPI playerFaction;
@@ -50,6 +56,14 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
     public vic_PersonaChange(SectorEntityToken entity) {
         init(entity);
+    }
+
+    protected static void resetTmp() {
+        if (temp != null) {
+            temp.isPlayer = true;
+            temp.personaToChange = null;
+        }
+
     }
 
     public static TooltipMakerAPI.StatModValueGetter statPrinter(final boolean withNegative) {
@@ -74,7 +88,6 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             }
         };
     }
-
 
     protected void init(SectorEntityToken entity) {
 
@@ -109,6 +122,24 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         options = dialog.getOptionPanel();
 
         switch (command) {
+            case "vic_PerconaChangeChose":
+                PerconaChangeChose();
+                break;
+            case "vic_PersonaChangeYou":
+                PersonaChangeMenu();
+                break;
+            case "vic_PersonaChangeOfficer":
+                PerconaChangeChosePersona(true);
+                break;
+            case "vic_PersonaChangeAdmin":
+                PerconaChangeChosePersona(false);
+                break;
+            case "vic_PerconaChangeNotPLayer":
+                PerconaChangeNotPLayer();
+                break;
+            case "vic_PersonaChangeMenu":
+                PersonaChangeMenu();
+                break;
             case "vic_PersonaChangeFemale":
                 CommsSummon(FullName.Gender.FEMALE);
                 break;
@@ -118,15 +149,72 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             case "vic_PersonaChangeConfirm":
                 PersonaChangeConfirm();
                 break;
-            case "vic_PersonaChangeMenu":
-                PersonaChangeMenu();
-                break;
             case "vic_PersonaChangeResult":
                 PersonaChangeResult();
                 break;
         }
 
         return true;
+    }
+
+    protected void PerconaChangeChose() {
+        resetTmp();
+
+
+        for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
+            officer.getPerson().removeTag("vic_personToChange");
+        }
+
+        for (AdminData admin : Global.getSector().getCharacterData().getAdmins()) {
+            admin.getPerson().removeTag("vic_personToChange");
+        }
+
+
+        text.addPara("Who to change");
+
+        options.clearOptions();
+        options.addOption("Change yourself", changeSelf);
+        options.addOption("Change officer", changeOfficer);
+        options.addOption("Change administrator", changeAdmin);
+
+        if (ModManager.getInstance().isModEnabled("nexerelin")) {
+            options.addOption("Leave the Centre", NEX_GO_BACK);
+        } else {
+            options.addOption("Leave the Centre", GO_BACK);
+        }
+
+        if (Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy().isEmpty()) {
+            options.setEnabled(changeOfficer, false);
+            options.setTooltip(changeOfficer, "You don't have any officers");
+        }
+        if (Global.getSector().getCharacterData().getAdmins().isEmpty()) {
+            options.setEnabled(changeAdmin, false);
+            options.setTooltip(changeAdmin, "You don't have any administrators");
+        }
+
+
+    }
+
+    protected void PerconaChangeChosePersona(boolean isItOfficer) {
+        CommDirectory directory = new CommDirectory();
+        if (isItOfficer) {
+            for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
+                officer.getPerson().addTag("vic_personToChange");
+                directory.addPerson(officer.getPerson());
+            }
+        } else {
+            for (AdminData admin : Global.getSector().getCharacterData().getAdmins()) {
+                admin.getPerson().addTag("vic_personToChange");
+                directory.addPerson(admin.getPerson());
+            }
+        }
+        dialog.showCommDirectoryDialog(directory);
+    }
+
+    protected void PerconaChangeNotPLayer() {
+        temp.personaToChange = entity.getActivePerson();
+        temp.isPlayer = false;
+        PersonaChangeMenu();
     }
 
     //generate menu
@@ -156,7 +244,6 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     //comms
     protected void CommsSummon(FullName.Gender gender) {
 
-        String rank = Global.getSector().getPlayerPerson().getRankId();
         CommDirectory directory = new CommDirectory();
         int number = 0;
         for (String s : Global.getSector().getPlayerFaction().getPortraits(gender).getItems()) {
@@ -193,7 +280,17 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         playerCargo.getCredits().subtract(10000);
         AddRemoveCommodity.addCreditsLossText(10000, text);
 
-        Global.getSector().getCharacterData().setPortraitName(entity.getActivePerson().getPortraitSprite());
+        if (temp.isPlayer)
+            Global.getSector().getCharacterData().setPortraitName(entity.getActivePerson().getPortraitSprite());
+        else {
+            temp.personaToChange.setPortraitSprite(entity.getActivePerson().getPortraitSprite());
+            for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
+                officer.getPerson().removeTag("vic_personToChange");
+            }
+            for (AdminData admin : Global.getSector().getCharacterData().getAdmins()) {
+                admin.getPerson().removeTag("vic_personToChange");
+            }
+        }
         //Global.getSector().getCharacterData().setName(entity.getActivePerson().getName().getFirst(), entity.getActivePerson().getGender());
 
         options.clearOptions();
@@ -208,4 +305,8 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         }
     }
 
+    protected static class vic_personaChangeData {
+        public boolean isPlayer;
+        public PersonAPI personaToChange;
+    }
 }
