@@ -31,15 +31,22 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             male = "vic_PersonaChangeMale",
             female = "vic_PersonaChangeFemale",
             result = "vic_PersonaChangeResult",
-            NEX_GO_BACK_IMMEDIATELY = "vic_PersonaChangeEndImmediate",
-            GO_BACK_IMMEDIATELY = "vic_PersonaChangeEndImmediate",
-            NEX_GO_BACK = "vic_PersonaChangeEnd",
+
             GO_BACK = "vic_PersonaChangeEnd",
-            NEX_GO_BACK_NEW = "vic_PersonaChangeEndNew",
-            GO_BACK_NEW = "vic_PersonaChangeEndNew",
+            exitBenInYou = "vic_PersonaChangeEndYou",
+            exitBenInOfficer = "vic_PersonaChangeEndOfficer",
+            exitBenInAdmin = "vic_PersonaChangeEndAdmin",
+
+            backToChoose = "vic_PerconaChangeChoseBack",
+
+            exitResult = "vic_PersonaChangeEndNew",
+            exitResultOfficer = "vic_PersonaChangeEndNewOfficer",
+            exitResultAdmin = "vic_PersonaChangeEndNewAdmin",
+
             changeSelf = "vic_PersonaChangeYou",
             changeOfficer = "vic_PersonaChangeOfficer",
             changeAdmin = "vic_PersonaChangeAdmin";
+
     protected CampaignFleetAPI playerFleet;
     protected SectorEntityToken entity;
     protected FactionAPI playerFaction;
@@ -67,6 +74,18 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         }
 
     }
+
+
+
+    protected enum mainMenuState {
+        justEntered,
+        InToYou,
+        InToOfficer,
+        InToAdmin
+    }
+
+    protected static mainMenuState currState;
+
 
     public static TooltipMakerAPI.StatModValueGetter statPrinter(final boolean withNegative) {
         return new TooltipMakerAPI.StatModValueGetter() {
@@ -125,15 +144,23 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         switch (command) {
             case "vic_PerconaChangeChose":
+                currState = mainMenuState.justEntered;
+                PerconaChangeChose();
+                break;
+            case "vic_PerconaChangeChoseBack":
                 PerconaChangeChose();
                 break;
             case "vic_PersonaChangeYou":
+                currState = mainMenuState.InToYou;
+                temp.isPlayer = true;
                 PersonaChangeMenu();
                 break;
             case "vic_PersonaChangeOfficer":
+                currState = mainMenuState.InToOfficer;
                 PerconaChangeChosePersona(true);
                 break;
             case "vic_PersonaChangeAdmin":
+                currState = mainMenuState.InToAdmin;
                 PerconaChangeChosePersona(false);
                 break;
             case "vic_PerconaChangeNotPLayer":
@@ -159,9 +186,10 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         return true;
     }
 
+
+
     protected void PerconaChangeChose() {
         resetTmp();
-
 
         for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
             officer.getPerson().removeTag("vic_personToChange");
@@ -171,18 +199,31 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             admin.getPerson().removeTag("vic_personToChange");
         }
 
-
-        text.addPara("Who will be going through the procedure?");
+        //text.addPara("Who to change");
 
         options.clearOptions();
         options.addOption("Change your own appearance", changeSelf);
         options.addOption("Change the officer's appearance", changeOfficer);
         options.addOption("Change the administrator's appearance", changeAdmin);
 
-        if (ModManager.getInstance().isModEnabled("nexerelin")) {
-            options.addOption("Leave the Centre", NEX_GO_BACK_IMMEDIATELY);
-        } else {
-            options.addOption("Leave the Centre", GO_BACK_IMMEDIATELY);
+
+        switch (currState){
+            case justEntered:
+                options.addOption("Leave the Centre", GO_BACK);
+                options.setShortcut(GO_BACK,1,false,false,false,false);
+                break;
+            case InToYou:
+                options.addOption("Leave the Centre2", exitBenInYou );
+                options.setShortcut(exitBenInYou,1,false,false,false,false);
+                break;
+            case InToOfficer:
+                options.addOption("Leave the Centre3", exitBenInOfficer);
+                options.setShortcut(exitBenInOfficer,1,false,false,false,false);
+                break;
+            case InToAdmin:
+                options.addOption("Leave the Centre4", exitBenInAdmin);
+                options.setShortcut(exitBenInAdmin,1,false,false,false,false);
+                break;
         }
 
         if (Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy().isEmpty()) {
@@ -193,20 +234,18 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             options.setEnabled(changeAdmin, false);
             options.setTooltip(changeAdmin, "You don't have any administrators.");
         }
-
-
     }
 
     protected void PerconaChangeChosePersona(boolean isItOfficer) {
         CommDirectory directory = new CommDirectory();
         if (isItOfficer) {
             for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
-                officer.getPerson().addTag("vic_personToChange");
+                officer.getPerson().addTag("vic_personToChangeOfficer");
                 directory.addPerson(officer.getPerson());
             }
         } else {
             for (AdminData admin : Global.getSector().getCharacterData().getAdmins()) {
-                admin.getPerson().addTag("vic_personToChange");
+                admin.getPerson().addTag("vic_personToChangeAdmin");
                 directory.addPerson(admin.getPerson());
             }
         }
@@ -222,7 +261,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     //generate menu
     protected void PersonaChangeMenu() {
 
-        text.addPara(StringHelper.getString("vic_PersonaChange", "Choose gender"));
+        //text.addPara(StringHelper.getString("vic_PersonaChange", "Choose gender"));
 
         options.clearOptions();
 
@@ -236,11 +275,10 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             options.setTooltip(female, "Not enough credits.");
         }
 
-        if (ModManager.getInstance().isModEnabled("nexerelin")) {
-            options.addOption("Leave the Centre", NEX_GO_BACK);
-        } else {
-            options.addOption("Leave the Centre", GO_BACK);
-        }
+
+        options.addOption("Rethink your choose.", backToChoose);
+        options.setShortcut(backToChoose,1,false,false,false,false);
+
     }
 
     //comms
@@ -271,13 +309,14 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         options.addOption("Return to the \"Male\" section", male);
         options.addOption("Return to the \"Female\" section", female);
 
-        options.addOption("Close the list and leave the Centre", GO_BACK);
+        options.addOption("Rethink your choose.", backToChoose);
+        options.setShortcut(backToChoose,1,false,false,false,false);
     }
 
     //result screen
     protected void PersonaChangeResult() {
 
-        text.addPara(StringHelper.getString("vic_PersonaChange", "Result"));
+        //text.addPara(StringHelper.getString("vic_PersonaChange", "Result"));
 
         playerCargo.getCredits().subtract(10000);
         AddRemoveCommodity.addCreditsLossText(10000, text);
@@ -300,10 +339,19 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         options.addOption("Return to the \"Male\" section of the list", male);
         options.addOption("Return to the \"Female\" section of the list", female);
 
-        if (ModManager.getInstance().isModEnabled("nexerelin")) {
-            options.addOption("Leave the Centre", NEX_GO_BACK_NEW);
-        } else {
-            options.addOption("Leave the Centre", GO_BACK_NEW);
+        switch (currState){
+            case InToYou:
+                options.addOption("Leave the Centre", exitResult);
+                options.setShortcut(exitResult,1,false,false,false,false);
+                break;
+            case InToOfficer:
+                options.addOption("Leave the Centre", exitResultOfficer);
+                options.setShortcut(exitResultOfficer,1,false,false,false,false);
+                break;
+            case InToAdmin:
+                options.addOption("Leave the Centre", exitResultAdmin);
+                options.setShortcut(exitResultAdmin,1,false,false,false,false);
+                break;
         }
     }
 

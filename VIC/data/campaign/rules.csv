@@ -120,36 +120,60 @@ vic_portraitChangingMenu,DialogOptionSelected,$option == VICPCMenu,vic_PersonaCh
 The insides of the Centre greet you with sterile cleanliness, overly polite personnel (some of which clearly sport non-human features and bodyparts) and even more ads with quite propagandistic statements and rather ""exotic"" options of bodily transformations. As usual, all the customers, including you, are given a short run-down on the procedure and its nuances, as well as a list of possible side effects and the basic non-responsibility agreement from the corporation. A brightly-eyed manager proudly reminds that the Conglomerate's geneticists and cyberneticists are the best in the field of personal Modification and Transfiguration and that it's nigh-impossible to find any kind of analogues anywhere else in the whole Sector.
 
 After all the standard introductions, discussions and Q&As, you are given a list of currently available physical appearances to choose from. The list is conveniently divided into ""Male"" and ""Female"" sections. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats. ",,
+vic_portraitChangingMenuBackToit,DialogOptionSelected,$option == vic_PerconaChangeChoseBack,vic_PersonaChange vic_PerconaChangeChoseBack,Rethink,,
+,,,,,,
 vic_portraitChangingMale,DialogOptionSelected,$option == vic_PersonaChangeMale,vic_PersonaChange vic_PersonaChangeMale,,,
 vic_portraitChangingFemale,DialogOptionSelected,$option == vic_PersonaChangeFemale,vic_PersonaChange vic_PersonaChangeFemale,,,
-vic_portraitChangingConfirm,PickGreeting,$tag:vic_PortraitHolder == true,"ShowPersonVisual
+vic_portraitChangingClikOnPortrait,OpenCDE,$tag:vic_PortraitHolder == true,"ShowPersonVisual
 vic_PersonaChange vic_PersonaChangeConfirm
 ","After going through the list you settle on one of the options. A yet unfamiliar person is looking at you from the screen and the detailed information about this particular body is presented in several sub-menus.
 
 The manager informs you that the procedure would cost 10000 credits and is 100 percent reversible if the necessity arises. The only thing left is your confirmation. ",,
-vic_portraitChangingConfirm2,OpenCDE,$tag:vic_PortraitHolder == true,FireBest PickGreeting,,,
 vic_PersonaChangeResult,DialogOptionSelected,$option == vic_PersonaChangeResult,vic_PersonaChange vic_PersonaChangeResult,"A predatory grin spreads on the manager's face, and after the fund transaction is complete, you are invited into the operating theatre. 
 
 The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help you settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, you are given an offer of anestesia and a mirroring screen in case you desire to watch the process yourself. And at last, the procedure begins.
 
 Several hours later you finally get up from the chair and make your first steps as a completely new person. Gone is the old shell, and you're ready to take on the world with your new body. The doctor and the nurses seem quite happy with the result of their hard work and mention that you can always go back to your old self or even try something else. If you have sufficient funds for the procedures of course. ",,
-vic_PersonaChangeEndImmediate,DialogOptionSelected,"$option == vic_PersonaChangeEndImmediate
-","ShowDefaultVisual
-EndConversation
-","You leave the Revitalization Centre, mind full of thoughts. The VIC holo-ad behind your back slyly reminds you that the choice is fully yours, but the road to Paradise is only for the bold. ",,
+#menu close,,,,,,
 vic_PersonaChangeEnd,DialogOptionSelected,"$option == vic_PersonaChangeEnd
 ","ShowDefaultVisual
 EndConversation
-","You leave the Revitalization Centre, mind full of thoughts. The VIC holo-ad behind your back slyly reminds you that the choice is fully yours, but the road to Paradise is only for the bold. ",,
+",fuck this shit i'm out,,
+vic_PersonaChangeEndYou,DialogOptionSelected,"$option == vic_PersonaChangeEndYou
+","ShowDefaultVisual
+EndConversation
+","You leave the Revitalization Centre as your old self, mind full of thoughts. The holo-ad behind you slyly reminds you that the choise is fully yours, but the road to Paradise is only for the bold ones. ",,
+vic_PersonaChangeEndOfficer,DialogOptionSelected,"$option == vic_PersonaChangeEndOfficer
+","ShowDefaultVisual
+EndConversation
+",you dont want catgirl officer,,
+vic_PersonaChangeEndAdmin,DialogOptionSelected,"$option == vic_PersonaChangeEndAdmin
+","ShowDefaultVisual
+EndConversation
+",you dont want catboy admin,,
+#result exit,,,,,,
 vic_PersonaChangeEndNew,DialogOptionSelected,"$option == vic_PersonaChangeEndNew
 ","ShowDefaultVisual
 EndConversation
 ","You leave the Revitalization Centre with a new appearance, just like thousands, if not millions before you. You can almost feel the power surging in your artificially engineered veins and the world seems oh so bright and ripe with new opportunities.
 
-And the holo-ad behind your back unobtrusively reminds you that all of that, of course, is owed to VIC.",,
-vic_PersonaChangeOtherPersona,OpenCDE,$tag:vic_personToChange == true,"ShowPersonVisual
+And the holo-ad behind your back reminds you that all of that, of course, is owed to VIC.",,
+vic_PersonaChangeEndNewOfficer,DialogOptionSelected,"$option == vic_PersonaChangeEndNewOfficer
+","ShowDefaultVisual
+EndConversation
+",you have a catgirl now,,
+vic_PersonaChangeEndNewAdmin,DialogOptionSelected,"$option == vic_PersonaChangeEndNewAdmin
+","ShowDefaultVisual
+EndConversation
+",you have a catboy now,,
+,,,,,,
+vic_PersonaChangeOtherPersonaOfficer,OpenCDE,$tag:vic_personToChangeOfficer == true,"ShowPersonVisual
 vic_PersonaChange vic_PerconaChangeNotPLayer
 ",,,
+vic_PersonaChangeOtherPersonaAdmin,OpenCDE,$tag:vic_personToChangeAdmin == true,"ShowPersonVisual
+vic_PersonaChange vic_PerconaChangeNotPLayer
+",,,
+vic_PersonaChangeOtherPortraitOfficer,DialogOptionSelected,$option == vic_PersonaChangeOtherPortraitOfficer,vic_PersonaChange vic_PersonaChangeOtherPortraitOfficer,,,
 vic_PersonaChangeYou,DialogOptionSelected,$option == vic_PersonaChangeYou,vic_PersonaChange vic_PersonaChangeYou,,,
 vic_PersonaChangeAdmin,DialogOptionSelected,$option == vic_PersonaChangeAdmin,vic_PersonaChange vic_PersonaChangeAdmin,,,
 vic_PersonaChangeOfficer,DialogOptionSelected,$option == vic_PersonaChangeOfficer,vic_PersonaChange vic_PersonaChangeOfficer,,,
