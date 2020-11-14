@@ -49,9 +49,9 @@ vic_rubicon,WEAPON,"The Rubicon's projectile exists in a state of quantum uncert
 vic_cocytus,CUSTOM,"Arguably one of the most extensive and expensive private terraforming projects ever conducted prior to the Collapse. Turned from a lifeless rock into a sprawling garden to serve not only as the new corporate headquarters but also as the top management's ""vacation paradise"", Cocytus is the current home to the infamous Volkov Industrial Conglomerate, which gained full ownership of it and the rest of the system thanks to yet another shady deal with the Domain and the obligation of supporting colonization and development of the Sector.
 
 Its endless summer and sandy beaches, thriving biosphere and warm oceans, picturesque golden sunsets and neversleeping island megapolises make it one of the most idyllic and desirable planets to live on in the entire Sector according to some, putting it on par with the dedicated ""Pleasure planets"" of the pre-Collapse times.",,,
-vic_purgatory,CUSTOM,"Another terraforming project which, unlike Cocytus, went terribly wrong soon after the Collapse and the Jump Point accident. However, instead of completely abandoning the doomed world, VIC seized the opportunity and gave it a new, much more horrifying purpose.
+vic_purgatory,CUSTOM,"Another terraforming project which, unlike Cocytus, went terribly wrong soon after the Collapse and the ""Jump Point Accident"" due to the lack of resources required for the process to continue. However, instead of completely abandoning the doomed world, VIC seized the opportunity and reorganised the infrastructure to fit into a new role.
 
-Nowadays unwelcoming Purgatory is where the corporation's ""chimera"" armies are made and trained. And where all those with ""valuable genetic material"" are brought en masse to the Conglomerate's biggest genetech research and production facilities. For those unfortunate ones Purgatory, ironically, is the Hell itself. ",,,
+These days unwelcoming Purgatory is where the Conglomerate's armies are made and trained, as well as where the most important research facilities are located, with the xenolife test material being brought in practically non-stop. The Conglomerate denies all false accusations of human experimenting and the equally false reports of pirate fleets coming to the planet after successful raids on the inhabited colonies.",,,
 vic_phlegethon,CUSTOM,"""Are you looking for a high-paying job? Are you not afraid of breathtaking magma rivers and giant orbital lasers? Are you ready to face the Inferno and prove your worth? If the answer is ""Yes"", then We at VIC invite you to enlist in our famous Extraction Corps! Join today, experience true comaraderie and contribute to the building of a brighter future for all the Humanity!"" - ""This message was brought to you by VIC's department of advertising and public relations. For all queries please contact your local recruiting center.""
 ""Days without a workplace accident: 0""
 
@@ -59,27 +59,35 @@ vic_phlegethon,CUSTOM,"""Are you looking for a high-paying job? Are you not afra
 vic_archangel,CUSTOM,"The pride of VIC and a true technological marvel, ""Archangel"" mining station, positioned in the Lagrangian Point between Empyrean and Phlegethon, concentrates supergiant's light with the help of enormous Reflector Arrays™ and produces what could possibly be one the most devastating laser beams in the Sector. 
 
 Scraping off useless exterior crust of Phlegeton, ""Archangel"" allows the miners to easily access exposed minerals and collect them by more conventional means. Thankfully, this is the only practical application the station is capable of, and the one it was initially built for. At least, according to the official statements of the Conglomerate. ",,,
-vic_dis,CUSTOM,tba,,,
-vic_tisiphone,CUSTOM,tba,,,
-vic_megaera,CUSTOM,tba,,,
-vic_alecto,CUSTOM,tba,,,
-vic_fortuna,CUSTOM,tba,,,
-vic_dismay,CUSTOM,tba,,,
-vic_kalada,CUSTOM,"A formerly independent colony which became the first victim of VIC after the corporation's sudden resurgence. Despite the initial rioting, the local populace is beginning to slowly accept the new regime that was brought in by the new supervisors. After all, with the steadily increasing quality of life, it becomes harder to deny that the Conglomerate does indeed care about the prosperity of its own people.
+vic_megaera,CUSTOM,"Once a regional Domain military base, nowadays this cold place serves as the junkyard, recycling facility and AM-fuel factory. Harsh climate, boring routine and impressive distance from the capital make Megaera a perfect place for the ""screw up"" subordinates to be sent to for prolonged business trips.
 
-However, not everyone accepts the current situation, with a vigilante resistance group ""Kaladian Swordsmen"" becoming increasingly prominent and popular among the opposition forces, much to the displeasure of VIC's newly appointed planetary managers. ",,,
-vic_mithos,CUSTOM,tba,,,
-vic_bernadian,CUSTOM,tba,,,
-vic_lemtis,CUSTOM,tba,,,
-vic_ramus,CUSTOM,tba,,,
-vic_boerefuge,CUSTOM,tba,,,
-vic_siaubas,CUSTOM,"A relatively small outback planet, mostly known for being the center of a massive rebellion of the days long gone. Unrest and armed riots led to the destruction of water treatment plants, which subsequently became one of the main causes of mass epidemic. Humanitarian aid and evacuation of the populace were quickly organized by the conjoined effort of the Domain and a local fleet of VIC, with the megacorp gladly volunteering to help fellow citizens in need. 
-
-Once populous and promising colony, nowadays Siaubas is nothing more but a place of interest for archaeologists, historians and biologists of all kinds. Some of the latter occasionally report that the local fauna, which dwells the ruined, decaying cities, often shows unnerving, almost human-like patterns in behaviour and vocalizations. ",,,
-vic_maria,CUSTOM,tba,,,
+Before all the valuable equipment and personnel were relocated to other planets by the Conglomerate, this particular base was quite well-known among the Domain military higher-ups for its soldiers and special forces units, who demonstrated evidently inhuman physical and intellectual abilities during both the training and the service. 
+",,,
+vic_fortuna,CUSTOM,,,,
 vic_jump_point_stabilizer,CUSTOM,"An extremely complex device capable of stabilizing hyperspace Jump Points by exploiting convoluted quantum processes too inextricable for all but the most experienced physicists of the current era. It is with the help of these devices VIC's prolonged period of total isolation was ended. 
 
 Potential results of using this technology on the stable working Jump Points are still being actively debated among the Sector's scientific community. ",,,
+vic_kalada,CUSTOM,"A formerly independent colony which became the first victim of VIC after the corporation's sudden resurgence. Despite the initial rioting, the local populace is beginning to slowly accept the new regime that was brought in by the new supervisors. After all, with the steadily increasing quality of life, it becomes harder to deny that the Conglomerate does indeed care about the prosperity of its own people. Or, at least of those, who have enough to afford that prosperity.
+
+However, not everyone accepts the current situation, with a vigilante resistance group ""Kaladian Swordsmen"" becoming increasingly prominent and popular among the opposition forces, much to the displeasure of VIC's newly appointed planetary managers. ",,,
+vic_mithos,CUSTOM,"The not-so-important dusty colony of the Church of Galactic Redemption took on a second life after news of the VIC's return began to spread, especially soon after the occupation of Kalada.
+
+Considered the main front of the war against evil, the planet is currently experiencing an economic and demographic boom, with the supporters of the Luddic Church from all over the Sector swarming to it in hopes that one day they'll get to break the hungry jaw of the Conglomerate and drive the monstrosity from the past back into the pits of hell. ",,,
+vic_bernadian,CUSTOM,"Being the place of the first official meeting of VIC's and Hegemony's officials, this old outpost from the days of Hegemony's foundation received quite a lot of attention in the recent years. Despite all attempts of the local navy forces to prevent the fighting of the Luddic Church and the Conglomerate, the system still keeps filling with smoking debris. 
+
+The rumours of VIC courier ships being sighted in the orbit more than 10 years ago haven't found any solid proof and the COMSEC marks said claims as prepostorous conspiracy.",,,
+vic_maria,CUSTOM,"After several large-scale slave rebellions drowned in blood by the ruling self-imposed aristocracy made of former Urda Mining Co. management, heavily industrialized Maria stands on shaky ground, with both sides ready to gnaw at each other's throats. Despite the steadily rising tensions, the upper classes continue to reside and lead their hedonistic lifes in the luxurious arcologies on the wind-swept frozen surface, while the miners are struggling to survive yet another day in the dark polluted bowels of the planet. 
+
+With VIC on the horizon, the fate of the ""proud and free"" colony is indeed difficult to predict.
+
+",,,
+vic_lemtis,CUSTOM,,,,
+vic_ramus,CUSTOM,,,,
+vic_pyktis,CUSTOM,,,,
+vic_boerefuge,CUSTOM,,,,
+vic_siaubas,CUSTOM,"A relatively small outback planet, mostly known for being the center of a massive rebellion of the days long gone. Unrest and armed riots led to the destruction of water treatment plants, which subsequently became one of the main causes of mass epidemic. Humanitarian aid and evacuation of the populace were quickly organized by the conjoined effort of the Domain and a local fleet of VIC, with the megacorp gladly volunteering to help fellow citizens in need. 
+
+Once populous and promising colony, nowadays Siaubas is nothing more but a place of interest for archaeologists, historians and biologists of all kinds. Some of the latter occasionally report that the local fauna, which dwells the ruined, decaying cities, often shows unnerving, almost human-like patterns in behaviour and vocalizations. ",,,
 ,,,,,
 #Commodities,,,,,
 vic_genetech,RESOURCE,"That which made the Domain's higher-ups, military and the rich drool and turned VIC from a small backwater company into an enormous megacorporation. With the help of masterfully engineered DNA-modifying viruses, anything is possible - from simply changing the color of eyes and hair to lifespan extension, enhancement of physical and intellectual abilities, and even outright transforming one's anatomy and physiology with little to none limitations. Back in the days, the Conglomerate was looking forward to finally reveal these to the public and start selling them en masse; lobbying for the necessary laws wasn't that much of an issue - generous gifts to the powers that be were paying off in the end. 

@@ -1,26 +1,49 @@
 {
-	"id":"vic_verlioka",  # this id must match what's in the spreadsheet
-	"specClass":"projectile",
-	"type":"ENERGY",
-	"size":"MEDIUM",
-	"turretSprite": "graphics/weapons/vic_verlioka_base_turret.png",
-	"hardpointSprite": "graphics/weapons/vic_verlioka_base_hardpoint.png",
-	"hardpointGlowSprite": "graphics/weapons/vic_verlioka_glow_hardpoint.png",
-	"turretGlowSprite": "graphics/weapons/vic_verlioka_glow_turret.png",
-	"glowColor":[100,100,255,255],
-	"turretOffsets":[5, 0],
-	"turretAngleOffsets":[0],
-	"hardpointOffsets":[5, 0],
-	"hardpointAngleOffsets":[0],
-	"barrelMode":"ALTERNATING", # or LINKED.  whether barrels fire at the same time or alternate.
-	"animationType":"GLOW_AND_FLASH",
-	"muzzleFlashSpec":{"length":60.0,   # only used if animationType = MUZZLE_FLASH
-                            "spread":60.0,
-                            "particleSizeMin":20.0,
-                            "particleSizeRange":20.0,
-                            "particleDuration":0.4,
-                            "particleCount":10,
-                            "particleColor":[255,228,50,255]},
-	"projectileSpecId":"vic_verlioka_shot",  # projectile that will be fired
-	"fireSoundTwo":"",
+  "id": "vic_verlioka",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_verlioka_shot",
+  "type": "ENERGY",
+  "size": "MEDIUM",
+  "turretSprite": "graphics/weapons/vic_verlioka_base_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_verlioka_glow_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_verlioka_base_hardpoint.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_verlioka_glow_hardpoint.png",
+  "renderAboveAllWeapons": 0,
+  "glowColor": [
+    100,
+    100,
+    255,
+    255
+  ],
+  "turretOffsets": [
+    15,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    19.5,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "GLOW_AND_FLASH",
+  "muzzleFlashSpec": {
+    "length": 60,
+    "spread": 60,
+    "particleSizeMin": 20,
+    "particleSizeRange": 20,
+    "particleDuration": 0.4,
+    "particleCount": 10,
+    "particleColor": [
+      255,
+      228,
+      50,
+      255
+    ]
+  },
+  "textureType": ROUGH
 }

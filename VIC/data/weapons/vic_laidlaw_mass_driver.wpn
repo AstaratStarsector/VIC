@@ -18,14 +18,14 @@
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    23,
+    19,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    23,
+    19,
     0
   ],
   "hardpointAngleOffsets": [
@@ -41,9 +41,12 @@
     "particleDuration": 0.12,
     "particleCount": 18,
     "particleColor": [
-      0,255,235,255
+      0,
+      255,
+      235,
+      255
     ]
   },
   "textureType": ROUGH,
-  "fireSoundTwo": "vic_laidlaw_accelerator_shot"
+  "fireSoundTwo": "vic_laidlaw_accelerator_shot_light"
 }

@@ -1,0 +1,52 @@
+{
+  "id": "vic_strigoy",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_chainflak_shot",
+  "type": "BALLISTIC",
+  "size": "SMALL",
+  "displayArcRadius": 400,
+  "turretSprite": "graphics/weapons/vic_strigoy_base_turret.png",
+  "turretGunSprite": "graphics/weapons/vic_strigoy_barrel_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_strigoy_base_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/vic_strigoy_barrel_hardpoint.png",
+  "renderAboveAllWeapons": 0,
+  "visualRecoil": 5,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    14,
+    0
+  ],
+  "turretAngleOffsets": [
+    -0
+  ],
+  "hardpointOffsets": [
+    18,
+    0,
+    18,
+    -0
+  ],
+  "hardpointAngleOffsets": [
+    0,
+    0
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "MUZZLE_FLASH",
+  "muzzleFlashSpec": {
+    "length": 20,
+    "spread": 10,
+    "particleSizeMin": 2,
+    "particleSizeRange": 2,
+    "particleDuration": 0.8,
+    "particleCount": 20,
+    "particleColor": [
+      255,
+      155,
+      75,
+      245
+    ]
+  },
+  "textureType": ROUGH,
+  "fireSoundTwo": "flak_fire"
+}

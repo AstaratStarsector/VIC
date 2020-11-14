@@ -31,6 +31,8 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             male = "vic_PersonaChangeMale",
             female = "vic_PersonaChangeFemale",
             result = "vic_PersonaChangeResult",
+            NEX_GO_BACK_IMMEDIATELY = "vic_PersonaChangeEndImmediate",
+            GO_BACK_IMMEDIATELY = "vic_PersonaChangeEndImmediate",
             NEX_GO_BACK = "vic_PersonaChangeEnd",
             GO_BACK = "vic_PersonaChangeEnd",
             NEX_GO_BACK_NEW = "vic_PersonaChangeEndNew",
@@ -170,26 +172,26 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         }
 
 
-        text.addPara("Who to change");
+        text.addPara("Who will be going through the procedure?");
 
         options.clearOptions();
-        options.addOption("Change yourself", changeSelf);
-        options.addOption("Change officer", changeOfficer);
-        options.addOption("Change administrator", changeAdmin);
+        options.addOption("Change your own appearance", changeSelf);
+        options.addOption("Change the officer's appearance", changeOfficer);
+        options.addOption("Change the administrator's appearance", changeAdmin);
 
         if (ModManager.getInstance().isModEnabled("nexerelin")) {
-            options.addOption("Leave the Centre", NEX_GO_BACK);
+            options.addOption("Leave the Centre", NEX_GO_BACK_IMMEDIATELY);
         } else {
-            options.addOption("Leave the Centre", GO_BACK);
+            options.addOption("Leave the Centre", GO_BACK_IMMEDIATELY);
         }
 
         if (Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy().isEmpty()) {
             options.setEnabled(changeOfficer, false);
-            options.setTooltip(changeOfficer, "You don't have any officers");
+            options.setTooltip(changeOfficer, "You don't have any officers.");
         }
         if (Global.getSector().getCharacterData().getAdmins().isEmpty()) {
             options.setEnabled(changeAdmin, false);
-            options.setTooltip(changeAdmin, "You don't have any administrators");
+            options.setTooltip(changeAdmin, "You don't have any administrators.");
         }
 
 

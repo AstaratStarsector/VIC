@@ -39,6 +39,14 @@
 		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 1.02, "volume": 0.9,},
 		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 1.04, "volume": 0.9,},
 	],
+	
+	"vic_laidlaw_accelerator_shot_light":[
+		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 0.96, "volume": 0.9,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 0.98, "volume": 0.9,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1, "volume": 0.9,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1.02, "volume": 0.9,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1.04, "volume": 0.9,},
+	],
 
 
 }

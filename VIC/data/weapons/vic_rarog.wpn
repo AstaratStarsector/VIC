@@ -1,29 +1,56 @@
 {
-	"id":"vic_rarog",  # this id must match what's in the spreadsheet
-	"specClass":"beam",
-	"type":"ENERGY",
-	"size":"SMALL",
-	"displayArcRadius":400,
-	"turretSprite":"graphics/weapons/tactical_laser_turret.png",
-	"turretGlowSprite":"graphics/weapons/tactical_laser_turret_glow.png",
-	"hardpointSprite":"graphics/weapons/tactical_laser_hardpoint.png",
-	"hardpointGlowSprite":"graphics/weapons/tactical_laser_hardpoint_glow.png",
-	"glowColor":[255,119,220,255],
-	"hardpointOffsets":[1, 0],
-	"turretOffsets":[1, 0],
-	"hardpointAngleOffsets":[0],
-	"turretAngleOffsets":[0],
-	#"convergeOnPoint":true,
-	"darkCore":falce,
-	"coreColor":[255,255,255,255],
-	"fringeColor":[255,0,0,125],
-	"width":40,
-	"textureScrollSpeed": 210,
-	"textureType": [
-		"graphics/fx/vic_rarogBeam.png",
-		"graphics/fx/vic_rarogBeam.png"
-	],
-	"pixelsPerTexel":2,
-	"fireSoundOne":"laser_intro",
-	"fireSoundTwo":"laser_loop",
+  "id": "vic_rarog",
+  "specClass": "beam",
+  "type": "ENERGY",
+  "size": "SMALL",
+  "collisionClass": "RAY",
+  "collisionClassByFighter": "RAY_FIGHTER",
+  "displayArcRadius": 400,
+  "turretSprite": "graphics/weapons/vic_rarog_base_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_rarog_glow_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_rarog_base_hardpoint.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_rarog_glow_hardpoint.png",
+  "renderAboveAllWeapons": 0,
+  "glowColor": [
+    255,
+    119,
+    220,
+    255
+  ],
+  "hitGlowRadius": 0,
+  "turretOffsets": [
+    5,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    9,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "fringeColor": [
+    255,
+    0,
+    0,
+    125
+  ],
+  "coreColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "width": 40,
+  "textureType": [
+    "graphics/fx/vic_rarogBeam.png",
+    "graphics/fx/vic_rarogBeam.png"
+  ],
+  "textureScrollSpeed": 210,
+  "pixelsPerTexel": 2,
+  "fireSoundOne": "laser_intro",
+  "fireSoundTwo": "laser_loop"
 }

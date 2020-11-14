@@ -133,16 +133,20 @@ vic_PersonaChangeResult,DialogOptionSelected,$option == vic_PersonaChangeResult,
 The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help you settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, you are given an offer of anestesia and a mirroring screen in case you desire to watch the process yourself. And at last, the procedure begins.
 
 Several hours later you finally get up from the chair and make your first steps as a completely new person. Gone is the old shell, and you're ready to take on the world with your new body. The doctor and the nurses seem quite happy with the result of their hard work and mention that you can always go back to your old self or even try something else. If you have sufficient funds for the procedures of course. ",,
+vic_PersonaChangeEndImmediate,DialogOptionSelected,"$option == vic_PersonaChangeEndImmediate
+","ShowDefaultVisual
+EndConversation
+","You leave the Revitalization Centre, mind full of thoughts. The VIC holo-ad behind your back slyly reminds you that the choice is fully yours, but the road to Paradise is only for the bold. ",,
 vic_PersonaChangeEnd,DialogOptionSelected,"$option == vic_PersonaChangeEnd
 ","ShowDefaultVisual
 EndConversation
-","You leave the Revitalization Centre as your old self, mind full of thoughts. The holo-ad behind you slyly reminds you that the choise is fully yours, but the road to Paradise is only for the bold ones. ",,
+","You leave the Revitalization Centre, mind full of thoughts. The VIC holo-ad behind your back slyly reminds you that the choice is fully yours, but the road to Paradise is only for the bold. ",,
 vic_PersonaChangeEndNew,DialogOptionSelected,"$option == vic_PersonaChangeEndNew
 ","ShowDefaultVisual
 EndConversation
 ","You leave the Revitalization Centre with a new appearance, just like thousands, if not millions before you. You can almost feel the power surging in your artificially engineered veins and the world seems oh so bright and ripe with new opportunities.
 
-And the holo-ad behind your back reminds you that all of that, of course, is owed to VIC.",,
+And the holo-ad behind your back unobtrusively reminds you that all of that, of course, is owed to VIC.",,
 vic_PersonaChangeOtherPersona,OpenCDE,$tag:vic_personToChange == true,"ShowPersonVisual
 vic_PersonaChange vic_PerconaChangeNotPLayer
 ",,,
