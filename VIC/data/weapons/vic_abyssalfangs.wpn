@@ -170,7 +170,7 @@
     "cloudRadius": 10,
     "blowbackParticleCount": 0,
     "blowbackDuration": 2,
-    "blowbackLength": 30,
+    "blowbackLength": 100,
     "blowbackSpread": 10,
     "particleColor": [
       100,

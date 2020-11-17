@@ -138,24 +138,30 @@
     "colonyExpeditionChance":1.5,	# baseline expansion behaviour
     "colonyTargetValuator":"exerelin.campaign.colony.IndustrialColonyTargetValuator",
     
-     "startShipsSolo":[["vigilance_Standard"]],
+    "startShipsSolo":[
+	["vic_xaphan_skirmisher"],
+	["vic_pruflas_skirmish"],
+	["vic_kobal_standart"]
+	],
+	
     "startShipsCombatSmall":[
-      ["swp_striker_luddic_church_sup", "lasher_luddic_church_Standard", "centurion_Assault"],
-      ["enforcer_Balanced", "lasher_luddic_church_Standard", "centurion_Assault"]
+	["vic_samael_standart", "vic_xaphan_skirmisher", "vic_pruflas_skirmish"],
+    ["vic_jezebeth_standart", "vic_kobal_standart", "vic_pruflas_skirmish"],
+	["vic_moloch_standart", "vic_kobal_standart", "vic_xaphan_skirmisher"]
     ],
-    "startShipsTradeSmall":[["tarsus_Standard", "cerberus_Standard", "lasher_CS"]],
     "startShipsCombatLarge":[
-      ["swp_vulture_sta", "swp_albatross_sta", "kite_Standard"],
-      ["dominator_Support", "enforcer_Outdated", "kite_Support"]
+      ["vic_valafar_assault", "vic_jezebeth_standart", "vic_samael_standart"],
+      ["vic_thamuz_standart", "vic_moloch_standart", "vic_jezebeth_standart"],
+      ["vic_cresil_assault", "vic_moloch_standart", "vic_samael_standart"]	  
     ],
-     "startShipsTradeLarge":[["colossus_Standard", "mule_Standard", "wayfarer_Standard"]],
-    "startShipsExplorerLarge":[["venture_Balanced", "buffalo_luddic_church_Standard", "hound_luddic_church_Standard"]],
-    "startShipsCarrierSmall":[["condor_Attack", "lasher_luddic_church_Standard", "hound_luddic_church_Standard"]],
-    "startShipsSuper":[["swp_cathedral_gra"]],
+    "startShipsSuper":[
+	["vic_nybbas_plasma"],
+	["vic_apollyon_standart"]
+	],
     
     "startSpecialItems":[
-        [["LC_package", ""]],
-        [["low_tech_package", ""]],
+        [["vic_hulls_t2_package", ""]],
+        [["vic_weapons_t2_package", ""]],
     ],
 
     "defenceStations":[

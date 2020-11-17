@@ -1,7 +1,7 @@
 {
   "id": "vic_upyr",
   "specClass": "projectile",
-  "projectileSpecId": "lightdualac_shot",
+  "projectileSpecId": "vic_upyr_shot",
   "type": "BALLISTIC",
   "size": "SMALL",
   "displayArcRadius": 600,
@@ -41,8 +41,8 @@
   "muzzleFlashSpec": {
     "length": 10,
     "spread": 28,
-    "particleSizeMin": 12,
-    "particleSizeRange": 14,
+    "particleSizeMin": 5,
+    "particleSizeRange": 16,
     "particleDuration": 0.2,
     "particleCount": 18,
     "particleColor": [
@@ -53,5 +53,5 @@
     ]
   },
   "textureType": ROUGH,
-  "fireSoundTwo": "light_dual_autocannon_fire"
+  "fireSoundTwo": "vic_upyr"
 }

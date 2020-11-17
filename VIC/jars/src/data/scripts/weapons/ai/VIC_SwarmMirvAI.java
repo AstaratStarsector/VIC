@@ -22,11 +22,11 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
     private static final float ENGINE_DEAD_TIME_MAX = 0.75f; // Max time until engine burn starts
     private static final float ENGINE_DEAD_TIME_MIN = 0.25f; // Min time until engine burn starts
     private static final float LEAD_GUIDANCE_FACTOR = 0.4f;
-    private static final float LEAD_GUIDANCE_FACTOR_FROM_ECCM = 0.4f;
+    private static final float LEAD_GUIDANCE_FACTOR_FROM_ECCM = 0.6f;
     private static final float FIRE_INACCURACY = 5f; // Set-once for entire shot lifetime leading offset
     private static final float AIM_THRESHOLD = 0.25f; // Multiplied by collision radius, how much it can be off by when deciding to MIRV
     private static final float MIRV_DISTANCE = 500f;
-    private static final float TIME_BEFORE_CAN_MIRV = 1.5f; // Min time before can MIRV
+    private static final float TIME_BEFORE_CAN_MIRV = 1f; // Min time before can MIRV
     private static final float FLARE_OFFSET = -9f; // Set to engine location matched to missile projectile file
     private static final Color FLARE_COLOR = new Color(200, 165, 55, 255);
     private static final Color SMOKE_COLOR = new Color(155, 145, 135, 150);
@@ -39,14 +39,14 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
     private static final int NUMBER_SUBMUNITIONS = 1;
     private static final float SUBMUNITION_RELATIVE_OFFSET = 0f; // How much each submunition's aim point is offset relative to others if multiple
     private static final float SUBMUNITION_INACCURACY = 0f; // How much much random offset from the ^ aim point if multiple
-    private static final String STAGE_TWO_WEAPON_ID = "vic_psotnik";
-    private static final String STAGE_TWO_SOUND_ID = "SOUND ID GOES HERE";
-    private static final float VELOCITY_DAMPING_FACTOR = 0.15f;
-    private static final float WEAVE_FALLOFF_DISTANCE = 1000f; // Weaving stops entirely at 0 distance
-    private static final float WEAVE_SINE_A_AMPLITUDE = 10f; // Degrees offset
-    private static final float WEAVE_SINE_A_PERIOD = 5f;
-    private static final float WEAVE_SINE_B_AMPLITUDE = 13f; // Degrees offset
-    private static final float WEAVE_SINE_B_PERIOD = 8f;
+    private static final String STAGE_TWO_WEAPON_ID = "vic_abyssalfangs_sub";
+    private static final String STAGE_TWO_SOUND_ID = "sabot_srm_split";
+    private static final float VELOCITY_DAMPING_FACTOR = 0.95f;
+    private static final float WEAVE_FALLOFF_DISTANCE = 750f; // Weaving stops entirely at 0 distance
+    private static final float WEAVE_SINE_A_AMPLITUDE = 20f; // Degrees offset
+    private static final float WEAVE_SINE_A_PERIOD = 3f;
+    private static final float WEAVE_SINE_B_AMPLITUDE = 30f; // Degrees offset
+    private static final float WEAVE_SINE_B_PERIOD = 6f;
     private static final Vector2f ZERO = new Vector2f();
     private float engineDeadTimer;
     private float timeAccum = 0f;
@@ -237,7 +237,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
                 }
             }
              */
-            //Global.getSoundPlayer().playSound(STAGE_TWO_SOUND_ID, 1f, 1f, missile.getLocation(), missile.getVelocity());
+            Global.getSoundPlayer().playSound(STAGE_TWO_SOUND_ID, 1f, 1f, missile.getLocation(), missile.getVelocity());
 
             // GFX on the spot of the switcheroo if desired
             // Remove old missile

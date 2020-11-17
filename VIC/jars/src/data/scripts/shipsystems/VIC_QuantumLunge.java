@@ -89,8 +89,8 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
             shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 5);
             ship.setExtraAlphaMult(0.25f + (0.75f * (1 - effectLevel)));
             stats.getMaxSpeed().modifyFlat(id, 50f);
-            stats.getMaxTurnRate().modifyMult(id, 1.5f);
-            stats.getTurnAcceleration().modifyMult(id, 1.5f);
+            stats.getMaxTurnRate().modifyMult(id, 3f);
+            stats.getTurnAcceleration().modifyMult(id, 6f);
         }
 
         if (state == State.ACTIVE) {
@@ -110,13 +110,15 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         }
 
         if (state == State.IN) {
+            float speedLevel = (effectLevel - 0.5f) * 2;
+            if (speedLevel < 0) speedLevel = 0;
             ship.setJitterShields(false);
-            shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 5);
+            shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 10);
             float visualLevel = (0.5f + (0.5f * effectLevel));
             stats.getCombatEngineRepairTimeMult().modifyMult(id, 0);
             stats.getAcceleration().modifyFlat(id, 300f * visualLevel);
-            ship.getEngineController().extendFlame(this, 3f * visualLevel, 2f * visualLevel, 3f * visualLevel);
-            ship.setJitterUnder(ship, new Color(100, 165, 255, 155), 7f * visualLevel, 20, 4);
+            ship.getEngineController().extendFlame(this, 3f * effectLevel, 2f * effectLevel, 3f * effectLevel);
+            ship.setJitterUnder(ship, new Color(100, 165, 255, 155), 7f * effectLevel, 20, 4);
             ship.setAngularVelocity(0);
         }
         if (player) {

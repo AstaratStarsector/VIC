@@ -1,31 +1,35 @@
 name,id,tier,rarity,base value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,hints,tags,groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
-Heavy Laidlaw Accelerator,vic_heavylaidlawaccelerator,3,,10000,900,,500,,10,10,24,,,,ENERGY,550,,0,1,,,1,10,1.9,10,,5000,,,75,,"energy18, he17, kinetic17",,Volkov Industries,,General,,,,,Hits on hull or armor creates explosion dealing additional %s fragmentation damage.,150,,,,7.5
-Gatling Beam,vic_gatlingbeam,3,0.5,8000,1000,900,,0,0,7,25,,,,ENERGY,,600,0,0.2,0.2,0,,,,,100000,,,,,FIRE_WHEN_INEFFICIENT,"energy20, beam15, LR",,Volkov Industries,,Suppression,,,,,"Hits on hull or armor frequently arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,,,27
-Capacitons Discharger,vic_capacitonsDischarger,3,,5000,600,,125,40,0,15,28,,,,KINETIC,187.5,,0.25,,,,,,,,,5000,,,100,,energy13,,Volkov Industries,,Anti Shield,,,,,Fires electric arcs that can chain to %s additional small targets dealing %s weapons damage.,3 | 15%,,,,
-Besomar Scattercannon,vic_devastator,1,,3500,800,,100,,40,12,19,28,4,28,HIGH_EXPLOSIVE,75,,0,0.6,,,5,15,0.5,5,,700,,,100,ANTI_FTR,he16,,Volkov Industries,,Anti Armor,,,,,"Each shell has a fuse set to explode at a random distance, resulting in a barrage that's increasingly more deadly at closer ranges.
+#large,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Heavy Laidlaw Accelerator,vic_heavylaidlawaccelerator,3,,6500,900,,500,,10,10,24,,,,ENERGY,550,,0,1,,,1,10,1.9,10,,5000,,,,,"energy20, vic_t1weapons_bp",,Volkov Industries,,General,,,,,Hits on hull or armor creates explosion dealing additional %s fragmentation damage.,150,,,,7.5
+Capacitons Discharger,vic_capacitonsDischarger,3,,5000,600,,125,40,0,15,28,,,,KINETIC,187.5,,0.25,,,,,,,,,5000,,,,,"energy13, vic_t1weapons_bp",,Volkov Industries,,Anti Shield,,,,,Fires electric arcs that can chain to %s additional small targets dealing %s weapons damage.,3 | 15%,,,,
+Besomar Scattercannon,vic_devastator,2,,4500,800,,100,,40,12,19,28,4,28,HIGH_EXPLOSIVE,75,,0,0.6,,,5,15,0.5,5,,700,,,,ANTI_FTR,"he16, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,"Each shell has a fuse set to explode at a random distance, resulting in a barrage that's increasingly more deadly at closer ranges.
 ",,,,,7.4
-Psotnik Interference Autocannon,vic_psotnik,2,,5000,900,,50,40,5,15,25,,,,KINETIC,55,,0,0.25,,,0,10,2,10,,850,,,50,"PD,PD_ALSO",pd20,,Volkov Industries,,Anti Shield,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",25% | 60,,,,7.8
+Psotnik Interference Autocannon,vic_psotnik,2,,5000,900,,50,25,5,15,25,,,,KINETIC,55,,0,0.25,,,0,12,0.5,10,,850,,,,,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",20% | 50,,,,7.8
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#Gatling Beam,vic_gatlingbeam,3,0.5,8000,1000,900,,0,0,7,25,,,,ENERGY,,600,0,0.2,0.2,0,,,,,100000,,,,,FIRE_WHEN_INEFFICIENT,"energy20, beam15, LR",,Volkov Industries,,Suppression,,,,,"Hits on hull or armor frequently arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,,,27
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Rubicon,vic_rubicon,1,,2000,800,,200,,10,14,12,,,,KINETIC,190,,0,1.7391304347826086956521739130435,,,1,5,2,10,,800,,,30,,kinetic14,,Volkov Industries,,Anti Shield,,,,,"On successful hit %s projectiles appear close to target, each projectile deal %s kinetic damage, generates %s flux.",4 | 60 | 200,,,,5
-Rubicon sub proj,vic_rubicon_sub,0,,69,400,,50,,10,14,10,,,,KINETIC,50,,0,1,,,0,0,0,,,700,,,,SYSTEM,,,,,,,,,,,,,,,
-Verlioka,vic_verlioka,2,0.75,2500,400,,250,,500,16,12,,,,FRAGMENTATION,400,,0,5,,,0,,,,,400,400,1,100,"PD, ANTI_FTR","energy14, pd14, rare_bp",,Volkov Industries,,Point Defense (Area),,,,,"%s: Projectiles fly through everything, dealing constant EMP damage across their width. Disable all missiles' warheads.",EMP Wave,,,,
-Laidlaw Accelerator,vic_lightlaidlawaccelerator,3,,10000,800,,500,,10,10,13,,,,ENERGY,550,,0,2,,,1,10,1.9,10,,5000,,,75,,"energy18, he17, kinetic17",,Volkov Industries,,General,,,,,Hits on hull or armor creates explosion dealing additional %s fragmentation damage.,150,,,,7.5
-Gagana,vic_gagana,1,,2000,900,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,1,5,2,10,,600,,,30,,kinetic14,,Volkov Industries,,Anti Shield,,,,,,,,,,5
-Gagana sub,vic_gagana_sub,1,,2000,900,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,1,5,2,10,,100,100,3,30,,kinetic14,,Volkov Industries,,Anti Shield,,,,,,,,,,5
+#med,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Rubicon,vic_rubicon,1,,900,800,,200,,10,14,12,,,,KINETIC,190,,0,1.7391304347826086956521739130435,,,1,5,2,10,,800,,,,,"kinetic14, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,"On successful hit %s projectiles appear close to target, each projectile deal %s kinetic damage, generates %s flux.",4 | 60 | 200,,,,5
+Rubicon sub proj,vic_rubicon_sub,1,,69,400,,50,,10,14,10,,,,KINETIC,50,,0,1,,,0,0,0,,,700,,,,SYSTEM,,,,,,,,,,,,,,,
+Verlioka,vic_verlioka,1,0.75,900,400,,250,,500,16,12,,,,FRAGMENTATION,400,,0,5,,,0,,,,,400,400,1,,"PD, ANTI_FTR","pd14, vic_t2weapons_bp",,Volkov Industries,,Point Defense (Area),,,,,"%s: Projectiles fly through everything, dealing constant EMP damage across their width. Disable all missiles' warheads.",EMP Wave,,,,
+Laidlaw Accelerator,vic_lightlaidlawaccelerator,2,,1200,800,,500,,10,10,13,,,,ENERGY,550,,0,2,,,1,10,1.9,10,,5000,,,,,"energy13, vic_t1weapons_bp",,Volkov Industries,,General,,,,,Hits on hull or armor creates explosion dealing additional %s fragmentation damage.,150,,,,7.5
+Gagana,vic_gagana,2,,1200,900,,200,,10,14,13,,,,HIGH_EXPLOSIVE,220,,0,1,,,1,5,2,10,,600,,,,ANTI_FTR,"he13, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,,,,,,5
+Gagana sub,vic_gagana_sub,1,,2000,900,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,1,5,2,10,,100,100,3,500,SYSTEM,he20,,Volkov Industries,,Anti Shield,,,,,,,,,,5
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Strigoy Flak Cannon,vic_strigoy,1,,450,400,,100,,0,40,5,,,,FRAGMENTATION,20,,0,1.7,4,0.1,5,15,3,10,,800,,,,"PD, PD_ALSO, ANTI_FTR",pd1,,Volkov Industries,,Point Defense,,,,,,,,,,18
-Rarog Atomic Emitter,vic_rarog,2,,500,400,150,,,0,100,6,,,,HIGH_EXPLOSIVE,,150,0.1,0.1,,,,,,,10000,,,,,ANTI_FTR,"pd9, beam6",,Volkov Industries,,Point Defense,,,,,,,,,,15.6
-Laidlaw Mass Driver,vic_laidlawMassDriver,3,,2500,700,,250,,2,20,7,,,,ENERGY,300,,0,2,,,1,10,1.9,10,,3500,,,25,,"energy18, he17, kinetic17",,Volkov Industries,,General,,,,,Hits on hull or armor creates explosion dealing additional %s fragmentation damage.,75,,,,7.5
-Upyr Autocannon,vic_upyr,1,,600,650,,30,,1,20,7,,,,KINETIC,30,,0,0.2,,,0,15,3,9,,700,,,20,,"kinetic7, ",,Volkov Industries,,Anti Shield,,,,,,,,,,2.5
+#smal,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Strigoy Flak Cannon,vic_strigoy,0,,400,400,,100,,0,40,5,,,,FRAGMENTATION,40,,0,1.7,4,0.1,5,15,3,10,,650,,,,"PD, PD_ALSO, ANTI_FTR","pd5, vic_t2weapons_bp",,Volkov Industries,,Point Defense,,,,,,,,,,18
+Rarog Atomic Emitter,vic_rarog,0,,400,400,150,,,0,100,6,,,,HIGH_EXPLOSIVE,,150,0.1,0.1,,,,,,,10000,,,,,ANTI_FTR,"beam6, he6, vic_t2weapons_bp",,Volkov Industries,,Point Defense,,,,,,,,,,15.6
+Laidlaw Mass Driver,vic_laidlawMassDriver,0,,600,700,,250,,2,20,7,,,,ENERGY,300,,0,2,,,1,10,1.9,10,,3500,,,25,,"energy8, vic_t2weapons_bp",,Volkov Industries,,General,,,,,Hits on hull or armor creates explosion dealing additional %s fragmentation damage.,75,,,,7.5
+Upyr Autocannon,vic_upyr,0,,600,600,,20,,1,20,7,,,,KINETIC,19,,0,0.1,2,0.1,0,18,1,9,,700,,,20,,"kinetic7, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,,,,,,2.5
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Build-ins,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Volkov Industries,,,,,,,,,,,,
-Phase Lance (Shortranged),vic_phaselance,0,,1,250,1000,,,0,20,10,,,,ENERGY,,1200,0.25,0.5,1,4,,,,,3200,,,,,SYSTEM,"energy14, beam10",,Volkov Industries,,General,,,,,,,,,,20
-Scatter Blaster,vic_scatterblaster,0,,1,500,,100,,3,60,69,18,,,ENERGY,50,,0,0.5,,,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
-Abyssus Sabot MIRV,vic_abyssalfangs,0,,100000,2000,,100,,5,,,,,,KINETIC,0,,0,40,24,0.05,0,0,0,0,,500,1000,10,100,"DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8",,Volkov Industries,,Anti Small Craft,Fast,Excellent,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",25% | 400,,,TRUE,12.1
+Phase Lance (Shortranged),vic_phaselance,13,,1,250,1000,,,0,20,10,,,,ENERGY,,1200,0.25,0.5,1,4,,,,,3200,,,,,SYSTEM,"energy14, beam10",,Volkov Industries,,General,,,,,,,,,,20
+Scatter Blaster,vic_scatterblaster,13,,1,500,,100,,3,60,69,18,,,ENERGY,50,,0,0.5,,,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
+Abyssus Sabot MIRV,vic_abyssalfangs,13,,100000,2000,,100,,5,,,,,,KINETIC,0,,0,48.85,24,0.05,0,0,0,0,,450,1000,10,100,"DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8",,Volkov Industries,,Anti Small Craft,Fast,Excellent,,,,25% | 400,,,TRUE,12.1
+abyssalfangs sub,vic_abyssalfangs_sub,13,,666,900,,200,50,5,15,42,,,,KINETIC,55,,0,0.25,,,0,12,0.5,10,,850,,,,SYSTEM,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",25% | 60,,,,7.8
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Melter,vic_melter,2,,69,400,750,,,0,100,7,,,,HIGH_EXPLOSIVE,,750,0,0,0.25,4.85,,,,,1000000,,,,,"PD_ALSO, ANTI_FTR, SYSTEM","pd9, beam6",,Volkov Industries,,Point Defense,,,,,,,,,,15.6
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #systems,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -33,10 +37,8 @@ Disruptor,vic_disruptor_system,0,,200000,1000,,2000,,25,30,12,30,,,ENERGY,0,,0,3
 quantum Lunge Marker Weapon,vic_quantumLungeMarkerWeapon,0,,200000,1000,,4000,50,25,30,12,30,,,HIGH_EXPLOSIVE,0,,0,3,1,,0,0,0,0,,50,,,500,SYSTEM,,,,,,,,,,,,,,,38.7
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Decos with Scripts,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,VIC_AppolSystem,,,,1,1,,,,,,,,,,,,,10,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
+,VIC_AppolSystem,,,,,,,,,,,,,,,,,,10,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Deco Weapons,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Engine Glow Universal Small,vic_engine_glow_universal_small,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,

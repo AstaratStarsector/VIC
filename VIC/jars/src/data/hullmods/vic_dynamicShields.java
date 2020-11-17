@@ -72,7 +72,6 @@ public class vic_dynamicShields extends BaseHullMod {
 
         ship.getShield().setArc(baseShieldArc + (ship.getHullSpec().getShieldSpec().getArc() * shieldArcMult));
 
-        Global.getCombatEngine().maintainStatusForPlayerShip("vic_shieldShit", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "shieldShit",  baseShieldArc + "", false);
     }
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {

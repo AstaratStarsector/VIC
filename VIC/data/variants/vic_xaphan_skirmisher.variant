@@ -1,0 +1,25 @@
+{
+    "displayName": "Skirmisher",
+	"goalVariant": true,
+    "fluxCapacitors": 7,
+    "fluxVents": 10,
+    "hullId": "vic_xaphan",
+    "hullMods": [],
+    "permaMods": [],
+    "variantId": "vic_xaphan_skirmisher",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0003": "vic_upyr"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0004": "vic_rarog",
+                "WS0005": "vic_rarog"
+            }
+        }
+    ]
+}

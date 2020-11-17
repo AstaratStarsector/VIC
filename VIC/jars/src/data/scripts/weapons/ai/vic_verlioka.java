@@ -108,6 +108,9 @@ public class vic_verlioka implements MissileAIPlugin, GuidedMissileAI {
         if (engine.isPaused()) {
             return;
         }
+
+        Global.getSoundPlayer().playLoop("vic_verlioka_loop", missile, 1, 1, missile.getLocation(), missile.getVelocity());
+
         if (firstLoc == null) {
             firstLoc = new Vector2f(missile.getLocation());
         }
@@ -142,6 +145,7 @@ public class vic_verlioka implements MissileAIPlugin, GuidedMissileAI {
                 return;
             }
         }
+
 
         missile.getSpriteAPI().setColor(new Color(255, 255, 255, 200));
         missile.setJitter(missile, new Color(255, 255, 255, 200), 3 * ((1 - disLEft) * 3), 10, 1.5f * ((1 - disLEft) * 2.5f));

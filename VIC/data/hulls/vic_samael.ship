@@ -14,7 +14,7 @@
   "builtInMods": [
     "vic_aerodynamicdesign",
     "vic_dynamicshields",
-	"vic_adaptiveAssault"
+    "vic_adaptiveAssault"
   ],
   "builtInWings": [
     "vic_shabriri_wing"
@@ -39,7 +39,7 @@
     {
       "id": "WS0002",
       "size": "SMALL",
-      "type": "ENERGY",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 130,
       "angle": 0,
@@ -48,7 +48,7 @@
     {
       "id": "WS0003",
       "size": "SMALL",
-      "type": "BALLISTIC",
+      "type": "HYBRID",
       "mount": "TURRET",
       "arc": 90,
       "angle": 180,

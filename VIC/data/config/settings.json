@@ -9,8 +9,11 @@
 	},
 	"graphics":{		
 		"blueprint_packages":{
-			"vic_hulls_package":"graphics/icons/cargo/vic_blueprint.png",
-			"vic_weapons_package":"graphics/icons/cargo/vic_blueprint.png",
+			"vic_hulls_t1_package":"graphics/icons/cargo/vic_blueprint_ships.png",
+			"vic_weapons_t1_package":"graphics/icons/cargo/vic_blueprint_weapons.png",
+			"vic_hulls_t2_package":"graphics/icons/cargo/vic_blueprint_ships.png",
+			"vic_weapons_t2_package":"graphics/icons/cargo/vic_blueprint_weapons.png",
+			"vic_fighters_package":"graphics/icons/cargo/vic_blueprint_ships.png",
 		},
 		"campaignEntities":{
 			"vic_archangel_beam":"graphics/custom entities/archangel_beam2.png",

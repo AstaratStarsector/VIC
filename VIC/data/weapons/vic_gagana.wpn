@@ -41,18 +41,18 @@
   "animationType": "GLOW_AND_FLASH",
   "muzzleFlashSpec": {
     "length": 20,
-    "spread": 5,
+    "spread": 20,
     "particleSizeMin": 5,
     "particleSizeRange": 5,
     "particleDuration": 0.35,
     "particleCount": 20,
     "particleColor": [
-      100,
-      100,
       255,
+	  66,
+	  0,
       255
     ]
   },
   "textureType": ROUGH,
-  "fireSoundTwo": "autocannon_fire"
+  "fireSoundTwo": "vic_gagana_shot"
 }

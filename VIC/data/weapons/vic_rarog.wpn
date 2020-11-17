@@ -11,10 +11,11 @@
   "hardpointSprite": "graphics/weapons/vic_rarog_base_hardpoint.png",
   "hardpointGlowSprite": "graphics/weapons/vic_rarog_glow_hardpoint.png",
   "renderAboveAllWeapons": 0,
+  "interruptibleBurst": true,
   "glowColor": [
     255,
-    119,
-    220,
+	93,
+	0,
     255
   ],
   "hitGlowRadius": 0,
@@ -51,6 +52,6 @@
   ],
   "textureScrollSpeed": 210,
   "pixelsPerTexel": 2,
-  "fireSoundOne": "laser_intro",
-  "fireSoundTwo": "laser_loop"
+  "fireSoundOne": "vic_rarog_start",
+  "fireSoundTwo": "vic_rarog_loop"
 }

@@ -1,0 +1,46 @@
+{
+    "displayName": "Burst",
+	"goalVariant": true,
+    "fluxCapacitors": 22,
+    "fluxVents": 23,
+    "hullId": "vic_thamuz",
+    "hullMods": ["targetingunit"],
+    "permaMods": [],
+    "variantId": "vic_thamuz_burst",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0005": "plasma",
+                "WS0013": "plasma"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0001": "plasma"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0002": "pdlaser",
+                "WS0003": "pdlaser",
+                "WS0010": "pdlaser",
+                "WS0011": "pdlaser",
+                "WS0012": "pdlaser"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0007": "sabotpod"}
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0006": "sabotpod"}
+        }
+    ]
+}

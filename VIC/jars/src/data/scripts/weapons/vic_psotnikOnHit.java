@@ -11,14 +11,14 @@ public class vic_psotnikOnHit implements OnHitEffectPlugin {
     public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target,
                       Vector2f point, boolean shieldHit, CombatEngineAPI engine) {
         if (!shieldHit && !projectile.isFading() && target instanceof ShipAPI) {
-            if (Math.random() > 0.75f) {
+            if (Math.random() > 0.80f) {
                 engine.spawnEmpArc(projectile.getSource(),
                         point,
                         target,
                         target,
                         DamageType.FRAGMENTATION,
                         0,
-                        60,
+                        50,
                         3000,
                         "tachyon_lance_emp_impact",
                         4,

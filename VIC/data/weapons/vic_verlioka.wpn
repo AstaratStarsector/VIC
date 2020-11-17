@@ -45,5 +45,6 @@
       255
     ]
   },
-  "textureType": ROUGH
+  "textureType": ROUGH,
+  "fireSoundOne": "vic_verlioka_start"
 }

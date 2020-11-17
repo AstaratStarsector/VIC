@@ -140,7 +140,7 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
         missile.setFacing(anchor.getFacing() + angle);
 
         //detonation
-        if (missile.getElapsed() > 1) {
+        if (missile.getElapsed() > 0.5f) {
             /*
             engine.applyDamage(
                     missile,
@@ -165,33 +165,7 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
 
         //visual effect   
         if (MagicRender.screenCheck(0.25f, loc)) {
-            timer.advance(amount);
-            if (timer.intervalElapsed()) {
-                //smoke
-                Vector2f vel = new Vector2f(anchor.getVelocity());
-                vel.scale(0.8f);
-                if (Math.random() > 0.75) {
-                    float grey = 0.25f + (missile.getElapsed() / 6) * (float) Math.random();
-                    engine.addSmokeParticle(
-                            missile.getLocation(),
-                            new Vector2f(vel),
-                            10 + 20 * (float) Math.random(),
-                            0.01f + 0.05f * (float) Math.random(),
-                            0.5f + (float) Math.random(),
-                            new Color(grey, grey, grey)
-                    );
-                }
-                //sparkles
-                Vector2f.add(vel, MathUtils.getRandomPointInCone(new Vector2f(), (6 - missile.getElapsed()) * 15, missile.getFacing() + 160, missile.getFacing() + 200), vel);
-                engine.addHitParticle(
-                        loc,
-                        vel,
-                        3 + 3 * (float) Math.random(),
-                        1,
-                        0.1f + 0.5f * (float) Math.random(),
-                        new Color(0.75f + 0.25f * (float) Math.random(), 0.25f + 0.5f * (float) Math.random(), 0.25f * (float) Math.random())
-                );
-            }
+            missile.setJitter(missile,new Color (255,144,0,255),5 * missile.getElapsed() * 2,5,2);
         }
     }
 

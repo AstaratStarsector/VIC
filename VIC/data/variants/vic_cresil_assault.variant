@@ -1,0 +1,36 @@
+{
+    "displayName": "Assault",
+	"goalVariant": true,
+    "fluxCapacitors": 4,
+    "fluxVents": 6,
+    "hullId": "vic_cresil",
+    "hullMods": [],
+    "permaMods": [],
+    "variantId": "vic_cresil_assault",
+    "weaponGroups": [
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0001": "vic_verlioka",
+                "WS0002": "vic_verlioka"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0003": "vic_strigoy",
+                "WS0004": "vic_strigoy",
+                "WS0005": "vic_strigoy",
+                "WS0006": "vic_strigoy"
+            }
+        }
+    ],
+    "wings": [
+        "vic_asmoday_wing",
+        "vic_shabriri_wing",
+        "vic_asmoday_wing",
+        "vic_shabriri_wing"
+    ]
+}

@@ -1,28 +1,51 @@
 {
 	# should be a copy of "combatSmall", minus variants that are annoying to fight in low numbers
 	# for example, no Hyperions or fast beam-based kiting loadouts, or ships with damper field
-	"combatSmallForSmallFleet":{
+	"combatSmallForSmallFleet":{	
+		"vic_xaphan_skirmisher":20,
 		
+		"vic_pruflas_skirmish":10,
+		"vic_pruflas_Demolisher":10,
+		
+		"vic_kobal_standart":10,
+		"vic_kobal_burst":10,	
 	},
 	"combatSmall":{
-		"vic_pruflas_skirmish":10,
-		"vic_kobal_artillery":10,
-		"vic_xaphan_assault":10,	
-			
+		"vic_xaphan_skirmisher":20,
+		"vic_xaphan_harasher":10,
 		
+		"vic_pruflas_skirmish":10,
+		"vic_pruflas_Demolisher":10,
+		"vic_pruflas_harasher":10,
+		
+		"vic_kobal_standart":12,
+		"vic_kobal_burst":12,
+		"vic_kobal_agony":6,		
 	},
 	"combatMedium":{
-		"vic_moloch_enforcer":5,
-		"vic_samael_siege":5,
+		"vic_jezebeth_standart":14,
+		"vic_jezebeth_assault":14,
+		"vic_jezebeth_laidlaw":4,
+		
+		"vic_moloch_standart":30,
+		
+		"vic_samael_standart":15,
+		"vic_samael_assault":15,
 
 	},
 	"combatLarge":{
-		"vic_thamuz_siege":5,
-		"vic_valafar_assault":5,
+		"vic_valafar_assault":14,
+		"vic_valafar_hybrid":14,
+		"vic_valafar_laidlaw":4,
+		
+		"vic_thamuz_standart":20,
+		"vic_thamuz_burst":10,
 		
 	},
 	"combatCapital":{
-		"vic_apollyon_dominator":5,
+		"vic_apollyon_standart":16,
+		"vic_apollyon_shieldBreaker":16,
+		"vic_apollyon_laidlaw":4,
 	
 	},
 	
@@ -43,16 +66,19 @@
 
 	},
 	"carrierMedium":{
-	"vic_jezebeth_command":5,
-	
+		#"vic_jezebeth_standart":5,	
 	},
+	
 	"carrierLarge":{
-		"vic_cresil_support":5,
+		"vic_cresil_bombardier":10,
+		"vic_cresil_assault":10,
+		"vic_cresil_airSuperiority":10,
 	},
 
 	# phase ships
 	"phaseSmall":{
-	"vic_nybbas_killer":5,
+	
+		"vic_nybbas_plasma":5,
 	
 	},
 	"phaseMedium":{
