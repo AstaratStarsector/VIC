@@ -199,8 +199,6 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             admin.getPerson().removeTag("vic_personToChange");
         }
 
-        //text.addPara("Who to change");
-
         options.clearOptions();
         options.addOption("Change your own appearance", changeSelf);
         options.addOption("Change the officer's appearance", changeOfficer);
@@ -213,15 +211,15 @@ public class vic_PersonaChange extends BaseCommandPlugin {
                 options.setShortcut(GO_BACK,1,false,false,false,false);
                 break;
             case InToYou:
-                options.addOption("Leave the Centre2", exitBenInYou );
+                options.addOption("Leave the Centre", exitBenInYou );
                 options.setShortcut(exitBenInYou,1,false,false,false,false);
                 break;
             case InToOfficer:
-                options.addOption("Leave the Centre3", exitBenInOfficer);
+                options.addOption("Leave the Centre", exitBenInOfficer);
                 options.setShortcut(exitBenInOfficer,1,false,false,false,false);
                 break;
             case InToAdmin:
-                options.addOption("Leave the Centre4", exitBenInAdmin);
+                options.addOption("Leave the Centre", exitBenInAdmin);
                 options.setShortcut(exitBenInAdmin,1,false,false,false,false);
                 break;
         }
@@ -261,8 +259,6 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     //generate menu
     protected void PersonaChangeMenu() {
 
-        //text.addPara(StringHelper.getString("vic_PersonaChange", "Choose gender"));
-
         options.clearOptions();
 
         options.addOption("Open \"Male\" section", male);
@@ -276,7 +272,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         }
 
 
-        options.addOption("Rethink your choose.", backToChoose);
+        options.addOption("Re-think your choice", backToChoose);
         options.setShortcut(backToChoose,1,false,false,false,false);
 
     }
@@ -309,14 +305,12 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         options.addOption("Return to the \"Male\" section", male);
         options.addOption("Return to the \"Female\" section", female);
 
-        options.addOption("Rethink your choose.", backToChoose);
+        options.addOption("Re-think your choice", backToChoose);
         options.setShortcut(backToChoose,1,false,false,false,false);
     }
 
     //result screen
     protected void PersonaChangeResult() {
-
-        //text.addPara(StringHelper.getString("vic_PersonaChange", "Result"));
 
         playerCargo.getCredits().subtract(10000);
         AddRemoveCommodity.addCreditsLossText(10000, text);

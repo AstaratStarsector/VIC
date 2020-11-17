@@ -204,10 +204,10 @@
     "theme": "music_vic_market_neutral",
     "market_neutral": "music_vic_market_neutral",
     "market_hostile": "music_vic_market_neutral",
-    "market_friendly": "music_vic_market_neutral",
+    "market_friendly": "music_vic_market_friendly",
     "encounter_neutral": "music_vic_market_neutral",
     "encounter_hostile": "music_vic_market_neutral",
-    "encounter_friendly": "music_vic_market_neutral",
+    "encounter_friendly": "music_vic_market_friendly",
   },
   "internalComms":"tritachyon_internal",
 	"portraits":{

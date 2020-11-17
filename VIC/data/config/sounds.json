@@ -12,10 +12,23 @@
 			],
 			"randomStart":false, 
 		},
+		],
+		
+	"music_vic_market_friendly":[
+		{
+			"source":"sounds/music",
+			"volume":0.2,
+			"files":[
+				"StellarDrone_Airglow_Edited.ogg",
+			],
+			"randomStart":false, 
+		},
+	
 	],
-
-
 	},
+	
+	
+	
 	"vic_quantum_lunge_start":[
 		{"file": "sounds/effects/vic_quantum_lunge_start.ogg", "pitch": 1, "volume": 1.5,}
 	],
@@ -50,18 +63,18 @@
 		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1.04, "volume": 0.9,},
 	],
 	"vic_rarog_start":[
-		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 0.90, "volume": 0.9,},
-		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 0.95, "volume": 0.9,},
-		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 1.00, "volume": 0.9,},
-		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 1.05, "volume": 0.9,},
-		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 1.10, "volume": 0.9,},
+		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 0.90, "volume": 0.7,},
+		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 0.95, "volume": 0.7,},
+		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 1.00, "volume": 0.7,},
+		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 1.05, "volume": 0.7,},
+		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 1.10, "volume": 0.7,},
 	],
 	"vic_rarog_loop":[
-		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 0.90, "volume": 0.9,"randomStart":true},
-		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 0.95, "volume": 0.9,"randomStart":true},
-		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 1.00, "volume": 0.9,"randomStart":true},
-		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 1.05, "volume": 0.9,"randomStart":true},
-		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 1.10, "volume": 0.9,"randomStart":true},
+		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 0.90, "volume": 0.5,"randomStart":true},
+		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 0.95, "volume": 0.5,"randomStart":true},
+		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 1.00, "volume": 0.5,"randomStart":true},
+		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 1.05, "volume": 0.5,"randomStart":true},
+		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 1.10, "volume": 0.5,"randomStart":true},
 	],
 	"vic_upyr":[
 		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.85, "volume": 0.75},

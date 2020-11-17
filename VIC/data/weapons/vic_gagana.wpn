@@ -8,10 +8,9 @@
   "displayArcRadius": 450,
   "turretSprite": "graphics/weapons/vic_gagana_base_turret.png",
   "turretGunSprite": "graphics/weapons/vic_gagana_barrel_turret.png",
-  "turretUnderSprite": "graphics/weapons/vic_gagana_underbase_turret.png",
   "hardpointSprite": "graphics/weapons/vic_gagana_base_hardpoint.png",
   "hardpointGunSprite": "graphics/weapons/vic_gagana_barrel_hardpoint.png",
-  "hardpointUnderSprite": "graphics/weapons/vic_gagana_underbase_hardpoint.png",
+
   "renderAboveAllWeapons": 0,
   "glowColor": [
     178,
