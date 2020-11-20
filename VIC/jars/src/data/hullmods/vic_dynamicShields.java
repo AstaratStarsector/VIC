@@ -12,7 +12,7 @@ import org.lazywizard.lazylib.MathUtils;
 public class vic_dynamicShields extends BaseHullMod {
 
     public final float MAX_ARC_MULT = 2f;    // Maximum multiplier applied to the base shield arc
-    public final float IDEAL_ANGLE = 180f;   // The angle of deflection at which the shield is at max arc
+    public final float IDEAL_ANGLE = 90f;   // The angle of deflection at which the shield is at max arc
 
     public final float shieldSpeed = 1.5f;
 
@@ -67,6 +67,7 @@ public class vic_dynamicShields extends BaseHullMod {
         }
 
         float shieldRelFacing = Math.abs(MathUtils.getShortestRotation(ship.getShield().getFacing(), ship.getFacing()));
+        if (shieldRelFacing > 90) shieldRelFacing = 180 - shieldRelFacing;
         //float normalizedAngle = scaleArcToIdealAngle(IDEAL_ANGLE, shieldRelFacing);
         float shieldArcMult = ((shieldRelFacing / IDEAL_ANGLE) * (MAX_ARC_MULT - shipArcMult - 1f));
 
@@ -84,6 +85,8 @@ public class vic_dynamicShields extends BaseHullMod {
                 shipArcMult = 0.5f;
                 //do stuff for case 1 and 2
                 break;
+            case "vic_pruflas":
+                shipArcMult = 0.75f;
             default:
                 break;
         }

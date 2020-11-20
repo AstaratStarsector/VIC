@@ -13,7 +13,7 @@
   "hardpointGunSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_barrel.png",
   "hardpointUnderSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_underbase.png",
   "renderAboveAllWeapons": 0,
-  "visualRecoil": 10,
+  "visualRecoil": 12,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
@@ -54,5 +54,7 @@
     ]
   },
   "textureType": ROUGH,
-  "fireSoundTwo": "vic_laidlaw_accelerator_shot"
+  "fireSoundOne":"vic_laidlaw_accelerator_charge",
+  "fireSoundTwo": "vic_laidlaw_accelerator_shot",
+  "autocharge":true,
 }

@@ -20,11 +20,11 @@
         "WS0002": "vic_strigoy"
       }
     },
-	{
+    {
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0003": "vic_melter"
+        "WS0003": "vic_rarog"
       }
     }
   ],

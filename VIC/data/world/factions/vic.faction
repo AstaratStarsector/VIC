@@ -23,8 +23,7 @@
     "future": 1,
 	"myth":1,
 	"old_english":1,
-	"vic_russian":1,
-    
+	"vic_russian":1,    
   },
   # variantOverrides restricts hulls to listed variants and adjusts their probability
   "variantOverrides": {
@@ -33,7 +32,17 @@
   # multiplier for how often hulls show up in the faction's fleets
   "hullFrequency": {
   "hulls":{
-			"gremlin":0, 
+  			"vic_pruflas":50,
+			"vic_xaphan":50,
+			"vic_nybbas":5,
+			"vic_kobal":25,
+			"vic_jezebeth":25,
+			"vic_moloch":50,
+			"vic_samael":25,
+			"vic_thamuz":25,
+			"vic_valafar":50,
+			"vic_cresil":25,
+			"vic_apollyon":50,
 		},
   },
   
@@ -49,44 +58,30 @@
 			"dram",
 			"phaeton",
 			"prometheus",
-			
 			"buffalo",
+			"mule",
 			"colossus",
 		    "atlas",
-			
 			"vic_pruflas",
 			"vic_xaphan",
 			"vic_nybbas",
 			"vic_kobal",
-			
 			"vic_jezebeth",
 			"vic_moloch",
 			"vic_samael",
-			
 			"vic_thamuz",
 			"vic_valafar",
 			"vic_cresil",
-			
 			"vic_apollyon",
 		],
 	},
   # listing ships here will make the faction mostly use them even if other hulls become available
   "priorityShips": {
-    "tags": ["vic_bp"],
+    "tags": [],
     "hulls": [
-			"atlas",
-			"prometheus",
-			"vic_pruflas",
-			"vic_xaphan",
-			"vic_nybbas",
-			"vic_kobal",
-			"vic_jezebeth",
-			"vic_moloch",
-			"vic_samael",
-			"vic_thamuz",
-			"vic_valafar",
-			"vic_cresil",
-			"vic_apollyon",
+			"buffalo",
+			"colossus",
+		    "atlas",
       ],
   },
   "knownFighters":{
@@ -95,9 +90,8 @@
 		],
 	},
   "priorityFighters": {
-    "tags": ["vic_figthers_bp"],
+    "tags": [],
     "fighters": [
-      "vic_shabriri_wing",
     ],
   },
   	"knownWeapons":{
@@ -106,6 +100,8 @@
 			"lightag",
 			"heavymg",
 			"chaingun",
+			"mark9",
+			"hellbore",
 			"multineedler",
 			
 			"reaper",
@@ -133,7 +129,7 @@
 		],
 	},
   "priorityWeapons": {
-    "tags": [],
+    "tags": ["vic_t2weapons_bp","vic_t1weapons_bp"],
     "weapons": [
     ],
   },
@@ -179,22 +175,29 @@
     "warships": 4,
     "carriers": 2,
     "phaseShips": 1,
+	
     "officerQuality": 4,
     "shipQuality": 5,
     "numShips": 3,
-    "shipSize": 4,
+	
+    "shipSize": 3,
+	
     "aggression": 4,
-    "combatFreighterProbability": 0.25, # instead of some portion of the freighters in a fleet
-    "combatFreighterCombatUseFraction": 0.5, # as part of the normal combat lineup
-    "combatFreighterCombatUseFractionWhenPriority": 1, # as part of normal combat lineup, when marked as priority ship
+
+    "combatFreighterProbability": 0, # instead of some portion of the freighters in a fleet
+    "combatFreighterCombatUseFraction": 0, # as part of the normal combat lineup
+    "combatFreighterCombatUseFractionWhenPriority": 0, # as part of normal combat lineup, when marked as priority ship
+	
     "autofitRandomizeProbability": 0.25,
+	
     "commanderSkillsShuffleProbability": 0,
     "commanderSkills": [
-   	"ship_design",
 			"officer_management",
 			"electronic_warfare",
-			"fighter_doctrine",
 			"coordinated_maneuvers",
+			"ship_design",
+			"fighter_doctrine",
+			
     ],
   },
   "illegalCommodities": [
@@ -233,46 +236,46 @@
 	},
 	"ranks":{
 		"ranks":{	
-		        "factionLeader":{"name":"CEO"},
+		    "factionLeader":{"name":"CEO"},
 		        
-		        "spaceSailor":{"name":"Able Spacer"},
+		    "spaceSailor":{"name":"Able Spacer"},
 			"spaceChief":{"name":"Aerospace Corps Warrant Officer"},
 			"spaceCommander":{"name":"Aerospace Corps Commander"},
-		     "spaceEnsign":{"name":"Aerospace Corps Pilot Officer"},
-		      "spaceLieutenant":{"name":"Aerospace Corps Lieutenant"},
-		        "spaceCaptain":{"name":"Aerospace Corps Captain"},
-			      "spaceAdmiral":{"name":"Aerospace Corps Admiral"},
-			       "spaceMarshal":{"name":"Aerospace Corps Grand Admiral"},
+		    "spaceEnsign":{"name":"Aerospace Corps Pilot Officer"},
+		    "spaceLieutenant":{"name":"Aerospace Corps Lieutenant"},
+		    "spaceCaptain":{"name":"Aerospace Corps Captain"},
+			"spaceAdmiral":{"name":"Aerospace Corps Admiral"},
+			"spaceMarshal":{"name":"Aerospace Corps Grand Admiral"},
 		
-		        "groundPrivate":{"name":"Ground Defence Executive Specialist"},
-		        "groundSergeant":{"name":"Assistant Ground Defence Commander"},
-		        "groundLieutenant":{"name":"Ground Defence Commander"},
-		        "groundCaptain":{"name":"Assistant Ground Defence Manager"},
-		        "groundMajor":{"name":" Ground Defence Manager"},
-		        "groundColonel":{"name":"Planetary Defence Manager"},
-		        "groundGeneral":{"name":"Planetary Defence Director"},
+			"groundPrivate":{"name":"Ground Defence Executive Specialist"},
+			"groundSergeant":{"name":"Assistant Ground Defence Commander"},
+			"groundLieutenant":{"name":"Ground Defence Commander"},
+			"groundCaptain":{"name":"Assistant Ground Defence Manager"},
+			"groundMajor":{"name":" Ground Defence Manager"},
+			"groundColonel":{"name":"Planetary Defence Manager"},
+			"groundGeneral":{"name":"Planetary Defence Director"},
 			
 			"citizen":{"name":"Citizen"},
 			"agent":{"name":"Operative"},
 		},
 		"posts":{
-		        "factionLeader":{"name":"CEO"},
-		        
+			"factionLeader":{"name":"CEO"},
+				
 			"patrolCommander":{"name":" Aerospace Corps Patrol Commander"},
 			"fleetCommander":{"name":"Aerospace Corps Fleet Commmander"},
 			
 			"baseCommander":{"name":"Base Manager"},
-		        "stationCommander":{"name":"Orbital Station Director"},
-		        "outpostCommander":{"name":"Outpost Manager"},
-		        "portmaster":{"name":"Port Manager"},
-		        
-		        "supplyOfficer":{"name":"Logistics Manager"},
-		        "supplyManager":{"name":"Logistics Director"},
-		        
-		        "administrator":{"name":"Planetary Manager"},
-		        "freeAdmin":{"name":"Freelance Planetary Manager"},
-				},
-			},
+			"stationCommander":{"name":"Orbital Station Director"},
+			"outpostCommander":{"name":"Outpost Manager"},
+			"portmaster":{"name":"Port Manager"},
+			
+			"supplyOfficer":{"name":"Logistics Manager"},
+			"supplyManager":{"name":"Logistics Director"},
+			
+			"administrator":{"name":"Planetary Manager"},
+			"freeAdmin":{"name":"Freelance Planetary Manager"},
+		},
+	},
 	
   "custom": {
     "offersCommissions": true,

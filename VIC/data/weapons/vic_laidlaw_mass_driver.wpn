@@ -48,5 +48,7 @@
     ]
   },
   "textureType": ROUGH,
-  "fireSoundTwo": "vic_laidlaw_accelerator_shot_light"
+  "fireSoundOne":"vic_laidlaw_accelerator_charge",
+  "fireSoundTwo": "vic_laidlaw_accelerator_shot_light",
+  "autocharge":true,
 }

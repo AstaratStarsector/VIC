@@ -56,6 +56,12 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
             return;
         }
 
+        //visual effect
+        Vector2f loc = new Vector2f(offset);
+        if (MagicRender.screenCheck(0.25f, loc)) {
+            missile.setJitter(missile,new Color (255, 102,0,255),5 * Math.min(missile.getElapsed(), 0.5f) * 2,5,3);
+        }
+
         if (!runOnce) {
             runOnce = true;
             List<CombatEntityAPI> list = ((vic_gaganaScript) missile.getWeapon().getEffectPlugin()).getHITS();
@@ -99,9 +105,6 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
             }
         }
 
-        if (tearOff) {
-            return;
-        }
 
         //acceleration check for tear off
         accelerationCheck.advance(amount);
@@ -133,7 +136,7 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
         }
 
         //stuck effect
-        Vector2f loc = new Vector2f(offset);
+
         VectorUtils.rotate(offset, anchor.getFacing(), loc);
         Vector2f.add(loc, anchor.getLocation(), loc);
         missile.getLocation().set(loc);
@@ -163,10 +166,8 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
 
         }
 
-        //visual effect   
-        if (MagicRender.screenCheck(0.25f, loc)) {
-            missile.setJitter(missile,new Color (255,144,0,255),5 * missile.getElapsed() * 2,5,2);
-        }
+
+
     }
 
     @Override

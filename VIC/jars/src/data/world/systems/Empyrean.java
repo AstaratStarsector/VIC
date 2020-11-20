@@ -239,7 +239,7 @@ public class Empyrean {
 
 
         //Inner asteroid ring
-        system.addAsteroidBelt(EmpyreanStar, 1000, 5700, 800, 250, 400, Terrain.ASTEROID_BELT, "Inner Band");
+        system.addAsteroidBelt(EmpyreanStar, 200, 5700, 800, 250, 400, Terrain.ASTEROID_BELT, "Inner Band");
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 3, Color.gray, 256f, 5700f - 200, 250f);
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 0, Color.gray, 256f, 5700f, 350f);
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 5700f + 200, 400f);
@@ -363,8 +363,8 @@ public class Empyrean {
         system.addRingBand(Malebolge, "misc", "rings_ice0", 256f, 1, Color.yellow, 256f, 1600, 45f);
         system.addRingBand(Malebolge, "misc", "rings_asteroids0", 256, 1, Color.red, 256f, 1000, 30f);
         system.addRingBand(Malebolge, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 2200, 60f);
-        system.addAsteroidBelt(Malebolge, 100, 700, 200, 30, 30, Terrain.ASTEROID_BELT, "Malebolge Inner Asteroid Field");
-        system.addAsteroidBelt(Malebolge, 300, 2200, 250, 80, 80, Terrain.ASTEROID_BELT, "Malebolge Outer Asteroid Field");
+        system.addAsteroidBelt(Malebolge, 20, 700, 200, 30, 30, Terrain.ASTEROID_BELT, "Malebolge Inner Asteroid Field");
+        system.addAsteroidBelt(Malebolge, 60, 2200, 250, 80, 80, Terrain.ASTEROID_BELT, "Malebolge Outer Asteroid Field");
 
         SectorEntityToken Malebolge_magfield = system.addTerrain(Terrain.MAGNETIC_FIELD,
                 new MagneticFieldParams(Malebolge.getRadius() + 150f, // terrain effect band width
@@ -408,7 +408,7 @@ public class Empyrean {
         Tisiphone.getMarket().addCondition(Conditions.RARE_ORE_SPARSE);
 
 
-        system.addAsteroidBelt(Dis, 50, 1100, 128, 40, 80, Terrain.ASTEROID_BELT, "Dis Inner Ring");
+        system.addAsteroidBelt(Dis, 10, 1100, 128, 40, 80, Terrain.ASTEROID_BELT, "Dis Inner Ring");
         system.addRingBand(Dis, "misc", "rings_asteroids0", 256f, 0, Color.blue, 256f, 1100, 20f);
         system.addRingBand(Dis, "misc", "rings_special0", 256f, 0, Color.white, 256f, 1120, 30f);
 
@@ -464,7 +464,7 @@ public class Empyrean {
          Megaera_market.getIndustry(Industries.FUELPROD).setSpecialItem(new SpecialItemData(Items.SYNCHROTRON, null));
 
 
-        system.addAsteroidBelt(Dis, 80, 1600, 150, 50, 100, Terrain.ASTEROID_BELT, "Dis Outer Ring");
+        system.addAsteroidBelt(Dis, 20, 1600, 150, 50, 100, Terrain.ASTEROID_BELT, "Dis Outer Ring");
         system.addRingBand(Dis, "misc", "rings_special0", 256f, 0, Color.red, 256f, 1650, 55f);
 
         PlanetAPI Alecto = system.addPlanet("vic_planet_alecto", Dis, "Alecto", "frozen", 360f * (float) Math.random(), 110, 2000, 70);
@@ -483,13 +483,13 @@ public class Empyrean {
 
         //Outer Asteroid belt
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 0, Color.white, 256f, 14700, 280f);
-        system.addAsteroidBelt(EmpyreanStar, 200, 15000, 150, 300, 400, Terrain.ASTEROID_BELT, "Empyrean Outer Asteroid Field");
+        system.addAsteroidBelt(EmpyreanStar, 40, 15000, 150, 300, 400, Terrain.ASTEROID_BELT, "Empyrean Outer Asteroid Field");
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 0, Color.white, 256f, 15000, 300f);
         system.addRingBand(EmpyreanStar, "misc", "rings_dust0", 256f, 0, Color.gray, 256f, 15020, 330f);
         system.addRingBand(EmpyreanStar, "misc", "rings_dust0", 256f, 0, Color.white, 256f, 15040, 310f);
         system.addRingBand(EmpyreanStar, "misc", "rings_dust0", 256f, 0, Color.darkGray, 256f, 150060, 370f);
         system.addRingBand(EmpyreanStar, "misc", "rings_dust0", 256f, 0, Color.lightGray, 256f, 150060, 350f);
-        system.addAsteroidBelt(EmpyreanStar, 1000, 15100, 1200, 300, 400, Terrain.ASTEROID_BELT, "Empyrean Outer Asteroid Field");
+        system.addAsteroidBelt(EmpyreanStar, 200, 15100, 1200, 300, 400, Terrain.ASTEROID_BELT, "Empyrean Outer Asteroid Field");
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 3, Color.gray, 256f, 15100f - 200, 350f);
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 0, Color.gray, 256f, 15100f, 340f);
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 15100f + 200, 400f);

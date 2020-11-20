@@ -64,10 +64,10 @@ public class vic_assault extends BaseHullMod {
 	}
 
     public String getDescriptionParam(int index, HullSize hullSize) {
-        if (index == 0) return "" + (mag.get(HullSize.FRIGATE)).intValue();
-        if (index == 1) return "" + (mag.get(HullSize.DESTROYER)).intValue();
-        if (index == 2) return "" + (mag.get(HullSize.CRUISER)).intValue();
-        if (index == 3) return "" + (mag.get(HullSize.CAPITAL_SHIP)).intValue();
+        if (index == 0) return (mag.get(HullSize.FRIGATE)).intValue() + "%";
+        if (index == 1) return (mag.get(HullSize.DESTROYER)).intValue() + "%";
+        if (index == 2) return (mag.get(HullSize.CRUISER)).intValue() + "%";
+        if (index == 3) return (mag.get(HullSize.CAPITAL_SHIP)).intValue() + "%";
         if (index == 4) return "" + Math.round(speedBonus);
         return null;
     }

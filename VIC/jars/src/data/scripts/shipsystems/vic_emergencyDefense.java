@@ -119,8 +119,6 @@ public class vic_emergencyDefense extends BaseShipSystemScript {
 
     @Override
     public StatusData getStatusData(int index, State state, float effectLevel) {
-        if (index == 0)
-            return new StatusData(effectLevel + "", false);
         return null;
     }
 

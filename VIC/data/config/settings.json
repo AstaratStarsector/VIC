@@ -40,6 +40,14 @@
 			"vic_shieldsRing64":"graphics/fx/shield/vic_shields64ring.png",
 			"vic_disruptorInnerRing":"graphics/fx/vic_disruptorInerRing.png",
 			"vic_disruptorOuterRing":"graphics/fx/vic_disruptorOuterRing.png",
+			
+			"trails_trail_clean":"graphics/trails/fx/trails_clean.png",
+			"trails_trail_fuzzy":"graphics/trails/fx/trails_fuzzy.png",
+			"trails_trail_smooth":"graphics/trails/fx/trails_smooth.png",
+			"trails_trail_zappy":"graphics/trails/fx/trails_zappy.png",
+			"trails_trail_contrail":"graphics/trails/fx/trails_contrail.png",
+			"trails_trail_twin":"graphics/trails/fx/trails_twin.png",
+			"trails_trail_foggy":"graphics/trails/fx/trails_foggy.png",
 		}
 	}
 }

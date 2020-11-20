@@ -6,7 +6,7 @@
 	"music_vic_market_neutral":[
 		{
 			"source":"sounds/music",
-			"volume":0.2,
+			"volume":0.5,
 			"files":[
 				"Psiklaw's VIC neutral market.ogg",
 			],
@@ -17,7 +17,7 @@
 	"music_vic_market_friendly":[
 		{
 			"source":"sounds/music",
-			"volume":0.2,
+			"volume":0.5,
 			"files":[
 				"StellarDrone_Airglow_Edited.ogg",
 			],
@@ -41,26 +41,40 @@
 		{"file": "sounds/effects/vic_quantum_lunge_explosion.ogg", "pitch": 0.9, "volume": 0.8}
 	],	
 	"vic_besomar_shot":[
-		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 0.9, "volume": 1,},
-		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 0.95, "volume": 1,},
-		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 1, "volume": 1,},
-		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 1.05, "volume": 1,},
-		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 1.1, "volume": 1,},
+		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 0.812, "volume": 1,},
+		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 0.855, "volume": 1,},
+		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 0.900, "volume": 1,},
+		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 0.945, "volume": 1,},
+		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 0.992, "volume": 1,},
 	],
 	"vic_laidlaw_accelerator_shot":[
-		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 0.90, "volume": 0.9,},
-		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 0.95, "volume": 0.9,},
-		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 1.00, "volume": 0.9,},
-		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 1.05, "volume": 0.9,},
-		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 1.10, "volume": 0.9,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 0.90, "volume": 1,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 0.95, "volume": 1,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 1.00, "volume": 1,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 1.05, "volume": 1,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 1.10, "volume": 1,},
 	],
-	
+	"vic_laidlaw_accelerator_charge":[
+		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.722, "volume": 1,},
+		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.760, "volume": 1,},
+		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.800, "volume": 1,},
+		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.850, "volume": 1,},
+		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.882, "volume": 1,},
+	],	
+
 	"vic_laidlaw_accelerator_shot_light":[
-		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 0.96, "volume": 0.9,},
-		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 0.98, "volume": 0.9,},
-		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1.00, "volume": 0.9,},
-		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1.02, "volume": 0.9,},
-		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1.04, "volume": 0.9,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 0.96, "volume": 0.75,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 0.98, "volume": 0.75,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1.00, "volume": 0.75,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1.02, "volume": 0.75,},
+		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1.04, "volume": 0.75,},
+	],
+	"vic_laidlaw_accelerator_light_charge":[
+		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.90, "volume": 0.9,},
+		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.95, "volume": 0.9,},
+		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 1.00, "volume": 0.9,},
+		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 1.05, "volume": 0.9,},
+		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 1.10, "volume": 0.9,},
 	],
 	"vic_rarog_start":[
 		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 0.90, "volume": 0.7,},
@@ -77,13 +91,20 @@
 		{"file": "sounds/effects/vic_rarog_loop.ogg", "pitch": 1.10, "volume": 0.5,"randomStart":true},
 	],
 	"vic_upyr":[
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.85, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.90, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.95, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 1.00, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 1.05, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 1.10, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 1.15, "volume": 0.75},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.85, "volume": 0.7},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.90, "volume": 0.7},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.95, "volume": 0.7},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 1.00, "volume": 0.7},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 1.05, "volume": 0.7},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 1.10, "volume": 0.7},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 1.15, "volume": 0.7},
+	],
+	"vic_scaterBlaster_shot":[
+		{"file": "sounds/effects/vic_scaterBlaster_shot.ogg", "pitch": 0.90, "volume": 0.9,},
+		{"file": "sounds/effects/vic_scaterBlaster_shot.ogg", "pitch": 0.95, "volume": 0.9,},
+		{"file": "sounds/effects/vic_scaterBlaster_shot.ogg", "pitch": 1.00, "volume": 0.9,},
+		{"file": "sounds/effects/vic_scaterBlaster_shot.ogg", "pitch": 1.05, "volume": 0.9,},
+		{"file": "sounds/effects/vic_scaterBlaster_shot.ogg", "pitch": 1.10, "volume": 0.9,},
 	],
 	"vic_gagana_shot":[
 		{"file": "sounds/effects/vic_gagana_shot.ogg", "pitch": 0.90, "volume": 0.7,},
@@ -106,13 +127,13 @@
 		{"file": "sounds/effects/vic_verlioka_loop.ogg", "pitch": 1, "volume": 1.5,}
 	],
 	"vic_psotnik":[
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.686, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.722, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.760, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.800, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.840, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.882, "volume": 0.75},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.926, "volume": 0.75},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.686, "volume": 0.9},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.722, "volume": 0.9},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.760, "volume": 0.9},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.800, "volume": 0.9},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.840, "volume": 0.9},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.882, "volume": 0.9},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.926, "volume": 0.9},
 	],
 	
 

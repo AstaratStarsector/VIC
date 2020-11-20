@@ -63,5 +63,5 @@
   "animationType": "GLOW",
   "requiresFullCharge": false,
   "textureType": ROUGH,
-  "fireSoundTwo": "antimatter_blaster_fire"
+  "fireSoundTwo": "vic_scaterBlaster_shot"
 }

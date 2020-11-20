@@ -30,8 +30,8 @@ public class vic_rubiconOnHit implements OnHitEffectPlugin {
                     projectile.getFacing() + (toDaysRandom * MathUtils.getRandomNumberInRange(0.6f, 1.4f)),
                     new Vector2f());
 
-            float size = MathUtils.getRandomNumberInRange(40, 60);
-            float grow = MathUtils.getRandomNumberInRange(40, 60);
+            float size = MathUtils.getRandomNumberInRange(20, 30);
+            float grow = MathUtils.getRandomNumberInRange(size * -0.5f, size * 0.5f);
             MagicRender.battlespace(
                     Global.getSettings().getSprite("fx", "vic_rubicon_river"),
                     SpawnPoint,
@@ -48,7 +48,7 @@ public class vic_rubiconOnHit implements OnHitEffectPlugin {
                     MathUtils.getRandomNumberInRange(0.1f, 0.3f)
             );
             projectile.getSource().getFluxTracker().setCurrFlux(projectile.getSource().getFluxTracker().getCurrFlux() + (50 * projectile.getSource().getMutableStats().getBallisticWeaponFluxCostMod().getBonusMult()));
-            Global.getSoundPlayer().playSound("system_phase_cloak_collision", 1f, 1f, SpawnPoint, new Vector2f());
+            Global.getSoundPlayer().playSound("system_phase_teleporter", 1f, 0.2f, SpawnPoint, new Vector2f());
         }
     }
 }

@@ -51,6 +51,7 @@ vic_quantumlunge,SHIP_SYSTEM,"Propels ship forward, ignoring collission with shi
 vic_adaptiveassault,SHIP_SYSTEM,"Temporarily increases ballistic weapons' rate of fire and decreases their flux generation, and also increases energy weapons' damage. The bonus strength depends on the loadout of the ship.",,,
 vic_emergencyDefense,SHIP_SYSTEM,Temporarily forces all fighters to Regroup mode and substantially increases their stats. ,,,
 vic_DriftBoost,SHIP_SYSTEM,Allows the ship to make a rapid dash into any desired direction.,,,
+vic_quantumteleporter,SHIP_SYSTEM,The ship instantly teleports to any desired nearby location. Using this system generates some flux. Can be used while phased.,,,
 ,,,,,
 #Weapons,,,,,
 vic_rubicon,WEAPON,"The Rubicon's projectile exists in a state of quantum uncertainty, occupying many possible locations at any given time. When the projectile impacts against a target, the trigger mechanism keeping it from fully entering reality is destroyed. Due to a quirk of quantum mechanics' interactions with p-space, several copies of what are all technically the same projectile appear soon after it, dramatically multiplying the damage of what is still, from a scientific perspectice, a single shell.",,,

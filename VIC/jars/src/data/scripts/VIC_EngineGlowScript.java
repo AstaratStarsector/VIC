@@ -56,7 +56,7 @@ public class VIC_EngineGlowScript implements EveryFrameWeaponEffectPlugin {
         if (thruster.isDisabled()) {
             currentBrightness = 0f;
         }
-        if (SHIP.isHulk()){
+        if (SHIP.isHulk() || SHIP.isPhased()){
             currentBrightness = 0f;
         }
 
