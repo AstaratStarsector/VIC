@@ -1,48 +1,57 @@
 {
-    "displayName": "Standart",
-	"goalVariant": true,
-    "fluxCapacitors": 16,
-    "fluxVents": 30,
-    "hullId": "vic_thamuz",
-    "hullMods": ["targetingunit"],
-    "permaMods": [],
-    "variantId": "vic_thamuz_standart",
-    "weaponGroups": [
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0005": "vic_psotnik",
-                "WS0013": "vic_psotnik"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {"WS0001": "vic_heavylaidlawaccelerator"}
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0002": "vic_strigoy",
-                "WS0003": "vic_strigoy",
-                "WS0004": "vic_strigoy",
-                "WS0009": "vic_strigoy",
-                "WS0010": "vic_strigoy",
-                "WS0011": "vic_strigoy",
-                "WS0012": "vic_strigoy"
-            }
-        },
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0007": "harpoonpod"}
-        },
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0006": "harpoonpod"}
-        }
-    ]
+  "variantId": "vic_thamuz_standart",
+  "hullId": "vic_thamuz",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 1,
+  "fluxVents": 30,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "vic_assault",
+    "vic_allRoundShieldUpgrade"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "vic_psotnik",
+        "WS0005": "vic_devastator",
+        "WS0006": "sabotpod",
+        "WS0007": "sabotpod",
+        "WS0010": "vic_strigoy",
+        "WS0011": "vic_strigoy",
+        "WS0012": "vic_strigoy",
+        "WS0013": "vic_devastator"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "vic_strigoy",
+        "WS0003": "vic_strigoy",
+        "WS0004": "vic_strigoy",
+        "WS0009": "vic_strigoy"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {}
+    }
+  ],
+  "modules": [],
+  "wings": []
 }
