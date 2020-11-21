@@ -16,14 +16,7 @@
     "vic_dynamicshields"
   ],
   "builtInWeapons": {
-    "WS0005": "phasebeam",
-    "WS0008": "vic_pruflas_wing_left",
-    "WS0009": "vic_pruflas_wing_right",
-    "WS0010": "vic_pruflas_engine_glow_1",
-    "WS0012": "vic_pruflas_engine_glow_2",
-    "WS0013": "vic_pruflas_engine_glow_5",
-    "WS0014": "vic_pruflas_engine_glow_3",
-    "WS0015": "vic_pruflas_engine_glow_4"
+    "WS0005": "phasebeam"
   },
   "weaponSlots": [
     {
@@ -88,74 +81,11 @@
       "arc": 70,
       "angle": -35.5,
       "locations": [5, -59.5]
-    },
-    {
-      "id": "WS0008",
-      "size": "LARGE",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 10,
-      "angle": -0,
-      "locations": [-2.5, 31]
-    },
-    {
-      "id": "WS0009",
-      "size": "LARGE",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 10,
-      "angle": 0,
-      "locations": [-2.5, -31]
-    },
-    {
-      "id": "WS0010",
-      "size": "MEDIUM",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 10,
-      "angle": -0,
-      "locations": [-71, 10]
-    },
-    {
-      "id": "WS0012",
-      "size": "MEDIUM",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 10,
-      "angle": -0,
-      "locations": [-72, 7]
-    },
-    {
-      "id": "WS0013",
-      "size": "MEDIUM",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 10,
-      "angle": 0,
-      "locations": [-71, -10]
-    },
-    {
-      "id": "WS0014",
-      "size": "MEDIUM",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 10,
-      "angle": -0,
-      "locations": [-72, -0]
-    },
-    {
-      "id": "WS0015",
-      "size": "MEDIUM",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 10,
-      "angle": 0,
-      "locations": [-72, -7]
     }
   ],
   "engineSlots": [
     {
-      "location": [-71, -0],
+      "location": [-67.5, -0],
       "length": 65.5,
       "width": 24,
       "angle": 180,
@@ -164,7 +94,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-71, 7],
+      "location": [-69, 7],
       "length": 29,
       "width": 8,
       "angle": 175,
@@ -173,7 +103,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-71, -7],
+      "location": [-69, -7],
       "length": 29,
       "width": 8,
       "angle": -175,
@@ -182,7 +112,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-70, 10],
+      "location": [-68.5, 10],
       "length": 19.956482,
       "width": 4.467143,
       "angle": 167.5,
@@ -191,7 +121,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-70, -10],
+      "location": [-68.5, -10],
       "length": 19.956482,
       "width": 4.467143,
       "angle": -167.5,

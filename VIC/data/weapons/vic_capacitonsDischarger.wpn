@@ -6,9 +6,9 @@
   "size": "LARGE",
   "everyFrameEffect": "data.scripts.weapons.vic_capacitonsDischargerFire",
   "turretSprite": "graphics/weapons/vic_tesla_cannon_base_turret.png",
-  "turretGlowSprite": "graphics/weapons/vic_tesla_cannon_glow_turret.png",
   "hardpointSprite": "graphics/weapons/vic_tesla_cannon_base.png",
   "hardpointGlowSprite": "graphics/weapons/vic_tesla_cannon_glow.png",
+  "turretGlowSprite": "graphics/weapons/vic_tesla_cannon_glow_turret.png",
   "renderAboveAllWeapons": 0,
   "glowColor": [
     144,
@@ -17,14 +17,14 @@
     255
   ],
   "turretOffsets": [
-    26,
+    37,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    24,
+    36,
     0
   ],
   "hardpointAngleOffsets": [
@@ -32,7 +32,7 @@
   ],
   "barrelMode": "ALTERNATING",
   "animationType": "GLOW",
-  "autocharge": true,
   "textureType": ROUGH,
-  "fireSoundTwo": "tachyon_lance_emp_impact"
+  "fireSoundTwo": "tachyon_lance_emp_impact",
+  "autocharge":true,
 }

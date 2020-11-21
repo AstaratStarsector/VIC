@@ -12,6 +12,7 @@
   "shieldRadius": 157.5,
   "viewOffset": 0,
   "builtInMods": [
+    "vic_aerodynamicdesign",
     "vic_dynamicshields",
     "vic_vBombHmod"
   ],

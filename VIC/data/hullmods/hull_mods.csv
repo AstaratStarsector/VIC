@@ -1,6 +1,6 @@
 name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hiddenEverywhere,cost_frigate,cost_dest,cost_cruiser,cost_capital,script,desc,short,sprite
 Aerodynamic Design,vic_aerodynamicdesign,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_aeroDynamicDesign,"Special technical and technological solutions which allow VIC-manufactured spacecraft to operate freely in strong gravitational fields and various types of atmospheres, providing active support to ground forces. Increases the effective strength of planetary raids by %s/%s/%s/%s based on the hull size, up to the total number of marines in the fleet.",Improves effectiveness of raids based on the ship's hull size.,graphics/hullmods/vic_aerodynamics.png
-Laidlaw Resonance Shields,vic_dynamicshields,1,,Volkov Industries,"defensive, shields",Shields,,,TRUE,,0,0,0,0,data.hullmods.vic_dynamicShields,"Exploiting the Laidlaw Resonance effect, VIC ships are capable of using excess energy of the electromagnetic field of their engines to increase their shield's arc. The closer the center of the shield is to the vessel's side, the wider the shield's arc becomes up to the maximum of %s degrees. Modified shield emitter increas the turn rate of the ship's shields by %s and the rate at which the shields are raised by %s.","The more the shield is turned to the rear of the ship, the bigger its arc grows.",graphics/hullmods/vic_dynamicshields.png
+Laidlaw Resonance Shields,vic_dynamicshields,1,,Volkov Industries,"defensive, shields",Shields,,,TRUE,,0,0,0,0,data.hullmods.vic_dynamicShields,"Exploiting the Laidlaw Resonance effect, VIC ships are capable of using excess energy produced by engine exhaust to increase shield's arc. The closer the center of the shield is to the vessel's side, the wider the shield's arc becomes up to the maximum of %s degrees. Modified shield emitter increas the turn rate of the ship's shields by %s and the rate at which the shields are raised by %s.","The more the shield is turned to the rear of the ship, the bigger its arc grows.",graphics/hullmods/vic_dynamicshields.png
 Dynamic Shields Front,vic_dynamicshieldsfront,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_dynamicShieldsFront,Face front - more shield arc. ,Face front - more shield arc. ,graphics/hullmods/extended_shields.png
 """Hellstorm"" Weapon System (exp.)",vic_hellstorm,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_hellStorm,Extreme modifications to weapon systems which increase ballistic weapons' fire rate by %s and both energy weapons' damage and flux cost by %s.,Faster rate of fire and less flux cost for ballistic weapons. ,graphics/hullmods/expanded_magazines2.png
 """Hellstorm"" Weapon System ",vic_hellstormV2,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_hellStormV2,"Extreme modifications to weapon systems which increase ballistic weapons' fire rate by %s, both energy weapons' damage and flux cost by %s and max missile ammo by %s. However, such significant alterations increase all weapon OP costs by %s.",Better weapon stats for increased OP.,graphics/hullmods/expanded_magazines2.png
@@ -30,14 +30,12 @@ VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,,
 #modular,,,,,,,,,,,,,,,,,,
 VIC Integrated Assault Systems,vic_assault,3,,Volkov Industries,offensive,Weapons,15000,,,,4,8,15,25,data.hullmods.vic_assault,"Extends the range of ballistic and energy weapons by %s/%s/%s/%s, depending on hull size. Increases ship max speed by %s su/second.
 
-incompatible with Integrated Targeting Unit and Dedicated Targeting Core.",,graphics/hullmods/vic_assault.png
+incompatibel with Integrated Targeting Unit and Dedicated Targeting Core.",,graphics/hullmods/vic_assault.png
 "VIC ""Fervor"" Protocols",vic_deathProtocol,3,,Volkov Industries,offensive,Weapons,25000,,,,5,10,20,30,data.hullmods.vic_deathProtocol,Increases damage of all weapons by %s also but increases damage taken by %s and phase cloak cost by %s.,,graphics/hullmods/vic_deathProtocol.png
-VIC Brand Shield Emitter,vic_allRoundShieldUpgrade,3,,Volkov Industries,offensive,Shields,25000,,,,7,14,21,35,data.hullmods.vic_allRoundShieldUpgrade,"Reduces the amount of damage taken by shields by %s.
+VIC Brand Shield Emitter,vic_allRoundShieldUpgrade,3,,Volkov Industries,offensive,Weapons,25000,,,,7,14,21,35,data.hullmods.vic_allRoundShieldUpgrade,"Reduces the amount of damage taken by shields by %s.
 Reduces the amount of soft flux the raised shields generate per second by %s
 Increases the turn rate of the ship's shields by %s and the rate at which the shields are raised by %s.
-Increases the shields' arc by %s degrees.
-
-Incompatible with Accelerated Shields, Extended Shields, Hardened Shields and Stabilized Shields. ",,graphics/hullmods/vic_shiledPack.png
+Increases the shields' arc by %s degrees.",,graphics/hullmods/vic_shiledPack.png
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #Commissioned Crews,,,,,,,,,,,,,,,,,,

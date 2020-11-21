@@ -1,40 +1,36 @@
 {
-  "variantId": "vic_cresil_airSuperiority",
-  "hullId": "vic_cresil",
-  "displayName": "Superiority",
-  "goalVariant": true,
-  "fluxCapacitors": 2,
-  "fluxVents": 4,
-  "quality": 1,
-  "permaMods": [],
-  "hullMods": [
-    "pointdefenseai"
-  ],
-  "weaponGroups": [
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0001": "vic_verlioka",
-        "WS0002": "vic_verlioka"
-      }
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0003": "vic_strigoy",
-        "WS0004": "vic_strigoy",
-        "WS0005": "vic_strigoy",
-        "WS0006": "vic_strigoy"
-      }
-    }
-  ],
-  "modules": [],
-  "wings": [
-    "vic_uvall_wing",
-    "vic_uvall_wing",
-    "vic_uvall_wing",
-    "vic_uvall_wing"
-  ]
+    "displayName": "Superiority",
+	"goalVariant": true,
+    "fluxCapacitors": 2,
+    "fluxVents": 4,
+    "hullId": "vic_cresil",
+    "hullMods": [],
+    "permaMods": [],
+    "variantId": "vic_cresil_airSuperiority",
+    "weaponGroups": [
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0001": "vic_verlioka",
+                "WS0002": "vic_verlioka"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0003": "vic_strigoy",
+                "WS0004": "vic_strigoy",
+                "WS0005": "vic_strigoy",
+                "WS0006": "vic_strigoy"
+            }
+        }
+    ],
+    "wings": [
+        "vic_uvall_wing",
+        "vic_uvall_wing",
+        "vic_uvall_wing",
+        "vic_uvall_wing"
+    ]
 }

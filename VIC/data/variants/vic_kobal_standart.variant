@@ -1,30 +1,25 @@
 {
-  "variantId": "vic_kobal_standart",
-  "hullId": "vic_kobal",
-  "displayName": "Standard",
-  "goalVariant": true,
-  "fluxCapacitors": 6,
-  "fluxVents": 10,
-  "quality": 1,
-  "permaMods": [],
-  "hullMods": [],
-  "weaponGroups": [
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0005": "vic_rubicon",
-        "WS0006": "vic_rubicon"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0004": "harpoonpod"
-      }
-    }
-  ],
-  "modules": [],
-  "wings": []
+    "displayName": "Standart",
+	"goalVariant": true,
+    "fluxCapacitors": 6,
+    "fluxVents": 10,
+    "hullId": "vic_kobal",
+    "hullMods": [],
+    "permaMods": [],
+    "variantId": "vic_kobal_standart",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0005": "vic_rubicon",
+                "WS0006": "vic_rubicon"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0004": "harpoonpod"}
+        }
+    ]
 }
