@@ -1,39 +1,44 @@
 {
-    "displayName": "Assault",
-	"goalVariant": true,
-    "fluxCapacitors": 16,
-    "fluxVents": 19,
-    "hullId": "vic_samael",
-    "hullMods": ["targetingunit"],
-    "permaMods": [],
-    "variantId": "vic_samael_assault",
-    "weaponGroups": [
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0006": "vic_gagana",
-                "WS0007": "vic_gagana"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0002": "vic_upyr",
-                "WS0004": "vic_upyr",
-                "WS0005": "vic_upyr"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0003": "vic_strigoy",
-                "WS0008": "vic_strigoy",
-                "WS0009": "vic_strigoy"
-            }
-        }
-    ],
-    "wings": []
+  "variantId": "vic_samael_assault",
+  "hullId": "vic_samael",
+  "displayName": "Assault",
+  "goalVariant": true,
+  "fluxCapacitors": 5,
+  "fluxVents": 20,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "sabotpod",
+        "WS0006": "vic_gagana",
+        "WS0007": "vic_gagana"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "vic_upyr",
+        "WS0004": "vic_upyr",
+        "WS0005": "vic_upyr"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "vic_strigoy",
+        "WS0008": "vic_strigoy",
+        "WS0009": "vic_strigoy"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
 }

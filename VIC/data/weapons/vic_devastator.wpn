@@ -32,12 +32,12 @@
   ],
   "turretAngleOffsets": [
     0,
-    -0.75,
-    0.75,
-    -1.5,
     1.5,
-    -2.25,
-    2.25
+    -1.5,
+    3,
+    -3,
+    4.5,
+    -4.5
   ],
   "hardpointOffsets": [
     39,
@@ -57,12 +57,12 @@
   ],
   "hardpointAngleOffsets": [
     0,
-    -0.75,
-    0.75,
-    -1.5,
     1.5,
-    -2.25,
-    2.25
+    -1.5,
+    3,
+    -3,
+    4.5,
+    -4.5
   ],
   "barrelMode": "LINKED",
   "animationType": "MUZZLE_FLASH",

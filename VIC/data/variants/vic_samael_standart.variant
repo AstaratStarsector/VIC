@@ -1,39 +1,44 @@
 {
-    "displayName": "Standart",
-	"goalVariant": true,
-    "fluxCapacitors": 19,
-    "fluxVents": 20,
-    "hullId": "vic_samael",
-    "hullMods": ["targetingunit"],
-    "permaMods": [],
-    "variantId": "vic_samael_standart",
-    "weaponGroups": [
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0006": "vic_rubicon",
-                "WS0007": "vic_rubicon"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0004": "vic_laidlawMassDriver",
-                "WS0005": "vic_laidlawMassDriver"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0002": "vic_strigoy",
-                "WS0003": "vic_strigoy",
-                "WS0008": "vic_strigoy",
-                "WS0009": "vic_strigoy"
-            }
-        }
-    ],
-    "wings": []
+  "variantId": "vic_samael_standart",
+  "hullId": "vic_samael",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 4,
+  "fluxVents": 20,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "sabotpod",
+        "WS0002": "vic_laidlawMassDriver",
+        "WS0006": "vic_rubicon",
+        "WS0007": "vic_rubicon"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0004": "vic_laidlawMassDriver",
+        "WS0005": "vic_laidlawMassDriver"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "vic_strigoy",
+        "WS0008": "vic_strigoy",
+        "WS0009": "vic_strigoy"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
 }
