@@ -22,9 +22,9 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
     public static final float SPEED_BOOST = 8000f;
     public final float DistPerExp = 50f;
     public final boolean ArcAimAtShips = true; //for secondary arcs
-    public final float EmpArcDmg = 400;
-    public final float EmpArcEmp = 50;
-    public final float AllyMult = 0.15f;
+    public final float EmpArcDmg = 800;
+    public final float EmpArcEmp = 100;
+    public final float AllyMult = 0.1f;
     public final DamageType EmpArmDmgType = DamageType.ENERGY;
     public final float TimeBonus = 2f;
     public final Map<ShipAPI.HullSize, Float> MULT = new HashMap<>();

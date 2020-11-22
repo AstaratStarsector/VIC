@@ -8,7 +8,7 @@ Big Bays ,vic_bigbays,1,,Volkov Industries,Fighters,,,,TRUE,,0,0,0,0,data.hullmo
 Experimental Phase Drive,vic_toneddownweapon,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_tonedDownWeapon,"Allows the ship to be partially in P-Space on a constant basis, which accelerates the ship's timeflow by %s and reduces phase cloak cooldown by %s. Partially phased power grid also decreases weapon flux costs by %s.
 
 However, due to the strong P-Space interference in the ship's systems, weapons' effective range is decreased by %s.",Less weapon range in exchange for stats boosts.,graphics/hullmods/vic_pahseOvercharge2.png
-Viral Bombardment Systems,vic_vBombHmod,,,Volkov Industries,,,,TRUE,TRUE,,0,0,0,0,data.hullmods.vic_vBombHmod,"The ship's modernized cargo cooling and containment systems allow it to transport and employ special biological ordnance. With this ship in the fleet it becomes possible to commence Viral Bombardment against the inhabited colonies. 
+Viral Bombardment Systems,vic_vBombHmod,,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_vBombHmod,"The ship's modernized cargo cooling and containment systems allow it to transport and employ special biological ordnance. With this ship in the fleet it becomes possible to commence Viral Bombardment against the inhabited colonies. 
 
 Having additional ships with V-Bombardment systems in the fleet reduces the cost of such bombardments. The current cost is %s.","""Impact in 3... 2... 1...""",graphics/hullmods/vic_VBombHmod.png
 Adaptive Assault Configuration,vic_adaptiveAssault,4,,Volkov Industries,defensive,0,true,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveAssault,"Adaptive Assault system's effect depends on the loadout of the ship, with the bonuses increasing in accordance to the skew towards either ballistic- or energy-focused loadout.
@@ -41,7 +41,7 @@ Incompatible with Accelerated Shields, Extended Shields, Hardened Shields and St
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #Commissioned Crews,,,,,,,,,,,,,,,,,,
-Commissioned Crew Bundle,vic_commissionedCrewBundle,,,,,,,,,,0,0,0,0,data.hullmods.vic_commissionedCrewBundle,,,graphics/hullmods/vic_geneticmodifications.png
+Commissioned Crew Bundle,vic_commissionedCrewBundle,,,,,,,,TRUE,,0,0,0,0,data.hullmods.vic_commissionedCrewBundle,,,graphics/hullmods/vic_geneticmodifications.png
 Military-grade Genetic Modifications,vic_geneticmodifications,,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_geneticModifications,"Most VIC's soldiers are filled to the brim with top-notch genetech, endowing them with unnatural capabilities. In the case of VIC Aerospace Corps - inhuman reflexes and impressive resistance to G-overloads. 
 
 With the crews being able to withstand extreme inertial strains and act faster in combat,ships receive %s increase in speed of the time flow and %s increase in all acceleration rates. However due to the increased aggression and recklessness of genemodded pilots ships take %s more damage in combat.","Genetech rules, don't pass out on stiff turns. ",graphics/hullmods/vic_geneticmodifications.png
