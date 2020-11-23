@@ -30,20 +30,20 @@
   },
   
   # multiplier for how often hulls show up in the faction's fleets
-  "hullFrequency": {
-  "hulls":{
-  			"vic_pruflas":50,
-			"vic_xaphan":50,
-			"vic_nybbas":5,
-			"vic_kobal":25,
-			"vic_jezebeth":25,
-			"vic_moloch":50,
-			"vic_samael":25,
-			"vic_thamuz":25,
-			"vic_valafar":50,
-			"vic_cresil":25,
-			"vic_apollyon":50,
-		},
+ "hullFrequency": {
+ "hulls":{
+ 			"vic_pruflas":1,
+			"vic_xaphan":1,
+            "vic_nybbas":0.05,
+			"vic_kobal":1,
+			"vic_jezebeth":1,
+            "vic_moloch":1.5,
+			"vic_samael":1,
+			"vic_thamuz":1,
+            "vic_valafar":1.5,
+			"vic_cresil":1,
+			"vic_apollyon":0.5,
+        },
   },
   
   # ships the faction gets access to when importing S&W out-of-faction
@@ -180,7 +180,7 @@
     "shipQuality": 5,
     "numShips": 3,
 	
-    "shipSize": 3,
+    "shipSize": 2,
 	
     "aggression": 4,
 
@@ -281,8 +281,8 @@
     "offersCommissions": true,
     "engagesInHostilities": true,
     "buysAICores": true,
-    "AICoreValueMult": 2,
-    "AICoreRepMult": 3,
+    "AICoreValueMult": 1.5,
+    "AICoreRepMult": 2,
     "buysSurveyData": true,
     "hostilityImpactOnGrowth": true,
     "caresAboutAtrocities": false,

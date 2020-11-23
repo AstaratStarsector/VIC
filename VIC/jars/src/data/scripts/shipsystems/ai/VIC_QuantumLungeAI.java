@@ -232,9 +232,10 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
             return;
         }
 
-        if (canIFlankThisFucker(ship, target) > minPointsToFlank && rightDirection(ship, targetLocation)) {
+        NeededDur = (MathUtils.getDistance(ship.getLocation(), targetLocation) + (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
+        if ((rightDirection(ship, targetLocation)) && NeededDur <= ship.getSystem().getChargeActiveDur() && (canIFlankThisFucker(ship, target) > minPointsToFlank)) {
             useMe = true;
-            //spawnText("Flank", 0f);
+            //spawnText("Flank/" + NeededDur, 0f);
         }
 
 

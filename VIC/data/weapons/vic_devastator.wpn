@@ -1,7 +1,7 @@
 {
   "id": "vic_devastator",
   "specClass": "projectile",
-  "projectileSpecId": "vic_devastator_shot",
+  "projectileSpecId": "vic_besomar_shot",
   "type": "BALLISTIC",
   "size": "LARGE",
   "everyFrameEffect": "data.scripts.weapons.vic_devostatorFire",

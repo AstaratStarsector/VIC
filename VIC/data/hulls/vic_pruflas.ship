@@ -30,7 +30,7 @@
       "id": "WS0001",
       "size": "SMALL",
       "type": "HYBRID",
-      "mount": "TURRET",
+      "mount": "HARDPOINT",
       "arc": 10,
       "angle": 0,
       "locations": [3.5, -22]
@@ -39,7 +39,7 @@
       "id": "WS0002",
       "size": "SMALL",
       "type": "HYBRID",
-      "mount": "TURRET",
+      "mount": "HARDPOINT",
       "arc": 10,
       "angle": -0,
       "locations": [3.5, 22]
@@ -48,7 +48,7 @@
       "id": "WS0003",
       "size": "SMALL",
       "type": "COMPOSITE",
-      "mount": "TURRET",
+      "mount": "HARDPOINT",
       "arc": 10,
       "angle": 0,
       "locations": [3.5, -41]
@@ -57,7 +57,7 @@
       "id": "WS0004",
       "size": "SMALL",
       "type": "COMPOSITE",
-      "mount": "TURRET",
+      "mount": "HARDPOINT",
       "arc": 10,
       "angle": -0,
       "locations": [3.5, 41]
@@ -155,47 +155,47 @@
   ],
   "engineSlots": [
     {
-      "location": [-71, -0],
-      "length": 65.5,
-      "width": 24,
+      "location": [-74, -0],
+      "length": 58,
+      "width": 16,
       "angle": 180,
-      "contrailSize": 24,
+      "contrailSize": 16,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-71, 7],
-      "length": 29,
-      "width": 8,
+      "location": [-73, 8],
+      "length": 26.380419,
+      "width": 6.426043,
       "angle": 175,
-      "contrailSize": 8,
+      "contrailSize": 6.426043,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-71, -7],
-      "length": 29,
-      "width": 8,
+      "location": [-73, -8],
+      "length": 26.380419,
+      "width": 6.426043,
       "angle": -175,
-      "contrailSize": 8,
+      "contrailSize": 6.426043,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-70, 10],
-      "length": 19.956482,
-      "width": 4.467143,
+      "location": [-72, 12],
+      "length": 19.196625,
+      "width": 6.852614,
       "angle": 167.5,
-      "contrailSize": 4.467143,
+      "contrailSize": 6.852614,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-70, -10],
-      "length": 19.956482,
-      "width": 4.467143,
+      "location": [-72, -12],
+      "length": 19.196625,
+      "width": 6.852614,
       "angle": -167.5,
-      "contrailSize": 4.467143,
+      "contrailSize": 6.852614,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }

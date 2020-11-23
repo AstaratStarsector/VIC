@@ -2,21 +2,21 @@
 	# should be a copy of "combatSmall", minus variants that are annoying to fight in low numbers
 	# for example, no Hyperions or fast beam-based kiting loadouts, or ships with damper field
 	"combatSmallForSmallFleet":{	
-		"vic_xaphan_skirmisher":40,
+		"vic_xaphan_skirmisher":20,
 		
-		"vic_pruflas_skirmish":20,
-		"vic_pruflas_Demolisher":20,
+		"vic_pruflas_skirmish":10,
+		"vic_pruflas_Demolisher":10,
 		
 		"vic_kobal_standart":10,
 		"vic_kobal_burst":10,	
 	},
 	"combatSmall":{
-		"vic_xaphan_skirmisher":40,
-		"vic_xaphan_harasher":20,
+		"vic_xaphan_skirmisher":20,
+		"vic_xaphan_harasher":10,
 		
-		"vic_pruflas_skirmish":20,
-		"vic_pruflas_Demolisher":20,
-		"vic_pruflas_harasher":20,
+		"vic_pruflas_skirmish":10,
+		"vic_pruflas_Demolisher":10,
+		"vic_pruflas_harasher":10,
 		
 		"vic_kobal_standart":12,
 		"vic_kobal_burst":12,

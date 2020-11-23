@@ -1,5 +1,5 @@
 {
-	"id":"vic_devastator_shot",
+	"id":"vic_besomar_shot",
 	"specClass":"projectile",
 	"spawnType":"BALLISTIC",
 	"collisionClass":"PROJECTILE_FF",
