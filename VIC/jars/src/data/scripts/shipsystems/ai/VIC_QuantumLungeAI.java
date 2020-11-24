@@ -30,8 +30,8 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
     // list of flags to check for using TOWARDS target, using AWAY from target, and NOT USING
     private static final ArrayList<AIFlags>
             TOWARDS = new ArrayList<>(),
-            //AWAY = new ArrayList<>(),
-            CON = new ArrayList<>();
+    //AWAY = new ArrayList<>(),
+    CON = new ArrayList<>();
 
     static {
         TOWARDS.add(AIFlags.PURSUING);
@@ -89,6 +89,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         if (target.isCapital() && !rightDirection(target, ship.getLocation())) return -100f;
         if (target.isStation() || target.isFighter()) return -100f;
         if (target.isHulk()) return -100;
+
 
         float shipSide = ship.getOwner();
         float targetSide = target.getOwner();
@@ -148,9 +149,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
     public void advance(float amount, Vector2f missileDangerDir, Vector2f collisionDangerDir, ShipAPI target) {
 
         // don't check if paused
-        if (engine.isPaused()) {
-            return;
-        }
+        if (engine.isPaused()) return;
         if (ship.getSystem().isStateActive() && TargShip) {
             TimeElapsed += amount;
             if (TimeElapsed >= NeededDur) {
@@ -232,10 +231,12 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
             return;
         }
 
-        NeededDur = (MathUtils.getDistance(ship.getLocation(), targetLocation) + (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
-        if ((rightDirection(ship, targetLocation)) && NeededDur <= ship.getSystem().getChargeActiveDur() && (canIFlankThisFucker(ship, target) > minPointsToFlank)) {
-            useMe = true;
-            //spawnText("Flank/" + NeededDur, 0f);
+        if (target != null) {
+            NeededDur = (MathUtils.getDistance(ship.getLocation(), targetLocation) + (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
+            if ((rightDirection(ship, targetLocation)) && NeededDur <= ship.getSystem().getChargeActiveDur() && (canIFlankThisFucker(ship, target) > minPointsToFlank)) {
+                useMe = true;
+                //spawnText("Flank/" + NeededDur, 0f);
+            }
         }
 
 

@@ -504,7 +504,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
                 }
             }
         }
-        text.addPara(temp.willBecomeHostile.toString(), Misc.getHighlightColor());
+        //text.addPara(temp.willBecomeHostile.toString(), Misc.getHighlightColor());
 
         if (nonHostile.isEmpty()) {
             text.addPara("An atrocity of this scale can not be hidden, but any factions that would " +

@@ -23,9 +23,9 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
     private static final float ENGINE_DEAD_TIME_MIN = 0.25f; // Min time until engine burn starts
     private static final float LEAD_GUIDANCE_FACTOR = 0.4f;
     private static final float LEAD_GUIDANCE_FACTOR_FROM_ECCM = 0.6f;
-    private static final float FIRE_INACCURACY = 5f; // Set-once for entire shot lifetime leading offset
-    private static final float AIM_THRESHOLD = 0.25f; // Multiplied by collision radius, how much it can be off by when deciding to MIRV
-    private static final float MIRV_DISTANCE = 500f;
+    private static final float FIRE_INACCURACY = 0f; // Set-once for entire shot lifetime leading offset
+    private static final float AIM_THRESHOLD = 0.5f; // Multiplied by collision radius, how much it can be off by when deciding to MIRV
+    private static final float MIRV_DISTANCE = 400f;
     private static final float TIME_BEFORE_CAN_MIRV = 1f; // Min time before can MIRV
     private static final float FLARE_OFFSET = -9f; // Set to engine location matched to missile projectile file
     private static final Color FLARE_COLOR = new Color(200, 165, 55, 255);
@@ -33,7 +33,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
     private static final boolean STAGE_ONE_EXPLODE = false;
     private static final boolean STAGE_ONE_FLARE = true; // Glow particle visual when second stage is litup
     //private static final boolean STAGE_ONE_TRANSFER_DAMAGE = false; // Only used for missile submunitions, which this is not
-    private static final boolean STAGE_ONE_TRANSFER_MOMENTUM = true;
+    private static final boolean STAGE_ONE_TRANSFER_MOMENTUM = false;
     private static final float SUBMUNITION_VELOCITY_MOD_MAX = 200f; // Max fudged extra velocity added to the submunitions
     private static final float SUBMUNITION_VELOCITY_MOD_MIN = 100f; // Min fudged extra velocity added to the submunitions
     private static final int NUMBER_SUBMUNITIONS = 1;
@@ -41,11 +41,11 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
     private static final float SUBMUNITION_INACCURACY = 0f; // How much much random offset from the ^ aim point if multiple
     private static final String STAGE_TWO_WEAPON_ID = "vic_abyssalfangs_sub";
     private static final String STAGE_TWO_SOUND_ID = "sabot_srm_split";
-    private static final float VELOCITY_DAMPING_FACTOR = 0.95f;
-    private static final float WEAVE_FALLOFF_DISTANCE = 750f; // Weaving stops entirely at 0 distance
-    private static final float WEAVE_SINE_A_AMPLITUDE = 20f; // Degrees offset
+    private static final float VELOCITY_DAMPING_FACTOR = 0.5f;
+    private static final float WEAVE_FALLOFF_DISTANCE = 1000f; // Weaving stops entirely at 0 distance
+    private static final float WEAVE_SINE_A_AMPLITUDE = 15f; // Degrees offset
     private static final float WEAVE_SINE_A_PERIOD = 3f;
-    private static final float WEAVE_SINE_B_AMPLITUDE = 30f; // Degrees offset
+    private static final float WEAVE_SINE_B_AMPLITUDE = 25f; // Degrees offset
     private static final float WEAVE_SINE_B_PERIOD = 6f;
     private static final Vector2f ZERO = new Vector2f();
     private float engineDeadTimer;
@@ -219,7 +219,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
                 vel.translate(boost.x, boost.y);
                 submunition = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(launchingShip,
                         missile.getWeapon(), STAGE_TWO_WEAPON_ID,
-                        missile.getLocation(), angle, vel);
+                        missile.getLocation(), angle, null);
                 submunition.setFromMissile(true);
             }
 

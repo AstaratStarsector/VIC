@@ -1,0 +1,17 @@
+{
+    "displayName": "Special",
+    "fluxCapacitors": 0,
+    "fluxVents": 0,
+    "hullId": "buffalo_hegemony",
+    "hullMods": [
+        "efficiency_overhaul",
+        "expanded_cargo_holds"
+    ],
+    "permaMods": [],
+    "variantId": "vic_buffalo_hegemony",
+    "weaponGroups": [{
+        "autofire": true,
+        "mode": "LINKED",
+        "weapons": {"WS 001": "lrpdlaser"}
+    }]
+}

@@ -28,7 +28,7 @@ Upyr Autocannon,vic_upyr,0,,600,600,,20,,1,20,7,,,,KINETIC,19,,0,0.1,2,0.1,0,18,
 Phase Lance (Shortranged),vic_phaselance,13,,1,250,1000,,,0,20,10,,,,ENERGY,,1200,0.25,0.5,1,4,,,,,3200,,,,,SYSTEM,"energy14, beam10",,Volkov Industries,,General,,,,,,,,,,20
 Scatter Blaster,vic_scatterblaster,13,,1,500,,100,,3,60,69,18,,,ENERGY,50,,0,0.5,,,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
 Abyssus Sabot Array,vic_abyssalfangs,13,,100000,2000,,100,,5,,,,,,KINETIC,0,,0,48.85,24,0.05,0,0,0,0,,450,1000,10,100,"DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8",,Volkov Industries,,Anti Shield,Fast,Excellent,,,,25% | 400,,,TRUE,12.1
-abyssalfangs sub,vic_abyssalfangs_sub,13,,666,900,,200,50,5,15,42,,,,KINETIC,55,,0,0.25,,,0,12,0.5,10,,850,,,,SYSTEM,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",25% | 60,,,,7.8
+abyssalfangs sub,vic_abyssalfangs_sub,13,,666,900,,200,50,5,15,42,,,,KINETIC,55,,0,0.25,,,0,12,0.5,10,,1000,,,,SYSTEM,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",25% | 60,,,,7.8
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Melter,vic_melter,2,,69,400,750,,,0,100,7,,,,HIGH_EXPLOSIVE,,750,0,0,0.25,4.85,,,,,1000000,,,,,"PD_ALSO, ANTI_FTR, SYSTEM","pd9, beam6",,Volkov Industries,,Point Defense,,,,,,,,,,15.6
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
