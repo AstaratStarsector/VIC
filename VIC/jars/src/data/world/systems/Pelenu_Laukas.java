@@ -178,7 +178,7 @@ public class Pelenu_Laukas {
                 "tritachyon",
                 Pyktis,
                 null,
-                "Lemtis",
+                "Pyktis",
                 5,
 
                 new ArrayList<>(
