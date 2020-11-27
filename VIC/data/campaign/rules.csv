@@ -61,36 +61,103 @@ OR
 The $PersonRank salutes you in a rather official manner, VIC insignia glistening on their uniform. 
 
 ""Hail, colleague. You have something to report?""
-
 OR
-
 ""Greetings, $playerName! Heard the news? They're paying extra for bringing test material to Purgatory this month. Better not miss the opportunity.""
 ",,
+greetingVICNeutral,OpenCommLink,"$faction.id == vic
+$faction.neutralToPlayer","$menuState = fleetConvMain 0 
+FireAll PopulateOptions","An automated message pops up. ""Volkov Industrial Conglomerate - Make Our Own Future. Make Our Own Paradise. To return to this menu, enter the number '0' in your comm-link. For a short history of the Conglomerate, enter '1.' For a long history of the Conglomerate, enter '2.' For a list of available commercial genetic modifications, enter '3.' For a list of commercial hulls-""
+
+You cut the link, suspecting this list will never end.
+OR
+What could very charitably be descibed as ""jingle music"" immediately starts blasting over the comm-link. ""Volkov Industrial Conglomerate, Conglomerate, Con-glom-erate, Volkov Industria-""
+
+No. Just no.
+OR
+""Have you ever felt that something isn't right? Thought to yourself, 'why should I have hands like everybody else, when I could have tentacles?' Or perhaps you've found yourself feeling that your geni-"" The sound cuts out for a second, and the words ""COMSEC Protects You"" flash on the display over static. ""-lacking a certain explosive 'OOOMPH?' Well the Volkov Industrial Conglomerate is here to help! For the low, low price of-""
+
+This time, it's you cutting off the audio. Whoever was on the other end of the line clearly wasn't interested in talking.
+OR
+""Hello? This is $personName of the Volkov Industrial Conglomerate speaking. How can I help you achieve paradise?"" The obviously-rehearsed line is spoken with much less enthusiasm than whoever wrote it had originally intended, and it's clear the $personRank is sick of repeating it.
+
+Before you can respond, $heOrShe says, ""No? Nothing? Alright, then"" and cuts the link.
+OR
+A ragged-looking $personRank pops up on the display. ""Please keep your voice down, whoever you are,"" $heOrShe says, ""just coming down from the aftermath of a genemod party. Well, you understand.""
+
+Something tells you not to inquire.
+OR
+""Greetings, potential customer. What can the Volkov Industrial Conglomerate do for you? Before answering, know that we have already scanned and analyzed your $shipOrFleet. Please don't make this complicated.""
+OR
+""If you're thinking of attacking, please don't. VIC doesn't respond well to troublemakers, and it's a pain to fill out all the salvaging paperwork.""
+OR
+""I know what you're thinking. Nice ship, right? If you want to buy your own, head to Empyrean System. We've also got weapons and genemods for sale there. Best market in the sector!""
+OR
+A soothing voice comes over the comm-link. ""Volkov Avionics are the best in the sector, nay, the galaxy! And what better to adorn your sleek, modern Volkov hulls than with Volkov weaponry? Your peers will respect you, and your enemies will fear you, trust me. Research has shown that pirates will flee at the mere sight of a Heavy Laidlaw Accelerator. With our top-of-the line engines, there's nowhere in the sector -- be it in space or in the skies -- outside of your reach!""
+OR
+""Keep your distance, stranger. You'll regret making enemies with the Conglomerate,"" $PersonRank says in a strict voice. 
+OR
+""Your $shipOrFleet has been scanned and are in our sights"", $PersonRank states in an emotionless tone, looking at you through the comms with slight suspicion in their eyes, ""Don't cause any trouble.""
+OR
+""By the Human Domain interstellar edict number R4-52223YO1Z this fleet is authorized to use lethal force in order to protect itself. I ask you to refrain from aggressive actions and/or any kinds of provocations.""",,
 greetingVICHostileWeaker,OpenCommLink,"$faction.id == vic
 $entity.isHostile
-$entity.relativeStrength < 0",$entity.ignorePlayerCommRequests = true 1,"""Attention. Your vessel has been scanned and identified as hostile to the Tri-Tachyon corporation. Further attempts at aggression will be recorded.""
+$entity.relativeStrength < 0",$entity.ignorePlayerCommRequests = true 1,"""What'cha doing there, friend?"" The VIC $personRank laughs nervously. ""You wouldn't be planning to attack us, would you? Everybody likes the Conglomerate!""
 OR
-""Any attempt to hinder or damage this Tri-Tachyon owned and operated vessel will result in legal consequences."" The Tri-Tachyon $personRank looks nervous. ""Trust me, these people don't mess around, you really ought to leave me alone.""",cutCommLink:Cut the comm link,
+""The Conglomerate fights for the future of Humanity."" The words sound brave, but the look on $HisOrHer face tells you it's an act.
+OR
+You hear what sounds like hasty orders mixed with expletives coming from offscreen. A VIC $personRank rushes onto the display window. Trying to look composed, $heOrShe says, ""We have informed local command that you're here. Reinforcements will be on our position shortly. We recommend you desist before then.""
+OR
+""Let's not be hasty here,"" the VIC $personRank says, unnaturally-tinged sweat visibly dripping. ""They'll be consequences if you attack us. Volkov doesn't forgive that sort of thing.""
+OR
+""Now think about this, our fleet is more valuable to you alive. I can arrange for you to get a discount on genemods or something; we can make a deal,"" $heOrShe pleads for mercy.
+OR
+""You cannot kill us; with our genetic code recorded, we will live on forever, and we will come back for revenge. Think about that before you proceed,"" - the $PersonRank tries to sound as convincing as they possibly can.",cutCommLink:Cut the comm link,
 greetingVICHostileWeakerDefiant,OpenCommLink,"$faction.id == vic
 $entity.isHostile
 $entity.relativeStrength < 0
-$entity.weakerThanPlayerButHolding",$entity.ignorePlayerCommRequests = true 1,"The Tri-Tachyon $personRank looks grim but defiant. ""Corporate regulation 313.33, section A, states that combat-capable vessels must defend themselves in a vigorous manner at all times,"" $heOrShe says.",cutCommLink:Cut the comm link,
+$entity.weakerThanPlayerButHolding",$entity.ignorePlayerCommRequests = true 1,"The VIC $personRank stares you down, hatred in $HisOrHer eyes. ""You have made yourself an enemy of the Conglomerate, and that makes you an enemy of the sector's future. Do not think cowardice will keep us from your throat.""
+OR
+""You may kill us, but at least we die in perfect forms,"" the $personRank says, and $heOrShe flourishes a modified appendage to emphasize. ""You, however, will be trapped for the rest of your life in your disgusting, mediocre body.""
+OR
+""Try it. Please. Destroy my vessel, and the Conglomerate will have your homeworld writhing in diseased agony before the cycle is up.""
+
+To punctuate the threat, $heOrShe transmits footage from a graphic holovid showing the effects of one of VIC's genetically-engineered bioweapons. The tone of $HisOrHer voice makes you fear it isn't a bluff.
+OR
+""Volkov expects me to be prepared to die in service to the future of Humanity and the creation of paradise. I am willing to do so, but don't think I'll make it easy. And when I see you in Hell, I'll make sure you pay for what you've done to the Conglomerate.""
+OR
+Scowling $PersonRank shows $HisOrHer unnaturaly sharp teeth, and distinctively inhuman growling is heard, which makes your comm officer fidget nervously.  
+OR
+""Don't expect our current disadvantage to be indicative for the rest of the Conglomerate,"" $heOrShe says, voice full of a little bluster and a lot of conviction.
+
+""That fleet you're so proud of? VIC will crush it under our industrial might!"" The $personRank slams $HisOrHer fist on the console and cuts off the feed.",cutCommLink:Cut the comm link,
 greetingVICHostileStronger,OpenCommLink,"$faction.id == vic
 $entity.isHostile
-$entity.relativeStrength >= 0",$entity.ignorePlayerCommRequests = true 1,"""Attention. Your vessel has been scanned and identified as hostile to the Tri-Tachyon corporation. Prepare for annihilation.""
+$entity.relativeStrength >= 0",$entity.ignorePlayerCommRequests = true 1,"""When we're finished destroying your $shipOrFleet,"" the VIC $personRank boasts, ""we're going to drag your corpse out of the wreckage so we can analyze your genes. Then we can figure out what went so wrong as to end up with you.""
 OR
-""On behalf of the Tri-Tachyon corporation I would like to thank you for providing this opportunity to prove the superiority of our branded line of space defense products.""
-OR
-""On behalf of the Tri-Tachyon corporation it is my duty to inform you that this engagement will be recorded. As a presumed belligerent engaged in destruction of wholly owned Company property, you automatically refuse all rights to distribution and profit-sharing."" The Tri-Tachyon $personRank grins and cuts the comm-link.",cutCommLink:Cut the comm link,
-greetingVICNeutral,OpenCommLink,"$faction.id == vic
-$faction.neutralToPlayer","$menuState = fleetConvMain 0
-FireAll PopulateOptions","""On behalf of the Tri-Tachyon corporation it is my pleasure to inform you that your $shipOrFleet has been scanned and its tactical loadout evaluated. Please maintain your distance and have a nice day.""
-OR
-""Greetings on behalf of the Tri-Tachyon corporation. Feel free to admire our Tri-Tachyon modified ships equipped with the latest in Tri-Tachyon branded space defense products, but please maintain a safe distance. The Company takes property damage very seriously.""
-OR
-The comm opens to a spinning Tri-Tachyon logo.""The Tri-Tachyon corporation prioritizes the needs of every customer and value-partner, however all of our service representatives are currently-""
+""Normally, when we end up removing subversives such as yourself from the sector, we end up taking them back to the labs for some 'voluntary scientific testing.'""
 
-You cut the link. They don't seem interested in talking right now.",,
+The $personRank sneers when $heOrShe says the phrase. ""But you clearly wouldn't make for worthy testing material. Prime weapons systems,"" $heOrShe says to $HisOrHer secondary officer, before cutting comms.
+OR
+""You are an enemy of the Conglomerate. Prepare to die.""
+OR
+""This is the finest nanopolymer-laminate armor forged in Phlegethon. These engines burn hotter than Empyrean itself. Volkov weaponry pierces meters of tungsten like it's tissue paper. And to prove it, your $shipOrFleet will be our newest product demonstration.""
+OR
+""By corporate law, your $shipOrFleet is the rightful property of the Volkov Industrial Conglomerate. If you resist or otherwise do not hand it over immediately, we will have to reclaim our assets by force.""
+
+A sadistic and unnaturally toothy grin comes over the $personRank's face.
+OR
+""Oh good!"" The $personRank looks you over, much like how a lion would look at a gazelle, and licks $HisOrHer lips with a split tongue. ""More DNA to harvest.""
+
+Your ship scanners read many weapons signatures powering up simultaneously. ""You'll make an excellent specimen,"" $heOrShe remarks before cutting the comm-link.
+OR
+The VIC $personRank pops up on the comms display, waving a holographic representation of some documents. ""I've got some forms here that say you volunteered for some human experimentation.""
+
+You recieve a notification that the communications auto-recorder has turned off, and $heOrShe leans in to the display. ""Of course, we both know you didn't, but do you really think the courts would believe a known criminal like you over a Volkov $personRank like me?""
+OR 
+""The white coats on Purgatory will enjoy testing their new stuff on you. Wish I could see that. The enemy of Humankind, being turned into all sorts of disgusting things to help us bring Paradise just a bit closer,"" - the $PersonRank gloats creepily, their slitted pupils dilating in a vicious manner.
+OR 
+""Try not to die too quickly, please. The footage of our battle will make for a great inspirational movie for the children!"" - the $PersonRank says light-heartedly and turns off the comms before you can say anything.
+",cutCommLink:Cut the comm link,
 ,,,,,,
 ,,,,,,
 beaconOpenDialogSiaubas,OpenInteractionDialog,"$tag:warning_beacon
