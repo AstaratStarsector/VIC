@@ -55,11 +55,9 @@
 		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 1.10, "volume": 1,},
 	],
 	"vic_laidlaw_accelerator_charge":[
-		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.722, "volume": 1,},
 		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.760, "volume": 1,},
 		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.800, "volume": 1,},
 		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.850, "volume": 1,},
-		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.882, "volume": 1,},
 	],	
 
 	"vic_laidlaw_accelerator_shot_light":[
@@ -70,11 +68,9 @@
 		{"file": "sounds/effects/vic_laidlawaccel_shot_light.ogg", "pitch": 1.04, "volume": 0.75,},
 	],
 	"vic_laidlaw_accelerator_light_charge":[
-		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.90, "volume": 0.9,},
 		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 0.95, "volume": 0.9,},
 		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 1.00, "volume": 0.9,},
 		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 1.05, "volume": 0.9,},
-		{"file": "sounds/effects/vic_laidlawaccel_charge.ogg", "pitch": 1.10, "volume": 0.9,},
 	],
 	"vic_rarog_start":[
 		{"file": "sounds/effects/vic_rarog_start.ogg", "pitch": 0.90, "volume": 0.7,},

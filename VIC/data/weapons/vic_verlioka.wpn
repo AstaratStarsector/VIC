@@ -1,9 +1,11 @@
 {
   "id": "vic_verlioka",
-  "specClass": "projectile",
-  "projectileSpecId": "vic_verlioka_shot",
+  "specClass": "beam",
   "type": "ENERGY",
   "size": "MEDIUM",
+  "collisionClass": "NONE",
+  "collisionClassByFighter": "NONE",
+  "everyFrameEffect": "data.scripts.weapons.vic_verliokaEffect",
   "turretSprite": "graphics/weapons/vic_verlioka_base_turret.png",
   "turretGlowSprite": "graphics/weapons/vic_verlioka_glow_turret.png",
   "hardpointSprite": "graphics/weapons/vic_verlioka_base_hardpoint.png",
@@ -16,35 +18,39 @@
     255
   ],
   "turretOffsets": [
-    15,
-    0
+    14,
+    -4,
+    14,
+    4
   ],
   "turretAngleOffsets": [
-    0
+    -15,
+    15
   ],
   "hardpointOffsets": [
-    19.5,
-    0
+    18.5,
+    -4,
+    18.5,
+    4
   ],
   "hardpointAngleOffsets": [
-    0
+    -15,
+    15
   ],
-  "barrelMode": "ALTERNATING",
-  "animationType": "GLOW_AND_FLASH",
-  "muzzleFlashSpec": {
-    "length": 60,
-    "spread": 60,
-    "particleSizeMin": 20,
-    "particleSizeRange": 20,
-    "particleDuration": 0.4,
-    "particleCount": 10,
-    "particleColor": [
-      255,
-      228,
-      50,
-      255
-    ]
-  },
+  "fringeColor": [
+    255,
+	191,
+	21,
+    125
+  ],
+  "coreColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "width": 7.5,
   "textureType": ROUGH,
-  "fireSoundOne": "vic_verlioka_start"
+  #"fireSoundOne": "vic_verlioka_start",
+  "fireSoundTwo": "vic_verlioka_loop"
 }

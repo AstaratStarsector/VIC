@@ -70,7 +70,15 @@ public class VIC_QuantumLungeWeapon implements EveryFrameWeaponEffectPlugin {
                     } while (c instanceof ShipAPI && ((ShipAPI) c).isPhased());
 
                     if (MathUtils.isWithinRange(c.getLocation(), this.SHIP.getLocation(), 550.0F)) {
-                        Vector2f repulsion = MathUtils.getPoint(this.SHIP.getLocation(), 550.0F, VectorUtils.getAngle(this.SHIP.getLocation(), c.getLocation()));
+                        if (c instanceof ShipAPI){
+                            if (((ShipAPI) c).isStationModule()){
+                                c = ((ShipAPI) c).getParentStation();
+                                if (MathUtils.isWithinRange(c.getLocation(), this.SHIP.getLocation(), 500.0F))
+                                    continue;
+                            }
+                        }
+                        float angle = VectorUtils.getAngle(this.SHIP.getLocation(), c.getLocation());
+                        Vector2f repulsion = MathUtils.getPoint(this.SHIP.getLocation(), 550.0F, angle);
                         Vector2f.sub(repulsion, c.getLocation(), repulsion);
                         repulsion.scale(amount * 4.0f);
                         Vector2f cLoc = c.getLocation();

@@ -17,6 +17,11 @@ public class vic_DriftBoost extends BaseShipSystemScript {
         ShipAPI ship = (ShipAPI) stats.getEntity();
         stats.getMaxSpeed().modifyFlat(id, SPEED_BONUS);
 
+        stats.getTurnAcceleration().modifyFlat(id, TURN_BONUS);
+        stats.getTurnAcceleration().modifyPercent(id, TURN_BONUS * 5f);
+        stats.getMaxTurnRate().modifyFlat(id, 15f);
+        stats.getMaxTurnRate().modifyPercent(id, 100f);
+
         if (state == State.IN) {
             stats.getAcceleration().modifyMult(id, 50f);
             stats.getDeceleration().modifyMult(id, 50f);
@@ -32,15 +37,12 @@ public class vic_DriftBoost extends BaseShipSystemScript {
 				stats.getEntity().getVelocity().scale(0.95f);
 
 			 */
-            stats.getAcceleration().modifyMult(id, 5f);
-            stats.getDeceleration().modifyMult(id, 10f);
+            stats.getAcceleration().modifyMult(id, 10f);
+            stats.getDeceleration().modifyMult(id, 20f);
             stats.getMaxTurnRate().unmodify(id);
         }
 
-        stats.getTurnAcceleration().modifyFlat(id, TURN_BONUS);
-        stats.getTurnAcceleration().modifyPercent(id, TURN_BONUS * 5f);
-        stats.getMaxTurnRate().modifyFlat(id, 15f);
-        stats.getMaxTurnRate().modifyPercent(id, 100f);
+
 
 
         if (stats.getEntity() instanceof ShipAPI) {

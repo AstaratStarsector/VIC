@@ -4,6 +4,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
+import com.fs.starfarer.api.util.Misc;
 import data.scripts.plugins.MagicFakeBeamPlugin;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
@@ -46,6 +47,10 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         MULT.put(ShipAPI.HullSize.DESTROYER, 0.3F);
         MULT.put(ShipAPI.HullSize.CRUISER, 0.2F);
         MULT.put(ShipAPI.HullSize.CAPITAL_SHIP, 0.1F);
+
+        cheesyLinesList.add("Nothing personnel kid");
+        cheesyLinesList.add("Another excellent cut");
+        cheesyLinesList.add("Executed in a singular strike!");
     }
 
     @Override
@@ -56,9 +61,6 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         CombatEngineAPI engine = Global.getCombatEngine();
 
         if (DoOnce) {
-            cheesyLinesList.add("Nothing personnel kid");
-            cheesyLinesList.add("Another excellent cut");
-            cheesyLinesList.add("Executed in a singular strike!");
             MaxTime = new IntervalUtil(1f, 1f);
             DoOnce = false;
         }
@@ -235,6 +237,28 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
             if (state == State.IN)
                 return new StatusData("Warm up the engines", false);
             return new StatusData("Reaping spacetime", false);
+        }
+        return null;
+    }
+
+    protected float getMaxRange(ShipAPI ship) {
+        return ship.getSystem().getChargeActiveDur() * SPEED_BOOST;
+    }
+
+    @Override
+    public String getInfoText(ShipSystemAPI system, ShipAPI ship) {
+        if (system.isOutOfAmmo()) return null;
+        if (system.getState() != ShipSystemAPI.SystemState.IDLE) return null;
+
+        Vector2f target = ship.getMouseTarget();
+        if (target != null) {
+            float dist = Misc.getDistance(ship.getLocation(), target);
+            float max = getMaxRange(ship) + ship.getCollisionRadius();
+            if (dist > max) {
+                return "OUT OF RANGE";
+            } else {
+                return "READY";
+            }
         }
         return null;
     }

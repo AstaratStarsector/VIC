@@ -1,5 +1,6 @@
 package data.scripts;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import org.lazywizard.lazylib.MathUtils;
 

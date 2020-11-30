@@ -24,7 +24,7 @@
 			"vic_archangel_flare2":"graphics/custom entities/VIC_flare2.png",
 		},
 		"hab_glows":{
-			"cocytus":"graphics/planets/vic_cocytus_glow.png",			
+			"cocytus":"graphics/planets/vic_cocytus_glow.png",
 		},
 		"systems":{
 			"vic_adaptiveWarfareSystem":"graphics/icons/hullsys/vic_adaptiveWarfareSystem.png",
@@ -38,8 +38,16 @@
 			"vic_shieldsRing128":"graphics/fx/shield/vic_shields128ring.png",
 			"vic_shieldsInner64":"graphics/fx/shield/vic_shields64.png",
 			"vic_shieldsRing64":"graphics/fx/shield/vic_shields64ring.png",
+			
+			"vic_shieldsInner256_fervor":"graphics/fx/shield/vic_shields256_fervor.png",
+			"vic_shieldsInner128_fervor":"graphics/fx/shield/vic_shields128_fervor.png",
+			"vic_shieldsInner64_fervor":"graphics/fx/shield/vic_shields64_fervor.png",
+			
+			
 			"vic_disruptorInnerRing":"graphics/fx/vic_disruptorInerRing.png",
 			"vic_disruptorOuterRing":"graphics/fx/vic_disruptorOuterRing.png",
+			"vic_verlioka_field":"graphics/fx/vic_verlioka_field.png",
+			
 			
 			"trails_trail_clean":"graphics/trails/fx/trails_clean.png",
 			"trails_trail_fuzzy":"graphics/trails/fx/trails_fuzzy.png",

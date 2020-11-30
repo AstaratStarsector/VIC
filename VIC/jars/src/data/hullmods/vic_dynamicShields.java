@@ -7,6 +7,8 @@ import com.fs.starfarer.api.combat.ShieldAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import org.lazywizard.lazylib.MathUtils;
+import org.lazywizard.lazylib.VectorUtils;
+import org.lwjgl.util.vector.Vector2f;
 
 // Written by AxleMC131 for Astarat
 public class vic_dynamicShields extends BaseHullMod {
@@ -72,7 +74,6 @@ public class vic_dynamicShields extends BaseHullMod {
         float shieldArcMult = ((shieldRelFacing / IDEAL_ANGLE) * (MAX_ARC_MULT - shipArcMult - 1f));
 
         ship.getShield().setArc(baseShieldArc + (ship.getHullSpec().getShieldSpec().getArc() * shieldArcMult));
-
     }
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {

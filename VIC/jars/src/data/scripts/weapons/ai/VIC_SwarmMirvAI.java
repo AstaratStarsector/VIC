@@ -24,7 +24,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
     private static final float LEAD_GUIDANCE_FACTOR = 0.4f;
     private static final float LEAD_GUIDANCE_FACTOR_FROM_ECCM = 0.6f;
     private static final float FIRE_INACCURACY = 0f; // Set-once for entire shot lifetime leading offset
-    private static final float AIM_THRESHOLD = 0.5f; // Multiplied by collision radius, how much it can be off by when deciding to MIRV
+    private static final float AIM_THRESHOLD = 0f; // Multiplied by collision radius, how much it can be off by when deciding to MIRV
     private static final float MIRV_DISTANCE = 400f;
     private static final float TIME_BEFORE_CAN_MIRV = 1f; // Min time before can MIRV
     private static final float FLARE_OFFSET = -9f; // Set to engine location matched to missile projectile file
@@ -194,6 +194,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
         }
 
         // Launch submunitions
+        /*
         if (mirvNow)
         {
             Vector2f submunitionVelocityMod = new Vector2f(0, MathUtils.getRandomNumberInRange(
@@ -224,7 +225,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
             }
 
             // Only used for missile submunitions, which this is not
-            /*
+
             // Transfer any damage the missile has incurred if so desired
             if (STAGE_ONE_TRANSFER_DAMAGE)
             {
@@ -236,7 +237,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
                             DamageType.FRAGMENTATION, 0f, true, false, missile.getSource());
                 }
             }
-             */
+
             Global.getSoundPlayer().playSound(STAGE_TWO_SOUND_ID, 1f, 1f, missile.getLocation(), missile.getVelocity());
 
             // GFX on the spot of the switcheroo if desired
@@ -260,6 +261,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile
                 Global.getCombatEngine().removeEntity(missile);
             }
         }
+        */
     }
 
     @Override
