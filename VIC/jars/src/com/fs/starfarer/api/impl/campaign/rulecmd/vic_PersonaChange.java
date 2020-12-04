@@ -4,11 +4,10 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
-import com.fs.starfarer.api.characters.AdminData;
-import com.fs.starfarer.api.characters.FullName;
-import com.fs.starfarer.api.characters.OfficerDataAPI;
-import com.fs.starfarer.api.characters.PersonAPI;
+import com.fs.starfarer.api.characters.*;
 import com.fs.starfarer.api.combat.MutableStat;
+import com.fs.starfarer.api.fleet.FleetMemberAPI;
+import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
 import com.fs.starfarer.api.impl.campaign.ids.Strings;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -18,10 +17,11 @@ import com.fs.starfarer.launcher.ModManager;
 import com.fs.starfarer.rpg.Person;
 import data.scripts.utilities.StringHelper;
 import org.apache.log4j.Logger;
+import org.apache.log4j.Priority;
 
 import java.awt.*;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class vic_PersonaChange extends BaseCommandPlugin {
 
@@ -30,7 +30,9 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     public String
             male = "vic_PersonaChangeMale",
             female = "vic_PersonaChangeFemale",
+            respec = "vic_PersonaChangeRespec",
             result = "vic_PersonaChangeResult",
+            respecResult = "vic_PersonaChangeRespecResult",
 
             GO_BACK = "vic_PersonaChangeEnd",
             exitBenInYou = "vic_PersonaChangeEndYou",
@@ -175,6 +177,12 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             case "vic_PersonaChangeMale":
                 CommsSummon(FullName.Gender.MALE);
                 break;
+            case "vic_PersonaChangeRespec":
+                PersonaChangeRespecConfirm();
+                break;
+            case "vic_PersonaChangeRespecResult":
+                PersonaChangeRespecResult();
+                break;
             case "vic_PersonaChangeConfirm":
                 PersonaChangeConfirm();
                 break;
@@ -263,12 +271,16 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         options.addOption("Open \"Male\" section", male);
         options.addOption("Open \"Female\" section", female);
+        if (currState != mainMenuState.InToAdmin)
+            options.addOption("Respec skills", respec);
 
         if (playerCargo.getCredits().get() < 10000) {
             options.setEnabled(male, false);
             options.setTooltip(male, "Not enough credits.");
             options.setEnabled(female, false);
             options.setTooltip(female, "Not enough credits.");
+            options.setEnabled(respec, false);
+            options.setTooltip(respec, "Not enough credits.");
         }
 
 
@@ -309,6 +321,56 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         options.setShortcut(backToChoose,1,false,false,false,false);
     }
 
+    protected void PersonaChangeRespecConfirm(){
+        options.clearOptions();
+
+        options.addOption("Confirm your choice", respecResult);
+
+        options.addOption("Re-think your choice", backToChoose);
+        options.setShortcut(backToChoose,1,false,false,false,false);
+    }
+
+    protected void PersonaChangeRespecResult(){
+        switch (currState){
+            case InToYou:
+                respecPlayer();
+                break;
+            case InToOfficer:
+                respecOfficer(playerFleet.getFleetData().getOfficerData(temp.personaToChange), playerFleet);
+                break;
+        }
+
+        playerCargo.getCredits().subtract(10000);
+        AddRemoveCommodity.addCreditsLossText(10000, text);
+
+        if (!temp.isPlayer){
+            for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
+                officer.getPerson().removeTag("vic_personToChange");
+            }
+            for (AdminData admin : Global.getSector().getCharacterData().getAdmins()) {
+                admin.getPerson().removeTag("vic_personToChange");
+            }
+        }
+
+        options.clearOptions();
+        switch (currState){
+            case InToYou:
+                options.addOption("Leave the Centre", exitResult);
+                options.setShortcut(exitResult,1,false,false,false,false);
+                break;
+            case InToOfficer:
+                options.addOption("Leave the Centre", exitResultOfficer);
+                options.setShortcut(exitResultOfficer,1,false,false,false,false);
+                break;
+            case InToAdmin:
+                options.addOption("Leave the Centre", exitResultAdmin);
+                options.setShortcut(exitResultAdmin,1,false,false,false,false);
+                break;
+        }
+    }
+
+
+
     //result screen
     protected void PersonaChangeResult() {
 
@@ -346,6 +408,139 @@ public class vic_PersonaChange extends BaseCommandPlugin {
                 options.addOption("Leave the Centre", exitResultAdmin);
                 options.setShortcut(exitResultAdmin,1,false,false,false,false);
                 break;
+        }
+    }
+
+    private static void respecPlayer(){
+        final MutableCharacterStatsAPI player = Global.getSector().getPlayerPerson().getStats();
+        int aptRefunded = 0;
+        for (final String aptitude : Global.getSettings().getAptitudeIds())
+        {
+            final int total = (int) player.getAptitudeLevel(aptitude);
+            if (total > 0)
+            {
+                player.setAptitudeLevel(aptitude, 0f);
+                player.addPoints(total);
+                aptRefunded += total;
+            }
+        }
+
+        // Refund skills
+        int skillRefunded = 0;
+        for (final String skill : Global.getSettings().getSortedSkillIds())
+        {
+            // Ignore aptitudes (included in list because officers treat them as skills)
+            if (Global.getSettings().getSkillSpec(skill).isAptitudeEffect())
+            {
+                continue;
+            }
+
+            final int total = (int) player.getSkillLevel(skill);
+            if (total > 0)
+            {
+                player.setSkillLevel(skill, 0f);
+                player.addPoints(total);
+                skillRefunded += total;
+            }
+        }
+
+        player.refreshCharacterStatsEffects();
+    }
+
+    private static void respecOfficer(OfficerDataAPI toRespec, CampaignFleetAPI sourceFleet)
+    {
+        // Technically it should be called cloneOfficer(), but whatever...
+        final PersonAPI oldPerson = toRespec.getPerson(),
+                newPerson = OfficerManagerEvent.createOfficer(oldPerson.getFaction(), 1, false);
+        final FleetMemberAPI ship = sourceFleet.getFleetData().getMemberWithCaptain(oldPerson);
+
+        // Copy the old person's memory to the new person
+        final MemoryAPI oldMemory = oldPerson.getMemory(), newMemory = newPerson.getMemory();
+        newMemory.clear();
+        for (String key : oldMemory.getKeys())
+        {
+            if (oldMemory.getExpire(key) != 0f)
+            {
+                newMemory.set(key, oldMemory.get(key), oldMemory.getExpire(key));
+            }
+            else
+            {
+                newMemory.set(key, oldMemory.get(key));
+            }
+        }
+
+        // Copy required status of any memory keys
+        for (String key : oldMemory.getKeys())
+        {
+            final Set<String> required = oldMemory.getRequired(key);
+            if (!required.isEmpty())
+            {
+                for (String rKey : required) newMemory.addRequired(key, rKey);
+            }
+        }
+
+        // Copy traits from old person
+        newPerson.setAICoreId(oldPerson.getAICoreId());
+        newPerson.setContactWeight(oldPerson.getContactWeight());
+        newPerson.setFaction(oldPerson.getFaction().getId());
+        newPerson.setName(oldPerson.getName());
+        newPerson.setPersonality(oldPerson.getPersonalityAPI().getId());
+        newPerson.setPortraitSprite(oldPerson.getPortraitSprite());
+        newPerson.setPostId(oldPerson.getPostId());
+        newPerson.setRankId(oldPerson.getRankId());
+        newPerson.getRelToPlayer().setRel(oldPerson.getRelToPlayer().getRel());
+
+        // Copy any tags from the old person
+        newPerson.getTags().clear();
+        for (String tag : oldPerson.getTags()) newPerson.addTag(tag);
+
+
+        // Show skills that were reset
+        final List<MutableCharacterStatsAPI.SkillLevelAPI> skills = oldPerson.getStats().getSkillsCopy();
+        Collections.sort(skills, new SkillLevelComparator());
+
+        // Notify player of respecced skills
+        int totalRefunded = 0;
+        /*
+        for (MutableCharacterStatsAPI.SkillLevelAPI skill : skills)
+        {
+            final int refunded = (int) skill.getLevel();
+            if (refunded > 0)
+            {
+                Console.showMessage(" - removed " + refunded + " points from " + (skill.getSkill().isAptitudeEffect()
+                        ? "aptitude " : "skill ") + skill.getSkill().getId());
+                totalRefunded += refunded;
+            }
+        }
+
+         */
+
+
+        // Set the officer's person to the new copy and give it the proper amount of experience
+        toRespec.setPerson(newPerson);
+        if (ship != null) ship.setCaptain(newPerson);
+        toRespec.addXP(oldPerson.getStats().getXP());
+        newPerson.getStats().refreshCharacterStatsEffects();
+    }
+
+    private static class SkillLevelComparator implements Comparator<MutableCharacterStatsAPI.SkillLevelAPI>
+    {
+        @Override
+        public int compare(MutableCharacterStatsAPI.SkillLevelAPI o1, MutableCharacterStatsAPI.SkillLevelAPI o2)
+        {
+            final SkillSpecAPI skill1 = o1.getSkill(), skill2 = o2.getSkill();
+            if (skill1.isAptitudeEffect() && !skill2.isAptitudeEffect())
+            {
+                return -1;
+            }
+            else if (skill2.isAptitudeEffect() && !skill1.isAptitudeEffect())
+            {
+                return 1;
+            }
+            else
+            {
+                return skill1.getId().compareTo(skill2.getId());
+            }
         }
     }
 

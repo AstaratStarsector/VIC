@@ -1,14 +1,13 @@
 {
     "displayName": "Shield Breaker",
 	"goalVariant": true,
-    "fluxCapacitors": 36,
+    "fluxCapacitors": 31,
     "fluxVents": 50,
     "hullId": "vic_apollyon",
     "hullMods": [
         "vic_assault",
         "vic_allRoundShieldUpgrade",
         "vic_deathProtocol",
-        "fluxbreakers"
     ],
     "permaMods": [],
     "variantId": "vic_apollyon_shieldBreaker",

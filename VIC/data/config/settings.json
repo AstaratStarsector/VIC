@@ -28,6 +28,7 @@
 		},
 		"systems":{
 			"vic_adaptiveWarfareSystem":"graphics/icons/hullsys/vic_adaptiveWarfareSystem.png",
+			"vic_empEmitter":"graphics/icons/hullsys/vic_empEmitter.png",
 		},
 		"fx":{
 			"vic_rubicon_river":"graphics/fx/vic_rubicon_river.png",

@@ -10,7 +10,6 @@ import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
-import data.scripts.plugins.vic_combatPlugin;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -32,12 +31,11 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
         if (engine.isPaused() || weapon.getShip().getOriginalOwner() == -1) return;
 
 
-
         ShipAPI ship = weapon.getShip();
         float dmgMult = ship.getMutableStats().getDamageToMissiles().getModifiedValue();
 
         ArrayList<BeamAPI> weaponBeams = new ArrayList<>(2);
-        for (BeamAPI beam : engine.getBeams()){
+        for (BeamAPI beam : engine.getBeams()) {
             if (beam.getWeapon() == weapon) weaponBeams.add(beam);
         }
         float facing = weapon.getCurrAngle();
@@ -82,7 +80,7 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
             }
         }
 
-        if (!ship.isAlive()){
+        if (!ship.isAlive()) {
             for (Iterator<Map.Entry<ShipAPI, Float>> iter = debuffed_fighters.entrySet().iterator(); iter.hasNext(); ) {
                 Map.Entry<ShipAPI, Float> entry = iter.next();
                 iter.remove();
@@ -93,56 +91,47 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
         if (weapon.getChargeLevel() < 1) return;
 
 
-
-        /*
         float range = weapon.getRange() * 1.05f;
 
-        boolean needToDraw = true;
-        while (needToDraw){
-            SpriteAPI trail = Global.getSettings().getSprite("fx", "vic_verlioka_field");
-            Vector2f dir = Misc.getUnitVectorAtDegreeAngle(facing);
-            Vector2f trailLoc = new Vector2f(weapon.getLocation().x + (dir.x * range), weapon.getLocation().y + (dir.y * range));
-            //engine.addFloatingText(trailLoc, "o" + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
-            float size = range * 0.53f;
-            Vector2f trailSize = new Vector2f(size, size / 2f);
-            trail.setCenter(size / 2f, size / 2f);
-            MagicRender.singleframe(trail, trailLoc, trailSize, facing - 90, new Color(255, 255, 255, 255), false);
-            range -= size / 3.08f;
-            if (range < 100) needToDraw = false;
-        }
-
-         */
+        SpriteAPI trail = Global.getSettings().getSprite("fx", "vic_verlioka_field");
+        Vector2f dir = Misc.getUnitVectorAtDegreeAngle(facing);
+        Vector2f trailLoc = new Vector2f(weapon.getLocation().x + (dir.x * range), weapon.getLocation().y + (dir.y * range));
+        //engine.addFloatingText(trailLoc, "o" + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
+        float size = range * 0.53f;
+        Vector2f trailSize = new Vector2f(size, size / 2f);
+        trail.setCenter(size / 2f, size / 2f);
+        MagicRender.singleframe(trail, trailLoc, trailSize, facing - 90, new Color(255, 255, 255, 255), false);
 
         //Global.getCombatEngine().maintainStatusForPlayerShip("vic_dmgMult", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "dmgMult", dmgMult + "", false);
 
-        for (MissileAPI missile : CombatUtils.getMissilesWithinRange(weapon.getLocation(), weapon.getRange())){
+        for (MissileAPI missile : CombatUtils.getMissilesWithinRange(weapon.getLocation(), weapon.getRange())) {
             if (missile.getCollisionClass() == CollisionClass.NONE) continue;
             if (missile.getOwner() == ship.getOwner()) continue;
             float angleToTarget = VectorUtils.getAngle(weapon.getLocation(), missile.getLocation());
             //engine.addFloatingText(missile.getLocation(), angleToTarget + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
-            if (Math.abs(MathUtils.getShortestRotation(angleToTarget, facing)) <= degrees){
+            if (Math.abs(MathUtils.getShortestRotation(angleToTarget, facing)) <= degrees) {
                 missile.setJitter(missile, new Color(44, 255, 255), 4, 6, 2);
-                missile.getVelocity().scale(0.85f);
+                missile.getVelocity().scale(0.8f);
                 Global.getCombatEngine().applyDamage(missile, missile.getLocation(), weapon.getDamage().getDamage() * amount * dmgMult, weapon.getDamageType(), 0f, false, false, null);
                 BeamAPI beam = weaponBeams.get(0);
                 if (Math.random() >= amount) continue;
                 if (MathUtils.getShortestRotation(angleToTarget, facing) <= 0) beam = weaponBeams.get(1);
 
-                Vector2f zapFrom = MathUtils.getNearestPointOnLine(missile.getLocation(),beam.getFrom(),beam.getTo());
+                Vector2f zapFrom = MathUtils.getNearestPointOnLine(missile.getLocation(), beam.getFrom(), beam.getTo());
                 missile.setEmpResistance(100);
 
                 engine.spawnEmpArc(ship,
-                            zapFrom,
-                            null,
-                            missile,
-                            weapon.getDamageType(),
-                            0,
-                            -1000,
-                            3000,
-                            null,
-                            1,
-                            new Color(255, 162, 0, 29),
-                            new Color(255, 191, 21, 255));
+                        zapFrom,
+                        null,
+                        missile,
+                        weapon.getDamageType(),
+                        0,
+                        -1000,
+                        3000,
+                        null,
+                        1,
+                        new Color(255, 162, 0, 29),
+                        new Color(255, 191, 21, 255));
 
             }
         }

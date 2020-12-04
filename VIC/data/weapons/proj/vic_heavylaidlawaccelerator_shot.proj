@@ -17,5 +17,6 @@
 	#"coreColor":[225,225,255,255],
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,
-	"bulletSprite":"graphics/missiles/vic_heavylaidlawaccelerator_bullet.png"
+	"bulletSprite":"graphics/missiles/vic_heavylaidlawaccelerator_bullet.png",
+	"passThroughMissiles":true,
 }

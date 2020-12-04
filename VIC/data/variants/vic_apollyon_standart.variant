@@ -3,14 +3,13 @@
   "hullId": "vic_apollyon",
   "displayName": "Standard",
   "goalVariant": true,
-  "fluxCapacitors": 40,
+  "fluxCapacitors": 35,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "vic_assault",
     "vic_allRoundShieldUpgrade",
-    "fluxbreakers"
   ],
   "weaponGroups": [
     {

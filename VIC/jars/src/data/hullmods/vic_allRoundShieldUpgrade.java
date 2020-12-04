@@ -4,6 +4,7 @@ import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
+import com.fs.starfarer.api.impl.campaign.ids.Stats;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,7 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getShieldDamageTakenMult().modifyMult(id, 1f - shieldEff * 0.01f);
+        stats.getDynamic().getStat(Stats.SHIELD_PIERCED_MULT).modifyMult(id, 0.75f);
         stats.getShieldUpkeepMult().modifyMult(id,1f - shieldUpkeep * 0.01f);
         stats.getShieldTurnRateMult().modifyPercent(id, shieldSpeed);
         stats.getShieldUnfoldRateMult().modifyPercent(id, shieldSpeed);
@@ -29,6 +31,7 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
         BLOCKED_HULLMODS.add("stabilizedshieldemitter");
         BLOCKED_HULLMODS.add("hardenedshieldemitter");
         BLOCKED_HULLMODS.add("advancedshieldemitter");
+        BLOCKED_HULLMODS.add("extendedshieldemitter");
 
     }
 
@@ -60,6 +63,8 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
             return "Incompatible with Stabilized Shields";
         if (ship.getVariant().getHullMods().contains("advancedshieldemitter"))
             return "Incompatible with Accelerated Shields";
+        if (ship.getVariant().getHullMods().contains("extendedshieldemitter"))
+            return "Incompatible with Extended Shields";
         return null;
     }
 

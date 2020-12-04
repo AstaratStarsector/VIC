@@ -27,17 +27,26 @@ Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,defensive,0,true,,TRUE
 ,,,,,,,,,,,,,,,,,,
 VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,,0,0,0,0,data.hullmods.vic_shieldsChanger,,Shield Changer,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
-#modular,,,,,,,,,,,,,,,,,,
+#VIC modular,,,,,,,,,,,,,,,,,,
 VIC Integrated Assault Systems,vic_assault,3,,Volkov Industries,offensive,Weapons,15000,,,,4,8,15,25,data.hullmods.vic_assault,"Extends the range of ballistic and energy weapons by %s/%s/%s/%s, depending on hull size. Increases ship max speed by %s su/second.
 
-incompatible with Integrated Targeting Unit and Dedicated Targeting Core.",,graphics/hullmods/vic_assault.png
-"VIC ""Fervor"" Protocols",vic_deathProtocol,3,,Volkov Industries,offensive,Weapons,25000,,,,5,10,20,30,data.hullmods.vic_deathProtocol,Increases damage of all weapons by %s also but increases damage taken by %s and phase cloak cost by %s.,,graphics/hullmods/vic_deathProtocol.png
+Can be installed only on VIC ships.
+Incompatible with Integrated Targeting Unit and Dedicated Targeting Core.",,graphics/hullmods/vic_assault.png
+"VIC ""Fervor"" Protocols",vic_deathProtocol,3,,Volkov Industries,offensive,Weapons,25000,,,,5,10,20,30,data.hullmods.vic_deathProtocol,"Increases damage of all weapons by %s also but increases damage taken by %s and phase cloak cost by %s.
+
+Can be installed only on VIC ships.",,graphics/hullmods/vic_deathProtocol.png
 VIC Brand Shield Emitter,vic_allRoundShieldUpgrade,3,,Volkov Industries,offensive,Shields,25000,,,,7,14,21,35,data.hullmods.vic_allRoundShieldUpgrade,"Reduces the amount of damage taken by shields by %s.
 Reduces the amount of soft flux the raised shields generate per second by %s
 Increases the turn rate of the ship's shields by %s and the rate at which the shields are raised by %s.
 Increases the shields' arc by %s degrees.
 
+Can be installed only on VIC ships.
 Incompatible with Accelerated Shields, Extended Shields, Hardened Shields and Stabilized Shields. ",,graphics/hullmods/vic_shiledPack.png
+,,,,,,,,,,,,,,,,,,
+#modular,,,,,,,,,,,,,,,,,,
+#Dedicated PD core,vic_DPDCore,2,,Volkov Industries,offensive,Weapons,15000,,,,7,10,13,16,data.hullmods.vic_DPDCore,"Extends the range of Point-defence weapons by %s/%s/%s/%s, depending on hull size.",,graphics/hullmods/vic_assault.png
+Loader Overdrive,vic_loaderOverdrive,1,,Volkov Industries,offensive,Weapons,10000,,,,3,6,9,15,data.hullmods.vic_loaderOverdrive,Increases Rate of fire of ballistic and energy weapons by %s but reduces range by %s.,,graphics/hullmods/vic_reloaderOvercharge.png
+PD arc emitter,vic_PDArcEmitter,2,,Volkov Industries,defensive,Weapons,15000,,,,4,8,12,20,data.hullmods.vic_PDArcEmitter,"Zaps missiles in %s su range dealing %s damage to it, generate %s flux per zap, after zapping need to recharge for %s seconds can hold up to %s charges.",,graphics/hullmods/vic_empEmitter.png
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #Commissioned Crews,,,,,,,,,,,,,,,,,,

@@ -2,7 +2,7 @@ name,id,designation,tech/manufacturer,system id,fleet pts,hitpoints,armor rating
 #fighters,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 VIC-F11 Shabriri,vic_shabriri,Interceptor Drone,Volkov Industries,,,120,15,500,,100,,,450,550,450,250,500,5,OMNI,,90,0,1,,,0,0,,,,,,,,,,,,,,,,,,,
 VIC-F25 Asmoday,vic_asmoday,Heavy Shturmfighter,Volkov Industries,,,500,100,1500,,300,,,200,250,150,125,250,15,OMNI,,90,0,1,,,2,2,,,,,,,,,,,,,,,,,,,
-VIC-F04 Sonneilon,vic_sonneilon,Artillery Fighter,Volkov Industries,,,350,75,1000,,200,,,175,300,200,150,300,10,OMNI,,90,0,1,,,2,2,,,,,,,,,,,,,,,,,,,
+VIC-F04 Sonneilon,vic_sonneilon,Artillery Fighter,Volkov Industries,,,350,75,750,,200,,,175,300,200,150,300,10,OMNI,,90,0,1,,,2,2,,,,,,,,,,,,,,,,,,,
 VIC-F33 Uvall,vic_uvall,Interceptor Fighter,Volkov Industries,,,200,50,750,,100,,,300,400,300,200,350,8,OMNI,,90,0,1,,,2,2,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #ships,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -192,12 +192,18 @@ vic_portraitChangingMenuBackToit,DialogOptionSelected,$option == vic_PerconaChan
 ,,,,,,
 vic_portraitChangingMale,DialogOptionSelected,$option == vic_PersonaChangeMale,vic_PersonaChange vic_PersonaChangeMale,,,
 vic_portraitChangingFemale,DialogOptionSelected,$option == vic_PersonaChangeFemale,vic_PersonaChange vic_PersonaChangeFemale,,,
+vic_PersonaChangeRespec,DialogOptionSelected,$option == vic_PersonaChangeRespec,vic_PersonaChange vic_PersonaChangeRespec,,,
 vic_portraitChangingClikOnPortrait,OpenCDE,$tag:vic_PortraitHolder == true,"ShowPersonVisual
 vic_PersonaChange vic_PersonaChangeConfirm
 ","After going through the list you settle on one of the options. A yet unfamiliar person is looking at you from the screen and the detailed information about this particular body is presented in several sub-menus.
 
 The manager informs you that the procedure is 100 percent reversible if the necessity arises. The only thing left is your confirmation. ",,
 vic_PersonaChangeResult,DialogOptionSelected,$option == vic_PersonaChangeResult,vic_PersonaChange vic_PersonaChangeResult,"A predatory grin spreads on the manager's face, and after the fund transaction is complete, the patient is invited into the operating theatre. 
+
+The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help the patient settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, the patient are given an offer of anestesia and a mirroring screen in case they desire to watch the process themselves. And at last, after the first injection of DNA-altering virus, the procedure begins.
+
+Several hours later the patient finally gets up from the chair and makes their first steps as a completely new person. Gone is the old shell, and they're ready to take on the world with their new body. The doctor and the nurses seem quite happy with the result of their hard work and mention that one can always go back to their old self or even try something else. If they have sufficient funds for the procedures of course. ",,
+vic_PersonaChangeRespecResult,DialogOptionSelected,$option == vic_PersonaChangeRespecResult,vic_PersonaChange vic_PersonaChangeRespecResult,"A predatory grin spreads on the manager's face, and after the fund transaction is complete, the patient is invited into the operating theatre. 
 
 The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help the patient settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, the patient are given an offer of anestesia and a mirroring screen in case they desire to watch the process themselves. And at last, after the first injection of DNA-altering virus, the procedure begins.
 

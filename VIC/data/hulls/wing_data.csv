@@ -1,5 +1,5 @@
 id,variant,tags,tier,rarity,fleet pts,op cost,formation,range,attackRunRange,attackPositionOffset,num,role,role desc,refit,base value,,,,,,,,,,,,,number
-vic_asmoday_wing,vic_asmoday_shturmfighter,"fighter4, fighter, vic_figthers_bp",3,,10,25,V,4000,500,,1,FIGHTER,Heavy Shturmfighter,30,12500,,,,,,,,,,,,,1
-vic_sonneilon_wing,vic_sonneilon_artillery,"bomber4, bomber, vic_figthers_bp",2,,8,15,V,4000,2500,,3,BOMBER,Bomber,15,8500,,,,,,,,,,,,,2
+vic_asmoday_wing,vic_asmoday_shturmfighter,"fighter4, fighter, vic_figthers_bp",3,,13,25,V,4000,500,,1,FIGHTER,Heavy Shturmfighter,30,12500,,,,,,,,,,,,,1
+vic_sonneilon_wing,vic_sonneilon_artillery,"bomber4, bomber, vic_figthers_bp",2,,8,15,CLAW,4000,2500,,3,BOMBER,Bomber,15,8500,,,,,,,,,,,,,2
 vic_uvall_wing,vic_uvall_interceptor,"interceptor4, interceptor, vic_figthers_bp",1,,8,12,V,4000,200,,3,INTERCEPTOR,Interceptor,10,7500,,,,,,,,,,,,,3
 vic_shabriri_wing,vic_shabriri_drone,"interceptor3, interceptor, vic_figthers_bp","0","",2,3,CLAW,4000,200,600,5,INTERCEPTOR,Interceptor Drone,5,6000,,,,,,,,,,,,,4

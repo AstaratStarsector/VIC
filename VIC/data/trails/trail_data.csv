@@ -11,4 +11,5 @@ vic_gaganaShot_trail,vic_gaganaShot,trails_trail_smooth,2,0,0.1,0.1,12,8,"[255,6
 #vic_chainflak_shot_smoke,vic_chainflak_shot,trails_trail_twin,3,0,0.04,0.07,5,3,"[125,125,125]","[125,125,125]",0.8,100,100,10,0,1,TRUE,FALSE,TRUE,100,50,0.5,180,1000,200,true,false
 vic_chainflak_shot_smoke2,vic_chainflak_shot,base_trail_smoke,3,0,0.05,0.06,6,2,"[175,128,75]","[128,128,128]",0.5,50,-50,0,0,0,FALSE,FALSE,TRUE,50,25,0.5,180,150,20,true,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
-trails_vic_abyssus_sub,vic_abyssalfangs_sub_shot,trails_trail_smooth,2,0,0.1,0.05,5,3,"[255,255,255]","[0,190,255]",0.8,50,0,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_abyssalfangs_srm_short,vic_abyssalfangs_srm,trails_trail_smooth,10,0,0.5,0.3,17,5,"[255,255,255]","[255,255,255]",1,50,0,0,0,0,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_abyssalfangs_srm_long,vic_abyssalfangs_srm,trails_trail_smooth,10,0,1,1.5,25,5,"[75,255,225]","[75,255,225]",0.8,50,0,0,0,0,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false

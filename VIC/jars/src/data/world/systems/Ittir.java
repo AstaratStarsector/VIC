@@ -1,28 +1,22 @@
 package data.world.systems;
 
 
-
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.locks.Condition;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
-import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.characters.PersonAPI;
-import com.fs.starfarer.api.impl.campaign.econ.impl.FuelProduction;
-import com.fs.starfarer.api.impl.campaign.econ.impl.HeavyIndustry;
-import com.fs.starfarer.api.impl.campaign.ids.*;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
+import com.fs.starfarer.api.impl.campaign.ids.Industries;
+import com.fs.starfarer.api.impl.campaign.ids.Submarkets;
+import com.fs.starfarer.api.impl.campaign.ids.Terrain;
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
-import com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
-import com.fs.starfarer.api.impl.campaign.terrain.AsteroidFieldTerrainPlugin.AsteroidFieldParams;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin.MagneticFieldParams;
-import org.lazywizard.lazylib.MathUtils;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static data.world.VICGen.addMarketplace;
 
@@ -40,7 +34,7 @@ public class Ittir {
         // create the star and generate the hyperspace anchor for this system
         PlanetAPI IttirStar = system.initStar("vic_star_ittir", // unique id for this star
                 "star_white", // id in planets.json
-                650f,		// radius (in pixels at default zoom)
+                650f,        // radius (in pixels at default zoom)
                 600, // corona radius, from star edge
                 5f, // solar wind burn level
                 1f, // flare probability
@@ -105,12 +99,8 @@ public class Ittir {
                 true);
 
 
-
-
         system.addAsteroidBelt(IttirStar, 500, 3000, 400, 300, 400, Terrain.ASTEROID_BELT, "Inner Band");
         system.addRingBand(IttirStar, "misc", "rings_asteroids0", 256f, 3, Color.gray, 256f, 3000, 250f);
-
-
 
 
         // Mithos planet - the Church awakens
@@ -173,7 +163,6 @@ public class Ittir {
                 true);
 
 
-
 //Mithos Jump Point
         JumpPointAPI MithosJumpPoint = Global.getFactory().createJumpPoint(
 
@@ -184,10 +173,6 @@ public class Ittir {
         MithosJumpPoint.setCircularOrbit(system.getEntityById("vic_star_ittir"), 220, 3200, 50f);
         MithosJumpPoint.setRelatedPlanet(Mithos);
         system.addEntity(MithosJumpPoint);
-
-
-
-
 
 
         //  Bernadian planet - Where Hegemony made their mistake
@@ -249,7 +234,6 @@ public class Ittir {
                 true);
 
 
-
         //  Maria planet - Independents are scared
         PlanetAPI Maria = system.addPlanet("vic_planet_maria",
                 IttirStar,
@@ -278,7 +262,6 @@ public class Ittir {
                                 Conditions.VOLATILES_ABUNDANT,
                                 Conditions.ORE_MODERATE,
                                 Conditions.RARE_ORE_MODERATE
-
 
 
                         )
@@ -313,8 +296,6 @@ public class Ittir {
                 true);
 
 
-
-
         //  Pierre planet - Maria's dearest
         PlanetAPI Pierre = system.addPlanet("vic_planet_pierre",
                 Maria,
@@ -332,8 +313,6 @@ public class Ittir {
         Pierre.getMarket().addCondition(Conditions.ORE_SPARSE);
         Pierre.getMarket().addCondition(Conditions.METEOR_IMPACTS);
         Pierre.getMarket().addCondition(Conditions.VOLATILES_DIFFUSE);
-
-
 
 
         //  Becquerel planet - Maria's dearest
@@ -354,22 +333,14 @@ public class Ittir {
         Becquerel.getMarket().addCondition(Conditions.LOW_GRAVITY);
 
 
-
-
-
-
-
-
-
         // add Sensor Array
         SectorEntityToken MithosSensorArray = system.addCustomEntity("Mithos_sensor_array", "Mithos Sensor Array", "sensor_array_makeshift", "luddic_church");
-        MithosSensorArray.setCircularOrbitPointingDown( IttirStar, 360f * (float) Math.random(), 3800, 100);
-
+        MithosSensorArray.setCircularOrbitPointingDown(IttirStar, 360f * (float) Math.random(), 3800, 100);
 
 
         // add Comm Relay
         SectorEntityToken MariaCommRelay = system.addCustomEntity("Maria_comm_relay", "Maria Comm Relay", "comm_relay", "hegemony");
-        MariaCommRelay.setCircularOrbitPointingDown( Maria, 30f, 1200, 40);
+        MariaCommRelay.setCircularOrbitPointingDown(Maria, 30f, 1200, 40);
 
 
         //add Nav Buoy
@@ -383,12 +354,6 @@ public class Ittir {
         //Ittir Inactive Gate
         SectorEntityToken EmpyreanGate = system.addCustomEntity("ittir_gate", "Ittir Gate", "inactive_gate", null); //add the thing orbiting the market
         EmpyreanGate.setCircularOrbitPointingDown(IttirStar, 360f * (float) Math.random(), 5000f, 145f); //set as circular orbit
-
-
-
-
-
-
 
 
         // Let's procgen some stuff here cause fuck doing that manually
@@ -406,7 +371,6 @@ public class Ittir {
                 true); // whether to use custom or system-name based names
 
 
-
         // generates hyperspace destinations for in-system jump points
         system.autogenerateHyperspaceJumpPoints(true, true);
 
@@ -417,11 +381,9 @@ public class Ittir {
     }
 
 
-
-
     //Learning from Tart scripts
     //Clean nearby Nebula
-    private void cleanup (StarSystemAPI system){
+    private void cleanup(StarSystemAPI system) {
         HyperspaceTerrainPlugin plugin = (HyperspaceTerrainPlugin) Misc.getHyperspaceTerrain().getPlugin();
         NebulaEditor editor = new NebulaEditor(plugin);
         float minRadius = plugin.getTileSize() * 2f;

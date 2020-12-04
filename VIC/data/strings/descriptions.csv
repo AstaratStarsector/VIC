@@ -163,6 +163,9 @@ It doesn't matter who Boe is. The only thing that does matter, is that the local
 vic_siaubas,CUSTOM,"A relatively small outback planet, mostly known for being the center of a massive rebellion in days long gone. Unrest and armed riots led to the destruction of water treatment plants, which subsequently became one of the main causes of mass epidemic. Humanitarian aid and evacuation of the populace were quickly organized by the conjoined effort of the Domain and a local Volkov fleet, with the megacorp gladly volunteering to help fellow citizens in need. 
 
 Once a populous and promising colony, nowadays Siaubas is nothing more but a place of interest for archaeologists, historians, and biologists of all kinds. Some of the latter occasionally report that the local fauna, which dwells among the ruined, decaying cities, often shows unnerving, almost human-like patterns in behaviour and vocalizations. ",,,
+#Stations,,,,,
+vic_ApotheosisAbandonedStation,CUSTOM,Abandoned station,,,
+,,,,,
 ,,,,,
 #Commodities,,,,,
 vic_genetech,RESOURCE,"That which made the Domain's higher-ups, military, and the rich drool, and turned VIC from a small backwater company into an enormous megacorporation. With the help of masterfully engineered DNA-modifying viruses, anything is possible--from simply changing eye/hair colour to lifespan extension, enhancement of physical and intellectual abilities, and even outright transforming one's anatomy and physiology with little to no limitations. Back in the days, the Conglomerate was looking forward to finally reveal these to the public and start selling them en masse; lobbying for the necessary laws wasn't that much of an issue--generous gifts to the powers that be were paying off in the end. 
