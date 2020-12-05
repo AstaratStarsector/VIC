@@ -9,6 +9,7 @@ import com.fs.starfarer.api.combat.MutableStat;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
 import com.fs.starfarer.api.impl.campaign.ids.Strings;
+import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Misc.Token;
@@ -48,6 +49,13 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             changeSelf = "vic_PersonaChangeYou",
             changeOfficer = "vic_PersonaChangeOfficer",
             changeAdmin = "vic_PersonaChangeAdmin";
+
+    public static float
+            respecOfficerXP = 0.9f;
+    public static int
+            respecPlayerCost = 50000,
+            respecOfficerCost = 100000;
+
 
     protected CampaignFleetAPI playerFleet;
     protected SectorEntityToken entity;
@@ -272,15 +280,27 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         options.addOption("Open \"Male\" section", male);
         options.addOption("Open \"Female\" section", female);
         if (currState != mainMenuState.InToAdmin)
-            options.addOption("Respec skills", respec);
+            options.addOption("Respec skills ", respec);
 
         if (playerCargo.getCredits().get() < 10000) {
             options.setEnabled(male, false);
             options.setTooltip(male, "Not enough credits.");
             options.setEnabled(female, false);
             options.setTooltip(female, "Not enough credits.");
-            options.setEnabled(respec, false);
-            options.setTooltip(respec, "Not enough credits.");
+        }
+        switch (currState) {
+            case InToYou:
+                if (playerCargo.getCredits().get() < respecPlayerCost) {
+                    options.setEnabled(respec, false);
+                    options.setTooltip(respec, "Not enough credits.");
+                }
+                break;
+            case InToOfficer:
+                if (playerCargo.getCredits().get() < respecOfficerCost) {
+                    options.setEnabled(respec, false);
+                    options.setTooltip(respec, "Not enough credits.");
+                }
+                break;
         }
 
 
@@ -324,6 +344,21 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     protected void PersonaChangeRespecConfirm(){
         options.clearOptions();
 
+        Color h = Misc.getHighlightColor();
+        Color b = Misc.getNegativeHighlightColor();
+        switch (currState) {
+            case InToYou:
+                respecPlayer();
+                LabelAPI label = text.addPara("Its gonna cost you %s.",
+                        h, respecPlayerCost + " credits");
+                break;
+            case InToOfficer:
+                LabelAPI label2 = text.addPara("Its gonna cost you %s. Also side note, your officer can suffer minor" +
+                                " memory loss, he can lose %s of his combat experience.",
+                        h, respecOfficerCost + " credits", Math.round(100 - respecOfficerXP * 100) + "%");
+                break;
+        }
+
         options.addOption("Confirm your choice", respecResult);
 
         options.addOption("Re-think your choice", backToChoose);
@@ -333,15 +368,18 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     protected void PersonaChangeRespecResult(){
         switch (currState){
             case InToYou:
+                playerCargo.getCredits().subtract(respecPlayerCost);
+                AddRemoveCommodity.addCreditsLossText(respecPlayerCost, text);
                 respecPlayer();
                 break;
             case InToOfficer:
                 respecOfficer(playerFleet.getFleetData().getOfficerData(temp.personaToChange), playerFleet);
+                playerCargo.getCredits().subtract(respecOfficerCost);
+                AddRemoveCommodity.addCreditsLossText(respecOfficerCost, text);
                 break;
         }
 
-        playerCargo.getCredits().subtract(10000);
-        AddRemoveCommodity.addCreditsLossText(10000, text);
+
 
         if (!temp.isPlayer){
             for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
@@ -519,7 +557,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         // Set the officer's person to the new copy and give it the proper amount of experience
         toRespec.setPerson(newPerson);
         if (ship != null) ship.setCaptain(newPerson);
-        toRespec.addXP(oldPerson.getStats().getXP());
+        toRespec.addXP((long) (oldPerson.getStats().getXP() * respecOfficerXP));
         newPerson.getStats().refreshCharacterStatsEffects();
     }
 
