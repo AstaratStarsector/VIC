@@ -13,14 +13,16 @@ public class vic_emergencyDefenseAI implements ShipSystemAIScript {
 
     private final IntervalUtil
             timer = new IntervalUtil(0.5f, 1f);
-    boolean allBombers = true;
+    boolean
+            doOnce = true,
+            allBombers = true;
     private ShipAPI ship;
 
     @Override
     public void init(ShipAPI ship, ShipSystemAPI system, ShipwideAIFlags flags, CombatEngineAPI engine) {
         this.ship = ship;
-        for (FighterLaunchBayAPI bay : ship.getLaunchBaysCopy()) {
-            if (!bay.getWing().getSpec().isBomber()) allBombers = false;
+        for (FighterWingAPI wing : ship.getAllWings()) {
+            if (!wing.getSpec().isBomber()) allBombers = false;
             if (!allBombers) break;
         }
     }
@@ -30,6 +32,10 @@ public class vic_emergencyDefenseAI implements ShipSystemAIScript {
         timer.advance(amount);
         if (!timer.intervalElapsed()) {
             return;
+        }
+        if (doOnce){
+
+            doOnce = false;
         }
         boolean nonReturning = true;
         if (allBombers && ship.getSystem().isStateActive()) {
@@ -56,16 +62,18 @@ public class vic_emergencyDefenseAI implements ShipSystemAIScript {
 
         boolean allReturns = true;
         if (allBombers) {
-            for (FighterLaunchBayAPI bay : ship.getLaunchBaysCopy()){
-                if (!bay.getWing().isReturning(bay.getWing().getLeader())) allReturns = false;
+            for (FighterWingAPI wing : ship.getAllWings()) {
+                if (!wing.isReturning(wing.getLeader())) allReturns = false;
                 if (!allReturns) break;
             }
-        } else {
-            allReturns = false;
         }
         if (allReturns) useMe = true;
 
-        if (enemyScore >= 10f) useMe = true;
+        if (enemyScore >= 10f){
+            useMe = true;
+            Global.getCombatEngine().addFloatingText(new Vector2f(ship.getLocation().x, ship.getLocation().y), "OH FUCK", 60, Color.WHITE, ship, 0.25f, 0.25f);
+
+        }
 
         if (useMe) {
             ship.useSystem();
