@@ -2,7 +2,7 @@
 	"id":"vic",
 	"name":"VIC",
 	"author":"Astarat, PureTilt",
-	"version":"0.1.9",
+	"version":"0.1.11",
 	"description":"Transhumanism, son",
 	"gameVersion":"0.9.1a-RC8",
 	"jars": ["jars/VIC.jar"],

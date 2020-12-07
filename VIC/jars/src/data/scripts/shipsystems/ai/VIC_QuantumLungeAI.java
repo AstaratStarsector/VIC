@@ -90,6 +90,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         if (target.isStation() || target.isFighter()) return -100f;
         if (target.isHulk()) return -100;
         if (target.getHullLevel() < 0.15f) return -100;
+        if (target.getFleetMember() == null) return -100;
 
 
         float shipSide = ship.getOwner();

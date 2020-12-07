@@ -11,11 +11,14 @@ public class vic_loaderOverdrive extends BaseHullMod {
 
     private final float rangeBonus = -15f;
     private final float ROFBonus = 30f;
+    private final float fluxBonus = -15;
 
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getBallisticWeaponRangeBonus().modifyPercent(id, -rangeBonus);
         stats.getEnergyWeaponRangeBonus().modifyPercent(id, -rangeBonus);
+        stats.getBallisticWeaponFluxCostMod().modifyMult(id, 1 - fluxBonus / 100);
+        stats.getEnergyWeaponFluxCostMod().modifyMult(id, 1 - fluxBonus / 100);
 
         stats.getBallisticRoFMult().modifyPercent(id, ROFBonus);
         stats.getEnergyRoFMult().modifyPercent(id, ROFBonus);
@@ -23,7 +26,8 @@ public class vic_loaderOverdrive extends BaseHullMod {
 
     public String getDescriptionParam(int index, HullSize hullSize) {
         if (index == 0) return Math.round(ROFBonus) + "%";
-        if (index == 1) return Math.round(-rangeBonus) + "%";
+        if (index == 1) return Math.round(-fluxBonus) + "%";
+        if (index == 2) return Math.round(-rangeBonus) + "%";
         return null;
     }
 }
