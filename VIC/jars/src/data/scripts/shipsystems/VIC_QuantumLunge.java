@@ -48,9 +48,16 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         MULT.put(ShipAPI.HullSize.CRUISER, 0.2F);
         MULT.put(ShipAPI.HullSize.CAPITAL_SHIP, 0.1F);
 
-        cheesyLinesList.add("Nothing personnel kid");
+        cheesyLinesList.add("Nothing personal, kid");
         cheesyLinesList.add("Another excellent cut");
         cheesyLinesList.add("Executed in a singular strike!");
+        cheesyLinesList.add("Dodge this!");
+        cheesyLinesList.add("Aw-w-w, that must've hurt...");
+        cheesyLinesList.add("God, I love this ship!");
+        cheesyLinesList.add("YEEEEEHAAAAAW!!!");
+        cheesyLinesList.add("BOOYAH!!!");
+        cheesyLinesList.add("Quantum physics, son");
+        cheesyLinesList.add("Get good or get dead, scrub");
     }
 
     @Override
@@ -83,7 +90,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                 EndPos = new Vector2f(ship.getLocation());
                 isActive2 = true;
 
-                if (Math.random() < 0.04f) {
+                if (Math.random() < 0.1f) {
                     engine.addFloatingText(ship.getLocation(), cheesyLinesList.get(MathUtils.getRandomNumberInRange(0, cheesyLinesList.size() - 1)), 60, Color.WHITE, ship, 1, 2);
                 }
 

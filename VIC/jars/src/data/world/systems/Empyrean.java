@@ -149,7 +149,7 @@ public class Empyrean {
         Cocytus.getSpec().setGlowColor(new Color(255,255,255,255));
         Cocytus.getSpec().setUseReverseLightForGlow(true);
         Cocytus.applySpecChanges();
-        Cocytus.setInteractionImage("illustrations", "space_bar");
+        Cocytus.setInteractionImage("illustrations", "vic_cocytus_illustration");
         Cocytus.setCustomDescriptionId("vic_cocytus"); //reference descriptions.csv
 
         MarketAPI Cocytus_market = addMarketplace("vic",
@@ -167,6 +167,7 @@ public class Empyrean {
                                 Conditions.TERRAN,
                                 Conditions.MILD_CLIMATE,
                                 Conditions.REGIONAL_CAPITAL,
+                                Conditions.URBANIZED_POLITY,
                                 Conditions.STEALTH_MINEFIELDS
                         )
                 ),

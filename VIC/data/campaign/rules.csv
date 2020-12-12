@@ -1,5 +1,5 @@
 id,trigger,conditions,script,text,options,notes
-"# default commission conversation strings, copy and adjust this section for faction-specific conversation flavor",,,,,,
+#Commission Dialogues,,,,,,
 CMSNTextRejectHostile_vic,CMSNTextRejectHostile,$faction.id == vic,,"""Wonderful! I'm sure our board of directors will be delighted that you've signed up for human testing! I know they've been looking forward to seeing what you're made of (quite literally), so this should come as a fantastic development. I might even get promoted for bringing them some of your organs! So, why, exactly, did you want to collect on your own bounty? Did you have family you wanted to make the payout to?
 
 I’m sorry, you aren’t here to turn yourself in and collect on your bounty? You want to be commissioned with the Conglomerate?!?”
@@ -34,6 +34,8 @@ CMSNResignCancelled_vic,CMSNResignCancelled,$faction.id == vic,,"“Oh, thank Go
 
 Maybe take a break, go relax at a gene-spa? Have a nice meal at VICtuals. Take some time off.”",,
 ,,,,,,
+,,,,,,
+#Fleet Encounter Dialogues,,,,,,
 greetingVICFriendly,OpenCommLink,"$faction.id == vic
 $faction.friendlyToPlayer","$menuState = fleetConvMain 0
 FireAll PopulateOptions","The $PersonRank smiles at the screen with inhumanly sharp teeth.  
@@ -96,9 +98,10 @@ A soothing voice comes over the comm-link. ""Volkov Avionics are the best in the
 OR
 ""Keep your distance, stranger. You'll regret making enemies with the Conglomerate,"" $PersonRank says in a strict voice. 
 OR
-""Your $shipOrFleet has been scanned and are in our sights"", $PersonRank states in an emotionless tone, looking at you through the comms with slight suspicion in their eyes, ""Don't cause any trouble.""
+""Your $shipOrFleet has been scanned and is in our sights"", $PersonRank states in an emotionless tone, looking at you through the comms with slight suspicion in their eyes, ""Don't cause any trouble.""
 OR
-""By the Human Domain interstellar edict number R4-52223YO1Z this fleet is authorized to use lethal force in order to protect itself. I ask you to refrain from aggressive actions and/or any kinds of provocations.""",,
+""By the Human Domain interstellar edict number R4-52223YO1Z this fleet is authorized to use lethal force in order to protect itself. I ask you to refrain from aggressive actions and/or any kinds of provocations.""
+",,
 greetingVICHostileWeaker,OpenCommLink,"$faction.id == vic
 $entity.isHostile
 $entity.relativeStrength < 0",$entity.ignorePlayerCommRequests = true 1,"""What'cha doing there, friend?"" The VIC $personRank laughs nervously. ""You wouldn't be planning to attack us, would you? Everybody likes the Conglomerate!""
@@ -160,6 +163,32 @@ OR
 ",cutCommLink:Cut the comm link,
 ,,,,,,
 ,,,,,,
+,,,,,,
+# relationship level descriptions,,,,,,
+relLevelNeutralvic,RelationshipLevelDesc,"$faction.rel == NEUTRAL
+$faction.id == vic",,"At the moment, you are not of particular interest to the Conglomerate. You are treated like thousands, millions of others - with the respect and reasonable suspicion prescribed in the Customer Interaction Guidelines. You do not get any preferences, but at the same time you can count on normal business communication and the absence of problems on the behalf of the Megacorporation's power structures.",,
+relLevelFavorablevic,RelationshipLevelDesc,"$faction.rel == FAVORABLE
+$faction.id == vic",,"While other factions may consider some of your actions “morally and legally unjustifiable,” they have earned you a certain degree of trust from the infamous Conglomerate. Employees of the corporation and its subsidiaries smile just a little more politely and sincerely when talking to you, and the first notes of a friendly-ish competitive spirit can be heard in the voices of their Aerospace Corps pilots, rather than their usual arrogant and slightly offensive jests. Of course, you are still very far from becoming a true hero of Humankind (or what the Conglomerate considers ""Humankind""), but you are definitely on the right track.",,
+relLevelWelcomingvic,RelationshipLevelDesc,"$faction.rel == WELCOMING
+$faction.id == vic",,"Your name is gradually becoming more prominent among the employees, soldiers, and pilots of the Conglomerate, although the average resident of the corporate state will still raise an eyebrow if you try to introduce yourself a little more boastfully than you should. The Corporation provides you with products and services that are not normally available to the general public, and in some reports to the Supreme Directorate, you are mentioned among those with potential - albeit, potential not yet realized.",,
+relLevelFriendlyvic,RelationshipLevelDesc,"$faction.rel == FRIENDLY
+$faction.id == vic",,"Destroying the enemies of Humankind, active assistance to the Conglomerate, or forging strong ties with its upper echelons - whatever your path, you've managed to earn a big name for yourself in the corporation. Not just its higher-ups, too, but also ordinary residents, thanks to the regular propaganda campaigns and pseudo-documentary action films for which you, unfortunately, are not entitled to royalties. The captains of the Aerospace Corps see you as an equal (which in itself says a lot), and the arsenals and laboratories of the Conglomerate open the doors to some of their most powerful achievements for you. You can be proud of yourself - the Supreme Directorate have their questionably-human eyes on you.",,
+relLevelCooperativevic,RelationshipLevelDesc,"$faction.rel == COOPERATIVE
+$faction.id == vic",,"Few are destined to become heroes and living symbols of Humankind. But you can rest easy - this right and and this achievement are entirely yours, earned with, hopefully, hard work and unquestionable loyalty. Do not fall victim to pride, as crowds of citizens are chanting your name and dreaming of your autographs on their personal belongings, as the employees of the corporation throw glances sparkling with true admiration at you, and as the services reserved only to the top management and, formerly, the Domain's ruling parties, are provided to you with alluring, if unnaturally toothy, smiles and increasingly religious, almost cult-like undertones. 
+
+And most importantly, the Supreme Directorate regularly invites you to their meetings at the top of the Dawn Spire, from where you too may get a view of the Humanity's bright future.",,
+relLevelSuspiciousvic,RelationshipLevelDesc,"$faction.rel == SUSPICIOUS
+$faction.id == vic",,"Your name and a holovid of your face is on the Imperial Databases as a Known Degenerate. Imperial security will investigate you with more vigour, with more intrusiveness, and with exacting slowness. Imperial Watchmen will hound your every move, and Citizens know better than to interact with you in any fashion without Imperial Security present.",,
+relLevelInhospitablevic,RelationshipLevelDesc,"$faction.rel == INHOSPITABLE
+$faction.id == vic",,"The First Persean Empire considers you to be a criminal, although exactly what you are guilty of is unknown. Port authorities block any acknowledgement from your fleet's hails, and Imperial patrols shadow you with hostile intent. Your status within the Empire is on par with the rest of the Sector, considered as nothing more than a standard Degenerate in the thrall of the Great Tri-Tachyon Conspiracy.",,
+relLevelHostilevic,RelationshipLevelDesc,"$faction.rel == HOSTILE
+$faction.id == vic",,"You have been condemned as an Enemy of the State by the First Persean Empire. Imperial commanders will engage you on sight, and port authorities refuse to trade with you. Your name has appeared once or twice in connection with supposed atrocities attributed to the Tri-Tachyon Corporation or the Luddic Church in Imperial Propaganda. However, in many respects the Empire treats you no differently than any other Persean Degenerate, merely one they are allowed to kill.",,
+relLevelVengefulvic,RelationshipLevelDesc,"$faction.rel == VENGEFUL
+$faction.id == vic",,"Imperial Propaganda portrays you as a villain of the week to be defeated in Imperial holovision, a mass murderer in service of the Luddic Church in speeches by Imperial officials, a slaughterer of innocents in primetime Imperial broadcasts - any enemy of the state required in Imperial media conveniently uses your name and likeness. It is rumoured that even His Majesty has mentioned a desire for your slow and painful death. The Imperial Watchmen have devoted an entire department to your elimination, and it is known that your death guarantees promotion to Imperial commanders who succeed in your timely elimination.",,
+,,,,,,
+,,,,,,
+,,,,,,
+#Beacons and Stuff,,,,,,
 beaconOpenDialogSiaubas,OpenInteractionDialog,"$tag:warning_beacon
 $pelenulaukas","ShowDefaultVisual
 SetShortcut beaconLeave ""ESCAPE""","This autonomous warning beacon emits a looping message.
@@ -167,6 +196,8 @@ SetShortcut beaconLeave ""ESCAPE""","This autonomous warning beacon emits a loop
 ""WARNING!!! Citizens of the Domain, this planet is heavily contaminated by indigenous viral agents. Extreme precautions and biological protection measures required. All infected must be isolated and cremated IMMEDIATELY. Any malicious attempts to spread the disease are punishable by death. For additional information citizens are to contact the local department of the Domain Interplanetary Sanitary-Epidemiological Control Service (DISECS).""
  ",beaconLeave:Leave,
 ,,,,,,
+,,,,,,
+#Unconventional Military Options,,,,,,
 vic_UMO,PopulateOptions,"$hasMarket
 $menuState == main
 $faction.id != player
@@ -178,6 +209,9 @@ vic_VBombMenu,DialogOptionSelected,$option == VBombMenu,VIC_MarketCMD VBombMenu,
 vic_VBombConfirm,DialogOptionSelected,$option == VBombConfirm,VIC_MarketCMD VBombConfirm,,,
 vic_VBombResults,DialogOptionSelected,$option == VBombResults,VIC_MarketCMD VBombResults,,,
 ,,,,,,
+,,,,,,
+,,,,,,
+#Revitalization Center Texts,,,,,,
 vic_PersonaChange,PopulateOptions,"$hasMarket
 $menuState == main
 $faction.id == vic

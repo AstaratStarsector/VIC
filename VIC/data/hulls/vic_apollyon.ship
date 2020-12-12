@@ -505,73 +505,73 @@
   "engineSlots": [
     {
       "location": [-110.5, 51],
-      "length": 100.879051,
-      "width": 11.299046,
+      "length": 50.361858,
+      "width": 15.05766,
       "angle": 169,
-      "contrailSize": 11.299046,
+      "contrailSize": 15.05766,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-97, 60.5],
-      "length": 72.817398,
-      "width": 8.456024,
+      "length": 50.361858,
+      "width": 15.05766,
       "angle": 169,
-      "contrailSize": 8.456024,
+      "contrailSize": 15.05766,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-125, 43],
-      "length": 102.873741,
-      "width": 10.998784,
+      "length": 51.929703,
+      "width": 15.46686,
       "angle": 169,
-      "contrailSize": 10.998784,
+      "contrailSize": 15.46686,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-168.5, 0],
-      "length": 250,
-      "width": 15,
+      "length": 145,
+      "width": 20,
       "angle": 180,
-      "contrailSize": 15,
+      "contrailSize": 20,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-125, -43],
-      "length": 102.873741,
-      "width": 10.998784,
+      "length": 51.929703,
+      "width": 15.46686,
       "angle": -169,
-      "contrailSize": 10.998784,
+      "contrailSize": 15.46686,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-110.5, -51],
-      "length": 100.879051,
-      "width": 11.299046,
+      "length": 50.361858,
+      "width": 15.05766,
       "angle": -169,
-      "contrailSize": 11.299046,
+      "contrailSize": 15.05766,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-97, -60.5],
-      "length": 72.817398,
-      "width": 8.456024,
+      "length": 50.361858,
+      "width": 15.05766,
       "angle": -169,
-      "contrailSize": 8.456024,
+      "contrailSize": 15.05766,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-161.5, 0],
-      "length": 125,
-      "width": 20,
+      "length": 70.5,
+      "width": 22,
       "angle": 180,
-      "contrailSize": 20,
+      "contrailSize": 22,
       "style": "CUSTOM",
       "styleSpec": {
         "type": "GLOW",
@@ -609,19 +609,19 @@
     },
     {
       "location": [-161, -33],
-      "length": 85,
-      "width": 19,
+      "length": 110,
+      "width": 15,
       "angle": 180,
-      "contrailSize": 19,
+      "contrailSize": 15,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-161, 33],
-      "length": 85,
-      "width": 19,
+      "length": 110,
+      "width": 15,
       "angle": -180,
-      "contrailSize": 19,
+      "contrailSize": 15,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }
