@@ -1,0 +1,60 @@
+{
+  "id": "vic_tugarin",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_tugarin_shot",
+  "type": "BALLISTIC",
+  "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_tugarinScript",
+  "displayArcRadius": 600,
+  "turretSprite": "graphics/weapons/vic_tugarin_base_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_tugarin_glow_turret.png",
+  "turretGunSprite": "graphics/weapons/vic_tugarin_barrel_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_tugarin_base_hardpoint.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_tugarin_glow_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/vic_tugarin_barrel_hardpoint.png",
+  "renderAboveAllWeapons": 0,
+  "glowColor": [
+    240,
+	60,
+	0,
+    200
+  ],
+  "visualRecoil": 10,
+  "renderHints": [
+    "RENDER_BARREL_BELOW"
+  ],
+  "turretOffsets": [
+    55,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    55.5,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "GLOW_AND_FLASH",
+  "muzzleFlashSpec": {
+    "length": 65,
+    "spread": 15,
+    "particleSizeMin": 10,
+    "particleSizeRange": 35,
+    "particleDuration": 0.75,
+    "particleCount": 50,
+    "particleColor": [
+      255,
+      120,
+      50,
+      245
+    ]
+  },
+  "textureType": ROUGH,
+  "fireSoundOne": "vic_tugarin_charge",
+  "fireSoundTwo": "vic_tugarin_shot",
+  "autocharge":true,
+}

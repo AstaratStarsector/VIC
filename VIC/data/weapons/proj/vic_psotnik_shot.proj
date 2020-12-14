@@ -5,7 +5,7 @@
 	"onHitEffect":"data.scripts.weapons.vic_psotnikOnHit",
 	"collisionClass":"PROJECTILE_FF",
 	"collisionClassByFighter":"PROJECTILE_FIGHTER",
-	"length":9,
+	"length":0,
 	"hitGlowRadius":15,
 	"width":5,
 	"fadeTime":0.1,

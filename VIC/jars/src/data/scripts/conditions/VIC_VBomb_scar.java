@@ -121,6 +121,8 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
 
     public void onNewDay() {
         daysPassed = VIC_TimeTracker.getTimeTagPassed(market, getModId());
+        if (daysPassed == Math.round(year/2)) market.setSize(market.getSize() - 1);
+        if (daysPassed == year) market.setSize(market.getSize() - 1);
     }
 
 }

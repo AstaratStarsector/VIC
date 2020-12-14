@@ -138,7 +138,6 @@ public class vic_adaptiveWarfare extends BaseHullMod {
             Global.getCombatEngine().maintainStatusForPlayerShip("vic_adaptiveWarfare3", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "Speed power", Math.round(SpeedPower) + "%", false);
             Global.getCombatEngine().maintainStatusForPlayerShip("vic_adaptiveWarfare2", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "Damage Power", Math.round(DamagePower) + "%", false);
             Global.getCombatEngine().maintainStatusForPlayerShip("vic_adaptiveWarfare1", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "Shield Power", Math.round(ShieldPower) + "%", false);
-
         }
 
         //Boosts power

@@ -1,9 +1,9 @@
 {
-"vic":
+	"vic":
 	[
 		"Archangel's Wrath",
 		"From The Void",
-		"Pride of The Volkov Navy",
+		"Pride",
 		"Fortuna's Lover",
 		"Warden",
 		"Warden of the Purgatory",
@@ -18,11 +18,11 @@
 		"Scratcher",
 		"Repressor",
 		"Overcoming the Pain",
-		"Loyalty to the Corporation",
-		"Composer of Shipborne Weaponry",
+		"Loyalty",
+		"Composer of Weaponry",
 		"Entwined Forever",
 		"Manufactured In Empyrean",
-		"Apotheosis of Technology",
+		"Apotheosis",
 		"Ittir's Caretaker",
 		"Genesplicer",
 		"Blight on Enemy Line",
@@ -44,6 +44,7 @@
 		"Beast",
 		"Scarab",
 		"Darker than Black",
+		"Night Hunter",
 	],
 	"vic_memes":
 	[

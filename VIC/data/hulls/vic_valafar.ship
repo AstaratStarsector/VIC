@@ -51,8 +51,8 @@
       "size": "SMALL",
       "type": "HYBRID",
       "mount": "TURRET",
-      "arc": 143,
-      "angle": 52.5,
+      "arc": 150,
+      "angle": 45,
       "locations": [40, 17]
     },
     {
@@ -60,8 +60,8 @@
       "size": "SMALL",
       "type": "HYBRID",
       "mount": "TURRET",
-      "arc": 143,
-      "angle": -52.5,
+      "arc": 150,
+      "angle": -45,
       "locations": [40, -17]
     },
     {
@@ -78,8 +78,8 @@
       "size": "SMALL",
       "type": "HYBRID",
       "mount": "TURRET",
-      "arc": 85,
-      "angle": -137.5,
+      "arc": 150,
+      "angle": -135,
       "locations": [-37, -22]
     },
     {
@@ -87,8 +87,8 @@
       "size": "SMALL",
       "type": "HYBRID",
       "mount": "TURRET",
-      "arc": 85,
-      "angle": 137.5,
+      "arc": 140,
+      "angle": 135,
       "locations": [-37, 22]
     },
     {

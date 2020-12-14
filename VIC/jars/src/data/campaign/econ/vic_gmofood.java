@@ -1,9 +1,14 @@
 package data.campaign.econ;
 
+import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.FactionAPI;
+import com.fs.starfarer.api.campaign.RepLevel;
+import com.fs.starfarer.api.campaign.SectorAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
+import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
@@ -75,7 +80,14 @@ public class vic_gmofood extends Farming {
     }
 
     public boolean isAvailableToBuild() {
-        return false;
+        SectorAPI sector = Global.getSector();
+
+        FactionAPI player = sector.getFaction(Factions.PLAYER);
+        FactionAPI vic = sector.getFaction("vic");
+
+        return market.getPlanetEntity() != null &&
+                (player.getRelationshipLevel(vic).isAtWorst(RepLevel.WELCOMING) ||
+                        Global.getSector().getPlayerFaction().knowsIndustry(getId()));
     }
 
     public boolean showWhenUnavailable() {

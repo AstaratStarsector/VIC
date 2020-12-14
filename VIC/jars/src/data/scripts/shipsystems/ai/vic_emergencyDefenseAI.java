@@ -66,13 +66,13 @@ public class vic_emergencyDefenseAI implements ShipSystemAIScript {
                 if (!wing.isReturning(wing.getLeader())) allReturns = false;
                 if (!allReturns) break;
             }
+            if (allReturns) useMe = true;
         }
-        if (allReturns) useMe = true;
+
 
         if (enemyScore >= 10f){
             useMe = true;
-            Global.getCombatEngine().addFloatingText(new Vector2f(ship.getLocation().x, ship.getLocation().y), "OH FUCK", 60, Color.WHITE, ship, 0.25f, 0.25f);
-
+            //Global.getCombatEngine().addFloatingText(new Vector2f(ship.getLocation().x, ship.getLocation().y), "OH FUCK", 60, Color.WHITE, ship, 0.25f, 0.25f);
         }
 
         if (useMe) {

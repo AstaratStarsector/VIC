@@ -19,7 +19,8 @@
     "WS0007": "vic_engine_glow_universal_big",
     "WS0008": "vic_engine_glow_universal_big",
     "WS0009": "vic_engine_glow_universal_small",
-    "WS0010": "vic_engine_glow_universal_small"
+    "WS0010": "vic_engine_glow_universal_small",
+	"WS0011": "vic_targetingLazer"
   },
   "weaponSlots": [
     {
@@ -159,6 +160,15 @@
       "arc": 128,
       "angle": -0,
       "locations": [-70.5, -56]
+    },
+    {
+      "id": "WS0011",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "TURRET",
+      "arc": 240,
+      "angle": 0,
+      "locations": [5.5, -0]
     }
   ],
   "engineSlots": [

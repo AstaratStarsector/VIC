@@ -795,7 +795,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
                         volumeMult *= 0.1f * factor;
 
                         if (volumeMult > 0) {
-                            Global.getSoundPlayer().playSound("mine_explosion", 1f, 1f * volumeMult, loc, Misc.ZERO);
+                            Global.getSoundPlayer().playSound("mine_explosion", 1f, volumeMult, loc, Misc.ZERO);
                         }
 
                     }

@@ -1,0 +1,54 @@
+{
+  "id": "vic_targetingLazer",
+  "specClass": "beam",
+  "type": "ENERGY",
+  "size": "SMALL",
+  "collisionClass": "RAY",
+  "collisionClassByFighter": "RAY_FIGHTER",
+  "displayArcRadius": 400,
+  "turretSprite": "graphics/weapons/vic_targetingLazer_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_targetingLazer_turretGlow.png",
+  "hardpointSprite": "graphics/weapons/vic_targetingLazer_turret.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_targetingLazer_turretGlow.png",
+  "renderAboveAllWeapons": 0,
+  "interruptibleBurst": true,
+  "glowColor": [
+    255,
+	93,
+	0,
+    255
+  ],
+  "hitGlowRadius": 0,
+  "turretOffsets": [
+    5,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    9,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "fringeColor": [
+    255,
+    0,
+    0,
+    125
+  ],
+  "coreColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "width": 3,
+  "textureType": ROUGH,
+  "textureScrollSpeed": 210,
+  "pixelsPerTexel": 2,
+  "fireSoundOne": "vic_rarog_start",
+  "fireSoundTwo": "vic_rarog_loop"
+}
