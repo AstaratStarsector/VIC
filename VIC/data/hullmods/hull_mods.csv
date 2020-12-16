@@ -45,8 +45,8 @@ Incompatible with Accelerated Shields, Extended Shields, Hardened Shields and St
 ,,,,,,,,,,,,,,,,,,
 #modular,,,,,,,,,,,,,,,,,,
 #Dedicated PD core,vic_DPDCore,2,,Volkov Industries,offensive,Weapons,15000,,,,7,10,13,16,data.hullmods.vic_DPDCore,"Extends the range of Point-defence weapons by %s/%s/%s/%s, depending on hull size.",,graphics/hullmods/vic_assault.png
-Loader Overdrive,vic_loaderOverdrive,1,,Volkov Industries,offensive,Weapons,10000,,,,3,6,9,15,data.hullmods.vic_loaderOverdrive,Increases Rate of fire by %s and flux cost by %s but reduces range by %s of ballistic and energy weapons.,,graphics/hullmods/vic_reloaderOvercharge.png
-PD arc emitter,vic_PDArcEmitter,2,,Volkov Industries,defensive,Weapons,15000,,,,4,8,12,20,data.hullmods.vic_PDArcEmitter,"Zaps missiles in %s su range dealing %s damage to it, generate %s flux per zap, after zapping need to recharge for %s seconds can hold up to %s charges.",,graphics/hullmods/vic_empEmitter.png
+Loader Overdrive,vic_loaderOverdrive,1,,Volkov Industries,offensive,Weapons,10000,,,,3,6,9,15,data.hullmods.vic_loaderOverdrive,Increases ballistic and energy weapons Rate of fire by %s and reduces their flux cost by %s but also reduces their range by %s.,,graphics/hullmods/vic_reloaderOvercharge.png
+PD arc emitter,vic_PDArcEmitter,2,,Volkov Industries,defensive,Weapons,15000,,,,4,8,12,20,data.hullmods.vic_PDArcEmitter,"Zaps missiles in %s su range dealing %s damage to it, generates %s flux per zap, after zapping needs to recharge for %s seconds, can hold up to %s charges. All stats are depending on hull size.",,graphics/hullmods/vic_empEmitter.png
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #Commissioned Crews,,,,,,,,,,,,,,,,,,

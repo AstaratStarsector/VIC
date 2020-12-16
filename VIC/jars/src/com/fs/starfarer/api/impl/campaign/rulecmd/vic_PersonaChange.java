@@ -216,9 +216,9 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         }
 
         options.clearOptions();
-        options.addOption("Change your own appearance", changeSelf);
-        options.addOption("Change the officer's appearance", changeOfficer);
-        options.addOption("Change the administrator's appearance", changeAdmin);
+        options.addOption("Consider changing something about yourself", changeSelf);
+        options.addOption("Consider changing your officer", changeOfficer);
+        options.addOption("Consider changing your administrator", changeAdmin);
 
 
         switch (currState){
@@ -277,10 +277,10 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         options.clearOptions();
 
-        options.addOption("Open \"Male\" section", male);
-        options.addOption("Open \"Female\" section", female);
+        options.addOption("Open \"Male\" section of the appearances list", male);
+        options.addOption("Open \"Female\" section of the appearances list", female);
         if (currState != mainMenuState.InToAdmin)
-            options.addOption("Respec skills ", respec);
+            options.addOption("Revitalize the current body (Respec the Skill Points) ", respec);
 
         if (playerCargo.getCredits().get() < 10000) {
             options.setEnabled(male, false);
@@ -349,12 +349,12 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         switch (currState) {
             case InToYou:
                 respecPlayer();
-                LabelAPI label = text.addPara("Its gonna cost you %s.",
+                LabelAPI label = text.addPara("The manager nods affirmatively and after giving you some more information about internal organic reconfiguration, informs you that the procedure will cost %s.",
                         h, respecPlayerCost + " credits");
                 break;
             case InToOfficer:
-                LabelAPI label2 = text.addPara("Its gonna cost you %s. Also side note, your officer can suffer minor" +
-                                " memory loss, he can lose %s of his combat experience.",
+                LabelAPI label2 = text.addPara("The manager nods affirmatively and after giving you some more information about internal organic reconfiguration, informs you that the procedure will cost %s. Additionally, both you and your subordinate are warned about possible side effects," +
+                                " the most significant of which is partial memory loss (which will result in a loss of %s of their current experience).",
                         h, respecOfficerCost + " credits", Math.round(100 - respecOfficerXP * 100) + "%");
                 break;
         }

@@ -163,7 +163,6 @@ OR
 ",cutCommLink:Cut the comm link,
 ,,,,,,
 ,,,,,,
-,,,,,,
 # relationship level descriptions,,,,,,
 relLevelNeutralvic,RelationshipLevelDesc,"$faction.rel == NEUTRAL
 $faction.id == vic",,"At the moment, you are not of particular interest to the Conglomerate. You are treated like thousands, millions of others - with the respect and reasonable suspicion prescribed in the Customer Interaction Guidelines. You do not get any preferences, but at the same time you can count on normal business communication and the absence of problems on the behalf of the Megacorporation's power structures.",,
@@ -178,13 +177,34 @@ $faction.id == vic",,"Few are destined to become heroes and living symbols of Hu
 
 And most importantly, the Supreme Directorate regularly invites you to their meetings at the top of the Dawn Spire, from where you too may get a view of the Humanity's bright future.",,
 relLevelSuspiciousvic,RelationshipLevelDesc,"$faction.rel == SUSPICIOUS
-$faction.id == vic",,"Your name and a holovid of your face is on the Imperial Databases as a Known Degenerate. Imperial security will investigate you with more vigour, with more intrusiveness, and with exacting slowness. Imperial Watchmen will hound your every move, and Citizens know better than to interact with you in any fashion without Imperial Security present.",,
+$faction.id == vic",,"The Conglomerate's list of untrustworthy individuals contains your name among many others. The Aerospace and Law Enforcement Corps are watching you rather closely both in space and on the corporation's grounds, while the managers in grey and orange uniforms are clearly taking pleasure in slowing you down with an endless stream of bureaucratic shenanigans whenever you arrive at their ports. Thankfully, however, all of this is just an irritating inconvenience. At least for now.",,
 relLevelInhospitablevic,RelationshipLevelDesc,"$faction.rel == INHOSPITABLE
-$faction.id == vic",,"The First Persean Empire considers you to be a criminal, although exactly what you are guilty of is unknown. Port authorities block any acknowledgement from your fleet's hails, and Imperial patrols shadow you with hostile intent. Your status within the Empire is on par with the rest of the Sector, considered as nothing more than a standard Degenerate in the thrall of the Great Tri-Tachyon Conspiracy.",,
+$faction.id == vic",,"When the captains of the Aerospace Corps regularly throw insults and show rude gestures through the comms at you, and at the ports you are greeted with audible wishes to never see you again, it becomes quite obvious that you are currently yet another undesirable element for the Conglomerate. Employees of the corporation are forbidden to show open aggression towards you in order to avoid fines, but this does not mean that your stay on the VIC territories will be pleasant. ",,
 relLevelHostilevic,RelationshipLevelDesc,"$faction.rel == HOSTILE
-$faction.id == vic",,"You have been condemned as an Enemy of the State by the First Persean Empire. Imperial commanders will engage you on sight, and port authorities refuse to trade with you. Your name has appeared once or twice in connection with supposed atrocities attributed to the Tri-Tachyon Corporation or the Luddic Church in Imperial Propaganda. However, in many respects the Empire treats you no differently than any other Persean Degenerate, merely one they are allowed to kill.",,
+$faction.id == vic",,"The Conglomerate's management has listed you as a target for liquidation. The captains of the Aerospace Corps will open fire on you at the first opportunity, employees and managers refuse to cooperate with you under any conditions, and the corporate media shows you in the lists of criminals for the capture or elimination, for which a reward is assigned. You are also strongly advised not to show yourself to the Law Enforcement Corps, which has also been ordered to ""take care"" of you.",,
 relLevelVengefulvic,RelationshipLevelDesc,"$faction.rel == VENGEFUL
-$faction.id == vic",,"Imperial Propaganda portrays you as a villain of the week to be defeated in Imperial holovision, a mass murderer in service of the Luddic Church in speeches by Imperial officials, a slaughterer of innocents in primetime Imperial broadcasts - any enemy of the state required in Imperial media conveniently uses your name and likeness. It is rumoured that even His Majesty has mentioned a desire for your slow and painful death. The Imperial Watchmen have devoted an entire department to your elimination, and it is known that your death guarantees promotion to Imperial commanders who succeed in your timely elimination.",,
+$faction.id == vic",,"Aerospace Corps personnel are looking for you all over the Sector with hungry eyes and a thirst for murder, financial reward, and promotion; gene-mimic operatives are being dispatched, lurking in the crowds and perhaps even among your subordinates to deliver a fatal blow when you least expect it. The PR Department allocates enormous budgets to dehumanize your image among the public and employees through all available media, and the Special Forces Corps are capturing and/or eliminating those who may have been associated with you in one way or another. Even some members of the Supreme Directorate, if one is to believe the rumours, are planning to personally go in pursuit of you, to bring you back alive and turn your very existence into an endless torture with the help of their most sophisticated methods, refined throughout the centuries of the Conglomerate's history. ",,
+,,,,,,
+,,,,,,
+#Ai Core hand in,,,,,,
+aiCores_turnInOptionSelVICFriendly,DialogOptionSelected,"$option == aiCores_startTurnIn
+$faction.id == vic
+$faction.friendlyToPlayer",FireAll PopulateCoresTurnInOptions,"""Oh, a core of an artificial intelligence? This is great news, colleague! It's dreadful to think what kinds of atrocities some less educated and responsible sort of people would commit by using such technology. We''ll make sure this never happens and that this synthetic mind serves Humankind in a right way. And, of course, I'll make sure the management is informed about your efforts as soon as possible.""",,
+aiCores_turnInOptionSelVIC,DialogOptionSelected,"$option == aiCores_startTurnIn
+$faction.id == vic",FireAll PopulateCoresTurnInOptions,"""Oh, an AI core? How peculiar... It's good that you've brought it to us, citizen. The Conglomerate is well informed about the Domain's protocols regarding the containment of synthetic minds. Rest assured, after being thoroughly scanned and drained of all valuable data, this AI core will be terminated to avoid any undesired consequences. And, of course, your efforts will be handsomely rewarded."" ",,
+aiCores_turnInOptionSelVICHostile,DialogOptionSelected,"$option == aiCores_startTurnIn
+$faction.id == vic
+$faction.hostileToPlayer",FireAll PopulateCoresTurnInOptions,"""An AI core? In YOUR possesion?... Ahem. I hope you're informed about the Domain's laws regarding artificial intelligences, ""citizen"". In any other circumstances you'd be already detained, convicted and sentenced to capital punishment. However, I think we can still come to an agreement in this particular situation. The Conglomerate would be glad if you allowed us to dispose of this dangerous technology. Of course, an additional payment would be provided.""",,
+aiCores_turnInOptionSellVICFriendly,AICoresTurnedIn,"$faction.id == vic
+$faction.friendlyToPlayer",FireAll PopulateOptions,"""Glory to Humankind.""$PersonRank $personLastName smiles grarefully and genuinely thanks you for helping humanity on its way to a brighter future, before the conversation moves on to other matters.",,
+aiCores_turnInOptionSellVIC,AICoresTurnedIn,$faction.id == vic,FireAll PopulateOptions,"$PersonRank $personLastName calmly thanks you for assisting the Conglomerate and its cause, before the conversation moves on to other matters.",,
+,,,,,,
+,,,,,,
+#Generic Market Descriptions,,,,,,
+flavorTextMarketVICGen,TradePanelFlavorText,"$faction.id == vic
+$stability > 1","AddText ""The port concourse is surprisingly vivacious, with numerous spacers and traders coursing between ships of various models and sizes, either being offloaded or filled up with goods and supplies. Meanwhile, the grey-orange uniformed Law Enforcement Corps units are patrolling the area on the lookout for any suspicious activity, and the logistics managers are scrupulously processing every arrival and departure, in some cases wasting up to several hours of captains' lives."" marketFlavorTextColor
+
+AddText ""You are quickly reminded about the Conglomerate's rule in this region, as the megacorp's propagandistic holo-ads are seen and heard practically everywhere, promoting myriads of products and services, with a strong emphasis on self-modification and customization through exquisite genetic technologies. Not to speak about the flowing and buzzing crowds looking as if straight out of fiction, with many people clearly possessing rather inhuman characteristics and body parts, in some cases leaving little to none of former human anatomy. Yet, no one seems to be bothered by any of this, except for some of the recently arrived, who are yet to get used to such unusual views."" marketFlavorTextColor",,,
 ,,,,,,
 ,,,,,,
 ,,,,,,
@@ -220,7 +240,7 @@ vic_portraitChangingMenu,DialogOptionSelected,$option == VICPCMenu,vic_PersonaCh
 
 The insides of the Centre greet you with sterile cleanliness, overly polite personnel (some of which clearly sport non-human features and bodyparts) and even more ads with quite propagandistic statements and rather ""exotic"" options of bodily transformations, made possible through the power of innovative genetech. As usual, all the customers, including you, are given a short run-down on the procedure and its nuances, as well as a list of possible side effects and the basic non-responsibility agreement from the corporation. A brightly-eyed manager proudly reminds that the Conglomerate's geneticists and cyberneticists are the best in the field of Personal Modification and Transfiguration and that it's nigh-impossible to find any kind of analogues anywhere else in the whole Sector.
 
-It is possible to change your own appearance and the appearance of your officers and administators, thanks to several rather curious paragraphs in their contracts, which legally (but maybe not morally) allows you to disregard their opinion on the matter. 
+It is possible to change your own appearance and renew your current body (Respec the Skill Points). The same procedures can be provided to your officers and administrators as well, thanks to several rather curious paragraphs in their contracts, which legally (but maybe not morally) allows you to disregard their opinion on the matter. 
 ",,
 vic_portraitChangingMenuBackToit,DialogOptionSelected,$option == vic_PerconaChangeChoseBack,vic_PersonaChange vic_PerconaChangeChoseBack,"After some hesitation, you tell the managers that you need to think about all this a bit more, to which they nod understandably, saying that there is nothing wrong in taking it slow and making a deliberate, well-thought decision.",,
 ,,,,,,
@@ -239,9 +259,9 @@ The white room's temperature is rather pleasing and quiet calm music can be hear
 Several hours later the patient finally gets up from the chair and makes their first steps as a completely new person. Gone is the old shell, and they're ready to take on the world with their new body. The doctor and the nurses seem quite happy with the result of their hard work and mention that one can always go back to their old self or even try something else. If they have sufficient funds for the procedures of course. ",,
 vic_PersonaChangeRespecResult,DialogOptionSelected,$option == vic_PersonaChangeRespecResult,vic_PersonaChange vic_PersonaChangeRespecResult,"A predatory grin spreads on the manager's face, and after the fund transaction is complete, the patient is invited into the operating theatre. 
 
-The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help the patient settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, the patient are given an offer of anestesia and a mirroring screen in case they desire to watch the process themselves. And at last, after the first injection of DNA-altering virus, the procedure begins.
+The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help the patient settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, the patient are given an offer of anestesia. A mirroring screen can be seen nearby, but it won't be necessary this time, as the changes will be happening on the inside. And at last, after the first injection of DNA-altering virus, the procedure begins.
 
-Several hours later the patient finally gets up from the chair and makes their first steps as a completely new person. Gone is the old shell, and they're ready to take on the world with their new body. The doctor and the nurses seem quite happy with the result of their hard work and mention that one can always go back to their old self or even try something else. If they have sufficient funds for the procedures of course. ",,
+Several hours later the patient finally gets up from the chair and makes their first steps with a somewhat new body and reconfigured innards, their neural system renewed. The doctor and the nurses seem quite happy with the result of their hard work and mention that one can always come back for additional reconfiguration or even try something else from the vast variety of VIC services. If they have sufficient funds for the procedures of course. ",,
 #menu close,,,,,,
 vic_PersonaChangeEnd,DialogOptionSelected,"$option == vic_PersonaChangeEnd
 ","ShowDefaultVisual
@@ -263,7 +283,7 @@ EndConversation
 vic_PersonaChangeEndNew,DialogOptionSelected,"$option == vic_PersonaChangeEndNew
 ","ShowDefaultVisual
 EndConversation
-","You leave the Revitalization Centre with a new appearance, just like thousands, if not millions before you. You can almost feel the power surging in your artificially engineered veins and the world seems oh so bright and ripe with new opportunities.
+","You leave the Revitalization Centre as a new person, just like thousands, if not millions before you. You can almost feel the power surging in your artificially engineered veins and the world seems oh so bright and ripe with new opportunities.
 
 And the holo-ad behind your back reminds you that all of that, of course, is owed to VIC.",,
 vic_PersonaChangeEndNewOfficer,DialogOptionSelected,"$option == vic_PersonaChangeEndNewOfficer
@@ -279,16 +299,20 @@ EndConversation
 ,,,,,,
 vic_PersonaChangeOtherPersonaOfficer,OpenCDE,$tag:vic_personToChangeOfficer == true,"ShowPersonVisual
 vic_PersonaChange vic_PerconaChangeNotPLayer
-","After all the standard introductions, discussions and Q&As, you are given a list of currently available physical appearances to choose from for your fortunate (or unfortunate) officer. The list is conveniently divided into ""Male"" and ""Female"" sections, each option costing 10000 credits. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats.   
+","After all the standard introductions, discussions and Q&As, you are given a short rundown on currently available services, including the list of physical appearances to choose from for your fortunate (or unfortunate) officer. The list is conveniently divided into ""Male"" and ""Female"" sections, each option costing 10000 credits. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats. 
 
 The officer is patiently waiting too with a remarkably stoic facial expression. You wonder what's going on in their head right now, considering all the circumstances. Maybe their resolve is a mere facade, hiding their excitement, or pure, unadulterated rage and hatred towards you and the local VIC personnel? Or maybe they don't indeed care about all this, as long as their contract is followed strictly by both parties.",,
 vic_PersonaChangeOtherPersonaAdmin,OpenCDE,$tag:vic_personToChangeAdmin == true,"ShowPersonVisual
 vic_PersonaChange vic_PerconaChangeNotPLayer
-","After all the standard introductions, discussions and Q&As, you are given a list of currently available physical appearances to choose from for your fortunate (or unfortunate) administrator. The list is conveniently divided into ""Male"" and ""Female"" sections, each option costing 10000 credits. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats. 
+","After all the standard introductions, discussions and Q&As, you are given a short rundown on currently available services, including the list of physical appearances to choose from for your fortunate (or unfortunate) administrator. The list is conveniently divided into ""Male"" and ""Female"" sections, each option costing 10000 credits. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats. 
 
-The administrator is patiently waiting too with a remarkably stoic facial expression. You wonder what's going on in their head right now, considering all the circumstances. Maybe their resolve is a mere facade, hiding their excitement, or pure, unadulterated rage and hatred towards you and the local VIC personnel? Or maybe they don't indeed care about all this, as long as their contract is followed strictly by both parties.",,
+The administrator is patiently waiting too with a remarkably stoic facial expression. You wonder what's going on in their head right now, considering all the circumstances. Maybe their resolve is a mere facade, hiding their excitement, or pure, unadulterated rage and hatred towards you and the local VIC personnel? Or maybe they don't indeed care about all this, as long as their contract is followed strictly by both parties.
+
+",,
 vic_PersonaChangeOtherPortraitOfficer,DialogOptionSelected,$option == vic_PersonaChangeOtherPortraitOfficer,vic_PersonaChange vic_PersonaChangeOtherPortraitOfficer,,,
-vic_PersonaChangeYou,DialogOptionSelected,$option == vic_PersonaChangeYou,vic_PersonaChange vic_PersonaChangeYou,"After all the standard introductions, discussions and Q&As, you are given a list of currently available physical appearances to choose from. The list is conveniently divided into ""Male"" and ""Female"" sections, each option costing 10000 credits. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats. ",,
+vic_PersonaChangeYou,DialogOptionSelected,$option == vic_PersonaChangeYou,vic_PersonaChange vic_PersonaChangeYou,"After all the standard introductions, discussions and Q&As, you are given a short rundown on currently available services, including the list of currently available physical appearances to choose from. It is conveniently divided into ""Male"" and ""Female"" sections, each option costing 10000 credits. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats. 
+
+",,
 vic_PersonaChangeAdmin,DialogOptionSelected,$option == vic_PersonaChangeAdmin,vic_PersonaChange vic_PersonaChangeAdmin,,,
 vic_PersonaChangeOfficer,DialogOptionSelected,$option == vic_PersonaChangeOfficer,vic_PersonaChange vic_PersonaChangeOfficer,,,
 ,,,,,,
