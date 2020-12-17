@@ -4,7 +4,7 @@
   "displayName": "Laidlaw",
   "goalVariant": true,
   "fluxCapacitors": 15,
-  "fluxVents": 50,
+  "fluxVents": 30,
   "quality": 1,
   "permaMods": [],
   "hullMods": [

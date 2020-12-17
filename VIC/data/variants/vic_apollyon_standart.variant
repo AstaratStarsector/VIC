@@ -3,13 +3,13 @@
   "hullId": "vic_apollyon",
   "displayName": "Standard",
   "goalVariant": true,
-  "fluxCapacitors": 35,
+  "fluxCapacitors": 41,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "vic_assault",
-    "vic_allRoundShieldUpgrade",
+    "vic_allRoundShieldUpgrade"
   ],
   "weaponGroups": [
     {
@@ -35,7 +35,7 @@
       "weapons": {
         "WS0001": "vic_psotnik",
         "WS0002": "vic_psotnik",
-        "WS0018": "plasma"
+        "WS0018": "vic_tugarin"
       }
     },
     {
