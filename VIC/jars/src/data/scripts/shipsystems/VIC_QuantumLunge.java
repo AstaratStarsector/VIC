@@ -58,6 +58,12 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         cheesyLinesList.add("BOOYAH!!!");
         cheesyLinesList.add("Quantum physics, son");
         cheesyLinesList.add("Get good or get dead, scrub");
+        cheesyLinesList.add("Pierce the Heavens!");
+        cheesyLinesList.add("You're already dead");
+        cheesyLinesList.add("Commencing Quantum Lunge");
+        cheesyLinesList.add("Field destabilization successful");
+        cheesyLinesList.add("Right behind you");
+        cheesyLinesList.add("Too fast for you?");
     }
 
     @Override
@@ -90,7 +96,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                 EndPos = new Vector2f(ship.getLocation());
                 isActive2 = true;
 
-                if (Math.random() < 0.1f) {
+                if (Math.random() < 0.15f) {
                     engine.addFloatingText(ship.getLocation(), cheesyLinesList.get(MathUtils.getRandomNumberInRange(0, cheesyLinesList.size() - 1)), 60, Color.WHITE, ship, 1, 2);
                 }
 
