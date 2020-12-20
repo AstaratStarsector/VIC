@@ -221,6 +221,15 @@ AddText ""The world of green archipelagos and carefully controlled eternal summe
 AddText ""After landing, a little bit tired managers and customs security officers spend some more of your time, and you are finally allowed into the halls of the main capital's spaceport, and the city itself. The busy streets between enormours skyscrapers practically assault you with sounds and colors. Endless motley crowds replete with a variety of bodily modifications and transformations, artful (and sometimes provocative) advertising messages and pompous transhumanist propaganda on every corner, beckoning night clubs and perhaps the most expensive luxury resorts in the entire Sector - all in full view of the rulers of the Dawn Spire, imperiously towering in the heart of the  capital."" marketFlavorTextColor
 
 AddText ""You have to make a lot of effort in order not to be distracted and focus on the actually important things. Putting aside all the entertainment for later, you head to the buzzing business districts via maglev, trying, if possible, to ignore the strong desire to forget about all worries and give in to a peaceful life in this astonishing place."" marketFlavorTextColor",,,
+flavorTextMarketVICPhlgethon,TradePanelFlavorText,"$id == vic_planet_phlegethon score:1000
+$faction.id == vic
+$stability > 3","AddText ""The interior of the utilitarian-looking and fuel-smelling spaceport is surprisingly cool - which cannot be said about what lies behind the heat-resistant glass, through which you can see the lava landscape and the monstrous supergiant in all its glory, washing the planet in all-consuming light. However, thanks to the radiation absorption systems, you don't have to worry about being so close to a breathtaking stellar view."" marketFlavorTextColor
+
+AddText ""After passing a brief check and interrogation about the purpose of the visit at the security checkpoint, you head to the business wing of the complex, Law Enforcement Corps officers and chattering miners in heavy protective exosuits passing by on foot or in small high-speed transport trolleys, either empty or full of bulky containers."" marketFlavorTextColor
+
+AddText ""From time to time, a low rumble is heard and the floor starts trembling, as if from the echo of an earthquake, after which a tired and moody female voice of about fifty years old announces the time and location of the next orbital scalping. And once again reminds everyone that accidents with the ray are not included in the list of insurance cases for workers."" marketFlavorTextColor
+
+",,,
 ,,,,,,
 ,,,,,,
 #Beacons and Stuff,,,,,,
