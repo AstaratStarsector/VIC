@@ -49,6 +49,14 @@
 		{"file": "sounds/effects/vic_besomar_shot.ogg", "pitch": 0.992, "volume": 0.8,},
 	],
 	
+	"vic_rubicon_quantum_river":[ 
+		{"file":"sounds/sfx_systems/phase_teleporter_oneshot.ogg","pitch":1.1, "volume":1.0},
+		{"file":"sounds/sfx_systems/phase_teleporter_oneshot.ogg","pitch":1.05,"volume":1.0},
+		{"file":"sounds/sfx_systems/phase_teleporter_oneshot.ogg","pitch":1,"volume":1.0},
+		{"file":"sounds/sfx_systems/phase_teleporter_oneshot.ogg","pitch":0.95,"volume":1.0},
+		{"file":"sounds/sfx_systems/phase_teleporter_oneshot.ogg","pitch":0.9,"volume":1.0},
+	],
+	
 	"vic_laidlaw_accelerator_shot":[
 		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 0.90, "volume": 1,},
 		{"file": "sounds/effects/vic_laidlawaccel_shot2.ogg", "pitch": 0.95, "volume": 1,},

@@ -15,8 +15,8 @@ public class vic_loaderOverdrive extends BaseHullMod {
 
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        stats.getBallisticWeaponRangeBonus().modifyPercent(id, -rangeBonus);
-        stats.getEnergyWeaponRangeBonus().modifyPercent(id, -rangeBonus);
+        stats.getBallisticWeaponRangeBonus().modifyPercent(id, rangeBonus);
+        stats.getEnergyWeaponRangeBonus().modifyPercent(id, rangeBonus);
         stats.getBallisticWeaponFluxCostMod().modifyMult(id, 1 - fluxBonus / 100);
         stats.getEnergyWeaponFluxCostMod().modifyMult(id, 1 - fluxBonus / 100);
 

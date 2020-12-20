@@ -18,7 +18,7 @@
 					"range":20,
 					"explosionSpec":{"duration":0.12f,
 									 "radius":50,
-									 "coreRadius":35, # full damage within core radius - also equal to proximity fuse range
+									 "coreRadius":100, # full damage within core radius - also equal to proximity fuse range
 									 "collisionClass":PROJECTILE_FF,
 									 "collisionClassByFighter":PROJECTILE_FIGHTER,
 									 "particleSizeMin":8.0,

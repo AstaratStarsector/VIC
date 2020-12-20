@@ -48,7 +48,7 @@ public class vic_rubiconOnHit implements OnHitEffectPlugin {
                     MathUtils.getRandomNumberInRange(0.1f, 0.3f)
             );
             projectile.getSource().getFluxTracker().setCurrFlux(projectile.getSource().getFluxTracker().getCurrFlux() + (50 * projectile.getSource().getMutableStats().getBallisticWeaponFluxCostMod().getBonusMult()));
-            Global.getSoundPlayer().playSound("system_phase_teleporter", 1f, 0.2f, SpawnPoint, new Vector2f());
+            Global.getSoundPlayer().playSound("vic_rubicon_quantum_river", 1f, 0.2f, SpawnPoint, new Vector2f());
         }
     }
 }

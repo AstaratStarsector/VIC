@@ -96,7 +96,7 @@ OR
 OR
 A soothing voice comes over the comm-link. ""Volkov Avionics are the best in the sector, nay, the galaxy! And what better to adorn your sleek, modern Volkov hulls than with Volkov weaponry? Your peers will respect you, and your enemies will fear you, trust me. Research has shown that pirates will flee at the mere sight of a Heavy Laidlaw Accelerator. With our top-of-the line engines, there's nowhere in the sector -- be it in space or in the skies -- outside of your reach!""
 OR
-""Keep your distance, stranger. You'll regret making enemies with the Conglomerate,"" $PersonRank says in a strict voice. 
+""Keep your distance, citizen. You'll regret making enemies with the Conglomerate,"" $PersonRank says in a strict voice. 
 OR
 ""Your $shipOrFleet has been scanned and is in our sights"", $PersonRank states in an emotionless tone, looking at you through the comms with slight suspicion in their eyes, ""Don't cause any trouble.""
 OR
@@ -112,7 +112,7 @@ You hear what sounds like hasty orders mixed with expletives coming from offscre
 OR
 ""Let's not be hasty here,"" the VIC $personRank says, unnaturally-tinged sweat visibly dripping. ""They'll be consequences if you attack us. Volkov doesn't forgive that sort of thing.""
 OR
-""Now think about this, our fleet is more valuable to you alive. I can arrange for you to get a discount on genemods or something; we can make a deal,"" $heOrShe pleads for mercy.
+""Now think about this, our fleet is more valuable to you alive. I can arrange for you to get a discount on genemods or our military tech or something; we can make a deal,"" $heOrShe pleads for mercy.
 OR
 ""You cannot kill us; with our genetic code recorded, we will live on forever, and we will come back for revenge. Think about that before you proceed,"" - the $PersonRank tries to sound as convincing as they possibly can.",cutCommLink:Cut the comm link,
 greetingVICHostileWeakerDefiant,OpenCommLink,"$faction.id == vic
@@ -135,13 +135,13 @@ OR
 ""That fleet you're so proud of? VIC will crush it under our industrial might!"" The $personRank slams $HisOrHer fist on the console and cuts off the feed.",cutCommLink:Cut the comm link,
 greetingVICHostileStronger,OpenCommLink,"$faction.id == vic
 $entity.isHostile
-$entity.relativeStrength >= 0",$entity.ignorePlayerCommRequests = true 1,"""When we're finished destroying your $shipOrFleet,"" the VIC $personRank boasts, ""we're going to drag your corpse out of the wreckage so we can analyze your genes. Then we can figure out what went so wrong as to end up with you.""
+$entity.relativeStrength >= 0",$entity.ignorePlayerCommRequests = true 1,"""When we're finished destroying your $shipOrFleet,"" the VIC $personRank boasts, ""we're going to drag your corpse out of the wreckage so we can analyze your genetic code. Then we can figure out what went so wrong as to end up with you.""
 OR
-""Normally, when we end up removing subversives such as yourself from the sector, we end up taking them back to the labs for some 'voluntary scientific testing.'""
+""Normally, when we're removing subversives such as yourself from the sector, we end up taking them back to the labs for some 'voluntary scientific testing.'""
 
 The $personRank sneers when $heOrShe says the phrase. ""But you clearly wouldn't make for worthy testing material. Prime weapons systems,"" $heOrShe says to $HisOrHer secondary officer, before cutting comms.
 OR
-""You are an enemy of the Conglomerate. Prepare to die.""
+""You are an enemy of the Conglomerate and Humanity. Prepare to die.""
 OR
 ""This is the finest nanopolymer-laminate armor forged in Phlegethon. These engines burn hotter than Empyrean itself. Volkov weaponry pierces meters of tungsten like it's tissue paper. And to prove it, your $shipOrFleet will be our newest product demonstration.""
 OR
@@ -189,23 +189,38 @@ $faction.id == vic",,"Aerospace Corps personnel are looking for you all over the
 #Ai Core hand in,,,,,,
 aiCores_turnInOptionSelVICFriendly,DialogOptionSelected,"$option == aiCores_startTurnIn
 $faction.id == vic
-$faction.friendlyToPlayer",FireAll PopulateCoresTurnInOptions,"""Oh, a core of an artificial intelligence? This is great news, colleague! It's dreadful to think what kinds of atrocities some less educated and responsible sort of people would commit by using such technology. We''ll make sure this never happens and that this synthetic mind serves Humankind in a right way. And, of course, I'll make sure the management is informed about your efforts as soon as possible.""",,
+$faction.friendlyToPlayer",FireAll PopulateCoresTurnInOptions,"""Oh, a core of an artificial intelligence? This is great news, colleague! It's dreadful to think what kinds of atrocities some less educated and responsible sort of people would commit by using such technology. We'll make sure this never happens and that this synthetic mind serves Humankind in a right way. And, of course, I'll make sure the management is informed about your efforts as soon as possible.""",,
 aiCores_turnInOptionSelVIC,DialogOptionSelected,"$option == aiCores_startTurnIn
 $faction.id == vic",FireAll PopulateCoresTurnInOptions,"""Oh, an AI core? How peculiar... It's good that you've brought it to us, citizen. The Conglomerate is well informed about the Domain's protocols regarding the containment of synthetic minds. Rest assured, after being thoroughly scanned and drained of all valuable data, this AI core will be terminated to avoid any undesired consequences. And, of course, your efforts will be handsomely rewarded."" ",,
 aiCores_turnInOptionSelVICHostile,DialogOptionSelected,"$option == aiCores_startTurnIn
 $faction.id == vic
 $faction.hostileToPlayer",FireAll PopulateCoresTurnInOptions,"""An AI core? In YOUR possesion?... Ahem. I hope you're informed about the Domain's laws regarding artificial intelligences, ""citizen"". In any other circumstances you'd be already detained, convicted and sentenced to capital punishment. However, I think we can still come to an agreement in this particular situation. The Conglomerate would be glad if you allowed us to dispose of this dangerous technology. Of course, an additional payment would be provided.""",,
 aiCores_turnInOptionSellVICFriendly,AICoresTurnedIn,"$faction.id == vic
-$faction.friendlyToPlayer",FireAll PopulateOptions,"""Glory to Humankind.""$PersonRank $personLastName smiles grarefully and genuinely thanks you for helping humanity on its way to a brighter future, before the conversation moves on to other matters.",,
+$faction.friendlyToPlayer",FireAll PopulateOptions,"""Glory to Humankind.""$PersonRank $personLastName smiles gratefully and genuinely thanks you for helping humanity on its way to a brighter future, before the conversation moves on to other matters.",,
 aiCores_turnInOptionSellVIC,AICoresTurnedIn,$faction.id == vic,FireAll PopulateOptions,"$PersonRank $personLastName calmly thanks you for assisting the Conglomerate and its cause, before the conversation moves on to other matters.",,
 ,,,,,,
 ,,,,,,
 #Generic Market Descriptions,,,,,,
 flavorTextMarketVICGen,TradePanelFlavorText,"$faction.id == vic
-$stability > 1","AddText ""The port concourse is surprisingly vivacious, with numerous spacers and traders coursing between ships of various models and sizes, either being offloaded or filled up with goods and supplies. Meanwhile, the grey-orange uniformed Law Enforcement Corps units are patrolling the area on the lookout for any suspicious activity, and the logistics managers are scrupulously processing every arrival and departure, in some cases wasting up to several hours of captains' lives."" marketFlavorTextColor
+$stability > 3","AddText ""The port concourse is surprisingly vivacious, with numerous spacers and traders coursing between ships of various models and sizes, either being offloaded or filled up with goods and supplies. Meanwhile, the grey-orange uniformed Law Enforcement Corps units are patrolling the area on the lookout for any suspicious activity, and the logistics managers are scrupulously processing every arrival and departure, in some cases wasting up to several hours of captains' lives."" marketFlavorTextColor
 
 AddText ""You are quickly reminded about the Conglomerate's rule in this region, as the megacorp's propagandistic holo-ads are seen and heard practically everywhere, promoting myriads of products and services, with a strong emphasis on self-modification and customization through exquisite genetic technologies. Not to speak about the flowing and buzzing crowds looking as if straight out of fiction, with many people clearly possessing rather inhuman characteristics and body parts, in some cases leaving little to none of former human anatomy. Yet, no one seems to be bothered by any of this, except for some of the recently arrived, who are yet to get used to such unusual views."" marketFlavorTextColor",,,
+flavorTextMarketVICGen_lowStab,TradePanelFlavorText,"$faction.id == vic
+$stability == 3","AddText ""The port welcomes visitors with half-empty hangars, unloading military transports and hurrying people who do not want to stay here longer than necessary. Soldiers and numerous units of the Law Enforcement Corps move around the area with weapons on display, catching captains and merchants in random order, while holo-screens and loudspeakers instead of their usual advertising broadcast about the curfew and ask citizens to stay at home. From time to time, muffled single shots are heard somewhere in the distance, and at these moments the soldiers grip their weapons much tighter."" marketFlavorTextColor",,,
+flavorTextMarketVICGen_veryLowStab,TradePanelFlavorText,"$faction.id == vic
+$stability < 3","AddText ""The gloomy port greets its guests with civil defense sirens and emergency messages broadcast over holographic screens and loudspeakers that have remained intact. Explosions and gunfire are heard somewhere in the distance, but the spaceport looks ready for any turn of events. Ground Operations Corps soldiers can be seen literally everywhere, their Laidlaw Accelerator rifles unlocked and glowing menacingly with energy. Heavy armored vehicles bearing Conglomerate insignia are unloaded from large military transport ships, and Special Forces agents drill all the few remaining spacers and traders with the ravenous glances of their barely human eyes."" marketFlavorTextColor",,,
 ,,,,,,
+,,,,,,
+#Cocytus Market Descriptions,,,,,,
+flavorTextMarketVICCocytus,TradePanelFlavorText,"$id == vic_planet_cocytus score:1000
+$faction.id == vic
+$stability > 3","AddText ""After passing the first round of security checks in the lobbies of massive orbital stations, with panoramic screens offering spectacular views of the Conglomerate's ever-vibrant shipyards, one of the helpful managers finally invites you to board a comfortable shuttle to the surface."" marketFlavorTextColor
+
+AddText ""The world of green archipelagos and carefully controlled eternal summer greets you with magnificent landscapes of relatively wild nature and gigantic cities, some of which are built at sea, far from artificial shores. While fluffy clouds, other shuttles and nimble VIC vessels sweep by outside the window during the descent, local info-services broadcast the latest news and weather data in a soft, soothing voice."" marketFlavorTextColor
+
+AddText ""After landing, a little bit tired managers and customs security officers spend some more of your time, and you are finally allowed into the halls of the main capital's spaceport, and the city itself. The busy streets between enormours skyscrapers practically assault you with sounds and colors. Endless motley crowds replete with a variety of bodily modifications and transformations, artful (and sometimes provocative) advertising messages and pompous transhumanist propaganda on every corner, beckoning night clubs and perhaps the most expensive luxury resorts in the entire Sector - all in full view of the rulers of the Dawn Spire, imperiously towering in the heart of the  capital."" marketFlavorTextColor
+
+AddText ""You have to make a lot of effort in order not to be distracted and focus on the actually important things. Putting aside all the entertainment for later, you head to the buzzing business districts via maglev, trying, if possible, to ignore the strong desire to forget about all worries and give in to a peaceful life in this astonishing place."" marketFlavorTextColor",,,
 ,,,,,,
 ,,,,,,
 #Beacons and Stuff,,,,,,
