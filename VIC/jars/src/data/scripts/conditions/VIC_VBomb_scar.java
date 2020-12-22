@@ -8,6 +8,7 @@ import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.campaign.econ.MutableCommodityQuantity;
 import com.fs.starfarer.api.impl.campaign.econ.BaseMarketConditionPlugin;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.impl.campaign.intel.deciv.DecivTracker;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -123,6 +124,7 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
         daysPassed = VIC_TimeTracker.getTimeTagPassed(market, getModId());
         if (daysPassed == Math.round(year/2)) market.setSize(market.getSize() - 1);
         if (daysPassed == year) market.setSize(market.getSize() - 1);
+        if (market.getSize() == 0) DecivTracker.decivilize(market, true);
     }
 
 }

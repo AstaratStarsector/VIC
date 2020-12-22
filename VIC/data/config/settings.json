@@ -65,7 +65,8 @@
 		},
 		
 		"illustrations":{
-		           "vic_cocytus_illustration":"graphics/illustrations/vic_cocytus_illustration.jpg",
+			"vic_cocytus_illustration":"graphics/illustrations/vic_cocytus_illustration.jpg",
+			
 		}
 	}
 }

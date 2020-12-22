@@ -13,7 +13,7 @@ import org.lwjgl.util.vector.Vector2f;
 // Written by AxleMC131 for Astarat
 public class vic_dynamicShields extends BaseHullMod {
 
-    public final float MAX_ARC_MULT = 2f;    // Maximum multiplier applied to the base shield arc
+    public final float arcIncrease = 90f;
     public final float IDEAL_ANGLE = 90f;   // The angle of deflection at which the shield is at max arc
 
     public final float shieldSpeed = 1.5f;
@@ -57,46 +57,25 @@ public class vic_dynamicShields extends BaseHullMod {
                         ship.getMutableStats().getShieldArcBonus().getMult() *
                         (ship.getMutableStats().getShieldArcBonus().getPercentMod() + 1);
 
-        float shipArcMult = 0f;
-        switch (ship.getHullSpec().getHullId()) {
-            case "vic_thamuz":
-            case "vic_samael":
-                shipArcMult = 0.5f;
-                //do stuff for case 1 and 2
-                break;
-            default:
-                break;
-        }
-
         float shieldRelFacing = Math.abs(MathUtils.getShortestRotation(ship.getShield().getFacing(), ship.getFacing()));
         if (shieldRelFacing > 90) shieldRelFacing = 180 - shieldRelFacing;
         //float normalizedAngle = scaleArcToIdealAngle(IDEAL_ANGLE, shieldRelFacing);
-        float shieldArcMult = ((shieldRelFacing / IDEAL_ANGLE) * (MAX_ARC_MULT - shipArcMult - 1f));
+        float shieldArcMult = (shieldRelFacing / IDEAL_ANGLE);
 
-        ship.getShield().setArc(baseShieldArc + (ship.getHullSpec().getShieldSpec().getArc() * shieldArcMult));
+        ship.getShield().setArc(baseShieldArc + (arcIncrease * shieldArcMult));
     }
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
 
-        float shipArcMult = 0f;
-        switch (ship.getHullSpec().getHullId()) {
-            case "vic_thamuz":
-            case "vic_samael":
-            case "vic_kobal":
-                shipArcMult = 0.5f;
-                //do stuff for case 1 and 2
-                break;
-            case "vic_pruflas":
-                shipArcMult = 0.75f;
-            default:
-                break;
-        }
-        float extshield = 0f;
-        if (ship.getVariant().hasHullMod("extendedshieldemitter")) extshield += 60;
+        float baseShieldArc =
+                (ship.getHullSpec().getShieldSpec().getArc() +
+                        ship.getMutableStats().getShieldArcBonus().getFlatBonus()) *
+                        ship.getMutableStats().getShieldArcBonus().getMult() *
+                        (ship.getMutableStats().getShieldArcBonus().getPercentMod() + 1);
 
         if (index == 0)
-            return Math.round(ship.getHullSpec().getShieldSpec().getArc() * (MAX_ARC_MULT - shipArcMult) + extshield) + "";
-        if (index == 1 || index == 2) return ((shieldSpeed - 1) * 100) + "%";
+            return Math.round(baseShieldArc + arcIncrease) + "";
+        if (index == 1 || index == 2) return Math.round((shieldSpeed - 1) * 100) + "%";
         return null;
     }
 }
