@@ -36,6 +36,7 @@ public class vic_assaultVariant extends BaseHullMod {
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
 
         stats.getBallisticWeaponRangeBonus().modifyFlat(id , rangeBonus.get(hullSize));
+        stats.getEnergyWeaponRangeBonus().modifyFlat(id , rangeBonus.get(hullSize));
         stats.getWeaponRangeThreshold().modifyFlat(id,rangeForClamp.get(hullSize));
         stats.getWeaponRangeMultPastThreshold().modifyMult(id, 1 - rangeReduction);
     }
@@ -50,7 +51,7 @@ public class vic_assaultVariant extends BaseHullMod {
     @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
         if (hullSize == null) hullSize = ShipAPI.HullSize.FRIGATE;
-        if (index == 0) return Math.round(200 + addFluxPerCap) + "";
+        if (index == 0) return Math.round(-addFluxPerCap) + "";
         if (index == 1) return Math.round(addDisPerCap) + "";
         if (index == 2) return Math.round(rangeBonus.get(hullSize)) + "";
         if (index == 3) return Math.round(rangeForClamp.get(hullSize)) + "";

@@ -28,7 +28,7 @@ Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,defensive,0,true,,TRUE
 VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,,0,0,0,0,data.hullmods.vic_shieldsChanger,,Shield Changer,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
 """Shturm"" Type Frame",vic_ShturmSolution,3,,Volkov Industries,offensive,Weapons,25000,,,,0,0,0,0,data.hullmods.vic_assaultVariant,"The ""Shturm"" line of VIC ships is designed  with a specific set of technological solutions, giving them with an edge in frantic close combat:
-- Every point in flux capacitors gives %s flux capacity and gives %s dissipation instead of normal values.
+- Every point in flux capacitors gives %s flux capacity and %s dissipation instead of normal values.
 - Increases energy and ballistic weapons range by %s.
 - Reduces weapon range past %s by %s.",,graphics/hullmods/vic_shturmFrame.png
 ,,,,,,,,,,,,,,,,,,
