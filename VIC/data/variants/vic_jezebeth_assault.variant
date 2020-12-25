@@ -1,8 +1,8 @@
 {
     "displayName": "Assault",
-	"goalVariant": true,
-    "fluxCapacitors": 13,
-    "fluxVents": 18,
+    "fluxCapacitors": 14,
+    "fluxVents": 20,
+    "goalVariant": true,
     "hullId": "vic_jezebeth",
     "hullMods": ["vic_assault"],
     "permaMods": [],

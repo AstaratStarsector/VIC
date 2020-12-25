@@ -13,7 +13,8 @@
   "viewOffset": 0,
   "builtInMods": [
     "vic_aerodynamicdesign",
-    "vic_dynamicshields"
+    "vic_dynamicshields",
+	"vic_ShturmSolution"
   ],
   "builtInWeapons": {
     "WS0008": "vic_moloch_tail_left",

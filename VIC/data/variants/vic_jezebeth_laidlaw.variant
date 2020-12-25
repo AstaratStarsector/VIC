@@ -1,8 +1,8 @@
 {
     "displayName": "Laidlaw",
-	"goalVariant": true,
-    "fluxCapacitors": 17,
-    "fluxVents": 20,
+    "fluxCapacitors": 13,
+    "fluxVents": 16,
+    "goalVariant": true,
     "hullId": "vic_jezebeth",
     "hullMods": ["vic_assault"],
     "permaMods": [],

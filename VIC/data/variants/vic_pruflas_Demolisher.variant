@@ -1,8 +1,8 @@
 {
     "displayName": "Demolisher",
-	"goalVariant": true,
-    "fluxCapacitors": 8,
+    "fluxCapacitors": 10,
     "fluxVents": 9,
+    "goalVariant": true,
     "hullId": "vic_pruflas",
     "hullMods": [
         "missleracks",

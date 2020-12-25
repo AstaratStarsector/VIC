@@ -1,32 +1,27 @@
 {
-  "variantId": "vic_xaphan_harasher",
-  "hullId": "vic_xaphan",
-  "displayName": "Harasser",
-  "goalVariant": true,
-  "fluxCapacitors": 9,
-  "fluxVents": 10,
-  "quality": 1,
-  "permaMods": [],
-  "hullMods": [
-    "vic_assault"
-  ],
-  "weaponGroups": [
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0004": "vic_laidlawMassDriver",
-        "WS0005": "vic_laidlawMassDriver"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0003": "reaper"
-      }
-    }
-  ],
-  "modules": [],
-  "wings": []
+    "displayName": "Harasser",
+    "fluxCapacitors": 9,
+    "fluxVents": 10,
+    "goalVariant": true,
+    "hullId": "vic_xaphan",
+    "hullMods": [],
+    "permaMods": [],
+    "variantId": "vic_xaphan_harasher",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0005": "vic_upyr"}
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0004": "vic_upyr"}
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0003": "harpoon"}
+        }
+    ]
 }

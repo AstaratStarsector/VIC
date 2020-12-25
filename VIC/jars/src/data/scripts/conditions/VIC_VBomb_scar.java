@@ -2,10 +2,7 @@ package data.scripts.conditions;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.PlanetAPI;
-import com.fs.starfarer.api.campaign.econ.Industry;
-import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
-import com.fs.starfarer.api.campaign.econ.MutableCommodityQuantity;
+import com.fs.starfarer.api.campaign.econ.*;
 import com.fs.starfarer.api.impl.campaign.econ.BaseMarketConditionPlugin;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.campaign.intel.deciv.DecivTracker;
@@ -29,7 +26,15 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
 
     public int daysPassed = 1;
 
+    protected PlanetAPI planet;
+
     public Color toxinColor = new Color(121, 182, 5, 164);
+
+    public void init(MarketAPI market, MarketConditionAPI condition) {
+        this.market = market;
+        this.condition = condition;
+        this.planet = market.getPlanetEntity();
+    }
 
     public void apply(String id) {
         super.apply(id);
@@ -57,17 +62,18 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
             Global.getSector().getListenerManager().addListener(this, true);
         }
 
-        if (market.getPlanetEntity() != null){
-            PlanetAPI planet =  market.getPlanetEntity();
+        if (market.getPlanetEntity() != null) {
+            PlanetAPI planet = market.getPlanetEntity();
             planet.getSpec().setAtmosphereColor(toxinColor);
             planet.getSpec().setCloudTexture("graphics/planets/clouds_banded01.png");
             planet.getSpec().setCloudColor(toxinColor);
             planet.applySpecChanges();
         }
 
-        VIC_TimeTracker.addMarketTimeTagTracker(market, getModId());
-        daysPassed = VIC_TimeTracker.getTimeTagPassed(market, getModId());
-
+        if (market != null) {
+            VIC_TimeTracker.addMarketTimeTagTracker(market, getModId());
+            daysPassed = VIC_TimeTracker.getTimeTagPassed(market, getModId());
+        }
     }
 
     public void unapply(String id) {
@@ -86,8 +92,8 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
             }
         }
 
-        if (market.getPlanetEntity() == null)return;
-        PlanetAPI planet =  market.getPlanetEntity();
+        if (market.getPlanetEntity() == null) return;
+        PlanetAPI planet = market.getPlanetEntity();
         planet.getSpec().setAtmosphereColor(new Color(255, 255, 255, 253));
         Global.getSector().getListenerManager().removeListener(this);
         VIC_TimeTracker.removeMarketTimeTagTracker(market, getModId());
@@ -95,23 +101,23 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
 
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
         super.createTooltipAfterDescription(tooltip, expanded);
-        if (daysPassed <= year){
+        if (daysPassed <= year) {
             tooltip.addPara("%s stability for another %s days.",
                     10f, Misc.getHighlightColor(),
                     "" + (int) -STABILITY_PENALTY, Math.round(year - daysPassed) + "");
         }
         tooltip.addPara("%s hazard rating.",
                 10f, Misc.getHighlightColor(),
-                "+" + (int)(hazardRating * 100) + "%");
+                "+" + (int) (hazardRating * 100) + "%");
         tooltip.addPara("%s ground defences.",
                 10f, Misc.getHighlightColor(),
                 "x" + DefMult);
         tooltip.addPara("%s population growth.",
                 10f, Misc.getHighlightColor(),
-                "" + (int)PopGrow);
+                "" + (int) PopGrow);
         tooltip.addPara("%s accessibility.",
                 10f, Misc.getHighlightColor(),
-                (int)(Access * 100) + "%");
+                (int) (Access * 100) + "%");
         tooltip.addPara("%s output of all industries on this colony", 10f, Misc.getHighlightColor(), -1 + "");
     }
 
@@ -122,9 +128,14 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
 
     public void onNewDay() {
         daysPassed = VIC_TimeTracker.getTimeTagPassed(market, getModId());
-        if (daysPassed == Math.round(year/2)) market.setSize(market.getSize() - 1);
+        if (market == null) return;
+        if (daysPassed == Math.round(year / 2)) market.setSize(market.getSize() - 1);
         if (daysPassed == year) market.setSize(market.getSize() - 1);
         if (market.getSize() == 0) DecivTracker.decivilize(market, true);
+    }
+
+    public boolean isPlanetary() {
+        return true;
     }
 
 }

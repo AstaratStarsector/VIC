@@ -21,8 +21,8 @@ public class vic_adaptiveWarfare extends BaseHullMod {
     //Bonuses at 100% power
     public float
             Speed = 20f,
-            Damage = 20f,
-            ShieldEff = 20f;
+            Damage = 10f,
+            ShieldEff = 10f;
 
     //Decay and shit
     public float
@@ -31,9 +31,9 @@ public class vic_adaptiveWarfare extends BaseHullMod {
             PercentDecay = 0.1f;
 
     public String getDescriptionParam(int index, HullSize hullSize) {
-        if (index == 0) return 20f + "%";
-        if (index == 1) return 20f + "%";
-        if (index == 2) return 20f + "%";
+        if (index == 0) return Math.round(ShieldEff) + "%";
+        if (index == 1) return Math.round(Damage) + "%";
+        if (index == 2) return Math.round(Speed) + "%";
         return null;
     }
 

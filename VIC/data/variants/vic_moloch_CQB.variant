@@ -1,12 +1,12 @@
 {
-    "displayName": "Standard",
+    "displayName": "CQB",
     "fluxCapacitors": 20,
     "fluxVents": 18,
     "goalVariant": true,
     "hullId": "vic_moloch",
     "hullMods": ["vic_assault"],
     "permaMods": [],
-    "variantId": "vic_moloch_standart",
+    "variantId": "vic_moloch_CQB",
     "weaponGroups": [
         {
             "autofire": false,
