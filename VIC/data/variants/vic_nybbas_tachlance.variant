@@ -1,0 +1,26 @@
+{
+  "variantId": "vic_nybbas_tachlance",
+  "hullId": "vic_nybbas",
+  "displayName": "Killer",
+  "goalVariant": true,
+  "fluxCapacitors": 10,
+  "fluxVents": 10,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "vic_deathProtocol",
+    "hardened_subsystems",
+    "advancedoptics"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002t": "tachyonlance"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

@@ -59,7 +59,8 @@
 	# phase ships
 	"phaseSmall":{
 	
-		"vic_nybbas_plasma":5,
+		"vic_nybbas_plasma":0,
+		"vic_nybbas_tachlance":5,
 	
 	},
 
