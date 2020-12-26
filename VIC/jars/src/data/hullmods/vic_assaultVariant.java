@@ -32,6 +32,12 @@ public class vic_assaultVariant extends BaseHullMod {
         rangeBonus.put(ShipAPI.HullSize.CAPITAL_SHIP, 300f);
     }
 
+    private static final Set<String> BLOCKED_HULLMODS = new HashSet<>(2);
+    static {
+        BLOCKED_HULLMODS.add("safetyoverrides");
+
+    }
+
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
 
@@ -46,6 +52,30 @@ public class vic_assaultVariant extends BaseHullMod {
         MutableShipStatsAPI stats = ship.getMutableStats();
         stats.getFluxCapacity().modifyFlat(id, ship.getVariant().getNumFluxCapacitors() * addFluxPerCap);
         stats.getFluxDissipation().modifyFlat(id, ship.getVariant().getNumFluxCapacitors() * addDisPerCap);
+
+        for (String tmp : BLOCKED_HULLMODS) {
+            if (ship.getVariant().getHullMods().contains(tmp)) {
+                ship.getVariant().removeMod(tmp);
+            }
+        }
+    }
+
+    public boolean isApplicableToShip(ShipAPI ship) {
+        boolean OK = true;
+        if (!ship.getHullSpec().getHullId().startsWith("vic_")) return false;
+        for (String Hmod : BLOCKED_HULLMODS){
+            if (ship.getVariant().getHullMods().contains(Hmod)) return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String getUnapplicableReason(ShipAPI ship) {
+        if (!ship.getHullSpec().getHullId().startsWith("vic_"))
+            return "Must be installed on a VIC ship";
+        if (ship.getVariant().getHullMods().contains("safetyoverrides"))
+            return "Incompatible with Safety Overrides";
+        return null;
     }
 
     @Override
