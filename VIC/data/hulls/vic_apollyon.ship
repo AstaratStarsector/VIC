@@ -15,8 +15,9 @@
     "vic_aerodynamicdesign",
     "vic_dynamicshields",
     "vic_adaptiveWarfare",
-	"vic_ShturmSolution"
+    "vic_shturmSolutionDummy"
   ],
+  
   "builtInWeapons": {
     "WS0023": "vic_abyssalfangs",
     "WS0024": "VIC_AppolSystem",

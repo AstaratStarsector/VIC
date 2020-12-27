@@ -170,6 +170,8 @@
 		"vic_allRoundShieldUpgrade",
 		"vic_loaderOverdrive",
 		"vic_PDArcEmitter",
+		"vic_ShturmSolution",
+		"vic_shturmSolutionDummy",
     ],
   },
   

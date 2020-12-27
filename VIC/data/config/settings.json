@@ -67,6 +67,9 @@
 		"illustrations":{
 			"vic_cocytus_illustration":"graphics/illustrations/vic_cocytus_illustration.jpg",
 			
+		},
+	    "nex_vicVbombing":{
+		    "nex_vicVbombingIcon":"graphics/hullmods/vic_VBombHmod.png",
 		}
 	}
 }

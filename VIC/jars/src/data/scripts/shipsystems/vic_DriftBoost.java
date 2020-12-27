@@ -3,6 +3,7 @@ package data.scripts.shipsystems;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.ShipSystemAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 
 import java.awt.*;
@@ -12,6 +13,7 @@ public class vic_DriftBoost extends BaseShipSystemScript {
     public static float SPEED_BONUS = 250f;
     public static float TURN_BONUS = 100f;
     private final Color color = new Color(255, 0, 0, 255);
+    private static float SHTURM_COOLDOWN_MULT = 0.66f;
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
@@ -61,6 +63,14 @@ public class vic_DriftBoost extends BaseShipSystemScript {
 
     }
 
+
+    @Override
+    public boolean isUsable(ShipSystemAPI system, ShipAPI ship) {
+        if ((ship != null) && (system != null) && ship.getVariant().hasHullMod("vic_ShturmSolution")) {
+            system.setCooldown(4.15f * SHTURM_COOLDOWN_MULT);
+        }
+        return true;
+    }
 
     public void unapply(MutableShipStatsAPI stats, String id) {
         stats.getMaxSpeed().unmodify(id);

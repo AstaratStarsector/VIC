@@ -1,41 +1,48 @@
 {
-    "displayName": "CQB",
-    "fluxCapacitors": 20,
-    "fluxVents": 18,
-    "goalVariant": true,
-    "hullId": "vic_moloch",
-    "hullMods": ["vic_assault"],
-    "permaMods": [],
-    "variantId": "vic_moloch_CQB",
-    "weaponGroups": [
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0007": "chaingun"}
-        },
-        {
-            "autofire": false,
-            "mode": "ALTERNATING",
-            "weapons": {
-                "WS0005": "harpoonpod",
-                "WS0006": "harpoonpod"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0001": "vic_rubicon",
-                "WS0002": "vic_rubicon"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0003": "vic_strigoy",
-                "WS0004": "vic_strigoy"
-            }
-        }
-    ]
+  "variantId": "vic_moloch_CQB",
+  "hullId": "vic_moloch",
+  "displayName": "CQB",
+  "goalVariant": true,
+  "fluxCapacitors": 20,
+  "fluxVents": 4,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "vic_assault",
+    "vic_ShturmSolution"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "vic_gagana",
+        "WS0002": "vic_gagana",
+        "WS0007": "vic_rubicon"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0005": "harpoonpod",
+        "WS0006": "harpoonpod"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "vic_strigoy",
+        "WS0004": "vic_strigoy"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
 }

@@ -1,25 +1,33 @@
 {
-    "displayName": "Skirmisher",
-    "fluxCapacitors": 7,
-    "fluxVents": 10,
-    "goalVariant": true,
-    "hullId": "vic_xaphan",
-    "hullMods": ["vic_PDArcEmitter"],
-    "permaMods": [],
-    "variantId": "vic_xaphan_skirmisher",
-    "weaponGroups": [
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0003": "vic_upyr"}
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0004": "vic_rarog",
-                "WS0005": "vic_rarog"
-            }
-        }
-    ]
+  "variantId": "vic_xaphan_skirmisher",
+  "hullId": "vic_xaphan",
+  "displayName": "Skirmisher",
+  "goalVariant": true,
+  "fluxCapacitors": 7,
+  "fluxVents": 5,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "vic_PDArcEmitter",
+    "vic_ShturmSolution"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "vic_upyr"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0004": "vic_rarog",
+        "WS0005": "vic_rarog"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
 }

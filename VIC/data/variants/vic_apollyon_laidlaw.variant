@@ -4,13 +4,14 @@
   "displayName": "Laidlaw",
   "goalVariant": true,
   "fluxCapacitors": 15,
-  "fluxVents": 30,
+  "fluxVents": 5,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "vic_assault",
     "vic_allRoundShieldUpgrade",
-    "vic_deathProtocol"
+    "vic_deathProtocol",
+    "vic_ShturmSolution"
   ],
   "weaponGroups": [
     {

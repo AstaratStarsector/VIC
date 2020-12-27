@@ -4,12 +4,13 @@
   "displayName": "Standard",
   "goalVariant": true,
   "fluxCapacitors": 41,
-  "fluxVents": 50,
+  "fluxVents": 25,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "vic_assault",
-    "vic_allRoundShieldUpgrade"
+    "vic_allRoundShieldUpgrade",
+    "vic_ShturmSolution"
   ],
   "weaponGroups": [
     {

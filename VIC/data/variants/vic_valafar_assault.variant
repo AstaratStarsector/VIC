@@ -4,11 +4,12 @@
   "displayName": "Assault",
   "goalVariant": true,
   "fluxCapacitors": 20,
-  "fluxVents": 22,
+  "fluxVents": 7,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
-    "vic_assault"
+    "vic_assault",
+    "vic_ShturmSolution"
   ],
   "weaponGroups": [
     {

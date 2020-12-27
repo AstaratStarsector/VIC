@@ -39,6 +39,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
     public Vector2f StartPos = new Vector2f();
     public Vector2f EndPos = new Vector2f();
     public IntervalUtil MaxTime = new IntervalUtil(1f, 1f);
+    public float SHTURM_COOLDOWN_MULT = 0.66f;
 
     {
         MULT.put(ShipAPI.HullSize.DEFAULT, 1.0F);
@@ -142,6 +143,18 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
             Global.getCombatEngine().getTimeMult().unmodify(id);
         }
     }
+
+
+    @Override
+    public boolean isUsable(ShipSystemAPI system, ShipAPI ship) {
+        if ((ship != null) && (system != null) && ship.getVariant().hasHullMod("vic_ShturmSolution")) {
+            system.setCooldown(45f * SHTURM_COOLDOWN_MULT);
+        }
+        return true;
+    }
+
+
+
 
     @Override
     public void unapply(MutableShipStatsAPI stats, String id) {

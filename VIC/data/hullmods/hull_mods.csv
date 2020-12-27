@@ -24,12 +24,6 @@ Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,defensive,0,true,,TRUE
 - Up to %s increase in Damage dealt based on the amount of hard flux. 
 
 - Up to %s increase in Speed when hit on the hull.",Get brawlin' and get rollin'.,graphics/hullmods/vic_adaptiveWarfare.png
-"""Shturm"" Type Frame",vic_ShturmSolution,3,,Volkov Industries,offensive,Weapons,25000,,,,0,0,0,0,data.hullmods.vic_assaultVariant,"The ""Shturm"" line of VIC ships is designed  with a specific set of technological solutions, giving them an edge in frantic close combat:
-- Every point in flux capacitors gives %s flux capacity and %s dissipation instead of normal values.
-- Increases energy and ballistic weapons range by %s.
-- Reduces weapon range past %s by %s.
-
-Incompatible with Safety Overrides.",,graphics/hullmods/vic_shturmFrame.png
 ,,,,,,,,,,,,,,,,,,
 VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,,0,0,0,0,data.hullmods.vic_shieldsChanger,,Shield Changer,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
@@ -49,6 +43,23 @@ Increases the shields' arc by %s degrees.
 
 Can be installed only on VIC ships.
 Incompatible with Accelerated Shields, Extended Shields, Hardened Shields and Stabilized Shields. ",,graphics/hullmods/vic_shiledPack.png
+"VIC ""Shturm"" Overhaul",vic_ShturmSolution,3,,Volkov Industries,offensive,Weapons,25000,,,,5,10,15,25,data.hullmods.vic_assaultVariant,"The ""Shturm"" line of VIC ships is designed  with a specific set of technological solutions, giving them an edge in frantic close combat. The installation of this hullmod activates said solutions and severely reconfigures the ships' energy and weapon systems. The specified stats depend on the hull size. 
+
+- Every point in flux capacitors provides no bonus to flux capacity, but gives %s flux dissipation instead.
+
+- Reduces flux capacity by %s.
+- Increases flux dissipation by %s.
+
+- Reduces shield efficiency by %s.
+- Reduces shield upkeep by %s.
+
+- Increases energy and ballistic weapons range by %s.
+- Reduces weapon range past %s by %s.
+
+- Decreases the ship system's cooldown by %s. 
+
+Incompatible with Safety Overrides.",,graphics/hullmods/vic_shturmFrame.png
+"""Shturm"" Overhaul Dummy",vic_shturmSolutionDummy,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,Nothing,Nothing,graphics/hullmods/vic_shturmFrame.png
 ,,,,,,,,,,,,,,,,,,
 #modular,,,,,,,,,,,,,,,,,,
 #Dedicated PD core,vic_DPDCore,2,,Volkov Industries,offensive,Weapons,15000,,,,7,10,13,16,data.hullmods.vic_DPDCore,"Extends the range of Point-defence weapons by %s/%s/%s/%s, depending on hull size.",,graphics/hullmods/vic_assault.png

@@ -14,8 +14,8 @@
   "builtInMods": [
     "vic_aerodynamicdesign",
     "vic_dynamicshields",
-	"vic_ShturmSolution",
-    "vic_hellstormV2"
+    "vic_hellstormV2",
+    "vic_shturmSolutionDummy"
   ],
   "builtInWeapons": {
     "WS0001": "vic_xaphandecoleft",

@@ -4,11 +4,12 @@
   "displayName": "Hybrid",
   "goalVariant": true,
   "fluxCapacitors": 21,
-  "fluxVents": 20,
+  "fluxVents": 5,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
-    "vic_assault"
+    "vic_assault",
+    "vic_ShturmSolution"
   ],
   "weaponGroups": [
     {
