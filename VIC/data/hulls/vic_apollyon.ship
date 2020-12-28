@@ -17,7 +17,6 @@
     "vic_adaptiveWarfare",
     "vic_shturmSolutionDummy"
   ],
-  
   "builtInWeapons": {
     "WS0023": "vic_abyssalfangs",
     "WS0024": "VIC_AppolSystem",

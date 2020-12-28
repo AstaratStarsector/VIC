@@ -82,8 +82,7 @@ public class Empyrean {
                                 Conditions.TECTONIC_ACTIVITY,
                                 Conditions.POLLUTION,
                                 Conditions.RARE_ORE_RICH,
-                                Conditions.ORE_RICH,
-                                Conditions.VOLATILES_PLENTIFUL
+                                Conditions.ORE_RICH
                         )
                 ),
 

@@ -211,7 +211,7 @@ flavorTextMarketVICGen_veryLowStab,TradePanelFlavorText,"$faction.id == vic
 $stability < 3","AddText ""The gloomy port greets its guests with civil defense sirens and emergency messages broadcast over holographic screens and loudspeakers that have remained intact. Explosions and gunfire are heard somewhere in the distance, but the spaceport looks ready for any turn of events. Ground Operations Corps soldiers can be seen literally everywhere, their Laidlaw Accelerator rifles unlocked and glowing menacingly with energy. Heavy armored vehicles bearing Conglomerate insignia are unloaded from large military transport ships, and Special Forces agents drill all the few remaining spacers and traders with the ravenous glances of their barely human eyes."" marketFlavorTextColor",,,
 ,,,,,,
 ,,,,,,
-#Cocytus Market Descriptions,,,,,,
+#Custom Markets Descriptions,,,,,,
 flavorTextMarketVICCocytus,TradePanelFlavorText,"$id == vic_planet_cocytus score:1000
 $faction.id == vic
 $stability > 3","AddText ""After passing the first round of security checks in the lobbies of massive orbital stations, with panoramic screens offering spectacular views of the Conglomerate's ever-vibrant shipyards, one of the helpful managers finally invites you to board a comfortable shuttle to the surface."" marketFlavorTextColor
@@ -230,6 +230,29 @@ AddText ""After passing a brief check and interrogation about the purpose of the
 AddText ""From time to time, a low rumble is heard and the floor starts trembling, as if from the echo of an earthquake, after which a tired and moody female voice of about fifty years old announces the time and location of the next orbital scalping. And once again reminds everyone that accidents with the ray are not included in the list of insurance cases for workers."" marketFlavorTextColor
 
 ",,,
+flavorTextMarketVICPurgatory,TradePanelFlavorText,"$id == vic_planet_purgatory score:1000
+$faction.id == vic
+$stability > 3","AddText ""The spaceport of Purgatory, covered with poisonous clouds, greets you with sterile purity and an unprecedented amount of security. You just went through a series of checks in orbit, and here again you are in a small room alone with several soldiers and an officer in white uniform with orange stripes, interrogating you with particular zeal. After hours of endless questions, scans and visits to the disinfection chambers, it seems (and for good reason) that the Conglomerate now knows literally everything about you, including the contents of your intestines."" marketFlavorTextColor
+
+AddText ""But even moving around the zones for the planet's guests and the area in which trade is carried out, you never leave the field of vision of surveillance systems and security guards. A step to the left, a step to the right - and you are stopped, and again tedious and much more thorough interrogations begin, now about the reasons for trying to enter the sectors of the vast complex, to which you do not have access and in which God knows what is happening right at this moment. And you can't help yourself but feel uneasy, when a pair of employees in white-clean labcoats start staring at you from afar, their bright eyes with slitted pupils almost glowing with hungry interest."" marketFlavorTextColor
+
+
+",,,
+flavorTextMarketVICMegaera,TradePanelFlavorText,"$id == vic_planet_megaera score:1000
+$faction.id == vic
+$stability > 3","AddText ""It would seem that these small groups of buildings, huddled in craters, canyons and valleys and made of heat-saving polymers, can hardly hold any life - but no, they continue to serve as a shelter for many, almost fused with centuries-old natural icy formations."" marketFlavorTextColor
+
+AddText ""The clerks and staff in these places do not shine with energy and enthusiasm. Your questions are answered sleepily and lazily, and even virtual reality systems in recreational areas bring smiles to their faces only for a short period of time. Displeased grunts and moody sighs are heard in between the next propaganda announcements over the public address system, reminding everyone of the importance of honest and hard work for the benefit of humanity and, of course, the Conglomerate."" marketFlavorTextColor
+
+AddText ""And as you mingle with a few other captains and merchants over mugs of warm synthesized chocolate, you feel a special gratitude for the frost-resistant glass behind which snowstorms rage, hiding numerous junkyards and processing plants."" marketFlavorTextColor
+",,,
+flavorTextMarketVICKalada,TradePanelFlavorText,"$id == vic_planet_kalada score:1000
+$faction.id == vic
+$stability > 3","AddText ""The new planetary capital, where your shuttle arrives in, by the looks of it, is still undergoing active reconstruction from a brief war. The busy streets are filled not only with bustling residents and officers of the Law Enforcement Corps, but also with workers and engineers, gradually bringing the city, partially damaged during the fighting, back to its former condition."" marketFlavorTextColor
+
+AddText ""Despite all the efforts of the new government, which has taken over civil affairs, as is the case on almost all planets of the Persean Union of Domain Colonies, there is still some tension around. Many residents are much quieter and more restrained in the presence of representatives and employees of the Conglomerate, and in the side streets every now and then graffiti with clearly protest statements come across."" marketFlavorTextColor
+
+AddText ""Trying not to get involved in tumultuous political discussions and talks about the new regime and the future of the planet, you head to the trading district by public maglev. And on your way you note to yourself - there are already quite a lot of those who have decided to use genetic technologies and the services of the new ""benevolent hosts‎""."" marketFlavorTextColor",,,
 ,,,,,,
 ,,,,,,
 #Beacons and Stuff,,,,,,
