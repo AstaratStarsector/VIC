@@ -65,7 +65,8 @@ The $PersonRank salutes you in a rather official manner, VIC insignia glistening
 ""Hail, colleague. You have something to report?""
 OR
 ""Greetings, $playerName! Heard the news? They're paying extra for bringing test material to Purgatory this month. Better not miss the opportunity.""
-",,
+OR
+""Greetings, colleague! Hope your day's going well!"", $PersonRank gleefully blurts out and cuts the link before you can respond. ",,
 greetingVICNeutral,OpenCommLink,"$faction.id == vic
 $faction.neutralToPlayer","$menuState = fleetConvMain 0 
 FireAll PopulateOptions","An automated message pops up. ""Volkov Industrial Conglomerate - Make Our Own Future. Make Our Own Paradise. To return to this menu, enter the number '0' in your comm-link. For a short history of the Conglomerate, enter '1.' For a long history of the Conglomerate, enter '2.' For a list of available commercial genetic modifications, enter '3.' For a list of commercial hulls-""
@@ -74,7 +75,7 @@ You cut the link, suspecting this list will never end.
 OR
 What could very charitably be descibed as ""jingle music"" immediately starts blasting over the comm-link. ""Volkov Industrial Conglomerate, Conglomerate, Con-glom-erate, Volkov Industria-""
 
-No. Just no.
+Your comm officer cuts the link even before you issue the order. 
 OR
 ""Have you ever felt that something isn't right? Thought to yourself, 'why should I have hands like everybody else, when I could have tentacles?' Or perhaps you've found yourself feeling that your geni-"" The sound cuts out for a second, and the words ""COMSEC Protects You"" flash on the display over static. ""-lacking a certain explosive 'OOOMPH?' Well the Volkov Industrial Conglomerate is here to help! For the low, low price of-""
 
@@ -101,6 +102,11 @@ OR
 ""Your $shipOrFleet has been scanned and is in our sights"", $PersonRank states in an emotionless tone, looking at you through the comms with slight suspicion in their eyes, ""Don't cause any trouble.""
 OR
 ""By the Human Domain interstellar edict number R4-52223YO1Z this fleet is authorized to use lethal force in order to protect itself. I ask you to refrain from aggressive actions and/or any kinds of provocations.""
+OR 
+""Greetings, citizen. I hope everything is alright? Remember, that assisting Volkov Industrial Conglomerate and the Humankind in any way or form will be generously rewarded. Consider that, when you're ready to choose your side.""
+OR 
+""Glory to Humankind, citizen! Please, keep your distance. Otherwise our defense systems will consider you a threat and your $shipOrFleet will be dealt with accordingly.""
+
 ",,
 greetingVICHostileWeaker,OpenCommLink,"$faction.id == vic
 $entity.isHostile

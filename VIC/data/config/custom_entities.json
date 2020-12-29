@@ -92,7 +92,7 @@
 		"icon":"graphics/icons/sensor_array.png",
 		"iconWidth":24,
 		"iconHeight":24,
-		"sprite":"graphics/ships/sensor_array.png",
+		"sprite":"graphics/stations/vic_jump_point_stabilizer.png",
 		"spriteWidth":86,
 		"spriteHeight":86,
 		"renderShadow":true,

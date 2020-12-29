@@ -4,14 +4,15 @@
   "displayName": "Shield Breaker",
   "goalVariant": true,
   "fluxCapacitors": 28,
-  "fluxVents": 25,
+  "fluxVents": 15,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "vic_assault",
     "vic_allRoundShieldUpgrade",
     "vic_deathProtocol",
-    "vic_ShturmSolution"
+    "vic_ShturmSolution",
+    "magazines"
   ],
   "weaponGroups": [
     {
