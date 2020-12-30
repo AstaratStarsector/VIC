@@ -3,16 +3,16 @@
   "hullId": "vic_apollyon",
   "displayName": "Shield Breaker",
   "goalVariant": true,
-  "fluxCapacitors": 28,
-  "fluxVents": 15,
+  "fluxCapacitors": 48,
+  "fluxVents": 0,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
     "vic_assault",
     "vic_allRoundShieldUpgrade",
-    "vic_deathProtocol",
     "vic_ShturmSolution",
-    "magazines"
+    "magazines",
+    "auxiliarythrusters"
   ],
   "weaponGroups": [
     {
