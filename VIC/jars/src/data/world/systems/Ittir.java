@@ -184,7 +184,7 @@ public class Ittir {
                 140f,
                 6000f,
                 100f);
-        Mithos.setCustomDescriptionId("vic_bernadian"); //reference descriptions.csv
+        Bernadian.setCustomDescriptionId("vic_bernadian"); //reference descriptions.csv
 
 
         MarketAPI Bernadian_market = addMarketplace(
