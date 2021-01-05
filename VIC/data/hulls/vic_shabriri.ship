@@ -4,11 +4,11 @@
   "hullSize": "FIGHTER",
   "spriteName": "graphics/ships/fighters/Shabriri.png",
   "style": "VIC",
-  "height": 79,
-  "width": 96,
-  "center": [48, 39.5],
+  "height": 35,
+  "width": 34,
+  "center": [17, 18],
   "collisionRadius": 23.5,
-  "shieldCenter": [0, 0],
+  "shieldCenter": [0, -0],
   "shieldRadius": 21.5,
   "viewOffset": 0,
   "builtInMods": [
@@ -22,7 +22,7 @@
       "mount": "HIDDEN",
       "arc": 15,
       "angle": 0,
-      "locations": [6.5, 8.5]
+      "locations": [13, 8.5]
     },
     {
       "id": "WS0002",
@@ -31,12 +31,12 @@
       "mount": "HIDDEN",
       "arc": 15,
       "angle": -0,
-      "locations": [6.5, -8.5]
+      "locations": [13, -8.5]
     }
   ],
   "engineSlots": [
     {
-      "location": [-3.5, -0],
+      "location": [-3, -0],
       "length": 21.5,
       "width": 5,
       "angle": 180,
@@ -46,8 +46,8 @@
     }
   ],
   "bounds": [
-    1, 8.5,
-    15, -0,
-    1, -8.5
+    -1, 8.5,
+    13, 0,
+    -1, -8.5
   ]
 }
