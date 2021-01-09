@@ -28,5 +28,6 @@ trails_vic_tugarin_shot,vic_tugarin_shot,SRD_trail_helix,10,0,0.1,0.3,32,256,"[2
 trails_vic_tugarin_shot_1,vic_tugarin_shot,trails_trail_twin,10,0,0.2,0.1,32,64,"[235,135,5]","[255,50,100]",0.5,200,200,20,0,1,TRUE,FALSE,TRUE,100,20,0.3,0,1000,200,true,false
 trails_vic_tugarin_shot_2,vic_tugarin_shot,trails_trail_twin,10,0,0.2,0.15,32,64,"[235,135,5]","[255,50,100]",0.5,200,200,20,0,1,TRUE,FALSE,TRUE,100,20,0.3,0,1000,200,true,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#trails_vic_plasma_minigun_shot,diableavionics_opfer_shot,trails_trail_zappy,2,0,0.05,0.05,20,6,"[255,255,255]","[0,85,175]",0.8,200,300,0,50,1,TRUE,FALSE,TRUE,70,30,0.15,0,0,0,TRUE,false
+#trails_vic_plasma_minigun_shot2,diableavionics_opfer_shot,trails_trail_zappy,2,0,0.05,0.05,20,6,"[255,255,255]","[0,0,175]",0.8,200,300,0,50,1,TRUE,FALSE,TRUE,70,30,0.15,0,0,0,TRUE,false
+#trails_vic_plasma_minigun_shot3,diableavionics_opfer_shot,trails_trail_contrail,3,0,0.03,0.05,20,10,"[255,255,255]","[0,190,255]",1,200,300,5,0,0,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
