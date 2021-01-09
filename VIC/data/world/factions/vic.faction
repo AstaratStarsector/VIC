@@ -226,6 +226,7 @@
 			"graphics/portraits/vic_dude5.jpg",
 			"graphics/portraits/vic_dude7.jpg",
 			"graphics/portraits/vic_dude8.jpg",
+			"graphics/portraits/vic_dude9.jpg",
 		],
 		"standard_female":[
 			"graphics/portraits/vic_gurl1.jpg",
@@ -236,6 +237,7 @@
 			"graphics/portraits/vic_gurl7.jpg",
 			"graphics/portraits/vic_gurl8.jpg",
 			"graphics/portraits/vic_gurl9.jpg",
+			"graphics/portraits/vic_gurl10.jpg",
 		],
 	},
 	"ranks":{
