@@ -4,6 +4,7 @@ import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
+import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 
 import java.util.HashSet;
@@ -18,12 +19,28 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
             shieldArc = 30f;
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
+
+
+        ShipVariantAPI variant = stats.getVariant();
+        float speedPenalty = 1f;
+        if (variant != null && variant.hasHullMod("vic_deathProtocol")){
+            speedPenalty = 0.75f;
+        }
+        if (variant != null && variant.hasHullMod("vic_assault")){
+            speedPenalty = 0.75f;
+        }
+        if (!variant.getHullSpec().getHullId().startsWith("vic_")){
+            speedPenalty = 0.75f;
+        }
+
+
         stats.getShieldDamageTakenMult().modifyMult(id, 1f - shieldEff * 0.01f);
         stats.getDynamic().getStat(Stats.SHIELD_PIERCED_MULT).modifyMult(id, 0.75f);
         stats.getShieldUpkeepMult().modifyMult(id,1f - shieldUpkeep * 0.01f);
         stats.getShieldTurnRateMult().modifyPercent(id, shieldSpeed);
         stats.getShieldUnfoldRateMult().modifyPercent(id, shieldSpeed);
         stats.getShieldArcBonus().modifyFlat(id, shieldArc);
+        stats.getMaxSpeed().modifyMult(id, speedPenalty);
     }
 
     private static final Set<String> BLOCKED_HULLMODS = new HashSet<>(2);
@@ -46,7 +63,6 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
 
     public boolean isApplicableToShip(ShipAPI ship) {
         boolean OK = true;
-        if (!ship.getHullSpec().getHullId().startsWith("vic_")) return false;
         for (String Hmod : BLOCKED_HULLMODS){
             if (ship.getVariant().getHullMods().contains(Hmod)) return false;
         }
@@ -55,8 +71,7 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
 
     @Override
     public String getUnapplicableReason(ShipAPI ship) {
-        if (!ship.getHullSpec().getHullId().startsWith("vic_"))
-            return "Must be installed on a VIC ship";
+
         if (ship.getVariant().getHullMods().contains("hardenedshieldemitter"))
             return "Incompatible with Hardened Shields";
         if (ship.getVariant().getHullMods().contains("stabilizedshieldemitter"))
@@ -68,12 +83,16 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
         return null;
     }
 
-    public String getDescriptionParam(int index, HullSize hullSize) {
+    public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
+
+
+
         if (index == 0) return Math.round(shieldEff) + "%";
         if (index == 1) return Math.round(shieldUpkeep) + "%";
         if (index == 2) return Math.round(shieldSpeed) + "%";
         if (index == 3) return Math.round(shieldSpeed) + "%";
         if (index == 4) return Math.round(shieldArc) + "";
+        if (index == 5) return Math.round(25f) + "%";
         return null;
     }
 }

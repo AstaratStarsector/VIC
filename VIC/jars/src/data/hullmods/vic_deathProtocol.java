@@ -8,10 +8,14 @@ import java.util.EnumSet;
 
 public class vic_deathProtocol extends BaseHullMod {
 
-    public final float
+    public float
             dmgIncreas = 1.3f,
             dmgTaken = 1.25f,
-            cloakCost = 1.25f;
+            cloakCost = 1.25f,
+            rangePenalty = 0.15f,
+            rangePenaltyMult = 1f,
+            dmgTakenAndCloakCostPenaltyMult = 0.25f;
+
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getBallisticWeaponDamageMult().modifyMult(id, dmgIncreas);
@@ -19,15 +23,36 @@ public class vic_deathProtocol extends BaseHullMod {
         stats.getBeamWeaponDamageMult().modifyMult(id, dmgIncreas);
         stats.getMissileWeaponDamageMult().modifyMult(id, dmgIncreas);
 
-        stats.getShieldDamageTakenMult().modifyMult(id, dmgTaken);
-        stats.getArmorDamageTakenMult().modifyMult(id, dmgTaken);
-        stats.getHullDamageTakenMult().modifyMult(id, dmgTaken);
+        ShipVariantAPI variant = stats.getVariant();
+        float rangeMult = 1f;
+        float damageAndCloakMult = 0f;
+        if (variant != null && variant.hasHullMod("vic_allRoundShieldUpgrade")){
+            rangeMult = rangePenaltyMult;
+            damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
+        }
 
-        stats.getPhaseCloakActivationCostBonus().modifyMult(id, cloakCost);
-        stats.getPhaseCloakUpkeepCostBonus().modifyMult(id, cloakCost);
+        if (variant != null && variant.hasHullMod("vic_assault")){
+            rangeMult = rangePenaltyMult;
+            damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
+        }
+        if (!variant.getHullSpec().getHullId().startsWith("vic_")){
+            rangeMult = rangePenaltyMult;
+            damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
+        }
+        stats.getBallisticWeaponRangeBonus().modifyMult(id, rangePenalty * rangeMult);
+        stats.getEnergyWeaponRangeBonus().modifyMult(id, rangePenalty * rangeMult);
+        stats.getMissileWeaponRangeBonus().modifyMult(id, rangePenalty * rangeMult);
+        stats.getShieldDamageTakenMult().modifyMult(id, dmgTaken + damageAndCloakMult);
+        stats.getArmorDamageTakenMult().modifyMult(id, dmgTaken + damageAndCloakMult);
+        stats.getHullDamageTakenMult().modifyMult(id, dmgTaken + damageAndCloakMult);
+
+
+        stats.getPhaseCloakActivationCostBonus().modifyMult(id, cloakCost + damageAndCloakMult);
+        stats.getPhaseCloakUpkeepCostBonus().modifyMult(id, cloakCost + damageAndCloakMult);
+
     }
 
-    public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
+    public void applyEffectsAfterShipCreation(ShipAPI ship,MutableShipStatsAPI stats, String id) {
         super.applyEffectsAfterShipCreation(ship, id);
         if (ship.getShield() == null) return;
         ShieldAPI shipShield = ship.getShield();
@@ -45,17 +70,34 @@ public class vic_deathProtocol extends BaseHullMod {
             outersprite = "graphics/fx/shield/vic_shields64ring.png";
         }
         shipShield.setRadius(radius, innersprite, outersprite);
-        ship.getShield().setInnerColor(new Color(255,255,255,125));
+        ship.getShield().setInnerColor(new Color(255, 255, 255, 125));
+
+
     }
 
-    public boolean isApplicableToShip(ShipAPI ship) {
-        return (ship.getHullSpec().getHullId().startsWith("vic_"));
-    }
+    public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
 
-    public String getDescriptionParam(int index, HullSize hullSize) {
+        float rangeMult = 1f;
+        float damageAndCloakMult = 0f;
+        if (ship != null && ship.getVariant().hasHullMod("vic_allRoundShieldUpgrade")){
+            rangeMult = rangePenaltyMult;
+            damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
+        }
+        if (ship != null && ship.getVariant().hasHullMod("vic_assault")){
+            rangeMult = rangePenaltyMult;
+            damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
+        }
+        if (!ship.getHullSpec().getHullId().startsWith("vic_")){
+            rangeMult = rangePenaltyMult;
+            damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
+        }
+
+
         if (index == 0) return Math.round((dmgIncreas - 1) * 100) + "%";
-        if (index == 1) return Math.round((dmgTaken - 1) * 100) + "%";
-        if (index == 2) return Math.round((cloakCost - 1) * 100) + "%";
+        if (index == 1) return Math.round(((dmgTaken + damageAndCloakMult) - 1) * 100) + "%";
+        if (index == 2) return Math.round(((cloakCost + damageAndCloakMult) - 1) * 100) + "%";
+        if (index == 3) return Math.round((rangePenalty * rangeMult) * 100) + "%";
+        if (index == 4) return "doubled";
         return null;
     }
 
