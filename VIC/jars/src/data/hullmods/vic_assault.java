@@ -36,7 +36,7 @@ public class vic_assault extends BaseHullMod {
 
     public float
             projSpeedMult = 1.33f,
-            pptPenalty = 0.33f;
+            pptPenalty = 0.67f;
 
     private static final Set<String> BLOCKED_HULLMODS = new HashSet<>(2);
 
@@ -64,25 +64,25 @@ public class vic_assault extends BaseHullMod {
         stats.getBeamWeaponFluxCostMult().modifyMult(id, (1 - (fluxEfficiency.get(hullSize) * 0.01f)));
         stats.getMissileWeaponFluxCostMod().modifyMult(id, (1 - (fluxEfficiency.get(hullSize) * 0.01f)));
 
-        stats.getMaxSpeed().modifyMult(id, 1 + (fluxEfficiency.get(hullSize) * 0.01f));
+        //stats.getMaxSpeed().modifyMult(id, 1 + (fluxEfficiency.get(hullSize) * 0.01f));
         stats.getProjectileSpeedMult().modifyMult(id, projSpeedMult );
 
 
 
         ShipVariantAPI variant = stats.getVariant();
-        float pptMult = 2f;
+        float pptMult = 0.33f;
 
         if (variant != null && variant.hasHullMod("vic_allRoundShieldUpgrade")){
-            pptMult = 1f;
+            pptMult = 0f;
         }
         if (variant != null && variant.hasHullMod("vic_deathProtocol")){
-            pptMult = 1f;
+            pptMult = 0f;
         }
         if (!variant.getHullSpec().getHullId().startsWith("vic_")){
-            pptMult =  1f;
+            pptMult =  0f;
         }
 
-        stats.getPeakCRDuration().modifyMult(id, pptPenalty * pptMult);
+        stats.getPeakCRDuration().modifyMult(id, pptPenalty + pptMult);
 
     }
 
@@ -119,7 +119,7 @@ public class vic_assault extends BaseHullMod {
         if (index == 6) return (speedBonus.get(HullSize.CRUISER)).intValue() + "";
         if (index == 7) return (speedBonus.get(HullSize.CAPITAL_SHIP)).intValue() + "";
         if (index == 8) return Math.round((projSpeedMult - 1) * 100)+ "%";
-        if (index == 9) return Math.round(pptPenalty * 100) + "%";
+        if (index == 9) return Math.round((1 - pptPenalty) * 100) + "%";
         return null;
     }
 }

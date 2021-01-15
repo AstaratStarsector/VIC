@@ -12,8 +12,7 @@ public class vic_deathProtocol extends BaseHullMod {
             dmgIncreas = 1.3f,
             dmgTaken = 1.25f,
             cloakCost = 1.25f,
-            rangePenalty = 0.15f,
-            rangePenaltyMult = 1f,
+            rangePenalty = 0.85f,
             dmgTakenAndCloakCostPenaltyMult = 0.25f;
 
 
@@ -24,24 +23,20 @@ public class vic_deathProtocol extends BaseHullMod {
         stats.getMissileWeaponDamageMult().modifyMult(id, dmgIncreas);
 
         ShipVariantAPI variant = stats.getVariant();
-        float rangeMult = 1f;
         float damageAndCloakMult = 0f;
         if (variant != null && variant.hasHullMod("vic_allRoundShieldUpgrade")){
-            rangeMult = rangePenaltyMult;
             damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
         }
-
-        if (variant != null && variant.hasHullMod("vic_assault")){
-            rangeMult = rangePenaltyMult;
+        if (variant != null && variant.hasHullMod("vic_assault")) {
             damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
         }
         if (!variant.getHullSpec().getHullId().startsWith("vic_")){
-            rangeMult = rangePenaltyMult;
             damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
         }
-        stats.getBallisticWeaponRangeBonus().modifyMult(id, rangePenalty * rangeMult);
-        stats.getEnergyWeaponRangeBonus().modifyMult(id, rangePenalty * rangeMult);
-        stats.getMissileWeaponRangeBonus().modifyMult(id, rangePenalty * rangeMult);
+
+        stats.getBallisticWeaponRangeBonus().modifyMult(id, rangePenalty);
+        stats.getEnergyWeaponRangeBonus().modifyMult(id, rangePenalty);
+        stats.getMissileWeaponRangeBonus().modifyMult(id, rangePenalty);
         stats.getShieldDamageTakenMult().modifyMult(id, dmgTaken + damageAndCloakMult);
         stats.getArmorDamageTakenMult().modifyMult(id, dmgTaken + damageAndCloakMult);
         stats.getHullDamageTakenMult().modifyMult(id, dmgTaken + damageAndCloakMult);
@@ -77,18 +72,14 @@ public class vic_deathProtocol extends BaseHullMod {
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
 
-        float rangeMult = 1f;
         float damageAndCloakMult = 0f;
         if (ship != null && ship.getVariant().hasHullMod("vic_allRoundShieldUpgrade")){
-            rangeMult = rangePenaltyMult;
             damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
         }
         if (ship != null && ship.getVariant().hasHullMod("vic_assault")){
-            rangeMult = rangePenaltyMult;
             damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
         }
         if (!ship.getHullSpec().getHullId().startsWith("vic_")){
-            rangeMult = rangePenaltyMult;
             damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
         }
 
@@ -96,7 +87,7 @@ public class vic_deathProtocol extends BaseHullMod {
         if (index == 0) return Math.round((dmgIncreas - 1) * 100) + "%";
         if (index == 1) return Math.round(((dmgTaken + damageAndCloakMult) - 1) * 100) + "%";
         if (index == 2) return Math.round(((cloakCost + damageAndCloakMult) - 1) * 100) + "%";
-        if (index == 3) return Math.round((rangePenalty * rangeMult) * 100) + "%";
+        if (index == 3) return Math.round((1f - rangePenalty) * 100f) + "%";
         if (index == 4) return "doubled";
         return null;
     }
