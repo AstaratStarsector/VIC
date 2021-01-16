@@ -1,7 +1,7 @@
 name,id,flux/second,f/s (base rate),f/s (base cap),flux/use,f/u (base rate),f/u (base cap),cr/u,max uses,regen,charge up,active,down,cooldown,toggle,noDissipation,noHardDissipation,hardFlux,noFiring,noTurning,noStrafing,noAccel,noShield,noVent,icon
 Quantum Lunge,vic_quantumlunge,2000,,,1000,,,,,,1,0.375,1,45,TRUE,TRUE,TRUE,,TRUE,TRUE,TRUE,,TRUE,TRUE,graphics/icons/hullsys/displacer.png
-Adaptive Assault,vic_adaptiveassault,,,,,,,,,,2,6,2,20,,,,,,,,,,,graphics/icons/hullsys/vic_adaptive_assault.png
+Adaptive Assault,vic_adaptiveassault,,,,,,,,,,1,8,1,20,,,,,,,,,,,graphics/icons/hullsys/vic_adaptive_assault.png
 Emergency Defense,vic_emergencyDefense,,,,,,,,,,2,15,2,20,,,,,,,,,,,graphics/icons/hullsys/displacer.png
-Omni-Lunge,vic_DriftBoost,,,,,,,,,,0.4,0.3,0.4,4.15,,,,,,,,,,,graphics/icons/hullsys/displacer.png
+Omni-Lunge,vic_DriftBoost,,,,,,,,3,0.1,0.4,0.3,0.4,0.5,,,,,,,,,,,graphics/icons/hullsys/displacer.png
 Disruptor shot,vic_disruptorShot,,,,,,0.1,,2,0.5,0.25,,2,0,,,,,,,,,,,graphics/icons/hullsys/interdictor_array.png
-Baryonic Displacement,vic_quantumteleporter,,,,,,0.35,,,,0.5,0,0.5,,,TRUE,,TRUE,,,,,,,graphics/icons/hullsys/displacer.png
+Baryonic Displacement,vic_quantumteleporter,,,,,,0.35,,,,0.5,0,0.5,2,,TRUE,,TRUE,,,,,,,graphics/icons/hullsys/displacer.png

@@ -17,7 +17,7 @@ import java.util.List;
 public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugin {
 
     public static float TARGET_FIND_STEP_LENGTH = 0.05f;
-    public static float LIGHTNING_JUMP_RANGE_PERCENTAGE = 0.15f;
+    public static float LIGHTNING_JUMP_RANGE_PERCENTAGE = 0.25f;
 
     public static Color LIGHTNING_CORE_COLOR = new Color(252, 252, 224);
     public static Color LIGHTNING_FRINGE_COLOR = new Color(243, 222, 22);
@@ -184,7 +184,7 @@ public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugi
             //Stores how much damage we have left after this shot
 
             //Finds a new target, in case we are going to overkill our current one
-            List<CombatEntityAPI> targetList = getNonSteroidEntitiesWithinRange(currentTarget.getLocation(), range * LIGHTNING_JUMP_RANGE_PERCENTAGE + 200f);
+            List<CombatEntityAPI> targetList = getNonSteroidEntitiesWithinRange(currentTarget.getLocation(), range * LIGHTNING_JUMP_RANGE_PERCENTAGE + 300f);
             for (CombatEntityAPI potentialTarget : targetList) {
                 //Checks for dissallowed targets, and ignores them
                 if (potentialTarget.getOwner() == weapon.getShip().getOwner() || alreadyDamagedTargets.contains(potentialTarget))
@@ -217,7 +217,7 @@ public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugi
             Global.getCombatEngine().spawnEmpArc(weapon.getShip(), firingPoint, tempPreviousTarget, currentTarget,
                     weapon.getDamageType(), //Damage type
                     damageThisShot * 0.15f, //Damage
-                    empFactor * 0.15f, //Emp
+                    empFactor * 0.5f, //Emp
                     100000f, //Max range
                     "tachyon_lance_emp_impact", //Impact sound
                     10f * (damageThisShot / weapon.getDamage().getDamage()), // thickness of the lightning bolt

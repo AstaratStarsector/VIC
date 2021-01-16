@@ -1,7 +1,7 @@
 {
-  "id": "vic_rubicon",
+  "id": "vic_rubicon_real",
   "specClass": "projectile",
-  "projectileSpecId": "vic_dummy_proj",
+  "projectileSpecId": "vic_rubicon_shot",
   "type": "BALLISTIC",
   "size": "MEDIUM",
   "displayArcRadius": 450,

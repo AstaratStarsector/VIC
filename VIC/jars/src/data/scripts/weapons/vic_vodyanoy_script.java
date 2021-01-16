@@ -27,8 +27,10 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin{
     
     @Override
     public void advance (float amount, CombatEngineAPI engine, WeaponAPI weapon) {
-        
-        if(engine.isPaused()){return;}
+
+        if (engine.isPaused() || weapon.getShip().getOriginalOwner() == -1) {
+            return;
+        }
         
         if(!runOnce){
             runOnce=true;
@@ -66,6 +68,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin{
         }
 
 
+        /*
         if (MagicRender.screenCheck(0.25f, weapon.getLocation())) {
             if (weapon.getChargeLevel() > 0) shot = 1;
             if (shot == 1) shot = 2;
@@ -80,7 +83,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin{
                 shot = 0;
             }
         }
-
+        */
 
         //play the spinning sound
         if (weapon.getChargeLevel()>0){       

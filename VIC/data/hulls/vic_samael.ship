@@ -17,7 +17,6 @@
     "vic_adaptiveAssault"
   ],
   "builtInWings": [
-    "vic_shabriri_wing"
   ],
   "builtInWeapons": {
     "WS0010": "vic_engine_glow_universal_big",

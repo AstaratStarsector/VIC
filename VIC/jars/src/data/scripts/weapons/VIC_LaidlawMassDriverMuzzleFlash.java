@@ -500,12 +500,13 @@ public class VIC_LaidlawMassDriverMuzzleFlash implements EveryFrameWeaponEffectP
         trueCenterLocation.y += weapon.getLocation().y;
 
         WaveDistortion wave = new WaveDistortion(trueCenterLocation, new Vector2f());
-        wave.setIntensity(3f);
-        wave.setSize(25f);
+        wave.setIntensity(8f);
+        wave.setSize(50f);
         wave.flip(false);
-        wave.fadeOutIntensity(0.3f);
-        wave.setLifetime(0.3f);
-        wave.fadeOutIntensity(0.3f);
+        wave.fadeOutIntensity(0.2f);
+        wave.setLifetime(0.2f);
+        wave.fadeOutIntensity(0.2f);
+        wave.setArc(weapon.getCurrAngle() + 150,weapon.getCurrAngle() - 150);
         wave.setLocation(trueCenterLocation);
         DistortionShader.addDistortion(wave);
     }

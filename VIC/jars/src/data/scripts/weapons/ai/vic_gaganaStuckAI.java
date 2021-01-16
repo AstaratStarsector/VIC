@@ -144,26 +144,10 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
 
         //detonation
         if (missile.getElapsed() > 0.5f) {
-            /*
-            engine.applyDamage(
-                    missile,
-                    missile.getLocation(),
-                    1000,
-                    DamageType.FRAGMENTATION,
-                    0,
-                    true,
-                    false,
-                    anchor
-            );
-
-             */
-
             missile.setCollisionClass(CollisionClass.MISSILE_FF);
-            return;
 
-
-            //engine.removeEntity(missile);
-
+            //if detonation fails
+            if (missile.getElapsed() > 0.6f) engine.removeEntity(missile);
         }
 
 

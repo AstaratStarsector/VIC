@@ -121,18 +121,18 @@ public class vic_adaptiveWarfare extends BaseHullMod {
         }
         LocLastFrame = new Vector2f(ship.getLocation());
 
-        stats.getMaxSpeed().modifyPercent("vic_adaptiveWarfare", SpeedPower / 100 * Speed);
-        stats.getAcceleration().modifyPercent("vic_adaptiveWarfare", SpeedPower / 100 * Speed);
-        stats.getDeceleration().modifyPercent("vic_adaptiveWarfare", SpeedPower / 100 * Speed);
-        stats.getTurnAcceleration().modifyPercent("vic_adaptiveWarfare", SpeedPower / 100 * Speed);
-        stats.getMaxTurnRate().modifyPercent("vic_adaptiveWarfare", SpeedPower / 100 * Speed);
+        stats.getMaxSpeed().modifyPercent("vic_adaptiveWarfare", SpeedPower * 0.01f * Speed);
+        stats.getAcceleration().modifyPercent("vic_adaptiveWarfare", SpeedPower * 0.01f * Speed);
+        stats.getDeceleration().modifyPercent("vic_adaptiveWarfare", SpeedPower * 0.01f * Speed);
+        stats.getTurnAcceleration().modifyPercent("vic_adaptiveWarfare", SpeedPower * 0.01f * Speed);
+        stats.getMaxTurnRate().modifyPercent("vic_adaptiveWarfare", SpeedPower * 0.01f * Speed);
 
-        stats.getShieldDamageTakenMult().modifyPercent("vic_adaptiveWarfare", ShieldPower / 100 * ShieldEff);
+        stats.getShieldDamageTakenMult().modifyPercent("vic_adaptiveWarfare", ShieldPower * 0.01f * ShieldEff);
 
-        stats.getEnergyWeaponDamageMult().modifyPercent("vic_adaptiveWarfare", DamagePower / 100 * Damage);
-        float currRoFBonus = DamagePower / 100 * Damage;
+        stats.getEnergyWeaponDamageMult().modifyPercent("vic_adaptiveWarfare", DamagePower * 0.01f * Damage);
+        float currRoFBonus = DamagePower * 0.01f * Damage;
         stats.getBallisticRoFMult().modifyPercent("vic_adaptiveWarfare", currRoFBonus);
-        stats.getBallisticWeaponFluxCostMod().modifyPercent("vic_adaptiveWarfare", (1 / (1 + currRoFBonus / 100) - 1) * 100f);
+        stats.getBallisticWeaponFluxCostMod().modifyPercent("vic_adaptiveWarfare", (1 / (1 + currRoFBonus * 0.01f) - 1) * 100f);
 
         if (ship == Global.getCombatEngine().getPlayerShip()) {
             Global.getCombatEngine().maintainStatusForPlayerShip("vic_adaptiveWarfare3", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "Speed power", Math.round(SpeedPower) + "%", false);

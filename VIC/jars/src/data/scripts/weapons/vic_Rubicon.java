@@ -2,30 +2,53 @@ package data.scripts.weapons;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
+import com.fs.starfarer.api.combat.DamagingProjectileAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.WeaponAPI;
+import com.fs.starfarer.api.util.IntervalUtil;
+import org.lazywizard.lazylib.MathUtils;
+import org.lazywizard.lazylib.VectorUtils;
+import org.lazywizard.lazylib.combat.CombatUtils;
+import org.lwjgl.util.vector.Vector2f;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vic_Rubicon implements EveryFrameWeaponEffectPlugin {
-
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
 
-        if (engine.isPaused() || weapon.getShip().getOriginalOwner() == -1) return;
-
-        weapon.getSpec().setMinSpread(weapon.getSpec().getMinSpread() + amount);
-
-
-        if (weapon.getCurrSpread() >= weapon.getSpec().getMaxSpread()) {
-            weapon.ensureClonedSpec();
-            Global.getCombatEngine().maintainStatusForPlayerShip("vic_spread" + weapon.getSlot(), "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "spread", "no bread", false);
-            weapon.getSpec().setSpreadDecayRate(0);
-        } else {
-            weapon.ensureClonedSpec();
-            Global.getCombatEngine().maintainStatusForPlayerShip("vic_spread" + weapon.getSlot(), "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "spread", "bread", false);
-            weapon.getSpec().setSpreadDecayRate(-10);
+        if (engine.isPaused() || weapon.getShip().getOriginalOwner() == -1) {
+            return;
         }
-        Global.getCombatEngine().maintainStatusForPlayerShip("vic_spread" + weapon.getSlot(), "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "spread dec", weapon.getSpec().getMinSpread() + "", false);
-        //weapon.getSpec().setSpreadDecayRate(1);
+
+
+        if (weapon.getChargeLevel() == 1){
+            Vector2f trueCenterLocation = new Vector2f();
+            if (weapon.getSlot().isHardpoint()) {
+                trueCenterLocation.x += weapon.getSpec().getHardpointFireOffsets().get(0).x;
+                trueCenterLocation.y += weapon.getSpec().getHardpointFireOffsets().get(0).y;
+            } else if (weapon.getSlot().isTurret()) {
+                trueCenterLocation.x += weapon.getSpec().getTurretFireOffsets().get(0).x;
+                trueCenterLocation.y += weapon.getSpec().getTurretFireOffsets().get(0).y;
+            } else {
+                trueCenterLocation.x += weapon.getSpec().getHiddenFireOffsets().get(0).x;
+                trueCenterLocation.y += weapon.getSpec().getHiddenFireOffsets().get(0).y;
+            }
+
+            trueCenterLocation = VectorUtils.rotate(trueCenterLocation, weapon.getCurrAngle(), new Vector2f(0f, 0f));
+            trueCenterLocation.x += weapon.getLocation().x;
+            trueCenterLocation.y += weapon.getLocation().y;
+
+            engine.spawnProjectile(weapon.getShip(),
+                    weapon,
+                    "vic_rubicon_real",
+                    trueCenterLocation,
+                    weapon.getCurrAngle(),
+                    weapon.getShip().getVelocity());
+        }
     }
+
 }

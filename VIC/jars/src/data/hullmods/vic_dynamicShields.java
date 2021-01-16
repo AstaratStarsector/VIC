@@ -52,10 +52,10 @@ public class vic_dynamicShields extends BaseHullMod {
             return;
         }
         float baseShieldArc =
-                (ship.getHullSpec().getShieldSpec().getArc() +
+                (ship.getHullSpec().getShieldSpec().getArc() *
+                        (ship.getMutableStats().getShieldArcBonus().getPercentMod() * 0.01f + 1)  +
                         ship.getMutableStats().getShieldArcBonus().getFlatBonus()) *
-                        ship.getMutableStats().getShieldArcBonus().getMult() *
-                        (ship.getMutableStats().getShieldArcBonus().getPercentMod() + 1);
+                        ship.getMutableStats().getShieldArcBonus().getMult();
 
         float shieldRelFacing = Math.abs(MathUtils.getShortestRotation(ship.getShield().getFacing(), ship.getFacing()));
         if (shieldRelFacing > 90) shieldRelFacing = 180 - shieldRelFacing;
@@ -68,10 +68,10 @@ public class vic_dynamicShields extends BaseHullMod {
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
 
         float baseShieldArc =
-                (ship.getHullSpec().getShieldSpec().getArc() +
+                (ship.getHullSpec().getShieldSpec().getArc() *
+                        (ship.getMutableStats().getShieldArcBonus().getPercentMod() * 0.01f + 1)  +
                         ship.getMutableStats().getShieldArcBonus().getFlatBonus()) *
-                        ship.getMutableStats().getShieldArcBonus().getMult() *
-                        (ship.getMutableStats().getShieldArcBonus().getPercentMod() + 1);
+                        ship.getMutableStats().getShieldArcBonus().getMult();
 
         if (index == 0)
             return Math.round(baseShieldArc + arcIncrease) + "";

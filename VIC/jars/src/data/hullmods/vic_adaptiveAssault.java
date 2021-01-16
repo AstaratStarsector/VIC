@@ -19,6 +19,9 @@ public class vic_adaptiveAssault extends BaseHullMod {
         pointsPerSize.put(WeaponAPI.WeaponSize.LARGE, 4);
     }
 
+    float damageBonus = 75f;
+    float minBonus = 25f;
+
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
         if (ship == null) return null;
         int balScore = 0;
@@ -29,16 +32,15 @@ public class vic_adaptiveAssault extends BaseHullMod {
             weapon = ship.getVariant().getWeaponSpec(weaponSlot);
             type = weapon.getType();
             if (type == WeaponAPI.WeaponType.BALLISTIC)
-                balScore += pointsPerSize.get(weapon.getSize());
-            else if (type == WeaponAPI.WeaponType.ENERGY)
                 energyScore += pointsPerSize.get(weapon.getSize());
+            else if (type == WeaponAPI.WeaponType.ENERGY)
+                balScore += pointsPerSize.get(weapon.getSize());
         }
         float totalScore = balScore + energyScore;
         float balPrec = 0.5f;
         if (totalScore != 0) balPrec = balScore / totalScore;
-        if (index == 0) return Math.round((balPrec * 0.5f + 0.5f) * 100f) + "%";
-        if (index == 1) return Math.round(((1 / (balPrec * 0.5f + 1.5f)) - 1) * 100f) + "%";
-        if (index == 2) return Math.round(((1 - balPrec) * 0.25f + 0.25f) * 100f) + "%";
+        if (index == 0) return (Math.round(balPrec  * (damageBonus - minBonus)) + minBonus) + "%";
+        if (index == 1) return (Math.round((1 - balPrec) * (damageBonus - minBonus)) + minBonus) + "%";
         return null;
     }
 

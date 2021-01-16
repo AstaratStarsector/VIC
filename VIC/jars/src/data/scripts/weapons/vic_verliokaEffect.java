@@ -5,7 +5,11 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.util.MagicAnim;
 import data.scripts.util.MagicRender;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.RippleDistortion;
+import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
@@ -24,6 +28,9 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
     private final Map<ShipAPI, Float> debuffed_fighters = new HashMap<>();
 
     private final IntervalUtil timer = new IntervalUtil(0.25f, 0.25f);
+
+    private float Intensity = 0f;
+    private boolean revertIntensity = false;
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
@@ -88,7 +95,11 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
             }
         }
 
-        if (weapon.getChargeLevel() < 1) return;
+        if (weapon.getChargeLevel() < 1) {
+            Intensity = 0f;
+            revertIntensity = false;
+            return;
+        }
 
 
         float range = weapon.getRange() * 1.05f;
@@ -98,8 +109,8 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
         Vector2f trailLoc = new Vector2f(weapon.getLocation().x + (dir.x * range), weapon.getLocation().y + (dir.y * range));
         //engine.addFloatingText(trailLoc, "o" + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
         float size = range * 0.53f;
-        Vector2f trailSize = new Vector2f(size, size / 2f);
-        trail.setCenter(size / 2f, size / 2f);
+        Vector2f trailSize = new Vector2f(size, size * 0.5f);
+        trail.setCenter(size * 0.5f, size * 0.5f);
         MagicRender.singleframe(trail, trailLoc, trailSize, facing - 90, new Color(255, 255, 255, 255), false);
 
         //Global.getCombatEngine().maintainStatusForPlayerShip("vic_dmgMult", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "dmgMult", dmgMult + "", false);
@@ -110,8 +121,11 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
             float angleToTarget = VectorUtils.getAngle(weapon.getLocation(), missile.getLocation());
             //engine.addFloatingText(missile.getLocation(), angleToTarget + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
             if (Math.abs(MathUtils.getShortestRotation(angleToTarget, facing)) <= degrees) {
+                //engine.addFloatingText(trailLoc, missile.getVelocity().lengthSquared() + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
                 missile.setJitter(missile, new Color(44, 255, 255), 4, 6, 2);
-                missile.getVelocity().scale(0.8f);
+                if (missile.getVelocity().lengthSquared() > Math.pow(missile.getMaxSpeed(), 2) * 0.5f){
+                    missile.getVelocity().scale(0.8f);
+                }
                 Global.getCombatEngine().applyDamage(missile, missile.getLocation(), weapon.getDamage().getDamage() * amount * dmgMult, weapon.getDamageType(), 0f, false, false, null);
                 BeamAPI beam = weaponBeams.get(0);
                 if (Math.random() >= amount) continue;
@@ -144,5 +158,36 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
                 debuffed_fighters.put(shipToCheck, 0.1f);
             }
         }
+
+        /*
+        if (!revertIntensity){
+            Intensity += amount * 6;
+        } else {
+            Intensity -= amount * 6;
+        }
+        if (!revertIntensity){
+            if (Intensity >= 1) revertIntensity = true;
+        } else {
+            if (Intensity <= 0) revertIntensity = false;
+        }
+
+
+
+
+        //WaveDistortion wave = new WaveDistortion(weapon.getLocation(), new Vector2f());
+        RippleDistortion wave = new RippleDistortion(weapon.getLocation(), new Vector2f());
+        wave.setIntensity(30f * (0.5f + (0.5f * MagicAnim.smooth(Intensity))));
+        wave.setSize(range);
+        wave.flip(true);
+        wave.fadeOutIntensity(0.1f);
+        wave.setLifetime(0.0f);
+        wave.fadeOutIntensity(0.1f);
+        wave.setArc(weapon.getCurrAngle() - 14,weapon.getCurrAngle() + 14);
+        wave.setLocation(weapon.getLocation());
+        DistortionShader.addDistortion(wave);
+
+         */
+
+
     }
 }

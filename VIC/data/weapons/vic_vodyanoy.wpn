@@ -55,15 +55,16 @@
     0.3
   ],
   "barrelMode": "LINKED",
+  "separateRecoilForLinkedBarrels":"TRUE",
   "animationType": "GLOW_AND_FLASH",
   "numFrames": 4,
   "frameRate": 20,
   "interruptibleBurst": true,
   "muzzleFlashSpec": {
     "length": 12,
-    "spread": 15,
-    "particleSizeMin": 18,
-    "particleSizeRange": 32,
+    "spread": 20,
+    "particleSizeMin": 12,
+    "particleSizeRange": 24,
     "particleDuration": 0.05,
     "particleCount": 3,
     "particleColor": [

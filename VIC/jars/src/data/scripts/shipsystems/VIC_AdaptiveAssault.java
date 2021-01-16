@@ -11,8 +11,9 @@ import java.util.Map;
 
 public class VIC_AdaptiveAssault extends BaseShipSystemScript {
 
-    public final float DAMAGE_BONUS_PERCENT = 50f;
-    public final float ROF_BONUS = 100f;
+    float damageBonus = 75f;
+    float minBonus = 25f;
+
     private final Map<WeaponAPI.WeaponSize, Integer> pointsPerSize = new HashMap<>();
     public float split = 0;
 
@@ -27,10 +28,8 @@ public class VIC_AdaptiveAssault extends BaseShipSystemScript {
         ShipAPI ship = (ShipAPI) stats.getEntity();
         split = WeaponsSplit(ship);
 
-        stats.getEnergyWeaponDamageMult().modifyPercent(id, (((1 - split) * DAMAGE_BONUS_PERCENT * 0.5f) + (DAMAGE_BONUS_PERCENT * 0.5f)) * effectLevel);
-        float currRoFBonus = ((ROF_BONUS * 0.5f) + (ROF_BONUS * 0.5f * split)) * effectLevel;
-        stats.getBallisticRoFMult().modifyPercent(id, currRoFBonus);
-        stats.getBallisticWeaponFluxCostMod().modifyPercent(id, (1 / (1 + currRoFBonus / 100) - 1) * 100f);
+        stats.getEnergyWeaponDamageMult().modifyPercent(id, (((1 - split) * (damageBonus - minBonus)) + minBonus) * effectLevel);
+        stats.getBallisticWeaponDamageMult().modifyPercent(id, ((split * (damageBonus - minBonus)) + minBonus) * effectLevel);
 
     }
 
@@ -45,13 +44,10 @@ public class VIC_AdaptiveAssault extends BaseShipSystemScript {
     @Override
     public StatusData getStatusData(int index, State state, float effectLevel) {
 
-        float currRoFBonus = (ROF_BONUS * 0.5f) + ROF_BONUS * 0.5f * split;
-
-        if (index == 0) return new StatusData("+" + Math.round(currRoFBonus) + "% ballistic rate of fire", false);
+        if (index == 0)
+            return new StatusData("+" + Math.round((split * (damageBonus - minBonus)) + minBonus) + "% ballistic weapon damage", false);
         if (index == 1)
-            return new StatusData(Math.round((1 / (1 + currRoFBonus / 100) - 1) * 100f) + "% ballistic flux use", false);
-        if (index == 3)
-            return new StatusData("+" + Math.round(((1 - split) * DAMAGE_BONUS_PERCENT * 0.5f) + (DAMAGE_BONUS_PERCENT * 0.5f)) + "% energy weapon damage", false);
+            return new StatusData("+" + Math.round(((1 - split) * (damageBonus - minBonus)) + minBonus) + "% energy weapon damage", false);
         return null;
 
     }
@@ -65,9 +61,9 @@ public class VIC_AdaptiveAssault extends BaseShipSystemScript {
             weapon = ship.getVariant().getWeaponSpec(weaponSlot);
             type = weapon.getType();
             if (type == WeaponAPI.WeaponType.BALLISTIC)
-                balScore += pointsPerSize.get(weapon.getSize());
-            else if (type == WeaponAPI.WeaponType.ENERGY)
                 energyScore += pointsPerSize.get(weapon.getSize());
+            else if (type == WeaponAPI.WeaponType.ENERGY)
+                balScore += pointsPerSize.get(weapon.getSize());
         }
         float totalScore = balScore + energyScore;
         float balPrec = 0.5f;
