@@ -14,7 +14,7 @@ Having additional ships with V-Bombardment systems in the fleet reduces the cost
 Adaptive Assault Configuration,vic_adaptiveAssault,4,,Volkov Industries,defensive,0,true,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveAssault,"Adaptive Assault system's effect depends on the loadout of the ship, with the bonuses increasing in accordance to the skew towards either ballistic- or energy-focused loadout.
 
 With the current loadout of the ship the bonuses provided by the ship system are:
-Ballistic weapons: %s rate of fire increase and %s flux cost reduction.
+Ballistic weapons: %s damage increase.
 Energy weapons: %s damage increase.",Ship System explanaition.,graphics/hullmods/vic_adaptiveAssault.png
 Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,defensive,0,true,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveWarfare,"Novel energy distribution system increases the ship's effectiveness in the thick of the battle. The ship receives bonuses to its stats under certain conditions. The bonuses decay quickly if the criteria are not met for a short time. 
 

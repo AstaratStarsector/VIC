@@ -4,10 +4,9 @@ import com.fs.starfarer.api.EveryFrameScript;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignClockAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.combat.WeaponAPI;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 //Copy of SirHartley's IndEvo code
 public class VIC_TimeTracker implements EveryFrameScript {
@@ -70,75 +69,36 @@ public class VIC_TimeTracker implements EveryFrameScript {
         return false;
     }
 
-    public static int getTagNum(MarketAPI market, String ident) {
-        int timePassed = 0;
-        for (String s : market.getTags()) {
-            if (s.contains(ident)) {
-                timePassed = Integer.parseInt(s.substring(ident.length()));
-                break;
-            }
-        }
-        return timePassed;
-    }
-
-    public static void incrementTagNum(MarketAPI market, String ident, Integer incrementAmount) {
-        for (Iterator<String> i = market.getTags().iterator(); i.hasNext(); ) {
-            String tag = i.next();
-            if (tag.contains(ident)) {
-                int num = Integer.parseInt(tag.substring(ident.length()));
-                market.removeTag(tag);
-                market.addTag(ident + (num + incrementAmount));
-                break;
-            }
-        }
-        market.addTag(ident + 0);
-    }
-
-    public static void removeTimeTag(MarketAPI market, String ident) {
-        for (Iterator<String> i = market.getTags().iterator(); i.hasNext(); ) {
-            String tag = i.next();
-            if (tag.contains(ident)) {
-                market.removeTag(tag);
-                break;
-            }
-        }
-    }
-
-    public static void resetTimeTag(MarketAPI market, String ident) {
-        for (Iterator<String> i = market.getTags().iterator(); i.hasNext(); ) {
-            String tag = i.next();
-            if (tag.contains(ident)) {
-                market.removeTag(tag);
-                break;
-            }
-        }
-        market.addTag(ident + 0);
-    }
-
-    public static void freezeTimeTag(MarketAPI market, String ident) {
-        for (ArrayList<Object> l : tagTrackers) {
-            if (l.get(0) == market && l.get(1) == ident) {
-                l.add(true);
-                break;
-            }
-        }
-    }
-
-    public static void unfreezeTimeTagIfFrozen(MarketAPI market, String ident) {
-        for (ArrayList<Object> l : tagTrackers) {
-            if (l.size() > 2 && l.get(0) == market && l.get(1) == ident) {
-                l.remove(2);
-                break;
-            }
-        }
-    }
-
     public void advance(float amount) {
         if (newDay()) {
             debugMessage("newDay");
-            onNewDay();
             updateMarketTagTimePassed();
         }
+    }
+
+    public Object getMap (String key){
+        if (!Global.getSector().getMemory().contains(key)){
+            Map<String, Integer> map = new HashMap<>();
+            Global.getSector().getMemory().set(key, map);
+        }
+        return Global.getSector().getMemory().get(key);
+    }
+
+    public int addDayToCounter (String MarketId){
+        String key = "Vbomb_daysPast";
+        Map<String, Integer> map = (Map<String, Integer>) getMap(key);
+        if (map.containsKey(MarketId)){
+            map.put(MarketId, map.get(MarketId) + 1);
+        } else {
+            map.put(MarketId,  1);
+        }
+        return map.get(MarketId);
+    }
+
+    public void removeMarket(String MarketId){
+        String key = "Vbomb_daysPast";
+        Map<String, Integer> map = (Map<String, Integer>) getMap(key);
+        map.remove(MarketId);
     }
 
     public boolean isDone() {
@@ -181,8 +141,7 @@ public class VIC_TimeTracker implements EveryFrameScript {
             MarketAPI market = (MarketAPI) l.get(0);
             String ident = (String) l.get(1);
 
-            for (Iterator<String> i = market.getTags().iterator(); i.hasNext(); ) {
-                String tag = i.next();
+            for (String tag : market.getTags()) {
                 if (tag.contains(ident)) {
                     int timePassed = getTimeTagPassed(market, ident) + 1;
                     market.removeTag(tag);

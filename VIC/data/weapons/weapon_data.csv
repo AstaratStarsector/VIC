@@ -7,7 +7,8 @@ Besomar Scattercannon,vic_devastator,2,,4500,800,,100,,40,12,19,28,6,42,HIGH_EXP
 ",,"The specified sustained DPS value is achieved only when %s are installed. Without them, the sustained damage value is %s. ",Extended Magazines | 400 ,,7.4
 Psotnik Interference Autocannon,vic_psotnik,2,,5000,900,,50,25,5,15,25,,,,KINETIC,55,,0,0.25,,,0,12,0.5,10,,850,,,,,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",20% | 50,,,,7.8
 Tugarin Stellar Catapult,vic_tugarin,3,,6000,950,,1200,,200,6,24,,,,HIGH_EXPLOSIVE,1680,,0.5,3.25,1,,0,5,2.5,10,,350,,,400,STRIKE,"he21, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,"Projectile slows down overtime. Explodes on hit or when reaching 0 velocity, dealing up to %s damage.",360 High Explosive,,,,8
-Vodyanoy Plasma Minigun,vic_vodyanoy,3,0.5,8000,800,,20,,20,12,22,,,,ENERGY,15,,0.5,1,999999999,0.1,0,10,0.05,4,,1200,,,25,"ANTI_FTR, PD_ALSO","energy 15, vic_t2weapons_bp",,Volkov Industries,,"Suppression, Point Defense",,,,,,,,,,8.1
+Vodyanoy Plasma Minigun,vic_vodyanoy,3,0.5,8000,700,,20,,20,12,22,,,,ENERGY,16,,0.5,1,999999999,0.05,0,10,0.1,3,,1200,,,25,"ANTI_FTR, PD_ALSO","energy 15, vic_t2weapons_bp",,Volkov Industries,,"Suppression, Point Defense",,,,,"After %s seconds of firing starts overheating, replacing every %s projectile with one that deals %s damage. The heat ramps up by %s per second and increases the number of High Explosive projectiles. At %s heat every %s projectile is replaced. Heat level decreases gradually while not firing.",1.5 | 8th | 40 High Explosive | 16% | 100% | 5th,,,,8.1
+Vodyanoy HE proj,vic_vodyanoy_sub,3,0.5,8000,700,,40,,20,12,22,,,,HIGH_EXPLOSIVE,15,,0.5,1,999999999,0.05,0,10,0.1,3,,1200,,,25,SYSTEM,"energy 15, vic_t2weapons_bp",,Volkov Industries,,"Suppression, Point Defense",,,,,,,,,,8.1
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Gatling Beam,vic_gatlingbeam,3,0.5,8000,1000,900,,0,0,7,25,,,,ENERGY,,600,0,0.2,0.2,0,,,,,100000,,,,,FIRE_WHEN_INEFFICIENT,"energy20, beam15, LR",,Volkov Industries,,Suppression,,,,,"Hits on hull or armor arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,,,27
@@ -31,7 +32,7 @@ Upyr Autocannon,vic_upyr,0,,600,600,,20,,1,30,7,,,,KINETIC,17,,0,0.1,2,0.1,0,18,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Build-ins,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Volkov Industries,,,,,,,,,,,,
 Phase Lance (Shortranged),vic_phaselance,13,,1,250,1000,,,0,20,10,,,,ENERGY,,1200,0.25,0.5,1,4,,,,,3200,,,,,SYSTEM,"energy14, beam10",,Volkov Industries,,General,,,,,,,,,,20
-Scatter Blaster (150 x 4 x 3 energy),vic_scatterblaster,13,,1,500,,150,,3,100,42,12,,,ENERGY,50,,0,0.25,,,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, STRIKE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
+Scatter Blaster (125 x 4 x 3 energy),vic_scatterblaster,13,,1,500,,125,,3,100,42,12,,,ENERGY,50,,0,0.25,,,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, STRIKE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
 Abyssus Array,vic_abyssalfangs,13,,100000,2000,,100,,5,,45,,,,KINETIC,0,,0,48.85,24,0.05,0,0,0,0,,450,1000,10,100,"DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8",,Volkov Industries,,Anti Shield,Fast,Excellent,,,,25% | 400,,,TRUE,12.1
 abyssalfangs sub,vic_abyssalfangs_sub,13,,666,900,,200,50,5,15,42,,,,KINETIC,55,,0,0.25,,,0,12,0.5,10,,1000,,,,SYSTEM,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield,,,,,,25% | 60,,,,7.8
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

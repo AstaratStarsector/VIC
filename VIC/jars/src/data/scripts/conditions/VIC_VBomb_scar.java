@@ -26,18 +26,9 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
 
     public int daysPassed = 1;
 
-    protected PlanetAPI planet;
-
     public Color toxinColor = new Color(121, 182, 5, 164);
 
-    public void init(MarketAPI market, MarketConditionAPI condition) {
-        this.market = market;
-        this.condition = condition;
-        this.planet = market.getPlanetEntity();
-    }
-
     public void apply(String id) {
-        super.apply(id);
 
         if (daysPassed >= year) market.getStability().unmodify(id);
         else market.getStability().modifyFlat(id, -STABILITY_PENALTY, getName());
@@ -49,6 +40,7 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
         market.getHazard().modifyFlat(id, hazardRating, getName());
         market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DefMult, getName());
         market.getAccessibilityMod().modifyFlat(id, Access, getName());
+
         for (Industry industry : market.getIndustries()) {
             if (industry.isIndustry()) {
                 for (MutableCommodityQuantity supply : industry.getAllSupply()) {
@@ -56,11 +48,7 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
                 }
             }
         }
-        market.addTransientImmigrationModifier(this);
-
-        if (!Global.getSector().getListenerManager().hasListener(this)) {
-            Global.getSector().getListenerManager().addListener(this, true);
-        }
+        //market.addTransientImmigrationModifier(this);
 
         if (market.getPlanetEntity() != null) {
             PlanetAPI planet = market.getPlanetEntity();
@@ -69,11 +57,11 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
             planet.getSpec().setCloudColor(toxinColor);
             planet.applySpecChanges();
         }
-
-        if (market != null) {
+        if (market.getTags() != null){
             VIC_TimeTracker.addMarketTimeTagTracker(market, getModId());
             daysPassed = VIC_TimeTracker.getTimeTagPassed(market, getModId());
         }
+
     }
 
     public void unapply(String id) {
@@ -81,7 +69,7 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
         market.getStability().unmodify(id);
         market.getHazard().unmodify(id);
         market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).unmodify(id);
-        market.getAccessibilityMod().unmodify();
+        market.getAccessibilityMod().unmodify(id);
         market.removeTransientImmigrationModifier(this);
 
         for (Industry industry : market.getIndustries()) {
@@ -91,12 +79,15 @@ public class VIC_VBomb_scar extends BaseMarketConditionPlugin implements MarketI
                 }
             }
         }
+        if (market.getTags() != null){
+            VIC_TimeTracker.removeMarketTimeTagTracker(market, getModId());
+        }
 
         if (market.getPlanetEntity() == null) return;
         PlanetAPI planet = market.getPlanetEntity();
         planet.getSpec().setAtmosphereColor(new Color(255, 255, 255, 253));
-        Global.getSector().getListenerManager().removeListener(this);
-        VIC_TimeTracker.removeMarketTimeTagTracker(market, getModId());
+        planet.getSpec().setCloudColor(new Color(255, 255, 255, 0));
+        planet.applySpecChanges();
     }
 
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {

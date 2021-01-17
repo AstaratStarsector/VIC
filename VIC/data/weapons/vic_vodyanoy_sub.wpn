@@ -1,7 +1,7 @@
 {
-  "id": "vic_vodyanoy",
+  "id": "vic_vodyanoy_sub",
   "specClass": "projectile",
-  "projectileSpecId": "vic_vodyanoy_shot",
+  "projectileSpecId": "vic_vodyanoy_sub_shot",
   "type": "ENERGY",
   "size": "LARGE",
   "everyFrameEffect": "data.scripts.weapons.vic_vodyanoy_script",
