@@ -53,8 +53,9 @@ public class vic_tourism extends BaseIndustry {
     }
 
     public boolean showWhenUnavailable() {
-        return true;
+        return false;
     }
+
 }
 
 

@@ -48,17 +48,7 @@ public class vic_DriftBoost extends BaseShipSystemScript {
 
 
         if (stats.getEntity() instanceof ShipAPI) {
-            if (state == State.IN) {
-                ship.getEngineController().extendFlame(this, 2f * effectLevel, 1.5f * effectLevel, 0.5f * effectLevel);
-
-            }
-            if (state == State.ACTIVE) {
-                ship.getEngineController().extendFlame(this, 2f * effectLevel, 1.5f * effectLevel, 0.5f * effectLevel);
-            }
-
-            //ship.getEngineController().fadeToOtherColor(this, color, new Color(0, 0, 0, 0), effectLevel, 0.67f);
-            //ship.getEngineController().fadeToOtherColor(this, Color.white, new Color(0,0,0,0), effectLevel, 0.67f);
-
+            ship.getEngineController().extendFlame(this, 0.5f * effectLevel, 0.5f * effectLevel, 0.25f * effectLevel);
         }
 
     }
@@ -66,9 +56,6 @@ public class vic_DriftBoost extends BaseShipSystemScript {
 
     @Override
     public boolean isUsable(ShipSystemAPI system, ShipAPI ship) {
-        if ((ship != null) && (system != null) && ship.getVariant().hasHullMod("vic_ShturmSolution")) {
-            system.setCooldown(4.15f * SHTURM_COOLDOWN_MULT);
-        }
         return true;
     }
 
@@ -97,6 +84,14 @@ public class vic_DriftBoost extends BaseShipSystemScript {
         return null;
     }
 
+    @Override
+    public float getRegenOverride(ShipAPI ship) {
+        if (ship.getVariant().hasHullMod("vic_ShturmSolution")) {
+            return 0.15f;
+        } else {
+            return -1;
+        }
+    }
 }
 
 

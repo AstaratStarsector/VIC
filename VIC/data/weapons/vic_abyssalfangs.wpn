@@ -5,8 +5,8 @@
   "type": "MISSILE",
   "size": "LARGE",
   "displayArcRadius": 300,
-  "turretSprite": "graphics/weapons/vic_abyssalfangs.png",
-  "hardpointSprite": "graphics/weapons/vic_abyssalfangs.png",
+  "turretSprite": "",
+  "hardpointSprite": "",
   "renderAboveAllWeapons": 0,
   "turretOffsets": [
     183.5,

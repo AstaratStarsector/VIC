@@ -1,38 +1,27 @@
 {
-  "variantId": "vic_xaphan_harasher",
-  "hullId": "vic_xaphan",
-  "displayName": "Harasser",
-  "goalVariant": true,
-  "fluxCapacitors": 9,
-  "fluxVents": 5,
-  "quality": 1,
-  "permaMods": [],
-  "hullMods": [
-    "vic_ShturmSolution"
-  ],
-  "weaponGroups": [
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0005": "vic_upyr"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0004": "vic_upyr"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0003": "harpoon"
-      }
-    }
-  ],
-  "modules": [],
-  "wings": []
+    "displayName": "Harasser",
+    "fluxCapacitors": 9,
+    "fluxVents": 6,
+    "goalVariant": true,
+    "hullId": "vic_xaphan",
+    "hullMods": ["vic_assault"],
+    "permaMods": [],
+    "variantId": "vic_xaphan_harasher",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0005": "vic_upyr"}
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0004": "vic_upyr"}
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0003": "harpoon"}
+        }
+    ]
 }

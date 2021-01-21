@@ -67,8 +67,8 @@
       "size": "SMALL",
       "type": "HYBRID",
       "mount": "TURRET",
-      "arc": 106,
-      "angle": -157,
+      "arc": 195,
+      "angle": -135,
       "locations": [-28, -12]
     },
     {
@@ -76,8 +76,8 @@
       "size": "SMALL",
       "type": "HYBRID",
       "mount": "TURRET",
-      "arc": 106,
-      "angle": 157,
+      "arc": 195,
+      "angle": 135,
       "locations": [-28, 12]
     },
     {
@@ -151,37 +151,37 @@
   "engineSlots": [
     {
       "location": [-29.5, 31],
-      "length": 90.5,
-      "width": 10,
+      "length": 68,
+      "width": 13,
       "angle": -180,
-      "contrailSize": 10,
+      "contrailSize": 13,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-29.5, -31],
-      "length": 90.5,
-      "width": 10,
+      "length": 68,
+      "width": 13,
       "angle": 180,
-      "contrailSize": 10,
+      "contrailSize": 13,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-18.5, 47],
-      "length": 42,
-      "width": 15,
+      "length": 56,
+      "width": 13,
       "angle": -180,
-      "contrailSize": 15,
+      "contrailSize": 13,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-18.5, -47],
-      "length": 42,
-      "width": 15,
+      "length": 56,
+      "width": 13,
       "angle": 180,
-      "contrailSize": 15,
+      "contrailSize": 13,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }

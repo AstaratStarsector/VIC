@@ -1,8 +1,8 @@
 {
     "displayName": "Assault",
-	"goalVariant": true,
-    "fluxCapacitors": 4,
-    "fluxVents": 6,
+    "fluxCapacitors": 3,
+    "fluxVents": 5,
+    "goalVariant": true,
     "hullId": "vic_cresil",
     "hullMods": [],
     "permaMods": [],
@@ -25,6 +25,11 @@
                 "WS0005": "vic_strigoy",
                 "WS0006": "vic_strigoy"
             }
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0011": "vic_targetingLazer"}
         }
     ],
     "wings": [

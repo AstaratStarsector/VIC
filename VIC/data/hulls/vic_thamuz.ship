@@ -16,7 +16,7 @@
     "vic_dynamicshields",
     "vic_adaptiveAssault"
   ],
- "builtInWeapons": {
+  "builtInWeapons": {
     "WS0014": "vic_thamuz_deco_left",
     "WS0015": "vic_thamuz_deco_right",
     "WS0016": "vic_thamuz_engine_glow_sides",
@@ -33,7 +33,7 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 81,
-      "angle": 0,
+      "angle": -16,
       "locations": [34, -28],
       "renderOrderMod": 4
     },
@@ -43,7 +43,7 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 81,
-      "angle": 0,
+      "angle": 16,
       "locations": [34, 28],
       "renderOrderMod": 4
     },
@@ -71,7 +71,7 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 92,
-      "angle": -0,
+      "angle": 35,
       "locations": [3, 97],
       "renderOrderMod": 4
     },
@@ -98,7 +98,7 @@
       "size": "SMALL",
       "type": "HYBRID",
       "mount": "TURRET",
-      "arc": 111,
+      "arc": 165,
       "angle": 180,
       "locations": [-39, -0]
     },
@@ -108,7 +108,7 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 92,
-      "angle": 0,
+      "angle": -35,
       "locations": [3, -97],
       "renderOrderMod": 4
     },
@@ -218,55 +218,55 @@
   "engineSlots": [
     {
       "location": [-33, -31],
-      "length": 50,
-      "width": 20,
+      "length": 53,
+      "width": 16,
       "angle": 180,
-      "contrailSize": 20,
+      "contrailSize": 16,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-33, 31],
-      "length": 50,
-      "width": 20,
+      "length": 53,
+      "width": 16,
       "angle": -180,
-      "contrailSize": 20,
+      "contrailSize": 16,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-31, -61],
-      "length": 25,
-      "width": 15,
+      "length": 42.5,
+      "width": 14,
       "angle": 180,
-      "contrailSize": 15,
+      "contrailSize": 14,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-31, 61],
-      "length": 25,
-      "width": 15,
+      "length": 42.5,
+      "width": 14,
       "angle": -180,
-      "contrailSize": 15,
+      "contrailSize": 14,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-31, -91],
-      "length": 25,
-      "width": 15,
+      "length": 33.5,
+      "width": 14,
       "angle": 180,
-      "contrailSize": 15,
+      "contrailSize": 14,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-31, 91],
-      "length": 25,
-      "width": 15,
+      "length": 33.5,
+      "width": 14,
       "angle": -180,
-      "contrailSize": 15,
+      "contrailSize": 14,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }

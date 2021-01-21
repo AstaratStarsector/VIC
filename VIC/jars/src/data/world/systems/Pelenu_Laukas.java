@@ -306,7 +306,7 @@ public class Pelenu_Laukas {
 
 
         system.addRingBand(PelenuLaukasStar, "misc", "rings_dust0", 300f, 3, Color.white, 300f, 10200f, 350f);
-        system.addAsteroidBelt(PelenuLaukasStar, 1000, 10400, 800, 250, 400, Terrain.ASTEROID_BELT, "Outer Asteroid Belt");
+        system.addAsteroidBelt(PelenuLaukasStar, 75, 10400, 800, 250, 400, Terrain.ASTEROID_BELT, "Outer Asteroid Belt");
         system.addRingBand(PelenuLaukasStar, "misc", "rings_asteroids0", 256f, 3, Color.black, 160f, 10500f, 325f);
         system.addRingBand(PelenuLaukasStar, "misc", "rings_dust0", 300f, 2, Color.gray, 300f, 10400f, 300);
 
@@ -393,9 +393,6 @@ public class Pelenu_Laukas {
 
 
     }
-
-
-
 
     //Learning from Tart scripts
     //Clean nearby Nebula

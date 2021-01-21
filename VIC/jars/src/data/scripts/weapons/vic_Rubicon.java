@@ -1,19 +1,11 @@
 package data.scripts.weapons;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.DamagingProjectileAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.WeaponAPI;
-import com.fs.starfarer.api.util.IntervalUtil;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
-import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class vic_Rubicon implements EveryFrameWeaponEffectPlugin {
 
@@ -25,7 +17,7 @@ public class vic_Rubicon implements EveryFrameWeaponEffectPlugin {
         }
 
 
-        if (weapon.getChargeLevel() == 1){
+        if (weapon.getChargeLevel() == 1) {
             Vector2f trueCenterLocation = new Vector2f();
             if (weapon.getSlot().isHardpoint()) {
                 trueCenterLocation.x += weapon.getSpec().getHardpointFireOffsets().get(0).x;
@@ -42,11 +34,14 @@ public class vic_Rubicon implements EveryFrameWeaponEffectPlugin {
             trueCenterLocation.x += weapon.getLocation().x;
             trueCenterLocation.y += weapon.getLocation().y;
 
+
+            float currentDeviation = (weapon.getCurrSpread() - weapon.getSpec().getSpreadBuildup()) * MathUtils.getRandomNumberInRange(-1f, 1f);
+
             engine.spawnProjectile(weapon.getShip(),
                     weapon,
                     "vic_rubicon_real",
                     trueCenterLocation,
-                    weapon.getCurrAngle(),
+                    weapon.getCurrAngle() + currentDeviation,
                     weapon.getShip().getVelocity());
         }
     }

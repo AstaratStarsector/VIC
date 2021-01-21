@@ -136,16 +136,16 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin {
         if (weapon.getChargeLevel() > 0) {
 
             Global.getSoundPlayer().playLoop(
-                    "diableavionics_opfer_fire",
+                    "vic_vodanoy_shoting",
                     weapon,
-                    1,
+                    MathUtils.getRandomNumberInRange(0.9f , 1.1f),
                     Math.max(0, 10 * weapon.getChargeLevel() - 9),
                     weapon.getLocation(),
                     weapon.getShip().getVelocity()
             );
 
             Global.getSoundPlayer().playLoop(
-                    "diableavionics_opfer_spin",
+                    "vic_vodanoy_spin",
                     weapon,
                     0.25f + weapon.getChargeLevel(),
                     0.25f,

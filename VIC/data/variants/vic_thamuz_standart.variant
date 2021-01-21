@@ -1,12 +1,12 @@
 {
     "displayName": "Standard",
-    "fluxCapacitors": 20,
-    "fluxVents": 24,
+    "fluxCapacitors": 22,
+    "fluxVents": 30,
     "goalVariant": true,
     "hullId": "vic_thamuz",
     "hullMods": [
         "targetingunit",
-        "vic_PDArcEmitter"
+        "hardenedshieldemitter"
     ],
     "permaMods": [],
     "variantId": "vic_thamuz_standart",
@@ -20,17 +20,9 @@
             }
         },
         {
-            "autofire": false,
-            "mode": "ALTERNATING",
-            "weapons": {
-                "WS0006": "harpoonpod",
-                "WS0007": "harpoonpod"
-            }
-        },
-        {
             "autofire": true,
             "mode": "LINKED",
-            "weapons": {"WS0001": "vic_tugarin"}
+            "weapons": {"WS0001": "tachyonlance"}
         },
         {
             "autofire": true,
@@ -39,7 +31,8 @@
                 "WS0002": "vic_strigoy",
                 "WS0003": "vic_strigoy",
                 "WS0010": "vic_strigoy",
-                "WS0011": "vic_strigoy"
+                "WS0011": "vic_strigoy",
+                "WS0012": "vic_strigoy"
             }
         }
     ]

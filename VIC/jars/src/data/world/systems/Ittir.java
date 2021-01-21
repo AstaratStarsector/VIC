@@ -99,7 +99,7 @@ public class Ittir {
                 true);
 
 
-        system.addAsteroidBelt(IttirStar, 500, 3000, 400, 300, 400, Terrain.ASTEROID_BELT, "Inner Band");
+        system.addAsteroidBelt(IttirStar, 50, 3000, 400, 300, 400, Terrain.ASTEROID_BELT, "Inner Band");
         system.addRingBand(IttirStar, "misc", "rings_asteroids0", 256f, 3, Color.gray, 256f, 3000, 250f);
 
 

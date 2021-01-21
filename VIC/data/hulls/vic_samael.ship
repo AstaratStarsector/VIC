@@ -16,8 +16,6 @@
     "vic_dynamicshields",
     "vic_adaptiveAssault"
   ],
-  "builtInWings": [
-  ],
   "builtInWeapons": {
     "WS0010": "vic_engine_glow_universal_big",
     "WS0011": "vic_samael_engine_glow_2",
@@ -167,47 +165,47 @@
   ],
   "engineSlots": [
     {
-      "location": [-76, -0],
-      "length": 80,
-      "width": 20,
+      "location": [-80, -0],
+      "length": 64,
+      "width": 15,
       "angle": 180,
-      "contrailSize": 20,
+      "contrailSize": 15,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-51, 28],
-      "length": 40,
-      "width": 8,
+      "location": [-54, -28],
+      "length": 53,
+      "width": 10,
       "angle": 180,
-      "contrailSize": 8,
+      "contrailSize": 10,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-42, 54],
-      "length": 40,
-      "width": 8,
-      "angle": 180,
-      "contrailSize": 8,
+      "location": [-54, 28],
+      "length": 53,
+      "width": 10,
+      "angle": -180,
+      "contrailSize": 10,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-42, -54],
-      "length": 40,
-      "width": 8,
+      "location": [-45, -54],
+      "length": 44,
+      "width": 12,
       "angle": 180,
-      "contrailSize": 8,
+      "contrailSize": 12,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-51, -28],
-      "length": 40,
-      "width": 8,
-      "angle": 180,
-      "contrailSize": 8,
+      "location": [-45, 54],
+      "length": 44,
+      "width": 12,
+      "angle": -180,
+      "contrailSize": 12,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }

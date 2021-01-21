@@ -122,7 +122,7 @@ public class vic_assaultVariant extends BaseHullMod {
         if (index == 5) return Math.round(rangeBonus.get(hullSize)) + "";
         if (index == 6) return Math.round(rangeForClamp.get(hullSize)) + "";
         if (index == 7) return Math.round(rangeReduction * 100) + "%";
-        if (index ==8) return Math.round(33) + "%";
+        if (index ==8) return Math.round(50) + "%";
         return null;
     }
 }

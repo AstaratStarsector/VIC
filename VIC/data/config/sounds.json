@@ -167,10 +167,10 @@
 		{"file": "sounds/effects/vic_scaterBlaster_shot.ogg", "pitch": 1.10, "volume": 0.9,},
 	],
 	
-		"diableavionics_opfer_spin":[
-            {"file":"sounds/effects/da_opfer_spinLoop.ogg","pitch":1.0, "volume":1},
+	"vic_vodanoy_spin":[
+        {"file":"sounds/effects/vic_vodanoy_spin.ogg","pitch":1.0, "volume":1.5},
 	],				
-	"diableavionics_opfer_fire":[
-            {"file":"sounds/effects/da_opfer_fireLoop.ogg","pitch":1.0, "volume":0.5},
+	"vic_vodanoy_shoting":[
+        {"file":"sounds/effects/vic_vodanoy_shoting.ogg","pitch":1.0, "volume":1},
 	],
 }

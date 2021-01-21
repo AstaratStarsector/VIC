@@ -5,6 +5,7 @@ package data.world.systems;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.concurrent.locks.Condition;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
@@ -26,6 +27,7 @@ import com.fs.starfarer.api.impl.campaign.procgen.themes.SalvageSpecialAssigner;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.special.ShipRecoverySpecial;
 import com.fs.starfarer.api.impl.campaign.submarkets.StoragePlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.AsteroidFieldTerrainPlugin.AsteroidFieldParams;
+import com.fs.starfarer.api.impl.campaign.terrain.BaseTiledTerrain;
 import com.fs.starfarer.api.impl.campaign.terrain.EventHorizonPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.StarCoronaTerrainPlugin;
@@ -33,6 +35,7 @@ import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin.MagneticFieldParams;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.lazywizard.lazylib.MathUtils;
+import org.lwjgl.util.vector.Vector2f;
 
 import static data.world.VICGen.addMarketplace;
 
@@ -149,18 +152,25 @@ public class Apotheosis {
         innerJumpPoint.setCircularOrbit(ApotheosisQuasar, MathUtils.getRandomNumberInRange(-4,0), 5000, syncOrbitDays);
         innerJumpPoint.setStandardWormholeToHyperspaceVisual();
         system.addEntity(innerJumpPoint);
+        system.setHasSystemwideNebula(true);
 
         //Loot at shit
         SectorEntityToken ResearchStation = DerelictThemeGenerator.addSalvageEntity(system, "station_research", Factions.DERELICT);
         ResearchStation.setCircularOrbit(ApotheosisQuasar, 180, 2000, syncOrbitDays);
 
         addDerelict(system, ApotheosisQuasar, "vic_valafar_assault", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 0,  (Math.random()<0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_jezebeth_assault", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 120,  (Math.random()<0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_kobal_agony", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 240,  (Math.random()<0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_xaphan_skirmisher", ShipRecoverySpecial.ShipCondition.BATTERED, 1200 + ((float) Math.random() * 200f), 0,  (Math.random()<0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_moloch_standart", ShipRecoverySpecial.ShipCondition.BATTERED, 1200 + ((float) Math.random() * 200f), 120,  (Math.random()<0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_samael_standart", ShipRecoverySpecial.ShipCondition.BATTERED, 1200 + ((float) Math.random() * 200f), 240,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_thamuz_standart", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 120,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_cresil_bombardier", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 240,  (Math.random()<0.4));
 
+        addDerelict(system, ApotheosisQuasar, "vic_jezebeth_assault", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 0,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_moloch_standart", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 120,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_samael_standart", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 240,  (Math.random()<0.4));
+
+        addDerelict(system, ApotheosisQuasar, "vic_xaphan_skirmisher", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 0,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_kobal_agony", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 120,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_pruflas_Demolisher", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 240,  (Math.random()<0.4));
+
+        generateNebula(system);
 
         system.setLightColor(new Color(255, 110, 25, 136)); // light color in entire system, affects all entities
 
@@ -207,6 +217,88 @@ public class Apotheosis {
             SalvageSpecialAssigner.ShipRecoverySpecialCreator creator = new SalvageSpecialAssigner.ShipRecoverySpecialCreator(null, 0, 0, false, null, factions);
             Misc.setSalvageSpecial(ship, creator.createSpecial(ship, null));
         }
+    }
+
+    protected void generateNebula(StarSystemAPI system)
+    {
+        Random random = new Random(getStartingSeed());
+        float holeRadius = (int) getRandomFloat(random, 6500, 7000);
+        float w = 15000;
+        float h = 40000;
+
+        // First make a solid map-spanning nebula
+        SectorEntityToken nebulaTiles = Misc.addNebulaFromPNG("data/campaign/terrain/nebula_solid.png",
+                0, 0, // Center of nebula
+                system, // Location to add to
+                "terrain", "nebula_amber", // Texture to use, uses xxx_map for map
+                4, 4, Terrain.NEBULA, StarAge.OLD);
+
+        nebulaTiles.getLocation().set(0, 0);
+
+        BaseTiledTerrain nebula = getNebula(system);
+        nebula.setTerrainName("Siwang Cloud");
+        NebulaEditor editor = new NebulaEditor(nebula);
+
+        // Donut hole
+        editor.clearArc(0, 0, 0, holeRadius, 0, 360);
+
+        // Do some random arcs
+        // Taken from vanilla's SectorProcGen.java
+        int numArcs = 2;
+
+        for (int i = 0; i < numArcs; i++){
+            float dist = w / 2f + w / 2f * random.nextFloat();
+            float angle = random.nextFloat() * 360f;
+
+            Vector2f dir = Misc.getUnitVectorAtDegreeAngle(angle);
+            dir.scale(dist - (w / 12f + w / 3f * random.nextFloat()));
+
+            float width = 800f * (1f + 2f * random.nextFloat());
+
+            float clearThreshold = 0f + 0.5f * random.nextFloat();
+
+            editor.clearArc(dir.x, dir.y, dist - width / 2f, dist + width / 2f, 0, 360f, clearThreshold);
+        }
+
+        // Clear planet orbit paths
+        SectorEntityToken center = system.getCenter();
+        for (PlanetAPI planet : system.getPlanets()){
+            if (planet == center){
+                continue;
+            }
+            if (MathUtils.isWithinRange(center, planet, holeRadius - 3000)){
+                continue;
+            }
+            float dist = MathUtils.getDistance(center, planet);
+            float width = 2000 + planet.getRadius() * 4;
+            float clearThreshold = 0f + 0.5f * random.nextFloat();
+            editor.clearArc(0, 0, dist - width / 2f, dist + width / 2f, 0, 360f, clearThreshold);
+        }
+
+        // Noise
+        editor.regenNoise();
+        editor.noisePrune(0.6f);
+        editor.regenNoise();
+    }
+
+    long getStartingSeed(){
+        String seedStr = Global.getSector().getSeedString().replaceAll("[^0-9]", "");
+        return Long.parseLong(seedStr);
+    }
+
+    float getRandomFloat(Random random, float min, float max){
+        return min + (max - min) * random.nextFloat();
+    }
+
+    BaseTiledTerrain getNebula(StarSystemAPI system){
+        for (CampaignTerrainAPI curr : system.getTerrainCopy())
+        {
+            if (curr.getPlugin().getTerrainId().equals(Terrain.NEBULA))
+            {
+                return (BaseTiledTerrain) (curr.getPlugin());
+            }
+        }
+        return null;
     }
 
 }

@@ -1,25 +1,27 @@
 {
     "displayName": "Burst",
-	"goalVariant": true,
     "fluxCapacitors": 5,
     "fluxVents": 10,
+    "goalVariant": true,
     "hullId": "vic_kobal",
-    "hullMods": ["advancedoptics"],
+    "hullMods": [],
     "permaMods": [],
     "variantId": "vic_kobal_burst",
     "weaponGroups": [
         {
             "autofire": false,
             "mode": "LINKED",
-            "weapons": {
-                "WS0005": "phasebeam",
-                "WS0006": "phasebeam"
-            }
+            "weapons": {"WS0005": "vic_lightlaidlawaccelerator"}
         },
         {
             "autofire": false,
             "mode": "LINKED",
             "weapons": {"WS0004": "phasebeam"}
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0006": "phasebeam"}
         }
     ]
 }

@@ -1,7 +1,7 @@
 {
     "displayName": "Harasser",
     "fluxCapacitors": 10,
-    "fluxVents": 4,
+    "fluxVents": 8,
     "goalVariant": true,
     "hullId": "vic_pruflas",
     "hullMods": ["vic_assault"],

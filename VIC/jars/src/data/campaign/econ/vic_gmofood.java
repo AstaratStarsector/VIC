@@ -79,6 +79,7 @@ public class vic_gmofood extends Farming {
         return this.getMarket().getId() + "_" + "vicgmofarms";
     }
 
+    /*
     public boolean isAvailableToBuild() {
         SectorAPI sector = Global.getSector();
 
@@ -92,6 +93,16 @@ public class vic_gmofood extends Farming {
 
     public boolean showWhenUnavailable() {
         return true;
+    }
+
+     */
+
+    public boolean isAvailableToBuild() {
+        return false;
+    }
+
+    public boolean showWhenUnavailable() {
+        return false;
     }
 
 }

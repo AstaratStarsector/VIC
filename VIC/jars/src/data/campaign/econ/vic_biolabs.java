@@ -50,7 +50,7 @@ public class vic_biolabs extends BaseIndustry {
     }
 
     public boolean showWhenUnavailable() {
-        return true;
+        return false;
     }
 
 }

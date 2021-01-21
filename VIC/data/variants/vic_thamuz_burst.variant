@@ -1,57 +1,41 @@
 {
-  "variantId": "vic_thamuz_burst",
-  "hullId": "vic_thamuz",
-  "displayName": "Burst",
-  "goalVariant": true,
-  "fluxCapacitors": 17,
-  "fluxVents": 23,
-  "quality": 1,
-  "permaMods": [],
-  "hullMods": [
-    "targetingunit"
-  ],
-  "weaponGroups": [
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0005": "plasma",
-        "WS0013": "plasma"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0001": "plasma"
-      }
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0002": "pdlaser",
-        "WS0003": "pdlaser",
-        "WS0010": "pdlaser",
-        "WS0011": "pdlaser",
-        "WS0012": "pdlaser"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0007": "sabotpod"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0006": "sabotpod"
-      }
-    }
-  ],
-  "modules": [],
-  "wings": []
+    "displayName": "Pressure",
+    "fluxCapacitors": 25,
+    "fluxVents": 30,
+    "goalVariant": true,
+    "hullId": "vic_thamuz",
+    "hullMods": [
+        "advancedoptics",
+        "targetingunit"
+    ],
+    "permaMods": [],
+    "variantId": "vic_thamuz_burst",
+    "weaponGroups": [
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0005": "hil",
+                "WS0013": "hil"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {"WS0001": "gauss"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0002": "vic_strigoy",
+                "WS0003": "vic_strigoy",
+                "WS0004": "vic_strigoy",
+                "WS0009": "vic_strigoy",
+                "WS0010": "vic_strigoy",
+                "WS0011": "vic_strigoy",
+                "WS0012": "vic_strigoy"
+            }
+        }
+    ]
 }
