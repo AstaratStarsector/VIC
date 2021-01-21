@@ -73,16 +73,13 @@ public class vic_deathProtocol extends BaseHullMod {
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
 
         float damageAndCloakMult = 0f;
-        if (ship != null && ship.getVariant().hasHullMod("vic_allRoundShieldUpgrade")){
-            damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
+        if (ship != null){
+            if (ship.getVariant().hasHullMod("vic_allRoundShieldUpgrade") ||
+                    ship.getVariant().hasHullMod("vic_assault")||
+                    !ship.getHullSpec().getHullId().startsWith("vic_")){
+                damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
+            }
         }
-        if (ship != null && ship.getVariant().hasHullMod("vic_assault")){
-            damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
-        }
-        if (!ship.getHullSpec().getHullId().startsWith("vic_")){
-            damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
-        }
-
 
         if (index == 0) return Math.round((dmgIncreas - 1) * 100) + "%";
         if (index == 1) return Math.round(((dmgTaken + damageAndCloakMult) - 1) * 100) + "%";

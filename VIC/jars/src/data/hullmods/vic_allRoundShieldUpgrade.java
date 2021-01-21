@@ -29,7 +29,7 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
         if (variant != null && variant.hasHullMod("vic_assault")){
             speedPenalty = 0.75f;
         }
-        if (!variant.getHullSpec().getHullId().startsWith("vic_")){
+        if (variant != null && !variant.getHullSpec().getHullId().startsWith("vic_")){
             speedPenalty = 0.75f;
         }
 
@@ -62,7 +62,6 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {
-        boolean OK = true;
         for (String Hmod : BLOCKED_HULLMODS){
             if (ship.getVariant().getHullMods().contains(Hmod)) return false;
         }
@@ -84,9 +83,6 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
     }
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
-
-
-
         if (index == 0) return Math.round(shieldEff) + "%";
         if (index == 1) return Math.round(shieldUpkeep) + "%";
         if (index == 2) return Math.round(shieldSpeed) + "%";
