@@ -162,9 +162,9 @@ OR
 The VIC $personRank pops up on the comms display, waving a holographic representation of some documents. ""I've got some forms here that say you volunteered for some human experimentation.""
 
 You recieve a notification that the communications auto-recorder has turned off, and $heOrShe leans in to the display. ""Of course, we both know you didn't, but do you really think the courts would believe a known criminal like you over a Volkov $personRank like me?""
-OR 
+OR
 ""The white coats on Purgatory will enjoy testing their new stuff on you. Wish I could see that. The enemy of Humankind, being turned into all sorts of disgusting things to help us bring Paradise just a bit closer,"" - the $PersonRank gloats creepily, their slitted pupils dilating in a vicious manner.
-OR 
+OR
 ""Try not to die too quickly, please. The footage of our battle will make for a great inspirational movie for the children!"" - the $PersonRank says light-heartedly and turns off the comms before you can say anything.
 ",cutCommLink:Cut the comm link,
 ,,,,,,
@@ -260,7 +260,7 @@ $stability > 3","AddText ""The new planetary capital, where your shuttle arrives
 
 AddText ""Despite all the efforts of the new government, which has taken over civil affairs, as is the case on almost all planets of the Persean Union of Domain Colonies, there is still some tension around. Many residents are much quieter and more restrained in the presence of representatives and employees of the Conglomerate, and in the side streets every now and then graffiti with clearly protest statements come across."" marketFlavorTextColor
 
-AddText ""Trying not to get involved in tumultuous political discussions and talks about the new regime and the future of the planet, you head to the trading district by public maglev. And on your way you note to yourself - there are already quite a lot of those who have decided to use genetic technologies and the services of the new ""benevolent hosts‎""."" marketFlavorTextColor",,,
+AddText ""Trying not to get involved in tumultuous political discussions and talks about the new regime and the future of the planet, you head to the trading district by public maglev. And on your way you note to yourself - there are already quite a lot of those who have decided to use genetic technologies and the services of the new «‎benevolent hosts»‎‎."" marketFlavorTextColor",,,
 ,,,,,,
 ,,,,,,
 #Beacons and Stuff,,,,,,
