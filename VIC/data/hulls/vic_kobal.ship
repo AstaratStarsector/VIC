@@ -55,7 +55,7 @@
     {
       "id": "WS0004",
       "size": "MEDIUM",
-      "type": "SYNERGY",
+      "type": "UNIVERSAL",
       "mount": "HARDPOINT",
       "arc": 10,
       "angle": 0,

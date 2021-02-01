@@ -1,2 +1,2 @@
 name,id,demand class,base price,export value,price variability,utility,origin,tags,stack size,cargo space,icon,sound id,sound id drop,order,economyTier,econUnit,iconWidthMult,plugin,desc
-VIC Brand Genetech,vic_genetech,luxury_goods,,,3,3,vic_planet_cocytus,"exotic,luxury",1000,1,graphics/icons/cargo/vic_genetech.png,ui_cargo_drugs,ui_cargo_drugs_drop,1,1,100,1,,
+VIC Brand Genetech,vic_genetech,vic_genetech,350,5000,3,1,vic_planet_cocytus,"exotic,luxury",1000,1,graphics/icons/cargo/vic_genetech.png,ui_cargo_drugs,ui_cargo_drugs_drop,2.5,1,150,1,,

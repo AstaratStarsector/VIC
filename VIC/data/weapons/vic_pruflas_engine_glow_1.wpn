@@ -4,7 +4,7 @@
 	"type":"DECORATIVE",
 	"size":"MEDIUM",
 	"renderHints":["RENDER_ADDITIVE"],
-	"everyFrameEffect":"data.scripts.VIC_EngineGlowScript",
+	"everyFrameEffect":"data.scripts.weapons.decos.VIC_EngineGlowScript",
 	"turretSprite":"graphics/ships/Pruflas/Engine glow/vic_pruflas_engine_glow_1.png",
 	"hardpointSprite":"graphics/ships/Pruflas/Engine glow/vic_pruflas_engine_glow_1.png",
 	"turretOffsets":[0, 0],

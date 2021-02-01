@@ -505,7 +505,7 @@
   ],
   "engineSlots": [
     {
-      "location": [-110.5, 51],
+      "location": [-112.5, 51.5],
       "length": 75.856583,
       "width": 15.333482,
       "angle": 169,
@@ -514,7 +514,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-97, 60.5],
+      "location": [-98.5, 61],
       "length": 75.365768,
       "width": 15.524291,
       "angle": 169,
@@ -523,7 +523,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-125, 43],
+      "location": [-127, 43.5],
       "length": 75.856583,
       "width": 15.333482,
       "angle": 169,
@@ -532,7 +532,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-168.5, 0],
+      "location": [-173, -0],
       "length": 145,
       "width": 20,
       "angle": 180,
@@ -541,7 +541,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-125, -43],
+      "location": [-127, -43.5],
       "length": 75.856583,
       "width": 15.333482,
       "angle": -169,
@@ -550,7 +550,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-110.5, -51],
+      "location": [-112.5, -51.5],
       "length": 75.856583,
       "width": 15.333482,
       "angle": -169,
@@ -559,7 +559,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-97, -60.5],
+      "location": [-98.5, -61],
       "length": 75.365768,
       "width": 15.524291,
       "angle": -169,
@@ -568,7 +568,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-161.5, 0],
+      "location": [-169, -0],
       "length": 70.5,
       "width": 22,
       "angle": 180,
@@ -609,19 +609,19 @@
       }
     },
     {
-      "location": [-161, -33],
+      "location": [-163, -33],
       "length": 110,
       "width": 15,
-      "angle": -180,
+      "angle": 180,
       "contrailSize": 15,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-161, 33],
+      "location": [-163, 33],
       "length": 110,
       "width": 15,
-      "angle": 180,
+      "angle": -180,
       "contrailSize": 15,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"

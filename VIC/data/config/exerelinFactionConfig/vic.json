@@ -123,7 +123,7 @@
 	"vengeanceLevelNames":["Rancor", "Vengeance", "Nemesis"],
 	"vengeanceFleetNames":["Dissolution Unit","Liquidation Fleet","Termination Armada"],
     "vengeanceFleetNamesSingle":["a Dissolution Unit","a Liquidation Fleet","a Termination Armada"],
-    "vengeanceFleetSizeMult":2.5,
+    "vengeanceFleetSizeMult":1.2,
 	
 	"invasionFleetName":"Asset Mergers&Acquisitions Armada",
 	"invasionSupportFleetName":"Threat Assessment Fleet",
@@ -162,6 +162,7 @@
     "startSpecialItems":[
         [["vic_hulls_t2_package", ""]],
         [["vic_weapons_t2_package", ""]],
+        [["modspec", "vic_ShturmSolution"]]
     ],
 
     "defenceStations":[

@@ -13,7 +13,9 @@
   "viewOffset": 0,
   "builtInMods": [
     "vic_aerodynamicdesign",
-    "vic_toneddownweapon"
+    "vic_toneddownweapon",
+    "phasefield",
+	"delicate"
   ],
   "builtInWeapons": {
     "WS0001": "vic_nybbas_front_left",
@@ -70,11 +72,11 @@
   ],
   "engineSlots": [
     {
-      "location": [-59.5, -19],
-      "length": 53,
-      "width": 15,
+      "location": [-61.5, -19],
+      "length": 48.5,
+      "width": 14,
       "angle": 180,
-      "contrailSize": 15,
+      "contrailSize": 14,
       "style": "CUSTOM",
       "styleSpec": {
         "type": "GLOW",

@@ -217,8 +217,8 @@
   ],
   "engineSlots": [
     {
-      "location": [-33, -31],
-      "length": 53,
+      "location": [-37, -31],
+      "length": 65,
       "width": 16,
       "angle": 180,
       "contrailSize": 16,
@@ -226,8 +226,8 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-33, 31],
-      "length": 53,
+      "location": [-37, 31],
+      "length": 65,
       "width": 16,
       "angle": -180,
       "contrailSize": 16,
@@ -235,26 +235,26 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-31, -61],
-      "length": 42.5,
-      "width": 14,
+      "location": [-34, -61],
+      "length": 55,
+      "width": 15,
       "angle": 180,
       "contrailSize": 14,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-31, 61],
-      "length": 42.5,
-      "width": 14,
+      "location": [-34, 61],
+      "length": 55,
+      "width": 15,
       "angle": -180,
       "contrailSize": 14,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-31, -91],
-      "length": 33.5,
+      "location": [-34, -91],
+      "length": 45,
       "width": 14,
       "angle": 180,
       "contrailSize": 14,
@@ -262,8 +262,8 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-31, 91],
-      "length": 33.5,
+      "location": [-34, 91],
+      "length": 45,
       "width": 14,
       "angle": -180,
       "contrailSize": 14,

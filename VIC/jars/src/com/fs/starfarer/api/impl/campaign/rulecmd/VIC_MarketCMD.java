@@ -68,12 +68,22 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
     }
 
     public static int getBombardmentCost(MarketAPI market, CampaignFleetAPI fleet) {
+        float planetSize = 150f; //used if market on station
+        if (market.getPlanetEntity() != null){
+            planetSize = market.getPlanetEntity().getRadius();
+            if (planetSize > 350) planetSize = 350;
+            if (planetSize< 50) planetSize = 50;
+        }
         float str = getDefenderStr(market);
-        int result = (int) (str * Global.getSettings().getFloat("bombardFuelFraction"));
+
+        float result = (str * 0.1f) + (planetSize * 10);
+
         if (fleet != null && result < 0) result = 0;
+
         float hazardMult = market.getHazardValue();
         if (hazardMult > 2) hazardMult = 2;
         else if (hazardMult < 0.5f) hazardMult = 0.5f;
+
         return Math.round(result * hazardMult * HmodBonus());
     }
 
@@ -427,9 +437,26 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         info.addPara(StringHelper.getString("VIC_VBomb", "VBomb_desc1"), initPad);
 
 
+        /*
         info.addPara("Ground defense strength: %s", opad, h, "" + (int) defenderStr);
         info.addStatModGrid(width, 50, opad, small, defender, true, statPrinter(true));
+
+         */
         info.addPara("Bombardment difficulty rating: %s", opad, h, "" + getBombardmentCost(market, playerFleet));
+
+        float planetSize = 150f; //used if market on station
+        if (market.getPlanetEntity() != null){
+            planetSize = market.getPlanetEntity().getRadius();
+            if (planetSize > 350) planetSize = 350;
+            if (planetSize< 50) planetSize = 50;
+        }
+        StatBonus planetSizeBonus = new StatBonus();
+        planetSizeBonus.modifyFlat("VIC_PlanetSize", planetSize * 10, "Planet size");
+        planetSizeBonus.modifyFlat("VIC_ColonyDefence", getDefenderStr(market) * 0.1f, "Ground defences");
+
+
+        info.addStatModGrid(width, 50, opad, small, planetSizeBonus, true, statPrinter(false));
+
         if (market.getHazardValue() != 1) {
             info.addStatModGrid(width, 50, opad, small, hazardMult, true, statPrinter(false));
         }
@@ -439,8 +466,8 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
 
         text.addTooltip();
 
-        temp.bombardCostOrganics = Math.round(getBombardmentCost(market, playerFleet) * 0.2f);
-        temp.bombardCostGenetech = Math.round(getBombardmentCost(market, playerFleet) * 0.05f);
+        temp.bombardCostOrganics = Math.round(getBombardmentCost(market, playerFleet));
+        temp.bombardCostGenetech = Math.round(getBombardmentCost(market, playerFleet) * 0.1f);
 
 
         int organics = (int) playerFleet.getCargo().getCommodityQuantity("organics");
@@ -556,10 +583,10 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
 
         Misc.increaseMarketHostileTimeout(market, 120f);
 
-        playerFleet.getCargo().removeCommodity(Commodities.ORGANICS, Math.round(getBombardmentCost(market, playerFleet) * 0.2f));
-        AddRemoveCommodity.addCommodityLossText(Commodities.ORGANICS, Math.round(getBombardmentCost(market, playerFleet) * 0.2f), text);
-        playerFleet.getCargo().removeCommodity("vic_genetech", Math.round(getBombardmentCost(market, playerFleet) * 0.05f));
-        AddRemoveCommodity.addCommodityLossText("vic_genetech", Math.round(getBombardmentCost(market, playerFleet) * 0.05f), text);
+        playerFleet.getCargo().removeCommodity(Commodities.ORGANICS, Math.round(getBombardmentCost(market, playerFleet) ));
+        AddRemoveCommodity.addCommodityLossText(Commodities.ORGANICS, Math.round(getBombardmentCost(market, playerFleet)), text);
+        playerFleet.getCargo().removeCommodity("vic_genetech", Math.round(getBombardmentCost(market, playerFleet) * 0.1f));
+        AddRemoveCommodity.addCommodityLossText("vic_genetech", Math.round(getBombardmentCost(market, playerFleet) * 0.1f), text);
 
 
         text.addPara(temp.willBecomeHostile.toString(), Misc.getHighlightColor());
@@ -586,6 +613,17 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         text.addPara(str, Misc.getHighlightColor(), "" + market.getName(), "" + stabilityPenalty);
 
         market.addCondition("VIC_VBomb_scar");
+        Color toxinColor = new Color(121, 182, 5, 164);
+        if (market.getPlanetEntity() != null) {
+            PlanetAPI planet = market.getPlanetEntity();
+            if (planet.getSpec() != null){
+                planet.getSpec().setAtmosphereColor(toxinColor);
+                if (planet.getSpec().getCloudTexture() != null){
+                    planet.getSpec().setCloudColor(toxinColor);
+                }
+                planet.applySpecChanges();
+            }
+        }
 
 
         if (dialog != null && dialog.getPlugin() instanceof RuleBasedDialog) {

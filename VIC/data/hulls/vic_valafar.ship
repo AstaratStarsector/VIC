@@ -26,7 +26,8 @@
     "WS0016": "vic_valafar_wing_left",
     "WS0017": "vic_valafar_wing_right",
     "WS0018": "vic_valafar_front_left",
-    "WS0019": "vic_valafar_front_right"
+    "WS0019": "vic_valafar_front_right",
+	"WS1000": "VIC_OmniLungeEffect"
   },
   "weaponSlots": [
     {
@@ -116,7 +117,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 85,
-      "angle": -0,
+      "angle": 0,
       "locations": [-115, -8]
     },
     {
@@ -125,7 +126,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 85,
-      "angle": 0,
+      "angle": -0,
       "locations": [-115, 8]
     },
     {
@@ -199,42 +200,51 @@
       "arc": 5,
       "angle": -0,
       "locations": [73.5, -21]
+    },
+	{
+      "id": "WS1000",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [0, 0]
     }
   ],
   "engineSlots": [
     {
-      "location": [-112, -8],
-      "length": 82.5,
-      "width": 22,
+      "location": [-116, -8],
+      "length": 75.5,
+      "width": 18,
       "angle": 180,
-      "contrailSize": 22,
+      "contrailSize": 18,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-112, 8],
-      "length": 82.5,
-      "width": 22,
+      "location": [-116, 8],
+      "length": 75.5,
+      "width": 18,
       "angle": -180,
-      "contrailSize": 22,
+      "contrailSize": 18,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-67, -37],
-      "length": 90.5,
-      "width": 17,
+      "location": [-70, -37],
+      "length": 71,
+      "width": 14,
       "angle": 180,
-      "contrailSize": 17,
+      "contrailSize": 14,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-67, 37],
-      "length": 90.5,
-      "width": 17,
+      "location": [-70, 37],
+      "length": 71,
+      "width": 14,
       "angle": -180,
-      "contrailSize": 17,
+      "contrailSize": 14,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }

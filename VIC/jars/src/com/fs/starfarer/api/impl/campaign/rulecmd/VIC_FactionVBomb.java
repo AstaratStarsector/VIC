@@ -3,6 +3,7 @@ package com.fs.starfarer.api.impl.campaign.rulecmd;
 import com.fs.starfarer.api.EveryFrameScript;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.FactionAPI;
+import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.econ.RecentUnrest;
@@ -29,6 +30,18 @@ public class VIC_FactionVBomb {
     public void doBombardment(FactionAPI faction, MarketAPI market) {
 
         market.addCondition("VIC_VBomb_scar");
+
+        Color toxinColor = new Color(121, 182, 5, 164);
+        if (market.getPlanetEntity() != null) {
+            PlanetAPI planet = market.getPlanetEntity();
+            if (planet.getSpec() != null){
+                planet.getSpec().setAtmosphereColor(toxinColor);
+                if (planet.getSpec().getCloudTexture() != null){
+                    planet.getSpec().setCloudColor(toxinColor);
+                }
+                planet.applySpecChanges();
+            }
+        }
 
         String reason = faction.getDisplayName() + " bombardment";
         RecentUnrest.get(market).add(2, reason);

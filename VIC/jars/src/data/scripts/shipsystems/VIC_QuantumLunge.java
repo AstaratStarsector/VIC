@@ -183,33 +183,40 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                 Global.getSoundPlayer().playSound("vic_quantum_lunge_explosion", 1, 0.5f, ExpPos, new Vector2f(0, 0));
 
                 for (CombatEntityAPI EmpTarget : entitiesMain) {
-                    if (!(EmpTarget instanceof DamagingProjectileAPI) && EmpTarget != ship) {
-                        float EmpArcDmgFinal = EmpArcDmg;
-                        float EmpArcEmpFinal = EmpArcEmp;
-                        if (EmpTarget.getOwner() == ship.getOwner()) {
-                            EmpArcDmgFinal *= AllyMult;
-                            EmpArcEmpFinal *= AllyMult;
-                        }
-                        spawnEMPArc(engine, ship, EmpTarget, ExpPos, EmpArcDmgFinal, EmpArcEmpFinal);
+
+                    if (EmpTarget == ship) continue;
+
+                    Vector2f damagePos = ExpPos;
+                    if (EmpTarget instanceof MissileAPI) damagePos = new Vector2f(EmpTarget.getLocation());
+
+                    float EmpArcDmgFinal = EmpArcDmg;
+                    float EmpArcEmpFinal = EmpArcEmp;
+
+                    if (EmpTarget.getOwner() == ship.getOwner()) {
+                        EmpArcDmgFinal *= AllyMult;
+                        EmpArcEmpFinal *= AllyMult;
                     }
+
+                    engine.applyDamage(EmpTarget,damagePos,EmpArcDmgFinal,EmpArmDmgType,EmpArcEmpFinal,false,false,ship,true);
                 }
+
 
                 if (Math.random() < 0.25f + PseudoRandom) {
                     PseudoRandom = 0f;
                     Vector2f randomPoint;
                     if (Math.random() < 0.5) {
-                        randomPoint = MathUtils.getRandomPointInCone(ExpPos, 250, StarFacing - 65, StarFacing - 115);
+                        randomPoint = MathUtils.getRandomPointInCone(ExpPos, 450, StarFacing - 65, StarFacing - 115);
                     } else {
-                        randomPoint = MathUtils.getRandomPointInCone(ExpPos, 250, StarFacing + 65, StarFacing + 115);
+                        randomPoint = MathUtils.getRandomPointInCone(ExpPos, 450, StarFacing + 65, StarFacing + 115);
                     }
 
-                    List<CombatEntityAPI> entities = CombatUtils.getEntitiesWithinRange(randomPoint, 50f);
+                    List<CombatEntityAPI> entities = CombatUtils.getEntitiesWithinRange(randomPoint, 40f);
 
                     if (entities.size() > 0 && ArcAimAtShips) {
                         CombatEntityAPI EmpTarget = entities.get(MathUtils.getRandomNumberInRange(0, entities.size() - 1));
                         if (!(EmpTarget instanceof DamagingProjectileAPI) && EmpTarget != ship) {
-                            float EmpArcDmgFinal = EmpArcDmg;
-                            float EmpArcEmpFinal = EmpArcEmp;
+                            float EmpArcDmgFinal = EmpArcDmg * 0.5f;
+                            float EmpArcEmpFinal = EmpArcEmp * 0.5f;
                             if (EmpTarget.getOwner() == ship.getOwner()) {
                                 EmpArcDmgFinal *= AllyMult;
                                 EmpArcEmpFinal *= AllyMult;

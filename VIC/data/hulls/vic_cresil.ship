@@ -20,7 +20,7 @@
     "WS0008": "vic_engine_glow_universal_big",
     "WS0009": "vic_engine_glow_universal_small",
     "WS0010": "vic_engine_glow_universal_small",
-	"WS0011": "vic_targetingLazer"
+    "WS0011": "vic_targetingLazer"
   },
   "weaponSlots": [
     {
@@ -173,7 +173,7 @@
   ],
   "engineSlots": [
     {
-      "location": [-129.5, 8],
+      "location": [-134.5, 8],
       "length": 90,
       "width": 20,
       "angle": 180,
@@ -182,7 +182,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-129.5, -8],
+      "location": [-134.5, -8],
       "length": 90,
       "width": 20,
       "angle": -180,
@@ -191,19 +191,19 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-67.5, 56],
+      "location": [-70.5, 56],
       "length": 75,
       "width": 15,
-      "angle": 180,
+      "angle": -180,
       "contrailSize": 15,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-67.5, -56],
+      "location": [-70.5, -56],
       "length": 75,
       "width": 15,
-      "angle": -180,
+      "angle": 180,
       "contrailSize": 15,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"

@@ -4,7 +4,7 @@
 	"type":"DECORATIVE",
 	"size":"SMALL",
 	"renderHints":["RENDER_ADDITIVE"],
-	"everyFrameEffect":"data.scripts.weapons.vic_blinkerDisable",
+	"everyFrameEffect":"data.scripts.weapons.decos.vic_blinkerDisable",
 	"turretSprite":"graphics/weapons/blonkers/blonkerRed/blinker00.png",
 	"hardpointSprite":"graphics/weapons/blonkers/blonkerRed/blinker00.png",	
 	"numFrames":23,

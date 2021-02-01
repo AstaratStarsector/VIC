@@ -1,10 +1,15 @@
 package data.scripts.shipsystems;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.combat.CombatEngineLayers;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipSystemAPI;
+import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
+import com.fs.starfarer.api.util.IntervalUtil;
+import data.scripts.util.MagicRender;
+import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
@@ -12,8 +17,6 @@ public class vic_DriftBoost extends BaseShipSystemScript {
 
     public static float SPEED_BONUS = 250f;
     public static float TURN_BONUS = 100f;
-    private final Color color = new Color(255, 0, 0, 255);
-    private static float SHTURM_COOLDOWN_MULT = 0.66f;
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
@@ -44,14 +47,13 @@ public class vic_DriftBoost extends BaseShipSystemScript {
             stats.getMaxTurnRate().unmodify(id);
         }
 
-
-
-
         if (stats.getEntity() instanceof ShipAPI) {
             ship.getEngineController().extendFlame(this, 0.5f * effectLevel, 0.5f * effectLevel, 0.25f * effectLevel);
         }
 
     }
+
+
 
 
     @Override

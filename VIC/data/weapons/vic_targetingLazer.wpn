@@ -48,7 +48,5 @@
   "width": 3,
   "textureType": ROUGH,
   "textureScrollSpeed": 210,
-  "pixelsPerTexel": 2,
-  "fireSoundOne": "vic_rarog_start",
-  "fireSoundTwo": "vic_rarog_loop"
+  "pixelsPerTexel": 2
 }

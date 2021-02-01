@@ -29,7 +29,7 @@ VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,T
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #VIC modular,,,,,,,,,,,,,,,,,,
-VIC Integrated Assault Systems,vic_assault,3,,Volkov Industries,offensive,Weapons,15000,,,,4,8,15,25,data.hullmods.vic_assault,"Decreases the flux cost of weapons by %s/%s/%s/%s and increases the maximum speed by %s/%s/%s/%s, depending on hullsize. Also increases projectile speed by %s. 
+VIC Integrated Assault Systems,vic_assault,2,,Volkov Industries,offensive,Weapons,15000,,,,4,8,15,25,data.hullmods.vic_assault,"Decreases the flux cost of weapons by %s/%s/%s/%s and increases the maximum speed by %s/%s/%s/%s, depending on hullsize. Also increases projectile speed by %s. 
 
 Incompatible with Dedicated Targeting Core, Integrated Targeting Unit, Advanced Targeting Core and Unstable Injector.
 
@@ -45,7 +45,7 @@ Increases the shields' arc by %s degrees.
 Incompatible with Accelerated Shields, Extended Shields, Hardened Shields and Stabilized Shields. 
 
 If installed on VIC ships with other modular VIC hullmods (containing VIC prefix in the name) or if installed on non-VIC ships, reduces the maximum speed by %s.",,graphics/hullmods/vic_shiledPack.png
-"""Shturm"" Overhaul",vic_ShturmSolution,3,,Volkov Industries,offensive,Weapons,25000,,,,5,10,15,25,data.hullmods.vic_assaultVariant,"The ""Shturm"" line of VIC ships is designed  with a specific set of technological solutions, giving them an edge in frantic close combat. The installation of this hullmod activates said solutions and severely reconfigures the ships' energy and weapon systems. The specified stats depend on the hull size. 
+"""Shturm"" Overhaul",vic_ShturmSolution,1,,Volkov Industries,offensive,Weapons,5000,,,,5,10,15,25,data.hullmods.vic_assaultVariant,"The ""Shturm"" line of VIC ships is designed  with a specific set of technological solutions, giving them an edge in frantic close combat. The installation of this hullmod activates said solutions and severely reconfigures the ships' energy and weapon systems. The specified stats depend on the hull size. 
 
 - Every point in flux capacitors provides no bonus to flux capacity, but gives %s flux dissipation instead.
 
@@ -66,7 +66,7 @@ Incompatible with Safety Overrides.",,graphics/hullmods/vic_shturmFrame.png
 #modular,,,,,,,,,,,,,,,,,,
 #Dedicated PD core,vic_DPDCore,2,,Volkov Industries,offensive,Weapons,15000,,,,7,10,13,16,data.hullmods.vic_DPDCore,"Extends the range of Point-defence weapons by %s/%s/%s/%s, depending on hull size.",,graphics/hullmods/vic_assault.png
 Loader Overdrive,vic_loaderOverdrive,1,,Volkov Industries,offensive,Weapons,10000,,,,3,6,9,15,data.hullmods.vic_loaderOverdrive,Increases ballistic and energy weapons Rate of fire by %s but also reduces their range by %s.,,graphics/hullmods/vic_reloaderOvercharge.png
-PD Arc Emitter,vic_PDArcEmitter,2,,Volkov Industries,defensive,Weapons,15000,,,,4,8,12,20,data.hullmods.vic_PDArcEmitter,"Zaps missiles in %s su range dealing %s damage to it, generates %s flux per zap, after zapping needs to recharge for %s seconds, can hold up to %s charges. All stats are depending on hull size.",,graphics/hullmods/vic_empEmitter.png
+PD Arc Emitter,vic_PDArcEmitter,2,,Volkov Industries,defensive,Weapons,15000,TRUE,,,4,8,12,20,data.hullmods.vic_PDArcEmitter,"Zaps missiles in %s su range dealing %s damage to it, generates %s flux per zap, after zapping needs to recharge for %s seconds, can hold up to %s charges. All stats are depending on hull size.",,graphics/hullmods/vic_empEmitter.png
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #Commissioned Crews,,,,,,,,,,,,,,,,,,

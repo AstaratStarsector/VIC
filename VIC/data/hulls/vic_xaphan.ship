@@ -20,7 +20,8 @@
   "builtInWeapons": {
     "WS0001": "vic_xaphandecoleft",
     "WS0002": "vic_xaphandecoright",
-    "WS0006": "vic_xaphandecofront"
+    "WS0006": "vic_xaphandecofront",
+	"WS0007": "VIC_OmniLungeEffect"
   },
   "weaponSlots": [
     {
@@ -76,15 +77,24 @@
       "arc": 0,
       "angle": 0,
       "locations": [52.5, -0]
+    },
+	{
+      "id": "WS0007",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [0, 0]
     }
   ],
   "engineSlots": [
     {
-      "location": [-71, -0],
-      "length": 30,
-      "width": 10,
+      "location": [-73.5, -0],
+      "length": 40.5,
+      "width": 13,
       "angle": 180,
-      "contrailSize": 30,
+      "contrailSize": 13,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }

@@ -3,7 +3,7 @@
 	"specClass":"beam",
 	"type":"DECORATIVE",
 	"size":"MEDIUM",
-	"everyFrameEffect":"data.scripts.VIC_EngineGlowScript",
+	"everyFrameEffect":"data.scripts.weapons.decos.VIC_EngineGlowScript",
 	"turretSprite":"graphics/weapons/decos/vic_engineglowsprite.png",
 	"hardpointSprite":"graphics/weapons/decos/vic_engineglowsprite.png",
 	"turretOffsets":[0, 0],

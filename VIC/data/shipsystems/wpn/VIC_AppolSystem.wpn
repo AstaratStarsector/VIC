@@ -3,7 +3,7 @@
 	"specClass":"beam",
 	"type":"DECORATIVE",
 	"size":"MEDIUM",
-	"everyFrameEffect":"data.scripts.weapons.VIC_QuantumLungeWeapon",
+	"everyFrameEffect":"data.scripts.weapons.decos.VIC_QuantumLungeWeapon",
 	"turretSprite":"",
 	"hardpointSprite":"",
 	"turretOffsets":[0, 0],

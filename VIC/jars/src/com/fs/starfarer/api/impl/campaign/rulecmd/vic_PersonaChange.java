@@ -52,6 +52,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
     public static float
             respecOfficerXP = 0.9f;
+
     public static int
             respecPlayerCost = 50000,
             respecOfficerCost = 100000;
@@ -82,10 +83,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             temp.isPlayer = true;
             temp.personaToChange = null;
         }
-
     }
-
-
 
     protected enum mainMenuState {
         justEntered,
@@ -348,7 +346,6 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         Color b = Misc.getNegativeHighlightColor();
         switch (currState) {
             case InToYou:
-                respecPlayer();
                 LabelAPI label = text.addPara("The manager nods affirmatively and after giving you some more information about internal organic reconfiguration, informs you that the procedure will cost %s.",
                         h, respecPlayerCost + " credits");
                 break;

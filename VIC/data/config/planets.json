@@ -58,6 +58,7 @@
 		"starCoronaSizeMult":5.12, # required, multiplier for star's radius
 		"isStar":true,
 		"isBlackHole":true,
+		"isPulsar":true,
 		"scaleMultMapIcon":2.5,
 		"scaleMultStarscapeIcon":2.5,
 		"lightPosition":[0,0,10], # in planet radii.  Not used for stars.  z > 0 is above the playing field.

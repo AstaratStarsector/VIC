@@ -1,7 +1,5 @@
 package data.world.systems;
 
-
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,7 +99,6 @@ public class Empyrean {
                                 Industries.MINING,
                                 Industries.HEAVYBATTERIES,
                                 Industries.REFINING,
-                                Industries.HEAVYINDUSTRY,
                                 Industries.WAYSTATION
                         )
                 ),
@@ -291,7 +288,6 @@ public class Empyrean {
                                 Industries.STARFORTRESS,
                                 Industries.HEAVYBATTERIES,
                                 Industries.MILITARYBASE,
-                                Industries.HEAVYINDUSTRY,
                                 ("vicbiolabs"),
                                 Industries.WAYSTATION
                         )

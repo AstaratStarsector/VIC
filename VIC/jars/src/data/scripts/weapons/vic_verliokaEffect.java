@@ -127,26 +127,6 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
                     missile.getVelocity().scale(0.8f);
                 }
                 Global.getCombatEngine().applyDamage(missile, missile.getLocation(), weapon.getDamage().getDamage() * amount * dmgMult, weapon.getDamageType(), 0f, false, false, null);
-                BeamAPI beam = weaponBeams.get(0);
-                if (Math.random() >= amount) continue;
-                if (MathUtils.getShortestRotation(angleToTarget, facing) <= 0) beam = weaponBeams.get(1);
-
-                Vector2f zapFrom = MathUtils.getNearestPointOnLine(missile.getLocation(), beam.getFrom(), beam.getTo());
-                missile.setEmpResistance(100);
-
-                engine.spawnEmpArc(ship,
-                        zapFrom,
-                        null,
-                        missile,
-                        weapon.getDamageType(),
-                        0,
-                        -1000,
-                        3000,
-                        null,
-                        1,
-                        new Color(255, 162, 0, 29),
-                        new Color(255, 191, 21, 255));
-
             }
         }
         for (ShipAPI shipToCheck : CombatUtils.getShipsWithinRange(weapon.getLocation(), weapon.getRange())) {

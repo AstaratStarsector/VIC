@@ -150,7 +150,7 @@
   ],
   "engineSlots": [
     {
-      "location": [-29.5, 31],
+      "location": [-31, 31],
       "length": 68,
       "width": 13,
       "angle": -180,
@@ -159,7 +159,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-29.5, -31],
+      "location": [-31, -31],
       "length": 68,
       "width": 13,
       "angle": 180,
@@ -168,7 +168,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-18.5, 47],
+      "location": [-20, 47],
       "length": 56,
       "width": 13,
       "angle": -180,
@@ -177,7 +177,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-18.5, -47],
+      "location": [-20, -47],
       "length": 56,
       "width": 13,
       "angle": 180,

@@ -26,7 +26,8 @@
     "WS0014": "vic_moloch_wing_left",
     "WS0015": "vic_moloch_wing_right",
     "WS0016": "vic_moloch_front_left",
-    "WS0017": "vic_moloch_front_right"
+    "WS0017": "vic_moloch_front_right",
+	"WS0018": "VIC_OmniLungeEffect"
   },
   "weaponSlots": [
     {
@@ -189,29 +190,38 @@
       "angle": 0,
       "locations": [58, -11],
       "renderOrderMod": 1
+    },
+    {
+      "id": "WS0018",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-18.5, -0]
     }
   ],
   "engineSlots": [
     {
-      "location": [-93, -14],
-      "length": 60,
-      "width": 15,
+      "location": [-96, -14],
+      "length": 55.5,
+      "width": 13,
       "angle": 180,
-      "contrailSize": 15,
+      "contrailSize": 13,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-93, 14],
-      "length": 60,
-      "width": 15,
+      "location": [-96, 14],
+      "length": 55.5,
+      "width": 13,
       "angle": -180,
-      "contrailSize": 15,
+      "contrailSize": 13,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-75, -31],
+      "location": [-79, -31],
       "length": 50,
       "width": 10,
       "angle": 180,
@@ -220,7 +230,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-75, 31],
+      "location": [-79, 31],
       "length": 50,
       "width": 10,
       "angle": -180,

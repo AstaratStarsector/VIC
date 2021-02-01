@@ -172,7 +172,6 @@
 		"vic_loaderOverdrive",
 		"vic_PDArcEmitter",
 		"vic_ShturmSolution",
-		"vic_shturmSolutionDummy",
     ],
   },
   
@@ -210,11 +209,13 @@
   ],
   "music": {
     "theme": "music_vic_market_neutral",
+	
     "market_neutral": "music_vic_market_neutral",
-    "market_hostile": "music_vic_market_neutral",
+    "market_hostile": "music_vic_market_hostile",
     "market_friendly": "music_vic_market_friendly",
+	
     "encounter_neutral": "music_vic_market_neutral",
-    "encounter_hostile": "music_vic_market_neutral",
+    "encounter_hostile": "music_vic_market_hostile",
     "encounter_friendly": "music_vic_market_friendly",
   },
   "internalComms":"tritachyon_internal",

@@ -7,8 +7,8 @@ Besomar Scattercannon,vic_devastator,2,,4500,800,,100,,40,12,19,28,6,42,HIGH_EXP
 ",,"The specified sustained DPS value is achieved only when %s are installed. Without them, the sustained damage value is %s. ",Extended Magazines | 400 ,,7.4
 Psotnik Interference Autocannon,vic_psotnik,2,,5000,900,,50,25,5,15,25,,,,KINETIC,55,,0,0.25,,,0,12,0.5,10,,850,,,,,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",20% | 50,,,,7.8
 Tugarin Stellar Catapult,vic_tugarin,3,,6000,950,,1200,,200,6,24,,,,HIGH_EXPLOSIVE,1680,,0.5,3.25,1,,0,5,2.5,10,,350,,,400,STRIKE,"he21, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,"Projectile slows down overtime. Explodes on hit or when reaching 0 velocity, dealing up to %s damage.",360 High Explosive,,,,8
-Vodyanoy Plasma Minigun,vic_vodyanoy,3,0.5,8000,700,,20,,20,12,22,,,,ENERGY,16,,0.5,1,999999999,0.05,0,10,0.9,3,,1200,,,25,"ANTI_FTR, PD_ALSO","energy 15, vic_t2weapons_bp",,Volkov Industries,,"Suppression, Point Defense",,,,,"After %s seconds of firing starts overheating, replacing every %s projectile with one that deals %s damage. The heat ramps up by %s per second and increases the number of High Explosive projectiles. At %s heat every %s projectile is replaced. Heat level decreases gradually while not firing.",1.5 | 8th | 40 High Explosive | 16% | 100% | 5th,,,,8.1
-Vodyanoy HE proj,vic_vodyanoy_sub,3,0.5,8000,700,,40,,20,12,22,,,,HIGH_EXPLOSIVE,15,,0.5,1,999999999,0.05,0,10,0.1,3,,1200,,,25,SYSTEM,"energy 15, vic_t2weapons_bp",,Volkov Industries,,"Suppression, Point Defense",,,,,,,,,,8.1
+Vodyanoy Plasma Minigun,vic_vodyanoy,3,0.5,8000,700,,20,,20,12,22,,,,ENERGY,16,,0.5,1,999999999,0.05,0,10,0.9,3,,1200,,,25,ANTI_FTR,"energy 15, vic_t2weapons_bp",,Volkov Industries,,Suppression,,,,,"After %s seconds of firing starts overheating, replacing every %s projectile with one that deals %s damage. The heat ramps up by %s per second and increases the number of High Explosive projectiles. At %s heat every %s projectile is replaced. Heat level decreases gradually while not firing.",1.5 | 8th | 40 High Explosive | 16% | 100% | 5th,,,,8.1
+Vodyanoy HE proj,vic_vodyanoy_sub,3,,8000,700,,40,,20,12,22,,,,HIGH_EXPLOSIVE,15,,0.5,1,999999999,0.05,0,10,0.1,3,,1200,,,25,SYSTEM,energy 15,,Volkov Industries,,"Suppression, Point Defense",,,,,,,,,,8.1
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Gatling Beam,vic_gatlingbeam,3,0.5,8000,1000,900,,0,0,7,25,,,,ENERGY,,600,0,0.2,0.2,0,,,,,100000,,,,,FIRE_WHEN_INEFFICIENT,"energy20, beam15, LR",,Volkov Industries,,Suppression,,,,,"Hits on hull or armor arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,,,27
@@ -17,13 +17,13 @@ Vodyanoy HE proj,vic_vodyanoy_sub,3,0.5,8000,700,,40,,20,12,22,,,,HIGH_EXPLOSIVE
 Nawia Quantum Cannon,vic_rubicon,1,,900,800,,400,,10,14,12,,,,KINETIC,440,,0,1.6,,,0,4,2,6,,800,,,,,"kinetic14, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,Main projectile deals only %s damage on hit spawn %s projectile which deal other %s.,50% | 4 | 50%,,,,5
 ,vic_rubicon_real,1,,900,800,,200,,10,14,12,,,,KINETIC,440,,0,1.6,,,0,5,2,10,,800,,,,SYSTEM,kinetic14,,Volkov Industries,,Anti Shield,,,,,"On successful hit %s projectiles appear close to target, each projectile deals %s kinetic damage. Successful hits with the main projectile generate 200 additional flux.",4 | 60 | 200,,,,5
 ,vic_rubicon_sub,1,,69,400,,50,,10,14,10,,,,KINETIC,50,,0,1,,,0,0,0,,,1000,,,,SYSTEM,,,,,,,,,,,,,,,
-Verlioka Field Disruptor,vic_verlioka,1,0.75,900,400,100,,,500,35,12,,,,FRAGMENTATION,,250,0.1,,,,0,,,,10000,,,,,"PD_ONLY, ANTI_FTR, FIRE_WHEN_INEFFICIENT","pd14, vic_t2weapons_bp",,Volkov Industries,,Point Defense (Area),,,,,"Emits %s field, which slows down and damages fighters and missiles.",30 degrees,,,,
+Verlioka Field Disruptor,vic_verlioka,1,0.75,900,400,100,,,500,35,12,,,,FRAGMENTATION,,250,0.1,,,,0,,,,10000,,,,,"PD, PD_ONLY, ANTI_FTR, FIRE_WHEN_INEFFICIENT","pd14, vic_t2weapons_bp",,Volkov Industries,,Point Defense (Area),,,,,"Emits %s field, which slows down and damages fighters and missiles.",30 degrees,,,,
 Laidlaw Accelerator,vic_lightlaidlawaccelerator,2,,1200,800,,500,,10,10,15,,,,ENERGY,750,,0.5,1.5,,,0,10,1.25,10,,3500,,,,,"energy13, vic_t1weapons_bp",,Volkov Industries,,General,,,,,Extremely fast projectiles. Hits on hull or armor create explosions dealing additional %s fragmentation damage.,150,,,,7.5
 Gagana Smartdart Launcher,vic_gagana,2,,1200,800,,200,,10,14,13,,,,HIGH_EXPLOSIVE,220,,0,1,,,0,5,2,10,,700,,,,ANTI_FTR,"he13, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,Homing projectiles which stick to the hull and explode after %s seconds dealing %s damage.,0.5 | 50 High Explosive,,,,5
 ,vic_gagana_sub,1,,2000,800,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,0,5,2,10,,100,100,1,500,SYSTEM,he20,,Volkov Industries,,Anti Shield,,,,,,,,,,5
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #smal,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Strigoy Flak Cannon,vic_strigoy,0,,400,400,,50,,0,40,5,,,,FRAGMENTATION,25,,0,0.5,,,0,15,3,10,,600,,,,"PD, PD_ONLY, ANTI_FTR","pd5, vic_t2weapons_bp",,Volkov Industries,,Point Defense,,,,,,,,,,18
+Strigoy Flak Cannon,vic_strigoy,0,,400,400,,50,,0,40,5,,,,FRAGMENTATION,25,,0,0.5,,,0,15,3,10,,600,,,,"PD, PD_ONLY, ANTI_FTR","pd5, vic_t2weapons_bp",,Volkov Industries,,Point Defense (Area),,,,,,,,,,18
 Rarog Atomic Emitter,vic_rarog,0,,400,450,125,,,0,100,5,,,,HIGH_EXPLOSIVE,,125,0.2,0.1,,,,,,,10000,,,,,ANTI_FTR,"beam6, he6, vic_t2weapons_bp",,Volkov Industries,,Anti Armor,,,,,,,,,,15.6
 Laidlaw Mass Driver,vic_laidlawMassDriver,0,,600,700,,250,,2,30,7,,,,ENERGY,375,,0.5,1.5,,,0,10,1.25,10,,2500,,,25,,"energy8, vic_t2weapons_bp",,Volkov Industries,,General,,,,,Extremely fast projectiles. Hits on hull or armor create explosions dealing additional %s fragmentation damage.,75,,,,7.5
 Upyr Autocannon,vic_upyr,0,,600,600,,20,,1,30,7,,,,KINETIC,17,,0,0.1,2,0.1,0,18,1,9,,850,,,20,,"kinetic7, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,,,,,,2.5
@@ -32,7 +32,7 @@ Upyr Autocannon,vic_upyr,0,,600,600,,20,,1,30,7,,,,KINETIC,17,,0,0.1,2,0.1,0,18,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Build-ins,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Volkov Industries,,,,,,,,,,,,
 Phase Lance (Shortranged),vic_phaselance,13,,1,250,1000,,,0,20,10,,,,ENERGY,,1200,0.25,0.5,1,4,,,,,3200,,,,,SYSTEM,"energy14, beam10",,Volkov Industries,,General,,,,,,,,,,20
-Scatter Blaster (125 x 4 x 3 energy),vic_scatterblaster,13,,1,500,,125,,3,100,42,12,,,ENERGY,50,,0,0.25,,,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, STRIKE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
+Scatter Blaster (125 x 4 x 3 energy),vic_scatterblaster,13,,1,500,,125,,3,100,42,12,,,ENERGY,50,,0,0.25,3,0.25,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, STRIKE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
 Abyssus Array,vic_abyssalfangs,13,,100000,2000,,100,,5,,45,,,,KINETIC,0,,0,48.85,24,0.05,0,0,0,0,,450,1000,10,100,"DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8",,Volkov Industries,,Anti Shield,Fast,Excellent,,,,25% | 400,,,TRUE,12.1
 abyssalfangs sub,vic_abyssalfangs_sub,13,,666,900,,200,50,5,15,42,,,,KINETIC,55,,0,0.25,,,0,12,0.5,10,,1000,,,,SYSTEM,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield,,,,,,25% | 60,,,,7.8
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -46,7 +46,8 @@ quantum Lunge Marker Weapon,vic_quantumLungeMarkerWeapon,0,,200000,1000,,4000,50
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Decos with Scripts,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,VIC_AppolSystem,,,,,,,,,,,,,,,,,,10,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
+apoll system,VIC_AppolSystem,,,,,,,,,,,,,,,,,,10,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
+omni lunge,VIC_OmniLungeEffect,,,,,,,,,,,,,,,,,,10,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Deco Weapons,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Engine Glow Universal Small,vic_engine_glow_universal_small,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,

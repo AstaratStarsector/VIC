@@ -20,13 +20,14 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
 
     private final float
             flightTime,
-            rotationSpeed = MathUtils.getRandomNumberInRange(120, 240),
-            rotationDirection = (Math.random() >= 0.5 ? 1 : -1),
-            ringAngle1 = MathUtils.getRandomNumberInRange(-40, 40),
-            ringAngle2 = MathUtils.getRandomNumberInRange(-40, 40),
-            ringRotationDirection = (Math.random() >= 0.5 ? 1 : -1),
-            ringRotationSpeed1 = MathUtils.getRandomNumberInRange(20, 60),
-            ringRotationSpeed2 = MathUtils.getRandomNumberInRange(20, 60);
+            flightTimeFraction,
+            rotationSpeed,
+            rotationDirection,
+            ringAngle1,
+            ringAngle2,
+            ringRotationDirection,
+            ringRotationSpeed1,
+            ringRotationSpeed2;
 
     private final SpriteAPI sprite = Global.getSettings().getSprite("fx", "vic_tugarin_proj");
     private final SpriteAPI spriteRing = Global.getSettings().getSprite("fx", "vic_tugarin_proj_ring");
@@ -46,10 +47,10 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
         this.proj = proj;
         this.ship = proj.getSource();
         this.flightTime = proj.getWeapon().getRange() / proj.getMoveSpeed();
+        this.flightTimeFraction = 1 / flightTime;
         this.engine = Global.getCombatEngine();
         proj.getVelocity().scale(2);
         float DMG = proj.getBaseDamageAmount() * 0.3f * ship.getMutableStats().getBallisticWeaponDamageMult().getModifiedValue();
-        //engine.addFloatingText(proj.getLocation(), DMG + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
         explosion = new DamagingExplosionSpec(0.1f,
                 250,
                 125,
@@ -65,27 +66,29 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
                 new Color(255, 150, 35, 255)
         );
         explosion.setDamageType(DamageType.HIGH_EXPLOSIVE);
+
+        rotationSpeed = MathUtils.getRandomNumberInRange(120, 240);
+        rotationDirection = (Math.random() >= 0.5 ? 1 : -1);
+        ringAngle1 = MathUtils.getRandomNumberInRange(-40, 40);
+        ringAngle2 = MathUtils.getRandomNumberInRange(-40, 40);
+        ringRotationDirection = (Math.random() >= 0.5 ? 1 : -1);
+        ringRotationSpeed1 = MathUtils.getRandomNumberInRange(20, 60);
+        ringRotationSpeed2 = MathUtils.getRandomNumberInRange(20, 60);
+
     }
 
     @Override
     public void advance(float amount, List<InputEventAPI> events) {
         if (engine.isPaused()) return;
         //if (proj.isFading()) return;
-		if (ringRotation1 == 0){
-			float DMG = proj.getWeapon().getDamage().getDamage();
-			engine.addFloatingText(proj.getLocation(), DMG + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
-			ringRotation1 = 1;
-		}
 
-
-
-        float newSpeedMult = speedMult - ((1 / flightTime) * amount * (float) Math.sqrt(speedMult) * 1.8f);
+        float newSpeedMult = speedMult - ((flightTimeFraction) * amount * (float) Math.sqrt(speedMult) * 1.8f);
         proj.getVelocity().scale(newSpeedMult / speedMult);
-        speedMult = speedMult - ((1 / flightTime) * amount * (float) Math.sqrt(speedMult) * 1.8f);
+        speedMult = speedMult - ((flightTimeFraction) * amount * (float) Math.sqrt(speedMult) * 1.8f);
 
         rotation += rotationSpeed * amount * rotationDirection * speedMult;
 
-        //ringRotation1 += ringRotationSpeed1 * amount * ringRotationDirection;
+        ringRotation1 += ringRotationSpeed1 * amount * ringRotationDirection;
         ringRotation2 += ringRotationSpeed2 * amount * -ringRotationDirection;
 
 
@@ -130,7 +133,6 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
             timLeft = MagicAnim.smooth(timLeft);
         }
 
-        //engine.maintainStatusForPlayerShip("vic_adaptiveWarfare3", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "Speed power", timLeft + "%", false);
         sprite.setAngle(rotation);
         sprite.setSize(32 * timLeft, 32 * timLeft);
         sprite.setNormalBlend();

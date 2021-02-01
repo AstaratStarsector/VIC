@@ -12,6 +12,15 @@ import java.util.Set;
 
 public class vic_allRoundShieldUpgrade extends BaseHullMod {
 
+    private static final Set<String> BLOCKED_HULLMODS = new HashSet<>(2);
+
+    static {
+        BLOCKED_HULLMODS.add("stabilizedshieldemitter");
+        BLOCKED_HULLMODS.add("hardenedshieldemitter");
+        BLOCKED_HULLMODS.add("advancedshieldemitter");
+        BLOCKED_HULLMODS.add("extendedshieldemitter");
+    }
+
     public final float
             shieldEff = 13f,
             shieldUpkeep = 25f,
@@ -19,37 +28,12 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
             shieldArc = 30f;
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-
-
-        ShipVariantAPI variant = stats.getVariant();
-        float speedPenalty = 1f;
-        if (variant != null && variant.hasHullMod("vic_deathProtocol")){
-            speedPenalty = 0.75f;
-        }
-        if (variant != null && variant.hasHullMod("vic_assault")){
-            speedPenalty = 0.75f;
-        }
-        if (variant != null && !variant.getHullSpec().getHullId().startsWith("vic_")){
-            speedPenalty = 0.75f;
-        }
-
-
         stats.getShieldDamageTakenMult().modifyMult(id, 1f - shieldEff * 0.01f);
         stats.getDynamic().getStat(Stats.SHIELD_PIERCED_MULT).modifyMult(id, 0.75f);
-        stats.getShieldUpkeepMult().modifyMult(id,1f - shieldUpkeep * 0.01f);
+        stats.getShieldUpkeepMult().modifyMult(id, 1f - shieldUpkeep * 0.01f);
         stats.getShieldTurnRateMult().modifyPercent(id, shieldSpeed);
         stats.getShieldUnfoldRateMult().modifyPercent(id, shieldSpeed);
         stats.getShieldArcBonus().modifyFlat(id, shieldArc);
-        stats.getMaxSpeed().modifyMult(id, speedPenalty);
-    }
-
-    private static final Set<String> BLOCKED_HULLMODS = new HashSet<>(2);
-    static {
-        BLOCKED_HULLMODS.add("stabilizedshieldemitter");
-        BLOCKED_HULLMODS.add("hardenedshieldemitter");
-        BLOCKED_HULLMODS.add("advancedshieldemitter");
-        BLOCKED_HULLMODS.add("extendedshieldemitter");
-
     }
 
     @Override
@@ -59,10 +43,26 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
                 ship.getVariant().removeMod(tmp);
             }
         }
+        MutableShipStatsAPI stats = ship.getMutableStats();
+        ShipVariantAPI variant = stats.getVariant();
+        boolean speedPenalty = false;
+        if (variant != null && variant.hasHullMod("vic_deathProtocol")) {
+            speedPenalty = true;
+        }
+        if (variant != null && variant.hasHullMod("vic_assault")) {
+            speedPenalty = true;
+        }
+        if (variant != null && !variant.getHullSpec().getHullId().startsWith("vic_")) {
+            speedPenalty = true;
+        }
+
+        if (speedPenalty) {
+            stats.getMaxSpeed().modifyFlat(id, stats.getMaxSpeed().getModifiedValue() * -0.25f);
+        }
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {
-        for (String Hmod : BLOCKED_HULLMODS){
+        for (String Hmod : BLOCKED_HULLMODS) {
             if (ship.getVariant().getHullMods().contains(Hmod)) return false;
         }
         return true;

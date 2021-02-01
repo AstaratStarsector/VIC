@@ -9,6 +9,9 @@
 		"VBomb_conf0":"Viral bombardment will make the colony permanently contaminated. Are you sure?",
 		"VBomb_end0":"Commencing Viral bombardment. Impact in 3... 2... 1...",
 	},
+	"VIC_Industries":{
+		"antiEVCt3LowRep":"Reputation with VIC should be at least +25.",
+	},
 	"nex_militaryOptions":{
 		"optionBombardVirus":"Prepare Viral Bombardment"
 	},

@@ -3,102 +3,84 @@ package data.scripts.plugins.timer;
 import com.fs.starfarer.api.EveryFrameScript;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignClockAPI;
+import com.fs.starfarer.api.campaign.comm.IntelInfoPlugin;
+import com.fs.starfarer.api.campaign.econ.ImmigrationPlugin;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.combat.WeaponAPI;
+import com.fs.starfarer.api.combat.MutableStat;
+import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.impl.campaign.intel.deciv.DecivTracker;
+import data.campaign.intel.VIC_declineIntel;
 
 import java.util.*;
 
-//Copy of SirHartley's IndEvo code
 public class VIC_TimeTracker implements EveryFrameScript {
 
-    private static ArrayList<ArrayList<Object>> tagTrackers = new ArrayList<>();
     public boolean firstTick = true;
     public int lastDayChecked = 0;
+
+    public boolean doOnce = true;
+    public static ArrayList<MarketAPI> MarketsWithScar = new ArrayList<>();
 
     public VIC_TimeTracker() {
     }
 
     //debug-Logger
     private static void debugMessage(String Text) {
-        boolean DEBUG = true; //set to false once done
+        boolean DEBUG = Global.getSettings().isDevMode(); //set to false once done
         if (DEBUG) {
             Global.getLogger(VIC_TimeTracker.class).info(Text);
         }
     }
 
-    public static void addMarketTimeTagTracker(MarketAPI market, String ident) {
-        ArrayList<Object> l = new ArrayList<>();
-        l.add(market);
-        l.add(ident);
-
-        if (!marketHasTimeTag(market, ident)) {
-            market.addTag(ident + 0);
-        }
-
-        tagTrackers.add(l);
-    }
-
-    public static void removeMarketTimeTagTracker(MarketAPI market, String ident) {
-        for (Iterator<ArrayList<Object>> i = tagTrackers.iterator(); i.hasNext(); ) {
-            ArrayList<Object> l = i.next();
-
-            if (l.get(0) == market && l.get(1) == ident) {
-                tagTrackers.remove(l);
-                break;
-            }
-        }
-    }
-
-    public static int getTimeTagPassed(MarketAPI market, String ident) {
-        int timePassed = 0;
-        for (String s : market.getTags()) {
-            if (s.contains(ident)) {
-                timePassed = Integer.parseInt(s.substring(ident.length()));
-                break;
-            }
-        }
-        return timePassed;
-    }
-
-    public static boolean marketHasTimeTag(MarketAPI market, String ident) {
-        for (String s : market.getTags()) {
-            if (s.contains(ident)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void advance(float amount) {
+        if (doOnce){
+            checkVbomb();
+            doOnce = false;
+        }
         if (newDay()) {
             debugMessage("newDay");
-            updateMarketTagTimePassed();
+            checkVbomb();
+            doVirusThings();
         }
     }
 
-    public Object getMap (String key){
-        if (!Global.getSector().getMemory().contains(key)){
-            Map<String, Integer> map = new HashMap<>();
-            Global.getSector().getMemory().set(key, map);
+    public void checkVbomb(){
+
+        if (!MarketsWithScar.isEmpty()) MarketsWithScar.clear();
+
+        for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()){
+            if (market.hasCondition("VIC_VBomb_scar")){
+                MarketsWithScar.add(market);
+                debugMessage(market.getName() + "are contaminated");
+            }
         }
-        return Global.getSector().getMemory().get(key);
+        if(MarketsWithScar.isEmpty())debugMessage("All markets clear");
     }
 
-    public int addDayToCounter (String MarketId){
-        String key = "Vbomb_daysPast";
-        Map<String, Integer> map = (Map<String, Integer>) getMap(key);
-        if (map.containsKey(MarketId)){
-            map.put(MarketId, map.get(MarketId) + 1);
-        } else {
-            map.put(MarketId,  1);
-        }
-        return map.get(MarketId);
-    }
+    public void doVirusThings(){
+        for (MarketAPI market : MarketsWithScar){
+            float lowPopSize = (float) ((Math.pow(2f, market.getSize() - 2f)) * 100f);
+            Global.getLogger(VIC_TimeTracker.class).info("Vbomb " + market.getName() + " goest down at " + lowPopSize + " / " + " current " + market.getPopulation().getWeight().getModifiedValue());
 
-    public void removeMarket(String MarketId){
-        String key = "Vbomb_daysPast";
-        Map<String, Integer> map = (Map<String, Integer>) getMap(key);
-        map.remove(MarketId);
+            final ImmigrationPlugin plugin = Global.getSector().getPluginPicker().pickImmigrationPlugin(market);
+
+            float total = 0f;
+            for (MutableStat.StatMod mod : plugin.computeIncoming().getWeight().getFlatMods().values()){
+                total += mod.getValue();
+            }
+            if (market.hasIndustry("vic_antiEVCt2") || market.hasIndustry("vic_antiEVCt3")) continue;
+            if (market.getPopulation().getWeight().getModifiedValue() <= lowPopSize && total < 0){
+                if (market.getSize() >= 3 ){
+                    market.setSize(market.getSize() - 1);
+                    IntelInfoPlugin intel = new VIC_declineIntel(market, market.getSize());
+                    Global.getSector().addScript((EveryFrameScript) intel);
+                    Global.getSector().getIntelManager().addIntel(intel);
+                } else if (market.getSize() == 2 ){
+
+                    DecivTracker.decivilize(market, true);
+                }
+            }
+        }
     }
 
     public boolean isDone() {
@@ -107,16 +89,6 @@ public class VIC_TimeTracker implements EveryFrameScript {
 
     public boolean runWhilePaused() {
         return false;
-    }
-
-    private void onNewDay() {
-        List<VIC_newDayListener> list = Global.getSector().getListenerManager().getListeners(VIC_newDayListener.class);
-
-        for (Iterator<VIC_newDayListener> i = list.iterator(); i.hasNext(); ) {
-            VIC_newDayListener x = i.next();
-            debugMessage("running OnNewDay for " + x.getClass().getName());
-            x.onNewDay();
-        }
     }
 
     private boolean newDay() {
@@ -132,23 +104,4 @@ public class VIC_TimeTracker implements EveryFrameScript {
         return false;
     }
 
-    private void updateMarketTagTimePassed() {
-        for (ArrayList<Object> l : tagTrackers) {
-            if (l.size() > 2) {
-                continue;
-            }
-
-            MarketAPI market = (MarketAPI) l.get(0);
-            String ident = (String) l.get(1);
-
-            for (String tag : market.getTags()) {
-                if (tag.contains(ident)) {
-                    int timePassed = getTimeTagPassed(market, ident) + 1;
-                    market.removeTag(tag);
-                    market.addTag(ident + timePassed);
-                    break;
-                }
-            }
-        }
-    }
 }

@@ -24,21 +24,24 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin {
     private float timer = 0;
     private float SPINUP = 0.02f;
     private float SPINDOWN = 10f;
+
     //dont touch
     private boolean runOnce = false;
     private boolean hidden = false;
     private AnimationAPI theAnim;
     private int maxFrame;
     private int frame;
-    private float shot = 0;
-    //over heat stuff
     private float
             firingTime = 0f,
-            timeToStartHeating = 1.5f, //can be 1/x where x is time to rump up
             heat = 0f,
+            currentScore = 0f;
+
+
+    //over heat stuff
+    private final float
+            timeToStartHeating = 1.5f, //can be 1/x where x is time to rump up
             heatGeneration = 1 / 6f, //can be 1/x where x is time to rump up
             heatFallOffSpeed = 0.25f, //can be 1/x where x is time to cooldown
-            currentScore = 0f,
             scorePerProj = 1 / 8f, // 1/x where every xTh proj replaced
             additionalScore = 1 / 5f - 1 / 8f; // 1/x where every xTh proj replaced
 
@@ -138,7 +141,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin {
             Global.getSoundPlayer().playLoop(
                     "vic_vodanoy_shoting",
                     weapon,
-                    MathUtils.getRandomNumberInRange(0.9f , 1.1f),
+                    1f,
                     Math.max(0, 10 * weapon.getChargeLevel() - 9),
                     weapon.getLocation(),
                     weapon.getShip().getVelocity()
@@ -148,7 +151,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin {
                     "vic_vodanoy_spin",
                     weapon,
                     0.25f + weapon.getChargeLevel(),
-                    0.25f,
+                    0.15f,
 //                    0.5f+0.5f*weapon.getChargeLevel(),
                     weapon.getLocation(),
                     weapon.getShip().getVelocity()

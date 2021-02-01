@@ -6,24 +6,32 @@
 	"music_vic_market_neutral":[
 		{
 			"source":"sounds/music",
-			"volume":0.5,
+			"volume":0.7,
 			"files":[
-				"Psiklaw's VIC neutral market.ogg",
+				"Psiklaw_VIC_Neutral.ogg",
 			],
 			"randomStart":false, 
 		},
-		],
-		
+	],
+	"music_vic_market_hostile":[
+		{
+			"source":"sounds/music",
+			"volume":1.5,
+			"files":[
+				"Psiklaw_VIC_hostile.ogg",
+			],
+			"randomStart":false, 
+		},
+	],
 	"music_vic_market_friendly":[
 		{
 			"source":"sounds/music",
-			"volume":0.5,
+			"volume":0.6,
 			"files":[
-				"StellarDrone_Airglow_Edited.ogg",
+				"Psiklaw_VIC_Friendly.ogg",
 			],
 			"randomStart":false, 
 		},
-	
 	],
 	},	
 	
@@ -71,13 +79,13 @@
 	],
 	
 	"vic_psotnik":[
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.686, "volume": 0.9},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.722, "volume": 0.9},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.760, "volume": 0.9},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.800, "volume": 0.9},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.840, "volume": 0.9},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.882, "volume": 0.9},
-		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.926, "volume": 0.9},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.686, "volume": 0.8},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.722, "volume": 0.8},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.760, "volume": 0.8},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.800, "volume": 0.8},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.840, "volume": 0.8},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.882, "volume": 0.8},
+		{"file": "sounds/effects/vic_upyr.ogg", "pitch": 0.926, "volume": 0.8},
 	],
 	
 	"vic_tugarin_charge":[

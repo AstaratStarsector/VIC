@@ -1,10 +1,7 @@
 package data.scripts.weapons;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.CombatEntityAPI;
-import com.fs.starfarer.api.combat.DamagingProjectileAPI;
-import com.fs.starfarer.api.combat.OnHitEffectPlugin;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.util.MagicRender;
 import org.lazywizard.lazylib.MathUtils;
@@ -39,25 +36,8 @@ public class vic_rubiconOnHit implements OnHitEffectPlugin {
                 proj.setDamageAmount(projectile.getBaseDamageAmount() * 0.25f);
             }
 
-            float size = MathUtils.getRandomNumberInRange(20, 30);
-            float grow = MathUtils.getRandomNumberInRange(size * -0.5f, size * 0.5f);
-            MagicRender.battlespace(
-                    Global.getSettings().getSprite("fx", "vic_rubicon_river"),
-                    SpawnPoint,
-                    new Vector2f(),
-                    new Vector2f(size, size),
-                    new Vector2f(grow, grow),
-                    //angle,
-                    projectile.getFacing() + (toDaysRandom * MathUtils.getRandomNumberInRange(0.6f, 1.4f)),
-                    MathUtils.getRandomNumberInRange(30, 180),
-                    new Color(255, 255, 255),
-                    true,
-                    MathUtils.getRandomNumberInRange(0.1f, 0.3f),
-                    MathUtils.getRandomNumberInRange(0, 0.1f),
-                    MathUtils.getRandomNumberInRange(0.1f, 0.3f)
-            );
-            projectile.getSource().getFluxTracker().setCurrFlux(projectile.getSource().getFluxTracker().getCurrFlux() + (50 * projectile.getSource().getMutableStats().getBallisticWeaponFluxCostMod().getBonusMult()));
-            //Global.getSoundPlayer().playSound("vic_rubicon_quantum_river", 1f, 0.2f, SpawnPoint, new Vector2f());
+            if (MagicRender.screenCheck (100, SpawnPoint)) engine.addPlugin(new vic_nawiaVisuals(SpawnPoint, proj.getFacing()));
+
         }
     }
 }

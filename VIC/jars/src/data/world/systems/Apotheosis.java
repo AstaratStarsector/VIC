@@ -62,6 +62,7 @@ public class Apotheosis {
                 25f); // cr loss mult
 
 
+
         /*
         SectorEntityToken IttirEventHorizon = system.addTerrain(Terrain.EVENT_HORIZON,
                 new EventHorizonPlugin.CoronaParams(2000,
@@ -149,7 +150,7 @@ public class Apotheosis {
                 "apotheosis_jump_point",
                 "Apotheosis Jump Point");
 
-        innerJumpPoint.setCircularOrbit(ApotheosisQuasar, MathUtils.getRandomNumberInRange(-4,0), 5000, syncOrbitDays);
+        innerJumpPoint.setCircularOrbit(ApotheosisQuasar, 0, 5000, syncOrbitDays);
         innerJumpPoint.setStandardWormholeToHyperspaceVisual();
         system.addEntity(innerJumpPoint);
         system.setHasSystemwideNebula(true);
@@ -180,6 +181,7 @@ public class Apotheosis {
 
         //Finally cleans up hyperspace
         cleanup(system);
+
     }
 
 

@@ -1,7 +1,7 @@
 {
     "displayName": "CQB",
-    "fluxCapacitors": 17,
-    "fluxVents": 4,
+    "fluxCapacitors": 20,
+    "fluxVents": 9,
     "goalVariant": true,
     "hullId": "vic_moloch",
     "hullMods": [

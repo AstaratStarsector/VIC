@@ -4,7 +4,7 @@
 	"type":"DECORATIVE",
 	"size":"MEDIUM",
 	"renderHints":["RENDER_ADDITIVE"],
-	"everyFrameEffect":"data.scripts.VIC_EngineGlowScript",
+	"everyFrameEffect":"data.scripts.weapons.decos.VIC_EngineGlowScript",
 	"turretSprite":"graphics/ships/Xaphan/Engine glow/vic_xaphan_engine_glow.png",
 	"hardpointSprite":"graphics/ships/Xaphan/Engine glow/vic_xaphan_engine_glow.png",
 	"turretOffsets":[0, 0],
