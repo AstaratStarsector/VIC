@@ -47,14 +47,14 @@ public class VIC_LaidlawMassDriverMuzzleFlash implements EveryFrameWeaponEffectP
     //  -For beam weapons, this is when the beam has reached maximum brightness
     private static final Map<String, Integer> ON_SHOT_PARTICLE_COUNT = new HashMap<>();
     static {
-        ON_SHOT_PARTICLE_COUNT.put("default", 20);
-        ON_SHOT_PARTICLE_COUNT.put("FLASH_ID_5", 30);
+        ON_SHOT_PARTICLE_COUNT.put("default", 0);
+        ON_SHOT_PARTICLE_COUNT.put("FLASH_ID_5", 50);
 
-        ON_SHOT_PARTICLE_COUNT.put("MUZZLEFLASHRIGHT", 12);
-        ON_SHOT_PARTICLE_COUNT.put("MUZZLEFLASHLEFT", 12);
+        ON_SHOT_PARTICLE_COUNT.put("MUZZLEFLASHRIGHT", 0);
+        ON_SHOT_PARTICLE_COUNT.put("MUZZLEFLASHLEFT", 0);
         ON_SHOT_PARTICLE_COUNT.put("RING0", 100);
         ON_SHOT_PARTICLE_COUNT.put("RING", 75);
-        ON_SHOT_PARTICLE_COUNT.put("RING2", 50);
+        ON_SHOT_PARTICLE_COUNT.put("RING2", 0);
 
     }
 
@@ -159,7 +159,7 @@ public class VIC_LaidlawMassDriverMuzzleFlash implements EveryFrameWeaponEffectP
     private static final Map<String, Float> PARTICLE_VELOCITY_MIN = new HashMap<>();
     static {
         PARTICLE_VELOCITY_MIN.put("default", 2f);
-        PARTICLE_VELOCITY_MIN.put("FLASH_ID_5", 1f);
+        PARTICLE_VELOCITY_MIN.put("FLASH_ID_5", 30f);
         PARTICLE_VELOCITY_MIN.put("RING0", 0f);
         PARTICLE_VELOCITY_MIN.put("RING", 0f);
         PARTICLE_VELOCITY_MIN.put("RING2", 0f);
@@ -171,7 +171,7 @@ public class VIC_LaidlawMassDriverMuzzleFlash implements EveryFrameWeaponEffectP
         PARTICLE_VELOCITY_MAX.put("default", 15f);
         PARTICLE_VELOCITY_MAX.put("FLASH_ID_3", 10f);
         PARTICLE_VELOCITY_MAX.put("FLASH_ID_4", 10f);
-        PARTICLE_VELOCITY_MAX.put("FLASH_ID_5", 50f);
+        PARTICLE_VELOCITY_MAX.put("FLASH_ID_5", 300f);
         PARTICLE_VELOCITY_MAX.put("MUZZLEFLASHRIGHT", 20f);
         PARTICLE_VELOCITY_MAX.put("MUZZLEFLASHLEFT", 20f);
         PARTICLE_VELOCITY_MAX.put("RING0", 0f);
@@ -197,6 +197,7 @@ public class VIC_LaidlawMassDriverMuzzleFlash implements EveryFrameWeaponEffectP
         PARTICLE_DURATION_MAX.put("default", 1.5f);
         PARTICLE_DURATION_MAX.put("FLASH_ID_1", 1f);
         PARTICLE_DURATION_MAX.put("FLASH_ID_2", 1f);
+        PARTICLE_DURATION_MAX.put("FLASH_ID_5", 0.75f);
         PARTICLE_DURATION_MAX.put("RING0", 0.55f);
         PARTICLE_DURATION_MAX.put("RING", 0.65f);
         PARTICLE_DURATION_MAX.put("RING2", 0.75f);

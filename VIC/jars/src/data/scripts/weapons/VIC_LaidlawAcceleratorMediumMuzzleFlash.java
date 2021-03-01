@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffectPlugin {
+public class VIC_LaidlawAcceleratorMediumMuzzleFlash implements EveryFrameWeaponEffectPlugin {
 
     /*
         HOW TO USE:
@@ -50,14 +50,14 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
         ON_SHOT_PARTICLE_COUNT.put("default", 20);
         ON_SHOT_PARTICLE_COUNT.put("FLASH_ID_1", 0);
         ON_SHOT_PARTICLE_COUNT.put("FLASH_ID_2", 0);
-        ON_SHOT_PARTICLE_COUNT.put("FLASH_ID_3", 40);
-        ON_SHOT_PARTICLE_COUNT.put("FLASH_ID_4", 40);
-        ON_SHOT_PARTICLE_COUNT.put("FLASH_ID_5", 160);
+        ON_SHOT_PARTICLE_COUNT.put("FLASH_ID_3", 20);
+        ON_SHOT_PARTICLE_COUNT.put("FLASH_ID_4", 20);
+        ON_SHOT_PARTICLE_COUNT.put("FLASH_ID_5", 80);
         ON_SHOT_PARTICLE_COUNT.put("MUZZLEFLASHRIGHT", 0);
         ON_SHOT_PARTICLE_COUNT.put("MUZZLEFLASHLEFT", 0);
-        ON_SHOT_PARTICLE_COUNT.put("RING0", 150);
-        ON_SHOT_PARTICLE_COUNT.put("RING", 137);
-        ON_SHOT_PARTICLE_COUNT.put("RING2", 75);
+        ON_SHOT_PARTICLE_COUNT.put("RING0", 100);
+        ON_SHOT_PARTICLE_COUNT.put("RING", 74);
+        ON_SHOT_PARTICLE_COUNT.put("RING2", 50);
 
     }
 
@@ -91,20 +91,20 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
     //SPAWN_POINT_ANCHOR_ALTERNATION above], if the weapon is a turret (or HIDDEN)
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_TURRET = new HashMap<>();
     static {
-        PARTICLE_SPAWN_POINT_TURRET.put("default", new Vector2f(0f, 43f));
-        PARTICLE_SPAWN_POINT_TURRET.put("RING0", new Vector2f(0f, 78f));
-        PARTICLE_SPAWN_POINT_TURRET.put("RING", new Vector2f(0f, 93f));
-        PARTICLE_SPAWN_POINT_TURRET.put("RING2", new Vector2f(0f, 108f));
+        PARTICLE_SPAWN_POINT_TURRET.put("default", new Vector2f(0f, 33f));
+        PARTICLE_SPAWN_POINT_TURRET.put("RING0", new Vector2f(0f, 68f));
+        PARTICLE_SPAWN_POINT_TURRET.put("RING", new Vector2f(0f, 83f));
+        PARTICLE_SPAWN_POINT_TURRET.put("RING2", new Vector2f(0f, 98f));
     }
 
     //The position the particles are spawned (or at least where their arc originates when using offsets) compared to their weapon's center [or shot offset, see
     //SPAWN_POINT_ANCHOR_ALTERNATION above], if the weapon is a hardpoint
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_HARDPOINT = new HashMap<>();
     static {
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("default", new Vector2f(0f, 43f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("RING0", new Vector2f(0f, 78f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("RING", new Vector2f(0f, 93f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("RING2", new Vector2f(0f, 108f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("default", new Vector2f(0f, 33f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("RING0", new Vector2f(0f, 68f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("RING", new Vector2f(0f, 83f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("RING2", new Vector2f(0f, 98f));
     }
 
     //Which kind of particle is spawned (valid values are "SMOOTH", "BRIGHT" and "SMOKE")
@@ -218,18 +218,18 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
     private static final Map<String, Float> PARTICLE_OFFSET_MIN = new HashMap<>();
     static {
         PARTICLE_OFFSET_MIN.put("default", 5f);
-        PARTICLE_OFFSET_MIN.put("RING0", -20f);
-        PARTICLE_OFFSET_MIN.put("RING", -17f);
-        PARTICLE_OFFSET_MIN.put("RING2", -14f);
+        PARTICLE_OFFSET_MIN.put("RING0", -15f);
+        PARTICLE_OFFSET_MIN.put("RING", -12f);
+        PARTICLE_OFFSET_MIN.put("RING2", -9f);
     }
 
     //The furthest along their velocity vector any individual particle is allowed to spawn (can be negative to spawn behind their origin point)
     private static final Map<String, Float> PARTICLE_OFFSET_MAX = new HashMap<>();
     static {
         PARTICLE_OFFSET_MAX.put("default", 10f);
-        PARTICLE_OFFSET_MAX.put("RING0", 20f);
-        PARTICLE_OFFSET_MAX.put("RING", 17f);
-        PARTICLE_OFFSET_MAX.put("RING2", 14f);
+        PARTICLE_OFFSET_MAX.put("RING0", 15f);
+        PARTICLE_OFFSET_MAX.put("RING", 12f);
+        PARTICLE_OFFSET_MAX.put("RING2", 9f);
     }
 
     //The width of the "arc" the particles spawn in; affects both offset and velocity. 360f = full circle, 0f = straight line
@@ -280,7 +280,7 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
     private boolean shouldOffsetBarrelExtra = false;
 
     //Instantiator
-    public VIC_LaidlawAcceleratorMuzzleFlash() {}
+    public VIC_LaidlawAcceleratorMediumMuzzleFlash() {}
 
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         //Don't run while paused, or without a weapon

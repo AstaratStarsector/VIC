@@ -1,13 +1,15 @@
 trail,projectile,sprite,minLength,fadeIn,duration,fadeOut,sizeIn,sizeOut,colorIn,colorOut,opacity,textLength,textScroll,distance,dispersion,drift,fadeOnFadeOut,angleAdjustment,additive,velocityIn,velocityOut,randomVelocity,angle,rotationIn,rotationOut,randomRotation,renderBelowExplosions
 trails_vic_heavylaidlawaccelerator_shot_glow,vic_heavylaidlawaccelerator_shot,trails_trail_smooth,10,0,0.05,0.2,80,40,"[255,255,255]","[0,255,235]",1,200,-1500,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 trails_vic_heavylaidlawaccelerator_shot_core,vic_heavylaidlawaccelerator_shot,trails_trail_zappy,10,0,0.2,0.7,18,8,"[255,255,255]","[0,255,235]",1,200,-3000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_heavylaidlawaccelerator_shot_core2,vic_heavylaidlawaccelerator_shot,trails_trail_smooth,10,0,0.03,1.5,1,75,"[255,255,255]","[0,255,235]",0.5,200,50,-50,5,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 trails_vic_heavylaidlawaccelerator_shot_contrail,vic_heavylaidlawaccelerator_shot,trails_trail_contrail,10,0,0.1,0.5,40,20,"[255,255,255]","[0,255,235]",1,200,-2000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
 trails_vic_laidlawMassDriver_shot_glow,vic_laidlawMassDriver_shot,trails_trail_smooth,10,0,0.05,0.2,40,20,"[255,255,255]","[0,255,235]",1,200,-1500,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 trails_vic_laidlawMassDriver_shot_core,vic_laidlawMassDriver_shot,trails_trail_zappy,10,0,0.2,0.7,9,4,"[255,255,255]","[0,255,235]",1,200,-3000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_heavylaidMassDriver_shot_core2,vic_laidlawMassDriver_shot,trails_trail_smooth,10,0,0.03,1.5,1,38,"[255,255,255]","[0,255,235]",0.5,200,50,0,5,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 trails_vic_laidlawMassDriver_shot_contrail,vic_laidlawMassDriver_shot,trails_trail_contrail,10,0,0.1,0.5,20,10,"[255,255,255]","[0,255,235]",1,200,-2000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
-trails_vic_psotnik_shot_trail,vic_psotnik_shot,trails_trail_smooth,2,0,0.1,0.05,10,6,"[255,255,255]","[0,190,255]",0.8,200,0,15,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_psotnik_shot_trail1,vic_psotnik_shot,trails_trail_zappy,10,0,0.05,0.1,15,5,"[255,255,255]","[255,200,0]",0.8,200,1000,15,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
 trails_vic_gagana_shot_1,vic_gaganaShot,trails_trail_smooth,5,0,0,0.3,12,8,"[209,37,10]","[255,181,112]",0.5,200,300,20,50,1,TRUE,TRUE,TRUE,70,30,0.15,0,50,50,TRUE,false
 trails_vic_gagana_shot_2,vic_gaganaShot,trails_trail_smooth,5,0,0,0.3,12,8,"[209,37,10]","[255,181,112]",0.5,200,300,20,60,1,TRUE,TRUE,TRUE,80,40,0.15,0,50,50,TRUE,false

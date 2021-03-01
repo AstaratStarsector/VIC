@@ -7,9 +7,11 @@
   "everyFrameEffect": "data.scripts.weapons.VIC_LaidlawAcceleratorMuzzleFlash",
   "displayArcRadius": 450,
   "turretSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_base_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_glow_turret.png",
   "turretGunSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_barrel_turret.png",
   "turretUnderSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_underbase_turret.png",
   "hardpointSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_base.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_glow.png",
   "hardpointGunSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_barrel.png",
   "hardpointUnderSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_underbase.png",
   "renderAboveAllWeapons": 0,
@@ -37,12 +39,13 @@
     0,
     0
   ],
-  "barrelMode": "ALTERNATING",
-  "animationType": "MUZZLE_FLASH",
+  "barrelMode": "LINKED",
+  "animationType": "GLOW_AND_FLASH",
+  "autocharge": true,
   "muzzleFlashSpec": {
     "length": 50,
     "spread": 10,
-    "particleSizeMin": 18,
+    "particleSizeMin": 60,
     "particleSizeRange": 24,
     "particleDuration": 0.12,
     "particleCount": 18,
@@ -54,7 +57,6 @@
     ]
   },
   "textureType": ROUGH,
-  "fireSoundOne":"vic_laidlaw_accelerator_charge",
-  "fireSoundTwo": "vic_laidlaw_accelerator_shot",
-  "autocharge":true,
+  "fireSoundOne": "vic_laidlaw_accelerator_charge",
+  "fireSoundTwo": "vic_laidlaw_accelerator_shot_heavy"
 }

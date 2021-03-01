@@ -50,12 +50,12 @@
   "separateRecoilForLinkedBarrels":"FALSE",
   "animationType": "MUZZLE_FLASH",
   "muzzleFlashSpec": {
-    "length": 20,
+    "length": 30,
     "spread": 10,
-    "particleSizeMin": 2,
+    "particleSizeMin": 20,
     "particleSizeRange": 2,
-    "particleDuration": 0.8,
-    "particleCount": 20,
+    "particleDuration": 0.12,
+    "particleCount": 5,
     "particleColor": [
       255,
       155,

@@ -4,11 +4,14 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
+import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
 public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
+
+    private static final float FORCE_MULT = 0.666f; // force applied = base damage amount * this
 
     private static final Vector2f ZERO = new Vector2f();
 
@@ -33,6 +36,10 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
             explosion.setDamageType(DamageType.FRAGMENTATION);
             explosion.setShowGraphic(false);
             engine.spawnDamagingExplosion(explosion, projectile.getSource(), point);
+
+            float force = projectile.getBaseDamageAmount() * FORCE_MULT;
+            CombatUtils.applyForce(target, projectile.getVelocity(), force);
+
         }
         WaveDistortion wave = new WaveDistortion(point, ZERO);
         wave.setIntensity(15f);
@@ -43,6 +50,8 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
         wave.fadeOutIntensity(0.3f);
         wave.setLocation(projectile.getLocation());
         DistortionShader.addDistortion(wave);
+
+
 
     }
 }
