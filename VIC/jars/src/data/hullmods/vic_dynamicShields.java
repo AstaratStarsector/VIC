@@ -23,6 +23,8 @@ public class vic_dynamicShields extends BaseHullMod {
         super.applyEffectsBeforeShipCreation(hullSize, stats, id);
         stats.getShieldUnfoldRateMult().modifyMult(id, shieldSpeed);
         stats.getShieldTurnRateMult().modifyMult(id, shieldSpeed);
+
+
     }
 
     //shieldsChanger
