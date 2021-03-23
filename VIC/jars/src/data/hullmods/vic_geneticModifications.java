@@ -28,20 +28,6 @@ public class vic_geneticModifications extends BaseHullMod {
 
     @Override
     public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
-        if (Global.getSector().getPlayerFleet() == null) return;
-        String playerCommission = "player";
-        String factionID = "vic";
-        String HmodID = "vic_geneticmodifications";
-        if (ModManager.getInstance().isModEnabled("nexerelin")) {
-            if (Misc.getCommissionFactionId() != null) playerCommission = Misc.getCommissionFactionId();
-            if (!(factionID.equals(playerCommission) || AllianceManager.areFactionsAllied(playerCommission, factionID))) {
-                ship.getVariant().removeMod(HmodID);
-            }
-        } else {
-            if (!factionID.equals(Misc.getCommissionFactionId())) {
-                ship.getVariant().removeMod(HmodID);
-            }
-        }
     }
 
     public String getDescriptionParam(int index, HullSize hullSize) {

@@ -7,9 +7,9 @@
   "height": 58,
   "width": 26,
   "center": [13, 29],
-  "collisionRadius": 35.5,
+  "collisionRadius": 30.5,
   "shieldCenter": [0, 0],
-  "shieldRadius": 31.5,
+  "shieldRadius": 30,
   "viewOffset": 0,
   "weaponSlots": [
     {
@@ -42,11 +42,11 @@
   ],
   "engineSlots": [
     {
-      "location": [-13, -0],
-      "length": 27,
-      "width": 5,
+      "location": [-14, -0],
+      "length": 22.5,
+      "width": 6,
       "angle": 180,
-      "contrailSize": 5,
+      "contrailSize": 6,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }

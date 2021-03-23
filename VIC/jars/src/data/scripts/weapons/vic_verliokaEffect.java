@@ -7,6 +7,7 @@ import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.util.MagicAnim;
 import data.scripts.util.MagicRender;
+import data.scripts.weapons.autofireAI.vic_VerliokaAutofireAI;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.RippleDistortion;
 import org.dark.shaders.distortion.WaveDistortion;
@@ -19,6 +20,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
@@ -29,16 +31,19 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
 
     private final IntervalUtil timer = new IntervalUtil(0.25f, 0.25f);
 
-    private float Intensity = 0f;
-    private boolean revertIntensity = false;
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
 
         if (engine.isPaused() || weapon.getShip().getOriginalOwner() == -1) return;
 
-
         ShipAPI ship = weapon.getShip();
+
+        //Global.getLogger(vic_verliokaEffect.class).info();
+
+
+
+
         float dmgMult = ship.getMutableStats().getDamageToMissiles().getModifiedValue();
 
         ArrayList<BeamAPI> weaponBeams = new ArrayList<>(2);
@@ -96,8 +101,6 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
         }
 
         if (weapon.getChargeLevel() < 1) {
-            Intensity = 0f;
-            revertIntensity = false;
             return;
         }
 
@@ -119,9 +122,7 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
             if (missile.getCollisionClass() == CollisionClass.NONE) continue;
             if (missile.getOwner() == ship.getOwner()) continue;
             float angleToTarget = VectorUtils.getAngle(weapon.getLocation(), missile.getLocation());
-            //engine.addFloatingText(missile.getLocation(), angleToTarget + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
             if (Math.abs(MathUtils.getShortestRotation(angleToTarget, facing)) <= degrees) {
-                //engine.addFloatingText(trailLoc, missile.getVelocity().lengthSquared() + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
                 missile.setJitter(missile, new Color(44, 255, 255), 4, 6, 2);
                 if (missile.getVelocity().lengthSquared() > Math.pow(missile.getMaxSpeed(), 2) * 0.5f){
                     missile.getVelocity().scale(0.8f);
@@ -138,36 +139,5 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
                 debuffed_fighters.put(shipToCheck, 0.1f);
             }
         }
-
-        /*
-        if (!revertIntensity){
-            Intensity += amount * 6;
-        } else {
-            Intensity -= amount * 6;
-        }
-        if (!revertIntensity){
-            if (Intensity >= 1) revertIntensity = true;
-        } else {
-            if (Intensity <= 0) revertIntensity = false;
-        }
-
-
-
-
-        //WaveDistortion wave = new WaveDistortion(weapon.getLocation(), new Vector2f());
-        RippleDistortion wave = new RippleDistortion(weapon.getLocation(), new Vector2f());
-        wave.setIntensity(30f * (0.5f + (0.5f * MagicAnim.smooth(Intensity))));
-        wave.setSize(range);
-        wave.flip(true);
-        wave.fadeOutIntensity(0.1f);
-        wave.setLifetime(0.0f);
-        wave.fadeOutIntensity(0.1f);
-        wave.setArc(weapon.getCurrAngle() - 14,weapon.getCurrAngle() + 14);
-        wave.setLocation(weapon.getLocation());
-        DistortionShader.addDistortion(wave);
-
-         */
-
-
     }
 }

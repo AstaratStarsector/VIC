@@ -17,7 +17,6 @@
 	"engineGlowWidthMult":0,
 	"engineGlowGlowMult":0,
 	
-	"canUseWhileRightClickSystemOn":true,
 	
 	"range":1500,
 	"randomRange":0,

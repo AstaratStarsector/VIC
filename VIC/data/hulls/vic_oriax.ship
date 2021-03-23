@@ -1,0 +1,454 @@
+{
+  "hullName": "Oriax",
+  "hullId": "vic_oriax",
+  "hullSize": "CAPITAL_SHIP",
+  "spriteName": "graphics/ships/BattlecruiserTest.png",
+  "style": "VIC",
+  "height": 545,
+  "width": 238,
+  "center": [119, 272.5],
+  "collisionRadius": 281,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 270,
+  "viewOffset": 0,
+  "builtInWeapons": {
+    "SYS001": "vic_blonkerCyan",
+    "SYS002": "vic_blonkerRed",
+    "SYS003": "vic_blonkerRed",
+    "SYS004": "vic_blonkerCyan",
+    "SYS005": "vic_blonkerCyan",
+    "SYS006": "vic_blonkerRed"
+  },
+  "weaponSlots": [
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        30, -22,
+        32.5, -29.5
+      ]
+    },
+    {
+      "id": "LB 2",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        30.5, 23,
+        34, 30.5
+      ]
+    },
+    {
+      "id": "WS0001",
+      "size": "LARGE",
+      "type": "HYBRID",
+      "mount": "HARDPOINT",
+      "arc": 21,
+      "angle": 0,
+      "locations": [234, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 21,
+      "angle": -0,
+      "locations": [234, 0]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 270,
+      "angle": 0,
+      "locations": [202.5, -0]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 234,
+      "angle": 0,
+      "locations": [166.5, -0]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 122,
+      "angle": -63.5,
+      "locations": [138.5, -11]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 122,
+      "angle": 63.5,
+      "locations": [138.5, 11]
+    },
+    {
+      "id": "WS0007",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 149,
+      "angle": -61.5,
+      "locations": [97.5, -17]
+    },
+    {
+      "id": "WS0008",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 149,
+      "angle": 61.5,
+      "locations": [97.5, 17]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 173,
+      "angle": -90,
+      "locations": [5.5, -33]
+    },
+    {
+      "id": "WS0010",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 173,
+      "angle": 90,
+      "locations": [5.5, 33]
+    },
+    {
+      "id": "WS0011",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 169,
+      "angle": -90,
+      "locations": [-30.5, -34]
+    },
+    {
+      "id": "WS0012",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 169,
+      "angle": 90,
+      "locations": [-30.5, 34]
+    },
+    {
+      "id": "WS0017",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 222,
+      "angle": -135,
+      "locations": [-102.5, -22]
+    },
+    {
+      "id": "WS0018",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 222,
+      "angle": 135,
+      "locations": [-102.5, 22]
+    },
+    {
+      "id": "WS0013",
+      "size": "LARGE",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-23.5, -0]
+    },
+    {
+      "id": "WS0014",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 250,
+      "angle": 180,
+      "locations": [-79.5, -0]
+    },
+    {
+      "id": "SYS001",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 181,
+      "angle": -131.5,
+      "locations": [-42.5, -72.5]
+    },
+    {
+      "id": "SYS002",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 181,
+      "angle": 131.5,
+      "locations": [-42.5, 72.5]
+    },
+    {
+      "id": "SYS003",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 111,
+      "angle": 30,
+      "locations": [122, 44.5]
+    },
+    {
+      "id": "SYS004",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 111,
+      "angle": -30,
+      "locations": [122, -44.5]
+    },
+    {
+      "id": "SYS005",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 109,
+      "angle": -81,
+      "locations": [65, -46]
+    },
+    {
+      "id": "SYS006",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 109,
+      "angle": 81,
+      "locations": [65, 46]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-90.5, -40.5],
+      "length": 53,
+      "width": 11,
+      "angle": 180,
+      "contrailSize": 11,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-90.5, 40.5],
+      "length": 53,
+      "width": 11,
+      "angle": -180,
+      "contrailSize": 11,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-93.5, -52.5],
+      "length": 52.5,
+      "width": 11,
+      "angle": 180,
+      "contrailSize": 11,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-93.5, 52.5],
+      "length": 52.5,
+      "width": 11,
+      "angle": -180,
+      "contrailSize": 11,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-141, -27],
+      "length": 59,
+      "width": 13,
+      "angle": 180,
+      "contrailSize": 13,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-141, 27],
+      "length": 59,
+      "width": 13,
+      "angle": -180,
+      "contrailSize": 13,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [181.5, -28.5],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": -135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [181.5, 28.5],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": 135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [187.5, -30],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": -135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [187.5, 30],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": 135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [196.5, -29.5],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": -135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [196.5, 29.5],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": 135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [219, -26],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": -135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [219, 26],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": 135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [226, -26.5],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": -135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [226, 26.5],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": 135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [231.5, -27.5],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": -135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [231.5, 27.5],
+      "length": 22.627417,
+      "width": 8.485281,
+      "angle": 135,
+      "contrailSize": 8.485281,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    }
+  ],
+  "bounds": [
+    -135, 7,
+    -259, 7.5,
+    -235.5, 21.5,
+    -141, 21.5,
+    -140.5, 30,
+    -119, 36.5,
+    -86.5, 34,
+    -82.5, 62,
+    16.5, 88,
+    35.5, 77,
+    0.5, 54,
+    10, 50,
+    0, 43,
+    56, 26,
+    53.5, 45,
+    62.5, 49.5,
+    107.5, 35,
+    94, 48,
+    107.5, 56,
+    146.5, 31,
+    253.5, 20.5,
+    253.5, -20.5,
+    146.5, -31,
+    107.5, -56,
+    94, -48,
+    107.5, -35,
+    62.5, -49.5,
+    53.5, -45,
+    56, -26,
+    0, -43,
+    10, -50,
+    0.5, -54,
+    35.5, -77,
+    16.5, -88,
+    -82.5, -62,
+    -86.5, -34,
+    -119, -36.5,
+    -140.5, -30,
+    -141, -21.5,
+    -235.5, -21.5,
+    -259, -7.5,
+    -135, -7
+  ]
+}

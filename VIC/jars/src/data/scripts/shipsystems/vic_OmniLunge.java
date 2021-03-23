@@ -13,18 +13,19 @@ import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
-public class vic_DriftBoost extends BaseShipSystemScript {
+public class vic_OmniLunge extends BaseShipSystemScript {
 
     public static float SPEED_BONUS = 250f;
     public static float TURN_BONUS = 100f;
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
+
         stats.getMaxSpeed().modifyFlat(id, SPEED_BONUS);
 
         stats.getTurnAcceleration().modifyFlat(id, TURN_BONUS);
         stats.getTurnAcceleration().modifyPercent(id, TURN_BONUS * 5f);
-        stats.getMaxTurnRate().modifyFlat(id, 15f);
+        stats.getMaxTurnRate().modifyFlat(id, 60f);
         stats.getMaxTurnRate().modifyPercent(id, 100f);
 
         if (state == State.IN) {
@@ -51,14 +52,6 @@ public class vic_DriftBoost extends BaseShipSystemScript {
             ship.getEngineController().extendFlame(this, 0.5f * effectLevel, 0.5f * effectLevel, 0.25f * effectLevel);
         }
 
-    }
-
-
-
-
-    @Override
-    public boolean isUsable(ShipSystemAPI system, ShipAPI ship) {
-        return true;
     }
 
     public void unapply(MutableShipStatsAPI stats, String id) {

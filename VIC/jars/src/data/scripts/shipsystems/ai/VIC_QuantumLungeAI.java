@@ -7,6 +7,7 @@ import com.fs.starfarer.api.combat.ShipwideAIFlags.AIFlags;
 import com.fs.starfarer.api.fleet.FleetGoal;
 import com.fs.starfarer.api.mission.FleetSide;
 import com.fs.starfarer.api.util.IntervalUtil;
+import data.scripts.util.MagicRender;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
@@ -48,7 +49,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
 
     private final IntervalUtil
             FlickTimer = new IntervalUtil(0.2f, 0.4f),
-            timer = new IntervalUtil(0.5f, 1f);
+            timer = new IntervalUtil(0.75f, 0.75f);
     private final HashMap<HullSize, Float> TurnMult = new HashMap<>();
     public float
             minPointsToFlank = 0f,
@@ -84,7 +85,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
     }
 
     public float canIFlankThisFucker(ShipAPI ship, ShipAPI target) {
-        float flankingScore = 0f;
+        float flankingScore = 10f;
         if (target == null || ship == null) return -100f;
         if (target.isCapital() && !rightDirection(target, ship.getLocation())) return -100f;
         if (target.isStation() || target.isFighter()) return -100f;
@@ -108,12 +109,15 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         Vector2f targetPos = target.getLocation();
 
         Vector2f MoveDir = VectorUtils.getDirectionalVector(shipPos, targetPos);
-        float distPastTarget = ship.getCollisionRadius() + target.getCollisionRadius();
+        float distPastTarget = (ship.getCollisionRadius() + target.getCollisionRadius()) * 0.75f;
         Vector2f ExitPos = new Vector2f(targetPos.x + (distPastTarget * MoveDir.x), targetPos.y + (distPastTarget * MoveDir.y));
+        Vector2f CheckPos = new Vector2f(ExitPos.x + (400 * MoveDir.x), ExitPos.y + (400 * MoveDir.y));
+
+        spawnText("there", CheckPos);
 
         float enemyScore = 0f;
         float allyScore = 0f;
-        List<ShipAPI> shipInExitRange = CombatUtils.getShipsWithinRange(ExitPos, distPastTarget + 750);
+        List<ShipAPI> shipInExitRange = CombatUtils.getShipsWithinRange(CheckPos, distPastTarget + 1500);
         for (ShipAPI toCheck : shipInExitRange) {
             if (toCheck.getFleetMember() == null) continue;
             if (toCheck.getOwner() == shipSide) {
@@ -132,6 +136,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         flankingScore += totalScore;
 
         //how much of target's HP left
+
         float targetDmgMult = 400 / (target.getArmorGrid().getArmorRating() + 400);
         float HullPercent = (target.getHitpoints() / targetDmgMult) / (target.getMaxHitpoints() / targetDmgMult);
         float HPLeft = HullPercent;
@@ -152,6 +157,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
 
         // don't check if paused
         if (engine.isPaused()) return;
+
         if (ship.getSystem().isStateActive() && TargShip) {
             TimeElapsed += amount;
             if (TimeElapsed >= NeededDur) {
@@ -261,6 +267,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         if (useMe) {
             ship.useSystem();
             if (TargShip) {
+                assert target != null;
                 NeededDur = (MathUtils.getDistance(ship.getLocation(), targetLocation) + (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
                 if (NeededDur > ship.getSystem().getChargeActiveDur())
                     NeededDur = ship.getSystem().getChargeActiveDur();
@@ -270,5 +277,8 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
 
     public void spawnText(String text, Float offset) {
         engine.addFloatingText(new Vector2f(ship.getLocation().x, ship.getLocation().y + offset), text, 60, Color.WHITE, ship, 0.25f, 0.25f);
+    }
+    public void spawnText(String text, Vector2f pos) {
+        engine.addFloatingText(pos, text, 60, Color.WHITE, null, 0.25f, 0.25f);
     }
 }

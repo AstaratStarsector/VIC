@@ -47,7 +47,10 @@ public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugi
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         //Don't run if we are paused, or our weapon is null
-        if (engine.isPaused() || weapon == null) {
+        if (weapon == null || weapon.getShip().getOwner() == -1) return;
+        if (weapon.getChargeLevel() != 0) Global.getSoundPlayer().playLoop("system_emp_emitter_loop", weapon.getShip(), 0.8f, 0.7f, weapon.getLocation(), new Vector2f());
+
+        if (engine.isPaused()) {
             return;
         }
 
@@ -151,7 +154,7 @@ public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugi
                         0f, //Damage
                         0f, //Emp
                         100000f, //Max range
-                        "tachyon_lance_emp_impact", //Impact sound
+                        "system_emp_emitter_impact", //Impact sound
                         MathUtils.getRandomNumberInRange(5f, 7f), // thickness of the lightning bolt
                         LIGHTNING_CORE_COLOR, //Central color
                         LIGHTNING_FRINGE_COLOR //Fringe Color
@@ -164,7 +167,7 @@ public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugi
                     damageThisShot, //Damage
                     empFactor, //Emp
                     100000f, //Max range
-                    "tachyon_lance_emp_impact", //Impact sound
+                    "system_emp_emitter_impact", //Impact sound
                     10f, // thickness of the lightning bolt
                     LIGHTNING_CORE_COLOR, //Central color
                     LIGHTNING_FRINGE_COLOR //Fringe Color
@@ -220,7 +223,7 @@ public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugi
                         damageThisShot * 0.15f, //Damage
                         empFactor * 0.5f, //Emp
                         100000f, //Max range
-                        "tachyon_lance_emp_impact", //Impact sound
+                        "system_emp_emitter_impact", //Impact sound
                         10f * (damageThisShot / weapon.getDamage().getDamage()), // thickness of the lightning bolt
                         LIGHTNING_CORE_COLOR, //Central color
                         LIGHTNING_FRINGE_COLOR //Fringe Color

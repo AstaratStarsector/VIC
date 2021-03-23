@@ -78,6 +78,7 @@ public class vic_assault extends BaseHullMod {
         if (variant != null && variant.hasHullMod("vic_deathProtocol")){
             pptMult = 0f;
         }
+        assert variant != null;
         if (!variant.getHullSpec().getHullId().startsWith("vic_")){
             pptMult =  0f;
         }
@@ -87,10 +88,10 @@ public class vic_assault extends BaseHullMod {
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {
-        return  (!ship.getVariant().getHullMods().contains("dedicated_targeting_core") &&
-                !ship.getVariant().getHullMods().contains("unstable_injector") &&
-                !ship.getVariant().getHullMods().contains("advancedcore") &&
-                !ship.getVariant().getHullMods().contains("targetingunit"));
+        for (String hmod : BLOCKED_HULLMODS){
+            if (ship.getVariant().getHullMods().contains(hmod)) return false;
+        }
+        return true;
     }
 
 	@Override

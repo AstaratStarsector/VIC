@@ -16,12 +16,12 @@
 	#		Cooperative/Vengeful:	±0.8
     "startRelationships":{ 
 	    # Vanilla Factions		 
-		"hegemony": 0.9,                                 #Gullible and spoiled. True successors of our old friends.
+		"hegemony": 0.8,                                 #Gullible and spoiled. True successors of our old friends.
 		"persean": 0.3,                                  #A good back-up plan, even if a bit scattered and chaotic.
 		"pirates": 0,                                    #Unexpectedly cooperative. Procurement of testing material has never been so easy with their help.
 		"sindrian_diktat": -0.1,                         #Has certain potential, worth keeping an eye on.
         "lions_guard": -0.1,		                     #Loyal hound dogs. Respectable. In a way.
-		"independent": -0.3,                             #Unification efforts are of the top priority. Re-education of newly acquired assets is a must though.
+		"independent": -0.2,                             #Unification efforts are of the top priority. Re-education of newly acquired assets is a must though.
 		"tritachyon": -0.9,                              #Let's settle this once and for all, shall we?
 		"luddic_church":-1,                              #Blind, ignorant, foolish and too stubborn. No point in showing them the right way.
 		"luddic_path":-1,                                #Degeneracy incarnate. Death won't be enough for these.

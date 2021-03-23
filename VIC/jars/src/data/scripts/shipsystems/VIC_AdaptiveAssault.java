@@ -27,9 +27,9 @@ public class VIC_AdaptiveAssault extends BaseShipSystemScript {
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
 
         ShipAPI ship = (ShipAPI) stats.getEntity();
-        Vector2f split = WeaponsSplit(ship);
+        split = WeaponsSplit(ship);
 
-        stats.getEnergyWeaponDamageMult().modifyPercent(id, (((1 - split.x) * (damageBonus - minBonus)) + minBonus) * effectLevel);
+        stats.getEnergyWeaponDamageMult().modifyPercent(id, ((split.x * (damageBonus - minBonus)) + minBonus) * effectLevel);
         stats.getBallisticWeaponDamageMult().modifyPercent(id, ((split.y * (damageBonus - minBonus)) + minBonus) * effectLevel);
 
     }
@@ -48,7 +48,7 @@ public class VIC_AdaptiveAssault extends BaseShipSystemScript {
         if (index == 0)
             return new StatusData("+" + Math.round((split.y * (damageBonus - minBonus)) + minBonus) + "% ballistic weapon damage", false);
         if (index == 1)
-            return new StatusData("+" + Math.round(((1 - split.x) * (damageBonus - minBonus)) + minBonus) + "% energy weapon damage", false);
+            return new StatusData("+" + Math.round((split.x * (damageBonus - minBonus)) + minBonus) + "% energy weapon damage", false);
         return null;
 
     }

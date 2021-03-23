@@ -13,13 +13,24 @@ public class vic_biolabs extends BaseIndustry {
     public void apply() {
         super.apply(true);
         int size = this.market.getSize();
+
+
+
         demand(Commodities.ORGANICS, size);
         demand(Commodities.CREW, size);
         supply(Commodities.ORGANS, size - 1);
         supply(Commodities.MARINES, size - 1);
+
+        int genetechProd = size + 2;
+        if (!market.getFaction().getId().equals("vic")){
+            genetechProd -= 2;
+        }
+        supply(vic_items.GENETECH, genetechProd);
         String desc = this.getNameForModifier();
-        Pair<String, Integer> deficit = getMaxDeficit(Commodities.ORGANICS);
+
+        Pair<String, Integer> deficit = getMaxDeficit(Commodities.ORGANICS, Commodities.CREW);
         applyDeficitToProduction(1, deficit, Commodities.ORGANS);
+        applyDeficitToProduction(1, deficit, vic_items.GENETECH);
     }
 
 

@@ -185,6 +185,7 @@ public class Empyrean {
                                 Industries.WAYSTATION,
                                 ("vicgmofood"),
                                 ("victourism"),
+                                ("vic_revCenter"),
                                 Industries.LIGHTINDUSTRY,
                                 Industries.ORBITALWORKS
                         )
@@ -316,9 +317,11 @@ public class Empyrean {
                 "Outer Empyrean Comm Relay", // name - if null, defaultName from custom_entities.json will be used
                 "comm_relay", // type of object, defined in custom_entities.json
                 "vic"); // faction
-        OuterRelay.setCircularOrbitPointingDown(EmpyreanStar, 360f * (float) Math.random(), 9500, 250);
+        OuterRelay.setCircularOrbitPointingDown(EmpyreanStar, 180f, 11000, 265);
 
 
+
+        /*
         //Malebolge and the Giants
         PlanetAPI Malebolge = system.addPlanet("vic_Empyrean_malebolge", EmpyreanStar, "Malebolge", "gas_giant", 180f, 420, 11000, 265);
 
@@ -378,6 +381,8 @@ public class Empyrean {
                         new Color(20, 0, 130),
                         new Color(10, 0, 150)));
         Malebolge_magfield.setCircularOrbit(Malebolge, 0, 0, 100);
+
+         */
 
 
         //Dis and its Furies (Tisiphone, Megaera, Alecto)
@@ -553,12 +558,15 @@ public class Empyrean {
         Dismay.getMarket().addCondition(Conditions.VOLATILES_PLENTIFUL);
 
 
+        /*
         // Let's procgen some stuff here cause fuck doing that manually
         float ProcgenRadius = StarSystemGenerator.addOrbitingEntities(system, EmpyreanStar, StarAge.YOUNG,
                 3, 5, // min/max entities to add
                 19000, // radius to start adding at
                 3, // name offset - next planet will be <system name> <roman numeral of this parameter + 1>
                 true); // whether to use custom or system-name based names
+
+         */
 
 
         // generates hyperspace destinations for in-system jump points

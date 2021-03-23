@@ -4,30 +4,35 @@ import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.PluginPick;
 import com.fs.starfarer.api.campaign.CampaignPlugin;
+import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.listeners.ListenerManagerAPI;
-import com.fs.starfarer.api.combat.MissileAIPlugin;
-import com.fs.starfarer.api.combat.MissileAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.*;
+import data.campaign.econ.vic_industries;
 import data.scripts.plugins.timer.VIC_TimeTracker;
 import data.scripts.plugins.timer.VIC_newDayListener;
 import data.scripts.plugins.vic_brandEngineUpgradesDetectionRange;
 import data.scripts.weapons.ai.VIC_SwarmMirvAI;
 import data.scripts.weapons.ai.vic_disruptorShot_AI;
 import data.scripts.weapons.ai.vic_gaganaStuckAI;
-import data.scripts.weapons.ai.vic_verlioka;
+import  data.scripts.weapons.autofireAI.vic_VerliokaAutofireAI;
 import data.world.VICGen;
 import exerelin.campaign.SectorManager;
 import org.dark.shaders.light.LightData;
 import org.dark.shaders.util.ShaderLib;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class VIC_ModPlugin extends BaseModPlugin {
 
     public static final String
-            VERLIOKA = "vic_verlioka_shot",
             DISRUPTOR = "vic_disruptorShot_mie",
             ABYSSAL = "vic_abyssalfangs_srm",
             GAGANA = "vic_gaganaShot_sub";
+
+    public static final String
+            VERLIOKA = "vic_verlioka";
 
     public static boolean hasShaderLib;
 
@@ -47,8 +52,6 @@ public class VIC_ModPlugin extends BaseModPlugin {
     @Override
     public PluginPick<MissileAIPlugin> pickMissileAI(MissileAPI missile, ShipAPI launchingShip) {
         switch (missile.getProjectileSpecId()) {
-            case VERLIOKA:
-                return new PluginPick<MissileAIPlugin>(new vic_verlioka(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case DISRUPTOR:
                 return new PluginPick<MissileAIPlugin>(new vic_disruptorShot_AI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case ABYSSAL:
@@ -59,6 +62,17 @@ public class VIC_ModPlugin extends BaseModPlugin {
         }
         return null;
     }
+
+    @Override
+    public PluginPick<AutofireAIPlugin> pickWeaponAutofireAI(WeaponAPI weapon) {
+        switch (weapon.getId()) {
+            case VERLIOKA:
+                return new PluginPick<AutofireAIPlugin>(new vic_VerliokaAutofireAI(weapon), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            default:
+        }
+        return null;
+    }
+
 
 
     @Override
@@ -75,4 +89,36 @@ public class VIC_ModPlugin extends BaseModPlugin {
         }
     }
 
+    @Override
+    public void onNewGameAfterEconomyLoad() {
+        placeDryDocks();
+    }
+
+    public static void placeDryDocks() {
+
+        HashMap<String, String> h = new HashMap<>();
+        h.put("yama", null);
+        h.put("mazalot", null);
+        h.put("ailmar", null);
+
+        placeIndustries(h, vic_industries.VIC_REVCENTER);
+    }
+
+    private static void placeIndustries(Map<String, String> planetIdMap, String industryId){
+        for (Map.Entry<String, String> entry : planetIdMap.entrySet()) {
+            MarketAPI m;
+
+            if (Global.getSector().getEconomy().getMarket(entry.getKey()) != null) {
+                m = Global.getSector().getEconomy().getMarket(entry.getKey());
+
+                if (!m.hasIndustry(industryId)
+                        && !m.isPlayerOwned()
+                        && !m.getFaction().getId().equals(Global.getSector().getPlayerFaction().getId())) {
+
+                    m.addIndustry(industryId);
+                    m.getIndustry(industryId).setAICoreId(entry.getValue());
+                }
+            }
+        }
+    }
 }

@@ -1,15 +1,29 @@
 package data.scripts.weapons;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.combat.CombatEngineAPI;
+import com.fs.starfarer.api.combat.CombatEntityAPI;
+import com.fs.starfarer.api.combat.DamagingProjectileAPI;
+import com.fs.starfarer.api.combat.OnHitEffectPlugin;
+import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.plugins.vic_combatPlugin;
 import data.scripts.util.MagicRender;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
+import java.util.ArrayList;
+
 
 public class vic_rubiconOnHit implements OnHitEffectPlugin {
+
+    private final ArrayList<SpriteAPI> ringList = new ArrayList<>();
+
+    {
+        ringList.add(Global.getSettings().getSprite("fx", "vic_nawia_ring1"));
+        ringList.add(Global.getSettings().getSprite("fx", "vic_nawia_ring2"));
+    }
 
     public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target,
                       Vector2f point, boolean shieldHit, CombatEngineAPI engine) {
@@ -36,8 +50,78 @@ public class vic_rubiconOnHit implements OnHitEffectPlugin {
                 proj.setDamageAmount(projectile.getBaseDamageAmount() * 0.25f);
             }
 
-            if (MagicRender.screenCheck (100, SpawnPoint)) engine.addPlugin(new vic_nawiaVisuals(SpawnPoint, proj.getFacing()));
+            //if (MagicRender.screenCheck (0.5f, SpawnPoint)) engine.addPlugin(new vic_nawiaVisuals(SpawnPoint, proj.getFacing()));
+            if (MagicRender.screenCheck (0.5f, SpawnPoint)) vic_combatPlugin.AddNawiaFX(SpawnPoint, proj.getFacing());
+            if (false && MagicRender.screenCheck(0.5f, SpawnPoint)) {
 
+                float animTime = MathUtils.getRandomNumberInRange(0.5f, 0.6f);
+
+                engine.addSmoothParticle(
+                        SpawnPoint,
+                        new Vector2f(),
+                        MathUtils.getRandomNumberInRange(20, 30),
+                        1,
+                        animTime,
+                        new Color(MathUtils.getRandomNumberInRange(130, 180), MathUtils.getRandomNumberInRange(20, 60), 255, 255)
+                );
+                for (float I = 0; I < MathUtils.getRandomNumberInRange(4, 8); I++) {
+
+                    Vector2f move = Misc.getUnitVectorAtDegreeAngle(MathUtils.getRandomNumberInRange(-20, 20) + proj.getFacing());
+                    engine.addHitParticle(
+                            SpawnPoint,
+                            new Vector2f(move.x * MathUtils.getRandomNumberInRange(25, 125), move.y * MathUtils.getRandomNumberInRange(25, 125)),
+                            MathUtils.getRandomNumberInRange(5, 20),
+                            MathUtils.getRandomNumberInRange(0.8f, 1f),
+                            animTime * MathUtils.getRandomNumberInRange(0.5f, 1.5f),
+                            new Color(MathUtils.getRandomNumberInRange(90, 180), MathUtils.getRandomNumberInRange(20, 100), 255, 255)
+                    );
+
+                }
+
+                SpriteAPI ring1 = ringList.get(MathUtils.getRandomNumberInRange(0, ringList.size() - 1));
+
+                float ring1_grow = MathUtils.getRandomNumberInRange(12, 16);
+                float ring1_Size = MathUtils.getRandomNumberInRange(10, 20);
+                float ring1_RotationSpeed = MathUtils.getRandomNumberInRange(200f, 300f);
+                float ring1_Angle = MathUtils.getRandomNumberInRange(-45f, 45f);
+
+                MagicRender.battlespace(
+                        ring1,
+                        SpawnPoint,
+                        new Vector2f(),
+                        new Vector2f(ring1_Size, ring1_Size),
+                        new Vector2f(-ring1_grow, -ring1_grow),
+                        proj.getFacing() + ring1_Angle,
+                        -ring1_RotationSpeed * animTime,
+                        new Color(255, 255, 255, 255),
+                        false,
+                        0,
+                        0,
+                        animTime
+                );
+
+                SpriteAPI ring2 = ringList.get(MathUtils.getRandomNumberInRange(0, ringList.size() - 1));
+
+                float ring2_grow = MathUtils.getRandomNumberInRange(12, 16);
+                float ring2_Size = ring1_Size * MathUtils.getRandomNumberInRange(1.3f, 1.4f);
+                float ring2_RotationSpeed = MathUtils.getRandomNumberInRange(200f, 300f);
+                float ring2_Angle = MathUtils.getRandomNumberInRange(-45f, 45f);
+
+                MagicRender.battlespace(
+                        ring2,
+                        SpawnPoint,
+                        new Vector2f(),
+                        new Vector2f(ring2_Size, ring2_Size),
+                        new Vector2f(-ring2_grow, -ring2_grow),
+                        proj.getFacing() + ring2_Angle,
+                        ring2_RotationSpeed * animTime,
+                        new Color(255, 255, 255, 255),
+                        false,
+                        0,
+                        0,
+                        animTime
+                );
+            }
         }
     }
 }

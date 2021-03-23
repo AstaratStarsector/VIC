@@ -32,7 +32,6 @@ public class vic_OmniLuneVisualEffect implements EveryFrameWeaponEffectPlugin {
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
-
         if (engine.isPaused() || weapon.getShip().getOriginalOwner() == -1) return;
 
         ShipAPI ship = weapon.getShip();
@@ -57,6 +56,7 @@ public class vic_OmniLuneVisualEffect implements EveryFrameWeaponEffectPlugin {
         if (ship.getSystem().isActive()) {
             CD.advance(amount);
             if (CD.intervalElapsed()) {
+                if (!MagicRender.screenCheck(0.5f, ship.getLocation())) return;
 
                 if (caramelldansenMode) {
                     color = rainbow.get(colorNumber);

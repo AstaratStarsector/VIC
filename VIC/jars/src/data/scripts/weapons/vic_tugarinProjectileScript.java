@@ -7,6 +7,7 @@ import com.fs.starfarer.api.input.InputEventAPI;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import data.scripts.util.MagicAnim;
 import data.scripts.util.MagicLensFlare;
+import data.scripts.util.MagicRender;
 import org.jetbrains.annotations.NotNull;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
@@ -50,6 +51,8 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
         this.flightTimeFraction = 1 / flightTime;
         this.engine = Global.getCombatEngine();
         proj.getVelocity().scale(2);
+        Vector2f speed = new Vector2f(proj.getVelocity().x - proj.getSource().getVelocity().x,proj.getVelocity().y - proj.getSource().getVelocity().y);
+        proj.getVelocity().set(speed);
         float DMG = proj.getBaseDamageAmount() * 0.3f * ship.getMutableStats().getBallisticWeaponDamageMult().getModifiedValue();
         explosion = new DamagingExplosionSpec(0.1f,
                 250,
@@ -74,7 +77,6 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
         ringRotationDirection = (Math.random() >= 0.5 ? 1 : -1);
         ringRotationSpeed1 = MathUtils.getRandomNumberInRange(20, 60);
         ringRotationSpeed2 = MathUtils.getRandomNumberInRange(20, 60);
-
     }
 
     @Override
@@ -127,6 +129,7 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
     @Override
     public void renderInWorldCoords(ViewportAPI viewport) {
         super.renderInWorldCoords(viewport);
+        if (!MagicRender.screenCheck (0.5f, proj.getLocation())) return;
         float timLeft = 1;
         if (proj.isFading()) {
             timLeft = 1 - ((proj.getElapsed() - flightTime) / 0.3f);

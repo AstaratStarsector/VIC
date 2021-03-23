@@ -4,4 +4,5 @@ Adaptive Assault,vic_adaptiveassault,,,,,,,,,,1,8,1,20,,,,,,,,,,,graphics/icons/
 Emergency Defense,vic_emergencyDefense,,,,,,,,,,2,15,2,20,,,,,,,,,,,graphics/icons/hullsys/displacer.png
 Omni-Lunge,vic_DriftBoost,,,,,,,,3,0.1,0.4,0.3,0.4,0.5,,,,,,,,,,,graphics/icons/hullsys/displacer.png
 Disruptor shot,vic_disruptorShot,,,,,,0.1,,2,0.5,0.25,,2,0,,,,,,,,,,,graphics/icons/hullsys/interdictor_array.png
-Baryonic Displacement,vic_quantumteleporter,,,,,,0.35,,,,0.5,0,0.5,2,,TRUE,,TRUE,,,,,,,graphics/icons/hullsys/displacer.png
+Shock Discharger,vic_shockDischarger,,,,,,,,,,1,2.5,0.5,30,,,,,,,,,,,graphics/icons/hullsys/interdictor_array.png
+Baryonic Displacement,vic_quantumteleporter,,,,,,0.35,,,,0.5,0,0.5,3,,TRUE,,TRUE,,,,,,,graphics/icons/hullsys/displacer.png

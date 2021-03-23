@@ -1,0 +1,58 @@
+{
+  "id": "vic_thermalLance",
+  "specClass": "beam",
+  "type": "ENERGY",
+  "size": "LARGE",
+  "beamEffect": "data.scripts.weapons.vic_thermalLance_beam",
+  "everyFrameEffect": "data.scripts.weapons.vic_thermalLance",
+  "collisionClass": "RAY",
+  "collisionClassByFighter": "RAY_FIGHTER",
+  "displayArcRadius": 400,
+  "turretSprite": "graphics/weapons/vic_thermalLance_Base_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_thermalLance_Glow_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_thermalLance_Base_hardpoint.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_thermalLance_Glow_hardpoint.png",
+  "renderAboveAllWeapons": 0,
+  "glowColor": [
+    255,
+    255,
+    255,
+    200
+  ],
+  "hitGlowRadius": 0,
+  "turretOffsets": [
+    48,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    54,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "fringeColor": [
+    255,
+    255,
+    255,
+    0
+  ],
+  "coreColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "width": 120,
+  "textureType": [
+    "graphics/fx/vic_thermalLanceBeam.png",
+    "graphics/fx/vic_thermalLanceBeam.png"
+  ],
+  "textureScrollSpeed": 210,
+  "pixelsPerTexel": 4,
+  "fireSoundOne": "vic_rarog_start",
+  "fireSoundTwo": "vic_rarog_loop"
+}

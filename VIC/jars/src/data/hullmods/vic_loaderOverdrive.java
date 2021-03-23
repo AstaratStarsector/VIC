@@ -3,6 +3,7 @@ package data.hullmods;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
+import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.loading.HullModSpecAPI;
 
 import java.util.*;
@@ -22,6 +23,7 @@ public class vic_loaderOverdrive extends BaseHullMod {
 
         stats.getBallisticRoFMult().modifyPercent(id, ROFBonus);
         stats.getEnergyRoFMult().modifyPercent(id, ROFBonus);
+
     }
 
     public String getDescriptionParam(int index, HullSize hullSize) {

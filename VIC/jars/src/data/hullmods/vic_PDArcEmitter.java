@@ -3,9 +3,7 @@ package data.hullmods;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import org.lazywizard.lazylib.MathUtils;
-import org.lazywizard.lazylib.combat.AIUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
-import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -19,7 +17,7 @@ public class vic_PDArcEmitter extends BaseHullMod {
             range = new HashMap<>();
     private final float
             ZapDamage = 50f,
-            ZapFlux = ZapDamage * 0.5f;
+            ZapFlux = ZapDamage * 0.7f;
 
     {
         chargeCD.put(ShipAPI.HullSize.FRIGATE, 3f);
@@ -40,6 +38,7 @@ public class vic_PDArcEmitter extends BaseHullMod {
 
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
+
         super.advanceInCombat(ship, amount);
         if (!ship.isAlive()) return;
         ShipAPI.HullSize hullSize = ship.getHullSize();
@@ -57,24 +56,24 @@ public class vic_PDArcEmitter extends BaseHullMod {
         if (charges < maxCharges.get(hullSize)) charges += (1 / chargeCD.get(ship.getHullSize())) * amount;
         if (empCD > 0) empCD -= amount;
 
-        if (!ship.isPhased() && charges >= 1 && empCD <= 0 && !ship.isHoldFire() && (ship.getFluxTracker().getCurrFlux() + ZapFlux < ship.getMaxFlux())) {
+        if (!ship.isPhased() && !ship.getFluxTracker().isOverloadedOrVenting() && charges >= 1 && empCD <= 0 && !ship.isHoldFire() && (ship.getFluxTracker().getCurrFlux() + ZapFlux < ship.getMaxFlux())) {
             MissileAPI missile = NearestEnemyMissilesInRange(ship, ship.getCollisionRadius() + range.get(ship.getHullSize()));
-            if (missile != null){
+            if (missile != null) {
                 Global.getCombatEngine().spawnEmpArc(ship,
-                            ship.getLocation(),
-                            null,
-                            missile,
-                            DamageType.FRAGMENTATION,
-                            ZapDamage * ship.getMutableStats().getDamageToMissiles().getModifiedValue() * ship.getMutableStats().getEnergyWeaponDamageMult().getModifiedValue(),
-                            0,
-                            3000,
-                            null,
-                            1,
-                            new Color(0, 217, 255, 183),
-                            new Color(21, 208, 255, 255));
-                    ship.getFluxTracker().increaseFlux(ZapFlux * (ship.getMutableStats().getEnergyWeaponFluxCostMod().computeEffective(1)) , false);
-                    charges--;
-                    empCD = 0.1f;
+                        ship.getLocation(),
+                        null,
+                        missile,
+                        DamageType.FRAGMENTATION,
+                        ZapDamage * ship.getMutableStats().getDamageToMissiles().getModifiedValue() * ship.getMutableStats().getEnergyWeaponDamageMult().getModifiedValue(),
+                        0,
+                        3000,
+                        null,
+                        1,
+                        new Color(0, 217, 255, 183),
+                        new Color(21, 208, 255, 255));
+                ship.getFluxTracker().increaseFlux(ZapFlux * (ship.getMutableStats().getEnergyWeaponFluxCostMod().computeEffective(1)), false);
+                charges--;
+                empCD = 0.1f;
             }
         }
         customCombatData.put("vic_PDArcEmitterCharges" + id, charges);
@@ -103,7 +102,7 @@ public class vic_PDArcEmitter extends BaseHullMod {
         return null;
     }
 
-    public MissileAPI NearestEnemyMissilesInRange (CombatEntityAPI entity, float MaxRange){
+    public MissileAPI NearestEnemyMissilesInRange(CombatEntityAPI entity, float MaxRange) {
 
         MissileAPI closest = null;
         float distanceSquared, closestDistanceSquared = Float.MAX_VALUE;

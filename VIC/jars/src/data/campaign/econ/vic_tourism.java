@@ -7,6 +7,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.util.Pair;
 
 public class vic_tourism extends BaseIndustry {
+
     public static final float BASE_ACCESSIBILITY = 0.1F;
     public static final float ALPHA_CORE_ACCESSIBILITY = 0.2F;
     public static float MULT_PER_DEFICIT = 0.25F;
@@ -21,24 +22,34 @@ public class vic_tourism extends BaseIndustry {
         return Math.max(max, 0);
     }
 
+    public float maxDeficitPercent() {
+        float max = 0;
+        for (Pair<String, Integer> p : getAllDeficit()) {
+            float percent = p.two / getDemand(p.one).getQuantity().getModifiedValue();
+            if (percent > max) max = percent;
+        }
+
+        return Math.max(max, 0);
+    }
+
     public void apply() {
         super.apply(true);
         int size = this.market.getSize();
-        demand(Commodities.DOMESTIC_GOODS, size - 4);
-        demand(Commodities.FOOD, size - 4);
-        supply(vic_items.GENETECH, size - 4);
+
+        demand(Commodities.FOOD, size + 1);
+        demand(Commodities.DOMESTIC_GOODS, size);
+        demand(Commodities.LUXURY_GOODS, size - 1);
 
 
-        int maxDeficit = getMaxDeficit();
 
-        income.modifyMult(getModId(), 1 - (MULT_PER_DEFICIT * maxDeficit), "Reduced income (Deficit)");
+        income.modifyMult(getModId(), 1 - (maxDeficitPercent()), "Deficit");
 
         if (market.hasCondition(Conditions.RECENT_UNREST)) {
             income.modifyMult(getModId(), 0, "Closed due to unrest");
         } else if (market.getStabilityValue() < 10.0f) {
             float reduction = market.getStabilityValue() < 6 ? 0 : (0.25f * (market.getStabilityValue() - 6));
 
-            income.modifyMult(getModId(), reduction, "Reduced income (Instability)");
+            income.modifyMult(getModId(), reduction, "Instability");
         }
     }
 

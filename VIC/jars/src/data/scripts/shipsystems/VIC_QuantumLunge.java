@@ -139,8 +139,6 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         }
         if (player) {
             Global.getCombatEngine().getTimeMult().modifyMult(id, 1f / shipTimeMult);
-        } else {
-            Global.getCombatEngine().getTimeMult().unmodify(id);
         }
     }
 
@@ -179,12 +177,14 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 
             for (int i = 0; i < ExpNum; i++) {
                 Vector2f ExpPos = new Vector2f(StartPos.x + (DistPerExp * expDir.x * i), StartPos.y + (DistPerExp * expDir.y * i));
-                List<CombatEntityAPI> entitiesMain = CombatUtils.getEntitiesWithinRange(ExpPos, 50f);
+                List<CombatEntityAPI> entitiesMain = CombatUtils.getEntitiesWithinRange(ExpPos, 10f);
                 Global.getSoundPlayer().playSound("vic_quantum_lunge_explosion", 1, 0.5f, ExpPos, new Vector2f(0, 0));
 
                 for (CombatEntityAPI EmpTarget : entitiesMain) {
 
+                    if (EmpTarget instanceof DamagingProjectileAPI && !(EmpTarget instanceof MissileAPI)) continue;
                     if (EmpTarget == ship) continue;
+                    if (EmpTarget instanceof ShipAPI && ((ShipAPI) EmpTarget).getVariant().hasHullMod("vastbulk")) continue;
 
                     Vector2f damagePos = ExpPos;
                     if (EmpTarget instanceof MissileAPI) damagePos = new Vector2f(EmpTarget.getLocation());
@@ -199,7 +199,6 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 
                     engine.applyDamage(EmpTarget,damagePos,EmpArcDmgFinal,EmpArmDmgType,EmpArcEmpFinal,false,false,ship,true);
                 }
-
 
                 if (Math.random() < 0.25f + PseudoRandom) {
                     PseudoRandom = 0f;

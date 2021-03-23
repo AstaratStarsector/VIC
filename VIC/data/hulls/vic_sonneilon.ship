@@ -4,12 +4,12 @@
   "hullSize": "FIGHTER",
   "spriteName": "graphics/ships/fighters/Sonneilon.png",
   "style": "VIC",
-  "height": 81,
+  "height": 68,
   "width": 46,
   "center": [23, 32.5],
-  "collisionRadius": 34,
+  "collisionRadius": 35.5,
   "shieldCenter": [0, -0],
-  "shieldRadius": 33,
+  "shieldRadius": 35,
   "viewOffset": 0,
   "weaponSlots": [
     {
@@ -24,37 +24,36 @@
   ],
   "engineSlots": [
     {
-      "location": [-24.5, 9.5],
-      "length": 18,
-      "width": 3,
-      "angle": 180,
-      "contrailSize": 3,
-      "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
-    },
-    {
-      "location": [-24.5, -9.5],
-      "length": 18,
-      "width": 3,
+      "location": [-25.5, 9.5],
+      "length": 14,
+      "width": 5,
       "angle": -180,
-      "contrailSize": 3,
+      "contrailSize": 5,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-27.5, -0],
-      "length": 19.5,
-      "width": 6,
+      "location": [-25.5, -9.5],
+      "length": 14,
+      "width": 5,
       "angle": 180,
-      "contrailSize": 6,
+      "contrailSize": 5,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-29.5, -0],
+      "length": 18.5,
+      "width": 7,
+      "angle": 180,
+      "contrailSize": 7,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }
   ],
   "bounds": [
-    29.5, -5,
-    -24.5, -9.5,
-    -24.5, 9.5,
-    29.5, 5
+    -24, -16,
+    -24, 16,
+    32.5, -0
   ]
 }

@@ -1,0 +1,67 @@
+{
+	"name":"Virgil",
+	"personalities":["steady", "aggressive"],
+	"gender":["m"],
+	"chance":1,
+	"talkativeness":1.5,
+	"categoryTags":["othermedia", "game", "DMC5", "edgy"],
+	
+	"lines":{
+		"start":[
+			{"text":"Now i'm motivated."},
+			{"text":"Show me your motivation."},
+			{"text":"Foolishness. Spacers. Foolishness."},
+		],
+		"start_boss":[
+			{"text":"Let's end this."},
+			{"text":"Just like old times."},
+		],
+		"retreat":[
+			{"text":"You will regret this."},
+		],
+		"out_of_missiles":[
+		],
+		"need_help":[
+		],
+		"pursuing":[
+			{"text":"Now I grant you death."},
+			{"text":"How boring."},
+			{"text":"Slay all."},
+			{"text":"Such a fool."},
+			{"text":"Pointless."}
+		],
+		"running":[
+			{"text":"Next time."},
+		],
+		"hull_90":[
+			{"text":"Now I motivated!"},
+			{"text":"Is that your best move?"},
+			{"text":"Useless."}
+		],
+		"hull_50":[
+			{"text":"Don't get cocky."},
+			{"text":"Getting on my nerves."},
+			{"text":"Scum!"}
+		],
+		"hull_30":[
+			{"text":"Nice try."},
+			{"text":"Now it's fair fight."},
+			{"text":"Now die!"}
+		],
+		"overload":[
+			{"text":"Need more POWER!"},
+			{"text":"I expect nothing less."},
+			{"text":"Go to hell."},
+			{"text":"What a pain in the ass."},
+			{"text":"That ain't funny."}
+		],
+		"death":[
+			{"text":"What form of power is this."},
+			{"text":"Impossible."}
+		],
+		"victory":[
+			{"text":"Too easy."},
+			{"text":"It's past your bedtime, kid."}
+		]
+	}
+}
