@@ -26,11 +26,8 @@ import com.fs.starfarer.api.impl.campaign.procgen.themes.DerelictThemeGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.SalvageSpecialAssigner;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.special.ShipRecoverySpecial;
 import com.fs.starfarer.api.impl.campaign.submarkets.StoragePlugin;
+import com.fs.starfarer.api.impl.campaign.terrain.*;
 import com.fs.starfarer.api.impl.campaign.terrain.AsteroidFieldTerrainPlugin.AsteroidFieldParams;
-import com.fs.starfarer.api.impl.campaign.terrain.BaseTiledTerrain;
-import com.fs.starfarer.api.impl.campaign.terrain.EventHorizonPlugin;
-import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
-import com.fs.starfarer.api.impl.campaign.terrain.StarCoronaTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin.MagneticFieldParams;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
@@ -91,12 +88,8 @@ public class Apotheosis {
                         0f,
                         30f));
 
-
-
+/*
         system.addRingBand(ApotheosisQuasar, "misc", "rings_dust0", 256f, 4, Color.red, 500f, 600f, 5f);
-        system.addRingBand(ApotheosisQuasar, "misc", "rings_asteroids0", 80f, 1, new Color(101, 76, 49), 160f, 600f, 7f);
-        system.addRingBand(ApotheosisQuasar, "misc", "rings_asteroids0", 80f, 2, new Color(101, 76, 49), 160f, 700f, 10f);
-        system.addRingBand(ApotheosisQuasar, "misc", "rings_asteroids0", 80f, 3, new Color(101, 76, 49), 160f, 800f, 15f);
         system.addRingBand(ApotheosisQuasar, "misc", "rings_dust0", 256f, 1, Color.white, 500f, 800f, 20f);
         system.addRingBand(ApotheosisQuasar, "misc", "rings_dust0", 256f, 2, Color.gray, 500f, 1000f, 26f);
         system.addRingBand(ApotheosisQuasar, "misc", "rings_dust0", 256f, 3, Color.orange, 500f, 1200f, 32f);
@@ -110,6 +103,150 @@ public class Apotheosis {
         system.addRingBand(ApotheosisQuasar, "misc", "rings_dust0", 256f, 2, Color.yellow, 256f, 2500f, 150f);
         system.addRingBand(ApotheosisQuasar, "misc", "rings_dust0", 256f, 3, Color.white, 256f, 2800f, 200f);
         system.addRingBand(ApotheosisQuasar, "misc", "rings_dust0", 256f, 1, Color.red, 256f, 3000f, 250f);
+
+        system.addRingBand(ApotheosisQuasar, "misc", "rings_asteroids0", 80f, 1, new Color(101, 76, 49), 160f, 600f, 7f);
+        system.addRingBand(ApotheosisQuasar, "misc", "rings_asteroids0", 80f, 2, new Color(101, 76, 49), 160f, 700f, 10f);
+        //system.addRingBand(ApotheosisQuasar, "misc", "rings_asteroids0", 80f, 3, new Color(101, 76, 49), 160f, 800f, 15f);
+        */
+
+
+
+
+        float orbitRadius5 = ApotheosisQuasar.getRadius() * 3f;
+        float bandWidth5 = 160f;
+        int numBands5 = 2;
+
+        for (float i = 0; i < numBands5; i++) {
+            float radius = orbitRadius5 - i * bandWidth5 * 0.25f - i * bandWidth5 * 0.1f;
+            float orbitDays = radius *0.3f / (30f + 10f * Misc.random.nextFloat());
+            WeightedRandomPicker<String> rings = new WeightedRandomPicker<>();
+            rings.add("rings_asteroids0");
+            String ring = rings.pick();
+            RingBandAPI visual = system.addRingBand(ApotheosisQuasar, "misc", ring, 80f, 1, new Color(101, 76, 49, 255), bandWidth5,
+                    radius + bandWidth5 + 50 / 2f, -orbitDays);
+            RingBandAPI visual2 = system.addRingBand(ApotheosisQuasar, "misc", ring, 80f, 2, new Color(101, 76, 49, 255), bandWidth5,
+                    radius + bandWidth5 + 150 / 2f, -orbitDays);
+            float spiralFactor = 2f + Misc.random.nextFloat() * 5f;
+            visual.setSpiral(true);
+            visual.setMinSpiralRadius(0f);
+            visual.setSpiralFactor(spiralFactor);
+            visual2.setSpiral(true);
+            visual2.setMinSpiralRadius(0f);
+            visual2.setSpiralFactor(spiralFactor);
+        }
+
+
+
+        float orbitRadius1 = ApotheosisQuasar.getRadius() * 16f;
+        float bandWidth1 = 256f;
+        int numBands1 = 8;
+
+        for (float i = 0; i < numBands1; i++) {
+            float radius = orbitRadius1 - i * bandWidth1 * 0.25f - i * bandWidth1 * 0.1f;
+            float orbitDays = radius *0.3f / (30f + 10f * Misc.random.nextFloat());
+            WeightedRandomPicker<String> rings = new WeightedRandomPicker<>();
+            rings.add("rings_dust0");
+            rings.add("rings_ice0");
+            String ring = rings.pick();
+            RingBandAPI visual = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 0, new Color(46,35,173), bandWidth1,
+                    radius + bandWidth1 / 2f, -orbitDays);
+            RingBandAPI visual2 = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 1, new Color(46,35,173), bandWidth1,
+                    radius + bandWidth1 / 2f, -orbitDays);
+            RingBandAPI visual3 = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 2, new Color(46,35,173), bandWidth1,
+                    radius + bandWidth1 / 2f, -orbitDays);
+            float spiralFactor = 2f + Misc.random.nextFloat() * 5f;
+            visual.setSpiral(true);
+            visual.setMinSpiralRadius(ApotheosisQuasar.getRadius()/3);
+            visual.setSpiralFactor(spiralFactor);
+            visual2.setSpiral(true);
+            visual2.setMinSpiralRadius(ApotheosisQuasar.getRadius()/2);
+            visual2.setSpiralFactor(spiralFactor);
+            visual3.setSpiral(true);
+            visual3.setMinSpiralRadius(ApotheosisQuasar.getRadius());
+            visual3.setSpiralFactor(spiralFactor);
+
+        }
+
+
+        float orbitRadius4 = ApotheosisQuasar.getRadius() * 14f;
+        float bandWidth4 = 100f;
+        int numBands4 = 1;
+
+        for (float i = 0; i < numBands4; i++) {
+            float radius = orbitRadius4/2 - i * bandWidth4 * 0.25f - i * bandWidth4 * 0.1f;
+            float orbitDays = radius *0.3f / (30f + 10f * Misc.random.nextFloat());
+            WeightedRandomPicker<String> rings = new WeightedRandomPicker<>();
+            rings.add("rings_asteroids0");
+            String ring = rings.pick();
+            RingBandAPI visual = system.addRingBand(ApotheosisQuasar, "misc", ring, 130f, 1, Color.red, 130,
+                    radius + bandWidth4 / 2f, -orbitDays);
+            RingBandAPI visual2 = system.addRingBand(ApotheosisQuasar, "misc", ring, 130f, 2, Color.red, 130,
+                    radius + bandWidth4 / 2f, -orbitDays);
+            RingBandAPI visual3 = system.addRingBand(ApotheosisQuasar, "misc", ring, 100f, 1, Color.red, 130,
+                    radius + bandWidth4 / 2f, -orbitDays);
+            float spiralFactor = 2f + Misc.random.nextFloat() * 5f;
+            visual.setSpiral(true);
+            visual.setMinSpiralRadius(ApotheosisQuasar.getRadius()/2f);
+            visual.setSpiralFactor(spiralFactor);
+            visual2.setSpiral(true);
+            visual2.setMinSpiralRadius(ApotheosisQuasar.getRadius()/2f);
+            visual2.setSpiralFactor(spiralFactor);
+            visual3.setSpiral(true);
+            visual3.setMinSpiralRadius(ApotheosisQuasar.getRadius()/2f);
+            visual3.setSpiralFactor(spiralFactor);
+        }
+
+
+
+
+        float orbitRadius3 = ApotheosisQuasar.getRadius() * 10f;
+        float bandWidth3 = 256f;
+        int numBands3 = 12;
+
+        for (float i = 0; i < numBands3; i++) {
+            float radius = orbitRadius3 - i * bandWidth3 * 0.25f - i * bandWidth3 * 0.1f;
+            float orbitDays = radius *0.3f / (30f + 10f * Misc.random.nextFloat());
+            WeightedRandomPicker<String> rings = new WeightedRandomPicker<>();
+            rings.add("rings_ice0");
+            rings.add("rings_dust0");
+            String ring = rings.pick();
+            RingBandAPI visual = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 2, Color.red, bandWidth3,
+                    radius + bandWidth3 / 2f, -orbitDays);
+            float spiralFactor = 2f + Misc.random.nextFloat() * 5f;
+            visual.setSpiral(true);
+            visual.setMinSpiralRadius(0);
+            visual.setSpiralFactor(spiralFactor);
+        }
+
+
+
+        float orbitRadius2 = ApotheosisQuasar.getRadius() * 5f;
+        float bandWidth2 = 256f;
+        int numBands2 = 12;
+
+        for (float i = 0; i < numBands2; i++) {
+            float radius = orbitRadius2 - i * bandWidth2 * 0.25f - i * bandWidth2 * 0.1f;
+            float orbitDays = radius *0.3f / (30f + 10f * Misc.random.nextFloat());
+            WeightedRandomPicker<String> rings = new WeightedRandomPicker<>();
+            rings.add("rings_ice0");
+            rings.add("rings_dust0");
+            String ring = rings.pick();
+            RingBandAPI visual = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 3, Color.red, bandWidth2,
+                    radius + bandWidth2 / 2f, -orbitDays);
+            float spiralFactor = 2f + Misc.random.nextFloat() * 5f;
+            visual.setSpiral(true);
+            visual.setMinSpiralRadius(0);
+            visual.setSpiralFactor(spiralFactor);
+        }
+
+
+
+
+        SectorEntityToken ring = system.addTerrain(Terrain.RING, new BaseRingTerrain.RingParams(orbitRadius1, orbitRadius1 / 2f, ApotheosisQuasar, "Accretion Disk"));
+        ring.addTag(Tags.ACCRETION_DISK);
+        ring.setCircularOrbit(ApotheosisQuasar, 0, 0, -100);
+
+
 
 
 
@@ -183,7 +320,6 @@ public class Apotheosis {
         cleanup(system);
 
     }
-
 
 
     //Learning from Tart scripts

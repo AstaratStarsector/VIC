@@ -6,7 +6,11 @@ import com.fs.starfarer.api.PluginPick;
 import com.fs.starfarer.api.campaign.CampaignPlugin;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.listeners.ListenerManagerAPI;
+import com.fs.starfarer.api.characters.FullName;
+import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.impl.campaign.ids.Ranks;
+import com.fs.starfarer.api.impl.campaign.ids.Skills;
 import data.campaign.econ.vic_industries;
 import data.scripts.plugins.timer.VIC_TimeTracker;
 import data.scripts.plugins.timer.VIC_newDayListener;
@@ -92,6 +96,27 @@ public class VIC_ModPlugin extends BaseModPlugin {
     @Override
     public void onNewGameAfterEconomyLoad() {
         placeDryDocks();
+
+        MarketAPI market = Global.getSector().getEconomy().getMarket("vic_planet_cocytus_market");
+        if (market != null) {
+            PersonAPI admin = Global.getFactory().createPerson();
+            admin.setFaction("vic");
+            admin.setGender(FullName.Gender.FEMALE);
+            admin.setPostId(Ranks.POST_FACTION_LEADER);
+            admin.setRankId(Ranks.FACTION_LEADER);
+            admin.getName().setFirst("Tatiana");
+            admin.getName().setLast("Murakami");
+            admin.setPortraitSprite("graphics/portraits/characters/vic_tatiana.jpg");
+
+            admin.getStats().setSkillLevel(Skills.FLEET_LOGISTICS, 3);
+            admin.getStats().setSkillLevel(Skills.INDUSTRIAL_PLANNING, 3);
+            admin.getStats().setSkillLevel(Skills.PLANETARY_OPERATIONS, 3);
+
+            market.setAdmin(admin);
+            market.getCommDirectory().addPerson(admin, 0);
+            market.addPerson(admin);
+        }
+
     }
 
     public static void placeDryDocks() {
@@ -121,4 +146,5 @@ public class VIC_ModPlugin extends BaseModPlugin {
             }
         }
     }
+
 }

@@ -53,6 +53,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
     @Override
     public void renderInWorldCoords(ViewportAPI viewport) {
+        if (engine == null) return;
         final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
         final List<NawiaFxData> NawiaFxList = localData.NawiaFxList;
         for (NawiaFxData FX : NawiaFxList){

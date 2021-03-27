@@ -69,7 +69,12 @@
 		},
 	    "nex_vicVbombing":{
 		    "nex_vicVbombingIcon":"graphics/hullmods/vic_VBombHmod.png",
+		},
+		
+		"characters":{
+			"tatiana":"graphics/portraits/characters/vic_tatiana.jpg",
 		}
+		
 	}
 }
 	
