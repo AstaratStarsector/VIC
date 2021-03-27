@@ -190,7 +190,9 @@ Once a populous and promising colony, nowadays Siaubas is nothing more but a pla
 ,,,,,
 #Stellar Entities,,,,,
 star_yellow_supergiant,PLANET,"A massive and rather unstable star evolving from a blue supergiant into a red one. With the hydrogen already depleted in its core, the star is gradually switching onto heavier elements. Despite being colder than their blue brethern, yellow supergiants are in fact the most luminous stars when it comes to the visual range. ",,,
-quasar,PLANET,"One of the most luminous, massive and electromagnetically ""loud"" objects in the known Universe, quasars, also known as quasi-stellar objects, are enormous black holes, the accretion disks of which are heated up due to the friction, which causes them to emit up to 600 trillion times as much light as the Sun. A part of matter and energy concentrated around quasars is emitted outwards in giant jets, obliterating everything in their path. A terrifying, yet magnificent wonder of the Universe. ",,,
+quasar,PLANET,"One of the most luminous, massive and electromagnetically ""loud"" objects in the known Universe, quasars, also known as quasi-stellar objects, are enormous black holes, the accretion disks of which are heated up due to the friction, which causes them to emit up to 600 trillion times as much light as the Sun. A part of matter and energy concentrated around quasars is emitted outwards in giant jets, obliterating everything in their path. A terrifying, yet magnificent wonder of the Universe. 
+
+While not actually being a proper quasar (which can be naturally encountered only at the centres of galaxies), this particular stellar entity possessed enough similar traits for the Sector's scientific community to classify it as one. As the nature of it is still being debated and discussed, the new class name is yet to be decided upon, to the great displeasure of some of the community's members. ",,,
 ,,,,,
 ,,,,,
 #Stations,,,,,

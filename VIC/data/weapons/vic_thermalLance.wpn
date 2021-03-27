@@ -17,9 +17,9 @@
     255,
     255,
     255,
-    200
+    255
   ],
-  "hitGlowRadius": 0,
+  "hitGlowRadius": 50,
   "turretOffsets": [
     12.5,
     0
@@ -53,6 +53,4 @@
   ],
   "textureScrollSpeed": 500,
   "pixelsPerTexel": 4,
-  "fireSoundOne": "vic_rarog_start",
-  "fireSoundTwo": "vic_rarog_loop"
 }

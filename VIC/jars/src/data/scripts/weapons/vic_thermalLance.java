@@ -1,5 +1,6 @@
 package data.scripts.weapons;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.WeaponAPI;
@@ -9,6 +10,8 @@ import org.lwjgl.util.vector.Vector2f;
 
 public class vic_thermalLance implements EveryFrameWeaponEffectPlugin {
 
+    private boolean fired = false;
+
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
 
@@ -16,6 +19,13 @@ public class vic_thermalLance implements EveryFrameWeaponEffectPlugin {
             return;
         }
 
+        if (weapon.isFiring()) {
+            if (!fired) {
+                Global.getSoundPlayer().playSound("vic_rubezahl_shot", 1, 1f, weapon.getShip().getLocation(), new Vector2f(0, 0));
+                fired = true;
+            }
+        } else {
+            fired = false;
+        }
     }
-
 }
