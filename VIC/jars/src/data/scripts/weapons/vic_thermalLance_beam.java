@@ -1,5 +1,6 @@
 package data.scripts.weapons;
 
+import com.fs.starfarer.api.AnimationAPI;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.IntervalUtil;
@@ -16,6 +17,20 @@ import java.awt.*;
 public class vic_thermalLance_beam implements BeamEffectPlugin {
 
     private IntervalUtil flashInterval = new IntervalUtil(0.1f,0.2f);
+
+    private float timer = 0;
+
+
+    //dont touch
+    private boolean runOnce = false;
+    private boolean hidden = false;
+    private AnimationAPI theAnim;
+    private int maxFrame;
+    private int frame;
+    private float
+            firingTime = 0f,
+            heat = 0f,
+            currentScore = 0f;
 
 
     @Override
@@ -38,5 +53,9 @@ public class vic_thermalLance_beam implements BeamEffectPlugin {
 
 
 
+
+
+        }
+
     }
-}
+

@@ -8,9 +8,9 @@
   "collisionClass": "RAY",
   "collisionClassByFighter": "RAY_FIGHTER",
   "displayArcRadius": 400,
-  "turretSprite": "graphics/weapons/vic_thermalLance_Base_turret.png",
+  "turretSprite": "graphics/weapons/vic_thermalLance_Base_turret_00.png",
   "turretGlowSprite": "graphics/weapons/vic_thermalLance_Glow_turret.png",
-  "hardpointSprite": "graphics/weapons/vic_thermalLance_Base_hardpoint.png",
+  "hardpointSprite": "graphics/weapons/vic_thermalLance_Base_hardpoint_00.png",
   "hardpointGlowSprite": "graphics/weapons/vic_thermalLance_Glow_hardpoint.png",
   "renderAboveAllWeapons": 0,
   "glowColor": [
@@ -53,4 +53,6 @@
   ],
   "textureScrollSpeed": 500,
   "pixelsPerTexel": 4,
+    "numFrames": 2,
+  "frameRate": 30,
 }

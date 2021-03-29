@@ -1,5 +1,6 @@
 package data.scripts.weapons;
 
+import com.fs.starfarer.api.AnimationAPI;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
@@ -11,6 +12,8 @@ import org.lwjgl.util.vector.Vector2f;
 public class vic_thermalLance implements EveryFrameWeaponEffectPlugin {
 
     private boolean fired = false;
+
+
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
@@ -27,5 +30,28 @@ public class vic_thermalLance implements EveryFrameWeaponEffectPlugin {
         } else {
             fired = false;
         }
+
+        if (engine.isPaused())
+        {
+            return;
+        }
+
+        AnimationAPI anim = weapon.getAnimation();
+        if (weapon.getShip().isHulk())
+        {
+            anim.setFrame(0);
+            return;
+        }
+
+        if (!(weapon.getSlot().isHidden())) {
+            if (weapon.getChargeLevel() > 0.9f) {
+            weapon.getAnimation().setFrame(1);
+        }
+            else {
+            weapon.getAnimation().setFrame(0);
+            }
+        }
     }
 }
+
+
