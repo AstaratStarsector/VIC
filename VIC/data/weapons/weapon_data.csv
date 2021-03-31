@@ -24,7 +24,7 @@ Gagana Smartdart Launcher,vic_gagana,2,,1200,800,,200,,10,14,13,,,,HIGH_EXPLOSIV
 ,vic_gagana_sub,1,,2000,800,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,0,5,2,10,,100,100,1,500,SYSTEM,he20,,Volkov Industries,,Anti Shield,,,,,,,,,,5
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #smal,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Strigoy Flak Cannon,vic_strigoy,0,,400,400,,50,,0,40,5,,,,FRAGMENTATION,25,,0,0.5,,,0,15,3,10,,600,,,,"PD, PD_ONLY, ANTI_FTR","pd5, vic_t2weapons_bp",,Volkov Industries,,Point Defense (Area),,,,,,,,,,18
+Strigoy Flak Cannon,vic_strigoy,0,,500,350,,30,,0,75,6,,,,FRAGMENTATION,10,,0,1,,,0,5,2.5,10,,800,,,,"ANTI_FTR, PD, PD_ALSO","pd5, vic_t2weapons_bp",,Volkov Industries,,Point Defense (Area),,,,,,,,,,18
 Rarog Atomic Emitter,vic_rarog,0,,400,450,125,,,0,100,5,,,,HIGH_EXPLOSIVE,,125,0.2,0.1,,,,,,,10000,,,,,ANTI_FTR,"beam6, he6, vic_t2weapons_bp",,Volkov Industries,,Anti Armor,,,,,,,,,,15.6
 Laidlaw Mass Driver,vic_laidlawMassDriver,0,,600,700,,250,,2,30,7,,,,ENERGY,375,,0.5,1.5,,,0,10,1.25,10,,2500,,,25,,"energy8, vic_t2weapons_bp",,Volkov Industries,,General,,,,,Extremely fast projectiles. Hits on hull or armor create explosions dealing additional %s fragmentation damage.,75,,,,7.5
 Upyr Autocannon,vic_upyr,0,,600,600,,20,,1,30,7,,,,KINETIC,17,,0,0.1,2,0.1,0,18,1,9,,850,,,20,,"kinetic7, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,,,,,,2.5
