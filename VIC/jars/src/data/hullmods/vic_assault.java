@@ -17,7 +17,6 @@ public class vic_assault extends BaseHullMod {
 
 
     private final Map<ShipAPI.HullSize, Float> fluxEfficiency = new HashMap<>();
-
     {
         fluxEfficiency.put(HullSize.FRIGATE, 5f);
         fluxEfficiency.put(HullSize.DESTROYER, 10f);
@@ -67,8 +66,6 @@ public class vic_assault extends BaseHullMod {
         //stats.getMaxSpeed().modifyMult(id, 1 + (fluxEfficiency.get(hullSize) * 0.01f));
         stats.getProjectileSpeedMult().modifyMult(id, projSpeedMult );
 
-
-
         ShipVariantAPI variant = stats.getVariant();
         float pptMult = 0.33f;
 
@@ -84,7 +81,6 @@ public class vic_assault extends BaseHullMod {
         }
 
         stats.getPeakCRDuration().modifyMult(id, pptPenalty + pptMult);
-
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {
@@ -108,9 +104,6 @@ public class vic_assault extends BaseHullMod {
 	}
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
-
-
-
         if (index == 0) return (fluxEfficiency.get(HullSize.FRIGATE)).intValue() + "%";
         if (index == 1) return (fluxEfficiency.get(HullSize.DESTROYER)).intValue() + "%";
         if (index == 2) return (fluxEfficiency.get(HullSize.CRUISER)).intValue() + "%";

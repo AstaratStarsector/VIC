@@ -1,5 +1,6 @@
 {
 	"id":"vic_strigoy_shot",
+	"onFireEffect":"data.scripts.weapons.vic_strigoyScript",
 	"specClass":"projectile",
 	"spawnType":"BALLISTIC",
 	"collisionClass":"PROJECTILE_FF",

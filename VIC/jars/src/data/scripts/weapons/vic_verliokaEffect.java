@@ -39,11 +39,6 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
 
         ShipAPI ship = weapon.getShip();
 
-        //Global.getLogger(vic_verliokaEffect.class).info();
-
-
-
-
         float dmgMult = ship.getMutableStats().getDamageToMissiles().getModifiedValue();
 
         ArrayList<BeamAPI> weaponBeams = new ArrayList<>(2);

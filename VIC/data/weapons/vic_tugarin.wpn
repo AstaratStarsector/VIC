@@ -4,7 +4,6 @@
   "projectileSpecId": "vic_tugarin_shot",
   "type": "BALLISTIC",
   "size": "LARGE",
-  "everyFrameEffect": "data.scripts.weapons.vic_tugarinScript",
   "displayArcRadius": 600,
   "turretSprite": "graphics/weapons/vic_tugarin_base_turret.png",
   "turretGlowSprite": "graphics/weapons/vic_tugarin_glow_turret.png",

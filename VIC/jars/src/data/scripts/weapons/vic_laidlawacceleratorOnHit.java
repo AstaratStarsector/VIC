@@ -1,6 +1,7 @@
 package data.scripts.weapons;
 
 import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.combat.listeners.ApplyDamageResultAPI;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
@@ -30,8 +31,7 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
             new Color(255, 150, 35, 255)
     );
 
-    public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target,
-                      Vector2f point, boolean shieldHit, CombatEngineAPI engine) {
+    public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
         if (!shieldHit && !projectile.isFading() && target instanceof ShipAPI) {
             explosion.setDamageType(DamageType.FRAGMENTATION);
             explosion.setShowGraphic(false);

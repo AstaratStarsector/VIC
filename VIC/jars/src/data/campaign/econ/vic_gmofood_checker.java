@@ -5,10 +5,7 @@ import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
 import com.fs.starfarer.api.campaign.FactionAPI;
 import com.fs.starfarer.api.campaign.RepLevel;
 import com.fs.starfarer.api.campaign.SectorAPI;
-import data.campaign.econ.vic_industries;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
-
-import static data.campaign.econ.vic_industries.VIC_GMOFOOD;
 
 public class vic_gmofood_checker extends Farming {
 

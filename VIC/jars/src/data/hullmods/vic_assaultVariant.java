@@ -12,15 +12,11 @@ import java.util.Set;
 public class vic_assaultVariant extends BaseHullMod {
 
     private final float
-
             addFluxPerCap = -200,
             addDisPerCap = 10,
             rangeReduction = 0.75f,
             shieldEffPenalty = 0.3f,
             shieldUpkeepBonus = 0.5f;
-
-
-
 
     private final Map<ShipAPI.HullSize, Float> rangeForClamp = new HashMap<>();
     {
@@ -91,7 +87,7 @@ public class vic_assaultVariant extends BaseHullMod {
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {
-        boolean OK = true;
+        //boolean OK = true;
         if (!ship.getHullSpec().getHullId().startsWith("vic_")) return false;
         if (!ship.getVariant().getHullMods().contains("vic_shturmSolutionDummy")) return false;
         for (String Hmod : BLOCKED_HULLMODS){

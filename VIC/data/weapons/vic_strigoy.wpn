@@ -4,7 +4,6 @@
   "projectileSpecId": "vic_strigoy_shot",
   "type": "BALLISTIC",
   "size": "SMALL",
-  "everyFrameEffect": "data.scripts.weapons.vic_strigoy",
   "displayArcRadius": 400,
   "turretSprite": "graphics/weapons/vic_strigoy_base_turret.png",
   "turretGunSprite": "graphics/weapons/vic_strigoy_barrel_turret.png",

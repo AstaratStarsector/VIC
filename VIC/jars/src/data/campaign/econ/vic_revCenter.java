@@ -1,17 +1,15 @@
 package data.campaign.econ;
 
-import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
-import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
-import data.scripts.conditions.VIC_VBomb_scar;
+import data.campaign.ids.vic_Items;
 import data.scripts.utilities.StringHelper;
 
 import java.awt.*;
@@ -48,7 +46,7 @@ public class vic_revCenter extends BaseIndustry implements MarketImmigrationModi
         if (market.getFaction().getId().equals("vic")){
             genetechDemand -= 1;
         }
-        demand(vic_items.GENETECH, genetechDemand);
+        demand(vic_Items.GENETECH, genetechDemand);
 
 
 

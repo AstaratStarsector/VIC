@@ -180,9 +180,9 @@
     "carriers": 2,
     "phaseShips": 1,
 	
-    "officerQuality": 4,
-    "shipQuality": 5,
-    "numShips": 3,
+    "officerQuality": 2,
+    "shipQuality": 4,
+    "numShips": 1,
 	
     "shipSize": 2,
 	
@@ -196,12 +196,13 @@
 	
     "commanderSkillsShuffleProbability": 0,
     "commanderSkills": [
-			"officer_management",
-			"electronic_warfare",
 			"coordinated_maneuvers",
-			"ship_design",
-			"fighter_doctrine",
-			
+			"flux_regulation",
+			"electronic_warfare",
+			"crew_training",
+			"officer_training",
+			"fighter_uplink",
+			"carrier_group",			
     ],
   },
   "illegalCommodities": [

@@ -4,22 +4,18 @@ import com.fs.starfarer.api.EveryFrameScript;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignClockAPI;
 import com.fs.starfarer.api.campaign.comm.IntelInfoPlugin;
-import com.fs.starfarer.api.campaign.econ.ImmigrationPlugin;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.combat.MutableStat;
-import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.campaign.intel.deciv.DecivTracker;
 import data.campaign.intel.VIC_declineIntel;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class VIC_TimeTracker implements EveryFrameScript {
 
+    public ArrayList<MarketAPI> MarketsWithScar = new ArrayList<>();
     public boolean firstTick = true;
     public int lastDayChecked = 0;
-
     public boolean doOnce = true;
-    public static ArrayList<MarketAPI> MarketsWithScar = new ArrayList<>();
 
     public VIC_TimeTracker() {
     }
@@ -33,7 +29,7 @@ public class VIC_TimeTracker implements EveryFrameScript {
     }
 
     public void advance(float amount) {
-        if (doOnce){
+        if (doOnce) {
             checkVbomb();
             doOnce = false;
         }
@@ -44,39 +40,34 @@ public class VIC_TimeTracker implements EveryFrameScript {
         }
     }
 
-    public void checkVbomb(){
+    public void checkVbomb() {
 
         if (!MarketsWithScar.isEmpty()) MarketsWithScar.clear();
 
-        for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()){
-            if (market.hasCondition("VIC_VBomb_scar")){
+        for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
+            if (market.hasCondition("VIC_VBomb_scar")) {
                 MarketsWithScar.add(market);
                 debugMessage(market.getName() + "are contaminated");
             }
         }
-        if(MarketsWithScar.isEmpty())debugMessage("All markets clear");
+        if (MarketsWithScar.isEmpty()) debugMessage("All markets clear");
     }
 
-    public void doVirusThings(){
-        for (MarketAPI market : MarketsWithScar){
+    public void doVirusThings() {
+        for (MarketAPI market : MarketsWithScar) {
             float lowPopSize = (float) ((Math.pow(2f, market.getSize() - 2f)) * 100f);
             Global.getLogger(VIC_TimeTracker.class).info("Vbomb " + market.getName() + " goest down at " + lowPopSize + " / " + " current " + market.getPopulation().getWeight().getModifiedValue());
 
-            final ImmigrationPlugin plugin = Global.getSector().getPluginPicker().pickImmigrationPlugin(market);
+            float total = market.getIncoming().getWeight().getModifiedValue();
 
-            float total = 0f;
-            for (MutableStat.StatMod mod : plugin.computeIncoming().getWeight().getFlatMods().values()){
-                total += mod.getValue();
-            }
             if (market.hasIndustry("vic_antiEVCt2") || market.hasIndustry("vic_antiEVCt3")) continue;
-            if (market.getPopulation().getWeight().getModifiedValue() <= lowPopSize && total < 0){
-                if (market.getSize() >= 3 ){
+            if (market.getPopulation().getWeight().getModifiedValue() <= lowPopSize && total < 0) {
+                if (market.getSize() >= 3) {
                     market.setSize(market.getSize() - 1);
                     IntelInfoPlugin intel = new VIC_declineIntel(market, market.getSize());
                     Global.getSector().addScript((EveryFrameScript) intel);
                     Global.getSector().getIntelManager().addIntel(intel);
-                } else if (market.getSize() == 2 ){
-
+                } else if (market.getSize() == 2) {
                     DecivTracker.decivilize(market, true);
                 }
             }

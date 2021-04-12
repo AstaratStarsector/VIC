@@ -4,7 +4,6 @@
   "projectileSpecId": "vic_besomar_shot",
   "type": "BALLISTIC",
   "size": "LARGE",
-  "everyFrameEffect": "data.scripts.weapons.vic_devostatorFire",
   "turretSprite": "graphics/weapons/vic_besomar_base_turret.png",
   "turretGunSprite": "graphics/weapons/vic_besomar_barrel_turret.png",
   "hardpointSprite": "graphics/weapons/vic_besomar_base_hardpoint.png",

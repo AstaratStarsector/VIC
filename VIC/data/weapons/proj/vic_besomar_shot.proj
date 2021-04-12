@@ -1,5 +1,6 @@
 {
 	"id":"vic_besomar_shot",
+	"onFireEffect":"data.scripts.weapons.vic_devostatorFire",
 	"specClass":"projectile",
 	"spawnType":"BALLISTIC",
 	"collisionClass":"PROJECTILE_FF",

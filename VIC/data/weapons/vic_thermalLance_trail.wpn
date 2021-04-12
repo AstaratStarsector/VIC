@@ -1,0 +1,61 @@
+{
+  "id": "vic_thermalLance_trail",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_thermalLance_trail_proj",
+  "type": "BALLISTIC",
+  "size": "LARGE",
+  "displayArcRadius": 450,
+  "turretSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_base_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_glow_turret.png",
+  "turretGunSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_barrel_turret.png",
+  "turretUnderSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_underbase_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_base.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_glow.png",
+  "hardpointGunSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_barrel.png",
+  "hardpointUnderSprite": "graphics/weapons/vic_heavy_laidlaw_accelerator_underbase.png",
+  "renderAboveAllWeapons": 0,
+  "visualRecoil": 12,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    37,
+    4.5,
+    37,
+    -4.5
+  ],
+  "turretAngleOffsets": [
+    0,
+    0
+  ],
+  "hardpointOffsets": [
+    45.5,
+    -4.5,
+    45.5,
+    4.5
+  ],
+  "hardpointAngleOffsets": [
+    0,
+    0
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "GLOW_AND_FLASH",
+  "autocharge": true,
+  "muzzleFlashSpec": {
+    "length": 50,
+    "spread": 10,
+    "particleSizeMin": 60,
+    "particleSizeRange": 24,
+    "particleDuration": 0.12,
+    "particleCount": 18,
+    "particleColor": [
+      255,
+      255,
+      255,
+      255
+    ]
+  },
+  "textureType": ROUGH,
+  "fireSoundOne": "vic_laidlaw_accelerator_charge",
+  "fireSoundTwo": "vic_laidlaw_accelerator_shot_heavy"
+}

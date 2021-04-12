@@ -5,15 +5,19 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.input.InputEventAPI;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
+import data.scripts.plugins.MagicTrailPlugin;
 import data.scripts.util.MagicAnim;
-import data.scripts.util.MagicLensFlare;
 import data.scripts.util.MagicRender;
 import org.jetbrains.annotations.NotNull;
 import org.lazywizard.lazylib.MathUtils;
+import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 import java.util.List;
+
+import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
 
 public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
 
@@ -51,7 +55,7 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
         this.flightTimeFraction = 1 / flightTime;
         this.engine = Global.getCombatEngine();
         proj.getVelocity().scale(2);
-        Vector2f speed = new Vector2f(proj.getVelocity().x - proj.getSource().getVelocity().x,proj.getVelocity().y - proj.getSource().getVelocity().y);
+        Vector2f speed = new Vector2f(proj.getVelocity().x - proj.getSource().getVelocity().x, proj.getVelocity().y - proj.getSource().getVelocity().y);
         proj.getVelocity().set(speed);
         float DMG = proj.getBaseDamageAmount() * 0.3f * ship.getMutableStats().getBallisticWeaponDamageMult().getModifiedValue();
         explosion = new DamagingExplosionSpec(0.1f,
@@ -66,7 +70,7 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
                 0.5f,
                 10,
                 new Color(33, 255, 122, 255),
-                new Color(255, 150, 35, 255)
+                new Color(MathUtils.getRandomNumberInRange(215, 255), MathUtils.getRandomNumberInRange(130, 170), MathUtils.getRandomNumberInRange(15, 55), 255)
         );
         explosion.setDamageType(DamageType.HIGH_EXPLOSIVE);
 
@@ -75,14 +79,49 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
         ringAngle1 = MathUtils.getRandomNumberInRange(-40, 40);
         ringAngle2 = MathUtils.getRandomNumberInRange(-40, 40);
         ringRotationDirection = (Math.random() >= 0.5 ? 1 : -1);
-        ringRotationSpeed1 = MathUtils.getRandomNumberInRange(20, 60);
-        ringRotationSpeed2 = MathUtils.getRandomNumberInRange(20, 60);
+        ringRotationSpeed1 = MathUtils.getRandomNumberInRange(40, 80);
+        ringRotationSpeed2 = MathUtils.getRandomNumberInRange(40, 80);
     }
+
+    //Main phase color
+    private static final Color PHASE_COLOR = new Color(235, 135, 5, 255);
+
+    //For our "drill" effects
+    private final float drillSpeed = 100f;
+    private float[] drillTrailIDs = {0f, 0f, 0f};
 
     @Override
     public void advance(float amount, List<InputEventAPI> events) {
         if (engine.isPaused()) return;
         //if (proj.isFading()) return;
+        //Moves the "phantom" to its appropriate location
+        Vector2f phantomPos = MathUtils.getRandomPointInCircle(null, 55f);
+        phantomPos.x += proj.getLocation().x;
+        phantomPos.y += proj.getLocation().y;
+
+        //If we are outside the screenspace, don't do the extra visual effects
+        if (!Global.getCombatEngine().getViewport().isNearViewport(phantomPos, ship.getCollisionRadius() * 1.5f)) {
+            return;
+        }
+
+        //And finally spawn our "drill trails"
+        //If we have not gotten any IDs for them yet, get some IDs
+        if (drillTrailIDs[0] == 0f) {
+            for (int i = 0; i < drillTrailIDs.length; i++) {
+                drillTrailIDs[i] = MagicTrailPlugin.getUniqueID();
+            }
+        }
+
+        //Then, spawn six trails, in two different positions, and offset them by angle
+        SpriteAPI spriteToUse = Global.getSettings().getSprite("fx", "SRD_trail_helix");
+        for (int i = 0; i < 1; i++) {
+            Vector2f positionToSpawn = new Vector2f(proj.getLocation().x, proj.getLocation().y);
+            positionToSpawn = VectorUtils.rotateAroundPivot(positionToSpawn, proj.getLocation(), proj.getFacing(), new Vector2f(0f, 0f));
+            MagicTrailPlugin.AddTrailMemberAdvanced(proj, drillTrailIDs[i], spriteToUse, positionToSpawn, drillSpeed, drillSpeed * 0.5f,
+                    proj.getFacing() + 180f, 0f, 0f, 32f,
+                    256f, PHASE_COLOR, Color.RED, 1f, 0f, 0.1f, 0.3f, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,
+                    240f, 500f, new Vector2f(0f, 0f), null, CombatEngineLayers.CONTRAILS_LAYER);
+        }
 
         float newSpeedMult = speedMult - ((flightTimeFraction) * amount * (float) Math.sqrt(speedMult) * 1.8f);
         proj.getVelocity().scale(newSpeedMult / speedMult);
@@ -95,16 +134,28 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
 
 
         if (!engine.isEntityInPlay(proj) || proj.didDamage()) {
-            MagicLensFlare.createSmoothFlare(
-                    engine,
-                    ship,
+            //lens flare
+            MagicRender.battlespace(
+                    Global.getSettings().getSprite("campaignEntities", "fusion_lamp_glow"),
                     new Vector2f(proj.getLocation()),
-                    70,
-                    700,
+                    new Vector2f(),
+                    new Vector2f(140 * MathUtils.getRandomNumberInRange(0.8f, 1.2f), 1400 * MathUtils.getRandomNumberInRange(0.8f, 1.2f)),
+                    new Vector2f(),
                     rotation,
-                    new Color(255, 86, 35, 255),
-                    new Color(255, 150, 35, 186)
+                    0,
+                    new Color(MathUtils.getRandomNumberInRange(200, 255), MathUtils.getRandomNumberInRange(50, 86), MathUtils.getRandomNumberInRange(0, 35), 255),
+                    true,
+                    0,
+                    0,
+                    0.5f,
+                    0.15f,
+                    MathUtils.getRandomNumberInRange(0.05f, 0.2f),
+                    0,
+                    MathUtils.getRandomNumberInRange(0.4f, 0.6f),
+                    MathUtils.getRandomNumberInRange(0.1f, 0.3f),
+                    CombatEngineLayers.CONTRAILS_LAYER
             );
+
 
             engine.spawnDamagingExplosion(
                     explosion,
@@ -129,23 +180,24 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
     @Override
     public void renderInWorldCoords(ViewportAPI viewport) {
         super.renderInWorldCoords(viewport);
-        if (!MagicRender.screenCheck (0.5f, proj.getLocation())) return;
+        if (!MagicRender.screenCheck(0.5f, proj.getLocation())) return;
         float timLeft = 1;
         if (proj.isFading()) {
             timLeft = 1 - ((proj.getElapsed() - flightTime) / 0.3f);
-            timLeft = MagicAnim.smooth(timLeft);
+            timLeft = MagicAnim.smooth(timLeft * 0.6f + 0.4f);
         }
 
         sprite.setAngle(rotation);
         sprite.setSize(32 * timLeft, 32 * timLeft);
-        sprite.setNormalBlend();
+        sprite.setAdditiveBlend();
         sprite.renderAtCenter(proj.getLocation().x, proj.getLocation().y);
 
         float ringSize = 58;
 
+        spriteRing.setAdditiveBlend();
+
         spriteRing.setAngle(ringAngle1 + ringRotation1);
         spriteRing.setSize(ringSize * timLeft, ringSize * timLeft);
-        spriteRing.setNormalBlend();
         spriteRing.renderAtCenter(proj.getLocation().x, proj.getLocation().y);
 
         spriteRing.setAngle(ringAngle2 + ringRotation2);

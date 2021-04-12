@@ -161,5 +161,6 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin {
         if (!hidden) {
             theAnim.setFrame(frame);
         }
+
     }
 }

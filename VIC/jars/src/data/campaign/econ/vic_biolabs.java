@@ -6,6 +6,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.campaign.ids.vic_Items;
 
 public class vic_biolabs extends BaseIndustry {
 
@@ -25,12 +26,12 @@ public class vic_biolabs extends BaseIndustry {
         if (!market.getFaction().getId().equals("vic")){
             genetechProd -= 2;
         }
-        supply(vic_items.GENETECH, genetechProd);
+        supply(vic_Items.GENETECH, genetechProd);
         String desc = this.getNameForModifier();
 
         Pair<String, Integer> deficit = getMaxDeficit(Commodities.ORGANICS, Commodities.CREW);
         applyDeficitToProduction(1, deficit, Commodities.ORGANS);
-        applyDeficitToProduction(1, deficit, vic_items.GENETECH);
+        applyDeficitToProduction(1, deficit, vic_Items.GENETECH);
     }
 
 

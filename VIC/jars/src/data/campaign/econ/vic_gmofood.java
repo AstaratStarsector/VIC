@@ -1,17 +1,13 @@
 package data.campaign.econ;
 
-import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.FactionAPI;
-import com.fs.starfarer.api.campaign.RepLevel;
-import com.fs.starfarer.api.campaign.SectorAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
-import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.campaign.ids.vic_Items;
 
 
 public class vic_gmofood extends Farming {
@@ -35,7 +31,7 @@ public class vic_gmofood extends Farming {
         super.apply(true);
         int size = this.market.getSize();
         demand(Commodities.ORGANICS, size - 2);
-        demand(vic_items.GENETECH, (int) ((size - 1) * 0.5f));
+        demand(vic_Items.GENETECH, (int) ((size - 1) * 0.5f));
         if (getSupplyForConditionWater() == 1) {
             demand(Commodities.HEAVY_MACHINERY, size);
             supply(Commodities.FOOD, size + getSupplyForConditionWater());

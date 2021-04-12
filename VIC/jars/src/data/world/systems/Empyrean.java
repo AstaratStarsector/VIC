@@ -21,6 +21,7 @@ import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin.MagneticFieldParams;
 import com.fs.starfarer.combat.entities.terrain.Planet;
+import data.campaign.ids.vic_Items;
 import org.lazywizard.lazylib.MathUtils;
 
 import static data.world.VICGen.addMarketplace;
@@ -99,7 +100,8 @@ public class Empyrean {
                                 Industries.MINING,
                                 Industries.HEAVYBATTERIES,
                                 Industries.REFINING,
-                                Industries.WAYSTATION
+                                Industries.WAYSTATION,
+                                Industries.ORBITALWORKS
                         )
                 ),
                 //tariffs
@@ -109,6 +111,8 @@ public class Empyrean {
                 //junk and chatter
                 true);
 
+
+        Phlegeton_market.getIndustry(Industries.ORBITALWORKS).setSpecialItem(new SpecialItemData(Items.PRISTINE_NANOFORGE, null));
 
         // Archangel Mining Station
         SectorEntityToken Archangel = system.addCustomEntity("vic_archangel",
@@ -157,7 +161,7 @@ public class Empyrean {
                 new ArrayList<>(
                         Arrays.asList(
                                 Conditions.POPULATION_7,
-                                Conditions.FARMLAND_BOUNTIFUL,
+                                Conditions.FARMLAND_POOR,
                                 Conditions.HABITABLE,
                                 Conditions.ORGANIZED_CRIME,
                                 Conditions.TERRAN,
@@ -183,11 +187,10 @@ public class Empyrean {
                                 Industries.HEAVYBATTERIES,
                                 Industries.HIGHCOMMAND,
                                 Industries.WAYSTATION,
-                                ("vicgmofood"),
+                                Industries.FARMING,
                                 ("victourism"),
                                 ("vic_revCenter"),
-                                Industries.LIGHTINDUSTRY,
-                                Industries.ORBITALWORKS
+                                Industries.LIGHTINDUSTRY
                         )
                 ),
                 //tariffs
@@ -197,9 +200,9 @@ public class Empyrean {
                 //junk and chatter
                 true);
         //Gives  Pristine Nanoforged to OrbitalWorks
-        ((HeavyIndustry) Cocytus_market.getIndustry(Industries.ORBITALWORKS)).setNanoforge(new SpecialItemData(Items.PRISTINE_NANOFORGE, null));
+        //Cocytus_market.getIndustry(Industries.FARMING).setSpecialItem(new SpecialItemData(vic_Items.GMOfarm, null));
         CargoAPI cargo = Cocytus_market.getSubmarket(Submarkets.GENERIC_MILITARY).getCargo();
-        cargo.addSpecial(new SpecialItemData("industry_bp", "vicgmofood"), 1);
+        cargo.addSpecial(new SpecialItemData(vic_Items.GMOfarm, null), 1);
 
         //Inner Jump Point
         JumpPointAPI innerJumpPoint = Global.getFactory().createJumpPoint(

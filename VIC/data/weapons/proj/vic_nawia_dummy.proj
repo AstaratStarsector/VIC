@@ -1,0 +1,19 @@
+{
+	"id":"vic_nawia_dummy",
+	"specClass":"projectile",
+	"spawnType":"BALLISTIC",
+	"onFireEffect":"data.scripts.weapons.vic_nawiaScript",
+	"collisionClass":"PROJECTILE_FF",
+	"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"length":60.0,
+	"hitGlowRadius":38,
+	"width":8.5,
+	"fadeTime":0.2,
+	#"fringeColor":[255,255,100,255],
+	#"coreColor":[255,255,200,150],
+	"fringeColor":[196, 157, 255,235],
+	"coreColor":[255, 255, 255,200],	
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":5.0,
+	"bulletSprite":"graphics/missiles/vic_rubicon_shell.png"
+}

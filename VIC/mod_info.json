@@ -2,9 +2,9 @@
 	"id":"vic",
 	"name":"VIC",
 	"author":"Astarat, PureTilt",
-	"version":"1.2.0  New Humanity. New Future. New Paradise",
+	"version":"1.2.0",
 	"description":"A transhumanist quasi-religious Megacorporation from the Human Domain era, hell-bent on helping humanity survive and evolve through extensive genetic modification, ardently enforcing their views and regime either by pen, or by sword.",
-	"gameVersion":"0.9.1a-RC8",
+	"gameVersion":"0.95a-RC12",
 	"jars": ["jars/VIC.jar"],
 	"modPlugin":"data.scripts.VIC_ModPlugin"
 }

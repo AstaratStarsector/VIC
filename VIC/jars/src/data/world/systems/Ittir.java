@@ -13,6 +13,7 @@ import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
+import data.campaign.ids.vic_Items;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class Ittir {
                 Kalada,
                 null,
                 "Kalada",
-                6,
+                5,
 
                 new ArrayList<>(
                         Arrays.asList(
@@ -88,15 +89,15 @@ public class Ittir {
                                 Industries.WAYSTATION,
                                 Industries.STARFORTRESS,
                                 Industries.MILITARYBASE,
-                                ("vicgmofood")
+                                Industries.FARMING
                         )
                 ),
-                //tariffs
-                0.3f,
-                //freeport
-                true,
-                //junk and chatter
-                true);
+                0.3f, //tariffs
+                true, //freeport
+                true //junk and chatter
+                );
+
+        Kalada_market.getIndustry(Industries.FARMING).setSpecialItem(new SpecialItemData(vic_Items.GMOfarm, null));
 
 
         system.addAsteroidBelt(IttirStar, 50, 3000, 400, 300, 400, Terrain.ASTEROID_BELT, "Inner Band");

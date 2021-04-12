@@ -58,8 +58,6 @@ public class vic_dynamicShields extends BaseHullMod {
             return;
         }
 
-
-
         float baseShieldArc =
                 (ship.getHullSpec().getShieldSpec().getArc() *
                         (ship.getMutableStats().getShieldArcBonus().getPercentMod() * 0.01f + 1)  +

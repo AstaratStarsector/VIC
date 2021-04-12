@@ -1,5 +1,6 @@
 {
 	"id":"vic_tugarin_shot",
+	"onFireEffect":"data.scripts.weapons.vic_tugarinScript",
 	"specClass":"projectile",
 	"spawnType":"BALLISTIC",
 	"collisionClass":"PROJECTILE_FF",

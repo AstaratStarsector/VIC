@@ -131,7 +131,7 @@ public class vic_disruptorShot extends BaseShipSystemScript implements MineStrik
 	}
 
 	protected float getMaxRange(ShipAPI ship) {
-		return getMineRange();
+		return getMineRange(ship);
 	}
 
 	@Override
@@ -162,11 +162,10 @@ public class vic_disruptorShot extends BaseShipSystemScript implements MineStrik
 		return 3f;
 	}
 
-
-	public float getMineRange() {
+	@Override
+	public float getMineRange(ShipAPI ship) {
 		return MINE_RANGE;
 	}
-
 	
 }
 

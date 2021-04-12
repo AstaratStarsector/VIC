@@ -19,7 +19,6 @@ public class vic_deathProtocol extends BaseHullMod {
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getBallisticWeaponDamageMult().modifyMult(id, dmgIncreas);
         stats.getEnergyWeaponDamageMult().modifyMult(id, dmgIncreas);
-        stats.getBeamWeaponDamageMult().modifyMult(id, dmgIncreas);
         stats.getMissileWeaponDamageMult().modifyMult(id, dmgIncreas);
 
         ShipVariantAPI variant = stats.getVariant();

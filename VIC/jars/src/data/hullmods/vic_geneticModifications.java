@@ -1,13 +1,9 @@
 package data.hullmods;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
-import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.launcher.ModManager;
-import exerelin.campaign.AllianceManager;
 
 public class vic_geneticModifications extends BaseHullMod {
 
@@ -23,7 +19,6 @@ public class vic_geneticModifications extends BaseHullMod {
         stats.getShieldDamageTakenMult().modifyPercent(id, damageTaken);
         stats.getArmorDamageTakenMult().modifyPercent(id, damageTaken);
         stats.getHullDamageTakenMult().modifyPercent(id, damageTaken);
-
     }
 
     @Override

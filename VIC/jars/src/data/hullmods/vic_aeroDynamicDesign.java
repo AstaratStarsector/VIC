@@ -15,7 +15,7 @@ public class vic_aeroDynamicDesign extends BaseHullMod {
 		mag.put(HullSize.FRIGATE, 10f);
 		mag.put(HullSize.DESTROYER, 20f);
 		mag.put(HullSize.CRUISER, 30f);
-		mag.put(HullSize.CAPITAL_SHIP, 40f);
+		mag.put(HullSize.CAPITAL_SHIP, 50f);
 	}
 
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {

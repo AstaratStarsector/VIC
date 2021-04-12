@@ -40,9 +40,9 @@
             "autofire": true,
             "mode": "LINKED",
             "weapons": {
-                "WS0015": "vic_rubicon",
-                "WS0016": "vic_rubicon",
-                "WS0017": "vic_rubicon"
+                "WS0015": "vic_nawia",
+                "WS0016": "vic_nawia",
+                "WS0017": "vic_nawia"
             }
         },
         {
