@@ -11,7 +11,7 @@ public class vic_strigoyScript implements OnFireEffectPlugin {
 
     @Override
     public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
-        Global.getSoundPlayer().playSound("vic_besomar_shot", 1, 1f, weapon.getLocation(), weapon.getShip().getVelocity());
+        Global.getSoundPlayer().playSound("flak_fire", 1, 1f, weapon.getLocation(), weapon.getShip().getVelocity());
         projectile.getVelocity().scale(MathUtils.getRandomNumberInRange(0.9f, 1.1f));
     }
 }

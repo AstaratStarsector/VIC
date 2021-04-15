@@ -36,6 +36,21 @@
 	},	
 	
 	
+	
+	"vic_engine_loop":{
+                "sounds":[
+                        {"file":"sounds/effects/vic_engine_1.ogg","pitch":1,"volume":1}, 
+						{"file":"sounds/effects/vic_engine_capital.ogg","pitch":1,"volume":1}, 
+                        ],
+                "VOLKOV-LAIDLAW'S":{"sounds":[0], "pitch":1.0, "volume":0.1},
+                "FIGHTER":{"sounds":[0], "pitch":1.4, "volume":0.05},
+                "FRIGATE":{"sounds":[0], "pitch":1.2, "volume":0.1},
+                "DESTROYER":{"sounds":[0], "pitch":1, "volume":0.2},
+                "CRUISER":{"sounds":[0], "pitch":0.8, "volume":0.4},
+                "CAPITAL_SHIP":{"sounds":[1], "pitch":0.6, "volume":0.2},
+        },
+	
+	
 	"vic_quantum_lunge_start":[
 		{"file": "sounds/effects/vic_quantum_lunge_start.ogg", "pitch": 1, "volume": 4,}
 	],

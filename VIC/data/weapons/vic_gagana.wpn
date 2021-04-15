@@ -10,7 +10,6 @@
   "turretGunSprite": "graphics/weapons/vic_gagana_barrel_turret.png",
   "hardpointSprite": "graphics/weapons/vic_gagana_base_hardpoint.png",
   "hardpointGunSprite": "graphics/weapons/vic_gagana_barrel_hardpoint.png",
-
   "renderAboveAllWeapons": 0,
   "glowColor": [
     178,
@@ -18,19 +17,19 @@
     229,
     191
   ],
-  "visualRecoil": 10,
+  "visualRecoil": 22,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    22.5,
+    1,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    28.5,
+    7,
     0
   ],
   "hardpointAngleOffsets": [
@@ -39,17 +38,17 @@
   "barrelMode": "ALTERNATING",
   "animationType": "GLOW_AND_FLASH",
   "muzzleFlashSpec": {
-    "length": 20,
-    "spread": 20,
-    "particleSizeMin": 5,
-    "particleSizeRange": 5,
-    "particleDuration": 0.35,
-    "particleCount": 20,
+    "length": 50,
+    "spread": 10,
+    "particleSizeMin": 20,
+    "particleSizeRange": 2,
+    "particleDuration": 0.5,
+    "particleCount": 5,
     "particleColor": [
       255,
-	  66,
-	  0,
-      255
+      66,
+      0,
+      245
     ]
   },
   "textureType": ROUGH,
