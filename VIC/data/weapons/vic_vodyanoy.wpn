@@ -61,17 +61,17 @@
   "frameRate": 20,
   "interruptibleBurst": true,
   "muzzleFlashSpec": {
-    "length": 12,
-    "spread": 20,
-    "particleSizeMin": 12,
-    "particleSizeRange": 24,
+    "length": 50,
+    "spread": 10,
+    "particleSizeMin": 30,
+    "particleSizeRange": 20,
     "particleDuration": 0.05,
-    "particleCount": 3,
+    "particleCount": 10,
     "particleColor": [
       170,
       245,
       255,
-      205
+      255
     ]
   },
   "textureType": ROUGH
