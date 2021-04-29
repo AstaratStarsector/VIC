@@ -6,6 +6,7 @@ import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.plugins.MagicFakeBeamPlugin;
+import data.scripts.util.MagicSettings;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
@@ -74,6 +75,14 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         ShipAPI ship = (ShipAPI) stats.getEntity();
         CombatEngineAPI engine = Global.getCombatEngine();
 
+        boolean player;
+        if (ship != null) {
+            ship = (ShipAPI) stats.getEntity();
+            player = ship == Global.getCombatEngine().getPlayerShip();
+        } else {
+            return;
+        }
+        
         if (DoOnce) {
             MaxTime = new IntervalUtil(1f, 1f);
             DoOnce = false;
@@ -82,13 +91,6 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         stats.getTimeMult().unmodify(id);
         float current = ship.getMutableStats().getTimeMult().getModifiedValue();
         ship.getMutableStats().getTimeMult().modifyMult(id, 1 / current);
-        boolean player;
-        if (ship != null) {
-            ship = (ShipAPI) stats.getEntity();
-            player = ship == Global.getCombatEngine().getPlayerShip();
-        } else {
-            return;
-        }
 
         if (state == State.OUT) {
             //once
@@ -97,8 +99,10 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                 EndPos = new Vector2f(ship.getLocation());
                 isActive2 = true;
 
-                if (Math.random() < 0.15f) {
-                    engine.addFloatingText(ship.getLocation(), cheesyLinesList.get(MathUtils.getRandomNumberInRange(0, cheesyLinesList.size() - 1)), 60, Color.WHITE, ship, 1, 2);
+                if (MagicSettings.getBoolean("vic", "Apollyon_oneLiners") && Math.random() < 0.15f) {
+                    String line = cheesyLinesList.get(MathUtils.getRandomNumberInRange(0, cheesyLinesList.size() - 1));
+                    if (line.equals("Nothing personal, kid") && Math.random() < 0.15f) line = "Nothing personnel, kid";
+                    engine.addFloatingText(ship.getLocation(), line, 60, Color.WHITE, ship, 1, 2);
                 }
 
             }//end once

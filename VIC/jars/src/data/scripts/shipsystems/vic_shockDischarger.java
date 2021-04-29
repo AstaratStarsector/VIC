@@ -1,10 +1,7 @@
 package data.scripts.shipsystems;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.DamageType;
-import com.fs.starfarer.api.combat.MutableShipStatsAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.api.combat.WeaponAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.util.MagicRender;
@@ -13,6 +10,7 @@ import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
+import data.scripts.plugins.vic_combatPlugin;
 
 import java.awt.*;
 import java.util.*;
@@ -20,15 +18,22 @@ import java.util.List;
 
 public class vic_shockDischarger extends BaseShipSystemScript {
 
-    public float suckRange = 2000f;
-    public float shockRange = 2000f;
-    public float dmgPerArc = 200;
-    public float empFraction = 0.5f;
+    public static float suckRange = 2000f;
+    public float suckDurationPowerMult = 1;
     public float powerCollected = 0f;
     public float arcFrequency = 1f;
     public float arcAmount = 0f;
     public float Threshold = 6000f;
     public float Factor = 3000f;
+
+    public float scalingThreshold = 5000;
+    public float maxArcFrequency = 10;
+    public float basePowerPerArc = 50;
+    public float powerPerArc = 0;
+    public static float shockRange = 1500f;
+    public float empFraction = 0.5f;
+    public float fluxFraction = 0.5f;
+    public Color arcColor = new Color(0, 123, 255,255);
 
     public IntervalUtil particleCD = new IntervalUtil(0.1f, 0.1f);
 
@@ -51,14 +56,7 @@ public class vic_shockDischarger extends BaseShipSystemScript {
 
         ShipAPI ship = (ShipAPI) stats.getEntity();
 
-        if (doOnce2) {
-            for (WeaponAPI weapon : ship.getAllWeapons()) {
-                if (weapon.getSlot().getId().startsWith("SYS")) {
-                    SystemWeapons.add(weapon);
-                }
-            }
-            doOnce2 = false;
-        }
+
 
         boolean player = ship == Global.getCombatEngine().getPlayerShip();
         float amount = Global.getCombatEngine().getElapsedInLastFrame();
@@ -66,14 +64,26 @@ public class vic_shockDischarger extends BaseShipSystemScript {
             amount = 0;
         }
 
+
         switch (state) {
             case IN:
+                if (doOnce2) {
+                    for (WeaponAPI weapon : ship.getAllWeapons()) {
+                        if (weapon.getSlot().getId().startsWith("SYS")) {
+                            SystemWeapons.add(weapon);
+                        }
+                    }
+                    suckDurationPowerMult = 1 / ship.getSystem().getChargeUpDur();
+                    vic_combatPlugin.AddFluxRaptureShip(ship);
+                    doOnce2 = false;
+                }
                 List<ShipAPI> listOfSuckTargets = CombatUtils.getShipsWithinRange(ship.getLocation(), suckRange);
                 Collections.shuffle(listOfSuckTargets);
-                float PowerMult = 1f;
+                float PowerMult = 1f * suckDurationPowerMult;
                 if (powerCollected >= Threshold) PowerMult = Factor / (powerCollected - (Threshold - Factor));
                 for (ShipAPI target : listOfSuckTargets) {
                     if (target.isHulk()) continue;
+                    if (target.getFluxTracker().isVenting()) continue;
                     float fluxToCollect = target.getMutableStats().getFluxDissipation().getModifiedValue() * amount * PowerMult;
                     if (target == ship) fluxToCollect *= 2;
                     float softFlux = target.getFluxTracker().getCurrFlux() - target.getFluxTracker().getHardFlux();
@@ -81,7 +91,7 @@ public class vic_shockDischarger extends BaseShipSystemScript {
                         fluxToCollect = target.getFluxTracker().getCurrFlux();
                     float hardFlux = 0f;
                     if (fluxToCollect > softFlux) {
-                        hardFlux = ((fluxToCollect - softFlux) * 0.5f);
+                        hardFlux = ((fluxToCollect - softFlux) * 0.5f * (1 + target.getMutableStats().getHardFluxDissipationFraction().getModifiedValue()));
                         fluxToCollect = softFlux + hardFlux;
                     }
                     target.getFluxTracker().decreaseFlux(fluxToCollect);
@@ -118,19 +128,27 @@ public class vic_shockDischarger extends BaseShipSystemScript {
                 break;
             case ACTIVE:
                 if (doOnce) {
-                    arcFrequency = (powerCollected / dmgPerArc) / ship.getSystem().getChargeActiveDur();
+                    if (powerCollected <= scalingThreshold){
+                        powerPerArc = powerCollected * 0.035f + basePowerPerArc;
+                        arcFrequency = (powerCollected / powerPerArc) / ship.getSystem().getChargeActiveDur();
+                    } else {
+                        arcFrequency = maxArcFrequency;
+                        powerPerArc = powerCollected / (ship.getSystem().getChargeActiveDur() * arcFrequency);
+                    }
+                    //arcFrequency = (powerCollected / maxDmgPerArc) / ship.getSystem().getChargeActiveDur();
                     arcAmount = 1;
                     doOnce = false;
                 }
                 arcAmount += arcFrequency * amount;
 
-                while (arcAmount >= 1 && powerCollected > dmgPerArc) {
+                while (arcAmount >= 1 /*&& powerCollected > powerPerArc*/) {
                     arcAmount--;
                     ShipAPI target;
-                    if (ship.getShipTarget() != null && MathUtils.isWithinRange(ship.getShipTarget().getLocation(), ship.getLocation(), shockRange))
+                    ShipAPI shipTarget = ship.getShipTarget();
+                    if (shipTarget != null && !shipTarget.isHulk() && MathUtils.isWithinRange(shipTarget, ship.getLocation(), shockRange)){
                         target = ship.getShipTarget();
-                    else {
-                        List<ShipAPI> enemies = AIUtils.getNearbyEnemies(ship, shockRange);
+                    } else {
+                        List<ShipAPI> enemies = AIUtils.getNearbyEnemies(ship, shockRange - ship.getCollisionRadius());
                         if (enemies.isEmpty()) break;
                         target = enemies.get(MathUtils.getRandomNumberInRange(0, enemies.size() - 1));
                     }
@@ -146,25 +164,34 @@ public class vic_shockDischarger extends BaseShipSystemScript {
                             break;
                         }
                     }
+                    float ArcDamage;
+                    if (target.isFighter()){
+                        ArcDamage = powerPerArc;
+                    } else {
+                        ArcDamage = powerPerArc * (1 - fluxFraction);
+                        float FluxDamage = powerPerArc * fluxFraction;
+                        target.getFluxTracker().increaseFlux(FluxDamage, true);
+                    }
                     Global.getCombatEngine().spawnEmpArc(ship,
                             from,
                             null,
                             target,
                             DamageType.ENERGY,
-                            dmgPerArc,
-                            dmgPerArc * empFraction,
+                            ArcDamage,
+                            ArcDamage * empFraction,
                             3000,
                             "tachyon_lance_emp_impact",
-                            4,
-                            Color.WHITE,
-                            Color.CYAN);
-                    powerCollected -= dmgPerArc;
+                            2 + (powerPerArc * 0.025f),
+                            arcColor,
+                            Color.WHITE);
+                    powerCollected -= powerPerArc;
                 }
                 break;
             case OUT:
                 powerCollected = 0f;
                 arcAmount = 0f;
                 doOnce = true;
+                doOnce2 = true;
                 break;
         }
     }

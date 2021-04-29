@@ -276,6 +276,7 @@ SetShortcut beaconLeave ""ESCAPE""","This autonomous warning beacon emits a loop
 vic_UMO,PopulateOptions,"$hasMarket
 $menuState == main
 $faction.id != player
+!$faction.isNeutralFaction
 !haveNex","SetShortcut VICUMOMenu ""V"" true",,21:UMOMenu:Unconventional military option,
 # vic_UMOwithNEX,ExerelinMarketSpecial,,"SetShortcut VICUMOMenu ""V"" true",,9:UMOMenu:Unconventional military option,
 ,,,,,,

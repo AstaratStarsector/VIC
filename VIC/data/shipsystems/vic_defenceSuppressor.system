@@ -1,0 +1,23 @@
+{
+	"id":"vic_defenceSuppressor",
+	"type":"STAT_MOD",
+	"aiType":"ENTROPY_AMPLIFIER",
+	
+	"statsScript":"data.scripts.shipsystems.vic_defenceSuppressor",
+
+	#"runScriptWhilePaused":true, # only for the player's ship
+	"runScriptWhileIdle":false, # unapply() never gets called
+		
+	"fadeActivationSoundOnChargedown":true,
+	"useSound":"system_entropy",
+	"loopSound":"system_entropy_loop",
+	"deactivateSound":"system_entropy_off",
+	"outOfUsesSound":"gun_out_of_ammo",
+	
+	"aiHints":{
+	}
+}
+
+
+
+

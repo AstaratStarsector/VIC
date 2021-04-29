@@ -55,4 +55,5 @@
   "pixelsPerTexel": 4,
     "numFrames": 2,
   "frameRate": 30,
+  "pierceSet":["MISSILE_FF", "MISSILE_NO_FF"]
 }

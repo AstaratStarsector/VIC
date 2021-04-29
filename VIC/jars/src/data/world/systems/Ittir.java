@@ -9,8 +9,6 @@ import com.fs.starfarer.api.impl.campaign.ids.Industries;
 import com.fs.starfarer.api.impl.campaign.ids.Submarkets;
 import com.fs.starfarer.api.impl.campaign.ids.Terrain;
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
-import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
-import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
 import data.campaign.ids.vic_Items;
@@ -50,7 +48,7 @@ public class Ittir {
                 0,
                 150f,
                 2500f,
-                50f);
+                80f);
         Kalada.setCustomDescriptionId("vic_kalada"); //reference descriptions.csv
 
         MarketAPI Kalada_market = addMarketplace(
@@ -95,13 +93,14 @@ public class Ittir {
                 0.3f, //tariffs
                 true, //freeport
                 true //junk and chatter
-                );
+        );
 
         Kalada_market.getIndustry(Industries.FARMING).setSpecialItem(new SpecialItemData(vic_Items.GMOfarm, null));
 
 
         system.addAsteroidBelt(IttirStar, 50, 3000, 400, 300, 400, Terrain.ASTEROID_BELT, "Inner Band");
         system.addRingBand(IttirStar, "misc", "rings_asteroids0", 256f, 3, Color.gray, 256f, 3000, 250f);
+
 
 
         // Mithos planet - the Church awakens
@@ -112,7 +111,7 @@ public class Ittir {
                 180,
                 170f,
                 3500f,
-                50f);
+                120f);
         Mithos.setCustomDescriptionId("vic_mithos"); //reference descriptions.csv
 
 
@@ -164,14 +163,14 @@ public class Ittir {
                 true);
 
 
-//Mithos Jump Point
+        //Mithos Jump Point
         JumpPointAPI MithosJumpPoint = Global.getFactory().createJumpPoint(
 
                 "mithos_jump_point",
 
                 "Mithos Jump Point");
 
-        MithosJumpPoint.setCircularOrbit(system.getEntityById("vic_star_ittir"), 220, 3200, 50f);
+        MithosJumpPoint.setCircularOrbit(system.getEntityById("vic_star_ittir"), 220, 4000, 100f);
         MithosJumpPoint.setRelatedPlanet(Mithos);
         system.addEntity(MithosJumpPoint);
 
@@ -305,7 +304,7 @@ public class Ittir {
                 30,
                 100f,
                 1000f,
-                40f);
+                30f);
         Pierre.setCustomDescriptionId("vic_pierre"); //reference descriptions.csv
 
         Pierre.getMarket().addCondition(Conditions.NO_ATMOSPHERE);
@@ -341,7 +340,7 @@ public class Ittir {
 
         // add Comm Relay
         SectorEntityToken MariaCommRelay = system.addCustomEntity("Maria_comm_relay", "Maria Comm Relay", "comm_relay", "hegemony");
-        MariaCommRelay.setCircularOrbitPointingDown(Maria, 30f, 1200, 40);
+        MariaCommRelay.setCircularOrbitPointingDown(Maria, 30f, 1200, 60);
 
 
         //add Nav Buoy
@@ -357,6 +356,7 @@ public class Ittir {
         EmpyreanGate.setCircularOrbitPointingDown(IttirStar, 360f * (float) Math.random(), 5000f, 145f); //set as circular orbit
 
 
+        /*
         // Let's procgen some stuff here cause fuck doing that manually
         float ProcgenOne = StarSystemGenerator.addOrbitingEntities(system, IttirStar, StarAge.AVERAGE,
                 4, 5, // min/max entities to add
@@ -370,6 +370,8 @@ public class Ittir {
                 10000, // radius to start adding at
                 3, // name offset - next planet will be <system name> <roman numeral of this parameter + 1>
                 true); // whether to use custom or system-name based names
+
+         */
 
 
         // generates hyperspace destinations for in-system jump points

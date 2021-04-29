@@ -35,7 +35,7 @@ Upyr Autocannon,vic_upyr,0,,600,600,,20,,1,30,7,,,,KINETIC,17,,0,0.1,2,0.1,0,18,
 #Build-ins,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Volkov Industries,,,,,,,,,,,,
 Phase Lance (Shortranged),vic_phaselance,13,,1,250,1000,,,0,20,10,,,,ENERGY,,1200,0.25,0.5,1,4,,,,,3200,,,,,SYSTEM,"energy14, beam10",,Volkov Industries,,General,,,,,,,,,,20
 Scatter Blaster,vic_scatterblaster,13,,1,500,,125,,3,100,42,12,,,ENERGY,50,,0,0.25,3,0.25,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, STRIKE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
-Abyssus Array,vic_abyssalfangs,13,,100000,2000,,100,,5,,45,,,,KINETIC,0,,0,48.85,24,0.05,0,0,0,0,,450,1000,10,100,"DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8",,Volkov Industries,,Anti Shield,Fast,Excellent,,,,25% | 400,,,TRUE,12.1
+Abyssus Array,vic_abyssalfangs,13,,100000,2000,,200,50,5,,45,24,0.8,24,KINETIC,150,,0,8.85,24,0.05,0,0,0,0,,450,1000,10,100,"DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8",,Volkov Industries,,Anti Shield,Fast,Excellent,,,,25% | 400,,,TRUE,12.1
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Targeting Laser,vic_targetingLazer,0,,400,1500,5,,,0,100,2,,,,ENERGY,,5,0,0,,,,,,,10000,,,,,"SYSTEM, SHOW_IN_CODEX",beam0,,Volkov Industries,,Targeting,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

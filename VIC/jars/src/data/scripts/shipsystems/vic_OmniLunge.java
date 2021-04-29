@@ -1,17 +1,8 @@
 package data.scripts.shipsystems;
 
-import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.CombatEngineLayers;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.api.combat.ShipSystemAPI;
-import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
-import com.fs.starfarer.api.util.IntervalUtil;
-import data.scripts.util.MagicRender;
-import org.lwjgl.util.vector.Vector2f;
-
-import java.awt.*;
 
 public class vic_OmniLunge extends BaseShipSystemScript {
 

@@ -35,11 +35,15 @@ import exerelin.campaign.SectorManager;
 import org.dark.shaders.light.LightData;
 import org.dark.shaders.util.ShaderLib;
 import org.dark.shaders.util.TextureData;
+import sun.org.mozilla.javascript.internal.ast.SwitchCase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.fs.starfarer.api.impl.campaign.econ.impl.ItemEffectsRepo.HABITABLE;
+import static com.fs.starfarer.api.impl.campaign.econ.impl.ItemEffectsRepo.NO_ATMOSPHERE;
 
 
 public class VIC_ModPlugin extends BaseModPlugin {
@@ -100,7 +104,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
     public void onNewGame() {
         //Nex compatibility setting, if there is no nex or corvus mode(Nex), just generate the system
         boolean haveNexerelin = Global.getSettings().getModManager().isModEnabled("nexerelin");
-        if (!haveNexerelin || SectorManager.getCorvusMode()) {
+        if (!haveNexerelin || SectorManager.getManager().isCorvusMode()) {
             new VICGen().generate(Global.getSector());
         }
 
@@ -219,11 +223,11 @@ public class VIC_ModPlugin extends BaseModPlugin {
             MarketAPI market = industry.getMarket();
 
             for (String curr : getRequirements(industry)) {
-                if (ItemEffectsRepo.NO_ATMOSPHERE.equals(curr)) {
+                if (NO_ATMOSPHERE.equals(curr)) {
                     if (!market.hasCondition(Conditions.NO_ATMOSPHERE)) {
                         unmet.add(curr);
                     }
-                } else if (ItemEffectsRepo.HABITABLE.equals(curr)) {
+                } else if (HABITABLE.equals(curr)) {
                     if (!market.hasCondition(Conditions.HABITABLE)) {
                         unmet.add(curr);
                     }
@@ -289,7 +293,6 @@ public class VIC_ModPlugin extends BaseModPlugin {
                     }
                 }
             }
-
             return unmet;
         }
     };

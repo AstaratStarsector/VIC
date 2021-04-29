@@ -6,6 +6,7 @@ import com.fs.starfarer.api.combat.BeamEffectPlugin;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.loading.WeaponSpecAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
+import data.scripts.plugins.MagicTrailPlugin;
 import org.lazywizard.lazylib.MathUtils;
 
 import java.awt.*;
@@ -59,6 +60,7 @@ public class vic_thermalLance_beam implements BeamEffectPlugin {
                     beam.getWeapon().getCurrAngle(),
                     null);
             //Global.getLogger(vic_thermalLance_beam.class).info("kek");
+            //MagicTrailPlugin.AddTrailMemberAdvanced();
             runOnce2 = false;
         }
         lastFrameCharge = charge;

@@ -10,8 +10,8 @@
 	"outOfUsesSound":"gun_out_of_ammo",
 	
 	"aiHints":{
-		"threatRange":1500,
-		"threatAmount":10,
+		"threatRange":2000,
+		"threatAmount":5000,
 		"threatAngle":0,
 		"threatArc":360,
 	}

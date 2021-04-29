@@ -42,7 +42,7 @@ public class VIC_TimeTracker implements EveryFrameScript {
 
     public void checkVbomb() {
 
-        if (!MarketsWithScar.isEmpty()) MarketsWithScar.clear();
+        MarketsWithScar = new ArrayList<>();
 
         for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
             if (market.hasCondition("VIC_VBomb_scar")) {

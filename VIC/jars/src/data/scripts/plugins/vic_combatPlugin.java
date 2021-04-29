@@ -1,13 +1,13 @@
 package data.scripts.plugins;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.BaseEveryFrameCombatPlugin;
-import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.ViewportAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
+import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.input.InputEventAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.shipsystems.vic_shockDischarger;
 import data.scripts.util.MagicAnim;
 import org.jetbrains.annotations.NotNull;
 import org.lazywizard.lazylib.MathUtils;
@@ -15,7 +15,9 @@ import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
@@ -26,8 +28,16 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
     private final IntervalUtil timer = new IntervalUtil(0.25f, 0.25f);
 
 
-    //Nawia
+    //FluxRapture
+    private final SpriteAPI OuterRing = Global.getSettings().getSprite("fx", "vic_fluxRaptureSuck");
+    private final SpriteAPI InnerRing = Global.getSettings().getSprite("fx", "vic_fluxRaptureZap");
+    {
+        float OuterRingRadius = vic_shockDischarger.suckRange * 2;
+        float InnerRingRadius = vic_shockDischarger.shockRange * 2;
 
+        OuterRing.setSize(OuterRingRadius, OuterRingRadius);
+        InnerRing.setSize(InnerRingRadius, InnerRingRadius);
+    }
 
     @Override
     public void init(CombatEngineAPI engine) {
@@ -37,8 +47,12 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
     @Override
     public void advance(float amount, List<InputEventAPI> events) {
+
         if (engine == null) return;
+        if (engine.isPaused()) return;
         final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        HashMap<ShipAPI, Float> cloneMap;
+        /*
         final List<NawiaFxData> NawiaFxList = localData.NawiaFxList;
         for (NawiaFxData FX : NawiaFxList){
             FX.timePast += amount;
@@ -49,12 +63,66 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 NawiaFxList.remove(FX);
             }
         }
+
+         */
+
+        //Defence Suppressor
+        for (Map.Entry<ShipAPI, Float> entry : localData.defenceSuppressor.entrySet()) {
+            if (!entry.getKey().isAlive() || entry.getValue() - amount < 0) {
+                MutableShipStatsAPI stats = entry.getKey().getMutableStats();
+
+                stats.getShieldDamageTakenMult().unmodify("vic_defenceSuppressor");
+                stats.getShieldUpkeepMult().unmodify("vic_defenceSuppressor");
+
+                stats.getPhaseCloakActivationCostBonus().unmodify("vic_defenceSuppressor");
+                stats.getPhaseCloakCooldownBonus().unmodify("vic_defenceSuppressor");
+                stats.getPhaseCloakUpkeepCostBonus().unmodify("vic_defenceSuppressor");
+
+                stats.getEffectiveArmorBonus().unmodify("vic_defenceSuppressor");
+                stats.getMaxArmorDamageReduction().unmodify("vic_defenceSuppressor");
+            } else {
+                entry.setValue(entry.getValue() - amount);
+                entry.getKey().setJitterShields(false);
+                entry.getKey().setJitterUnder(entry.getKey(), new Color(106, 0, 255), 4, 8, 2);
+                MutableShipStatsAPI stats = entry.getKey().getMutableStats();
+
+                stats.getShieldDamageTakenMult().modifyMult("vic_defenceSuppressor", 1.5f);
+                stats.getShieldUpkeepMult().modifyMult("vic_defenceSuppressor", 1.5f);
+                stats.getDynamic().getStat(Stats.SHIELD_PIERCED_MULT).modifyMult("vic_defenceSuppressor", 1 + 0.5f);
+
+                stats.getPhaseCloakActivationCostBonus().modifyMult("vic_defenceSuppressor", 1.5f);
+                stats.getPhaseCloakCooldownBonus().modifyMult("vic_defenceSuppressor", 1.5f);
+                stats.getPhaseCloakUpkeepCostBonus().modifyMult("vic_defenceSuppressor", 1.5f);
+
+                stats.getEffectiveArmorBonus().modifyMult("vic_defenceSuppressor", 0.5f);
+                stats.getMaxArmorDamageReduction().modifyFlat("vic_defenceSuppressor", -0.075f);
+                if (entry.getKey() == engine.getPlayerShip())
+                    engine.maintainStatusForPlayerShip("vic_defenceSuppressor_effect", "graphics/icons/hullsys/vic_defenceSuppressor.png", "Defence Suppressor", "Defenses systems suppressed", true);
+            }
+        }
+        cloneMap = new HashMap<>(localData.defenceSuppressor);
+        for (Map.Entry<ShipAPI, Float> entry : cloneMap.entrySet()) {
+            if (entry.getValue() <= 0)
+                localData.defenceSuppressor.remove(entry.getKey());
+        }
+
+        //Flux Rapture
+        for (Map.Entry<ShipAPI, Float> entry : localData.FluxRaptureRender.entrySet()) {
+            entry.setValue(entry.getValue() + amount);
+        }
+
+        cloneMap = new HashMap<>(localData.FluxRaptureRender);
+        for (Map.Entry<ShipAPI, Float> entry : cloneMap.entrySet()) {
+            if (entry.getKey().getSystem().getState().equals(ShipSystemAPI.SystemState.COOLDOWN) || entry.getKey().getSystem().getState().equals(ShipSystemAPI.SystemState.IDLE))
+                localData.FluxRaptureRender.remove(entry.getKey());
+        }
     }
 
     @Override
     public void renderInWorldCoords(ViewportAPI viewport) {
         if (engine == null) return;
         final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+
         final List<NawiaFxData> NawiaFxList = localData.NawiaFxList;
         for (NawiaFxData FX : NawiaFxList){
             float fractionTimePast = FX.timePast / FX.animTime;
@@ -76,6 +144,51 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 FX.ring2.renderAtCenter(FX.location.x, FX.location.y);
             }
         }
+
+        //final List<ShipAPI> AurasToRender = localData.FluxRaptureRender;
+        for (Map.Entry<ShipAPI, Float> entry : localData.FluxRaptureRender.entrySet()){
+            ShipAPI ship = entry.getKey();
+            ShipSystemAPI system = ship.getSystem();
+            float effectLevel = system.getEffectLevel();
+            float angle = entry.getValue() * 5;
+            ShipSystemAPI.SystemState state = system.getState();
+
+            float alphaMultOuter = 0.35f;
+            if (effectLevel <= 0.2f) {
+                alphaMultOuter *= MagicAnim.smooth(effectLevel * 5f);
+            } else if (effectLevel >= 0.8f) {
+                alphaMultOuter *= MagicAnim.smooth((1 - effectLevel) * 5f);
+            }
+
+
+            float alphaMultInner = 0.35f;
+            switch (state){
+                case IN:
+                    if (effectLevel <= 0.2f){
+                        alphaMultInner *= MagicAnim.smooth(effectLevel * 5f);
+                    }
+                    break;
+                case OUT:
+                    alphaMultInner *= MagicAnim.smooth(effectLevel);
+                    break;
+            }
+
+            switch (state) {
+                case IN:
+                    OuterRing.setAlphaMult(alphaMultOuter);
+                    OuterRing.setAngle(-angle);
+                    OuterRing.renderAtCenter(ship.getLocation().getX(),ship.getLocation().getY());
+                    InnerRing.setAlphaMult(alphaMultInner);
+                    InnerRing.setAngle(angle);
+                    InnerRing.renderAtCenter(ship.getLocation().getX(),ship.getLocation().getY());
+                    break;
+                case ACTIVE:
+                case OUT:
+                    InnerRing.setAlphaMult(alphaMultInner);
+                    InnerRing.setAngle(angle);
+                    InnerRing.renderAtCenter(ship.getLocation().getX(),ship.getLocation().getY());
+            }
+        }
     }
 
     public static void AddNawiaFX(Vector2f location, float angle){
@@ -85,8 +198,30 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         localData.NawiaFxList.add(new NawiaFxData(location,angle));
     }
 
+    public static void AddDefenceSuppressorTarget(ShipAPI ship, float Duration){
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        if (localData.defenceSuppressor.containsKey(ship)){
+            float durationMult = Duration / localData.defenceSuppressor.get(ship) * 2;
+            if (durationMult > 1) durationMult = 1;
+            localData.defenceSuppressor.put(ship, localData.defenceSuppressor.get(ship) + (Duration * durationMult));
+        } else {
+            localData.defenceSuppressor.put(ship, Duration);
+        }
+    }
+
+    public static void AddFluxRaptureShip (ShipAPI ship){
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        localData.FluxRaptureRender.put(ship, 0f);
+    }
+
     private static final class LocalData {
         final List<NawiaFxData> NawiaFxList = new ArrayList<>(250);
+        final HashMap<ShipAPI, Float> FluxRaptureRender = new HashMap<>(10);
+        final HashMap<ShipAPI, Float> defenceSuppressor = new HashMap<>(25);
     }
 
     private static final class NawiaFxData {

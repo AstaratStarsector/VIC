@@ -47,6 +47,8 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
             ringRotation2 = 0f,
             speedMult = 2;
 
+    private boolean spawnParticle = true;
+
 
     public vic_tugarinProjectileScript(@NotNull DamagingProjectileAPI proj) {
         this.proj = proj;
@@ -132,6 +134,11 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
         ringRotation1 += ringRotationSpeed1 * amount * ringRotationDirection;
         ringRotation2 += ringRotationSpeed2 * amount * -ringRotationDirection;
 
+        if (proj.isFading() && spawnParticle){
+            engine.addHitParticle(proj.getLocation(), proj.getVelocity(), 100, 0.5f, 0.5f, PHASE_COLOR);
+            spawnParticle = false;
+        }
+
 
         if (!engine.isEntityInPlay(proj) || proj.didDamage()) {
             //lens flare
@@ -181,14 +188,21 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
     public void renderInWorldCoords(ViewportAPI viewport) {
         super.renderInWorldCoords(viewport);
         if (!MagicRender.screenCheck(0.5f, proj.getLocation())) return;
-        float timLeft = 1;
+        float sizeMult = 1;
         if (proj.isFading()) {
-            timLeft = 1 - ((proj.getElapsed() - flightTime) / 0.3f);
-            timLeft = MagicAnim.smooth(timLeft * 0.6f + 0.4f);
+            float timeLeft = ((proj.getElapsed() - flightTime) / proj.getProjectileSpec().getFadeTime());
+            if (timeLeft <= 0.5f) {
+                sizeMult = 1 + (0.25f * MagicAnim.smooth(timeLeft * 2));
+            } else {
+                timeLeft -= 0.5f;
+                timeLeft *= 2;
+                sizeMult =  1 * (1 - MagicAnim.smooth(timeLeft)) + 0.25f;
+            }
         }
 
+
         sprite.setAngle(rotation);
-        sprite.setSize(32 * timLeft, 32 * timLeft);
+        sprite.setSize(32 * sizeMult, 32 * sizeMult);
         sprite.setAdditiveBlend();
         sprite.renderAtCenter(proj.getLocation().x, proj.getLocation().y);
 
@@ -197,11 +211,11 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
         spriteRing.setAdditiveBlend();
 
         spriteRing.setAngle(ringAngle1 + ringRotation1);
-        spriteRing.setSize(ringSize * timLeft, ringSize * timLeft);
+        spriteRing.setSize(ringSize * sizeMult, ringSize * sizeMult);
         spriteRing.renderAtCenter(proj.getLocation().x, proj.getLocation().y);
 
         spriteRing.setAngle(ringAngle2 + ringRotation2);
-        spriteRing.setSize(-ringSize * timLeft * 1.1f, ringSize * timLeft * 1.1f);
+        spriteRing.setSize(-ringSize * sizeMult * 1.1f, ringSize * sizeMult * 1.1f);
         spriteRing.renderAtCenter(proj.getLocation().x, proj.getLocation().y);
     }
 }

@@ -249,8 +249,6 @@ public class Apotheosis {
 
 
 
-
-
         PlanetAPI LostHope = system.addPlanet("vic_planet_LostHope",
                 ApotheosisQuasar,
                 "Lost Hope",
@@ -364,7 +362,7 @@ public class Apotheosis {
         SectorEntityToken ship = BaseThemeGenerator.addSalvageEntity(system, Entities.WRECK, Factions.NEUTRAL, params);
         ship.setDiscoverable(true);
 
-        float orbitDays = orbitRadius * MathUtils.getRandomNumberInRange(0.8f, 1.2f) / 50;
+        float orbitDays = orbitRadius * MathUtils.getRandomNumberInRange(0.7f, 1.3f) / 50;
         ship.setCircularOrbit(focus, (float) MathUtils.getRandomNumberInRange(-10,10) + angle, orbitRadius, orbitDays);
 
         WeightedRandomPicker<String> factions= new WeightedRandomPicker<>();

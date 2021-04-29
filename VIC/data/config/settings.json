@@ -1,7 +1,7 @@
 {
 	"designTypeColors":{
         "Volkov Industrial Conglomerate":[238,158,0,255],
-	"Volkov Industries":[238,158,0,255],
+		"Volkov Industries":[238,158,0,255],
     },
 	"plugins":{
 		"vic_combatPlugin":"data.scripts.plugins.vic_combatPlugin",
@@ -31,6 +31,9 @@
 			"vic_empEmitter":"graphics/icons/hullsys/vic_empEmitter.png",
 		},
 		"fx":{
+			"vic_fluxRaptureSuck":"graphics/fx/vic_fluxRaptureSuck.png",
+			"vic_fluxRaptureZap":"graphics/fx/vic_fluxRaptureZap.png",
+			
 			"vic_rubicon_river":"graphics/fx/vic_rubicon_river.png",
 			"vic_shieldsInner256":"graphics/fx/shield/vic_shields256.png",
 			"vic_shieldsRing256":"graphics/fx/shield/vic_shields256ring.png",
@@ -61,8 +64,7 @@
 			"trails_trail_foggy":"graphics/trails/fx/trails_foggy.png",
 			
 			"SRD_trail_helix":"graphics/trails/fx/SRD_trail_helix.png",
-		},
-		
+		},		
 		"illustrations":{
 			"vic_cocytus_illustration":"graphics/illustrations/vic_cocytus_illustration.jpg",
 			
@@ -70,11 +72,9 @@
 	    "nex_vicVbombing":{
 		    "nex_vicVbombingIcon":"graphics/hullmods/vic_VBombHmod.png",
 		},
-		
 		"characters":{
 			"tatiana":"graphics/portraits/characters/vic_tatiana.jpg",
-		}
-		
+		}		
 	}
 }
 	

@@ -474,16 +474,16 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             if (total > 0)
             {
                 player.setSkillLevel(skill, 0f);
-                player.addPoints(total);
-                skillRefunded += total;
+                player.addPoints(1);
+                skillRefunded += 1;
             }
         }
 
         player.refreshCharacterStatsEffects();
     }
 
-    private static void respecOfficer(OfficerDataAPI toRespec, CampaignFleetAPI sourceFleet)
-    {
+    private static void respecOfficer(OfficerDataAPI toRespec, CampaignFleetAPI sourceFleet){
+
         // Technically it should be called cloneOfficer(), but whatever...
         final PersonAPI oldPerson = toRespec.getPerson(),
                 newPerson = OfficerManagerEvent.createOfficer(oldPerson.getFaction(), 1, false);
@@ -530,23 +530,10 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         for (String tag : oldPerson.getTags()) newPerson.addTag(tag);
 
 
+        /*
         // Show skills that were reset
         final List<MutableCharacterStatsAPI.SkillLevelAPI> skills = oldPerson.getStats().getSkillsCopy();
         Collections.sort(skills, new SkillLevelComparator());
-
-        // Notify player of respecced skills
-        int totalRefunded = 0;
-        /*
-        for (MutableCharacterStatsAPI.SkillLevelAPI skill : skills)
-        {
-            final int refunded = (int) skill.getLevel();
-            if (refunded > 0)
-            {
-                Console.showMessage(" - removed " + refunded + " points from " + (skill.getSkill().isAptitudeEffect()
-                        ? "aptitude " : "skill ") + skill.getSkill().getId());
-                totalRefunded += refunded;
-            }
-        }
 
          */
 
@@ -556,6 +543,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         if (ship != null) ship.setCaptain(newPerson);
         toRespec.addXP((long) (oldPerson.getStats().getXP() * respecOfficerXP));
         newPerson.getStats().refreshCharacterStatsEffects();
+
     }
 
     private static class SkillLevelComparator implements Comparator<MutableCharacterStatsAPI.SkillLevelAPI>
