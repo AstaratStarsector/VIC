@@ -51,7 +51,7 @@
     "graphics/fx/vic_thermalLanceBeam.png",
     "graphics/fx/vic_thermalLanceBeam.png"
   ],
-  "textureScrollSpeed": 500,
+  "textureScrollSpeed": 300,
   "pixelsPerTexel": 4,
     "numFrames": 2,
   "frameRate": 30,

@@ -28,6 +28,7 @@
     "WS0010": "vic_oriax_engine_glow_5",
     "WS0011": "vic_oriax_engine_glow_4",
     "WS0012": "vic_oriax_engine_glow_3",
+    "WS0019": "vic_vernierEngine",
     "WS0020": "vic_blonkerCyan",
     "WS0021": "vic_blonkerRed",
     "WS0022": "vic_blonkerRed",
@@ -49,7 +50,14 @@
     "WS0038": "vic_oriax_sidewing_left",
     "WS0039": "vic_oriax_sidewing_right",
     "WS0040": "vic_oriax_tail_left",
-    "WS0041": "vic_oriax_tail_right"
+    "WS0041": "vic_oriax_tail_right",
+    "WS0042": "vic_vernierEngine",
+    "WS0043": "vic_vernierEngine",
+    "WS0044": "vic_vernierEngine",
+    "WS0045": "vic_vernierEngine",
+    "WS0046": "vic_vernierEngine",
+    "WS0047": "vic_vernierEngine",
+    "WS0048": "vic_vernierEngine"
   },
   "weaponSlots": [
     {
@@ -535,6 +543,78 @@
       "arc": 181,
       "angle": 0,
       "locations": [-196, -22.5]
+    },
+    {
+      "id": "WS0019",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 135,
+      "locations": [40, 46]
+    },
+    {
+      "id": "WS0042",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": -135,
+      "locations": [40, -46]
+    },
+    {
+      "id": "WS0043",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 135,
+      "locations": [35, 43]
+    },
+    {
+      "id": "WS0044",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": -135,
+      "locations": [35, -43]
+    },
+    {
+      "id": "WS0045",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": -135,
+      "locations": [154, -28]
+    },
+    {
+      "id": "WS0046",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 135,
+      "locations": [154, 28]
+    },
+    {
+      "id": "WS0047",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": -135,
+      "locations": [160, -31]
+    },
+    {
+      "id": "WS0048",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 135,
+      "locations": [160, 31]
     }
   ],
   "engineSlots": [
@@ -594,73 +674,73 @@
     },
     {
       "location": [35, -43],
-      "length": 10.960154,
-      "width": 7.778174,
+      "length": 4.242641,
+      "width": 4.242641,
       "angle": -135,
-      "contrailSize": 7.778174,
+      "contrailSize": 4.242641,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [35, 43],
-      "length": 10.960154,
-      "width": 7.778174,
+      "length": 4.242641,
+      "width": 4.242641,
       "angle": 135,
-      "contrailSize": 7.778174,
+      "contrailSize": 4.242641,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [40, -46],
-      "length": 18.384775,
-      "width": 8.485281,
+      "length": 4.242641,
+      "width": 4.242641,
       "angle": -135,
-      "contrailSize": 8.485281,
+      "contrailSize": 4.242641,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [40, 46],
-      "length": 18.384775,
-      "width": 8.485281,
+      "length": 4.242641,
+      "width": 4.242641,
       "angle": 135,
-      "contrailSize": 8.485281,
+      "contrailSize": 4.242641,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [154, -28],
-      "length": 15.909903,
-      "width": 6.363961,
+      "length": 4.242641,
+      "width": 4.242641,
       "angle": -135,
-      "contrailSize": 6.363961,
+      "contrailSize": 4.242641,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [154, 28],
-      "length": 15.909903,
-      "width": 6.363961,
+      "length": 4.242641,
+      "width": 4.242641,
       "angle": 135,
-      "contrailSize": 6.363961,
+      "contrailSize": 4.242641,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [160, -31],
-      "length": 22.627417,
-      "width": 7.071068,
+      "length": 4.242641,
+      "width": 4.242641,
       "angle": -135,
-      "contrailSize": 7.071068,
+      "contrailSize": 4.242641,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [160, 31],
-      "length": 22.627417,
-      "width": 7.071068,
+      "length": 4.242641,
+      "width": 4.242641,
       "angle": 135,
-      "contrailSize": 7.071068,
+      "contrailSize": 4.242641,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     }
