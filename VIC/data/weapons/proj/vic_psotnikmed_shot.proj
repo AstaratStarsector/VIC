@@ -1,0 +1,17 @@
+{
+	"id":"vic_psotnikmed_shot",
+	"specClass":"projectile",
+	"spawnType":"BALLISTIC",
+	"onHitEffect":"data.scripts.weapons.vic_psotnikOnHit",
+	"collisionClass":"PROJECTILE_FF",
+	"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"length":0,
+	"hitGlowRadius":10,
+	"width":5,
+	"fadeTime":0.1,
+	"fringeColor":[255,255,255,255],
+	"coreColor":[255,255,255,255],	
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":5.0,
+	"bulletSprite":"graphics/missiles/shell_large.png",
+}

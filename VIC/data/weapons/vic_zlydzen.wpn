@@ -1,0 +1,64 @@
+{
+  "id": "vic_zlydzen",
+  "specClass": "beam",
+  "type": "ENERGY",
+  "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_zlydzen",
+  "collisionClass": "RAY",
+  "collisionClassByFighter": "RAY_FIGHTER",
+  "turretSprite": "graphics/weapons/Zlydzen/vic_zlydzen_base_turret00.png",
+  "hardpointSprite": "graphics/weapons/Zlydzen/vic_zlydzen_base_hardpoint00.png",
+  "turretGlowSprite": "graphics/weapons/Zlydzen/vic_zlydzen_glow_turret.png",
+  "hardpointGlowSprite": "graphics/weapons/Zlydzen/vic_zlydzen_glow_hardpoint.png",
+  "renderAboveAllWeapons": 0,
+  "glowColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "hitGlowRadius": 0,
+  "turretOffsets": [
+    12,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    40,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "numFrames": 4,
+  "frameRate": 20,
+  "fringeColor": [
+    25,
+    75,
+    155,
+    255
+  ],
+  "coreColor": [
+    215,
+    225,
+    255,
+    255
+  ],
+  "width": 40,
+  "textureType": [
+    "graphics/fx/vic_disruptor_beam.png",
+    "graphics/fx/vic_disruptor_beam.png"
+  ],
+  "textureScrollSpeed": 150,
+  "pixelsPerTexel": 5,
+  "pierceSet": [
+    PROJECTILE_FF,
+    PROJECTILE_NO_FF,
+    PROJECTILE_FIGHTER,
+    MISSILE_FF,
+    MISSILE_NO_FF
+  ],
+  "fireSoundTwo": "high_intensity_laser_loop"
+}
