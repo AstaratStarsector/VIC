@@ -8,7 +8,6 @@ import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import data.scripts.plugins.MagicTrailPlugin;
 import data.scripts.util.MagicAnim;
 import data.scripts.util.MagicRender;
-import org.jetbrains.annotations.NotNull;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
@@ -50,7 +49,7 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
     private boolean spawnParticle = true;
 
 
-    public vic_tugarinProjectileScript(@NotNull DamagingProjectileAPI proj) {
+    public vic_tugarinProjectileScript(DamagingProjectileAPI proj) {
         this.proj = proj;
         this.ship = proj.getSource();
         this.flightTime = proj.getWeapon().getRange() / proj.getMoveSpeed();
@@ -88,6 +87,7 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
     //Main phase color
     private static final Color PHASE_COLOR = new Color(235, 135, 5, 255);
 
+
     //For our "drill" effects
     private final float drillSpeed = 100f;
     private float[] drillTrailIDs = {0f, 0f, 0f};
@@ -119,10 +119,10 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
         for (int i = 0; i < 1; i++) {
             Vector2f positionToSpawn = new Vector2f(proj.getLocation().x, proj.getLocation().y);
             positionToSpawn = VectorUtils.rotateAroundPivot(positionToSpawn, proj.getLocation(), proj.getFacing(), new Vector2f(0f, 0f));
-            MagicTrailPlugin.AddTrailMemberAdvanced(proj, drillTrailIDs[i], spriteToUse, positionToSpawn, drillSpeed, drillSpeed * 0.5f,
+            MagicTrailPlugin.AddTrailMemberAdvanced(proj, drillTrailIDs[i], spriteToUse, positionToSpawn, 0, 0 * 0.5f,
                     proj.getFacing() + 180f, 0f, 0f, 32f,
                     256f, PHASE_COLOR, Color.RED, 1f, 0f, 0.1f, 0.3f, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,
-                    240f, 500f, new Vector2f(0f, 0f), null, CombatEngineLayers.CONTRAILS_LAYER);
+                    240f, -240f, new Vector2f(0f, 0f), null, CombatEngineLayers.CONTRAILS_LAYER);
         }
 
         float newSpeedMult = speedMult - ((flightTimeFraction) * amount * (float) Math.sqrt(speedMult) * 1.8f);
@@ -135,7 +135,7 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
         ringRotation2 += ringRotationSpeed2 * amount * -ringRotationDirection;
 
         if (proj.isFading() && spawnParticle){
-            engine.addHitParticle(proj.getLocation(), proj.getVelocity(), 100, 0.5f, 0.5f, PHASE_COLOR);
+            engine.addHitParticle(proj.getLocation(), proj.getVelocity(), 400, 0.35f, 0.2f, 1.5f, PHASE_COLOR);
             spawnParticle = false;
         }
 

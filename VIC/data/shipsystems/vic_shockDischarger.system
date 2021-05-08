@@ -1,12 +1,13 @@
 {
 	"id":"vic_shockDischarger",
 	"type":"STAT_MOD",
-	"aiType":"NONE",
+	"aiType":"CUSTOM",
+	"aiScript":"data.scripts.shipsystems.ai.vic_shockDischargerAI",
 	
 	"statsScript":"data.scripts.shipsystems.vic_shockDischarger",
 
 	"fadeActivationSoundOnChargedown":true,
-	"useSound":"system_interdictor",
+	"useSound":"vic_FluxRaptur",
 	"outOfUsesSound":"gun_out_of_ammo",
 	
 	"aiHints":{
