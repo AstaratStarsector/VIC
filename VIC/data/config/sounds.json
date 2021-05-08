@@ -62,6 +62,9 @@
 		{"file": "sounds/effects/vic_quantum_lunge_explosion.ogg", "pitch": 1, "volume": 0.8},
 		{"file": "sounds/effects/vic_quantum_lunge_explosion.ogg", "pitch": 0.9, "volume": 0.8}
 	],
+	"vic_FluxRaptur":[
+		{"file": "sounds/effects/vic_FluxRapture.ogg", "pitch": 0.7, "volume": 0.8},
+	],
 	
 	
 	"vic_besomar_shot":[

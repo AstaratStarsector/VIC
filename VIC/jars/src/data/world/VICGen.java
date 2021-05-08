@@ -92,16 +92,13 @@ public class VICGen implements SectorGeneratorPlugin {
         //set relationship
         vic.setRelationship(Factions.LUDDIC_CHURCH, -1f);
         vic.setRelationship(Factions.LUDDIC_PATH, -1f);
-        vic.setRelationship(Factions.TRITACHYON, -0.8f);
+        vic.setRelationship(Factions.TRITACHYON, -0.7f);
         vic.setRelationship(Factions.PERSEAN, 0.3f);
         vic.setRelationship(Factions.PIRATES, 0f);
-        vic.setRelationship(Factions.INDEPENDENT, -0.3f);
+        vic.setRelationship(Factions.INDEPENDENT, -0.2f);
         vic.setRelationship(Factions.DIKTAT, -0.1f);
         vic.setRelationship(Factions.LIONS_GUARD, -0.1f);
-        vic.setRelationship(Factions.HEGEMONY, 0.9f);
-
-
-
+        vic.setRelationship(Factions.HEGEMONY, 0.8f);
     }
 }
 

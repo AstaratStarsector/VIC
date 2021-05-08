@@ -12,10 +12,8 @@ import java.util.ArrayList;
 
 public class VIC_TimeTracker implements EveryFrameScript {
 
-    public ArrayList<MarketAPI> MarketsWithScar = new ArrayList<>();
     public boolean firstTick = true;
     public int lastDayChecked = 0;
-    public boolean doOnce = true;
 
     public VIC_TimeTracker() {
     }
@@ -29,20 +27,15 @@ public class VIC_TimeTracker implements EveryFrameScript {
     }
 
     public void advance(float amount) {
-        if (doOnce) {
-            checkVbomb();
-            doOnce = false;
-        }
         if (newDay()) {
             debugMessage("newDay");
-            checkVbomb();
-            doVirusThings();
+            doVirusThings(checkVbomb());
         }
     }
 
-    public void checkVbomb() {
+    public  ArrayList<MarketAPI> checkVbomb() {
 
-        MarketsWithScar = new ArrayList<>();
+        ArrayList<MarketAPI> MarketsWithScar = new ArrayList<>();
 
         for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
             if (market.hasCondition("VIC_VBomb_scar")) {
@@ -51,9 +44,10 @@ public class VIC_TimeTracker implements EveryFrameScript {
             }
         }
         if (MarketsWithScar.isEmpty()) debugMessage("All markets clear");
+        return MarketsWithScar;
     }
 
-    public void doVirusThings() {
+    public void doVirusThings(ArrayList<MarketAPI> MarketsWithScar) {
         for (MarketAPI market : MarketsWithScar) {
             float lowPopSize = (float) ((Math.pow(2f, market.getSize() - 2f)) * 100f);
             Global.getLogger(VIC_TimeTracker.class).info("Vbomb " + market.getName() + " goest down at " + lowPopSize + " / " + " current " + market.getPopulation().getWeight().getModifiedValue());

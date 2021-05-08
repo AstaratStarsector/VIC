@@ -9,7 +9,6 @@ import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
-//Made by PureTilt for Astarat
 public class vic_fevor_deco implements EveryFrameWeaponEffectPlugin {
 
     private boolean runOnce = false;
