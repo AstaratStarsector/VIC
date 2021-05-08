@@ -114,6 +114,11 @@ public class VIC_ModPlugin extends BaseModPlugin {
         }
     }
 
+    public void onNewGameAfterProcGen() {
+
+
+    }
+
     @Override
     public void onNewGameAfterEconomyLoad() {
         placeDryDocks();

@@ -3,10 +3,7 @@ package data.scripts.weapons;
 
 import com.fs.starfarer.api.AnimationAPI;
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.DamagingProjectileAPI;
-import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
-import com.fs.starfarer.api.combat.WeaponAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.IntervalUtil;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
@@ -14,7 +11,7 @@ import org.lazywizard.lazylib.combat.CombatUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin {
+public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
     private final List<DamagingProjectileAPI> alreadyRegisteredProjectiles = new ArrayList<>();
     private final IntervalUtil
@@ -83,6 +80,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin {
 
         }
 
+        /*
         checkTime.advance(amount);
         if (checkTime.intervalElapsed()) {
             List<DamagingProjectileAPI> cloneList = new ArrayList<>(alreadyRegisteredProjectiles);
@@ -114,6 +112,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin {
                 }
             }
         }
+         */
 
         timer += amount;
         if (timer >= delay) {
@@ -162,5 +161,25 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin {
             theAnim.setFrame(frame);
         }
 
+    }
+
+    @Override
+    public void onFire(DamagingProjectileAPI proj, WeaponAPI weapon, CombatEngineAPI engine) {
+        if (firingTime >= timeToStartHeating) currentScore += scorePerProj + (additionalScore * heat);
+        if (currentScore >= 1) {
+            currentScore--;
+            DamagingProjectileAPI spawnedProj = (DamagingProjectileAPI) engine.spawnProjectile(
+                    weapon.getShip(),
+                    weapon,
+                    "vic_vodyanoy_sub",
+                    proj.getLocation(),
+                    proj.getFacing(),
+                    weapon.getShip().getVelocity());
+            alreadyRegisteredProjectiles.add(spawnedProj);
+            engine.removeEntity(proj);
+        } else {
+            proj.getVelocity().scale(MathUtils.getRandomNumberInRange(0.9f, 1.1f));
+            alreadyRegisteredProjectiles.add(proj);
+        }
     }
 }

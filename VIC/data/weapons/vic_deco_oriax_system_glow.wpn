@@ -1,0 +1,19 @@
+{
+	"id": "vic_deco_oriax_system_glow",
+    "specClass": "projectile",
+    "projectileSpecId": "vic_dummy_proj",
+	"type": "DECORATIVE",
+	"size": "MEDIUM",
+	"everyFrameEffect":"data.scripts.weapons.decos.vic_oriaxSystemGlow",
+	"turretSprite":"graphics/ships/Oriax/vic_oriax_glow00.png",
+	"hardpointSprite":"graphics/ships/Oriax/vic_oriax_glow00.png",	
+	"numFrames":2,
+	"frameRate":0,
+    "renderHints": ["RENDER_ADDITIVE"],
+    "turretOffsets": [0,0],
+    "turretAngleOffsets": [0],
+    "hardpointOffsets": [0,0],
+    "hardpointAngleOffsets": [0],
+    "barrelMode": "ALTERNATING",
+    "animationType": "NONE"
+}
