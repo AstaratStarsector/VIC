@@ -26,7 +26,7 @@
 									 "particleSizeRange":15.0,
 									 "particleDuration":0.5,
 									 "particleCount":1,
-									 "particleColor":[237, 176, 80, 150],
+									 "particleColor":[237, 176, 80,200],
 									 "sound":"vic_strigoy_shot"},
 					}	
 }

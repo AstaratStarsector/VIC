@@ -26,8 +26,6 @@ public class vic_dynamicShields extends BaseHullMod {
 
         stats.getShieldUnfoldRateMult().modifyMult(id, shieldSpeed);
         stats.getShieldTurnRateMult().modifyMult(id, shieldSpeed);
-
-
     }
 
     //shieldsChanger
@@ -35,19 +33,19 @@ public class vic_dynamicShields extends BaseHullMod {
         super.applyEffectsAfterShipCreation(ship, id);
         ShieldAPI shipShield = ship.getShield();
         float radius = shipShield.getRadius();
-        String innerSprite;
-        String outerSprite;
+        String innersprite;
+        String outersprite;
         if (radius >= 256.0F) {
-            innerSprite = "graphics/fx/shield/vic_shields256.png";
-            outerSprite = "graphics/fx/shield/vic_shields256ring.png";
+            innersprite = "graphics/fx/shield/vic_shields256.png";
+            outersprite = "graphics/fx/shield/vic_shields256ring.png";
         } else if (radius >= 128.0F) {
-            innerSprite = "graphics/fx/shield/vic_shields128.png";
-            outerSprite = "graphics/fx/shield/vic_shields128ring.png";
+            innersprite = "graphics/fx/shield/vic_shields128.png";
+            outersprite = "graphics/fx/shield/vic_shields128ring.png";
         } else {
-            innerSprite = "graphics/fx/shield/vic_shields64.png";
-            outerSprite = "graphics/fx/shield/vic_shields64ring.png";
+            innersprite = "graphics/fx/shield/vic_shields64.png";
+            outersprite = "graphics/fx/shield/vic_shields64ring.png";
         }
-        shipShield.setRadius(radius, innerSprite, outerSprite);
+        shipShield.setRadius(radius, innersprite, outersprite);
     }
 
     @Override

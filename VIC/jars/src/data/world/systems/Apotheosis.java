@@ -1,26 +1,40 @@
 package data.world.systems;
 
+
+
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.concurrent.locks.Condition;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
+import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.fleet.FleetMemberType;
 import com.fs.starfarer.api.impl.campaign.DerelictShipEntityPlugin;
+import com.fs.starfarer.api.impl.campaign.econ.impl.FuelProduction;
+import com.fs.starfarer.api.impl.campaign.econ.impl.HeavyIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
+import com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
+import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.BaseThemeGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.DerelictThemeGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.SalvageSpecialAssigner;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.special.ShipRecoverySpecial;
 import com.fs.starfarer.api.impl.campaign.submarkets.StoragePlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.*;
+import com.fs.starfarer.api.impl.campaign.terrain.AsteroidFieldTerrainPlugin.AsteroidFieldParams;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin.MagneticFieldParams;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
 
-import java.awt.*;
-import java.util.Random;
+import static data.world.VICGen.addMarketplace;
 
 
 public class Apotheosis {
@@ -34,20 +48,29 @@ public class Apotheosis {
         StarSystemAPI system = sector.createStarSystem("Apotheosis");
         system.getLocation().set(1300, -25500);
         system.setBackgroundTextureFilename("graphics/backgrounds/apotheosis_background.jpg");
-        system.addTag(Tags.THEME_UNSAFE);
-        system.addTag(Tags.THEME_HIDDEN);
 
 
         // create the star and generate the hyperspace anchor for this system
         PlanetAPI ApotheosisQuasar = system.initStar("vic_quasar_apotheosis", // unique id for this star
                 "quasar", // id in planets.json
-                400f,        // radius (in pixels at default zoom)
+                400f,		// radius (in pixels at default zoom)
                 350f, // corona radius, from star edge
                 -10f, // solar wind burn level
                 0.0f, // flare probability
                 25f); // cr loss mult
 
 
+
+        /*
+        SectorEntityToken IttirEventHorizon = system.addTerrain(Terrain.EVENT_HORIZON,
+                new EventHorizonPlugin.CoronaParams(2000,
+                        1000,
+                        ApotheosisQuasar,
+                        -10f,
+                        0f,
+                        15f));
+
+         */
 
         SectorEntityToken IttirEventHorizonOuter = system.addTerrain(Terrain.EVENT_HORIZON,
                 new EventHorizonPlugin.CoronaParams(3000,
@@ -88,13 +111,15 @@ public class Apotheosis {
         */
 
 
+
+
         float orbitRadius5 = ApotheosisQuasar.getRadius() * 3f;
         float bandWidth5 = 160f;
         int numBands5 = 2;
 
         for (float i = 0; i < numBands5; i++) {
             float radius = orbitRadius5 - i * bandWidth5 * 0.25f - i * bandWidth5 * 0.1f;
-            float orbitDays = radius * 0.3f / (30f + 10f * Misc.random.nextFloat());
+            float orbitDays = radius *0.3f / (30f + 10f * Misc.random.nextFloat());
             WeightedRandomPicker<String> rings = new WeightedRandomPicker<>();
             rings.add("rings_asteroids0");
             String ring = rings.pick();
@@ -112,29 +137,30 @@ public class Apotheosis {
         }
 
 
+
         float orbitRadius1 = ApotheosisQuasar.getRadius() * 16f;
         float bandWidth1 = 256f;
         int numBands1 = 8;
 
         for (float i = 0; i < numBands1; i++) {
             float radius = orbitRadius1 - i * bandWidth1 * 0.25f - i * bandWidth1 * 0.1f;
-            float orbitDays = radius * 0.3f / (30f + 10f * Misc.random.nextFloat());
+            float orbitDays = radius *0.3f / (30f + 10f * Misc.random.nextFloat());
             WeightedRandomPicker<String> rings = new WeightedRandomPicker<>();
             rings.add("rings_dust0");
             rings.add("rings_ice0");
             String ring = rings.pick();
-            RingBandAPI visual = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 0, new Color(46, 35, 173), bandWidth1,
+            RingBandAPI visual = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 0, new Color(46,35,173), bandWidth1,
                     radius + bandWidth1 / 2f, -orbitDays);
-            RingBandAPI visual2 = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 1, new Color(46, 35, 173), bandWidth1,
+            RingBandAPI visual2 = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 1, new Color(46,35,173), bandWidth1,
                     radius + bandWidth1 / 2f, -orbitDays);
-            RingBandAPI visual3 = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 2, new Color(46, 35, 173), bandWidth1,
+            RingBandAPI visual3 = system.addRingBand(ApotheosisQuasar, "misc", ring, 256f, 2, new Color(46,35,173), bandWidth1,
                     radius + bandWidth1 / 2f, -orbitDays);
             float spiralFactor = 2f + Misc.random.nextFloat() * 5f;
             visual.setSpiral(true);
-            visual.setMinSpiralRadius(ApotheosisQuasar.getRadius() / 3);
+            visual.setMinSpiralRadius(ApotheosisQuasar.getRadius()/3);
             visual.setSpiralFactor(spiralFactor);
             visual2.setSpiral(true);
-            visual2.setMinSpiralRadius(ApotheosisQuasar.getRadius() / 2);
+            visual2.setMinSpiralRadius(ApotheosisQuasar.getRadius()/2);
             visual2.setSpiralFactor(spiralFactor);
             visual3.setSpiral(true);
             visual3.setMinSpiralRadius(ApotheosisQuasar.getRadius());
@@ -148,8 +174,8 @@ public class Apotheosis {
         int numBands4 = 1;
 
         for (float i = 0; i < numBands4; i++) {
-            float radius = orbitRadius4 / 2 - i * bandWidth4 * 0.25f - i * bandWidth4 * 0.1f;
-            float orbitDays = radius * 0.3f / (30f + 10f * Misc.random.nextFloat());
+            float radius = orbitRadius4/2 - i * bandWidth4 * 0.25f - i * bandWidth4 * 0.1f;
+            float orbitDays = radius *0.3f / (30f + 10f * Misc.random.nextFloat());
             WeightedRandomPicker<String> rings = new WeightedRandomPicker<>();
             rings.add("rings_asteroids0");
             String ring = rings.pick();
@@ -161,15 +187,17 @@ public class Apotheosis {
                     radius + bandWidth4 / 2f, -orbitDays);
             float spiralFactor = 2f + Misc.random.nextFloat() * 5f;
             visual.setSpiral(true);
-            visual.setMinSpiralRadius(ApotheosisQuasar.getRadius() / 2f);
+            visual.setMinSpiralRadius(ApotheosisQuasar.getRadius()/2f);
             visual.setSpiralFactor(spiralFactor);
             visual2.setSpiral(true);
-            visual2.setMinSpiralRadius(ApotheosisQuasar.getRadius() / 2f);
+            visual2.setMinSpiralRadius(ApotheosisQuasar.getRadius()/2f);
             visual2.setSpiralFactor(spiralFactor);
             visual3.setSpiral(true);
-            visual3.setMinSpiralRadius(ApotheosisQuasar.getRadius() / 2f);
+            visual3.setMinSpiralRadius(ApotheosisQuasar.getRadius()/2f);
             visual3.setSpiralFactor(spiralFactor);
         }
+
+
 
 
         float orbitRadius3 = ApotheosisQuasar.getRadius() * 10f;
@@ -178,7 +206,7 @@ public class Apotheosis {
 
         for (float i = 0; i < numBands3; i++) {
             float radius = orbitRadius3 - i * bandWidth3 * 0.25f - i * bandWidth3 * 0.1f;
-            float orbitDays = radius * 0.3f / (30f + 10f * Misc.random.nextFloat());
+            float orbitDays = radius *0.3f / (30f + 10f * Misc.random.nextFloat());
             WeightedRandomPicker<String> rings = new WeightedRandomPicker<>();
             rings.add("rings_ice0");
             rings.add("rings_dust0");
@@ -192,13 +220,14 @@ public class Apotheosis {
         }
 
 
+
         float orbitRadius2 = ApotheosisQuasar.getRadius() * 5f;
         float bandWidth2 = 256f;
         int numBands2 = 12;
 
         for (float i = 0; i < numBands2; i++) {
             float radius = orbitRadius2 - i * bandWidth2 * 0.25f - i * bandWidth2 * 0.1f;
-            float orbitDays = radius * 0.3f / (30f + 10f * Misc.random.nextFloat());
+            float orbitDays = radius *0.3f / (30f + 10f * Misc.random.nextFloat());
             WeightedRandomPicker<String> rings = new WeightedRandomPicker<>();
             rings.add("rings_ice0");
             rings.add("rings_dust0");
@@ -212,9 +241,12 @@ public class Apotheosis {
         }
 
 
+
+
         SectorEntityToken ring = system.addTerrain(Terrain.RING, new BaseRingTerrain.RingParams(orbitRadius1, orbitRadius1 / 2f, ApotheosisQuasar, "Accretion Disk"));
         ring.addTag(Tags.ACCRETION_DISK);
         ring.setCircularOrbit(ApotheosisQuasar, 0, 0, -100);
+
 
 
         PlanetAPI LostHope = system.addPlanet("vic_planet_LostHope",
@@ -227,6 +259,7 @@ public class Apotheosis {
                 syncOrbitDays);
 
 
+
         //Abandoned Station
         SectorEntityToken neutralStation = system.addCustomEntity("vic_ApotheosisAbandonedStation", "Abandoned Station", "station_side05", "neutral");
         neutralStation.setCircularOrbitPointingDown(LostHope, 0, 600, syncOrbitDays);
@@ -236,13 +269,13 @@ public class Apotheosis {
         neutralStation.setSensorProfile(0.3f);
         neutralStation.setCustomDescriptionId("vic_ApotheosisAbandonedStation");
         neutralStation.setInteractionImage("illustrations", "abandoned_station3");
-        MarketAPI market = Global.getFactory().createMarket("vic_ApotheosisAbandonedStationMarket", "Abandoned Station", 0);
-        market.setPrimaryEntity(neutralStation);
-        market.setFactionId(neutralStation.getFaction().getId());
-        market.addIndustry(Industries.SPACEPORT);
-        market.addCondition(Conditions.ABANDONED_STATION);
-        market.addSubmarket(Submarkets.SUBMARKET_STORAGE);
-        ((StoragePlugin) market.getSubmarket(Submarkets.SUBMARKET_STORAGE).getPlugin()).setPlayerPaidToUnlock(true);
+        MarketAPI market = Global.getFactory().createMarket("vic_ApotheosisAbandonedStationMarket","Abandoned Station",0);
+                market.setPrimaryEntity(neutralStation);
+                market.setFactionId(neutralStation.getFaction().getId());
+                market.addIndustry(Industries.SPACEPORT);
+                market.addCondition(Conditions.ABANDONED_STATION);
+                market.addSubmarket(Submarkets.SUBMARKET_STORAGE);
+                ((StoragePlugin) market.getSubmarket(Submarkets.SUBMARKET_STORAGE).getPlugin()).setPlayerPaidToUnlock(true);
 
         neutralStation.setMarket(market);
         neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addSupplies(MathUtils.getRandomNumberInRange(40, 60));
@@ -267,17 +300,17 @@ public class Apotheosis {
         SectorEntityToken ResearchStation = DerelictThemeGenerator.addSalvageEntity(system, "station_research", Factions.DERELICT);
         ResearchStation.setCircularOrbit(ApotheosisQuasar, 180, 2000, syncOrbitDays);
 
-        addDerelict(system, ApotheosisQuasar, "vic_valafar_assault", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 0, (Math.random() < 0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_thamuz_standart", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 120, (Math.random() < 0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_cresil_bombardier", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 240, (Math.random() < 0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_valafar_assault", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 0,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_thamuz_standart", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 120,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_cresil_bombardier", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 240,  (Math.random()<0.4));
 
-        addDerelict(system, ApotheosisQuasar, "vic_jezebeth_assault", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 0, (Math.random() < 0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_moloch_standart", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 120, (Math.random() < 0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_samael_standart", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 240, (Math.random() < 0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_jezebeth_assault", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 0,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_moloch_standart", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 120,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_samael_standart", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 240,  (Math.random()<0.4));
 
-        addDerelict(system, ApotheosisQuasar, "vic_xaphan_skirmisher", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 0, (Math.random() < 0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_kobal_agony", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 120, (Math.random() < 0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_pruflas_Demolisher", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 240, (Math.random() < 0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_xaphan_skirmisher", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 0,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_kobal_agony", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 120,  (Math.random()<0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_pruflas_Demolisher", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 240,  (Math.random()<0.4));
 
         generateNebula(system);
 
@@ -307,7 +340,7 @@ public class Apotheosis {
 
     //Learning from Tart scripts
     //Clean nearby Nebula
-    private void cleanup(StarSystemAPI system) {
+    private void cleanup (StarSystemAPI system){
         HyperspaceTerrainPlugin plugin = (HyperspaceTerrainPlugin) Misc.getHyperspaceTerrain().getPlugin();
         NebulaEditor editor = new NebulaEditor(plugin);
         float minRadius = plugin.getTileSize() * 2f;
@@ -330,9 +363,9 @@ public class Apotheosis {
         ship.setDiscoverable(true);
 
         float orbitDays = orbitRadius * MathUtils.getRandomNumberInRange(0.7f, 1.3f) / 50;
-        ship.setCircularOrbit(focus, (float) MathUtils.getRandomNumberInRange(-10, 10) + angle, orbitRadius, orbitDays);
+        ship.setCircularOrbit(focus, (float) MathUtils.getRandomNumberInRange(-10,10) + angle, orbitRadius, orbitDays);
 
-        WeightedRandomPicker<String> factions = new WeightedRandomPicker<>();
+        WeightedRandomPicker<String> factions= new WeightedRandomPicker<>();
         factions.add("vic");
         if (recoverable) {
             SalvageSpecialAssigner.ShipRecoverySpecialCreator creator = new SalvageSpecialAssigner.ShipRecoverySpecialCreator(null, 0, 0, false, null, factions);
@@ -340,7 +373,8 @@ public class Apotheosis {
         }
     }
 
-    protected void generateNebula(StarSystemAPI system) {
+    protected void generateNebula(StarSystemAPI system)
+    {
         Random random = new Random(getStartingSeed());
         float holeRadius = (int) getRandomFloat(random, 6500, 7000);
         float w = 15000;
@@ -366,7 +400,7 @@ public class Apotheosis {
         // Taken from vanilla's SectorProcGen.java
         int numArcs = 2;
 
-        for (int i = 0; i < numArcs; i++) {
+        for (int i = 0; i < numArcs; i++){
             float dist = w / 2f + w / 2f * random.nextFloat();
             float angle = random.nextFloat() * 360f;
 
@@ -382,11 +416,11 @@ public class Apotheosis {
 
         // Clear planet orbit paths
         SectorEntityToken center = system.getCenter();
-        for (PlanetAPI planet : system.getPlanets()) {
-            if (planet == center) {
+        for (PlanetAPI planet : system.getPlanets()){
+            if (planet == center){
                 continue;
             }
-            if (MathUtils.isWithinRange(center, planet, holeRadius - 3000)) {
+            if (MathUtils.isWithinRange(center, planet, holeRadius - 3000)){
                 continue;
             }
             float dist = MathUtils.getDistance(center, planet);
@@ -401,18 +435,20 @@ public class Apotheosis {
         editor.regenNoise();
     }
 
-    long getStartingSeed() {
+    long getStartingSeed(){
         String seedStr = Global.getSector().getSeedString().replaceAll("[^0-9]", "");
         return Long.parseLong(seedStr);
     }
 
-    float getRandomFloat(Random random, float min, float max) {
+    float getRandomFloat(Random random, float min, float max){
         return min + (max - min) * random.nextFloat();
     }
 
-    BaseTiledTerrain getNebula(StarSystemAPI system) {
-        for (CampaignTerrainAPI curr : system.getTerrainCopy()) {
-            if (curr.getPlugin().getTerrainId().equals(Terrain.NEBULA)) {
+    BaseTiledTerrain getNebula(StarSystemAPI system){
+        for (CampaignTerrainAPI curr : system.getTerrainCopy())
+        {
+            if (curr.getPlugin().getTerrainId().equals(Terrain.NEBULA))
+            {
                 return (BaseTiledTerrain) (curr.getPlugin());
             }
         }

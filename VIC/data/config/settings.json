@@ -31,8 +31,8 @@
 			"vic_empEmitter":"graphics/icons/hullsys/vic_empEmitter.png",
 		},
 		"fx":{
-			"vic_fluxRaptureSuck":"graphics/fx/vic_fluxRaptureSuckQuarter.png",
-			"vic_fluxRaptureZap":"graphics/fx/vic_fluxRaptureZapQuarter.png",
+			"vic_fluxRaptureSuck":"graphics/fx/vic_fluxRaptureSuck.png",
+			"vic_fluxRaptureZap":"graphics/fx/vic_fluxRaptureZap.png",
 			
 			"vic_rubicon_river":"graphics/fx/vic_rubicon_river.png",
 			"vic_shieldsInner256":"graphics/fx/shield/vic_shields256.png",

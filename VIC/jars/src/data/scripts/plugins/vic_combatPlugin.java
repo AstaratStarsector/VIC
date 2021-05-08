@@ -9,6 +9,7 @@ import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.shipsystems.vic_shockDischarger;
 import data.scripts.util.MagicAnim;
+import org.jetbrains.annotations.NotNull;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
 
@@ -31,8 +32,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
     private final SpriteAPI OuterRing = Global.getSettings().getSprite("fx", "vic_fluxRaptureSuck");
     private final SpriteAPI InnerRing = Global.getSettings().getSprite("fx", "vic_fluxRaptureZap");
     {
-        float OuterRingRadius = vic_shockDischarger.suckRange;
-        float InnerRingRadius = vic_shockDischarger.shockRange;
+        float OuterRingRadius = vic_shockDischarger.suckRange * 2;
+        float InnerRingRadius = vic_shockDischarger.shockRange * 2;
 
         OuterRing.setSize(OuterRingRadius, OuterRingRadius);
         InnerRing.setSize(InnerRingRadius, InnerRingRadius);
@@ -159,6 +160,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 alphaMultOuter *= MagicAnim.smooth((1 - effectLevel) * 5f);
             }
 
+
             float alphaMultInner = 0.35f;
             switch (state){
                 case IN:
@@ -174,19 +176,17 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             switch (state) {
                 case IN:
                     OuterRing.setAlphaMult(alphaMultOuter);
-                    OuterRing.setCenter(OuterRing.getHeight(),0);
-                    for (float i = 0; i < 4; i++){
-                        OuterRing.setAngle(-angle + 90 * i);
-                        OuterRing.renderAtCenter(ship.getLocation().getX(),ship.getLocation().getY());
-                    }
+                    OuterRing.setAngle(-angle);
+                    OuterRing.renderAtCenter(ship.getLocation().getX(),ship.getLocation().getY());
+                    InnerRing.setAlphaMult(alphaMultInner);
+                    InnerRing.setAngle(angle);
+                    InnerRing.renderAtCenter(ship.getLocation().getX(),ship.getLocation().getY());
+                    break;
                 case ACTIVE:
                 case OUT:
                     InnerRing.setAlphaMult(alphaMultInner);
-                    InnerRing.setCenter(InnerRing.getHeight(),0);
-                    for (float i = 0; i < 4; i++){
-                        InnerRing.setAngle(angle + 90 * i);
-                        InnerRing.renderAtCenter(ship.getLocation().getX(),ship.getLocation().getY());
-                    }
+                    InnerRing.setAngle(angle);
+                    InnerRing.renderAtCenter(ship.getLocation().getX(),ship.getLocation().getY());
             }
         }
     }
@@ -232,7 +232,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             ringList.add(Global.getSettings().getSprite("fx", "vic_nawia_ring2"));
         }
 
-        public NawiaFxData(Vector2f location, float angle){
+        public NawiaFxData(@NotNull Vector2f location, float angle){
             this.location = location;
             this.angle = angle;
 
