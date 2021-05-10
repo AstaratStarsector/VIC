@@ -3,7 +3,7 @@
   "specClass": "beam",
   "type": "ENERGY",
   "size": "LARGE",
-  "everyFrameEffect": "data.scripts.weapons.vic_zlydzen",
+  "everyFrameEffect": "data.scripts.weapons.vic_zlydzenScript",
   "collisionClass": "RAY",
   "collisionClassByFighter": "RAY_FIGHTER",
   "turretSprite": "graphics/weapons/Zlydzen/vic_zlydzen_base_turret00.png",
@@ -60,5 +60,5 @@
     MISSILE_FF,
     MISSILE_NO_FF
   ],
-  "fireSoundTwo": "high_intensity_laser_loop"
+  "fireSoundTwo": "vic_zlydzen_loop"
 }

@@ -14,7 +14,7 @@ import org.lazywizard.lazylib.combat.CombatUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vic_zlydzen implements EveryFrameWeaponEffectPlugin {
+public class vic_zlydzenScript implements EveryFrameWeaponEffectPlugin {
 
 
     //animation values
@@ -76,7 +76,7 @@ public class vic_zlydzen implements EveryFrameWeaponEffectPlugin {
         if (weapon.getChargeLevel() > 0) {
 
             Global.getSoundPlayer().playLoop(
-                    "high_intensity_laser_loop",
+                    "vic_zlydzen_loop",
                     weapon,
                     1f,
                     Math.max(0, 10 * weapon.getChargeLevel() - 9),
@@ -85,7 +85,7 @@ public class vic_zlydzen implements EveryFrameWeaponEffectPlugin {
             );
 
             Global.getSoundPlayer().playLoop(
-                    "vic_vodanoy_spin",
+                    "vic_zlydzen_spin",
                     weapon,
                     0.25f + weapon.getChargeLevel(),
                     0.15f,
