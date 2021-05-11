@@ -1,0 +1,81 @@
+{
+  "id": "vic_arcaneMissiles",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_arcaneBolt",
+  "type": "ENERGY",
+  "size": "MEDIUM",
+  "everyFrameEffect": "data.scripts.weapons.vic_arcaneMissiles",
+  "displayArcRadius": 450,
+  "turretSprite": "graphics/weapons/vic_cursed_base_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_cursed_base_hardpoint.png",
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    16,
+    0,
+    16.5,
+    0.5,
+    16.5,
+    -0.5,
+    17,
+    1,
+    17,
+    -1,
+    17.5,
+    1.5,
+    17.5,
+    -1.5
+  ],
+  "turretAngleOffsets": [
+    0,
+    15,
+    -15,
+    30,
+    -30,
+    45,
+    -45
+  ],
+  "hardpointOffsets": [
+    24,
+    0,
+    24.5,
+    1,
+    24.5,
+    -1,
+    25,
+    1.5,
+    25,
+    -1.5,
+    25.5,
+    2,
+    25.5,
+    -2
+  ],
+  "hardpointAngleOffsets": [
+    0,
+    15,
+    -15,
+    30,
+    -30,
+    45,
+    -45
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "MUZZLE_FLASH",
+  "muzzleFlashSpec": {
+    "length": 20,
+    "spread": 5,
+    "particleSizeMin": 5,
+    "particleSizeRange": 5,
+    "particleDuration": 0.35,
+    "particleCount": 20,
+    "particleColor": [
+      100,
+      100,
+      255,
+      255
+    ]
+  },
+  "fireSoundTwo": "vic_rubicon_shot"
+}

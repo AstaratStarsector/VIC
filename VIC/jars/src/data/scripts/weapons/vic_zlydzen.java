@@ -8,6 +8,7 @@ import com.fs.starfarer.api.combat.DamagingProjectileAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.WeaponAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
+import data.scripts.util.MagicAnim;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 
@@ -18,10 +19,8 @@ public class vic_zlydzenScript implements EveryFrameWeaponEffectPlugin {
 
 
     //animation values
-    private float delay = 0.1f;
+    private final float delay = 0.025f;
     private float timer = 0;
-    private float SPINUP = 2f;
-    private float SPINDOWN = 5f;
 
     //dont touch
     private boolean runOnce = false;
@@ -29,9 +28,6 @@ public class vic_zlydzenScript implements EveryFrameWeaponEffectPlugin {
     private AnimationAPI theAnim;
     private int maxFrame;
     private int frame;
-
-
-
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
@@ -51,28 +47,16 @@ public class vic_zlydzenScript implements EveryFrameWeaponEffectPlugin {
             }
         }
 
-
-        timer += amount;
-        if (timer >= delay) {
+        timer += amount * MagicAnim.smooth(weapon.getChargeLevel());
+        while (timer >= delay){
             timer -= delay;
-            if (weapon.getChargeLevel() > 0) {
-                delay = Math.max(
-                        delay - SPINUP,
-                        0.02f
-                );
+            if (frame == maxFrame) {
+                frame = 0;
             } else {
-                delay = Math.min(
-                        delay + delay / SPINDOWN,
-                        0.1f
-                );
-            }
-            if (!hidden && delay != 0.1f) {
                 frame++;
-                if (frame == maxFrame) {
-                    frame = 0;
-                }
             }
         }
+
         if (weapon.getChargeLevel() > 0) {
 
             Global.getSoundPlayer().playLoop(

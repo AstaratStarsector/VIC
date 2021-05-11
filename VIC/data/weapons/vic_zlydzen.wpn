@@ -4,6 +4,7 @@
   "type": "ENERGY",
   "size": "LARGE",
   "everyFrameEffect": "data.scripts.weapons.vic_zlydzenScript",
+  "beamEffect":"data.scripts.weapons.vic_zlydzen_beam",
   "collisionClass": "RAY",
   "collisionClassByFighter": "RAY_FIGHTER",
   "turretSprite": "graphics/weapons/Zlydzen/vic_zlydzen_base_turret00.png",

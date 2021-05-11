@@ -29,6 +29,7 @@
 		"systems":{
 			"vic_adaptiveWarfareSystem":"graphics/icons/hullsys/vic_adaptiveWarfareSystem.png",
 			"vic_empEmitter":"graphics/icons/hullsys/vic_empEmitter.png",
+			"vic_zlydzenEffect":"graphics/icons/hullsys/vic_zlydzenEffect.png",
 		},
 		"fx":{
 			"vic_fluxRaptureSuck":"graphics/fx/vic_fluxRaptureSuckQuarter.png",
