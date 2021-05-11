@@ -15,7 +15,7 @@ import org.lazywizard.lazylib.combat.CombatUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vic_zlydzenScript implements EveryFrameWeaponEffectPlugin {
+public class vic_zlydzen_script implements EveryFrameWeaponEffectPlugin {
 
 
     //animation values

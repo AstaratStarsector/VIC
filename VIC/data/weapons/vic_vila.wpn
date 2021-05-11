@@ -1,13 +1,15 @@
 {
-  "id": "vic_arcaneMissiles",
+  "id": "vic_vila",
   "specClass": "projectile",
   "projectileSpecId": "vic_arcaneBolt",
   "type": "ENERGY",
   "size": "MEDIUM",
-  "everyFrameEffect": "data.scripts.weapons.vic_arcaneMissiles",
+  "everyFrameEffect": "data.scripts.weapons.vic_vila_script",
   "displayArcRadius": 450,
-  "turretSprite": "graphics/weapons/vic_cursed_base_turret.png",
-  "hardpointSprite": "graphics/weapons/vic_cursed_base_hardpoint.png",
+  "turretSprite": "graphics/weapons/vic_vila_base_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_vila_base_hardpoint.png",
+    "turretGlowSprite": "graphics/weapons/vic_vila_glow_turret.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_vila_glow_hardpoint.png",
   "renderHints": [
     RENDER_BARREL_BELOW
   ],

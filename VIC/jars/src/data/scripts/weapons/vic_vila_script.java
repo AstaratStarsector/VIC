@@ -10,7 +10,7 @@ import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
-public class vic_arcaneMissiles implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
+public class vic_vila_script implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
