@@ -9,9 +9,14 @@ import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.shipsystems.vic_shockDischarger;
 import data.scripts.util.MagicAnim;
+import data.scripts.util.MagicLensFlare;
+import data.scripts.util.MagicRender;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.RippleDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
+import com.fs.starfarer.api.combat.ShipAPI;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -171,7 +176,45 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                     float flightTime = MathUtils.getDistance(proj.getLocation(), data.finalPoint) / Math.abs(MathUtils.getDistance(new Vector2f(), proj.getVelocity()));
                     float angle = MathUtils.getShortestRotation(proj.getFacing(), VectorUtils.getAngle(proj.getLocation(), data.finalPoint));
                     data.rotationSpeed = (angle / flightTime) * (2f);
-                    engine.addHitParticle(proj.getLocation(), new Vector2f(), 30, 1f, 0.35f, new Color(2, 225, 255, 255));
+                    engine.addHitParticle(proj.getLocation(), new Vector2f(), 10, 1f, 0.25f, new Color(0, 198, 255, 255));
+                    engine.spawnExplosion(proj.getLocation(),
+                            new Vector2f(0,0),
+                            new Color(109, 250, 255,255),
+                            20f,
+                            0.15f);
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("fx","vic_laidlawExplosion2"),
+                            proj.getLocation(),
+                            new Vector2f(),
+                            new Vector2f(30,30),
+                            new Vector2f(60,60),
+                            //angle,
+                            360*(float)Math.random(),
+                            0,
+                            new Color(255,225,225,225),
+                            true,
+                            0.0f,
+                            0.0f,
+                            0.35f
+                    );
+
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("fx","vic_laidlawExplosion2"),
+                            proj.getLocation(),
+                            new Vector2f(),
+                            new Vector2f(30,30),
+                            new Vector2f(450,450),
+                            //angle,
+                            360*(float)Math.random(),
+                            0,
+                            new Color(255,225,225,75),
+                            true,
+                            0.0f,
+                            0.0f,
+                            0.2f
+                    );
+
+                    //MagicLensFlare.createSharpFlare(engine, proj.getSource(), proj.getLocation(), 2f, 20f, MathUtils.getRandomNumberInRange(0f, 360f), new Color(2, 225, 255, 255), new  Color(255, 255, 255, 255));
 
                     //turn instantly if rotation speed too high
                     if (Math.abs(data.rotationSpeed) >= 800) {

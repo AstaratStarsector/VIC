@@ -19,7 +19,7 @@ public class vic_vila_script implements EveryFrameWeaponEffectPlugin, OnFireEffe
 
     private static final float CHARGEUP_PARTICLE_ANGLE_SPREAD = 180f;
     private static final float CHARGEUP_PARTICLE_BRIGHTNESS = 1f;
-    private static final Color CHARGEUP_PARTICLE_COLOR = new Color(114, 221, 255, 200);
+    private static final Color CHARGEUP_PARTICLE_COLOR = new Color(114, 177, 255, 200);
     private static final float CHARGEUP_PARTICLE_COUNT_FACTOR = 20f;
     private static final float CHARGEUP_PARTICLE_DISTANCE_MAX = 50f;
     private static final float CHARGEUP_PARTICLE_DISTANCE_MIN = 10f;
