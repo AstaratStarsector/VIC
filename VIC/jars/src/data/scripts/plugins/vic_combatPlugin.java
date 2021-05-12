@@ -173,22 +173,21 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                     data.rotationSpeed = (angle / flightTime) * (2f);
                     engine.addHitParticle(proj.getLocation(), new Vector2f(), 30, 1f, 0.35f, new Color(2, 225, 255, 255));
 
-                    float angle2 = data.rotationSpeed * data.timeBeforeCurving * (1 - data.rangeBeforeCurving) * 0.5f;
-                    VectorUtils.rotate(proj.getVelocity(), angle2, proj.getVelocity());
-                    proj.setFacing(angle2 + proj.getFacing());
-
-                    angle = MathUtils.getShortestRotation(proj.getFacing(), VectorUtils.getAngle(proj.getLocation(), data.finalPoint));
-                    data.rotationSpeed = (angle / flightTime) * (2f);
-                    proj.getVelocity().scale(1 + Math.abs(angle * 0.0025f));
-
                     //turn instantly if rotation speed too high
-                    if (Math.abs(data.rotationSpeed) >= 500) {
+                    if (Math.abs(data.rotationSpeed) >= 800) {
                         VectorUtils.rotate(proj.getVelocity(), angle, proj.getVelocity());
                         proj.setFacing(angle + proj.getFacing());
                         data.rotate = false;
-                    }
+                        engine.addFloatingText(proj.getLocation(), Math.round(data.rotationSpeed) + "", 20, Color.WHITE, null, 0, 0);
+                    } else {
+                        float angle2 = data.rotationSpeed * data.timeBeforeCurving * (1 - data.rangeBeforeCurving) * 0.25f;
+                        VectorUtils.rotate(proj.getVelocity(), angle2, proj.getVelocity());
+                        proj.setFacing(angle2 + proj.getFacing());
 
-                    //engine.addFloatingText(proj.getLocation(), data.rotationSpeed + "", 30, Color.WHITE, null, 0, 0);
+                        angle = MathUtils.getShortestRotation(proj.getFacing(), VectorUtils.getAngle(proj.getLocation(), data.finalPoint));
+                        data.rotationSpeed = (angle / flightTime) * (2f);
+                        proj.getVelocity().scale(1 + Math.abs(angle * 0.0025f));
+                    }
                 } else {
                     float angle = data.rotationSpeed * amount;
                     if (Math.abs(angle) > 0) {

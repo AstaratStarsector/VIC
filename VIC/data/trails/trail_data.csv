@@ -43,4 +43,7 @@ trails_vic_tugarin_shot_2,vic_tugarin_shot,trails_trail_twin,10,0,0.1,0.25,32,64
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
 vic_thermalLance_trail__contrail,vic_thermalLance_trail_proj,trails_trail_smooth,10,0,0,1.5,5,150,"[235,70,5]","[235,135,5]",0.8,2000,50,-50,5,1,TRUE,FALSE,TRUE,50,50,0.1,0,0,30,true,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
-trails_vic_arcaneBolt_scater,vic_arcaneBolt,trails_trail_contrail,10,0,0.1,0.1,12,12,"[0,255,235]","[0,255,235]",1,100,20,20,0,1,TRUE,TRUE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_arcaneBolt_scater,vic_arcaneBolt,trails_trail_twin,10,0,0.05,0.04,0,48,"[151,40,220]","[73,0,255]",0.7,200,50,20,0,0,TRUE,TRUE,FALSE,100,20,0.3,0,500,200,true,false
+trails_vic_arcaneBolt_scater2,vic_arcaneBolt,trails_trail_twin,10,0,0.05,0.06,0,32,"[0,255,236]","[9,142,255]",0.9,200,50,15,0,0,TRUE,TRUE,FALSE,100,20,0.3,0,500,200,true,false
+trails_vic_arcaneBolt_line,vic_arcaneBolt,trails_trail_contrail,0,0,0.05,0.15,12,16,"[35,200,253]","[9,142,255]",0.7,100,20,0,0,0,TRUE,TRUE,FALSE,0,0,0,0,0,0,false,false
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
