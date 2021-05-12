@@ -7,26 +7,33 @@
   "everyFrameEffect": "data.scripts.weapons.vic_vila_script",
   "displayArcRadius": 450,
   "turretSprite": "graphics/weapons/vic_vila_base_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_vila_glow_turret.png",
   "hardpointSprite": "graphics/weapons/vic_vila_base_hardpoint.png",
-    "turretGlowSprite": "graphics/weapons/vic_vila_glow_turret.png",
   "hardpointGlowSprite": "graphics/weapons/vic_vila_glow_hardpoint.png",
+  "renderAboveAllWeapons": 0,
+  "glowColor": [
+    255,
+    255,
+    255,
+    255
+  ],
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    16,
+    9,
     0,
-    16.5,
+    9.5,
     0.5,
-    16.5,
+    9.5,
     -0.5,
-    17,
+    10,
     1,
-    17,
+    10,
     -1,
-    17.5,
+    10.5,
     1.5,
-    17.5,
+    10.5,
     -1.5
   ],
   "turretAngleOffsets": [
@@ -39,20 +46,20 @@
     -45
   ],
   "hardpointOffsets": [
-    24,
+    17,
     0,
-    24.5,
+    17.5,
+    0.5,
+    17.5,
+    -0.5,
+    18,
     1,
-    24.5,
+    18,
     -1,
-    25,
+    18.5,
     1.5,
-    25,
-    -1.5,
-    25.5,
-    2,
-    25.5,
-    -2
+    18.5,
+    -1.5
   ],
   "hardpointAngleOffsets": [
     0,
@@ -64,20 +71,22 @@
     -45
   ],
   "barrelMode": "LINKED",
-  "animationType": "MUZZLE_FLASH",
+  "animationType": "GLOW_AND_FLASH",
+  "autocharge": true,
   "muzzleFlashSpec": {
     "length": 20,
     "spread": 5,
-    "particleSizeMin": 5,
+    "particleSizeMin": 15,
     "particleSizeRange": 5,
     "particleDuration": 0.35,
-    "particleCount": 20,
+    "particleCount": 10,
     "particleColor": [
-      100,
-      100,
-      255,
-      255
+   0, 
+   225, 
+   255, 
+   255
     ]
   },
+  "textureType": ROUGH,
   "fireSoundTwo": "vic_rubicon_shot"
 }
