@@ -53,6 +53,18 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         if (engine.isPaused()) return;
         final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
         HashMap<ShipAPI, Float> cloneMap;
+
+        //animation advance
+        final List<animationRenderData> animationRenderList = localData.animationRenderList;
+        for (animationRenderData FX : animationRenderList) {
+            FX.time += amount;
+        }
+        List<animationRenderData> cloneListRender = new ArrayList<>(animationRenderList);
+        for (animationRenderData FX : cloneListRender) {
+            if (FX.time >= FX.duration) {
+                animationRenderList.remove(FX);
+            }
+        }
         /*
         final List<NawiaFxData> NawiaFxList = localData.NawiaFxList;
         for (NawiaFxData FX : NawiaFxList){
@@ -171,14 +183,14 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                     float flightTime = MathUtils.getDistance(proj.getLocation(), data.finalPoint) / Math.abs(MathUtils.getDistance(new Vector2f(), proj.getVelocity()));
                     float angle = MathUtils.getShortestRotation(proj.getFacing(), VectorUtils.getAngle(proj.getLocation(), data.finalPoint));
                     data.rotationSpeed = (angle / flightTime) * (2f);
-                    engine.addHitParticle(proj.getLocation(), new Vector2f(), 30, 1f, 0.35f, new Color(2, 225, 255, 255));
+                    //engine.addHitParticle(proj.getLocation(), new Vector2f(), 30, 1f, 0.35f, new Color(2, 225, 255, 255));
 
                     //turn instantly if rotation speed too high
                     if (Math.abs(data.rotationSpeed) >= 800) {
                         VectorUtils.rotate(proj.getVelocity(), angle, proj.getVelocity());
                         proj.setFacing(angle + proj.getFacing());
                         data.rotate = false;
-                        engine.addFloatingText(proj.getLocation(), Math.round(data.rotationSpeed) + "", 20, Color.WHITE, null, 0, 0);
+                        //engine.addFloatingText(proj.getLocation(), Math.round(data.rotationSpeed) + "", 20, Color.WHITE, null, 0, 0);
                     } else {
                         float angle2 = data.rotationSpeed * data.timeBeforeCurving * (1 - data.rangeBeforeCurving) * 0.25f;
                         VectorUtils.rotate(proj.getVelocity(), angle2, proj.getVelocity());
@@ -188,6 +200,9 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                         data.rotationSpeed = (angle / flightTime) * (2f);
                         proj.getVelocity().scale(1 + Math.abs(angle * 0.0025f));
                     }
+
+                    float sizeMult = MathUtils.getRandomNumberInRange(0.8f,1.2f);
+                    localData.animationRenderList.add(new animationRenderData("vic_vilaBlast", 5, 0.2f, proj.getFacing(), proj.getLocation(), new Vector2f(32 * sizeMult, 32 * sizeMult), true));
                 } else {
                     float angle = data.rotationSpeed * amount;
                     if (Math.abs(angle) > 0) {
@@ -278,6 +293,25 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                     }
             }
         }
+        for (animationRenderData FX : localData.animationRenderList) {
+            int frame = (int) (FX.FPS * FX.time);
+            if (frame > FX.numFrames - 1) frame = FX.numFrames - 1;
+            String frameNum;
+            if (frame < 10) {
+                frameNum = "0" + frame;
+            } else {
+                frameNum = "" + frame;
+            }
+            SpriteAPI sprite = Global.getSettings().getSprite("fx", FX.spriteName + frameNum);
+            float flip = FX.flip;
+            if (FX.size != null){
+                sprite.setSize(FX.size.x,FX.size.y * flip);
+            } else {
+                sprite.setWidth(sprite.getWidth() * flip);
+            }
+            sprite.setAngle(FX.angle);
+            sprite.renderAtCenter(FX.position.x, FX.position.y);
+        }
     }
 
     public static void AddNawiaFX(Vector2f location, float angle) {
@@ -328,6 +362,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
     private static final class LocalData {
         final List<NawiaFxData> NawiaFxList = new ArrayList<>(250);
+        final List<animationRenderData> animationRenderList = new ArrayList<>(250);
         final HashMap<ShipAPI, Float> FluxRaptureRender = new HashMap<>(10);
         final HashMap<ShipAPI, Float> defenceSuppressor = new HashMap<>(25);
         final HashMap<ShipAPI, ZlydzenTargetsData> ZlydzenTargets = new HashMap<>(50);
@@ -465,5 +500,49 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         private void advance(float amount) {
             timePast += amount;
         }
+    }
+
+    private static final class animationRenderData {
+
+        public animationRenderData(String spriteName, int numFrames, float duration, float angle, Vector2f position, Vector2f size, boolean flip) {
+            this.spriteName = spriteName;
+            this.numFrames = numFrames;
+            this.duration = duration;
+            this.FPS = numFrames / duration;
+            this.angle = angle;
+            this.position = new Vector2f(position);
+            this.size = size;
+            if(flip && Math.random()>0.5f) this.flip = -1;
+        }
+
+        public animationRenderData(String spriteName, int numFrames, float duration, float angle, Vector2f position, Vector2f size) {
+            this.spriteName = spriteName;
+            this.numFrames = numFrames;
+            this.duration = duration;
+            this.FPS = numFrames / duration;
+            this.angle = angle;
+            this.position = new Vector2f(position);
+            this.size = size;
+        }
+
+        public animationRenderData(String spriteName, int numFrames, float duration, float angle, Vector2f position) {
+            this.spriteName = spriteName;
+            this.numFrames = numFrames;
+            this.duration = duration;
+            this.FPS = numFrames / duration;
+            this.angle = angle;
+            this.position = new Vector2f(position);
+            this.size = null;
+        }
+
+        private float time = 0;
+        private final String spriteName;
+        private final int numFrames;
+        private final float duration;
+        private final float FPS;
+        private final float angle;
+        private final Vector2f position;
+        private final Vector2f size;
+        private int flip = 1;
     }
 }
