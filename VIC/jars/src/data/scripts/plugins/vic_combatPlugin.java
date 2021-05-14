@@ -184,7 +184,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                     float flightTime = MathUtils.getDistance(proj.getLocation(), data.finalPoint) / Math.abs(MathUtils.getDistance(new Vector2f(), proj.getVelocity()));
                     float angle = MathUtils.getShortestRotation(proj.getFacing(), VectorUtils.getAngle(proj.getLocation(), data.finalPoint));
                     data.rotationSpeed = (angle / flightTime) * (2f);
-                    //engine.addHitParticle(proj.getLocation(), new Vector2f(), 30, 1f, 0.35f, new Color(2, 225, 255, 255));
+                    engine.addHitParticle(proj.getLocation(), new Vector2f(), 30, 1f, 0.10f, new Color(255, 255, 255, 255));
                     MagicRender.battlespace(
                             Global.getSettings().getSprite("fx","vic_laidlawExplosion3"),
                             proj.getLocation(),
@@ -232,10 +232,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                         data.rotationSpeed = (angle / flightTime) * (2f);
                         proj.getVelocity().scale(1 + Math.abs(angle * 0.0025f));
                     }
-
-                    float sizeMult = MathUtils.getRandomNumberInRange(0.8f,1.2f);
-                    localData.animationRenderList.add(new animationRenderData("vic_vilaBlast", 5, 0.2f, proj.getFacing(), proj.getLocation(), new Vector2f(32 * sizeMult, 32 * sizeMult), true));
-                } else {
+                    } else {
                     float angle = data.rotationSpeed * amount;
                     if (Math.abs(angle) > 0) {
                         VectorUtils.rotate(proj.getVelocity(), angle, proj.getVelocity());

@@ -68,11 +68,7 @@
 			
 			"vic_laidlawExplosion":"graphics/fx/vic_laidlawExplosion.png",		
 			"vic_laidlawExplosion3":"graphics/fx/vic_laidlawExplosion3.png",	
-			"vic_vilaBlast00":"graphics/fx/VilaBlast/vic_vila_blast00.png",
-			"vic_vilaBlast01":"graphics/fx/VilaBlast/vic_vila_blast01.png",
-			"vic_vilaBlast02":"graphics/fx/VilaBlast/vic_vila_blast02.png",
-			"vic_vilaBlast03":"graphics/fx/VilaBlast/vic_vila_blast03.png",
-			"vic_vilaBlast04":"graphics/fx/VilaBlast/vic_vila_blast04.png",
+
 		},		
 		"illustrations":{
 			"vic_cocytus_illustration":"graphics/illustrations/vic_cocytus_illustration.jpg",

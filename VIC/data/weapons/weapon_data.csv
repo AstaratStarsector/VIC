@@ -25,7 +25,7 @@ Laidlaw Accelerator,vic_lightlaidlawaccelerator,2,,1200,800,,500,,10,10,15,,,,EN
 Gagana Smartdart Launcher,vic_gagana,2,,1200,800,,200,,10,14,13,,,,HIGH_EXPLOSIVE,220,,0,1,,,0,5,2,10,,700,,,,ANTI_FTR,"he13, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,Homing projectiles which stick to the hull and explode after %s seconds dealing %s damage.,0.5 | 50 High Explosive,,,,5
 Gagana sub,vic_gagana_sub,1,,2000,800,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,0,5,2,10,,100,100,1,500,SYSTEM,he20,,Volkov Industries,,Anti Shield,,,,,,,,,,5
 Psotnik Interference Machinegun,vic_psotnikmed,2,,5000,900,,25,12,5,15,12,,,,KINETIC,30,,0,0.375,4,0.083,0,12,0.5,10,,850,,,,,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",20% | 50,,,,7.8
-Vila Bolt Converger,vic_vila,2,,5000,600,,150,,5,15,12,28,1.4,7,ENERGY,150,,0.5,1.25,,,8,15,0.5,5,,650,,,,,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,Magical,,,,,,7.8
+Vila Bolt Converger,vic_vila,2,,5000,600,,150,,5,15,12,28,1.4,7,ENERGY,150,,0.875,0.875,,,8,15,0.5,5,,650,,,,,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,Magical,,,,,,7.8
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
