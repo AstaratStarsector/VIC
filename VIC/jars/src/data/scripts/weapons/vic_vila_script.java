@@ -8,7 +8,6 @@ import org.dark.shaders.distortion.RippleDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
-import org.lazywizard.lazylib.combat.entities.SimpleEntity;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.util.vector.Vector2f;
 
@@ -16,23 +15,22 @@ import java.awt.*;
 
 public class vic_vila_script implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
+    final float CHARGEUP_PARTICLE_ANGLE_SPREAD = 180f;
+    final float CHARGEUP_PARTICLE_BRIGHTNESS = 0.8f;
+    final Color CHARGEUP_PARTICLE_COLOR = new Color(114, 221, 255, 200);
+    final float CHARGEUP_PARTICLE_COUNT_FACTOR = 15f;
+    final float CHARGEUP_PARTICLE_DISTANCE_MAX = 50f;
+    final float CHARGEUP_PARTICLE_DISTANCE_MIN = 10f;
+    final float CHARGEUP_PARTICLE_DURATION = 0.2f;
+    final float CHARGEUP_PARTICLE_SIZE_MAX = 8f;
+    final float CHARGEUP_PARTICLE_SIZE_MIN = 3f;
+    final Color MUZZLE_FLASH_COLOR = new Color(0, 225, 255, 200);
+    final float MUZZLE_FLASH_DURATION = 0.15f;
+    final float MUZZLE_FLASH_SIZE = 50.0f;
+    final float MUZZLE_OFFSET_HARDPOINT = 8.5f;
+    final float MUZZLE_OFFSET_TURRET = 10.0f;
 
-    private static final float CHARGEUP_PARTICLE_ANGLE_SPREAD = 180f;
-    private static final float CHARGEUP_PARTICLE_BRIGHTNESS = 1f;
-    private static final Color CHARGEUP_PARTICLE_COLOR = new Color(114, 177, 255, 200);
-    private static final float CHARGEUP_PARTICLE_COUNT_FACTOR = 20f;
-    private static final float CHARGEUP_PARTICLE_DISTANCE_MAX = 50f;
-    private static final float CHARGEUP_PARTICLE_DISTANCE_MIN = 10f;
-    private static final float CHARGEUP_PARTICLE_DURATION = 0.3f;
-    private static final float CHARGEUP_PARTICLE_SIZE_MAX = 10f;
-    private static final float CHARGEUP_PARTICLE_SIZE_MIN = 5f;
-    private static final Color MUZZLE_FLASH_COLOR = new Color(0, 225, 255, 200);
-    private static final float MUZZLE_FLASH_DURATION = 0.15f;
-    private static final float MUZZLE_FLASH_SIZE = 50.0f;
-    private static final float MUZZLE_OFFSET_HARDPOINT = 8.5f;
-    private static final float MUZZLE_OFFSET_TURRET = 10.0f;
-
-    private final IntervalUtil interval = new IntervalUtil(0.1f, 0.1f);
+    private final IntervalUtil interval = new IntervalUtil(0.1f, 0.2f);
     private float lastChargeLevel = 0.0f;
     private int lastWeaponAmmo = 0;
     private boolean shot = false;
@@ -63,10 +61,11 @@ public class vic_vila_script implements EveryFrameWeaponEffectPlugin, OnFireEffe
                     size = MathUtils.getRandomNumberInRange(CHARGEUP_PARTICLE_SIZE_MIN, CHARGEUP_PARTICLE_SIZE_MAX);
                     angle = MathUtils.getRandomNumberInRange(-0.5f * CHARGEUP_PARTICLE_ANGLE_SPREAD, 0.5f * CHARGEUP_PARTICLE_ANGLE_SPREAD);
                     Vector2f spawnLocation = MathUtils.getPointOnCircumference(muzzleLocation, distance, (angle + shipFacing));
-                    speed = distance / CHARGEUP_PARTICLE_DURATION;
+                    float duration = CHARGEUP_PARTICLE_DURATION * MathUtils.getRandomNumberInRange(0.5f, 0.15f);
+                    speed = distance / duration;
                     particleVelocity = MathUtils.getPointOnCircumference(shipVelocity, speed, 180.0f + angle + shipFacing);
                     engine.addHitParticle(spawnLocation, particleVelocity, size, CHARGEUP_PARTICLE_BRIGHTNESS * weapon.getChargeLevel(),
-                            CHARGEUP_PARTICLE_DURATION, CHARGEUP_PARTICLE_COLOR);
+                            duration, CHARGEUP_PARTICLE_COLOR);
                 }
             }
 
@@ -102,7 +101,7 @@ public class vic_vila_script implements EveryFrameWeaponEffectPlugin, OnFireEffe
         projectile.getVelocity().scale(startingSpeed);
         float flightTime = weapon.getRange() / projectile.getMoveSpeed();
 
-        if (target == null && weapon.getShip() == engine.getPlayerShip()) {
+        if (target == null && weapon.getShip() == engine.getPlayerShip() && weapon.getShip().getAI() == null) {
             Vector2f mousePosition = CombatUtils.toWorldCoordinates(new Vector2f(Mouse.getX(), Mouse.getY()));
             engine.addHitParticle(mousePosition, new Vector2f(), 20, 1, 1.5f, new Color(1f, 0.3f, 0f));
             float rangeFromMouse = MathUtils.getDistance(weapon.getLocation(), mousePosition);
@@ -110,13 +109,13 @@ public class vic_vila_script implements EveryFrameWeaponEffectPlugin, OnFireEffe
             target = MathUtils.getPoint(weapon.getLocation(), rangeFromMouse, weapon.getCurrAngle());
         }
 
+
         if (target == null) {
             target = MathUtils.getPoint(weapon.getLocation(), weapon.getRange(), weapon.getCurrAngle());
             target = new Vector2f(target.x + weapon.getShip().getVelocity().x * flightTime, target.y + weapon.getShip().getVelocity().y * flightTime);
         }
         projectile.setFacing(VectorUtils.getFacing(projectile.getVelocity()));
-        engine.addHitParticle(target, new Vector2f(), 20, 1, 1.5f, new Color(0.3f, 1f, 0f));
-        //Global.getLogger(vic_arcaneMissiles.class).info(MouseInfo.getPointerInfo().getLocation().x);
+        //engine.addHitParticle(target, new Vector2f(), 20, 1, 1.5f, new Color(0.3f, 1f, 0f));
         vic_combatPlugin.AddArcaneMissiles(projectile, target, flightTime * rangeBeforeCurving, rangeBeforeCurving, startingSpeed);
     }
 }

@@ -32,20 +32,12 @@
     "WS0021": "vic_vernierEngine",
     "WS1001": "vic_blonkerRed",
     "WS1002": "vic_blonkerRed",
-    "WS1003": "vic_blonkerRed",
-    "WS1004": "vic_blonkerRed",
-    "WS1005": "vic_blonkerCyan",
-    "WS1006": "vic_blonkerCyan",
     "WS1007": "vic_blonkerRed",
     "WS1008": "vic_blonkerRed",
-    "WS1009": "vic_blonkerRed",
-    "WS1010": "vic_blonkerRed",
     "WS1011": "vic_blonkerCyan",
     "WS1012": "vic_blonkerCyan",
     "WS1013": "vic_blonkerCyan",
     "WS1014": "vic_blonkerCyan",
-    "WS1015": "vic_blonkerCyan",
-    "WS1016": "vic_blonkerCyan",
     "WS1017": "vic_blonkerCyan",
     "WS1018": "vic_blonkerCyan",
     "WS1019": "vic_oriax_nose",
@@ -209,26 +201,6 @@
       "renderOrderMod": 100
     },
     {
-      "id": "WS1003",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 109,
-      "angle": 18.5,
-      "locations": [32.5, -78.5],
-      "renderOrderMod": 100
-    },
-    {
-      "id": "WS1004",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 109,
-      "angle": -18.5,
-      "locations": [32.5, 78.5],
-      "renderOrderMod": 100
-    },
-    {
       "id": "WS0015",
       "size": "SMALL",
       "type": "HYBRID",
@@ -303,26 +275,6 @@
       "locations": [-170.5, 24]
     },
     {
-      "id": "WS1005",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 109,
-      "angle": 90,
-      "locations": [98, 16],
-      "renderOrderMod": 100
-    },
-    {
-      "id": "WS1006",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 109,
-      "angle": -90,
-      "locations": [98, -16],
-      "renderOrderMod": 100
-    },
-    {
       "id": "WS1007",
       "size": "SMALL",
       "type": "DECORATIVE",
@@ -340,26 +292,6 @@
       "arc": 109,
       "angle": 81,
       "locations": [-152.5, 53.5],
-      "renderOrderMod": 100
-    },
-    {
-      "id": "WS1009",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 181,
-      "angle": 135,
-      "locations": [-259, -9.5],
-      "renderOrderMod": 100
-    },
-    {
-      "id": "WS1010",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 181,
-      "angle": -135,
-      "locations": [-259, 9.5],
       "renderOrderMod": 100
     },
     {
@@ -400,26 +332,6 @@
       "arc": 111,
       "angle": 0,
       "locations": [-81, 31],
-      "renderOrderMod": 100
-    },
-    {
-      "id": "WS1015",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 111,
-      "angle": -0,
-      "locations": [-33, -35.5],
-      "renderOrderMod": 100
-    },
-    {
-      "id": "WS1016",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 111,
-      "angle": 0,
-      "locations": [-33, 35.5],
       "renderOrderMod": 100
     },
     {
