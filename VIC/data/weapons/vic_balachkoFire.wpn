@@ -1,0 +1,63 @@
+{
+  "id": "vic_balachkoFire",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_balachkoFire",
+  "type": "ENERGY",
+  "size": "MEDIUM",
+  "displayArcRadius": 450,
+  "turretSprite": "graphics/weapons/vic_balachko_base_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_balachko_glow_turret.png",
+  "turretGunSprite": "graphics/weapons/vic_balachko_barrel_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_balachko_base_hardpoint.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_balachko_glow_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/vic_balachko_barrel_hardpoint.png",
+  "visualRecoil": 8,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "glowColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+
+  "turretOffsets": [
+    25.5,
+    4.5,
+    25.5,
+    -4.5
+  ],
+  "turretAngleOffsets": [
+    0,
+    0
+  ],
+  "hardpointOffsets": [
+    27.5,
+    4.5,
+    27.5,
+    -4.5
+  ],
+  "hardpointAngleOffsets": [
+    0,
+    0
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "GLOW_AND_FLASH",
+  "autocharge": true,
+  "muzzleFlashSpec": {
+    "length": 20,
+    "spread": 5,
+    "particleSizeMin": 5,
+    "particleSizeRange": 5,
+    "particleDuration": 0.35,
+    "particleCount": 20,
+    "particleColor": [
+      100,
+      100,
+      255,
+      255
+    ]
+  },
+  "fireSoundTwo": "vic_rubicon_shot"
+}

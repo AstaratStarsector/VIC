@@ -19,12 +19,12 @@ However, due to the strong P-Space interference in the ship's systems, weapons' 
 Viral Bombardment Systems,vic_vBombHmod,,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_vBombHmod,"The ship's modernized cargo cooling and containment systems allow it to transport and employ special biological ordnance. With this ship in the fleet it becomes possible to commence Viral Bombardment against the inhabited colonies. 
 
 Having additional ships with V-Bombardment systems in the fleet reduces the cost of such bombardments. The current cost is %s.","""Impact in 3... 2... 1...""",graphics/hullmods/vic_VBombHmod.png
-Adaptive Assault Configuration,vic_adaptiveAssault,4,,Volkov Industries,defensive,0,true,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveAssault,"Adaptive Assault system's effect depends on the loadout of the ship, with the bonuses increasing in accordance to the skew towards ballistic- or energy-focused loadout. The more energy weapons there are on the ship - the greater the ballistic bonus. The more ballistic weapons there are on the ship - the greater the energy bonus. Installing missile weapons decreases both bonuses.
+Adaptive Assault Configuration,vic_adaptiveAssault,4,,Volkov Industries,defensive,,,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveAssault,"Adaptive Assault system's effect depends on the loadout of the ship, with the bonuses increasing in accordance to the skew towards ballistic- or energy-focused loadout. The more energy weapons there are on the ship - the greater the ballistic bonus. The more ballistic weapons there are on the ship - the greater the energy bonus. Installing missile weapons decreases both bonuses.
 
 With the current loadout of the ship the bonuses provided by the ship system are:
 Ballistic weapons: %s damage increase.
 Energy weapons: %s damage increase.",Ship System explanaition.,graphics/hullmods/vic_adaptiveAssault.png
-Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,defensive,0,true,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveWarfare,"Novel energy distribution system increases the ship's effectiveness in the thick of the battle. The ship receives bonuses to its stats under certain conditions. The bonuses decay quickly if the criteria are not met for a short time. 
+Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveWarfare,"Novel energy distribution system increases the ship's effectiveness in the thick of the battle. The ship receives bonuses to its stats under certain conditions. The bonuses decay quickly if the criteria are not met for a short time. 
 
 
 - Up to %s increase in Shield Efficency when moving. 
@@ -32,6 +32,14 @@ Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,defensive,0,true,,TRUE
 - Up to %s increase in Damage dealt based on the amount of hard flux. 
 
 - Up to %s increase in Speed when hit on the hull.",Get brawlin' and get rollin'.,graphics/hullmods/vic_adaptiveWarfare.png
+Target Analysis,vic_targetAnalysis,4,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_targetAnalysis,"Novel energy distribution system increases the ship's effectiveness in the thick of the battle. The ship receives bonuses to its stats under certain conditions. The bonuses decay quickly if the criteria are not met for a short time. 
+
+
+- Up to %s increase in Shield Efficency when moving. 
+
+- Up to %s increase in Damage dealt based on the amount of hard flux. 
+
+- Up to %s increase in Speed when hit on the hull.",Get brawlin' and get rollin'.,
 ,,,,,,,,,,,,,,,,,,
 VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_shieldsChanger,,Shield Changer,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,

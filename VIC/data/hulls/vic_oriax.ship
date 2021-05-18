@@ -13,7 +13,8 @@
   "viewOffset": 0,
   "builtInMods": [
     "vic_dynamicshields",
-    "vic_aerodynamicdesign"
+    "vic_aerodynamicdesign",
+	"vic_targetAnalysis"
   ],
   "builtInWeapons": {
     "SYS001": "vic_deco_dummy",

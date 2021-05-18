@@ -184,38 +184,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                     float flightTime = MathUtils.getDistance(proj.getLocation(), data.finalPoint) / Math.abs(MathUtils.getDistance(new Vector2f(), proj.getVelocity()));
                     float angle = MathUtils.getShortestRotation(proj.getFacing(), VectorUtils.getAngle(proj.getLocation(), data.finalPoint));
                     data.rotationSpeed = (angle / flightTime) * (2f);
-                    engine.addHitParticle(proj.getLocation(), new Vector2f(), 30, 1f, 0.10f, new Color(255, 255, 255, 255));
-                    MagicRender.battlespace(
-                            Global.getSettings().getSprite("fx","vic_laidlawExplosion3"),
-                            proj.getLocation(),
-                            new Vector2f(),
-                            new Vector2f(60,60),
-                            new Vector2f(40,80),
-                            //angle,
-                            180f + proj.getFacing(),
-                            0,
-                            new Color(255,225,225,255),
-                            true,
-                            0.0f,
-                            0.0f,
-                            0.35f
-                    );
-
-                    MagicRender.battlespace(
-                            Global.getSettings().getSprite("fx","vic_laidlawExplosion3"),
-                            proj.getLocation(),
-                            new Vector2f(),
-                            new Vector2f(60,60),
-                            new Vector2f(300,600),
-                            //angle,
-                            180f + proj.getFacing(),
-                            0,
-                            new Color(255,225,225,175),
-                            true,
-                            0.0f,
-                            0.0f,
-                            0.2f
-                    );
+                    //engine.addHitParticle(proj.getLocation(), new Vector2f(), 30, 1f, 0.35f, new Color(2, 225, 255, 255));
 
                     //turn instantly if rotation speed too high
                     if (Math.abs(data.rotationSpeed) >= 800) {
@@ -232,7 +201,44 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                         data.rotationSpeed = (angle / flightTime) * (2f);
                         proj.getVelocity().scale(1 + Math.abs(angle * 0.0025f));
                     }
-                    } else {
+
+                    float sizeMult = MathUtils.getRandomNumberInRange(0.8f,1.2f);
+
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("fx","vic_laidlawExplosion3"),
+                            proj.getLocation(),
+                            new Vector2f(),
+                            new Vector2f(60 * sizeMult,60 * sizeMult),
+                            new Vector2f(40 * sizeMult,80 * sizeMult),
+                            //angle,
+                            180f + proj.getFacing(),
+                            0,
+                            new Color(255,225,225,255),
+                            true,
+                            0.0f,
+                            0.0f,
+                            0.35f * MathUtils.getRandomNumberInRange(0.8f,1.2f)
+                    );
+
+                    sizeMult = MathUtils.getRandomNumberInRange(0.8f,1.2f);
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("fx","vic_laidlawExplosion3"),
+                            proj.getLocation(),
+                            new Vector2f(),
+                            new Vector2f(60 * sizeMult,60 * sizeMult),
+                            new Vector2f(300 * sizeMult,600 * sizeMult),
+                            //angle,
+                            180f + proj.getFacing(),
+                            0,
+                            new Color(255,225,225,175),
+                            true,
+                            0.0f,
+                            0.0f,
+                            0.2f * MathUtils.getRandomNumberInRange(0.8f,1.2f)
+                    );
+
+                    //localData.animationRenderList.add(new animationRenderData("vic_vilaBlast", 5, 0.2f, proj.getFacing(), proj.getLocation(), new Vector2f(32 * sizeMult, 32 * sizeMult), true));
+                } else {
                     float angle = data.rotationSpeed * amount;
                     if (Math.abs(angle) > 0) {
                         VectorUtils.rotate(proj.getVelocity(), angle, proj.getVelocity());

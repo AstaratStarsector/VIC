@@ -7,10 +7,7 @@ import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import data.scripts.util.MagicRender;
 import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
-import org.dark.shaders.distortion.RippleDistortion;
 import org.dark.shaders.distortion.WaveDistortion;
-import org.lazywizard.lazylib.MathUtils;
-import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
