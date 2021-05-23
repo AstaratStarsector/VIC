@@ -26,9 +26,9 @@ Gagana Smartdart Launcher,vic_gagana,2,,1200,800,,200,,10,14,13,,,,HIGH_EXPLOSIV
 Gagana sub,vic_gagana_sub,1,,2000,800,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,0,5,2,10,,100,100,1,500,SYSTEM,he20,,Volkov Industries,,Anti Shield,,,,,,,,,,5
 Psotnik Interference Machinegun,vic_psotnikmed,2,,5000,900,,25,12,5,15,12,,,,KINETIC,30,,0,0.375,4,0.083,0,12,0.5,10,,850,,,,,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",20% | 50,,,,7.8
 Vila Bolt Converger,vic_vila,2,,5000,600,,150,,5,15,12,28,1.4,7,ENERGY,150,,0.875,0.875,,,8,15,0.5,5,,650,,,,,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,Magical,,,,,,7.8
-Balachko Double Tap,vic_balachko,2,,5000,600,,75,,5,15,12,,,,ENERGY,75,,0,0.5,,,0,0,0,0,,650,,,,,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,Magical,,,,,,7.8
-Balachko Double Tap,vic_balachkoIce,2,,5000,600,,75,,5,15,12,,,,KINETIC,75,,0,0.5,,,0,15,0.5,5,,650,,,,SYSTEM,,,Volkov Industries,,Anti Shield Suppression,,,,Magical,,,,,,7.8
-Balachko Double Tap,vic_balachkoFire,2,,5000,600,,75,,5,15,12,,,,HIGH_EXPLOSIVE,75,,0,0.5,,,0,15,0.5,5,,650,,,,SYSTEM,,,Volkov Industries,,Anti Shield Suppression,,,,Magical,,,,,,7.8
+Balachko Cryoheat Generator,vic_balachko,2,,5000,600,,75,,5,15,12,,,,ENERGY,75,,0,0.5,,,0,0,0,0,,700,,,,,"kinetic20, vic_t1weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,Magical,,,,,,7.8
+Balachko Double Tap,vic_balachkoIce,2,,5000,600,,75,,5,15,12,,,,KINETIC,75,,0,0.5,,,0,15,0.5,5,,700,,,,SYSTEM,,,Volkov Industries,,Anti Shield Suppression,,,,Magical,,,,,,7.8
+Balachko Double Tap,vic_balachkoFire,2,,5000,600,,75,,5,15,12,,,,HIGH_EXPLOSIVE,75,,0,0.5,,,0,15,0.5,5,,700,,,,SYSTEM,,,Volkov Industries,,Anti Shield Suppression,,,,Magical,,,,,,7.8
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
