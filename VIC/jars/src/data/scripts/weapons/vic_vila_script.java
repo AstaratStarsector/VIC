@@ -5,6 +5,7 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.DamageDealtModifier;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.plugins.vic_combatPlugin;
+import data.scripts.plugins.vic_weaponDamageListener;
 import data.scripts.utilities.vic_graphicLibEffects;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
@@ -46,8 +47,9 @@ public class vic_vila_script implements EveryFrameWeaponEffectPlugin, OnFireEffe
         int weaponAmmo = weapon.getAmmo();
 
         if (doOnce) {
-            if (weapon.getShip().hasListenerOfClass(vic_vilaListner.class))
-                weapon.getShip().addListener(new vic_vilaListner());
+            if (!weapon.getShip().hasListenerOfClass(vic_weaponDamageListener.class)){
+                weapon.getShip().addListener(new vic_weaponDamageListener());
+            }
             doOnce = false;
         }
 

@@ -32,24 +32,17 @@ Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,,,,,TRUE,,0,0,0,0,data
 - Up to %s increase in Damage dealt based on the amount of hard flux. 
 
 - Up to %s increase in Speed when hit on the hull.",Get brawlin' and get rollin'.,graphics/hullmods/vic_adaptiveWarfare.png
-Target Analysis,vic_targetAnalysis,4,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_targetAnalysis,"Novel energy distribution system increases the ship's effectiveness in the thick of the battle. The ship receives bonuses to its stats under certain conditions. The bonuses decay quickly if the criteria are not met for a short time. 
-
-
-- Up to %s increase in Shield Efficency when moving. 
-
-- Up to %s increase in Damage dealt based on the amount of hard flux. 
-
-- Up to %s increase in Speed when hit on the hull.",Get brawlin' and get rollin'.,
+Power Redistributor,vic_powerRedistributor,4,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_powerRedistributor,Novel energy distribution system increases the ship's effectiveness in the thick of the battle. The ship receives bonuses depending on the current target.,power selector,graphics/hullmods/vic_powerRedistributor.png
 ,,,,,,,,,,,,,,,,,,
 VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_shieldsChanger,,Shield Changer,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #VIC modular,,,,,,,,,,,,,,,,,,
-VIC Integrated Assault Systems,vic_assault,2,,Volkov Industries,offensive,Weapons,15000,,,,4,8,15,25,data.hullmods.vic_assault,"Decreases the flux cost of weapons by %s/%s/%s/%s and increases the maximum speed by %s/%s/%s/%s, depending on hullsize. Also increases projectile speed by %s. 
+VIC Integrated Assault Systems,vic_assault,2,,Volkov Industries,offensive,Weapons,15000,,,,7,11,15,25,data.hullmods.vic_assault,"Decreases the flux cost of weapons by %s and increases the maximum speed by %s/%s/%s/%s, depending on hullsize. Also increases projectile speed by %s. 
 
 Incompatible with Dedicated Targeting Core, Integrated Targeting Unit, Advanced Targeting Core and Unstable Injector.
 
-If installed on VIC ships with other modular VIC hullmods (containing VIC prefix in the name) or if installed on non-VIC ships, reduces the peak perfomance time by %s.",,graphics/hullmods/vic_assault.png
+If installed on VIC ships with other modular VIC hullmods (containing VIC prefix in the name), reduces the peak perfomance time by %s.",,graphics/hullmods/vic_assault.png
 "VIC ""Fervor"" Protocol",vic_deathProtocol,3,,Volkov Industries,offensive,Weapons,25000,,,,5,10,20,30,data.hullmods.vic_deathProtocol,"Increases damage of all weapons by %s but increases damage taken by %s and phase cloak cost by %s. Also decreases all weapons' range by %s. 
 
 If installed on VIC ships with other modular VIC hullmods (containing VIC prefix in the name) or if installed on non-VIC ships, damage taken and phase cloak cost penalties are %s.",,graphics/hullmods/vic_deathProtocol.png

@@ -1,6 +1,7 @@
 package data.scripts.weapons;
 
 import com.fs.starfarer.api.combat.*;
+import data.scripts.plugins.vic_weaponDamageListener;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
@@ -254,9 +255,18 @@ public class vic_balachkoScript implements EveryFrameWeaponEffectPlugin, OnFireE
     //Instantiator
     public vic_balachkoScript() {}
 
+    boolean doOnce = true;
+
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         //Don't run while paused, or without a weapon
         if (weapon == null || amount <= 0f) {return;}
+
+        if (doOnce) {
+            if (!weapon.getShip().hasListenerOfClass(vic_weaponDamageListener.class)){
+                weapon.getShip().addListener(new vic_weaponDamageListener());
+            }
+            doOnce = false;
+        }
 
         //Saves handy variables used later
         float chargeLevel = weapon.getChargeLevel();
@@ -468,7 +478,7 @@ public class vic_balachkoScript implements EveryFrameWeaponEffectPlugin, OnFireE
             engine.spawnProjectile(weapon.getShip(), weapon, "vic_balachkoIce", projectile.getLocation(), projectile.getFacing(), weapon.getShip().getVelocity());
             firstBarrel = false;
         } else {
-            engine.spawnProjectile(weapon.getShip(), weapon, "vic_balachkoFire", projectile.getLocation(), projectile.getFacing(), weapon.getShip().getVelocity());
+            DamagingProjectileAPI proj = (DamagingProjectileAPI) engine.spawnProjectile(weapon.getShip(), weapon, "vic_balachkoFire", projectile.getLocation(), projectile.getFacing(), weapon.getShip().getVelocity());
             firstBarrel = true;
         }
         engine.removeEntity(projectile);

@@ -82,7 +82,7 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
         if (index == 2) return Math.round(shieldSpeed) + "%";
         if (index == 3) return Math.round(shieldSpeed) + "%";
         if (index == 4) return Math.round(speedRed) + "%";
-        if (index == 5) return Math.round(zeroFluxBoost) + " SU";
+        if (index == 5) return Math.round(zeroFluxBoost) + "";
         if (index == 6) return Math.round(25f) + "%";
         return null;
     }

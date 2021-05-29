@@ -2,9 +2,11 @@
 // Spawns particles from a weapon in different firing states, as determined by the user.
 package data.scripts.weapons;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.WeaponAPI;
+import data.scripts.plugins.vic_weaponDamageListener;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
@@ -282,9 +284,19 @@ public class VIC_LaidlawAcceleratorMuzzleFlash implements EveryFrameWeaponEffect
     //Instantiator
     public VIC_LaidlawAcceleratorMuzzleFlash() {}
 
+    //
+    boolean doOnce = true;
+
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         //Don't run while paused, or without a weapon
         if (weapon == null || amount <= 0f) {return;}
+
+        if (doOnce) {
+            if (!weapon.getShip().hasListenerOfClass(vic_weaponDamageListener.class)){
+                weapon.getShip().addListener(new vic_weaponDamageListener());
+            }
+            doOnce = false;
+        }
 
         //Saves handy variables used later
         float chargeLevel = weapon.getChargeLevel();

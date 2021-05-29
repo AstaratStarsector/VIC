@@ -46,8 +46,8 @@ public class vic_zlydzen_script implements EveryFrameWeaponEffectPlugin {
                 frame = MathUtils.getRandomNumberInRange(0, maxFrame - 1);
             }
         }
-
-        timer += amount * MagicAnim.smooth(weapon.getChargeLevel());
+        if (weapon.isFiring()) timer += amount * 0.5f;
+        timer += amount * weapon.getChargeLevel() * 0.5f;
         while (timer >= delay){
             timer -= delay;
             if (frame == maxFrame) {

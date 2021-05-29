@@ -6,6 +6,8 @@ import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.loading.HullModSpecAPI;
+import data.scripts.hullmods.MagicIncompatibleWarning;
+import data.scripts.util.MagicIncompatibleHullmods;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,26 +18,20 @@ public class vic_assault extends BaseHullMod {
 
 
 
-    private final Map<ShipAPI.HullSize, Float> fluxEfficiency = new HashMap<>();
-    {
-        fluxEfficiency.put(HullSize.FRIGATE, 5f);
-        fluxEfficiency.put(HullSize.DESTROYER, 10f);
-        fluxEfficiency.put(HullSize.CRUISER, 20f);
-        fluxEfficiency.put(HullSize.CAPITAL_SHIP, 30f);
-    }
+    float fluxEfficiency = 20f;
 
     private final Map<ShipAPI.HullSize, Float> speedBonus = new HashMap<>();
 
     {
-        speedBonus.put(HullSize.FRIGATE, 10f);
+        speedBonus.put(HullSize.FRIGATE, 5f);
         speedBonus.put(HullSize.DESTROYER, 10f);
         speedBonus.put(HullSize.CRUISER, 20f);
-        speedBonus.put(HullSize.CAPITAL_SHIP, 20f);
+        speedBonus.put(HullSize.CAPITAL_SHIP, 25f);
     }
 
     public float
-            projSpeedMult = 1.33f,
-            pptPenalty = 0.67f;
+            projSpeedMult = 1.3f,
+            pptPenalty = 0.7f;
 
     private static final Set<String> BLOCKED_HULLMODS = new HashSet<>(2);
 
@@ -51,17 +47,22 @@ public class vic_assault extends BaseHullMod {
 	public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
 		for (String tmp : BLOCKED_HULLMODS) {
 			if (ship.getVariant().getHullMods().contains(tmp)) {
-				ship.getVariant().removeMod(tmp);
+				//ship.getVariant().removeMod(tmp);
+                MagicIncompatibleHullmods.removeHullmodWithWarning(
+                        ship.getVariant(),
+                        tmp,
+                        "vic_assault"
+                );
 			}
 		}
 	}
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getMaxSpeed().modifyFlat(id, speedBonus.get(hullSize));
-        stats.getBallisticWeaponFluxCostMod().modifyMult(id, (1 - (fluxEfficiency.get(hullSize) * 0.01f)));
-        stats.getEnergyWeaponFluxCostMod().modifyMult(id, (1 - (fluxEfficiency.get(hullSize) * 0.01f)));
-        stats.getBeamWeaponFluxCostMult().modifyMult(id, (1 - (fluxEfficiency.get(hullSize) * 0.01f)));
-        stats.getMissileWeaponFluxCostMod().modifyMult(id, (1 - (fluxEfficiency.get(hullSize) * 0.01f)));
+        stats.getBallisticWeaponFluxCostMod().modifyMult(id, (1 - (fluxEfficiency * 0.01f)));
+        stats.getEnergyWeaponFluxCostMod().modifyMult(id, (1 - (fluxEfficiency * 0.01f)));
+        stats.getBeamWeaponFluxCostMult().modifyMult(id, (1 - (fluxEfficiency * 0.01f)));
+        stats.getMissileWeaponFluxCostMod().modifyMult(id, (1 - (fluxEfficiency * 0.01f)));
 
         //stats.getMaxSpeed().modifyMult(id, 1 + (fluxEfficiency.get(hullSize) * 0.01f));
         stats.getProjectileSpeedMult().modifyMult(id, projSpeedMult );
@@ -87,11 +88,13 @@ public class vic_assault extends BaseHullMod {
         for (String hmod : BLOCKED_HULLMODS){
             if (ship.getVariant().getHullMods().contains(hmod)) return false;
         }
-        return true;
+        return ship.getHullSpec().getHullId().startsWith("vic_");
     }
 
 	@Override
 	public String getUnapplicableReason(ShipAPI ship) {
+        if (!ship.getHullSpec().getHullId().startsWith("vic_"))
+            return "Not compatible with non VIC ships";
 		if (ship.getVariant().getHullMods().contains("dedicated_targeting_core"))
 			return "Incompatible with Dedicated Targeting Core";
 		if (ship.getVariant().getHullMods().contains("targetingunit"))
@@ -104,16 +107,13 @@ public class vic_assault extends BaseHullMod {
 	}
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
-        if (index == 0) return (fluxEfficiency.get(HullSize.FRIGATE)).intValue() + "%";
-        if (index == 1) return (fluxEfficiency.get(HullSize.DESTROYER)).intValue() + "%";
-        if (index == 2) return (fluxEfficiency.get(HullSize.CRUISER)).intValue() + "%";
-        if (index == 3) return (fluxEfficiency.get(HullSize.CAPITAL_SHIP)).intValue() + "%";
-        if (index == 4) return (speedBonus.get(HullSize.FRIGATE)).intValue() + "";
-        if (index == 5) return (speedBonus.get(HullSize.DESTROYER)).intValue() + "";
-        if (index == 6) return (speedBonus.get(HullSize.CRUISER)).intValue() + "";
-        if (index == 7) return (speedBonus.get(HullSize.CAPITAL_SHIP)).intValue() + "";
-        if (index == 8) return Math.round((projSpeedMult - 1) * 100)+ "%";
-        if (index == 9) return Math.round((1 - pptPenalty) * 100) + "%";
+        if (index == 0) return Math.round(fluxEfficiency) + "%";
+        if (index == 1) return (speedBonus.get(HullSize.FRIGATE)).intValue() + "";
+        if (index == 2) return (speedBonus.get(HullSize.DESTROYER)).intValue() + "";
+        if (index == 3) return (speedBonus.get(HullSize.CRUISER)).intValue() + "";
+        if (index == 4) return (speedBonus.get(HullSize.CAPITAL_SHIP)).intValue() + "";
+        if (index == 5) return Math.round((projSpeedMult - 1) * 100)+ "%";
+        if (index == 6) return Math.round((1 - pptPenalty) * 100) + "%";
         return null;
     }
 }

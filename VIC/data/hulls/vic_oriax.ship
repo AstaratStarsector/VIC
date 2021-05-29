@@ -14,7 +14,7 @@
   "builtInMods": [
     "vic_dynamicshields",
     "vic_aerodynamicdesign",
-	"vic_targetAnalysis"
+	"vic_powerRedistributor"
   ],
   "builtInWeapons": {
     "SYS001": "vic_deco_dummy",

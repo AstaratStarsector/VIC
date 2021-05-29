@@ -30,6 +30,10 @@
 			"vic_adaptiveWarfareSystem":"graphics/icons/hullsys/vic_adaptiveWarfareSystem.png",
 			"vic_empEmitter":"graphics/icons/hullsys/vic_empEmitter.png",
 			"vic_zlydzenEffect":"graphics/icons/hullsys/vic_zlydzenEffect.png",
+			"vic_powerRedistributor":"graphics/icons/hullsys/vic_powerRedistributor.png",
+			"vic_powerRedistributorNone":"graphics/icons/hullsys/vic_powerRedistributorNone.png",
+			"vic_powerRedistributorSmall":"graphics/icons/hullsys/vic_powerRedistributorSmall.png",
+			"vic_powerRedistributorLarge":"graphics/icons/hullsys/vic_powerRedistributorLarge.png",
 		},
 		"fx":{
 			"vic_fluxRaptureSuck":"graphics/fx/vic_fluxRaptureSuckQuarter.png",

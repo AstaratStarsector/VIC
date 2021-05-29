@@ -43,7 +43,7 @@
     0,
     0
   ],
-  "barrelMode": "LINKED",
+  "barrelMode": "ALTERNATING",
   "animationType": "GLOW_AND_FLASH",
   "autocharge": true,
   "muzzleFlashSpec": {
