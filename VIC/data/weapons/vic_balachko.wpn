@@ -19,7 +19,7 @@
     255,
     255
   ],
-  "visualRecoil": 8,
+  "visualRecoil": 15,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
@@ -46,20 +46,6 @@
   "barrelMode": "ALTERNATING",
   "animationType": "GLOW_AND_FLASH",
   "autocharge": true,
-  "muzzleFlashSpec": {
-    "length": 20,
-    "spread": 10,
-    "particleSizeMin": 10,
-    "particleSizeRange": 20,
-    "particleDuration": 0.15,
-    "particleCount": 7,
-    "particleColor": [
-      255,
-      255,
-      255,
-      100
-    ]
-  },
   "textureType": ROUGH,
   "fireSoundTwo": "vic_rubicon_shot"
 }

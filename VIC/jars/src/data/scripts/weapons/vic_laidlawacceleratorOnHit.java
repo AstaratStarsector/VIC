@@ -24,10 +24,10 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
     private static final Vector2f ZERO = new Vector2f();
 
     private final DamagingExplosionSpec explosion = new DamagingExplosionSpec(0.05f,
-            25,
-            12.5f,
-            150,
             75,
+            25f,
+            400,
+            150,
             CollisionClass.PROJECTILE_FF,
             CollisionClass.PROJECTILE_FIGHTER,
             3,

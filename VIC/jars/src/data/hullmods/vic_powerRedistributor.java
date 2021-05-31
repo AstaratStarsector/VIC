@@ -6,7 +6,7 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import javafx.util.Pair;
+
 
 import java.awt.*;
 import java.util.HashMap;
@@ -57,7 +57,6 @@ public class vic_powerRedistributor extends BaseHullMod {
         Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
         String shipID = ship.getId();
 
-        Pair<String, Float> type = new Pair<>("none", 1f);
         HashMap<state, Float> powers = new HashMap<state, Float>();
         for (state s : state.values()) {
             powers.put(s, 0f);

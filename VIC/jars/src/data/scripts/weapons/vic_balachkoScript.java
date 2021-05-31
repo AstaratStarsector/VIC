@@ -88,8 +88,8 @@ public class vic_balachkoScript implements EveryFrameWeaponEffectPlugin, OnFireE
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_TURRET = new HashMap<>();
     static {
         PARTICLE_SPAWN_POINT_TURRET.put("default", new Vector2f(0f, 0f));
-        PARTICLE_SPAWN_POINT_TURRET.put("FLASH_ID_1", new Vector2f(4.5f, 8.5f));
-        PARTICLE_SPAWN_POINT_TURRET.put("FLASH_ID_2", new Vector2f(-4.5f, 8.5f));
+        PARTICLE_SPAWN_POINT_TURRET.put("FLASH_ID_1", new Vector2f(4.5f, 12.5f));
+        PARTICLE_SPAWN_POINT_TURRET.put("FLASH_ID_2", new Vector2f(-4.5f, 12.5f));
         PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_1", new Vector2f(0f, -8.5f));
         PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_2", new Vector2f(12f, -1f));
         PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_3", new Vector2f(-12f, -1f));
@@ -101,8 +101,8 @@ public class vic_balachkoScript implements EveryFrameWeaponEffectPlugin, OnFireE
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_HARDPOINT = new HashMap<>();
     static {
         PARTICLE_SPAWN_POINT_HARDPOINT.put("default", new Vector2f(0f, 0f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("FLASH_ID_1", new Vector2f(4.5f, 10.2f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("FLASH_ID_2", new Vector2f(-4.5f, 10.2f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("FLASH_ID_1", new Vector2f(4.5f, 14.2f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("FLASH_ID_2", new Vector2f(-4.5f, 14.2f));
         PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_1", new Vector2f(0f, -6.8f));
         PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_2", new Vector2f(12f, 0.7f));
         PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_3", new Vector2f(-12f, 0.7f));
@@ -123,8 +123,8 @@ public class vic_balachkoScript implements EveryFrameWeaponEffectPlugin, OnFireE
     private static final Map<String, Color> PARTICLE_COLOR = new HashMap<>();
     static {
         PARTICLE_COLOR.put("default", new Color(255, 255, 255, 165));
-        PARTICLE_COLOR.put("FLASH_ID_1", new Color(125, 175, 255, 100));
-        PARTICLE_COLOR.put("FLASH_ID_2", new Color(255, 175, 125, 100));
+        PARTICLE_COLOR.put("FLASH_ID_1", new Color(125, 175, 255, 50));
+        PARTICLE_COLOR.put("FLASH_ID_2", new Color(255, 175, 125, 50));
         PARTICLE_COLOR.put("BLOWBACK_ID_1", new Color(255, 255, 255, 50));
         PARTICLE_COLOR.put("BLOWBACK_ID_2", new Color(255, 255, 255, 100));
         PARTICLE_COLOR.put("BLOWBACK_ID_3", new Color(255, 255, 255, 100));

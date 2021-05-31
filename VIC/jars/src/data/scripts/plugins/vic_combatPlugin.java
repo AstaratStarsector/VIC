@@ -144,6 +144,9 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 stats.getPhaseCloakUpkeepCostBonus().unmodify("vic_zlydzen_effect");
 
                 stats.getEffectiveArmorBonus().unmodify("vic_zlydzen_effect");
+                stats.getFluxDissipation().unmodify("vic_zlydzen_effect");
+                stats.getWeaponTurnRateBonus().unmodify("vic_zlydzen_effect");
+
             } else {
                 if (entry.getValue().wasAffectedLastCheck) {
                     entry.getValue().wasAffectedLastCheck = false;
@@ -156,13 +159,16 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 float effectLevel = entry.getValue().power;
 
                 stats.getShieldDamageTakenMult().modifyMult("vic_zlydzen_effect", 1 + (0.1f * effectLevel));
-                stats.getShieldUpkeepMult().modifyMult("vic_zlydzen_effect", 1 + (0.1f * effectLevel));
+                stats.getShieldUpkeepMult().modifyMult("vic_zlydzen_effect", 1 + (0.5f * effectLevel));
 
-                stats.getPhaseCloakActivationCostBonus().modifyMult("vic_zlydzen_effect", 1 + (0.2f * effectLevel));
-                stats.getPhaseCloakCooldownBonus().modifyMult("vic_zlydzen_effect", 1 + (0.2f * effectLevel));
-                stats.getPhaseCloakUpkeepCostBonus().modifyMult("vic_zlydzen_effect", 1 + (0.2f * effectLevel));
+                stats.getPhaseCloakActivationCostBonus().modifyMult("vic_zlydzen_effect", 1 + (2f * effectLevel));
+                stats.getPhaseCloakCooldownBonus().modifyMult("vic_zlydzen_effect", 1 + (2f * effectLevel));
+                stats.getPhaseCloakUpkeepCostBonus().modifyMult("vic_zlydzen_effect", 1 + (2f * effectLevel));
 
                 stats.getEffectiveArmorBonus().modifyMult("vic_zlydzen_effect", 1 - (0.1f * effectLevel));
+                stats.getFluxDissipation().modifyMult("vic_zlydzen_effect", 1 - (0.15f * effectLevel));
+                stats.getWeaponTurnRateBonus().modifyMult("vic_zlydzen_effect", 1 - (0.25f * effectLevel));
+
                 if (entry.getKey() == engine.getPlayerShip())
                     engine.maintainStatusForPlayerShip("vic_zlydzen_effect", "graphics/icons/hullsys/vic_zlydzenEffect.png", "Disruptor Beam", "Ship effectiveness reduced", true);
             }
