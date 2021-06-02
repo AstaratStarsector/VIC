@@ -72,7 +72,7 @@ public class vic_zlydzen_script implements EveryFrameWeaponEffectPlugin {
                     "vic_zlydzen_spin",
                     weapon,
                     0.25f + weapon.getChargeLevel(),
-                    0.15f,
+                    0.1f,
 //                    0.5f+0.5f*weapon.getChargeLevel(),
                     weapon.getLocation(),
                     weapon.getShip().getVelocity()

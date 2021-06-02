@@ -30,7 +30,8 @@ public class vic_zlydzen_beam implements BeamEffectPlugin {
 
         CombatEntityAPI target = beam.getDamageTarget();
         if (target instanceof ShipAPI) {
-            vic_combatPlugin.markTargetDamagedByZlydzen((ShipAPI) target, amount * charge);
+            boolean shieldHit = target.getShield() != null && target.getShield().isWithinArc(beam.getTo());
+            vic_combatPlugin.markTargetDamagedByZlydzen((ShipAPI) target, amount * charge, shieldHit);
         }
 
 

@@ -132,12 +132,42 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         }
 
         //Zlydzen
-        for (Map.Entry<ShipAPI, ZlydzenTargetsData> entry : localData.ZlydzenTargets.entrySet()) {
+        //Shield
+        for (Map.Entry<ShipAPI, ZlydzenTargetsDataShield> entry : localData.ZlydzenTargetsShield.entrySet()) {
             if (!entry.getKey().isAlive() || entry.getValue().power <= 0) {
                 MutableShipStatsAPI stats = entry.getKey().getMutableStats();
 
                 stats.getShieldDamageTakenMult().unmodify("vic_zlydzen_effect");
                 stats.getShieldUpkeepMult().unmodify("vic_zlydzen_effect");
+
+            } else {
+                if (entry.getValue().wasAffectedLastCheck) {
+                    entry.getValue().wasAffectedLastCheck = false;
+                } else {
+                    entry.getValue().advance(amount);
+                }
+//                entry.getKey().setJitterShields(false);
+//                entry.getKey().setJitterUnder(entry.getKey(), new Color(106, 0, 255), 4, 8, 2);
+                MutableShipStatsAPI stats = entry.getKey().getMutableStats();
+                float effectLevel = entry.getValue().power;
+
+                stats.getShieldDamageTakenMult().modifyMult("vic_zlydzen_effect", 1 + (0.1f * effectLevel));
+                stats.getShieldUpkeepMult().modifyMult("vic_zlydzen_effect", 1 + (0.5f * effectLevel));
+
+                if (entry.getKey() == engine.getPlayerShip())
+                    engine.maintainStatusForPlayerShip("vic_zlydzen_effect_shield", "graphics/icons/hullsys/vic_zlydzenEffect.png", "Disruptor Beam", "Shield effectiveness reduced " + Math.round(effectLevel * 100) + "%", true);
+            }
+        }
+        HashMap<ShipAPI, ZlydzenTargetsDataShield> cloneMapZ = new HashMap<>(localData.ZlydzenTargetsShield);
+        for (Map.Entry<ShipAPI, ZlydzenTargetsDataShield> entry : cloneMapZ.entrySet()) {
+            if (entry.getValue().power <= 0)
+                localData.ZlydzenTargetsShield.remove(entry.getKey());
+        }
+        //Zlydzen
+        //Armour
+        for (Map.Entry<ShipAPI, ZlydzenTargetsDataArmour> entry : localData.ZlydzenTargetsArmour.entrySet()) {
+            if (!entry.getKey().isAlive() || entry.getValue().power <= 0) {
+                MutableShipStatsAPI stats = entry.getKey().getMutableStats();
 
                 stats.getPhaseCloakActivationCostBonus().unmodify("vic_zlydzen_effect");
                 stats.getPhaseCloakCooldownBonus().unmodify("vic_zlydzen_effect");
@@ -158,9 +188,6 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 MutableShipStatsAPI stats = entry.getKey().getMutableStats();
                 float effectLevel = entry.getValue().power;
 
-                stats.getShieldDamageTakenMult().modifyMult("vic_zlydzen_effect", 1 + (0.1f * effectLevel));
-                stats.getShieldUpkeepMult().modifyMult("vic_zlydzen_effect", 1 + (0.5f * effectLevel));
-
                 stats.getPhaseCloakActivationCostBonus().modifyMult("vic_zlydzen_effect", 1 + (2f * effectLevel));
                 stats.getPhaseCloakCooldownBonus().modifyMult("vic_zlydzen_effect", 1 + (2f * effectLevel));
                 stats.getPhaseCloakUpkeepCostBonus().modifyMult("vic_zlydzen_effect", 1 + (2f * effectLevel));
@@ -170,14 +197,15 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 stats.getWeaponTurnRateBonus().modifyMult("vic_zlydzen_effect", 1 - (0.25f * effectLevel));
 
                 if (entry.getKey() == engine.getPlayerShip())
-                    engine.maintainStatusForPlayerShip("vic_zlydzen_effect", "graphics/icons/hullsys/vic_zlydzenEffect.png", "Disruptor Beam", "Ship effectiveness reduced", true);
+                    engine.maintainStatusForPlayerShip("vic_zlydzen_effect_armour", "graphics/icons/hullsys/vic_zlydzenEffect.png", "Disruptor Beam", "Armour effectiveness reduced " + Math.round(effectLevel * 100) + "%", true);
             }
         }
-        HashMap<ShipAPI, ZlydzenTargetsData> cloneMapZ = new HashMap<>(localData.ZlydzenTargets);
-        for (Map.Entry<ShipAPI, ZlydzenTargetsData> entry : cloneMapZ.entrySet()) {
+        HashMap<ShipAPI, ZlydzenTargetsDataArmour> cloneMap_ZlydzenTargetsArmour = new HashMap<>(localData.ZlydzenTargetsArmour);
+        for (Map.Entry<ShipAPI, ZlydzenTargetsDataArmour> entry : cloneMap_ZlydzenTargetsArmour.entrySet()) {
             if (entry.getValue().power <= 0)
-                localData.ZlydzenTargets.remove(entry.getKey());
+                localData.ZlydzenTargetsArmour.remove(entry.getKey());
         }
+
         //ArcaneMissiles
         for (Map.Entry<DamagingProjectileAPI, ArcaneMissilesData> entry : localData.ArcaneMissiles.entrySet()) {
             ArcaneMissilesData data = entry.getValue();
@@ -375,15 +403,24 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         }
     }
 
-    public static void markTargetDamagedByZlydzen(ShipAPI ship, float amount) {
+    public static void markTargetDamagedByZlydzen(ShipAPI ship, float amount, boolean shieldHit) {
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine == null) return;
         final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
-        if (localData.ZlydzenTargets.containsKey(ship)) {
-            localData.ZlydzenTargets.get(ship).markAsHit();
-            localData.ZlydzenTargets.get(ship).advance(amount);
+        if (shieldHit) {
+            if (localData.ZlydzenTargetsShield.containsKey(ship)) {
+                localData.ZlydzenTargetsShield.get(ship).markAsHit();
+                localData.ZlydzenTargetsShield.get(ship).advance(amount);
+            } else {
+                localData.ZlydzenTargetsShield.put(ship, new ZlydzenTargetsDataShield(ship, amount));
+            }
         } else {
-            localData.ZlydzenTargets.put(ship, new ZlydzenTargetsData(ship, amount));
+            if (localData.ZlydzenTargetsArmour.containsKey(ship)) {
+                localData.ZlydzenTargetsArmour.get(ship).markAsHit();
+                localData.ZlydzenTargetsArmour.get(ship).advance(amount);
+            } else {
+                localData.ZlydzenTargetsArmour.put(ship, new ZlydzenTargetsDataArmour(ship, amount));
+            }
         }
     }
 
@@ -406,13 +443,14 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         final List<animationRenderData> animationRenderList = new ArrayList<>(250);
         final HashMap<ShipAPI, Float> FluxRaptureRender = new HashMap<>(10);
         final HashMap<ShipAPI, Float> defenceSuppressor = new HashMap<>(25);
-        final HashMap<ShipAPI, ZlydzenTargetsData> ZlydzenTargets = new HashMap<>(50);
+        final HashMap<ShipAPI, ZlydzenTargetsDataShield> ZlydzenTargetsShield = new HashMap<>(50);
+        final HashMap<ShipAPI, ZlydzenTargetsDataArmour> ZlydzenTargetsArmour = new HashMap<>(50);
         final HashMap<DamagingProjectileAPI, ArcaneMissilesData> ArcaneMissiles = new HashMap<>(250);
     }
 
-    private static final class ZlydzenTargetsData {
+    private static final class ZlydzenTargetsDataShield {
 
-        public ZlydzenTargetsData(ShipAPI target, float amount) {
+        public ZlydzenTargetsDataShield(ShipAPI target, float amount) {
             this.target = target;
             this.wasAffectedLastCheck = true;
             advance(amount);
@@ -422,7 +460,37 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         float power = 0f;
         boolean wasAffectedLastCheck;
 
-        float timeRise = 4f;
+        float timeRise = 5f;
+        float timeFall = 2f;
+
+        public void advance(float amount) {
+            if (wasAffectedLastCheck) {
+                power += amount / timeRise;
+            } else {
+                power -= amount / timeFall;
+            }
+            if (power > 1) power = 1;
+            if (power < 0) power = 0;
+        }
+
+        public void markAsHit() {
+            this.wasAffectedLastCheck = true;
+        }
+    }
+
+    private static final class ZlydzenTargetsDataArmour {
+
+        public ZlydzenTargetsDataArmour(ShipAPI target, float amount) {
+            this.target = target;
+            this.wasAffectedLastCheck = true;
+            advance(amount);
+        }
+
+        ShipAPI target;
+        float power = 0f;
+        boolean wasAffectedLastCheck;
+
+        float timeRise = 5f;
         float timeFall = 2f;
 
         public void advance(float amount) {
