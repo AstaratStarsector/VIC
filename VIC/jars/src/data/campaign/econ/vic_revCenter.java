@@ -95,9 +95,9 @@ public class vic_revCenter extends BaseIndustry implements MarketImmigrationModi
 
         Color h = Misc.getHighlightColor();
 
-        tooltip.addPara("Increase colony growth by %s", pad, h,  this.market.getSize() * 2 + "");
+        tooltip.addPara("Increases colony growth by %s", pad, h,  this.market.getSize() * 2 + "");
 
-        tooltip.addPara("Gives access to services of Revitalization Center.", opad);
+        tooltip.addPara("Gives access to the services of the Revitalization Center.", opad);
 
         /*
         if (power > 0){
