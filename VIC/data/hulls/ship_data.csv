@@ -21,4 +21,4 @@ VIC-B62 Thamuz,vic_thamuz,Heavy Cruiser,Volkov Industries,vic_adaptiveassault,17
 VIC-A58 Valafar,vic_valafar,Shturmcruiser,Volkov Industries,vic_DriftBoost,13,6000,600,9000,,600,145,,80,45,25,20,25,800,OMNI,,90,0.4,0.8,,,120,210,135,90,3,30,9,125000,4,12,510,0.25,20,20,,vic_t1hulls_bp,,0.5,2,3,
 #caps,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 VIC-A71 Apollyon,vic_apollyon,Shturmcapital,Volkov Industries,vic_quantumlunge,35,12000,1000,20000,,1250,380,,55,30,20,10,10,3300,OMNI,,90,0.4,0.8,,,450,1000,300,300,10,30,8,750000,4,20,660,0.25,60,60,,rare_bp,0.25,0,3,5,
-VIC-S13 Oriax,vic_oriax,Battlecruiser,Volkov Industries,vic_shockDischarger,30,12000,800,17000,,1000,250,2,65,40,30,15,15,2200,OMNI,,90,0.4,0.8,,,300,600,450,400,8,30,8,350000,5,20,600,0.25,45,45,,rare_bp,,0.35,3,5,
+VIC-U61 Oriax,vic_oriax,Battlecruiser,Volkov Industries,vic_shockDischarger,30,12000,800,17000,,1000,250,2,65,40,30,15,15,2200,OMNI,,90,0.4,0.8,,,300,600,450,400,8,30,8,350000,5,20,600,0.25,45,45,,rare_bp,,0.35,3,5,

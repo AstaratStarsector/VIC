@@ -84,5 +84,6 @@
       255
     ]
   },
-  "fireSoundTwo": "vic_rubicon_shot"
+  "fireSoundOne": "vic_vila_chargeup",
+  "fireSoundTwo": "vic_vila_shot"
 }

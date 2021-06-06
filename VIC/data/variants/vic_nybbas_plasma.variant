@@ -1,18 +1,25 @@
 {
-    "displayName": "Killer",
-	"goalVariant": true,
-    "fluxCapacitors": 10,
-    "fluxVents": 10,
-    "hullId": "vic_nybbas",
-    "hullMods": [
-        "vic_deathProtocol",
-        "hardened_subsystems"
-    ],
-    "permaMods": [],
-    "variantId": "vic_nybbas_plasma",
-    "weaponGroups": [{
-        "autofire": false,
-        "mode": "LINKED",
-        "weapons": {"WS0002t": "plasma"}
-    }]
+  "variantId": "vic_nybbas_plasma",
+  "hullId": "vic_nybbas",
+  "displayName": "Killer",
+  "goalVariant": true,
+  "fluxCapacitors": 10,
+  "fluxVents": 5,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "vic_deathProtocol",
+    "hardened_subsystems"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002t": "plasma"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
 }

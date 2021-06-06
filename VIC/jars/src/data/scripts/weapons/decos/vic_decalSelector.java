@@ -21,7 +21,12 @@ public class vic_decalSelector implements EveryFrameWeaponEffectPlugin {
         if (!runOnce) {
             if (ship != null && ship.getFleetMember() != null){
                 int maxFrames = weapon.getAnimation().getNumFrames() - 1;
-                weapon.getAnimation().setFrame(new Random(ship.getFleetMember().getShipName().hashCode()).nextInt(maxFrames));
+                String shipName = ship.getFleetMember().getShipName();
+                if (shipName != null){
+                    weapon.getAnimation().setFrame(new Random(shipName.hashCode()).nextInt(maxFrames));
+                } else {
+                    weapon.getAnimation().setFrame(new Random().nextInt(maxFrames));
+                }
             }
             runOnce = true;
         }

@@ -4,7 +4,7 @@
   "displayName": "Superiority",
   "goalVariant": true,
   "fluxCapacitors": 2,
-  "fluxVents": 4,
+  "fluxVents": 0,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
@@ -16,7 +16,8 @@
       "mode": "LINKED",
       "weapons": {
         "WS0001": "vic_verlioka",
-        "WS0002": "vic_verlioka"
+        "WS0002": "vic_verlioka",
+        "WS0011": "vic_targetingLazer"
       }
     },
     {

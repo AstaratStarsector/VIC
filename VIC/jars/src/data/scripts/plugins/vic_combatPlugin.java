@@ -236,6 +236,14 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                         proj.getVelocity().scale(1 + Math.abs(angle * 0.0025f));
                     }
 
+                    Global.getSoundPlayer().playSound(
+                            "vic_vila_pulse",
+                            1f,
+                            1f,
+                            proj.getLocation(),
+                            new Vector2f()
+                    );
+
                     float sizeMult = MathUtils.getRandomNumberInRange(0.8f,1.2f);
 
                     MagicRender.battlespace(

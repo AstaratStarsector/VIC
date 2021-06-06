@@ -45,11 +45,11 @@
                         {"file":"sounds/effects/vic_engines_cap.ogg","pitch":1,"volume":1}, 
                         ],
                 "VOLKOV-LAIDLAW'S":{"sounds":[0], "pitch":1.0, "volume":0.4},
-                "FIGHTER":{"sounds":[0], "pitch":0.6, "volume":0.4},
+                "FIGHTER":{"sounds":[0], "pitch":0.9, "volume":0.4},
                 "FRIGATE":{"sounds":[0], "pitch":0.8, "volume":0.5},
                 "DESTROYER":{"sounds":[1], "pitch":0.8, "volume":0.55},
                 "CRUISER":{"sounds":[2], "pitch":0.8, "volume":0.7},
-                "CAPITAL_SHIP":{"sounds":[3], "pitch":0.8, "volume":1},
+                "CAPITAL_SHIP":{"sounds":[3], "pitch":0.8, "volume":1.3},
         },
 	
 	
@@ -241,5 +241,42 @@
 	    {"file":"sounds/effects/vic_zlydzen_loop.ogg","pitch":1.0, "volume":1.0},
 		{"file":"sounds/effects/vic_zlydzen_loop.ogg","pitch":0.95, "volume":1.0},
 	],
+	
+	"vic_balachko_shot":[
+	    {"file":"sounds/effects/vic_balachko.ogg","pitch":1.1, "volume":0.25},
+		{"file":"sounds/effects/vic_balachko.ogg","pitch":1.05, "volume":0.25},
+		{"file":"sounds/effects/vic_balachko.ogg","pitch":1.0, "volume":0.25},
+		{"file":"sounds/effects/vic_balachko.ogg","pitch":0.95, "volume":0.25},
+		{"file":"sounds/effects/vic_balachko.ogg","pitch":0.9, "volume":0.25},
+	],
+	
+	"vic_vila_chargeup":[
+		{"file":"sounds/effects/vic_vila_chargeup.ogg","pitch":1.05, "volume":1},
+		{"file":"sounds/effects/vic_vila_chargeup.ogg","pitch":1.0, "volume":1},
+		{"file":"sounds/effects/vic_vila_chargeup.ogg","pitch":0.95, "volume":1},
+	],
+	
+		"vic_vila_shot":[
+	    {"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.1, "volume":0.5},
+		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.05, "volume":0.5},
+		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.0, "volume":0.5},
+		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":0.95, "volume":0.5},
+		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":0.9, "volume":0.5},
+	],
+	
+			"vic_vila_pulse":[
+	    {"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.2, "volume":0.3},
+		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.1, "volume":0.3},
+		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.0, "volume":0.3},
+		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":0.9, "volume":0.3},
+		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":0.8, "volume":0.3},
+	    {"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":1.2, "volume":0.3},
+		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":1.1, "volume":0.3},
+		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":1.0, "volume":0.3},
+		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":0.9, "volume":0.3},
+		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":0.8, "volume":0.3},
+	]
+	
+	
 	
 }

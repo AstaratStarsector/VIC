@@ -24,9 +24,9 @@
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    14.5,
+    11.5,
     4.5,
-    14.5,
+    11.5,
     -4.5
   ],
   "turretAngleOffsets": [
@@ -34,9 +34,9 @@
     0
   ],
   "hardpointOffsets": [
-    16.5,
+    13,
     4.5,
-    16.5,
+    13,
     -4.5
   ],
   "hardpointAngleOffsets": [
@@ -46,6 +46,20 @@
   "barrelMode": "ALTERNATING",
   "animationType": "GLOW_AND_FLASH",
   "autocharge": true,
+  "muzzleFlashSpec": {
+    "length": 20,
+    "spread": 3,
+    "particleSizeMin": 40,
+    "particleSizeRange": 5,
+    "particleDuration": 0.15,
+    "particleCount": 2,
+    "particleColor": [
+      255,
+      255,
+      255,
+      255
+    ]
+  },
   "textureType": ROUGH,
-  "fireSoundTwo": "vic_rubicon_shot"
+  "fireSoundTwo": "vic_balachko_shot"
 }

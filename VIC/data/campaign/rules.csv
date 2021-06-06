@@ -290,7 +290,7 @@ vic_VBombResults,DialogOptionSelected,$option == VBombResults,VIC_MarketCMD VBom
 #Revitalization Center Texts,,,,,,
 vic_PersonaChange,PopulateOptions,"$hasMarket
 $menuState == main
-$faction.id == vic
+vic_marketHasIndustry vic_revCenter
 RepIsAtWorst $faction.id SUSPICIOUS",,,22:VICPCMenu:Visit a local VIC Revitalization Centre,
 vic_portraitChangingMenu,DialogOptionSelected,$option == VICPCMenu,vic_PersonaChange vic_PerconaChangeChose,"After a short trip on a shuttle, it doesn't take you much time to find a tall slick-looking building covered in the Conglomerate's imposing logos and various holo-ads promoting ""endless opportunities"", as the corporation likes to call them.
 

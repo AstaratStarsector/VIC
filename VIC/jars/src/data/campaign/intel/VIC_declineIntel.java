@@ -82,7 +82,7 @@ public class VIC_declineIntel extends BaseIntelPlugin {
 		}
 
 		if (isEnding())
-		info.addPara("Virus devours " + name + " and people on it, it's likely soon nobody going to be alive there.",
+		info.addPara("The virus devours " + name + " and its population. The estimation is, that soon there will be no humans left in the colony.",
 					opad, faction.getBaseUIColor());
 		
 		addBulletPoints(info, ListInfoMode.IN_DESC);

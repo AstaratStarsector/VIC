@@ -3,7 +3,7 @@
   "hullId": "vic_valafar",
   "displayName": "Laidlaw",
   "goalVariant": true,
-  "fluxCapacitors": 20,
+  "fluxCapacitors": 11,
   "fluxVents": 15,
   "quality": 1,
   "permaMods": [],

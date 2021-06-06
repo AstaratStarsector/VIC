@@ -81,6 +81,8 @@ public class vic_balachkoScript implements EveryFrameWeaponEffectPlugin, OnFireE
     private static final Map<String, Boolean> SPAWN_POINT_ANCHOR_ALTERNATION = new HashMap<>();
     static {
         SPAWN_POINT_ANCHOR_ALTERNATION.put("default", false);
+        SPAWN_POINT_ANCHOR_ALTERNATION.put("FLASH_ID_1", true);
+        SPAWN_POINT_ANCHOR_ALTERNATION.put("FLASH_ID_2", true);
     }
 
     //The position the particles are spawned (or at least where their arc originates when using offsets) compared to their weapon's center [or shot offset, see
@@ -88,8 +90,8 @@ public class vic_balachkoScript implements EveryFrameWeaponEffectPlugin, OnFireE
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_TURRET = new HashMap<>();
     static {
         PARTICLE_SPAWN_POINT_TURRET.put("default", new Vector2f(0f, 0f));
-        PARTICLE_SPAWN_POINT_TURRET.put("FLASH_ID_1", new Vector2f(4.5f, 12.5f));
-        PARTICLE_SPAWN_POINT_TURRET.put("FLASH_ID_2", new Vector2f(-4.5f, 12.5f));
+        //PARTICLE_SPAWN_POINT_TURRET.put("FLASH_ID_1", new Vector2f(4.5f, 12.5f));
+        //PARTICLE_SPAWN_POINT_TURRET.put("FLASH_ID_2", new Vector2f(-4.5f, 12.5f));
         PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_1", new Vector2f(0f, -8.5f));
         PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_2", new Vector2f(12f, -1f));
         PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_3", new Vector2f(-12f, -1f));
@@ -101,8 +103,8 @@ public class vic_balachkoScript implements EveryFrameWeaponEffectPlugin, OnFireE
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_HARDPOINT = new HashMap<>();
     static {
         PARTICLE_SPAWN_POINT_HARDPOINT.put("default", new Vector2f(0f, 0f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("FLASH_ID_1", new Vector2f(4.5f, 14.2f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("FLASH_ID_2", new Vector2f(-4.5f, 14.2f));
+        //PARTICLE_SPAWN_POINT_HARDPOINT.put("FLASH_ID_1", new Vector2f(4.5f, 14.2f));
+        //PARTICLE_SPAWN_POINT_HARDPOINT.put("FLASH_ID_2", new Vector2f(-4.5f, 14.2f));
         PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_1", new Vector2f(0f, -6.8f));
         PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_2", new Vector2f(12f, 0.7f));
         PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_3", new Vector2f(-12f, 0.7f));

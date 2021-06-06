@@ -4,7 +4,7 @@
   "displayName": "Killer",
   "goalVariant": true,
   "fluxCapacitors": 10,
-  "fluxVents": 10,
+  "fluxVents": 5,
   "quality": 1,
   "permaMods": [],
   "hullMods": [

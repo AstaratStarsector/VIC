@@ -120,9 +120,9 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
             Vector2f positionToSpawn = new Vector2f(proj.getLocation().x, proj.getLocation().y);
             positionToSpawn = VectorUtils.rotateAroundPivot(positionToSpawn, proj.getLocation(), proj.getFacing(), new Vector2f(0f, 0f));
             MagicTrailPlugin.AddTrailMemberAdvanced(proj, drillTrailIDs[i], spriteToUse, positionToSpawn, 0, 0 * 0.5f,
-                    proj.getFacing() + 180f, 0f, 0f, 32f,
+                    proj.getFacing() + 180f, 0f, 0f, 48f,
                     256f, PHASE_COLOR, Color.RED, 1f, 0f, 0.1f, 0.3f, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,
-                    240f, -240f, new Vector2f(0f, 0f), null, CombatEngineLayers.CONTRAILS_LAYER);
+                    240f, 500f, new Vector2f(0f, 0f), null, CombatEngineLayers.CONTRAILS_LAYER);
         }
 
         float newSpeedMult = speedMult - ((flightTimeFraction) * amount * (float) Math.sqrt(speedMult) * 1.8f);

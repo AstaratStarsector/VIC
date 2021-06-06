@@ -42,6 +42,7 @@
 			"vic_thamuz":1,
             "vic_valafar":1.5,
 			"vic_cresil":1,
+			"vic_oriax":0.75,
 			"vic_apollyon":0.5,
         },
   },
@@ -72,6 +73,7 @@
 			"vic_thamuz",
 			"vic_valafar",
 			"vic_cresil",
+			"vic_oriax",
 			"vic_apollyon",
 		],
 	},
@@ -181,10 +183,10 @@
     "phaseShips": 1,
 	
     "officerQuality": 2,
-    "shipQuality": 4,
-    "numShips": 1,
+    "shipQuality": 3,
+    "numShips": 2,
 	
-    "shipSize": 2,
+    "shipSize": 4,
 	
     "aggression": 4,
 

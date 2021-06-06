@@ -24,7 +24,7 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addBriefingItem("TTDS Automata must survive");
 
 		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standart", FleetMemberType.SHIP, "VIC Sun eater", true);
-		api.addToFleet(FleetSide.PLAYER, "vic_oriax_standart", FleetMemberType.SHIP, "VIC Sun eater", false);
+		api.addToFleet(FleetSide.PLAYER, "vic_oriax_standard", FleetMemberType.SHIP, "VIC Outbreak", false);
 
         api.addToFleet(FleetSide.PLAYER, "vic_valafar_assault", FleetMemberType.SHIP, "VIC Void Reaver", false);
         api.addToFleet(FleetSide.PLAYER, "vic_thamuz_standart", FleetMemberType.SHIP, "VIC Despoiler", false);

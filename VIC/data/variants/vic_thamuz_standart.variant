@@ -1,39 +1,44 @@
 {
-    "displayName": "Standard",
-    "fluxCapacitors": 22,
-    "fluxVents": 30,
-    "goalVariant": true,
-    "hullId": "vic_thamuz",
-    "hullMods": [
-        "targetingunit",
-        "hardenedshieldemitter"
-    ],
-    "permaMods": [],
-    "variantId": "vic_thamuz_standart",
-    "weaponGroups": [
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0005": "vic_psotnik",
-                "WS0013": "vic_psotnik"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {"WS0001": "tachyonlance"}
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0002": "vic_strigoy",
-                "WS0003": "vic_strigoy",
-                "WS0010": "vic_strigoy",
-                "WS0011": "vic_strigoy",
-                "WS0012": "vic_strigoy"
-            }
-        }
-    ]
+  "variantId": "vic_thamuz_standart",
+  "hullId": "vic_thamuz",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 22,
+  "fluxVents": 25,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit",
+    "hardenedshieldemitter"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0005": "vic_psotnik",
+        "WS0013": "vic_psotnik"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "tachyonlance"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "vic_strigoy",
+        "WS0003": "vic_strigoy",
+        "WS0010": "vic_strigoy",
+        "WS0011": "vic_strigoy",
+        "WS0012": "vic_strigoy"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
 }

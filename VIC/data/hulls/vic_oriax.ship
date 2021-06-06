@@ -14,7 +14,7 @@
   "builtInMods": [
     "vic_dynamicshields",
     "vic_aerodynamicdesign",
-	"vic_powerRedistributor"
+    "vic_powerRedistributor"
   ],
   "builtInWeapons": {
     "SYS001": "vic_deco_dummy",
@@ -575,7 +575,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-171.5, -24],
+      "location": [-168.5, -24],
       "length": 64,
       "width": 14,
       "angle": 180,
@@ -584,7 +584,7 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [-171.5, 24],
+      "location": [-168.5, 24],
       "length": 64,
       "width": 14,
       "angle": -180,

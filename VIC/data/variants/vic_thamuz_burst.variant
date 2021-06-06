@@ -1,41 +1,45 @@
 {
-    "displayName": "Pressure",
-    "fluxCapacitors": 25,
-    "fluxVents": 30,
-    "goalVariant": true,
-    "hullId": "vic_thamuz",
-    "hullMods": [
-        "advancedoptics",
-        "targetingunit"
-    ],
-    "permaMods": [],
-    "variantId": "vic_thamuz_burst",
-    "weaponGroups": [
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0005": "hil",
-                "WS0013": "hil"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {"WS0001": "gauss"}
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0002": "vic_strigoy",
-                "WS0003": "vic_strigoy",
-                "WS0004": "vic_strigoy",
-                "WS0009": "vic_strigoy",
-                "WS0010": "vic_strigoy",
-                "WS0011": "vic_strigoy",
-                "WS0012": "vic_strigoy"
-            }
-        }
-    ]
+  "variantId": "vic_thamuz_burst",
+  "hullId": "vic_thamuz",
+  "displayName": "Pressure",
+  "goalVariant": true,
+  "fluxCapacitors": 25,
+  "fluxVents": 23,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "advancedoptics",
+    "targetingunit"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "vic_psotnik",
+        "WS0005": "vic_thermalLance",
+        "WS0013": "vic_thermalLance"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {}
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "vic_strigoy",
+        "WS0003": "vic_strigoy",
+        "WS0004": "vic_strigoy",
+        "WS0009": "vic_strigoy",
+        "WS0010": "vic_strigoy",
+        "WS0011": "vic_strigoy",
+        "WS0012": "vic_strigoy"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
 }

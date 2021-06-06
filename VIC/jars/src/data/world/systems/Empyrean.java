@@ -107,7 +107,7 @@ public class Empyrean {
                 //tariffs
                 0.3f,
                 //freeport
-                true,
+                false,
                 //junk and chatter
                 true);
 
@@ -162,6 +162,7 @@ public class Empyrean {
                         Arrays.asList(
                                 Conditions.POPULATION_7,
                                 Conditions.FARMLAND_POOR,
+                                Conditions.ORGANICS_TRACE,
                                 Conditions.HABITABLE,
                                 Conditions.ORGANIZED_CRIME,
                                 Conditions.TERRAN,
@@ -199,8 +200,8 @@ public class Empyrean {
                 true,
                 //junk and chatter
                 true);
-        //Gives  Pristine Nanoforged to OrbitalWorks
-        //Cocytus_market.getIndustry(Industries.FARMING).setSpecialItem(new SpecialItemData(vic_Items.GMOfarm, null));
+
+        Cocytus_market.getIndustry(Industries.FARMING).setSpecialItem(new SpecialItemData(vic_Items.GMOfarm, null));
         CargoAPI cargo = Cocytus_market.getSubmarket(Submarkets.GENERIC_MILITARY).getCargo();
         cargo.addSpecial(new SpecialItemData(vic_Items.GMOfarm, null), 1);
 
@@ -299,7 +300,7 @@ public class Empyrean {
                 //tariffs
                 0.3f,
                 //freeport
-                true,
+                false,
                 //junk and chatter
                 false);
 
@@ -461,7 +462,7 @@ public class Empyrean {
                 //tariffs
                 0.3f,
                 //freeport
-                true,
+                false,
                 //junk and chatter
                 false);
         //adds Synchrotron to the Fuel Production industry
@@ -545,7 +546,7 @@ public class Empyrean {
                 //tariffs
                 0.3f,
                 //freeport
-                true,
+                false,
                 //junk and chatter
                 true);
 

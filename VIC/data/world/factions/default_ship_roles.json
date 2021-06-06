@@ -43,9 +43,13 @@
 		
 	},
 	"combatCapital":{
-		"vic_apollyon_standart":16,
-		"vic_apollyon_shieldBreaker":16,
-		"vic_apollyon_laidlaw":4,
+		"vic_apollyon_standart":6,
+		"vic_apollyon_shieldBreaker":6,
+		"vic_apollyon_laidlaw":2,
+		
+		"vic_oriax_standard":16,
+		"vic_oriax_balanced":16,
+		"vic_oriax_laidlaw":4,
 	},
 	
 

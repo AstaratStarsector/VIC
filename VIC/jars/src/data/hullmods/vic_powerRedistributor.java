@@ -103,7 +103,7 @@ public class vic_powerRedistributor extends BaseHullMod {
             for (Map.Entry<state, Float> entry : powers.entrySet()) {
                 entry.setValue(0f);
             }
-            status = "Overloaded system shut down";
+            status = "Overloaded, system shutdown";
         }
 
         MutableShipStatsAPI stats = ship.getMutableStats();
@@ -163,13 +163,13 @@ public class vic_powerRedistributor extends BaseHullMod {
         //None
         TooltipMakerAPI text = tooltip.beginImageWithText("graphics/icons/hullsys/vic_powerRedistributorNone.png", 48);
         text.addPara(noTarget + "(no target)",Misc.getHighlightColor(), 2);
-        text.addPara("Increases 0-flux boost by %s", 1, good, Math.round(zeroFluxBoost) + "");
+        text.addPara("Increases 0-flux boost by %s", 1, good, Math.round(zeroFluxBoost) + " su/sec");
         tooltip.addImageWithText(pad);
 
         //Small
         text = tooltip.beginImageWithText("graphics/icons/hullsys/vic_powerRedistributorSmall.png", 48);
         text.addPara(small + "(fighter, frigate, destroyer)",Misc.getHighlightColor(), 2);
-        text.addPara("Increases max speed by %s", 1, good, Math.round(speed) + "");
+        text.addPara("Increases max speed by %s", 1, good, Math.round(speed) + " su/sec");
         text.addPara("Increases maneuverability by %s", 1, good, Math.round(maneuverability) + "%");
         text.addPara("Increases projectile speed by %s", 1, good, Math.round(projSpeed) + "%");
         text.addPara("Increases damage taken by shield by %s", 1, bad, Math.round(smallShieldEff) + "%");

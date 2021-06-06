@@ -16,7 +16,7 @@
 	#		Cooperative/Vengeful:	±0.8
     "startRelationships":{ 
 	    # Vanilla Factions		 
-		"hegemony": 0.8,                                 #Gullible and spoiled. True successors of our old friends.
+		"hegemony": 0.6,                                 #Gullible and spoiled. True successors of our old friends.
 		"persean": 0.3,                                  #A good back-up plan, even if a bit scattered and chaotic.
 		"pirates": 0,                                    #Unexpectedly cooperative. Procurement of testing material has never been so easy with their help.
 		"sindrian_diktat": -0.1,                         #Has certain potential, worth keeping an eye on.

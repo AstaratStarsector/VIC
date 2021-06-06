@@ -1,0 +1,63 @@
+{
+  "variantId": "vic_oriax_standard",
+  "hullId": "vic_oriax",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 21,
+  "fluxVents": 21,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "vic_deathProtocol",
+    "targetingunit"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "vic_psotnik"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0005": "vic_strigoy",
+        "WS0006": "vic_strigoy",
+        "WS0015": "vic_strigoy",
+        "WS0016": "vic_strigoy",
+        "WS0017": "vic_strigoy",
+        "WS0018": "vic_strigoy"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0007": "vic_balachko",
+        "WS0008": "vic_balachko",
+        "WS1028": "vic_vila"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0014": "vic_verlioka"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0013": "vic_thermalLance"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": [
+    "vic_uvall_wing",
+    "vic_uvall_wing"
+  ]
+}
