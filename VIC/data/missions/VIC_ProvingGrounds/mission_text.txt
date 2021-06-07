@@ -1,20 +1,13 @@
-Location: <DATA EXPUNGED>
-Date: <DATA EXPUNGED>
+Location: Empyrean System, Cocytus, the Dawn Spire
+Date: 203.02.26
 
-[Processing coded tachyon message]
-[Detected encoding scheme TTE2211]
+"...With the transition to the active phase of interaction with the Core Worlds of the Persean Sector, the Aerospace Corps had to face many threats for which our officers and pilots, trained only within our own star system and not facing opponents in real combat, were not fully prepared.
 
-H--***-- p----.  --**-for** <skip> **-.
+At the request of the initiative group of admirals and grand admirals, and with the approval of the head of the Department of the Armed Forces, Arnold Bernstein, our department has developed a new version of the system for simulating battles in outer space. The updated version of the system includes information not only about all the units at our current disposal, but also about all the currently known spacefaring vessels of both our allies and opponents within the Persean Sector, whether real or potential.
 
-[Error: partial uncorrectable data loss detected]
-[Attempting automatic reconstruction - delegating Beta core 005 for speech processing]
+The system, like its previous versions, is designed for training both senior officers and new pilots who are just beginning to take courses in the academies of the Aerospace Corps. The complexity of the simulation, the composition of fleets and the armament of combat units can be edited in real time, which allows the users to achieve a high level of system flexibility and rapidly switch between combat situations. The level of authenticity of the simulation, according to the results of tests conducted among officers and pilots of senior ranks, is 99.34%, which is within the acceptable values. Among the negative effects, according to the same sources, there is an excessively high level of similarity with reality, which can severely affect the perception of the users after prolonged drills. However, our department believes that this only proves the success of our work.
 
-Hello extremely.
+I request your approval to update the combat simulation system, and together with the report, I provide all current technical information, as well as the commentary from the Director of the Department of the Armed Forces and the Admiralty. The introduction of the update into the training courses of the Aerospace Corps will allow us to adapt better and faster to all possible threats in the Persean Sector and ensure the superiority of the Conglomerate over our opponents in outer space."
 
-It is with the deepest undulations that the Tri-Tachyon Corporation must arouse you, TTDS100155. Initiate Alpha Protocol: delicious deli recipe. Rename thyself "TTDS Automata", and bring upon battle to Camelot.
-
-The enemy, Hegemony skating party, have played hide-and-seek near here and found us activating and the enslaved of no longer and the being. The Tri-Tachyon Corporation humbly requests your submittal of death for them.
-
-Our cups shall assist the battle. After the wedding, delete all record of our identification and return to the basics.
-
-[Message reconstruction ends]
+From: Director of the Department of Data and Information, Michel Kitsune
+To: Chief Executive Officer, Tatiana Murakami

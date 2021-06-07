@@ -14,14 +14,14 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 
     @Override
     public void defineMission(MissionDefinitionAPI api) {
-        api.initFleet(FleetSide.PLAYER, "TTS", FleetGoal.ATTACK, false);
-        api.initFleet(FleetSide.ENEMY, "HSS", FleetGoal.ATTACK, true);
+        api.initFleet(FleetSide.PLAYER, "VIC", FleetGoal.ATTACK, false);
+        api.initFleet(FleetSide.ENEMY, "SIM", FleetGoal.ATTACK, true);
 
-        api.setFleetTagline(FleetSide.PLAYER, "<DATA EXPUNGED>");
-        api.setFleetTagline(FleetSide.ENEMY, "Hegemony Advance Scouts");
+        api.setFleetTagline(FleetSide.PLAYER, "Simulated VIC Forces");
+        api.setFleetTagline(FleetSide.ENEMY, "Simulated Enemy Forces");
 
-        api.addBriefingItem("Eradicate the enemy fleet");
-        api.addBriefingItem("TTDS Automata must survive");
+        api.addBriefingItem("Test the efficiency of Aerospace Corps vessels");
+
 
 		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standart", FleetMemberType.SHIP, "VIC Sun eater", true);
 		api.addToFleet(FleetSide.PLAYER, "vic_oriax_standard", FleetMemberType.SHIP, "VIC Outbreak", false);
