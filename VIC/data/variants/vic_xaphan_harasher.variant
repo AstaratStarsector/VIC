@@ -6,17 +6,16 @@
     "hullId": "vic_xaphan",
     "hullMods": ["vic_ShturmSolution"],
     "permaMods": [],
+    "sMods": [],
     "variantId": "vic_xaphan_harasher",
     "weaponGroups": [
         {
             "autofire": false,
             "mode": "LINKED",
-            "weapons": {"WS0005": "vic_upyr"}
-        },
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0004": "vic_upyr"}
+            "weapons": {
+                "WS0004": "vic_upyr",
+                "WS0005": "vic_upyr"
+            }
         },
         {
             "autofire": false,

@@ -14,17 +14,17 @@ import java.util.List;
 
 public class vic_VerliokaAutofireAI implements AutofireAIPlugin {
 
-    private final float areaAngle = 30f * 0.9f;
-    private final float switchOffAngle = areaAngle * 0.5f;
+    final float areaAngle = 30f * 0.9f;
+    final float switchOffAngle = areaAngle * 0.5f;
 
     IntervalUtil interval = new IntervalUtil(0.05f, 0.15f);
 
-    private Float targetAngle;
+    Float targetAngle;
 
-    private MissileData targetMissile = null;
-    private ShipAPI targetFighter = null;
-    private final WeaponAPI weapon;
-    private final boolean ignoreFlares;
+    MissileData targetMissile = null;
+    ShipAPI targetFighter = null;
+    final WeaponAPI weapon;
+    final boolean ignoreFlares;
 
     public vic_VerliokaAutofireAI(WeaponAPI weapon) {
         this.weapon = weapon;
@@ -128,7 +128,7 @@ public class vic_VerliokaAutofireAI implements AutofireAIPlugin {
         return null;
     }
 
-    private static final class MissileData {
+    static final class MissileData {
 
         public MissileData(MissileAPI missile, float angle){
             this.missile = missile;

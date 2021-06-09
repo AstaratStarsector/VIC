@@ -1,11 +1,12 @@
 {
     "displayName": "Harasser",
-    "fluxCapacitors": 10,
+    "fluxCapacitors": 2,
     "fluxVents": 8,
     "goalVariant": true,
     "hullId": "vic_pruflas",
     "hullMods": ["vic_assault"],
     "permaMods": [],
+    "sMods": [],
     "variantId": "vic_pruflas_harasher",
     "weaponGroups": [
         {

@@ -31,7 +31,7 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
             zeroFluxBoost = 15f;
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        stats.getMaxSpeed().modifyFlat(id, stats.getMaxSpeed().getModifiedValue() * (-speedRed * 0.01f));
+        stats.getMaxSpeed().modifyFlat(id, stats.getMaxSpeed().getBaseValue() * (-speedRed * 0.01f));
         stats.getZeroFluxSpeedBoost().modifyFlat(id, zeroFluxBoost);
 
         stats.getShieldDamageTakenMult().modifyMult(id, 1f - shieldEff * 0.01f);
@@ -56,7 +56,7 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
         boolean speedPenalty = variant != null && (variant.hasHullMod("vic_deathProtocol") || variant.hasHullMod("vic_assault"));
 
         if (speedPenalty) {
-            stats.getMaxSpeed().modifyFlat(id + "second", stats.getMaxSpeed().getModifiedValue() * -0.25f);
+            stats.getMaxSpeed().modifyFlat(id + "second", stats.getMaxSpeed().getBaseValue() * -0.25f);
         }
     }
 

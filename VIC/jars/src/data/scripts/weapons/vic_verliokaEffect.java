@@ -5,6 +5,7 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.plugins.vic_combatPlugin;
 import data.scripts.util.MagicAnim;
 import data.scripts.util.MagicRender;
 import data.scripts.weapons.autofireAI.vic_VerliokaAutofireAI;
@@ -31,11 +32,18 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
 
     private final IntervalUtil timer = new IntervalUtil(0.25f, 0.25f);
 
+    boolean doOnce = true;
+
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
 
         if (engine.isPaused() || weapon.getShip().getOriginalOwner() == -1) return;
+
+        if (doOnce){
+            vic_combatPlugin.addVerlioka(weapon);
+            doOnce = false;
+        }
 
         ShipAPI ship = weapon.getShip();
 
@@ -102,6 +110,7 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
 
         float range = weapon.getRange() * 1.05f;
 
+        /*
         SpriteAPI trail = Global.getSettings().getSprite("fx", "vic_verlioka_field");
         Vector2f dir = Misc.getUnitVectorAtDegreeAngle(facing);
         Vector2f trailLoc = new Vector2f(weapon.getLocation().x + (dir.x * range), weapon.getLocation().y + (dir.y * range));
@@ -110,6 +119,8 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
         Vector2f trailSize = new Vector2f(size, size * 0.5f);
         trail.setCenter(size * 0.5f, size * 0.5f);
         MagicRender.singleframe(trail, trailLoc, trailSize, facing - 90, new Color(255, 255, 255, 255), false);
+
+         */
 
         //Global.getCombatEngine().maintainStatusForPlayerShip("vic_dmgMult", "graphics/icons/hullsys/vic_adaptiveWarfareSystem.png", "dmgMult", dmgMult + "", false);
 

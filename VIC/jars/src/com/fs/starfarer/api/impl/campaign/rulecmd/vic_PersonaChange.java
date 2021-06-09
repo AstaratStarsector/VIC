@@ -19,6 +19,7 @@ import com.fs.starfarer.rpg.Person;
 import data.scripts.utilities.StringHelper;
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
+import org.lazywizard.lazylib.MathUtils;
 
 import java.awt.*;
 import java.util.*;
@@ -486,7 +487,8 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         // Technically it should be called cloneOfficer(), but whatever...
         final PersonAPI oldPerson = toRespec.getPerson(),
-                newPerson = OfficerManagerEvent.createOfficer(oldPerson.getFaction(), 1, false);
+                newPerson = OfficerManagerEvent.createOfficer(oldPerson.getFaction(), 1, null,
+                        false, null, false, false, -1, MathUtils.getRandom());
         final FleetMemberAPI ship = sourceFleet.getFleetData().getMemberWithCaptain(oldPerson);
 
         // Copy the old person's memory to the new person
@@ -540,6 +542,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         // Set the officer's person to the new copy and give it the proper amount of experience
         toRespec.setPerson(newPerson);
+        toRespec.getPerson().getStats().setSkillLevel(toRespec.getPerson().getStats().getSkillsCopy().get(0).getSkill().getId(), 1);
         if (ship != null) ship.setCaptain(newPerson);
         toRespec.addXP((long) (oldPerson.getStats().getXP() * respecOfficerXP));
         newPerson.getStats().refreshCharacterStatsEffects();

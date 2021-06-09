@@ -1,11 +1,12 @@
 {
     "displayName": "Skirmisher",
-    "fluxCapacitors": 7,
+    "fluxCapacitors": 6,
     "fluxVents": 10,
     "goalVariant": true,
     "hullId": "vic_xaphan",
     "hullMods": ["vic_PDArcEmitter"],
     "permaMods": [],
+    "sMods": [],
     "variantId": "vic_xaphan_skirmisher",
     "weaponGroups": [
         {

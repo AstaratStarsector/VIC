@@ -54,6 +54,16 @@ public class VIC_TimeTracker implements EveryFrameScript {
 
             float total = market.getIncoming().getWeight().getModifiedValue();
 
+            if (market.getFactionId().equals("vic")){
+                if (!(market.hasIndustry("vic_antiEVCt1") || market.hasIndustry("vic_antiEVCt2") || market.hasIndustry("vic_antiEVCt3"))){
+                    market.addIndustry("vic_antiEVCt1");
+                    market.getIndustry("vic_antiEVCt1").startBuilding();
+                } else if (market.hasIndustry("vic_antiEVCt1")){
+                    market.getIndustry("vic_antiEVCt1").startUpgrading();
+                } else if (market.hasIndustry("vic_antiEVCt2")){
+                    market.getIndustry("vic_antiEVCt2").startUpgrading();
+                }
+            }
             if (market.hasIndustry("vic_antiEVCt2") || market.hasIndustry("vic_antiEVCt3")) continue;
             if (market.getPopulation().getWeight().getModifiedValue() <= lowPopSize && total < 0) {
                 if (market.getSize() >= 3) {

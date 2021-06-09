@@ -9,7 +9,7 @@ import java.util.EnumSet;
 public class vic_deathProtocol extends BaseHullMod {
 
     public float
-            dmgIncreas = 1.3f,
+            dmgIncrease = 1.3f,
             dmgTaken = 1.25f,
             cloakCost = 1.25f,
             rangePenalty = 0.85f,
@@ -17,9 +17,9 @@ public class vic_deathProtocol extends BaseHullMod {
 
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        stats.getBallisticWeaponDamageMult().modifyMult(id, dmgIncreas);
-        stats.getEnergyWeaponDamageMult().modifyMult(id, dmgIncreas);
-        stats.getMissileWeaponDamageMult().modifyMult(id, dmgIncreas);
+        stats.getBallisticWeaponDamageMult().modifyMult(id, dmgIncrease);
+        stats.getEnergyWeaponDamageMult().modifyMult(id, dmgIncrease);
+        stats.getMissileWeaponDamageMult().modifyMult(id, dmgIncrease);
 
         ShipVariantAPI variant = stats.getVariant();
         float damageAndCloakMult = 0f;
@@ -29,7 +29,7 @@ public class vic_deathProtocol extends BaseHullMod {
         if (variant != null && variant.hasHullMod("vic_assault")) {
             damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
         }
-        if (!variant.getHullSpec().getHullId().startsWith("vic_")){
+        if (variant != null && !variant.getHullSpec().getHullId().startsWith("vic_")){
             damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
         }
 
@@ -80,7 +80,7 @@ public class vic_deathProtocol extends BaseHullMod {
             }
         }
 
-        if (index == 0) return Math.round((dmgIncreas - 1) * 100) + "%";
+        if (index == 0) return Math.round((dmgIncrease - 1) * 100) + "%";
         if (index == 1) return Math.round(((dmgTaken + damageAndCloakMult) - 1) * 100) + "%";
         if (index == 2) return Math.round(((cloakCost + damageAndCloakMult) - 1) * 100) + "%";
         if (index == 3) return Math.round((1f - rangePenalty) * 100f) + "%";

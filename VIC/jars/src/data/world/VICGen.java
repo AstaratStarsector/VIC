@@ -99,6 +99,7 @@ public class VICGen implements SectorGeneratorPlugin {
         vic.setRelationship(Factions.DIKTAT, -0.1f);
         vic.setRelationship(Factions.LIONS_GUARD, -0.1f);
         vic.setRelationship(Factions.HEGEMONY, 0.6f);
+        vic.setRelationship(Factions.REMNANTS, -1f);
     }
 }
 

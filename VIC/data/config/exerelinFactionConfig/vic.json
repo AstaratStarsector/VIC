@@ -25,6 +25,7 @@
 		"tritachyon": -0.9,                              #Let's settle this once and for all, shall we?
 		"luddic_church":-1,                              #Blind, ignorant, foolish and too stubborn. No point in showing them the right way.
 		"luddic_path":-1,                                #Degeneracy incarnate. Death won't be enough for these.
+		"remnant":-1,
 		
 		# Mod factions
 		"anvil_industries": 0,                           #Good mechanics, their services are surely of use.
@@ -156,7 +157,8 @@
     ],
     "startShipsSuper":[
 	["vic_nybbas_plasma", "vic_buffalo_hegemony"],
-	["vic_apollyon_standart"]
+	["vic_apollyon_standart"],
+	["vic_oriax_standard"]
 	],
     
     "startSpecialItems":[

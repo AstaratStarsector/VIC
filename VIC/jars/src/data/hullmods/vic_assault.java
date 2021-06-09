@@ -5,8 +5,6 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
-import com.fs.starfarer.api.loading.HullModSpecAPI;
-import data.scripts.hullmods.MagicIncompatibleWarning;
 import data.scripts.util.MagicIncompatibleHullmods;
 
 import java.util.HashMap;
@@ -68,20 +66,20 @@ public class vic_assault extends BaseHullMod {
         stats.getProjectileSpeedMult().modifyMult(id, projSpeedMult );
 
         ShipVariantAPI variant = stats.getVariant();
-        float pptMult = 0.33f;
+        boolean penaltyOn = false;
 
         if (variant != null && variant.hasHullMod("vic_allRoundShieldUpgrade")){
-            pptMult = 0f;
+            penaltyOn = true;
         }
         if (variant != null && variant.hasHullMod("vic_deathProtocol")){
-            pptMult = 0f;
+            penaltyOn = true;
         }
         assert variant != null;
         if (!variant.getHullSpec().getHullId().startsWith("vic_")){
-            pptMult =  0f;
+            penaltyOn = true;
         }
 
-        stats.getPeakCRDuration().modifyMult(id, pptPenalty + pptMult);
+        if (penaltyOn) stats.getPeakCRDuration().modifyMult(id, pptPenalty);
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {

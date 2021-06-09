@@ -20,16 +20,19 @@ public class vic_PDArcEmitter extends BaseHullMod {
             ZapFlux = ZapDamage * 0.7f;
 
     {
+        chargeCD.put(ShipAPI.HullSize.FIGHTER, 4.5f);
         chargeCD.put(ShipAPI.HullSize.FRIGATE, 3f);
         chargeCD.put(ShipAPI.HullSize.DESTROYER, 1.5f);
         chargeCD.put(ShipAPI.HullSize.CRUISER, 1f);
         chargeCD.put(ShipAPI.HullSize.CAPITAL_SHIP, 0.6f);
 
+        maxCharges.put(ShipAPI.HullSize.FIGHTER, 4f);
         maxCharges.put(ShipAPI.HullSize.FRIGATE, 6f);
         maxCharges.put(ShipAPI.HullSize.DESTROYER, 9f);
         maxCharges.put(ShipAPI.HullSize.CRUISER, 12f);
         maxCharges.put(ShipAPI.HullSize.CAPITAL_SHIP, 21f);
 
+        range.put(ShipAPI.HullSize.FIGHTER, 250f);
         range.put(ShipAPI.HullSize.FRIGATE, 250f);
         range.put(ShipAPI.HullSize.DESTROYER, 300f);
         range.put(ShipAPI.HullSize.CRUISER, 350f);

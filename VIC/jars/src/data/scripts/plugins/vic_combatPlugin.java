@@ -144,7 +144,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 if (entry.getValue().wasAffectedLastCheck) {
                     entry.getValue().wasAffectedLastCheck = false;
                 } else {
-                    entry.getValue().advance(amount);
+                    entry.getValue().advance(amount * entry.getKey().getMutableStats().getTimeMult().getModifiedValue());
                 }
 //                entry.getKey().setJitterShields(false);
 //                entry.getKey().setJitterUnder(entry.getKey(), new Color(106, 0, 255), 4, 8, 2);
@@ -155,7 +155,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 stats.getShieldUpkeepMult().modifyMult("vic_zlydzen_effect", 1 + (0.5f * effectLevel));
 
                 if (entry.getKey() == engine.getPlayerShip())
-                    engine.maintainStatusForPlayerShip("vic_zlydzen_effect_shield", "graphics/icons/hullsys/vic_zlydzenEffect.png", "Disruptor Beam", "Shield effectiveness reduced " + Math.round(effectLevel * 100) + "%", true);
+                    engine.maintainStatusForPlayerShip("vic_zlydzen_effect_shield", "graphics/icons/hullsys/vic_zlydzenEffect.png", "Disruptor Beam", "Shield eff reduced " + Math.round(effectLevel * 100) + "%", true);
             }
         }
         HashMap<ShipAPI, ZlydzenTargetsDataShield> cloneMapZ = new HashMap<>(localData.ZlydzenTargetsShield);
@@ -181,7 +181,9 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 if (entry.getValue().wasAffectedLastCheck) {
                     entry.getValue().wasAffectedLastCheck = false;
                 } else {
-                    entry.getValue().advance(amount);
+                    float mult = 1;
+                    if (entry.getKey().isPhased()) mult = 0.5f;
+                    entry.getValue().advance(amount * entry.getKey().getMutableStats().getTimeMult().getModifiedValue() * mult);
                 }
 //                entry.getKey().setJitterShields(false);
 //                entry.getKey().setJitterUnder(entry.getKey(), new Color(106, 0, 255), 4, 8, 2);
@@ -197,7 +199,11 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 stats.getWeaponTurnRateBonus().modifyMult("vic_zlydzen_effect", 1 - (0.25f * effectLevel));
 
                 if (entry.getKey() == engine.getPlayerShip())
-                    engine.maintainStatusForPlayerShip("vic_zlydzen_effect_armour", "graphics/icons/hullsys/vic_zlydzenEffect.png", "Disruptor Beam", "Armour effectiveness reduced " + Math.round(effectLevel * 100) + "%", true);
+                    if (entry.getKey().getPhaseCloak() == null) {
+                        engine.maintainStatusForPlayerShip("vic_zlydzen_effect_armour", "graphics/icons/hullsys/vic_zlydzenEffect.png", "Disruptor Beam", "Armour eff reduced " + Math.round(effectLevel * 100) + "%", true);
+                    } else {
+                        engine.maintainStatusForPlayerShip("vic_zlydzen_effect_armour", "graphics/icons/hullsys/vic_zlydzenEffect.png", "Disruptor Beam", "Armour and phase eff reduced " + Math.round(effectLevel * 100) + "%", true);
+                    }
             }
         }
         HashMap<ShipAPI, ZlydzenTargetsDataArmour> cloneMap_ZlydzenTargetsArmour = new HashMap<>(localData.ZlydzenTargetsArmour);
@@ -389,6 +395,20 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             sprite.setAngle(FX.angle);
             sprite.renderAtCenter(FX.position.x, FX.position.y);
         }
+        //verlioka
+        for (WeaponAPI weapon : localData.verliokas){
+            if (weapon.getChargeLevel() < 1) continue;
+            float range = weapon.getRange() * 1.05f;
+            SpriteAPI trail = Global.getSettings().getSprite("fx", "vic_verlioka_field");
+            Vector2f dir = Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle());
+            Vector2f trailLoc = new Vector2f(weapon.getLocation().x + (dir.x * range), weapon.getLocation().y + (dir.y * range));
+            //engine.addFloatingText(trailLoc, "o" + "", 60, Color.WHITE, ship, 0.25f, 0.25f);
+            float size = range * 0.53f;
+            trail.setSize(size, size * 0.5f);
+            trail.setCenter(size * 0.5f, size * 0.5f);
+            trail.setAngle(weapon.getCurrAngle() - 90);
+            trail.renderAtCenter(trailLoc.getX(), trailLoc.getY());
+        }
     }
 
     public static void AddNawiaFX(Vector2f location, float angle) {
@@ -396,6 +416,13 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         if (engine == null) return;
         final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
         localData.NawiaFxList.add(new NawiaFxData(location, angle));
+    }
+
+    public static void addVerlioka(WeaponAPI weapon) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        localData.verliokas.add(weapon);
     }
 
     public static void AddDefenceSuppressorTarget(ShipAPI ship, float Duration) {
@@ -446,9 +473,10 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         localData.ArcaneMissiles.put(proj, new ArcaneMissilesData(proj, target, time, rangeBeforeCurving, startingSpeed));
     }
 
-    private static final class LocalData {
+    public static final class LocalData {
         final List<NawiaFxData> NawiaFxList = new ArrayList<>(250);
         final List<animationRenderData> animationRenderList = new ArrayList<>(250);
+        final List<WeaponAPI> verliokas = new ArrayList<>(50);
         final HashMap<ShipAPI, Float> FluxRaptureRender = new HashMap<>(10);
         final HashMap<ShipAPI, Float> defenceSuppressor = new HashMap<>(25);
         final HashMap<ShipAPI, ZlydzenTargetsDataShield> ZlydzenTargetsShield = new HashMap<>(50);

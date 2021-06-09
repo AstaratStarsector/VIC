@@ -113,7 +113,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         Vector2f ExitPos = new Vector2f(targetPos.x + (distPastTarget * MoveDir.x), targetPos.y + (distPastTarget * MoveDir.y));
         Vector2f CheckPos = new Vector2f(ExitPos.x + (400 * MoveDir.x), ExitPos.y + (400 * MoveDir.y));
 
-        spawnText("there", CheckPos);
+        //spawnText("there", CheckPos);
 
         float enemyScore = 0f;
         float allyScore = 0f;

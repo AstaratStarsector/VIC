@@ -4,6 +4,8 @@ import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.WeaponAPI;
+
+import java.util.Date;
 import java.util.Random;
 
 public class vic_decalSelector implements EveryFrameWeaponEffectPlugin {
@@ -25,7 +27,7 @@ public class vic_decalSelector implements EveryFrameWeaponEffectPlugin {
                 if (shipName != null){
                     weapon.getAnimation().setFrame(new Random(shipName.hashCode()).nextInt(maxFrames));
                 } else {
-                    weapon.getAnimation().setFrame(new Random().nextInt(maxFrames));
+                    weapon.getAnimation().setFrame(new Random(new Date().getHours()).nextInt(maxFrames));
                 }
             }
             runOnce = true;

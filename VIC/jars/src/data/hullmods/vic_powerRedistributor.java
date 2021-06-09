@@ -3,9 +3,11 @@ package data.hullmods;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
+import com.fs.starfarer.api.combat.ShipAIPlugin;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.combat.entities.Ship;
 
 
 import java.awt.*;
@@ -71,6 +73,11 @@ public class vic_powerRedistributor extends BaseHullMod {
         ShipAPI.HullSize target = null;
         if (ship.getShipTarget() != null) {
             target = ship.getShipTarget().getHullSize();
+        } else if (ship.getAI() != null){
+            try {
+                target = ship.getWeaponGroupsCopy().get(0).getAIPlugins().get(0).getTargetShip().getHullSize();
+            } catch (Exception e) {
+            }
         }
         for (Map.Entry<state, Float> entry : powers.entrySet()) {
             entry.setValue(Math.max(0, entry.getValue() - amount / timeToSwitch));

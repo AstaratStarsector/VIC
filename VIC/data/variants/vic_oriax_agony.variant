@@ -1,39 +1,52 @@
 {
-    "displayName": "Standard",
-    "fluxCapacitors": 22,
+    "displayName": "Agony",
+    "fluxCapacitors": 23,
     "fluxVents": 50,
     "goalVariant": true,
     "hullId": "vic_oriax",
-    "hullMods": ["targetingunit"],
+    "hullMods": [
+        "advancedoptics",
+        "targetingunit"
+    ],
     "permaMods": [],
     "sMods": [],
-    "variantId": "vic_oriax_standard",
+    "variantId": "vic_oriax_agony",
     "weaponGroups": [
         {
             "autofire": false,
             "mode": "LINKED",
-            "weapons": {"WS0001": "vic_psotnik"}
+            "weapons": {"WS0001": "tachyonlance"}
         },
         {
             "autofire": true,
             "mode": "LINKED",
-            "weapons": {"WS0013": "vic_thermalLance"}
+            "weapons": {"WS0013": "vic_zlydzen"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {"WS1028": "ionbeam"}
         },
         {
             "autofire": true,
             "mode": "LINKED",
             "weapons": {
-                "WS0007": "vic_balachko",
-                "WS0008": "vic_balachko",
-                "WS1028": "vic_vila"
+                "WS0007": "gravitonbeam",
+                "WS0008": "gravitonbeam"
             }
         },
         {
             "autofire": true,
             "mode": "LINKED",
             "weapons": {
-                "WS0005": "vic_strigoy",
-                "WS0006": "vic_strigoy",
+                "WS0005": "taclaser",
+                "WS0006": "taclaser"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
                 "WS0015": "vic_strigoy",
                 "WS0016": "vic_strigoy",
                 "WS0017": "vic_strigoy",
@@ -47,7 +60,7 @@
         }
     ],
     "wings": [
-        "vic_uvall_wing",
-        "vic_uvall_wing"
+        "vic_shabriri_wing",
+        "vic_shabriri_wing"
     ]
 }

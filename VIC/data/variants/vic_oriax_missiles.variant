@@ -1,0 +1,52 @@
+{
+    "displayName": "Missiles",
+    "fluxCapacitors": 20,
+    "fluxVents": 30,
+    "goalVariant": true,
+    "hullId": "vic_oriax",
+    "hullMods": [
+        "missleracks",
+        "targetingunit",
+        "eccm"
+    ],
+    "permaMods": [],
+    "sMods": [],
+    "variantId": "vic_oriax_missiles",
+    "weaponGroups": [
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0007": "vic_psotnikmed",
+                "WS0008": "vic_psotnikmed",
+                "WS1028": "vic_psotnikmed"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0013": "hurricane"}
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0001": "squall"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0005": "vic_strigoy",
+                "WS0006": "vic_strigoy",
+                "WS0015": "vic_strigoy",
+                "WS0016": "vic_strigoy",
+                "WS0017": "vic_strigoy",
+                "WS0018": "vic_strigoy"
+            }
+        }
+    ],
+    "wings": [
+        "vic_shabriri_wing",
+        "vic_shabriri_wing"
+    ]
+}

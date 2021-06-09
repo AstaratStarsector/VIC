@@ -1,14 +1,12 @@
 {
     "displayName": "Standard",
-    "fluxCapacitors": 12,
-    "fluxVents": 9,
+    "fluxCapacitors": 7,
+    "fluxVents": 19,
     "goalVariant": true,
     "hullId": "vic_moloch",
-    "hullMods": [
-        "vic_assault",
-        "vic_ShturmSolution"
-    ],
+    "hullMods": ["vic_assault"],
     "permaMods": [],
+    "sMods": [],
     "variantId": "vic_moloch_standart",
     "weaponGroups": [
         {
@@ -18,6 +16,14 @@
         },
         {
             "autofire": false,
+            "mode": "ALTERNATING",
+            "weapons": {
+                "WS0005": "sabot",
+                "WS0006": "sabot"
+            }
+        },
+        {
+            "autofire": true,
             "mode": "LINKED",
             "weapons": {
                 "WS0001": "vic_gagana",
@@ -31,16 +37,6 @@
                 "WS0003": "vic_strigoy",
                 "WS0004": "vic_strigoy"
             }
-        },
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0006": "sabot"}
-        },
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0005": "sabot"}
         }
     ]
 }
