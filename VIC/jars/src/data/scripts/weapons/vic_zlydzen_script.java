@@ -1,19 +1,11 @@
-//By Tartiflette modified by PureTilt
 package data.scripts.weapons;
 
 import com.fs.starfarer.api.AnimationAPI;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.DamagingProjectileAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.WeaponAPI;
-import com.fs.starfarer.api.util.IntervalUtil;
-import data.scripts.util.MagicAnim;
 import org.lazywizard.lazylib.MathUtils;
-import org.lazywizard.lazylib.combat.CombatUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class vic_zlydzen_script implements EveryFrameWeaponEffectPlugin {
 
@@ -46,15 +38,12 @@ public class vic_zlydzen_script implements EveryFrameWeaponEffectPlugin {
                 frame = MathUtils.getRandomNumberInRange(0, maxFrame - 1);
             }
         }
-        if (weapon.isFiring()) timer += amount * 0.5f;
-        timer += amount * weapon.getChargeLevel() * 0.5f;
-        while (timer >= delay){
-            timer -= delay;
-            if (frame == maxFrame) {
-                frame = 0;
-            } else {
-                frame++;
-            }
+
+        if (!hidden) {
+            float animationSpeed = 0;
+            if (weapon.getChargeLevel() != 0) animationSpeed += 10;
+            animationSpeed += 30 * weapon.getChargeLevel();
+            theAnim.setFrameRate(animationSpeed);
         }
 
         if (weapon.getChargeLevel() > 0) {
@@ -79,9 +68,7 @@ public class vic_zlydzen_script implements EveryFrameWeaponEffectPlugin {
             );
         }
 
-        if (!hidden) {
-            theAnim.setFrame(frame);
-        }
+
 
     }
 }

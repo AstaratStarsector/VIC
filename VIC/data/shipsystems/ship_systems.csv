@@ -8,3 +8,4 @@ Flux Rapture,vic_shockDischarger,,,,,,,,,,5,2.5,0.5,40,,,,,,,,,,,,,graphics/icon
 Baryonic Displacement,vic_quantumteleporter,,,,,,,,,,0.5,0,0.5,6,,TRUE,,TRUE,,,,,,,,,graphics/icons/hullsys/displacer.png
 Defence Suppressor,vic_defenceSuppressor,,,,1000,,0.1,,,,1,0.15,0.15,20,,,,,,,,,,,,,graphics/icons/hullsys/vic_defenceSuppressor.png
 Phase Dive,vic_phaseDive,,,,,,,,,,0.5,,0.5,3,TRUE,,TRUE,TRUE,TRUE,,,,TRUE,,TRUE,,graphics/icons/hullsys/phase_cloak.png
+Minelayer,vic_mineLayer,,,,,,,,2,0.1,,,,2,,,,,,,,,,,,,graphics/icons/hullsys/flare_launcher.png

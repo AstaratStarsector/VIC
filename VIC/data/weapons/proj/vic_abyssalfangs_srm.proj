@@ -1,7 +1,7 @@
 {
 	"id":"vic_abyssalfangs_srm",
 	"specClass":"missile",	
-	"missileType":"MIRV",
+	"missileType":"MISSILE",
 	"sprite":"graphics/missiles/missile_squall.png",
 	"size":[9,18],	
 	"center":[4.5,9],

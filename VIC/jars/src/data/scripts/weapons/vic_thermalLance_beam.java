@@ -28,18 +28,17 @@ public class vic_thermalLance_beam implements BeamEffectPlugin {
     @Override
     public void advance(float amount, CombatEngineAPI engine, BeamAPI beam) {
 
-        //Global.getLogger(vic_thermalLance_beam.class).debug(beam.getWeapon().getSpec().getBurstDuration());
 
         if (runOnce) {
             baseDMG = beam.getWeapon().getDamage().getBaseDamage();
             WeaponSpecAPI weaponSpec = beam.getWeapon().getSpec();
             float charge = (weaponSpec.getBeamChargedownTime() + weaponSpec.getBeamChargeupTime()) * 1 / 3;
             burstDMGMult = ((charge + weaponSpec.getBurstDuration()) - (charge * chargeUpDMGMult)) / weaponSpec.getBurstDuration();
+            Global.getLogger(vic_thermalLance_beam.class).info(baseDMG * burstDMGMult);
             runOnce = false;
         }
 
         float charge = beam.getWeapon().getChargeLevel();
-
 
         beam.getDamage().setDamage(baseDMG * chargeUpDMGMult);
 

@@ -32,13 +32,15 @@ public class VIC_EngineGlowScript implements EveryFrameWeaponEffectPlugin {
         }
 
         //default brightness is idle
-        float targetBrightness = 0.5f;
+        float targetBrightness = 0.4f;
 
         //change brightness depending on current actions
         if (SHIP.getEngineController().isAccelerating() || SHIP.getEngineController().isAcceleratingBackwards()) {
             targetBrightness = 1f;
-        } else if (SHIP.getEngineController().isTurningLeft() || SHIP.getEngineController().isTurningRight()) {
+        } else if (SHIP.getEngineController().isTurningLeft() || SHIP.getEngineController().isTurningRight() || SHIP.getEngineController().isStrafingLeft() || SHIP.getEngineController().isStrafingRight()) {
             targetBrightness = 0.75f;
+        } else if (SHIP.getEngineController().isDecelerating()){
+            targetBrightness = 0.6f;
         }
 
         //smooth glow change

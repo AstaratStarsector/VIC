@@ -45,8 +45,8 @@ public class vic_adaptiveAssault extends BaseHullMod {
             balPrec = balScore / totalScore;
             energyPrec = energyScore / totalScore;
         }
-        if (index == 0) return (Math.round(balPrec  * (damageBonus - minBonus)) + minBonus) + "%";
-        if (index == 1) return (Math.round(energyPrec * (damageBonus - minBonus)) + minBonus) + "%";
+        if (index == 0) return (Math.round(balPrec  * (damageBonus - minBonus) + minBonus)) + "%";
+        if (index == 1) return (Math.round(energyPrec * (damageBonus - minBonus) + minBonus)) + "%";
         return null;
     }
 }

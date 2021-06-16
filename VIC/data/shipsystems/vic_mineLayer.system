@@ -1,0 +1,9 @@
+{
+	"id":"vic_mineLayer",
+	"type":"WEAPON",
+	"aiType":"CUSTOM",
+	"aiScript":"data.scripts.shipsystems.ai.vic_mineleyer_ai",
+	
+	"weaponDataId":"vic_fragMine",
+	"outOfUsesSound":"gun_out_of_ammo",
+}

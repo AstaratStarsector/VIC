@@ -34,7 +34,8 @@
     0
   ],
   "numFrames": 4,
-  "frameRate": 20,
+  "frameRate": 0,
+	"alwaysAnimate":"true",
   "fringeColor": [
     25,
     75,
