@@ -9,7 +9,6 @@
   "turretGunSprite": "graphics/weapons/vic_psotnikmed_barrel_turret.png",
   "hardpointSprite": "graphics/weapons/vic_psotnikmed_base_hardpoint.png",
   "hardpointGunSprite": "graphics/weapons/vic_psotnikmed_barrel_hardpoint.png",
-  "renderAboveAllWeapons": 0,
   "visualRecoil": 8,
   "renderHints": [
     RENDER_BARREL_BELOW
@@ -25,9 +24,9 @@
     0
   ],
   "hardpointOffsets": [
-    58.5,
+    41,
     3,
-    58.5,
+    41,
     -3
   ],
   "hardpointAngleOffsets": [
@@ -50,6 +49,5 @@
       245
     ]
   },
-  "textureType": ROUGH,
   "fireSoundTwo": "vic_psotnikmed"
 }

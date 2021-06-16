@@ -27,7 +27,7 @@
     "WS0015": "vic_moloch_wing_right",
     "WS0016": "vic_moloch_front_left",
     "WS0017": "vic_moloch_front_right",
-	"WS0018": "VIC_OmniLungeEffect"
+    "WS0018": "VIC_OmniLungeEffect"
   },
   "weaponSlots": [
     {
@@ -58,7 +58,7 @@
       "arc": 139,
       "angle": -43,
       "locations": [28, -11],
-      "renderOrderMod": 2
+      "renderOrderMod": 100
     },
     {
       "id": "WS0004",
@@ -68,7 +68,7 @@
       "arc": 139,
       "angle": 43,
       "locations": [28, 11],
-      "renderOrderMod": 2
+      "renderOrderMod": 100
     },
     {
       "id": "WS0005",
@@ -173,7 +173,7 @@
     },
     {
       "id": "WS0016",
-      "size": "LARGE",
+      "size": "SMALL",
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 139,
@@ -183,7 +183,7 @@
     },
     {
       "id": "WS0017",
-      "size": "LARGE",
+      "size": "SMALL",
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 139,

@@ -2,7 +2,7 @@
 	"id":"vic_moloch_front_left",  # this id must match what's in the spreadsheet
 	"specClass":"beam",
 	"type":"DECORATIVE",
-	"size":"LARGE",
+	"size":"SMALL",
 	"showDamageWhenDecorative":true,
 	"renderBelowAllWeapons":false,	
 	"turretSprite":"graphics/ships/Moloch/vic_moloch_front_left.png",
