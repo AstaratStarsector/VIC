@@ -488,7 +488,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         // Technically it should be called cloneOfficer(), but whatever...
         final PersonAPI oldPerson = toRespec.getPerson(),
                 newPerson = OfficerManagerEvent.createOfficer(oldPerson.getFaction(), 1, null,
-                        false, null, false, false, -1, MathUtils.getRandom());
+                        false, sourceFleet, false, false, -1, MathUtils.getRandom());
         final FleetMemberAPI ship = sourceFleet.getFleetData().getMemberWithCaptain(oldPerson);
 
         // Copy the old person's memory to the new person

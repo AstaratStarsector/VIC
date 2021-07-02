@@ -49,7 +49,7 @@ public class Ittir {
                 150f,
                 2500f,
                 80f);
-        Kalada.setCustomDescriptionId("vic_kalada"); //reference descriptions.csv
+        //Kalada.setCustomDescriptionId("vic_kalada"); //reference descriptions.csv
 
         MarketAPI Kalada_market = addMarketplace(
                 "vic",
@@ -96,11 +96,11 @@ public class Ittir {
         );
 
         Kalada_market.getIndustry(Industries.FARMING).setSpecialItem(new SpecialItemData(vic_Items.GMOfarm, null));
+        Kalada_market.setImmigrationIncentivesOn(true);
 
 
         system.addAsteroidBelt(IttirStar, 50, 3000, 400, 300, 400, Terrain.ASTEROID_BELT, "Inner Band");
         system.addRingBand(IttirStar, "misc", "rings_asteroids0", 256f, 3, Color.gray, 256f, 3000, 250f);
-
 
 
         // Mithos planet - the Church awakens
@@ -305,6 +305,7 @@ public class Ittir {
                 100f,
                 1000f,
                 30f);
+        Pierre.setCustomDescriptionId("vic_pierre"); //reference descriptions.csv
 
         Pierre.getMarket().addCondition(Conditions.NO_ATMOSPHERE);
         Pierre.getMarket().addCondition(Conditions.COLD);
@@ -323,6 +324,7 @@ public class Ittir {
                 60f,
                 1500f,
                 60f);
+        Becquerel.setCustomDescriptionId("vic_becquerel"); //reference descriptions.csv
 
         Becquerel.getMarket().addCondition(Conditions.NO_ATMOSPHERE);
         Becquerel.getMarket().addCondition(Conditions.VERY_COLD);

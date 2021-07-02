@@ -36,6 +36,8 @@ public class Apotheosis {
         system.setBackgroundTextureFilename("graphics/backgrounds/apotheosis_background.jpg");
         system.addTag(Tags.THEME_UNSAFE);
         system.addTag(Tags.THEME_HIDDEN);
+        system.addTag(Tags.STORY_CRITICAL);
+
 
 
         // create the star and generate the hyperspace anchor for this system

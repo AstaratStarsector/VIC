@@ -49,7 +49,7 @@ public class VIC_TimeTracker implements EveryFrameScript {
 
     public void doVirusThings(ArrayList<MarketAPI> MarketsWithScar) {
         for (MarketAPI market : MarketsWithScar) {
-            float lowPopSize = (float) ((Math.pow(2f, market.getSize() - 2f)) * 100f);
+            float lowPopSize = (float) ((Math.pow(2f, market.getSize() - 2f)) * 150f);
             Global.getLogger(VIC_TimeTracker.class).info("Vbomb " + market.getName() + " goest down at " + lowPopSize + " / " + " current " + market.getPopulation().getWeight().getModifiedValue());
 
             float total = market.getIncoming().getWeight().getModifiedValue();

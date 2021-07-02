@@ -1,28 +1,18 @@
 package data.world.systems;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.locks.Condition;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
-import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.characters.PersonAPI;
-import com.fs.starfarer.api.impl.campaign.econ.impl.FuelProduction;
-import com.fs.starfarer.api.impl.campaign.econ.impl.HeavyIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
-import com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
-import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
-import com.fs.starfarer.api.impl.campaign.terrain.AsteroidFieldTerrainPlugin.AsteroidFieldParams;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin.MagneticFieldParams;
-import com.fs.starfarer.combat.entities.terrain.Planet;
 import data.campaign.ids.vic_Items;
-import org.lazywizard.lazylib.MathUtils;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static data.world.VICGen.addMarketplace;
 
@@ -38,7 +28,7 @@ public class Empyrean {
         // create the star and generate the hyperspace anchor for this system
         PlanetAPI EmpyreanStar = system.initStar("vic_star_empyrean", // unique id for this star
                 "star_yellow_supergiant", // id in planets.json
-                1300f,		// radius (in pixels at default zoom)
+                1300f,        // radius (in pixels at default zoom)
                 1000, // corona radius, from star edge
                 10f, // solar wind burn level
                 0.5f, // flare probability
@@ -113,13 +103,14 @@ public class Empyrean {
 
 
         Phlegeton_market.getIndustry(Industries.ORBITALWORKS).setSpecialItem(new SpecialItemData(Items.PRISTINE_NANOFORGE, null));
+        Phlegeton_market.setImmigrationIncentivesOn(true);
 
         // Archangel Mining Station
         SectorEntityToken Archangel = system.addCustomEntity("vic_archangel",
                 "\"Archangel\" Orbital Mining Station",
                 "vic_archangel_mining_station",
                 "vic");
-        Archangel.setCircularOrbitPointingDown(EmpyreanStar,50f,  2200f,60f);
+        Archangel.setCircularOrbitPointingDown(EmpyreanStar, 50f, 2200f, 60f);
         Archangel.setCustomDescriptionId("vic_archangel");
 
         //Archangel Mining Beam
@@ -133,7 +124,7 @@ public class Empyrean {
 
         // add  Nav Buoy
         SectorEntityToken CocytusNavBuoy = system.addCustomEntity("cocytus_nav_buoy", "Cocytus Navigation Buoy", "nav_buoy", "vic");
-        CocytusNavBuoy.setCircularOrbitPointingDown( EmpyreanStar, 360f * (float) Math.random(), 4300, 185);
+        CocytusNavBuoy.setCircularOrbitPointingDown(EmpyreanStar, 360f * (float) Math.random(), 4300, 185);
 
 
         // Cocytus: Archipelago Homeworld
@@ -146,7 +137,7 @@ public class Empyrean {
                 4700f,
                 120f);
         Cocytus.getSpec().setGlowTexture(Global.getSettings().getSpriteName("hab_glows", "cocytus"));
-        Cocytus.getSpec().setGlowColor(new Color(255,255,255,255));
+        Cocytus.getSpec().setGlowColor(new Color(255, 255, 255, 255));
         Cocytus.getSpec().setUseReverseLightForGlow(true);
         Cocytus.applySpecChanges();
         Cocytus.setInteractionImage("illustrations", "vic_cocytus_illustration");
@@ -202,6 +193,7 @@ public class Empyrean {
                 true);
 
         Cocytus_market.getIndustry(Industries.FARMING).setSpecialItem(new SpecialItemData(vic_Items.GMOfarm, null));
+        Cocytus_market.setImmigrationIncentivesOn(true);
         CargoAPI cargo = Cocytus_market.getSubmarket(Submarkets.GENERIC_MILITARY).getCargo();
         cargo.addSpecial(new SpecialItemData(vic_Items.GMOfarm, null), 1);
 
@@ -222,21 +214,21 @@ public class Empyrean {
                 "Hyperspace Coherence Adjustment Unit",
                 "vic_jump_point_stabilizer",
                 "vic");
-        Hyperspace_Stabilizer1.setCircularOrbitPointingDown(innerJumpPoint,240f,  150f,5f);
+        Hyperspace_Stabilizer1.setCircularOrbitPointingDown(innerJumpPoint, 240f, 150f, 5f);
         Hyperspace_Stabilizer1.setCustomDescriptionId("vic_jump_point_stabilizer");
 
         SectorEntityToken Hyperspace_Stabilizer2 = system.addCustomEntity("vic_stabilizer2",
                 "Hyperspace Coherence Adjustment Unit",
                 "vic_jump_point_stabilizer",
                 "vic");
-        Hyperspace_Stabilizer2.setCircularOrbitPointingDown(innerJumpPoint,120f,  150f,5f);
+        Hyperspace_Stabilizer2.setCircularOrbitPointingDown(innerJumpPoint, 120f, 150f, 5f);
         Hyperspace_Stabilizer2.setCustomDescriptionId("vic_jump_point_stabilizer");
 
         SectorEntityToken Hyperspace_Stabilizer3 = system.addCustomEntity("vic_stabilizer3",
                 "Hyperspace Coherence Adjustment Unit",
                 "vic_jump_point_stabilizer",
                 "vic");
-        Hyperspace_Stabilizer3.setCircularOrbitPointingDown(innerJumpPoint,0f,  150f,5f);
+        Hyperspace_Stabilizer3.setCircularOrbitPointingDown(innerJumpPoint, 0f, 150f, 5f);
         Hyperspace_Stabilizer3.setCustomDescriptionId("vic_jump_point_stabilizer");
 
 
@@ -304,11 +296,12 @@ public class Empyrean {
                 //junk and chatter
                 false);
 
+        Purgatory_market.setImmigrationIncentivesOn(true);
 
 
         // add Sensor Array
         SectorEntityToken PurgatorySensorArray = system.addCustomEntity("purgatory_sensor_array", "Outer Empyrean Sensor Array", "sensor_array", "vic");
-        PurgatorySensorArray.setCircularOrbitPointingDown( EmpyreanStar, 360f * (float) Math.random(), 7400, 200);
+        PurgatorySensorArray.setCircularOrbitPointingDown(EmpyreanStar, 360f * (float) Math.random(), 7400, 200);
 
 
         //Empyrean Inactive Gate
@@ -466,7 +459,8 @@ public class Empyrean {
                 //junk and chatter
                 false);
         //adds Synchrotron to the Fuel Production industry
-         Megaera_market.getIndustry(Industries.FUELPROD).setSpecialItem(new SpecialItemData(Items.SYNCHROTRON, null));
+        Megaera_market.getIndustry(Industries.FUELPROD).setSpecialItem(new SpecialItemData(Items.SYNCHROTRON, null));
+        Megaera_market.setImmigrationIncentivesOn(true);
 
 
         system.addAsteroidBelt(Dis, 100, 1600, 150, 50, 100, Terrain.ASTEROID_BELT, "Dis Outer Ring");
@@ -569,7 +563,6 @@ public class Empyrean {
                 19000, // radius to start adding at
                 3, // name offset - next planet will be <system name> <roman numeral of this parameter + 1>
                 true); // whether to use custom or system-name based names
-
          */
 
 
@@ -584,7 +577,7 @@ public class Empyrean {
 
     //Learning from Tart scripts
     //Clean nearby Nebula
-    private void cleanup (StarSystemAPI system){
+    private void cleanup(StarSystemAPI system) {
         HyperspaceTerrainPlugin plugin = (HyperspaceTerrainPlugin) Misc.getHyperspaceTerrain().getPlugin();
         NebulaEditor editor = new NebulaEditor(plugin);
         float minRadius = plugin.getTileSize() * 2f;
