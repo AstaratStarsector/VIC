@@ -14,7 +14,6 @@
   "builtInMods": [
     "vic_aerodynamicdesign",
     "vic_dynamicshields",
-    "vic_adaptiveAssault",
 	"vic_convoyDrive"
   ],
   "builtInWeapons": {

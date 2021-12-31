@@ -121,6 +121,7 @@ public class vic_vila_script implements EveryFrameWeaponEffectPlugin, OnFireEffe
 
     @Override
     public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
+        if (weapon == null || weapon.getShip() == null) return;
         final float startingSpeed = MathUtils.getRandomNumberInRange(0.25f, 0.5f);
         final float rangeBeforeCurving = MathUtils.getRandomNumberInRange(0.25f, 0.5f);
 

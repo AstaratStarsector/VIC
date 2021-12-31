@@ -151,12 +151,12 @@
 	["vic_moloch_standart", "vic_kobal_standart", "vic_xaphan_skirmisher"]
     ],
     "startShipsCombatLarge":[
-      ["vic_valafar_assault", "vic_jezebeth_standart", "vic_samael_standart", "vic_buffalo_hegemony"],
-      ["vic_thamuz_standart", "vic_moloch_standart", "vic_jezebeth_standart", "vic_buffalo_hegemony"],
-      ["vic_cresil_assault", "vic_moloch_standart", "vic_samael_standart", "vic_buffalo_hegemony"]	  
+      ["vic_valafar_assault", "vic_jezebeth_standart", "vic_samael_standart", "vic_buffalo_vic_standart"],
+      ["vic_thamuz_standart", "vic_moloch_standart", "vic_jezebeth_standart", "vic_buffalo_vic_standart"],
+      ["vic_cresil_assault", "vic_moloch_standart", "vic_samael_standart", "vic_buffalo_vic_standart"]	  
     ],
     "startShipsSuper":[
-	["vic_nybbas_plasma", "vic_buffalo_hegemony"],
+	["vic_nybbas_plasma", "vic_buffalo_vic_standart"],
 	["vic_apollyon_standart"],
 	["vic_oriax_standard"]
 	],

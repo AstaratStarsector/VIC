@@ -1,0 +1,3 @@
+command,class,tags,syntax,help
+vic_overload,data.scripts.console.vic_overloadCommand,"vic,combat",vic_overload [time],Overload your ship for <time>
+vic_playVbombAnimation,data.scripts.console.vic_playVbombAnimation,"vic,market",vic_playVbombAnimation,PLays Vbomb animation

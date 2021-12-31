@@ -26,8 +26,7 @@
     "WS0016": "vic_valafar_wing_left",
     "WS0017": "vic_valafar_wing_right",
     "WS0018": "vic_valafar_front_left",
-    "WS0019": "vic_valafar_front_right",
-	"WS1000": "VIC_OmniLungeEffect"
+    "WS0019": "vic_valafar_front_right"
   },
   "weaponSlots": [
     {
@@ -200,15 +199,6 @@
       "arc": 5,
       "angle": -0,
       "locations": [73.5, -21]
-    },
-	{
-      "id": "WS1000",
-      "size": "MEDIUM",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 0,
-      "locations": [0, 0]
     }
   ],
   "engineSlots": [

@@ -34,17 +34,23 @@
 			"vic_powerRedistributorNone":"graphics/icons/hullsys/vic_powerRedistributorNone.png",
 			"vic_powerRedistributorSmall":"graphics/icons/hullsys/vic_powerRedistributorSmall.png",
 			"vic_powerRedistributorLarge":"graphics/icons/hullsys/vic_powerRedistributorLarge.png",
+			"vic_deathProtocolIcon":"graphics/icons/hullsys/vic_deathProtocolIcon.png",
+			"vic_auxThrusters":"graphics/icons/hullsys/vic_auxThrusters.png",
 		},
 		"fx":{
 			"vic_fluxRaptureSuck":"graphics/fx/vic_fluxRaptureSuckQuarter.png",
 			"vic_fluxRaptureZap":"graphics/fx/vic_fluxRaptureZapQuarter.png",
 			
-			"vic_rubicon_river":"graphics/fx/vic_rubicon_river.png",
 			"vic_shieldsInner256":"graphics/fx/shield/vic_shields256.png",
-			"vic_shieldsRing256":"graphics/fx/shield/vic_shields256ring.png",
 			"vic_shieldsInner128":"graphics/fx/shield/vic_shields128.png",
-			"vic_shieldsRing128":"graphics/fx/shield/vic_shields128ring.png",
 			"vic_shieldsInner64":"graphics/fx/shield/vic_shields64.png",
+			
+			"vic_shieldsHexInner256":"graphics/fx/shield/vic_shieldsHex256.png",
+			"vic_shieldsHexInner128":"graphics/fx/shield/vic_shieldsHex128.png",
+			"vic_shieldsHexInner64":"graphics/fx/shield/vic_shieldsHex64.png",
+			
+			"vic_shieldsRing256":"graphics/fx/shield/vic_shields256ring.png",
+			"vic_shieldsRing128":"graphics/fx/shield/vic_shields128ring.png",
 			"vic_shieldsRing64":"graphics/fx/shield/vic_shields64ring.png",
 			
 			"vic_shieldsInner256_fervor":"graphics/fx/shield/vic_shields256_fervor.png",
@@ -83,7 +89,10 @@
 		},
 		"characters":{
 			"tatiana":"graphics/portraits/characters/vic_tatiana.jpg",
-		}		
+		},
+		"icons":{
+			"entity":"graphics/icons/entity.png",
+		}
 	}
 }
 	

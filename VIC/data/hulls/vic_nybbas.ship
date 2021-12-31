@@ -12,10 +12,10 @@
   "shieldRadius": 95,
   "viewOffset": 0,
   "builtInMods": [
-    "vic_aerodynamicdesign",
     "vic_toneddownweapon",
-    "phasefield",
-	"delicate"
+	"delicate",
+	"phase_anchor",
+	"adaptive_coils"
   ],
   "builtInWeapons": {
     "WS0001": "vic_nybbas_front_left",

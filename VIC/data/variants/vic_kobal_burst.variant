@@ -1,26 +1,19 @@
 {
-    "displayName": "Burst",
-    "fluxCapacitors": 4,
-    "fluxVents": 10,
+    "displayName": "Fortress",
+    "fluxCapacitors": 10,
+    "fluxVents": 9,
     "goalVariant": true,
-    "hullId": "vic_kobal",
-    "hullMods": [],
+    "hullId": "vic_kobal_alt",
+    "hullMods": ["vic_allRoundShieldUpgrade"],
     "permaMods": [],
     "sMods": [],
     "variantId": "vic_kobal_burst",
-    "weaponGroups": [
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0005": "vic_nawia",
-                "WS0006": "vic_nawia"
-            }
-        },
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0004": "vic_vila"}
+    "weaponGroups": [{
+        "autofire": false,
+        "mode": "LINKED",
+        "weapons": {
+            "WS0005": "vic_psotnikmed",
+            "WS0006": "vic_psotnikmed"
         }
-    ]
+    }]
 }

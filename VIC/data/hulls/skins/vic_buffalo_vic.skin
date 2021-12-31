@@ -1,0 +1,26 @@
+{
+	"baseHullId":"buffalo",
+	"skinHullId":"vic_buffalo_vic",
+	"hullName":"Buffalo (VIC)",
+	"descriptionId":"buffalo",  # optional
+	"descriptionPrefix":"This ship has been given VIC markings. Systems modifications are otherwise superficial.",
+	"tags":[],
+	"tech":"Volkov Industries",
+	"fleetPoints":5,
+	"spriteName":"graphics/ships/vic_buffalo_vic_nes.png",
+	"removeWeaponSlots":[], 		# ids
+	"removeEngineSlots":[], 		# indices, as engine slots have no id in the .ship file
+	"removeBuiltInMods":[], 		# hullmod ids
+	"removeBuiltInWeapons":[], 		# weapon slot ids
+	"builtInMods":["efficiency_overhaul"],
+	"builtInWeapons":{
+    },
+    "engineSlotChanges":{
+		"0":{"style":"VOLKOV-LAIDLAW'S"},
+		"1":{"style":"VOLKOV-LAIDLAW'S"},
+		"2":{"style":"VOLKOV-LAIDLAW'S"},
+		"3":{"style":"VOLKOV-LAIDLAW'S"},
+		"4":{"style":"VOLKOV-LAIDLAW'S"},
+		"5":{"style":"VOLKOV-LAIDLAW'S"},
+	},
+}

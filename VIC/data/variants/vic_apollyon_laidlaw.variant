@@ -1,14 +1,10 @@
 {
     "displayName": "Laidlaw",
     "fluxCapacitors": 17,
-    "fluxVents": 0,
+    "fluxVents": 50,
     "goalVariant": true,
     "hullId": "vic_apollyon",
-    "hullMods": [
-        "vic_assault",
-        "vic_ShturmSolution",
-        "auxiliarythrusters"
-    ],
+    "hullMods": ["targetingunit"],
     "permaMods": [],
     "sMods": [],
     "variantId": "vic_apollyon_laidlaw",

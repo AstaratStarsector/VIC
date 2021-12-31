@@ -49,8 +49,15 @@ public class vic_defenceSuppressor extends BaseShipSystemScript {
 			}
 		} else if (state == State.ACTIVE){
 			if (doOnce){
+					if (target != null) {
+						if (target.getFluxTracker().showFloaty() || 
+							ship == Global.getCombatEngine().getPlayerShip() ||
+							target == Global.getCombatEngine().getPlayerShip()) {
+						target.getFluxTracker().showOverloadFloatyIfNeeded("Defences Suppressed!", TEXT_COLOR, 4f, true);
+					}
+				}
 				vic_combatPlugin.AddDefenceSuppressorTarget(target, 7);
-				target.getFluxTracker().showOverloadFloatyIfNeeded("Defences Suppressed!", TEXT_COLOR, 4f, true);
+				//target.getFluxTracker().showOverloadFloatyIfNeeded("Defences Suppressed!", TEXT_COLOR, 4f, true);
 				doOnce = false;
 			}
 		}

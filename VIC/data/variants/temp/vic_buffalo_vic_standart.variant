@@ -1,0 +1,17 @@
+{
+    "displayName": "Special",
+    "fluxCapacitors": 1,
+    "fluxVents": 1,
+    "hullId": "vic_buffalo_vic",
+    "hullMods": [
+        "augmentedengines",
+        "insulatedengine"
+    ],
+    "permaMods": [],
+    "variantId": "vic_buffalo_vic_standart",
+    "weaponGroups": [{
+        "autofire": true,
+        "mode": "LINKED",
+        "weapons": {"WS 001": "pdlaser"}
+    }]
+}

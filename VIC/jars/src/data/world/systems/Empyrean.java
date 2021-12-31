@@ -71,7 +71,8 @@ public class Empyrean {
                                 Conditions.TECTONIC_ACTIVITY,
                                 Conditions.POLLUTION,
                                 Conditions.RARE_ORE_RICH,
-                                Conditions.ORE_RICH
+                                Conditions.ORE_RICH,
+                                "vic_autoFactory"
                         )
                 ),
 
@@ -102,7 +103,7 @@ public class Empyrean {
                 true);
 
 
-        Phlegeton_market.getIndustry(Industries.ORBITALWORKS).setSpecialItem(new SpecialItemData(Items.PRISTINE_NANOFORGE, null));
+        Phlegeton_market.getIndustry(Industries.ORBITALWORKS).setSpecialItem(new SpecialItemData(Items.CORRUPTED_NANOFORGE, null));
         Phlegeton_market.setImmigrationIncentivesOn(true);
 
         // Archangel Mining Station

@@ -1,29 +1,24 @@
 name,id,tier,rarity,base value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,hints,tags,groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
 #large,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Heavy Laidlaw Accelerator,vic_heavylaidlawaccelerator,3,,6500,1000,,500,,30,7,35,,,,ENERGY,650,,0.75,1.25,,,0,0,0,0,,3500,,,,"STRIKE, USE_VS_FRIGATES","energy20, vic_t1weapons_bp",,Volkov Industries,,General,,,,,Extremely fast projectiles. Deals soft flux.  Every projectile hit on hull or armor creates explosions dealing additional %s fragmentation damage.,400,,,,6.9
+Heavy Laidlaw Accelerator,vic_heavylaidlawaccelerator,3,,6500,1000,,500,,30,7,35,,,,ENERGY,650,,0.75,1.25,,,0,0,0,0,,3500,,,,"STRIKE, USE_VS_FRIGATES","energy20, vic_t1weapons_bp",,Volkov Industries,,General,Very Fast,,,,Extremely fast projectiles. Deals soft flux. Every projectile hit on hull or armor creates explosions dealing additional %s fragmentation damage.,400,,,,6.9
 Capacitons Discharger,vic_capacitonsDischarger,3,,5000,700,,300,160,0,15,28,16,1,8,KINETIC,480,,0.15,0.15,,,,,,,,5000,,,,,"energy13, vic_t1weapons_bp",,Volkov Industries,,Anti Shield,,,,,Fires electric arcs that can chain to %s additional small targets dealing %s of the weapons damage and %s of weapons EMP.,3 | 15% | 50%,,,,
-Besomar Scattercannon,vic_devastator,2,,4500,800,,100,,40,12,19,28,6,42,HIGH_EXPLOSIVE,75,,0,0.6,,,0,15,0.5,5,,700,,,,"ANTI_FTR, PD_ALSO","he16, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,"Each shell has a fuse set to explode at a random distance, resulting in a cluster shot that's increasingly more deadly at closer ranges. 
-
-",,"The specified sustained DPS value is achieved only when %s are installed. Without them, the sustained damage value is %s. ",Extended Magazines | 400 ,,7.4
+Besomar Scattercannon,vic_devastator,2,,4500,800,,100,,40,12,19,28,6,42,HIGH_EXPLOSIVE,75,,0,0.6,,,0,15,0.5,5,,700,,,,"ANTI_FTR, PD_ALSO","he16, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,"Each shell has a fuse set to explode at a random distance, resulting in a cluster shot that's increasingly more deadly at closer ranges.",,"The specified sustained DPS value is achieved only when %s are installed. Without them, the sustained damage value is %s. ",Extended Magazines | 400 ,,7.4
 Psotnik Interference Autocannon,vic_psotnik,2,,5000,900,,50,25,5,15,25,,,,KINETIC,55,,0,0.25,,,0,12,0.5,10,,850,,,,,"kinetic20, vic_t2weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",20% | 50,,,,7.8
 Tugarin Stellar Catapult,vic_tugarin,3,,6000,950,,1200,,200,6,24,,,,HIGH_EXPLOSIVE,1860,,0.5,3.5,1,,0,5,2.5,10,,350,,,400,STRIKE,"he21, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,"Projectile slows down overtime. Explodes on hit or when reaching 0 velocity, dealing up to %s damage.",360 High Explosive,,,,8
 Vodyanoy Plasma Minigun,vic_vodyanoy,2,0.5,8000,700,,20,,20,12,22,,,,ENERGY,16,,0.5,1,999999999,0.05,0,10,0.9,3,,1200,,,25,"ANTI_FTR, FIRE_WHEN_INEFFICIENT","energy15, vic_t2weapons_bp",,Volkov Industries,,Suppression,,,,,"After %s seconds of firing starts overheating, replacing every %s projectile with one that deals %s damage. The heat ramps up by %s per second and increases the number of High Explosive projectiles. At %s heat every %s projectile is replaced. Heat level decreases gradually while not firing.",1.5 | 8th | 40 High Explosive | 16% | 100% | 5th,,,,8.1
 ,vic_vodyanoy_sub,,,8000,700,,40,,20,12,22,,,,HIGH_EXPLOSIVE,15,,0.5,1,999999999,0.05,0,10,0.1,3,,1200,,,25,SYSTEM,,,Volkov Industries,,"Suppression, Point Defense",,,,,,,,,,8.1
 Rubezahl Thermal Lance,vic_thermalLance,3,,6500,800,1500,,,0,10,20,2,0.11111111111111111111111111111111,1,HIGH_EXPLOSIVE,,1204.819277,2,0.1025,0.8,1.5975,,,,,10000,,,,,,"he20, beam15, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,,,,,,15.6
 ,vic_thermalLance_trail,,,6500,1000,,0,,30,7,35,,,,ENERGY,650,,0.75,1.25,,,0,0,0,0,,10000,,,,SYSTEM,,,Volkov Industries,,General,,,,,Extremely fast projectiles. Hits on hull or armor create explosions dealing additional %s fragmentation damage.,150,,,,6.9
-Zlydzen Wave Destabilizer,vic_zlydzen,3,,4500,1000,50,,1000,0,6,20,,,,ENERGY,,500,2,1,,,,,,,1000,,,,,FIRE_WHEN_INEFFICIENT,"energy18, beam13, vic_t1weapons_bp",,Volkov Industries,,Support,,,,,"Applies debuffs that ramp up in power in 4 seconds, and fall off within 2 seconds if the target is not hit by the beam. 
+Zlydzen Wave Destabilizer,vic_zlydzen,3,,4500,1000,50,,1000,0,6,20,,,,ENERGY,,500,2,1,,,,,,,1000,,,,,FIRE_WHEN_INEFFICIENT,"energy18, beam13, vic_t1weapons_bp",,Volkov Industries,,Support,,,,,"Applies debuffs that ramp up in power in %s seconds, and fall off within %s seconds if the target is not hit by the beam.
 
 The debuffs when hitting shields:
 -%s to Shield Efficiency
 +%s to Shield Upkeep
 
 The debuffs when hitting hull:
-+%s to Phase Cloak Activation Cost
-+%s to Phase Cloak Cooldown
 +%s to Phase Cloak Upkeep
--%s to Armour Calculation Efficiency
--%s to Flux Dissipation
--%s to Weapon Turn Rate",10% | 50% | 100% | 100% | 100% | 10% | 15% | 25%,"Hits on hull or armor frequently arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,
+-%s to Armour Efficiency
+-%s to Weapon Turn Rate",6 | 4 | 25% | 25% | 100% | 25% | 25%,"Hits on hull or armor frequently arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Gatling Beam,vic_gatlingbeam,3,0.5,8000,1000,900,,0,0,7,25,,,,ENERGY,,600,0,0.2,0.2,0,,,,,100000,,,,,FIRE_WHEN_INEFFICIENT,"energy20, beam15, LR",,Volkov Industries,,Suppression,,,,,"Hits on hull or armor arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,,,27
@@ -37,8 +32,8 @@ Laidlaw Accelerator,vic_lightlaidlawaccelerator,2,,1200,800,,500,,10,10,15,,,,EN
 Gagana Smartdart Launcher,vic_gagana,2,,1200,800,,200,,10,14,13,,,,HIGH_EXPLOSIVE,250,,0,1,,,0,5,2,10,,700,,,,ANTI_FTR,"he16, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,Homing projectiles which stick to the hull and explode after %s seconds dealing %s damage.,0.5 | 50 High Explosive,,,,5
 ,vic_gagana_sub,,,2000,800,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,0,5,2,10,,100,100,1,500,SYSTEM,,,Volkov Industries,,Anti Shield,,,,,,,,,,5
 Psotnik Interference Machinegun,vic_psotnikmed,2,,1000,900,,25,12,5,15,12,,,,KINETIC,30,,0,0.375,4,0.083,0,12,0.5,10,,850,,,,,"kinetic16, vic_t2weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",20% | 50,,,,7.8
-Vila Bolt Converger,vic_vila,2,,2000,600,,150,,5,15,12,28,1.4,7,ENERGY,150,,0.75,1,,,8,15,0.5,5,,650,,,,,"energy16, vic_t2weapons_bp",,Volkov Industries,,Strike,,,,Unnatural,On fire the projectiles converge on the cursor's position along the weapon's facing. Has a minimum range of convergence. Deals no damage to allies.,,,,,7.8
-Balachko Cryoheat Generator,vic_balachko,2,,1500,600,,250,,5,15,12,,,,ENERGY,312.5,,0,1.4,3,0.3,0,0,0,0,,700,,,,,"energy16, vic_t1weapons_bp",,Volkov Industries,,Guardbreaker,,,,,Alternates between %s and %s damage on every shot. Does %s less damage to hull.,Kinetic | High Explosive | 50%,,,,7.8
+Vila Bolt Converger,vic_vila,2,,2000,600,,150,,5,15,12,28,1.7,7,ENERGY,150,,0.75,1,,,8,15,0.5,5,,650,,,,,"energy16, vic_t2weapons_bp",,Volkov Industries,,Strike,,,,Unnatural,On fire the projectiles converge on the cursor's position along the weapon's facing. Has a minimum range of convergence. Deals no damage to allies.,,,,,7.8
+Balachko Cryoheat Generator,vic_balachko,2,,1500,600,,250,,5,15,12,,,,ENERGY,312.5,,0,1.4,3,0.3,0,0,0,0,,700,,,,,"energy16, vic_t1weapons_bp",,Volkov Industries,,Guardbreaker,,,,,Alternates between %s and %s damage on every shot. Does %s less damage to hull.,Kinetic | High Explosive | 35%,,,,7.8
 ,vic_balachkoIce,,,2000,600,,200,,5,15,12,,,,KINETIC,75,,0,0.5,,,0,15,0.5,5,,700,,,,SYSTEM,,,Volkov Industries,,,,,,,,,,,,7.8
 ,vic_balachkoFire,,,2000,600,,200,,5,15,12,,,,HIGH_EXPLOSIVE,75,,0,0.5,,,0,15,0.5,5,,700,,,,SYSTEM,,,Volkov Industries,,,,,,,,,,,,7.8
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -57,6 +52,7 @@ Phase Lance (Shortranged),vic_phaselance,13,,1,250,1000,,,0,20,10,,,,ENERGY,,120
 Scatter Blaster,vic_scatterblaster,13,,1,500,,125,,3,100,42,12,,,ENERGY,50,,0,0.25,3,0.25,2,16,0.3,6,,800,,,,"DO_NOT_CONSERVE, STRIKE, SYSTEM",energy13,,Volkov Industries,,General,,,,,,,,,,4
 Abyssus Array,vic_abyssalfangs,13,,100000,2000,,200,50,5,,45,24,0.8,24,KINETIC,150,,0,8.85,24,0.05,0,0,0,0,,450,1000,5,100,"DO_NOT_CONSERVE, ANTI_FTR, DO_NOT_AIM, SYSTEM,SHOW_IN_CODEX","missile12, strike8",,Volkov Industries,,Anti Shield,Fast,Excellent,,,,25% | 400,,,TRUE,12.1
 Frag Proxy Mine for System (dont use),vic_fragMine,0,,100,500,,200,,10,0,1,,,,FRAGMENTATION,0,,0,0.1,3,0.15,0,0,0,0,,0,300,15,150,"DO_NOT_AIM, ANTI_FTR, PD_ONLY, SYSTEM",he0,,Volkov Industries,,Anti Fighter,,,,,,,,,,
+Proxy Mine Launcher,vic_UvalFlagCanister,0,,100,500,,300,,10,0,5,6,0.666666666666666666666,2,FRAGMENTATION,150,,0,0.85,2,0.15,30,60,15,30,,0,300,5,50,"PD, DO_NOT_AIM, PD_ALSO, SYSTEM",he0,,Volkov Industries,,Anti Fighter,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Targeting Laser,vic_targetingLazer,0,,400,1500,5,,,0,100,2,,,,ENERGY,,5,0,0,,,,,,,10000,,,,,"SYSTEM, SHOW_IN_CODEX",beam0,,Volkov Industries,,Targeting,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -1,0 +1,14 @@
+{
+	"baseHullId":"vic_kobal",
+	"skinHullId":"vic_kobal_alt",
+	"hullName":"VIC-B19 Kobal",
+	"descriptionId":"vic_kobal",
+	"tags":["restricted"],
+	"systemId":"vic_shieldHardening",
+	"removeWeaponSlots":[], 		# ids
+	"removeEngineSlots":[], 		# indices, as engine slots have no id in the .ship file
+	"removeBuiltInMods":[], 		# hullmod ids
+	"removeBuiltInWeapons":[], 		# weapon slot ids
+	"builtInWeapons":{
+    },    
+}

@@ -1,0 +1,14 @@
+{
+	"baseHullId":"vic_samael",
+	"skinHullId":"vic_samael_alt",
+	"hullName":"VIC-B49 Samael",
+	"descriptionId":"vic_samael",
+	"tags":["restricted"],
+	"systemId":"vic_shieldHardening",
+	"removeWeaponSlots":[], 		# ids
+	"removeEngineSlots":[], 		# indices, as engine slots have no id in the .ship file
+	"removeBuiltInMods":[], 		# hullmod ids
+	"removeBuiltInWeapons":[], 		# weapon slot ids
+	"builtInWeapons":{
+    },    
+}

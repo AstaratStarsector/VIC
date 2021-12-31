@@ -32,17 +32,16 @@ public class vic_thermalLance implements EveryFrameWeaponEffectPlugin {
             return;
         }
 
-        AnimationAPI anim = weapon.getAnimation();
-        if (weapon.getShip().isHulk()) {
-            anim.setFrame(0);
-            return;
-        }
-
         if (!(weapon.getSlot().isHidden())) {
+			AnimationAPI anim = weapon.getAnimation();
+			if (weapon.getShip().isHulk()) {
+				anim.setFrame(0);
+				return;
+			}
             if (weapon.getChargeLevel() > 0.9f) {
-                weapon.getAnimation().setFrame(1);
+                anim.setFrame(1);
             } else {
-                weapon.getAnimation().setFrame(0);
+                anim.setFrame(0);
             }
         }
     }

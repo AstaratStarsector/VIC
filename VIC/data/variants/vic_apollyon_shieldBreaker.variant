@@ -1,11 +1,10 @@
 {
     "displayName": "Shield Breaker",
-    "fluxCapacitors": 50,
-    "fluxVents": 21,
+    "fluxCapacitors": 46,
+    "fluxVents": 50,
     "goalVariant": true,
     "hullId": "vic_apollyon",
     "hullMods": [
-        "vic_assault",
         "vic_ShturmSolution",
         "auxiliarythrusters"
     ],

@@ -37,6 +37,7 @@ public class Apotheosis {
         system.addTag(Tags.THEME_UNSAFE);
         system.addTag(Tags.THEME_HIDDEN);
         system.addTag(Tags.STORY_CRITICAL);
+        system.addTag(Tags.SYSTEM_CUT_OFF_FROM_HYPER);
 
 
 
@@ -249,7 +250,7 @@ public class Apotheosis {
         neutralStation.setMarket(market);
         neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addSupplies(MathUtils.getRandomNumberInRange(40, 60));
         neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addCommodity(Commodities.ORGANS, MathUtils.getRandomNumberInRange(30, 40));
-        neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addMothballedShip(FleetMemberType.SHIP, "vic_xaphan_skirmisher", Global.getSector().getFaction("vic").pickRandomShipName());
+        neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addMothballedShip(FleetMemberType.SHIP, "vic_buffalo_vic_standart", Global.getSector().getFaction("vic").pickRandomShipName());
         neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().sort();
 
         //Inner Jump Point

@@ -5,26 +5,17 @@ package data.world.systems;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.concurrent.locks.Condition;
+
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
-import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.characters.PersonAPI;
-import com.fs.starfarer.api.impl.campaign.econ.impl.FuelProduction;
-import com.fs.starfarer.api.impl.campaign.econ.impl.HeavyIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
-import com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
-import com.fs.starfarer.api.impl.campaign.terrain.AsteroidFieldTerrainPlugin.AsteroidFieldParams;
-import com.fs.starfarer.api.impl.campaign.terrain.EventHorizonPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
-import com.fs.starfarer.api.impl.campaign.terrain.StarCoronaTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin.MagneticFieldParams;
-import org.lazywizard.lazylib.MathUtils;
 
 import static data.world.VICGen.addMarketplace;
 
@@ -35,7 +26,7 @@ public class Pelenu_Laukas {
 
 
         StarSystemAPI system = sector.createStarSystem("Pelenu Laukas");
-        system.getLocation().set(-11500, -14000);
+        system.getLocation().set(-12500, -14500);
         system.setBackgroundTextureFilename("graphics/backgrounds/pelenulaukas_background.jpg");
 
 

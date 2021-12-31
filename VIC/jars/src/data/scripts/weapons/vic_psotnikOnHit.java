@@ -6,7 +6,7 @@ import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
-public class vic_psotnikOnHit implements OnHitEffectPlugin {
+public class vic_psotnikOnHit implements OnHitEffectPlugin, OnFireEffectPlugin {
 
 
     public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
@@ -25,6 +25,21 @@ public class vic_psotnikOnHit implements OnHitEffectPlugin {
                         Color.WHITE,
                         Color.CYAN);
             }
+        }
+    }
+
+    int count = 0;
+    DamagingProjectileAPI lastPorj = null;
+    @Override
+    public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
+        if (count == 0){
+            lastPorj = projectile;
+            count += 1;
+        } else if (count == 1){
+            projectile.setAngularVelocity(lastPorj.getAngularVelocity());
+            projectile.getVelocity().set(lastPorj.getVelocity());
+            projectile.setFacing(lastPorj.getFacing());
+            count = 0;
         }
     }
 }

@@ -35,7 +35,7 @@ public class vic_weaponDamageListener implements DamageDealtModifier {
                     case "vic_balachkoIce":
                         if (!(target instanceof ShipAPI)) break;
                         if (shieldHit) break;
-                        float damageMult = 0.5f;
+                        float damageMult = 0.65f;
                         ((ShipAPI) target).getMutableStats().getHullDamageTakenMult().modifyMult("vic_damage", damageMult);
                         if (!((ShipAPI) target).hasListenerOfClass(vic_bolachkoRefers.class)){
                             ((ShipAPI) target).addListener(new vic_bolachkoRefers());

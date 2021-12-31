@@ -4,12 +4,17 @@ import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
-import com.fs.starfarer.api.combat.ShipVariantAPI;
-import com.fs.starfarer.api.impl.campaign.ids.HullMods;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.ui.Alignment;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.util.Misc;
 
+import java.awt.*;
 import java.util.HashSet;
 import java.util.Set;
+
+import static data.scripts.shipsystems.vic_shieldHardening.shieldDamageTakenReduction;
+import static data.scripts.shipsystems.vic_shieldHardening.weaponRoFReduction;
 
 public class vic_allRoundShieldUpgrade extends BaseHullMod {
 
@@ -17,30 +22,26 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
 
     static {
         //BLOCKED_HULLMODS.add("stabilizedshieldemitter");
-        BLOCKED_HULLMODS.add(HullMods.HARDENED_SHIELDS);
-        BLOCKED_HULLMODS.add(HullMods.SAFETYOVERRIDES);
+        //BLOCKED_HULLMODS.add(HullMods.HARDENED_SHIELDS);
+        //BLOCKED_HULLMODS.add(HullMods.SAFETYOVERRIDES);
         //BLOCKED_HULLMODS.add("advancedshieldemitter");
         //BLOCKED_HULLMODS.add("extendedshieldemitter");
     }
 
     public final float
-            shieldEff = 35f,
-            shieldUpkeep = 25f,
-            shieldSpeed = 50f,
-            speedRed = 20f,
-            zeroFluxBoost = 15f;
+            shieldEff = 30f,
+            damageReduction = 25f;
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        stats.getMaxSpeed().modifyFlat(id, stats.getMaxSpeed().getBaseValue() * (-speedRed * 0.01f));
-        stats.getZeroFluxSpeedBoost().modifyFlat(id, zeroFluxBoost);
-
         stats.getShieldDamageTakenMult().modifyMult(id, 1f - shieldEff * 0.01f);
         stats.getDynamic().getStat(Stats.SHIELD_PIERCED_MULT).modifyMult(id, 1 - 0.75f);
 
-        stats.getShieldUpkeepMult().modifyPercent(id, shieldUpkeep);
+        stats.getEnergyWeaponDamageMult().modifyMult(id, 1 - (damageReduction * 0.01f));
+        stats.getEnergyWeaponFluxCostMod().modifyMult(id, 1 - (damageReduction * 0.01f));
 
-        stats.getShieldTurnRateMult().modifyMult(id, 1f - shieldSpeed * 0.01f);
-        stats.getShieldUnfoldRateMult().modifyMult(id, 1f - shieldSpeed * 0.01f);
+        stats.getBallisticWeaponDamageMult().modifyMult(id, 1 - (damageReduction * 0.01f));
+        stats.getBallisticWeaponFluxCostMod().modifyMult(id, 1 - (damageReduction * 0.01f));
+
     }
 
     @Override
@@ -50,41 +51,52 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
                 ship.getVariant().removeMod(tmp);
             }
         }
+    }
 
-        MutableShipStatsAPI stats = ship.getMutableStats();
-        ShipVariantAPI variant = stats.getVariant();
-        boolean speedPenalty = variant != null && (variant.hasHullMod("vic_deathProtocol") || variant.hasHullMod("vic_assault"));
-
-        if (speedPenalty) {
-            stats.getMaxSpeed().modifyFlat(id + "second", stats.getMaxSpeed().getBaseValue() * -0.25f);
-        }
+    @Override
+    public void advanceInCombat(ShipAPI ship, float amount) {
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {
         for (String Hmod : BLOCKED_HULLMODS) {
             if (ship.getVariant().getHullMods().contains(Hmod)) return false;
         }
-        return ship.getHullSpec().getHullId().startsWith("vic_");
+        return ship.getVariant().hasHullMod("vic_convoyDrive");
     }
 
     @Override
     public String getUnapplicableReason(ShipAPI ship) {
-        if (!ship.getHullSpec().getHullId().startsWith("vic_"))
-            return "Not compatible with non VIC ships";
-        if (ship.getVariant().getHullMods().contains("hardenedshieldemitter"))
-            return "Incompatible with Hardened Shields";
+        if (!ship.getVariant().hasHullMod("vic_convoyDrive"))
+            return "Can only be instead on ships with Convoy Drive";
         return null;
     }
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
-        if (index == 0) return Math.round(shieldEff) + "%";
-        if (index == 1) return Math.round(shieldUpkeep) + "%";
-        if (index == 2) return Math.round(shieldSpeed) + "%";
-        if (index == 3) return Math.round(shieldSpeed) + "%";
-        if (index == 4) return Math.round(speedRed) + "%";
-        if (index == 5) return Math.round(zeroFluxBoost) + "";
         if (index == 6) return Math.round(25f) + "%";
         return null;
+    }
+
+
+    @Override
+    public void addPostDescriptionSection(TooltipMakerAPI tooltip, HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
+        Color goodHighlight = Misc.getPositiveHighlightColor();
+        Color badHighlight = Misc.getNegativeHighlightColor();
+        float pad = 10f;
+        float padS = 3f;
+
+        tooltip.addSectionHeading("Effects", Alignment.MID, pad);
+        tooltip.setBulletedListMode("  • ");
+        tooltip.addPara("Reduces shield damage taken by %s", pad, goodHighlight, Math.round(shieldEff) + "%");
+        tooltip.addPara("Greatly reduces the chance that shields will be pierced by EMP arcs.", padS, goodHighlight, "Greatly reduces");
+        tooltip.addPara("Reduces damage and flux cost of energy and ballistic weapons by %s", padS, badHighlight, Math.round(damageReduction) + "%");
+        tooltip.setBulletedListMode(null);
+
+        tooltip.addSectionHeading("New Ship System", Alignment.MID, pad);
+        TooltipMakerAPI text = tooltip.beginImageWithText("graphics/icons/skills/defensive_systems.png", 64);
+        text.addPara("Shield Hardening (toggle)", Misc.getTooltipTitleAndLightHighlightColor(), 2);
+        text.addPara("Redirect ship's energy to harden shield. Reduces shield damage taken by %s but reduces ship weapons rate of fire by %s.",
+                2, Misc.getHighlightColor(), Math.round(shieldDamageTakenReduction * 100) + "%", Math.round(weaponRoFReduction * 100) + "%");
+        tooltip.addImageWithText(pad);
     }
 }
 

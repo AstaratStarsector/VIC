@@ -309,23 +309,23 @@ vic_PersonaChange vic_PersonaChangeConfirm
 The manager informs you that the procedure is 100 percent reversible if the necessity arises. The only thing left is your confirmation. ",,
 vic_PersonaChangeResult,DialogOptionSelected,$option == vic_PersonaChangeResult,vic_PersonaChange vic_PersonaChangeResult,"A predatory grin spreads on the manager's face, and after the fund transaction is complete, the patient is invited into the operating theatre. 
 
-The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help the patient settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, the patient are given an offer of anestesia and a mirroring screen in case they desire to watch the process themselves. And at last, after the first injection of DNA-altering virus, the procedure begins.
+The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help the patient settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, the patient are given an offer of anesthesia and a mirroring screen in case they desire to watch the process themselves. And at last, after the first injection of DNA-altering virus, the procedure begins.
 
 Several hours later the patient finally gets up from the chair and makes their first steps as a completely new person. Gone is the old shell, and they're ready to take on the world with their new body. The doctor and the nurses seem quite happy with the result of their hard work and mention that one can always go back to their old self or even try something else. If they have sufficient funds for the procedures of course. ",,
 vic_PersonaChangeRespecResult,DialogOptionSelected,$option == vic_PersonaChangeRespecResult,vic_PersonaChange vic_PersonaChangeRespecResult,"A predatory grin spreads on the manager's face, and after the fund transaction is complete, the patient is invited into the operating theatre. 
 
-The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help the patient settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, the patient are given an offer of anestesia. A mirroring screen can be seen nearby, but it won't be necessary this time, as the changes will be happening on the inside. And at last, after the first injection of DNA-altering virus, the procedure begins.
+The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help the patient settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, the patient are given an offer of anesthesia. A mirroring screen can be seen nearby, but it won't be necessary this time, as the changes will be happening on the inside. And at last, after the first injection of DNA-altering virus, the procedure begins.
 
 Several hours later the patient finally gets up from the chair and makes their first steps with a somewhat new body and reconfigured innards, their neural system renewed. The doctor and the nurses seem quite happy with the result of their hard work and mention that one can always come back for additional reconfiguration or even try something else from the vast variety of VIC services. If they have sufficient funds for the procedures of course. ",,
 #menu close,,,,,,
 vic_PersonaChangeEnd,DialogOptionSelected,"$option == vic_PersonaChangeEnd
 ","ShowDefaultVisual
 EndConversation
-","You leave the Revitalization Centre quite soon, with nothing changed about you or your subordinates, at least on the outside. The holo-ad behind you slyly reminds you that the choise is fully yours, but the road to Paradise is only for the bold.",,
+","You leave the Revitalization Centre quite soon, with nothing changed about you or your subordinates, at least on the outside. The holo-ad behind you slyly reminds you that the choice is fully yours, but the road to Paradise is only for the bold.",,
 vic_PersonaChangeEndYou,DialogOptionSelected,"$option == vic_PersonaChangeEndYou
 ","ShowDefaultVisual
 EndConversation
-","You leave the Revitalization Centre as your old self, mind full of thoughts. The holo-ad behind you slyly reminds you that the choise is fully yours, but the road to Paradise is only for the bold.",,
+","You leave the Revitalization Centre as your old self, mind full of thoughts. The holo-ad behind you slyly reminds you that the choice is fully yours, but the road to Paradise is only for the bold.",,
 vic_PersonaChangeEndOfficer,DialogOptionSelected,"$option == vic_PersonaChangeEndOfficer
 ","ShowDefaultVisual
 EndConversation

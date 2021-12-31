@@ -80,6 +80,16 @@ public class vic_verliokaEffect implements EveryFrameWeaponEffectPlugin {
                     if (MathUtils.getShortestRotation(angleToTarget, facing) <= 0) beam = weaponBeams.get(1);
                     zapFrom = MathUtils.getNearestPointOnLine(fighter.getLocation(), beam.getFrom(), beam.getTo());
                 }
+                /*
+                engine.spawnEmpArcVisual(zapFrom,
+                        null,
+                        fighter.getLocation(),
+                        ship,
+                        2,
+                        new Color(255, 162, 0, 29),
+                        new Color(255, 191, 21, 255));
+
+                 */
                 engine.spawnEmpArc(ship,
                         zapFrom,
                         null,

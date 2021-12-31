@@ -1,0 +1,39 @@
+{
+	"id":"vic_UvalFlagCanisterProj",
+	"specClass":"missile",
+	"missileType":"BOMB_WITH_SLOW",
+	"sprite":"graphics/missiles/heavy_mine2.png",
+	"size":[24,24],	
+	"center":[12,12],
+	"collisionRadius":9,
+	"collisionClass":"MISSILE_NO_FF",
+	"explosionColor":[255,155,125,255],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":100, # purely visual
+	"flameoutTime":0.05, # total time from flameout to full fadeout
+	"noEngineGlowTime":0.05, # time spent without the engine glow being rendered
+	"fadeTime":0.05, # fadeout duration		
+	"explosionSpec":{"duration":0.1f, # not visual
+					 "radius":75,
+					 "coreRadius":50, # full damage within core radius
+					 "collisionClass":MISSILE_FF,
+					 "collisionClassByFighter":MISSILE_FF},
+	"behaviorSpec":{"behavior":"PROXIMITY_FUSE",
+					"slowToMaxSpeed":true,
+					"range":35,
+					"explosionSpec":{"duration":0.2f,
+									 "radius":75,
+									 "coreRadius":50, # full damage within core radius
+									 "collisionClass":PROJECTILE_FF,
+									 "collisionClassByFighter":PROJECTILE_FIGHTER,
+									 "particleSizeMin":2.0,
+									 "particleSizeRange":3.0,
+									 "particleDuration":0.5,
+									 "particleCount":50,
+									 "particleColor":[255,155,125,175],
+									 "sound":"explosion_flak"},
+					},
+	"engineSpec":{"turnAcc":0,
+				  "turnRate":30,
+				  "acc":150,
+				  "dec":150}
+}

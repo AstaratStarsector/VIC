@@ -151,8 +151,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 MutableShipStatsAPI stats = entry.getKey().getMutableStats();
                 float effectLevel = entry.getValue().power;
 
-                stats.getShieldDamageTakenMult().modifyMult("vic_zlydzen_effect", 1 + (0.1f * effectLevel));
-                stats.getShieldUpkeepMult().modifyMult("vic_zlydzen_effect", 1 + (0.5f * effectLevel));
+                stats.getShieldDamageTakenMult().modifyMult("vic_zlydzen_effect", 1 + (0.25f * effectLevel));
+                stats.getShieldUpkeepMult().modifyMult("vic_zlydzen_effect", 1 + (0.25f * effectLevel));
 
                 if (entry.getKey() == engine.getPlayerShip())
                     engine.maintainStatusForPlayerShip("vic_zlydzen_effect_shield", "graphics/icons/hullsys/vic_zlydzenEffect.png", "Disruptor Beam", "Shield eff reduced " + Math.round(effectLevel * 100) + "%", true);
@@ -169,12 +169,9 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             if (!entry.getKey().isAlive() || entry.getValue().power <= 0) {
                 MutableShipStatsAPI stats = entry.getKey().getMutableStats();
 
-                stats.getPhaseCloakActivationCostBonus().unmodify("vic_zlydzen_effect");
-                stats.getPhaseCloakCooldownBonus().unmodify("vic_zlydzen_effect");
                 stats.getPhaseCloakUpkeepCostBonus().unmodify("vic_zlydzen_effect");
 
                 stats.getEffectiveArmorBonus().unmodify("vic_zlydzen_effect");
-                stats.getFluxDissipation().unmodify("vic_zlydzen_effect");
                 stats.getWeaponTurnRateBonus().unmodify("vic_zlydzen_effect");
 
             } else {
@@ -190,12 +187,9 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 MutableShipStatsAPI stats = entry.getKey().getMutableStats();
                 float effectLevel = entry.getValue().power;
 
-                stats.getPhaseCloakActivationCostBonus().modifyMult("vic_zlydzen_effect", 1 + (2f * effectLevel));
-                stats.getPhaseCloakCooldownBonus().modifyMult("vic_zlydzen_effect", 1 + (2f * effectLevel));
                 stats.getPhaseCloakUpkeepCostBonus().modifyMult("vic_zlydzen_effect", 1 + (2f * effectLevel));
 
-                stats.getEffectiveArmorBonus().modifyMult("vic_zlydzen_effect", 1 - (0.1f * effectLevel));
-                stats.getFluxDissipation().modifyMult("vic_zlydzen_effect", 1 - (0.15f * effectLevel));
+                stats.getEffectiveArmorBonus().modifyMult("vic_zlydzen_effect", 1 - (0.25f * effectLevel));
                 stats.getWeaponTurnRateBonus().modifyMult("vic_zlydzen_effect", 1 - (0.25f * effectLevel));
 
                 if (entry.getKey() == engine.getPlayerShip())
@@ -496,8 +490,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         float power = 0f;
         boolean wasAffectedLastCheck;
 
-        float timeRise = 5f;
-        float timeFall = 2f;
+        float timeRise = 6f;
+        float timeFall = 4f;
 
         public void advance(float amount) {
             if (wasAffectedLastCheck) {
@@ -526,8 +520,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         float power = 0f;
         boolean wasAffectedLastCheck;
 
-        float timeRise = 5f;
-        float timeFall = 2f;
+        float timeRise = 6f;
+        float timeFall = 4f;
 
         public void advance(float amount) {
             if (wasAffectedLastCheck) {

@@ -20,8 +20,7 @@
   "builtInWeapons": {
     "WS0001": "vic_xaphandecoleft",
     "WS0002": "vic_xaphandecoright",
-    "WS0006": "vic_xaphandecofront",
-	"WS0007": "VIC_OmniLungeEffect"
+    "WS0006": "vic_xaphandecofront"
   },
   "weaponSlots": [
     {
@@ -77,15 +76,6 @@
       "arc": 0,
       "angle": 0,
       "locations": [52.5, -0]
-    },
-	{
-      "id": "WS0007",
-      "size": "MEDIUM",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 0,
-      "locations": [0, 0]
     }
   ],
   "engineSlots": [

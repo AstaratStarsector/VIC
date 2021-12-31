@@ -6,7 +6,7 @@ vicgmofood,Advanced GMO Food Prod.,15,60,,1,,,"farming, industry, rural",,graphi
 The majority of such rampant alterations were created (and, of course, copyrighted) by ""Chapelle & Telgenhof Co."" - one of the more profitable agricultural corporations of the Domain.
 
 Interestingly enough, just like back then, the modified organisms require a constant supply of surprisingly specific DNA-calibrating treatments to stay alive and productive. The treatments provided exclusively by the Conglomerate.  ",200
-vic_revCenter,VIC Revitalization Center,15,60,7,25,,,structure,,graphics/icons/industry/vic_revCenter.png,data.campaign.econ.vic_revCenter,"One of the most well-known areas of VIC activity, Revitalisation Centers provide the more affluent and privileged members of society with access to the incredible technologies of life transfiguration.
+vic_revCenter,VIC Revitalization Center,15,60,3,12,,,structure,,graphics/icons/industry/vic_revCenter.png,data.campaign.econ.vic_revCenter,"One of the most well-known areas of VIC activity, Revitalisation Centers provide the more affluent and privileged members of society with access to the incredible technologies of life transfiguration.
 
 Generous compensations are offered to attract volunteers for research and testing. Perhaps, even too generous.",250
 ,,,,,,,,,,,,,

@@ -2,7 +2,7 @@
   "id": "vic_scatterblaster",
   "specClass": "projectile",
   "projectileSpecId": "railgun_shot",
-  "type": "ENERGY",
+  "type": "BALLISTIC",
   "size": "SMALL",
   "turretSprite": "graphics/weapons/railgun_turret_base.png",
   "turretGlowSprite": "graphics/weapons/railgun_turret_glow.png",

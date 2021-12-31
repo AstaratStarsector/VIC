@@ -2,6 +2,7 @@
 	"id":"vic_psotnik_shot",
 	"specClass":"projectile",
 	"spawnType":"BALLISTIC",
+	"onFireEffect":"data.scripts.weapons.vic_psotnikOnHit",
 	"onHitEffect":"data.scripts.weapons.vic_psotnikOnHit",
 	"collisionClass":"PROJECTILE_FF",
 	"collisionClassByFighter":"PROJECTILE_FIGHTER",

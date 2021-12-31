@@ -1,7 +1,7 @@
 {
     "displayName": "Standard",
-    "fluxCapacitors": 50,
-    "fluxVents": 2,
+    "fluxCapacitors": 36,
+    "fluxVents": 47,
     "goalVariant": true,
     "hullId": "vic_apollyon",
     "hullMods": [
@@ -48,14 +48,6 @@
                 "WS0015": "vic_vila",
                 "WS0016": "vic_vila",
                 "WS0017": "vic_vila"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0011": "vic_gagana",
-                "WS0012": "vic_gagana"
             }
         },
         {

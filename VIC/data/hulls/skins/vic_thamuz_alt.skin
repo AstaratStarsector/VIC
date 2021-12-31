@@ -1,0 +1,14 @@
+{
+	"baseHullId":"vic_thamuz",
+	"skinHullId":"vic_thamuz_alt",
+	"hullName":"VIC-B62 Thamuz",
+	"descriptionId":"vic_thamuz",
+	"tags":["restricted"],
+	"systemId":"vic_shieldHardening",
+	"removeWeaponSlots":[], 		# ids
+	"removeEngineSlots":[], 		# indices, as engine slots have no id in the .ship file
+	"removeBuiltInMods":[], 		# hullmod ids
+	"removeBuiltInWeapons":[], 		# weapon slot ids
+	"builtInWeapons":{
+    },    
+}

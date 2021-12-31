@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class vic_OmniLuneVisualEffect implements EveryFrameWeaponEffectPlugin {
 
     public final ArrayList<Color> rainbow = new ArrayList<>();
-    private final IntervalUtil CD = new IntervalUtil(0.05f, 0.05f);
+    private final IntervalUtil CD = new IntervalUtil(0.01f, 0.01f);
     private boolean caramelldansenMode = false;
     int colorNumber = 0;
     private Color color;

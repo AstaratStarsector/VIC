@@ -1,48 +1,164 @@
 package data.scripts.shipsystems;
 
+import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.combat.CombatEngineLayers;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.ShipEngineControllerAPI;
+import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
+import com.fs.starfarer.api.util.IntervalUtil;
+import com.fs.starfarer.combat.entities.Ship;
+import data.scripts.plugins.timer.VIC_TimeTracker;
+import data.scripts.util.MagicRender;
+import data.scripts.util.MagicSettings;
+import org.jetbrains.annotations.Debug;
+import org.lazywizard.lazylib.VectorUtils;
+import org.lwjgl.util.vector.Vector2f;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class vic_OmniLunge extends BaseShipSystemScript {
 
-    public static float SPEED_BONUS = 250f;
+    public static float SPEED_BONUS = 300f;
     public static float TURN_BONUS = 100f;
+
+    public final ArrayList<Color> rainbow = new ArrayList<>();
+    private final IntervalUtil CD = new IntervalUtil(0.01f, 0.01f);
+    private boolean caramelldansenMode = false;
+    int colorNumber = 0;
+    private Color color;
+    private boolean doOnce = true;
+    private boolean doOnce_speedUp = true;
+
+    private final Map<ShipAPI.HullSize, Float> strafeMulti = new HashMap<>();
+    {
+        strafeMulti.put(ShipAPI.HullSize.FIGHTER, 1f);
+        strafeMulti.put(ShipAPI.HullSize.FRIGATE, 1f);
+        strafeMulti.put(ShipAPI.HullSize.DESTROYER, 0.75f);
+        strafeMulti.put(ShipAPI.HullSize.CRUISER, 0.5f);
+        strafeMulti.put(ShipAPI.HullSize.CAPITAL_SHIP, 0.25f);
+    }
+
+    {
+        rainbow.add(new Color(255, 0, 0, 160));
+        rainbow.add(new Color(255, 127, 0, 160));
+        rainbow.add(new Color(255, 255, 0, 160));
+        rainbow.add(new Color(0, 255, 0, 160));
+        rainbow.add(new Color(20, 0, 255, 160));
+        rainbow.add(new Color(75, 0, 130, 160));
+        rainbow.add(new Color(148, 0, 211, 160));
+    }
 
     public void apply(MutableShipStatsAPI stats, String id, State state, float effectLevel) {
         ShipAPI ship = (ShipAPI) stats.getEntity();
 
         stats.getMaxSpeed().modifyFlat(id, SPEED_BONUS);
 
-        stats.getTurnAcceleration().modifyFlat(id, TURN_BONUS);
-        stats.getTurnAcceleration().modifyPercent(id, TURN_BONUS * 5f);
-        stats.getMaxTurnRate().modifyFlat(id, 60f);
-        stats.getMaxTurnRate().modifyPercent(id, 100f);
-
         if (state == State.IN) {
-            stats.getAcceleration().modifyMult(id, 50f);
-            stats.getDeceleration().modifyMult(id, 50f);
+            //stats.getAcceleration().modifyFlat(id, 100f);
+            //stats.getDeceleration().modifyFlat(id, 100f);
+            afterImage(ship);
         }
         if (state == State.ACTIVE) {
-            stats.getAcceleration().modifyMult(id, 0f);
-            stats.getDeceleration().modifyMult(id, 0f);
+            if (doOnce_speedUp){
+                Vector2f newVector = new Vector2f();
+                if (ship.getEngineController().isAccelerating()) {
+                    newVector.y += 1 * ship.getAcceleration();
+                }
+                if(ship.getEngineController().isAcceleratingBackwards() || ship.getEngineController().isDecelerating()){
+                    newVector.y -= 1 * ship.getDeceleration();
+                }
+                if (ship.getEngineController().isStrafingLeft()) {
+                    newVector.x -=  1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
+                }
+                if (ship.getEngineController().isStrafingRight()) {
+                    newVector.x += 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
+                }
+                Vector2f NewSpeed = (Vector2f) newVector.normalise(newVector).scale(ship.getMaxSpeed());
+                ship.getVelocity().set(NewSpeed);
+                doOnce_speedUp = false;
+            }
+            stats.getAcceleration().modifyFlat(id, 0f);
+            stats.getDeceleration().modifyFlat(id, 0f);
+            stats.getTurnAcceleration().modifyFlat(id, TURN_BONUS * 6);
+            stats.getTurnAcceleration().modifyPercent(id, TURN_BONUS * 6f);
+
+            stats.getMaxTurnRate().modifyFlat(id, TURN_BONUS);
+            stats.getMaxTurnRate().modifyPercent(id, TURN_BONUS);
+            afterImage(ship);
         }
         if (state == State.OUT) {
-            stats.getMaxSpeed().unmodify(id); // to slow down ship to its regular top speed while powering drive down
-			/*
-			if (MathUtils.getDistance(stats.getEntity().getVelocity(), new Vector2f()) > ship.getEngineController().getMaxSpeedWithoutBoost())
-				stats.getEntity().getVelocity().scale(0.95f);
-
-			 */
-            stats.getAcceleration().modifyMult(id, 10f);
-            stats.getDeceleration().modifyMult(id, 20f);
+            stats.getMaxSpeed().unmodify(id);
             stats.getMaxTurnRate().unmodify(id);
+
+            stats.getAcceleration().modifyMult(id, 2f);
+            stats.getAcceleration().modifyFlat(id, 50f);
+            stats.getDeceleration().modifyMult(id, 2f);
+            stats.getDeceleration().modifyFlat(id, 50f);
+            stats.getTurnAcceleration().modifyFlat(id, TURN_BONUS * 0.5f);
+            stats.getTurnAcceleration().modifyPercent(id, TURN_BONUS * 5f * 0.5f);
         }
 
         if (stats.getEntity() instanceof ShipAPI) {
             ship.getEngineController().extendFlame(this, 0.5f * effectLevel, 0.5f * effectLevel, 0.25f * effectLevel);
         }
+        Global.getCombatEngine().maintainStatusForPlayerShip(this, null,
+                "turn speed", ship.getAngularVelocity() + "", false);
+    }
 
+    public void afterImage (ShipAPI ship){
+        if (Global.getCombatEngine().isPaused()) return;
+
+        if (doOnce) {
+            caramelldansenMode = MagicSettings.getBoolean("vic", "OmniLunge_rainbowMode");
+            ShipEngineControllerAPI.ShipEngineAPI thruster = ship.getEngineController().getShipEngines().get(0);
+            int Red = thruster.getEngineColor().getRed();
+            int Green = thruster.getEngineColor().getGreen();
+            int Blue = thruster.getEngineColor().getBlue();
+
+            if (ship.getVariant().hasHullMod("safetyoverrides")) {
+                Red = Math.round((Red * 0.8f) + (255 * 0.2f)) - 1;
+                Green = Math.round((Green * 0.8f) + (100 * 0.2f)) - 1;
+                Blue = Math.round((Blue * 0.8f) + (255 * 0.2f)) - 1;
+            }
+
+            color = new Color(Red, Green, Blue, 128);
+
+            doOnce = false;
+        }
+        float amount = Global.getCombatEngine().getElapsedInLastFrame();
+        if (ship.getSystem().isActive()) {
+            CD.advance(amount);
+            if (CD.intervalElapsed()) {
+                if (!MagicRender.screenCheck(0.5f, ship.getLocation())) return;
+
+                if (caramelldansenMode) {
+                    color = rainbow.get(colorNumber);
+                    colorNumber++;
+                    if (colorNumber > rainbow.size() - 1) colorNumber = 0;
+                }
+
+                SpriteAPI shipSprite = Global.getSettings().getSprite(ship.getHullSpec().getSpriteName());
+                MagicRender.battlespace(
+                        shipSprite,
+                        new Vector2f(ship.getLocation()),
+                        new Vector2f(),
+                        new Vector2f(ship.getSpriteAPI().getWidth(), ship.getSpriteAPI().getHeight()),
+                        new Vector2f(),
+                        ship.getFacing() - 90,
+                        0,
+                        color,
+                        true,
+                        0.1f,
+                        0f,
+                        0.2f,
+                        CombatEngineLayers.UNDER_SHIPS_LAYER);
+            }
+        }
     }
 
     public void unapply(MutableShipStatsAPI stats, String id) {
@@ -51,32 +167,19 @@ public class vic_OmniLunge extends BaseShipSystemScript {
         stats.getTurnAcceleration().unmodify(id);
         stats.getAcceleration().unmodify(id);
         stats.getDeceleration().unmodify(id);
+        doOnce_speedUp = true;
     }
 
     public StatusData getStatusData(int index, State state, float effectLevel) {
         if (index == 0) {
-            if (state == State.IN) {
-                return new StatusData("IN", false);
-            }
-            if (state == State.ACTIVE) {
-                return new StatusData("ACTIVE", false);
+            if (state == State.IN || state == State.ACTIVE) {
+                return new StatusData("+" + (int) SPEED_BONUS + " top speed", false);
             }
             if (state == State.OUT) {
-                return new StatusData("OUT", false);
+                return new StatusData("+" + (int) (TURN_BONUS) + "% maneuverability", false);
             }
-        } else if (index == 1) {
-            return new StatusData("+" + (int) SPEED_BONUS + " top speed", false);
         }
         return null;
-    }
-
-    @Override
-    public float getRegenOverride(ShipAPI ship) {
-        if (ship.getVariant().hasHullMod("vic_ShturmSolution")) {
-            return 0.15f;
-        } else {
-            return -1;
-        }
     }
 }
 

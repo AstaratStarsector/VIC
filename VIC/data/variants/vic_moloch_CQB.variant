@@ -1,13 +1,10 @@
 {
     "displayName": "CQB",
-    "fluxCapacitors": 11,
-    "fluxVents": 9,
+    "fluxCapacitors": 13,
+    "fluxVents": 18,
     "goalVariant": true,
     "hullId": "vic_moloch",
-    "hullMods": [
-        "vic_assault",
-        "vic_ShturmSolution"
-    ],
+    "hullMods": ["vic_ShturmSolution"],
     "permaMods": [],
     "sMods": [],
     "variantId": "vic_moloch_CQB",

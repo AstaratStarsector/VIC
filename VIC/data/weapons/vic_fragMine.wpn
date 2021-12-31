@@ -51,5 +51,6 @@
       160,
       95
     ]
-  }
+  },
+	"fireSoundTwo":"system_canister_flak_fire",
 }

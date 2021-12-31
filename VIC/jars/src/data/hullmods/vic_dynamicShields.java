@@ -1,10 +1,8 @@
 package data.hullmods;
 
-import com.fs.starfarer.api.combat.BaseHullMod;
-import com.fs.starfarer.api.combat.MutableShipStatsAPI;
-import com.fs.starfarer.api.combat.ShieldAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
+import com.fs.starfarer.api.combat.listeners.WeaponBaseRangeModifier;
 import org.lazywizard.lazylib.MathUtils;
 
 public class vic_dynamicShields extends BaseHullMod {
@@ -27,11 +25,11 @@ public class vic_dynamicShields extends BaseHullMod {
         stats.getShieldUnfoldRateMult().modifyMult(id, shieldSpeed);
         stats.getShieldTurnRateMult().modifyMult(id, shieldSpeed);
 
-
     }
 
     //shieldsChanger
     public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
+        //shield stuff
         super.applyEffectsAfterShipCreation(ship, id);
         ShieldAPI shipShield = ship.getShield();
         float radius = shipShield.getRadius();
@@ -39,22 +37,21 @@ public class vic_dynamicShields extends BaseHullMod {
         String outerSprite;
         if (radius >= 256.0F) {
             innerSprite = "graphics/fx/shield/vic_shields256.png";
-            outerSprite = "graphics/fx/shield/vic_shields256ring.png";
+            outerSprite = "graphics/fx/shields256ring.png";
         } else if (radius >= 128.0F) {
             innerSprite = "graphics/fx/shield/vic_shields128.png";
-            outerSprite = "graphics/fx/shield/vic_shields128ring.png";
+            outerSprite = "graphics/fx/shields128ringc.png";
         } else {
             innerSprite = "graphics/fx/shield/vic_shields64.png";
-            outerSprite = "graphics/fx/shield/vic_shields64ring.png";
+            outerSprite = "graphics/fx/shields64ringd.png";
         }
         shipShield.setRadius(radius, innerSprite, outerSprite);
+        //range stuff
+        ship.addListener(new vic_laidlawTechRangeMod());
     }
 
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
-
-        ship.getMutableStats().getEnergyWeaponRangeBonus().modifyFlat("vic_dynamicShields", energyFlatRange * (1 + ship.getMutableStats().getEnergyWeaponRangeBonus().getPercentMod() * 0.01f));
-        ship.getMutableStats().getBeamWeaponRangeBonus().modifyFlat("vic_dynamicShields", -energyFlatRange * (1 + ship.getMutableStats().getEnergyWeaponRangeBonus().getPercentMod() * 0.01f));
 
         if (ship.getShield() == null || ship.getShield().getType() != ShieldAPI.ShieldType.OMNI || ship.getShield().isOff()) {
             return;
@@ -62,7 +59,7 @@ public class vic_dynamicShields extends BaseHullMod {
 
         float baseShieldArc =
                 (ship.getHullSpec().getShieldSpec().getArc() *
-                        (ship.getMutableStats().getShieldArcBonus().getPercentMod() * 0.01f + 1)  +
+                        (ship.getMutableStats().getShieldArcBonus().getPercentMod() * 0.01f + 1) +
                         ship.getMutableStats().getShieldArcBonus().getFlatBonus()) *
                         ship.getMutableStats().getShieldArcBonus().getMult();
 
@@ -83,6 +80,29 @@ public class vic_dynamicShields extends BaseHullMod {
         if (index == 5) return Math.round((1 - energyFluxMult) * 100) + "%";
         return null;
     }
+
+    public static class vic_laidlawTechRangeMod implements WeaponBaseRangeModifier {
+
+        public float getWeaponBaseRangePercentMod(ShipAPI ship, WeaponAPI weapon) {
+            return 0;
+        }
+
+        public float getWeaponBaseRangeMultMod(ShipAPI ship, WeaponAPI weapon) {
+            return 1f;
+        }
+
+        public float getWeaponBaseRangeFlatMod(ShipAPI ship, WeaponAPI weapon) {
+            if (weapon.getSlot() == null) {
+                return 0f;
+            }
+            boolean unsuitableForBonus = !(weapon.getType() == WeaponAPI.WeaponType.ENERGY || weapon.getType() == WeaponAPI.WeaponType.HYBRID) || weapon.isBeam();
+            if (unsuitableForBonus) {
+                return 0f;
+            }
+            return 100f;
+        }
+    }
+
 }
 
 

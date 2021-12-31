@@ -1,12 +1,12 @@
 {
-    "displayName": "Pressure",
-    "fluxCapacitors": 24,
-    "fluxVents": 30,
+    "displayName": "Fortress",
+    "fluxCapacitors": 22,
+    "fluxVents": 28,
     "goalVariant": true,
-    "hullId": "vic_thamuz",
+    "hullId": "vic_thamuz_alt",
     "hullMods": [
-        "targetingunit",
-        "frontemitter"
+        "vic_allRoundShieldUpgrade",
+        "targetingunit"
     ],
     "permaMods": [],
     "sMods": [],
@@ -23,16 +23,7 @@
         {
             "autofire": true,
             "mode": "LINKED",
-            "weapons": {"WS0001": "vic_thermalLance"}
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0004": "pdlaser",
-                "WS0009": "pdlaser",
-                "WS0012": "pdlaser"
-            }
+            "weapons": {"WS0001": "tachyonlance"}
         },
         {
             "autofire": true,

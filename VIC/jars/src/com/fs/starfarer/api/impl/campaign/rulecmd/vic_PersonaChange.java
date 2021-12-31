@@ -14,11 +14,9 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Misc.Token;
 import com.fs.starfarer.campaign.CommDirectory;
-import com.fs.starfarer.launcher.ModManager;
 import com.fs.starfarer.rpg.Person;
 import data.scripts.utilities.StringHelper;
 import org.apache.log4j.Logger;
-import org.apache.log4j.Priority;
 import org.lazywizard.lazylib.MathUtils;
 
 import java.awt.*;
@@ -253,6 +251,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         CommDirectory directory = new CommDirectory();
         if (isItOfficer) {
             for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
+                if (Misc.isUnremovable(officer.getPerson())) continue;
                 officer.getPerson().addTag("vic_personToChangeOfficer");
                 directory.addPerson(officer.getPerson());
             }
@@ -278,7 +277,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         options.addOption("Open \"Male\" section of the appearances list", male);
         options.addOption("Open \"Female\" section of the appearances list", female);
-        if (currState != mainMenuState.InToAdmin)
+        if (currState == mainMenuState.InToOfficer)
             options.addOption("Revitalize the current body (Respec the Skill Points) ", respec);
 
         if (playerCargo.getCredits().get() < 10000) {
@@ -447,7 +446,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         }
     }
 
-    private static void respecPlayer(){
+    private void respecPlayer(){
         final MutableCharacterStatsAPI player = Global.getSector().getPlayerPerson().getStats();
         int aptRefunded = 0;
         for (final String aptitude : Global.getSettings().getAptitudeIds())
@@ -487,7 +486,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         // Technically it should be called cloneOfficer(), but whatever...
         final PersonAPI oldPerson = toRespec.getPerson(),
-                newPerson = OfficerManagerEvent.createOfficer(oldPerson.getFaction(), 1, null,
+                newPerson = OfficerManagerEvent.createOfficer(oldPerson.getFaction(), 1, OfficerManagerEvent.SkillPickPreference.ANY,
                         false, sourceFleet, false, false, -1, MathUtils.getRandom());
         final FleetMemberAPI ship = sourceFleet.getFleetData().getMemberWithCaptain(oldPerson);
 

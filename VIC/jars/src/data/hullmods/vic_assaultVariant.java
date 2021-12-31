@@ -1,9 +1,16 @@
 package data.hullmods;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
+import com.fs.starfarer.api.combat.MutableStat;
 import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.ui.Alignment;
+import com.fs.starfarer.api.ui.LabelAPI;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.util.Misc;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -11,19 +18,19 @@ import java.util.Set;
 
 public class vic_assaultVariant extends BaseHullMod {
 
-    private final float
-            addFluxPerCap = -200,
-            addDisPerCap = 10,
+    final float
+            shieldUpKeep = 2f,
+            disBonus = 2f,
+            systemRechargeBonus = 50f,
             rangeReduction = 0.75f,
-            shieldEffPenalty = 0.3f,
-            shieldUpkeepBonus = 0.5f;
+            pptReduction = 0.5f;
 
     private final Map<ShipAPI.HullSize, Float> rangeForClamp = new HashMap<>();
     {
         rangeForClamp.put(ShipAPI.HullSize.FRIGATE, 500f);
-        rangeForClamp.put(ShipAPI.HullSize.DESTROYER, 600f);
-        rangeForClamp.put(ShipAPI.HullSize.CRUISER, 800f);
-        rangeForClamp.put(ShipAPI.HullSize.CAPITAL_SHIP, 1000f);
+        rangeForClamp.put(ShipAPI.HullSize.DESTROYER, 700f);
+        rangeForClamp.put(ShipAPI.HullSize.CRUISER, 900f);
+        rangeForClamp.put(ShipAPI.HullSize.CAPITAL_SHIP, 1100f);
     }
     
     private final Map<ShipAPI.HullSize, Float> rangeBonus = new HashMap<>();
@@ -34,60 +41,80 @@ public class vic_assaultVariant extends BaseHullMod {
         rangeBonus.put(ShipAPI.HullSize.CAPITAL_SHIP, 300f);
     }
 
-    private final Map<ShipAPI.HullSize, Float> dissipationBonus = new HashMap<>();
+    private final Map<ShipAPI.HullSize, Float> speedBonus = new HashMap<>();
     {
-        dissipationBonus.put(ShipAPI.HullSize.FRIGATE, 50f);
-        dissipationBonus.put(ShipAPI.HullSize.DESTROYER, 100f);
-        dissipationBonus.put(ShipAPI.HullSize.CRUISER, 150f);
-        dissipationBonus.put(ShipAPI.HullSize.CAPITAL_SHIP, 250f);
+        speedBonus.put(ShipAPI.HullSize.FRIGATE, 20f);
+        speedBonus.put(ShipAPI.HullSize.DESTROYER, 15f);
+        speedBonus.put(ShipAPI.HullSize.CRUISER, 10f);
+        speedBonus.put(ShipAPI.HullSize.CAPITAL_SHIP, 10f);
     }
-
-    private final Map<ShipAPI.HullSize, Float> capacityPenalty = new HashMap<>();
-    {
-        capacityPenalty.put(ShipAPI.HullSize.FRIGATE, 500f);
-        capacityPenalty.put(ShipAPI.HullSize.DESTROYER, 1000f);
-        capacityPenalty.put(ShipAPI.HullSize.CRUISER, 2000f);
-        capacityPenalty.put(ShipAPI.HullSize.CAPITAL_SHIP, 5000f);
-    }
-
 
     private static final Set<String> BLOCKED_HULLMODS = new HashSet<>(2);
     static {
         BLOCKED_HULLMODS.add("safetyoverrides");
-
+        //BLOCKED_HULLMODS.add("stabilizedshieldemitter");
+        //BLOCKED_HULLMODS.add("frontemitter");
     }
 
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
-
         stats.getBallisticWeaponRangeBonus().modifyFlat(id , rangeBonus.get(hullSize));
         stats.getEnergyWeaponRangeBonus().modifyFlat(id , rangeBonus.get(hullSize));
         stats.getWeaponRangeThreshold().modifyFlat(id,rangeForClamp.get(hullSize));
         stats.getWeaponRangeMultPastThreshold().modifyMult(id, 1 - rangeReduction);
-        stats.getShieldAbsorptionMult().modifyFlat(id, shieldEffPenalty);
-        stats.getShieldUpkeepMult().modifyMult(id, shieldUpkeepBonus);
-
+        stats.getShieldUpkeepMult().modifyMult(id, shieldUpKeep);
+        stats.getSystemCooldownBonus().modifyPercent(id, systemRechargeBonus);
+        stats.getSystemRegenBonus().modifyPercent(id, systemRechargeBonus);
+        stats.getMaxSpeed().modifyFlat(id, speedBonus.get(hullSize));
+        stats.getPeakCRDuration().modifyMult(id, pptReduction);
     }
 
 
+    @Override
+    public void advanceInCombat(ShipAPI ship, float amount) {
+        if (ship.getShield().isOff() && ship.getOriginalOwner() != -1){
+            ship.getMutableStats().getFluxDissipation().modifyMult("vic_assaultVariant", disBonus);
+        } else {
+            ship.getMutableStats().getFluxDissipation().unmodify("vic_assaultVariant");
+        }
+    }
 
     @Override
     public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
-        MutableShipStatsAPI stats = ship.getMutableStats();
-        ShipAPI.HullSize hullSize = ship.getHullSize();
-        stats.getFluxCapacity().modifyFlat(id, ship.getVariant().getNumFluxCapacitors() * addFluxPerCap - capacityPenalty.get(hullSize));
-        stats.getFluxDissipation().modifyFlat(id, ship.getVariant().getNumFluxCapacitors() * addDisPerCap + dissipationBonus.get(hullSize));
-
-
         for (String tmp : BLOCKED_HULLMODS) {
             if (ship.getVariant().getHullMods().contains(tmp)) {
                 ship.getVariant().removeMod(tmp);
             }
         }
+
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {
-        //boolean OK = true;
+        MutableShipStatsAPI stats = ship.getMutableStats();
+        String id = "vic_assaultVariant";
+        float tempStat = 0;
+        for (Map.Entry<String, MutableStat.StatMod> entry : stats.getShieldUpkeepMult().getFlatMods().entrySet()){
+            if (entry.getValue().getValue() < 0){
+                tempStat += entry.getValue().getValue();
+            }
+        }
+        stats.getShieldUpkeepMult().modifyFlat(id, -tempStat);
+
+        tempStat = 1;
+        for (Map.Entry<String, MutableStat.StatMod> entry : stats.getShieldUpkeepMult().getMultMods().entrySet()){
+            if (entry.getValue().getValue() < 1){
+                tempStat *= entry.getValue().getValue();
+            }
+        }
+        stats.getShieldUpkeepMult().modifyMult(id, 1/tempStat);
+
+        tempStat = 0;
+        for (Map.Entry<String, MutableStat.StatMod> entry : stats.getShieldUpkeepMult().getPercentMods().entrySet()){
+            if (entry.getValue().getValue() < 0){
+                tempStat += entry.getValue().getValue();
+            }
+        }
+        stats.getShieldUpkeepMult().modifyPercent(id, -tempStat);
         if (!ship.getHullSpec().getHullId().startsWith("vic_")) return false;
         if (!ship.getVariant().getHullMods().contains("vic_shturmSolutionDummy")) return false;
         for (String Hmod : BLOCKED_HULLMODS){
@@ -104,21 +131,84 @@ public class vic_assaultVariant extends BaseHullMod {
             return "Must be installed on a VIC Shturm-Type ship";
         if (ship.getVariant().getHullMods().contains("safetyoverrides"))
             return "Incompatible with Safety Overrides";
+//        if (ship.getVariant().getHullMods().contains("stabilizedshieldemitter"))
+//            return "Incompatible with Stabilized Shields";
         return null;
     }
 
     @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
         if (hullSize == null) hullSize = ShipAPI.HullSize.FRIGATE;
-        if (index == 0) return Math.round(addDisPerCap) + "";
-        if (index == 1) return Math.round(capacityPenalty.get(hullSize)) + "";
-        if (index == 2) return Math.round(dissipationBonus.get(hullSize)) + "";
-        if (index == 3) return shieldEffPenalty + "";
-        if (index == 4) return Math.round(shieldUpkeepBonus * 100f) + "%";
-        if (index == 5) return Math.round(rangeBonus.get(hullSize)) + "";
-        if (index == 6) return Math.round(rangeForClamp.get(hullSize)) + "";
-        if (index == 7) return Math.round(rangeReduction * 100) + "%";
-        if (index ==8) return Math.round(50) + "%";
+        if (index == 0) return Math.round(shieldUpKeep) + "";
+        if (index == 1) return Math.round(disBonus) + "";
+        if (index == 2) return Math.round(rangeBonus.get(hullSize)) + "";
+        if (index == 3) return Math.round(rangeForClamp.get(hullSize)) + "";
+        if (index == 4) return Math.round(rangeReduction * 100) + "%";
+        if (index == 5) return Math.round(systemRechargeBonus) + "%";
         return null;
+    }
+
+    @Override
+    public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
+
+        Color highlight = Misc.getHighlightColor();
+        Color goodHighlight = Misc.getPositiveHighlightColor();
+        Color badHighlight = Misc.getNegativeHighlightColor();
+        float pad = 10f;
+        float padS = 3f;
+
+        tooltip.addSectionHeading("Effects", Alignment.MID, pad);
+
+        tooltip.setBulletedListMode("  • ");
+        //logical
+//        tooltip.addPara("Prevents any reduction in shield upkeep", pad, badHighlight, "any reduction");
+//
+//        tooltip.addPara("Increases shield upkeep by a factor of %s", padS, badHighlight, "x" + Math.round(shieldUpKeep));
+//
+//        tooltip.addPara("Increases flux dissipation rate by a factor of %s", padS, goodHighlight, "x" + Math.round(disBonus));
+//
+//        tooltip.addPara("Increases energy and ballistic weapons range by %s/%s/%s/%s", pad, goodHighlight, Math.round(rangeBonus.get(ShipAPI.HullSize.FRIGATE)) + "",
+//                Math.round(rangeBonus.get(ShipAPI.HullSize.DESTROYER)) + "", Math.round(rangeBonus.get(ShipAPI.HullSize.CRUISER)) + "", Math.round(rangeBonus.get(ShipAPI.HullSize.CAPITAL_SHIP)) + "");
+//
+//        tooltip.addPara("Reduces weapon range past %s/%s/%s/%s by %s", padS, badHighlight, Math.round(rangeForClamp.get(ShipAPI.HullSize.FRIGATE)) + "",
+//                Math.round(rangeForClamp.get(ShipAPI.HullSize.DESTROYER)) + "", Math.round(rangeForClamp.get(ShipAPI.HullSize.CRUISER)) + "",
+//                Math.round(rangeForClamp.get(ShipAPI.HullSize.CAPITAL_SHIP)) + "", Math.round(Math.round(rangeReduction * 100)) + "%");
+//
+//        tooltip.addPara("Increases the ship's system cooldown recovery and charge generation rate by %s", pad, goodHighlight, Math.round(systemRechargeBonus) + "%");
+//
+//        tooltip.addPara("Increases the ship's top speed by %s/%s/%s/%s", pad, goodHighlight, Math.round(speedBonus.get(ShipAPI.HullSize.FRIGATE)) + "",
+//                Math.round(speedBonus.get(ShipAPI.HullSize.DESTROYER)) + "", Math.round(speedBonus.get(ShipAPI.HullSize.CRUISER)) + "",
+//                Math.round(speedBonus.get(ShipAPI.HullSize.CAPITAL_SHIP)) + "");
+//        tooltip.addPara("Reduces the peak performance time by %s", padS, badHighlight, Math.round(pptReduction * 100f) + "%");
+
+        //negatives and postitive
+
+        tooltip.addPara("Increases the ship's top speed by %s/%s/%s/%s", padS, goodHighlight, Math.round(speedBonus.get(ShipAPI.HullSize.FRIGATE)) + "",
+                Math.round(speedBonus.get(ShipAPI.HullSize.DESTROYER)) + "", Math.round(speedBonus.get(ShipAPI.HullSize.CRUISER)) + "",
+                Math.round(speedBonus.get(ShipAPI.HullSize.CAPITAL_SHIP)) + "");
+
+        tooltip.addPara("Increases the ship's system cooldown recovery and charge generation rate by %s", padS, goodHighlight, Math.round(systemRechargeBonus) + "%");
+
+        tooltip.addPara("Increases flux dissipation rate by a factor of %s", padS, goodHighlight, "x" + Math.round(disBonus));
+
+        tooltip.addPara("Increases energy and ballistic weapons range by %s/%s/%s/%s", padS, goodHighlight, Math.round(rangeBonus.get(ShipAPI.HullSize.FRIGATE)) + "",
+                Math.round(rangeBonus.get(ShipAPI.HullSize.DESTROYER)) + "", Math.round(rangeBonus.get(ShipAPI.HullSize.CRUISER)) + "", Math.round(rangeBonus.get(ShipAPI.HullSize.CAPITAL_SHIP)) + "");
+
+        tooltip.addPara("Reduces weapon range past %s/%s/%s/%s by %s", padS, badHighlight, Math.round(rangeForClamp.get(ShipAPI.HullSize.FRIGATE)) + "",
+                Math.round(rangeForClamp.get(ShipAPI.HullSize.DESTROYER)) + "", Math.round(rangeForClamp.get(ShipAPI.HullSize.CRUISER)) + "",
+                Math.round(rangeForClamp.get(ShipAPI.HullSize.CAPITAL_SHIP)) + "", Math.round(Math.round(rangeReduction * 100)) + "%");
+
+        tooltip.addPara("Increases shield upkeep by a factor of %s", padS, badHighlight, "x" + Math.round(shieldUpKeep));
+
+        tooltip.addPara("Prevents any reduction in shield upkeep", padS, badHighlight, "any reduction");
+
+        tooltip.addPara("Reduces the peak performance time by %s", padS, badHighlight, Math.round(pptReduction * 100f) + "%");
+
+        tooltip.setBulletedListMode(null);
+
+
+        tooltip.addSectionHeading("Incompatibilities", Alignment.MID, pad);
+
+        tooltip.addPara("Incompatible with Safety Overrides and Stabilized Shields", pad);
     }
 }

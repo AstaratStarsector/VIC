@@ -650,7 +650,6 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         } else {
             options.addOption("Continue", GO_BACK);
         }
-
     }
 
     protected StationState getStationState() {

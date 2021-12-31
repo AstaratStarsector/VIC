@@ -35,7 +35,6 @@ import exerelin.campaign.SectorManager;
 import org.dark.shaders.light.LightData;
 import org.dark.shaders.util.ShaderLib;
 import org.dark.shaders.util.TextureData;
-import sun.org.mozilla.javascript.internal.ast.SwitchCase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -134,9 +133,9 @@ public class VIC_ModPlugin extends BaseModPlugin {
             admin.getName().setLast("Murakami");
             admin.setPortraitSprite("graphics/portraits/characters/vic_tatiana.jpg");
 
-            admin.getStats().setSkillLevel(Skills.SPACE_OPERATIONS , 3);
+            //admin.getStats().setSkillLevel(Skills.SPACE_OPERATIONS , 3);
             admin.getStats().setSkillLevel(Skills.INDUSTRIAL_PLANNING, 3);
-            admin.getStats().setSkillLevel(Skills.PLANETARY_OPERATIONS, 3);
+            //admin.getStats().setSkillLevel(Skills.PLANETARY_OPERATIONS, 3);
 
             market.setAdmin(admin);
             market.getCommDirectory().addPerson(admin, 0);
@@ -179,7 +178,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
             vic_Items.GMOfarm, 0, 0) {
         final int production = 4;
         final int demand = 4;
-        final float hazard = 0.15f;
+        final float hazard = 0.25f;
 
         public void apply(Industry industry) {
             if (industry instanceof BaseIndustry) {
@@ -189,7 +188,8 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
                 industry.getSupplyBonus().modifyFlat(spec.getId(), productionBonus, Misc.ucFirst(spec.getName().toLowerCase()));
 
-                industry.getMarket().getHazard().modifyFlat(spec.getId(), hazard, Misc.ucFirst(spec.getName().toLowerCase()));
+                //industry.getMarket().getHazard().modifyFlat(spec.getId(), hazard, Misc.ucFirst(spec.getName().toLowerCase()));
+                industry.getMarket().getAccessibilityMod().modifyFlat(spec.getId(), -hazard, Misc.ucFirst(spec.getName().toLowerCase()));
             }
         }
 
@@ -201,7 +201,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
             industry.getMarket().getHazard().unmodifyFlat(spec.getId());
         }
 
-        protected float getShortage(Industry industry) {
+        float getShortage(Industry industry) {
             float available = industry.getMarket().getCommodityData(vic_Items.GENETECH).getAvailable();
             float shortageAmount = 4 - available;
             if (shortageAmount < 0) shortageAmount = 0;
@@ -210,7 +210,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
         protected void addItemDescriptionImpl(Industry industry, TooltipMakerAPI text, SpecialItemData data,
                                               InstallableIndustryItemPlugin.InstallableItemDescriptionMode mode, String pre, float pad) {
-            text.addPara(pre + "Increases farming production by %s units. Adds demand for %s units of genetech. Increases Hazard rating by %s",
+            text.addPara(pre + "Increases farming production by %s units. Adds demand for %s units of genetech. Reduces accessibility by %s",
                     pad, Misc.getHighlightColor(),
                     "" + production, "" + demand, Math.round(hazard * 100) + "%");
         }
@@ -222,7 +222,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
         @Override
         public List<String> getUnmetRequirements(Industry industry) {
-            List<String> unmet = new ArrayList<String>();
+            List<String> unmet = new ArrayList<>();
             if (industry == null) return unmet;
 
             MarketAPI market = industry.getMarket();

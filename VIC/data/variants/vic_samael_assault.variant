@@ -1,56 +1,36 @@
 {
-  "variantId": "vic_samael_assault",
-  "hullId": "vic_samael",
-  "displayName": "Pressure",
-  "goalVariant": true,
-  "fluxCapacitors": 9,
-  "fluxVents": 18,
-  "quality": 1,
-  "permaMods": [],
-  "hullMods": [
-    "targetingunit"
-  ],
-  "weaponGroups": [
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0006": "gravitonbeam",
-        "WS0007": "gravitonbeam"
-      }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0001": "harpoonpod"
-      }
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0002": "vic_laidlawMassDriver",
-        "WS0004": "vic_laidlawMassDriver",
-        "WS0005": "vic_laidlawMassDriver"
-      }
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0003": "pdlaser"
-      }
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {
-        "WS0008": "vic_strigoy",
-        "WS0009": "vic_strigoy"
-      }
-    }
-  ],
-  "modules": [],
-  "wings": []
+    "displayName": "Fortress",
+    "fluxCapacitors": 8,
+    "fluxVents": 18,
+    "goalVariant": true,
+    "hullId": "vic_samael_alt",
+    "hullMods": ["vic_allRoundShieldUpgrade"],
+    "permaMods": [],
+    "sMods": [],
+    "variantId": "vic_samael_assault",
+    "weaponGroups": [
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0006": "vic_psotnikmed",
+                "WS0007": "vic_psotnikmed"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {"WS0001": "phasecl"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0004": "vic_strigoy",
+                "WS0005": "vic_strigoy",
+                "WS0008": "vic_strigoy",
+                "WS0009": "vic_strigoy"
+            }
+        }
+    ]
 }

@@ -14,6 +14,8 @@ public class vic_hellStormV2 extends BaseHullMod {
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getBallisticRoFMult().modifyMult(id, ROF_BONUS);
+        stats.getEnergyAmmoRegenMult().modifyMult(id, ROF_BONUS);
+        stats.getMissileAmmoRegenMult().modifyMult(id, MISSILE_AMMO_BONUS);
         stats.getEnergyWeaponDamageMult().modifyMult(id, ENERGY_WEAPON_DAMAGE_BONUS);
         stats.getEnergyWeaponFluxCostMod().modifyMult(id, ENERGY_WEAPON_FLUX_INCREASE);
         stats.getMissileAmmoBonus().modifyMult(id, MISSILE_AMMO_BONUS);

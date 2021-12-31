@@ -62,6 +62,23 @@ public class vic_PDArcEmitter extends BaseHullMod {
         if (!ship.isPhased() && !ship.getFluxTracker().isOverloadedOrVenting() && charges >= 1 && empCD <= 0 && !ship.isHoldFire() && (ship.getFluxTracker().getCurrFlux() + ZapFlux < ship.getMaxFlux())) {
             MissileAPI missile = NearestEnemyMissilesInRange(ship, ship.getCollisionRadius() + range.get(ship.getHullSize()));
             if (missile != null) {
+
+                Global.getCombatEngine().spawnEmpArcVisual(ship.getLocation(),
+                        ship,
+                        missile.getLocation(),
+                        missile,
+                        2,
+                        new Color(255, 162, 0, 29),
+                        new Color(255, 191, 21, 255));
+                Global.getCombatEngine().applyDamage(missile,
+                        missile.getLocation(),
+                        ZapDamage * ship.getMutableStats().getDamageToMissiles().getModifiedValue() * ship.getMutableStats().getEnergyWeaponDamageMult().getModifiedValue(),
+                        DamageType.ENERGY,
+                        0,
+                        false,
+                        false,
+                        ship);
+                /*
                 Global.getCombatEngine().spawnEmpArc(ship,
                         ship.getLocation(),
                         null,
@@ -74,6 +91,7 @@ public class vic_PDArcEmitter extends BaseHullMod {
                         1,
                         new Color(0, 217, 255, 183),
                         new Color(21, 208, 255, 255));
+                 */
                 ship.getFluxTracker().increaseFlux(ZapFlux * (ship.getMutableStats().getEnergyWeaponFluxCostMod().computeEffective(1)), false);
                 charges--;
                 empCD = 0.1f;

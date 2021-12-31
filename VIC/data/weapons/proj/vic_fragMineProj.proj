@@ -32,8 +32,8 @@
 									 "particleColor":[255,155,125,175],
 									 "sound":"explosion_flak"},
 					},
-	"engineSpec":{"turnAcc":100,
-				  "turnRate":10,
+	"engineSpec":{"turnAcc":0,
+				  "turnRate":30,
 				  "acc":150,
 				  "dec":150}
 }
