@@ -1,0 +1,35 @@
+{
+  "id": "vic_fighterTrail",
+  "animationType": "NONE",
+  "barrelMode": "ALTERNATING",
+  "everyFrameEffect":"data.scripts.weapons.vic_fighterTrail",
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "numFrames":2,
+  "frameRate":0,
+  "renderHints":["RENDER_ADDITIVE"],
+  "hardpointSprite": "graphics/weapons/deco/vic_fighterTrail_00.png",
+
+  "noImpactSounds": false,
+  "noNonShieldImpactSounds": false,
+  "noShieldImpactSounds": false,
+  "projectileSpecId": "",
+  "renderAboveAllWeapons": 1,
+  "size": "MEDIUM",
+  "specClass": "beam",
+  "textureType": ROUGH,
+  "turretAngleOffsets": [
+    0
+  ],
+  "turretOffsets": [
+    0,
+    0
+  ],
+  "turretSprite": "graphics/weapons/deco/vic_fighterTrail_00.png",
+  "type": "DECORATIVE"
+}

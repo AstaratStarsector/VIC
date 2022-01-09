@@ -51,6 +51,6 @@
     ]
   },
   "textureType": ROUGH,
-  "fireSoundOne": "vic_laidlaw_accelerator_charge",
+  "fireSoundOne": "vic_laidlaw_accelerator_light_charge",
   "fireSoundTwo": "vic_laidlaw_accelerator_shot_light"
 }

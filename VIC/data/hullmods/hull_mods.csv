@@ -9,8 +9,8 @@ Ballistic weapons range reduced by %s
 Energy weapons base range increased by %s su doesnt affects beam weapons
 Energy weapons generate %s less flux","The more the shield is turned to the rear of the ship, the bigger its arc grows. Balances the perfomance of energy and ballistic weaponry.",graphics/hullmods/vic_laidlawTech.png
 Dynamic Shields Front,vic_dynamicshieldsfront,1,,Volkov Industries,,Shields,,,TRUE,,0,0,0,0,data.hullmods.vic_dynamicShieldsFront,Face front - more shield arc. ,Face front - more shield arc. ,graphics/hullmods/extended_shields.png
-"""Hellstorm"" Weapon System (exp.)",vic_hellstorm,1,,Volkov Industries,,Weapons,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_hellStorm,Extreme modifications to weapon systems which increase ballistic weapons' fire rate by %s and both energy weapons' damage and flux cost by %s.,Faster rate of fire and less flux cost for ballistic weapons. ,graphics/hullmods/expanded_magazines2.png
-"""Hellstorm"" Weapon System ",vic_hellstormV2,1,,Volkov Industries,,Weapons,,,TRUE,,0,0,0,0,data.hullmods.vic_hellStormV2,"Extreme modifications to weapon systems which increase ballistic weapons' fire rate and ammo recharge rate by %s, both energy weapons' damage and flux cost by %s and max missile ammo and ammo recharge rate by %s. However, such significant alterations increase all weapon OP costs by %s.",Better weapon stats for increased OP.,graphics/hullmods/expanded_magazines2.png
+"""Hellstorm"" Weapon System (exp.)",vic_hellstorm,1,,Volkov Industries,,Weapons,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_hellStorm,Extreme modifications to weapon systems which increase ballistic weapons' fire rate by %s and both energy weapons' damage and flux cost by %s.,Faster rate of fire and less flux cost for ballistic weapons. ,graphics/hullmods/vic_hellstorm.png
+"""Hellstorm"" Weapon System ",vic_hellstormV2,1,,Volkov Industries,,Weapons,,,TRUE,,0,0,0,0,data.hullmods.vic_hellStormV2,"Extreme modifications to weapon systems which increase ballistic weapons' fire rate and ammo recharge rate by %s, both energy weapons' damage and flux cost by %s and max missile ammo and ammo recharge rate by %s. However, such significant alterations increase all weapon OP costs by %s.",Better weapon stats for increased OP.,graphics/hullmods/vic_hellstorm.png
 Convoy Drive,vic_convoyDrive,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_convoyDrive,Increases the zero-flux speed bonus by %s and the range of ballistic and energy weapons by a factor of %s.,Bigger zero-flux speed bonus and bigger range for ballistic and energy weapons.,graphics/hullmods/vic_convoyDrive.png
 Big Bays ,vic_bigbays,1,,Volkov Industries,Fighters,,,,TRUE,,0,0,0,0,data.hullmods.vic_bigbays,tba,tba,graphics/hullmods/converted_hangar.png
 Experimental Phase Drive,vic_toneddownweapon,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_tonedDownWeapon,"Allows the ship to be partially in P-Space on a constant basis, which accelerates the ship's timeflow by %s. Partially phased power grid also decreases weapon flux costs by %s.
@@ -38,11 +38,8 @@ VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,T
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #VIC modular,,,,,,,,,,,,,,,,,,
-VIC Integrated Assault Systems,vic_assault,2,,Volkov Industries,offensive,Weapons,15000,,,,5,10,15,25,data.hullmods.vic_assault,"Increases acceleration and deceleration up to %s when acceleration vector is at least %s degrees away from the current velocity vector. The bigger the angle between the vectors, the faster the bonus grows. The bonus also persists for a short period of time after its growth has stopped.",,graphics/hullmods/vic_assault.png
-"VIC ""Fervor"" Protocol",vic_deathProtocol,3,,Volkov Industries,offensive,Weapons,25000,,,,5,10,20,30,data.hullmods.vic_deathProtocol,"All damage dealt increased up to %s at close range. Full bonus damage at and below %s range, no bonus damage at and above %s range. But increases damage taken by %s.
-",,graphics/hullmods/vic_deathProtocol.png
-"VIC ""Fortress"" Protocol",vic_allRoundShieldUpgrade,3,,Volkov Industries,offensive,Shields,25000,,,,7,14,21,35,data.hullmods.vic_allRoundShieldUpgrade,B-series ships can be reconfigured into defensive mode. Increasing shield efficiency but reducing offensive capabilities,,graphics/hullmods/vic_shiledPack.png
-"""Shturm"" Overhaul",vic_ShturmSolution,1,,Volkov Industries,offensive,Weapons,5000,,,,5,10,15,25,data.hullmods.vic_assaultVariant,"The ""Shturm"" line of VIC ships is designed  with a specific set of technological solutions, giving them an edge in frantic close combat. The installation of this hullmod activates said solutions and severely reconfigures the ships' energy and weapon systems.",,graphics/hullmods/vic_shturmFrame.png
+"B-Series ""Fortress"" Protocol",vic_allRoundShieldUpgrade,3,,Volkov Industries,defensive,Shields,25000,,,,7,14,21,35,data.hullmods.vic_allRoundShieldUpgrade,"The B-series of VIC ships can be easily reconfigured into a more defensive form, increasing their shield efficiency but reducing offensive capabilities.",,graphics/hullmods/vic_shiledPack.png
+"A-Series ""Shturm"" Protocol",vic_ShturmSolution,1,,Volkov Industries,offensive,Weapons,5000,,,,5,10,15,25,data.hullmods.vic_assaultVariant,"The A-series a.k.a. ""Shturm"" line of VIC ships is designed  with a specific set of technological solutions, giving them an edge in frantic close combat. The installation of this hullmod activates said solutions and severely reconfigures the ship's energy and weapon systems.",,graphics/hullmods/vic_shturmFrame.png
 """Shturm"" Overhaul Dummy",vic_shturmSolutionDummy,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,Nothing,Nothing,graphics/hullmods/vic_shturmFrame.png
 ,,,,,,,,,,,,,,,,,,
 #modular,,,,,,,,,,,,,,,,,,
@@ -51,7 +48,9 @@ Loader Overdrive,vic_loaderOverdrive,1,,Volkov Industries,offensive,Weapons,1000
 PD Arc Emitter,vic_PDArcEmitter,2,,Volkov Industries,defensive,Weapons,15000,TRUE,,,5,10,15,25,data.hullmods.vic_PDArcEmitter,"Zaps missiles in %s su range dealing %s damage to it, generates %s flux per zap, after zapping needs to recharge for %s seconds, can hold up to %s charges. All stats are depending on hull size.
 
 Counts as energy weapon for stat modifiers.",,graphics/hullmods/vic_empEmitter.png
-,,,,,,,,,,,,,,,,,,
+Inertia Redirection Systems,vic_assault,2,,Volkov Industries,engines,Engines,15000,,,,5,10,15,25,data.hullmods.vic_assault,"Increases acceleration and deceleration up to %s when acceleration vector is at least %s degrees away from the current velocity vector. The bigger the angle between the vectors, the faster the bonus grows. The bonus also persists for a short period of time after its growth has stopped.",,graphics/hullmods/vic_assault.png
+"""Fervor"" Protocol",vic_deathProtocol,3,,Volkov Industries,offensive,Weapons,25000,,,,5,10,20,30,data.hullmods.vic_deathProtocol,"All damage dealt increased up to %s at close range. Full bonus damage at and below %s range, no bonus damage at and above %s range. Increases all damage taken by %s.
+",,graphics/hullmods/vic_deathProtocol.png
 ,,,,,,,,,,,,,,,,,,
 #Commissioned Crews,,,,,,,,,,,,,,,,,,
 Commissioned Crew Bundle,vic_commissionedCrewBundle,,,,,,,,TRUE,,0,0,0,0,data.hullmods.vic_commissionedCrewBundle,,,graphics/hullmods/vic_geneticmodifications.png
@@ -61,4 +60,6 @@ With the crews being able to withstand extreme inertial strains and act faster i
 VIC Brand Engine Upgrades,vic_brandengineupgrades,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,data.hullmods.vic_brandEngineUpgrades,"To safely and quickly transport goods and xenolife test subjects (as well as to live up to their PR image of one of the more robust Megacorporations) VIC have always been investing heavily into research and production of novel aerospace propulsion systems throughout the corporation's long history.
 
 VIC's engineers like no one else know how to make even the worst engines roar mightily. Thanks to extensive modifications, Capitals' burn level is increased by %s, while ships of smaller classes consume %s less fuel. However, these upgrades also increase fleet Sensor Profiles by %s/%s/%s/%s depending on hull size for obvious reasons. ",Speed limits are for pussies.,graphics/hullmods/vic_brandengineupgrades.png
+,,,,,,,,,,,,,,,,,,
+VIC Fighter Engines,vic_fighteralwaysburn,,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_fighteralwaysburn,,,graphics/hullmods/axial_rotation.png
 ,,,,,,,,,,,,,,,,,,

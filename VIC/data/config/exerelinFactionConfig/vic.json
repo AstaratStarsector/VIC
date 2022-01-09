@@ -168,7 +168,7 @@
     ],
 
     "defenceStations":[
-        {"ids":["orbitalstation", "battlestation", "starfortress"]},
+        {"ids":["orbitalstation_mid", "battlestation_mid", "starfortress_mid"]},
     ],
 	
    

@@ -24,10 +24,10 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
     private static final Vector2f ZERO = new Vector2f();
 
     private final DamagingExplosionSpec explosion = new DamagingExplosionSpec(0.05f,
-            75,
-            25f,
-            400,
-            150,
+            125,
+            67f,
+            500,
+            250,
             CollisionClass.PROJECTILE_FF,
             CollisionClass.PROJECTILE_FIGHTER,
             3,
@@ -40,7 +40,7 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
 
 
     public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
-        if (!shieldHit && !projectile.isFading() && target instanceof ShipAPI) {
+        if (!projectile.isFading() && target instanceof ShipAPI) {
             explosion.setDamageType(DamageType.FRAGMENTATION);
             explosion.setShowGraphic(false);
             engine.spawnDamagingExplosion(explosion, projectile.getSource(), point);
@@ -104,8 +104,8 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
                 Global.getSettings().getSprite("fx","vic_laidlawExplosion"),
                 point,
                 new Vector2f(),
-                new Vector2f(48,48),
-                new Vector2f(200,200),
+                new Vector2f(72,72),
+                new Vector2f(300,300),
                 //angle,
                 360*(float)Math.random(),
                 0,
@@ -119,8 +119,8 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
                 Global.getSettings().getSprite("fx","vic_laidlawExplosion"),
                 point,
                 new Vector2f(),
-                new Vector2f(64,64),
-                new Vector2f(100,100),
+                new Vector2f(96,96),
+                new Vector2f(150,150),
                 //angle,
                 360*(float)Math.random(),
                 0,
@@ -134,8 +134,8 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
                 Global.getSettings().getSprite("fx","vic_laidlawExplosion"),
                 point,
                 new Vector2f(),
-                new Vector2f(98,98),
-                new Vector2f(50,50),
+                new Vector2f(150,150),
+                new Vector2f(75,75),
                 //angle,
                 360*(float)Math.random(),
                 0,

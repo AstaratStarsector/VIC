@@ -155,6 +155,7 @@ public class vic_omniLungeAI implements ShipSystemAIScript {
             if (ship.getEngineController().isStrafingRight()) {
                 newVector.x += 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
             }
+            VectorUtils.rotate(newVector, ship.getFacing() - 90);
             Vector2f direction = newVector;
             float range = (vic_OmniLunge.SPEED_BONUS + ship.getMaxSpeed()) * system.getChargeActiveDur() * 1.1f;
             Misc.normalise(direction);

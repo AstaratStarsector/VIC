@@ -14,7 +14,7 @@
   "builtInMods": [
     "vic_aerodynamicdesign",
     "vic_dynamicshields",
-	"vic_convoyDrive"
+    "vic_convoyDrive"
   ],
   "builtInWeapons": {
     "WS0014": "vic_thamuz_deco_left",
@@ -236,25 +236,25 @@
     },
     {
       "location": [-34, -61],
-      "length": 55,
+      "length": 45,
       "width": 15,
       "angle": 180,
-      "contrailSize": 14,
+      "contrailSize": 15,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-34, 61],
-      "length": 55,
+      "length": 45,
       "width": 15,
       "angle": -180,
-      "contrailSize": 14,
+      "contrailSize": 15,
       "style": "CUSTOM",
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
       "location": [-34, -91],
-      "length": 45,
+      "length": 31.5,
       "width": 14,
       "angle": 180,
       "contrailSize": 14,
@@ -263,7 +263,7 @@
     },
     {
       "location": [-34, 91],
-      "length": 45,
+      "length": 31.5,
       "width": 14,
       "angle": -180,
       "contrailSize": 14,

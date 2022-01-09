@@ -11,6 +11,13 @@
   "shieldCenter": [0, 0],
   "shieldRadius": 37.5,
   "viewOffset": 0,
+  "builtInMods": [
+    "vic_fighteralwaysburn"
+  ],
+  "builtInWeapons": {
+    "WS0006": "vic_fighterTrail",
+    "WS0007": "vic_fighterTrail"
+  },
   "weaponSlots": [
     {
       "id": "WS0001",
@@ -56,6 +63,24 @@
       "arc": 5,
       "angle": 0,
       "locations": [31, -0]
+    },
+    {
+      "id": "WS0006",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": 180,
+      "locations": [-23, 4.5]
+    },
+    {
+      "id": "WS0007",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 5,
+      "angle": -180,
+      "locations": [-23, -4.5]
     }
   ],
   "engineSlots": [
@@ -66,7 +91,7 @@
       "angle": -180,
       "contrailSize": 6,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "VOLKOV-LAIDLAW'S FIGHTER"
     },
     {
       "location": [-23, -4.5],
@@ -75,7 +100,7 @@
       "angle": 180,
       "contrailSize": 6,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "VOLKOV-LAIDLAW'S FIGHTER"
     }
   ],
   "bounds": [

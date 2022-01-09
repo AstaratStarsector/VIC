@@ -78,6 +78,7 @@ public class vic_OmniLunge extends BaseShipSystemScript {
                 if (ship.getEngineController().isStrafingRight()) {
                     newVector.x += 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
                 }
+                VectorUtils.rotate(newVector, ship.getFacing() - 90);
                 Vector2f NewSpeed = (Vector2f) newVector.normalise(newVector).scale(ship.getMaxSpeed());
                 ship.getVelocity().set(NewSpeed);
                 doOnce_speedUp = false;

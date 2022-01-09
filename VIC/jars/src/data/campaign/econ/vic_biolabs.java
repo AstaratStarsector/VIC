@@ -19,7 +19,7 @@ public class vic_biolabs extends BaseIndustry {
 
         demand(Commodities.ORGANICS, size);
         demand(Commodities.CREW, size);
-        supply(Commodities.ORGANS, size - 1);
+        supply(Commodities.ORGANS, size - 3);
         supply(Commodities.MARINES, size - 1);
 
         int genetechProd = size + 2;

@@ -49,7 +49,7 @@ public class Ittir {
                 150f,
                 2500f,
                 80f);
-        //Kalada.setCustomDescriptionId("vic_kalada"); //reference descriptions.csv
+        Kalada.setCustomDescriptionId("vic_kalada"); //reference descriptions.csv
 
         MarketAPI Kalada_market = addMarketplace(
                 "vic",
@@ -85,7 +85,7 @@ public class Ittir {
                                 Industries.MINING,
                                 Industries.GROUNDDEFENSES,
                                 Industries.WAYSTATION,
-                                Industries.STARFORTRESS,
+                                Industries.STARFORTRESS_MID,
                                 Industries.MILITARYBASE,
                                 Industries.FARMING
                         )

@@ -12,8 +12,12 @@
   "shieldRadius": 21.5,
   "viewOffset": 0,
   "builtInMods": [
-    "vic_dynamicshields"
+    "vic_dynamicshields",
+    "vic_fighteralwaysburn"
   ],
+  "builtInWeapons": {
+    "WS0003": "vic_fighterTrail"
+  },
   "weaponSlots": [
     {
       "id": "WS0001",
@@ -32,6 +36,15 @@
       "arc": 15,
       "angle": 0,
       "locations": [13, -8.5]
+    },
+    {
+      "id": "WS0003",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 15,
+      "angle": 180,
+      "locations": [-3, -0]
     }
   ],
   "engineSlots": [
@@ -42,7 +55,7 @@
       "angle": 180,
       "contrailSize": 5,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "VOLKOV-LAIDLAW'S FIGHTER"
     }
   ],
   "bounds": [

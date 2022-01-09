@@ -4,14 +4,30 @@
         "engineColor":[145,255,255,255],  #engines in combat
         "engineCampaignColor":[145,255,255,255], #engines on campaign layer, very similar to combat version
         #these are these in-combat engine trails, such as smoke and such
-        "contrailParticleSizeMult":2,
-        "contrailParticleDuration":3, 
-        "contrailParticleFinalSizeMult":2.5,
+        "contrailParticleSizeMult":5,
+        "contrailParticleDuration":2, 
+        "contrailParticleFinalSizeMult":1,
         "contrailMaxSpeedMult":0.5,
         "contrailAngularVelocityMult":0.5,
-        "contrailColor":[50,50,50,0], #the long trail in combat, usually slightly different?
+        "contrailColor":[200,255,255,15], #the long trail in combat, usually slightly different?
         "contrailCampaignColor":[145,255,255,75], #these long trails on campaign layer
         "type":"GLOW" # GLOW or SMOKE; it's either engine with glows or that spits out smoke
+    },
+	
+	
+	"VOLKOV-LAIDLAW'S FIGHTER":{
+		"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+						"engineColor":[145,255,255,255],
+						"contrailDuration":3,
+						"contrailWidthMult":1,
+						"contrailWidthAddedFractionAtEnd":3,  # can be negative. makes trail spread out/narrow at the end
+						"contrailMinSeg":5, # min segment length, in pixels
+						"contrailMaxSpeedMult":.0f,
+						"contrailAngularVelocityMult":0.5f,
+						"contrailSpawnDistMult":0, # how far away from engine it starts
+						"contrailColor":[145,255,255,0],
+						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+	
     },
 }
 

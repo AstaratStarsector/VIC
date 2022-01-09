@@ -93,8 +93,8 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
 
         tooltip.addSectionHeading("New Ship System", Alignment.MID, pad);
         TooltipMakerAPI text = tooltip.beginImageWithText("graphics/icons/skills/defensive_systems.png", 64);
-        text.addPara("Shield Hardening (toggle)", Misc.getTooltipTitleAndLightHighlightColor(), 2);
-        text.addPara("Redirect ship's energy to harden shield. Reduces shield damage taken by %s but reduces ship weapons rate of fire by %s.",
+        text.addPara("Shield Entrenchment (toggle)", Misc.getTooltipTitleAndLightHighlightColor(), 2);
+        text.addPara("Redirect the ship's energy to significantly harden the shield. Reduces shield damage taken by %s but reduces ship's weapons' rate of fire by %s.",
                 2, Misc.getHighlightColor(), Math.round(shieldDamageTakenReduction * 100) + "%", Math.round(weaponRoFReduction * 100) + "%");
         tooltip.addImageWithText(pad);
     }

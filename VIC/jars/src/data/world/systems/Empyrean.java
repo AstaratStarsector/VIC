@@ -176,7 +176,7 @@ public class Empyrean {
                         Arrays.asList(
                                 Industries.POPULATION,
                                 Industries.MEGAPORT,
-                                Industries.STARFORTRESS,
+                                Industries.STARFORTRESS_MID,
                                 Industries.HEAVYBATTERIES,
                                 Industries.HIGHCOMMAND,
                                 Industries.WAYSTATION,
@@ -283,7 +283,7 @@ public class Empyrean {
                                 Industries.POPULATION,
                                 Industries.MEGAPORT,
                                 Industries.MINING,
-                                Industries.STARFORTRESS,
+                                Industries.STARFORTRESS_MID,
                                 Industries.HEAVYBATTERIES,
                                 Industries.MILITARYBASE,
                                 ("vicbiolabs"),
@@ -449,7 +449,7 @@ public class Empyrean {
                                 Industries.MINING,
                                 Industries.HEAVYBATTERIES,
                                 Industries.WAYSTATION,
-                                Industries.ORBITALSTATION,
+                                Industries.ORBITALSTATION_MID,
                                 Industries.FUELPROD
                         )
                 ),
