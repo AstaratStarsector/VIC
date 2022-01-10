@@ -1,10 +1,7 @@
 package data.scripts.shipsystems;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.CombatEngineLayers;
-import com.fs.starfarer.api.combat.MutableShipStatsAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.api.combat.ShipEngineControllerAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
@@ -79,7 +76,10 @@ public class vic_OmniLunge extends BaseShipSystemScript {
                     newVector.x += 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
                 }
                 VectorUtils.rotate(newVector, ship.getFacing() - 90);
-                Vector2f NewSpeed = (Vector2f) newVector.normalise(newVector).scale(ship.getMaxSpeed());
+                Vector2f NewSpeed;
+                if (VectorUtils.isZeroVector(newVector)) NewSpeed = (Vector2f) new Vector2f(ship.getVelocity()).normalise(newVector).scale(ship.getMaxSpeed());
+                else NewSpeed = (Vector2f) newVector.normalise(newVector).scale(ship.getMaxSpeed());
+                Global.getLogger(vic_OmniLunge.class).info(newVector.x + "/" + newVector.y);
                 ship.getVelocity().set(NewSpeed);
                 doOnce_speedUp = false;
             }
@@ -107,8 +107,6 @@ public class vic_OmniLunge extends BaseShipSystemScript {
         if (stats.getEntity() instanceof ShipAPI) {
             ship.getEngineController().extendFlame(this, 0.5f * effectLevel, 0.5f * effectLevel, 0.25f * effectLevel);
         }
-        Global.getCombatEngine().maintainStatusForPlayerShip(this, null,
-                "turn speed", ship.getAngularVelocity() + "", false);
     }
 
     public void afterImage (ShipAPI ship){
@@ -160,6 +158,23 @@ public class vic_OmniLunge extends BaseShipSystemScript {
                         CombatEngineLayers.UNDER_SHIPS_LAYER);
             }
         }
+    }
+
+    public boolean isUsable(ShipSystemAPI system, ShipAPI ship) {
+        Vector2f newVector = new Vector2f();
+        if (ship.getEngineController().isAccelerating()) {
+            newVector.y += 1 * ship.getAcceleration();
+        }
+        if(ship.getEngineController().isAcceleratingBackwards() || ship.getEngineController().isDecelerating()){
+            newVector.y -= 1 * ship.getDeceleration();
+        }
+        if (ship.getEngineController().isStrafingLeft()) {
+            newVector.x -=  1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
+        }
+        if (ship.getEngineController().isStrafingRight()) {
+            newVector.x += 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
+        }
+        return !(VectorUtils.isZeroVector(newVector) && VectorUtils.isZeroVector(ship.getVelocity()));
     }
 
     public void unapply(MutableShipStatsAPI stats, String id) {

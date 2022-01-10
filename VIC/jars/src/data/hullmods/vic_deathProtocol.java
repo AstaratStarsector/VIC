@@ -1,5 +1,6 @@
 package data.hullmods;
 
+import com.fs.starfarer.api.GameState;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
@@ -82,6 +83,7 @@ public class vic_deathProtocol extends BaseHullMod {
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
         if (ship.getOriginalOwner() == -1) return;
+        if (Global.getCurrentState().equals(GameState.TITLE)) return;
         if (!ship.hasListenerOfClass(vic_FervorProtocolListener.class)) {
             vic_FervorProtocolListener listner = new vic_FervorProtocolListener();
             listner.ship = ship;
