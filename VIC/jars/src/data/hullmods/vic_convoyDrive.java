@@ -38,7 +38,7 @@ public class vic_convoyDrive extends BaseHullMod {
         if (!allowed) return;
         if (ship.getVariant().hasHullMod("vic_allRoundShieldUpgrade")) {
             if (!ship.getVariant().getHullSpec().getHullId().endsWith("_alt")) {
-                ShipHullSpecAPI hullSpec = Global.getSettings().getHullSpec(ship.getVariant().getHullSpec().getHullId() + "_alt");
+                ShipHullSpecAPI hullSpec = Global.getSettings().getHullSpec(ship.getHullSpec().getBaseHullId() + "_alt");
                 List<WeaponGroupSpec> weaponGroups = new ArrayList<>(ship.getVariant().getWeaponGroups());
                 ship.getVariant().setHullSpecAPI(hullSpec);
                 ship.getVariant().getWeaponGroups().clear();
@@ -46,7 +46,7 @@ public class vic_convoyDrive extends BaseHullMod {
             }
         } else {
             if (ship.getVariant().getHullSpec().getHullId().endsWith("_alt")) {
-                ShipHullSpecAPI hullSpec = Global.getSettings().getHullSpec(ship.getVariant().getHullSpec().getHullId().replace("_alt", ""));
+                ShipHullSpecAPI hullSpec = Global.getSettings().getHullSpec(ship.getHullSpec().getBaseHullId().replace("_alt", ""));
                 List<WeaponGroupSpec> weaponGroups = new ArrayList<>(ship.getVariant().getWeaponGroups());
                 ship.getVariant().setHullSpecAPI(hullSpec);
                 ship.getVariant().getWeaponGroups().clear();

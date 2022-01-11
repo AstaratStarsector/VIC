@@ -6,7 +6,7 @@ import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 public class vic_shieldHardening extends BaseShipSystemScript {
 
     public static float
-            shieldDamageTakenReduction = 0.5f,
+            shieldDamageTakenReduction = 0.6f,
             weaponRoFReduction = 0.25f;
 
     @Override
