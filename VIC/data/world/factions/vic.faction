@@ -12,7 +12,7 @@
   "displayNameLongWithArticle": "the Volkov Industrial Conglomerate",
   "logo": "graphics/factions/vic_flag.png",
   "crest": "graphics/factions/vic_crest.png",
-  "shipNamePrefix": "VIC",
+  "shipNamePrefix": "ASCV",
   "shipNameSources": {
 	"vic":10,
 	"vic_memes":0.5,

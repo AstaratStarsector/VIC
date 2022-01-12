@@ -29,7 +29,7 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
     }
 
     public final float
-            shieldEff = 25f,
+            shieldEff = 30f,
             damageReduction = 25f;
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
