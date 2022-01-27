@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class vic_assaultVariant extends BaseHullMod {
+public class vic_shturmProtocol extends BaseHullMod {
 
     final float
             shieldUpKeep = 2f,
@@ -73,9 +73,12 @@ public class vic_assaultVariant extends BaseHullMod {
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
         if (ship.getShield().isOff() && ship.getOriginalOwner() != -1){
-            ship.getMutableStats().getFluxDissipation().modifyMult("vic_assaultVariant", disBonus);
+            ship.getMutableStats().getFluxDissipation().modifyMult("vic_shturmProtocol", disBonus);
+            if (ship == Global.getCombatEngine().getPlayerShip()){
+                Global.getCombatEngine().maintainStatusForPlayerShip("vic_shturmProtocol", "graphics/icons/hullsys/vic_shturmFrameSus.png", "Shturm protocol",  "Flux dissipation is doubled", false);
+            }
         } else {
-            ship.getMutableStats().getFluxDissipation().unmodify("vic_assaultVariant");
+            ship.getMutableStats().getFluxDissipation().unmodify("vic_shturmProtocol");
         }
     }
 
@@ -91,7 +94,7 @@ public class vic_assaultVariant extends BaseHullMod {
 
     public boolean isApplicableToShip(ShipAPI ship) {
         MutableShipStatsAPI stats = ship.getMutableStats();
-        String id = "vic_assaultVariant";
+        String id = "vic_shturmProtocol";
         float tempStat = 0;
         for (Map.Entry<String, MutableStat.StatMod> entry : stats.getShieldUpkeepMult().getFlatMods().entrySet()){
             if (entry.getValue().getValue() < 0){
@@ -189,7 +192,7 @@ public class vic_assaultVariant extends BaseHullMod {
 
         tooltip.addPara("Increases the ship's system cooldown recovery and charge generation rate by %s", padS, goodHighlight, Math.round(systemRechargeBonus) + "%");
 
-        tooltip.addPara("Increases flux dissipation rate by a factor of %s", padS, goodHighlight, "x" + Math.round(disBonus));
+        tooltip.addPara("When shields are disabled increases flux dissipation rate by a factor of %s", padS, goodHighlight, "x" + Math.round(disBonus));
 
         tooltip.addPara("Increases energy and ballistic weapons range by %s/%s/%s/%s", padS, goodHighlight, Math.round(rangeBonus.get(ShipAPI.HullSize.FRIGATE)) + "",
                 Math.round(rangeBonus.get(ShipAPI.HullSize.DESTROYER)) + "", Math.round(rangeBonus.get(ShipAPI.HullSize.CRUISER)) + "", Math.round(rangeBonus.get(ShipAPI.HullSize.CAPITAL_SHIP)) + "");
@@ -209,6 +212,6 @@ public class vic_assaultVariant extends BaseHullMod {
 
         tooltip.addSectionHeading("Incompatibilities", Alignment.MID, pad);
 
-        tooltip.addPara("Incompatible with Safety Overrides and Stabilized Shields", pad);
+        tooltip.addPara("Incompatible with Safety Overrides", pad);
     }
 }

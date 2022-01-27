@@ -12,7 +12,8 @@
 	"coreColor":[255,255,255,255],
 	#"glowRadius":10,
 	#"glowColor":[150,190,225,150],
-	"bulletSprite":"graphics/missiles/vic_vodyanoy_shot.png"
+	"bulletSprite":"graphics/missiles/vic_vodyanoy_shot.png",
+	"onHitEffect":"data.scripts.weapons.vic_vodyanoyHEOnHit",
 }
 
 

@@ -17,6 +17,7 @@ public class vic_laidlawMassDriverOnHit implements OnHitEffectPlugin {
     private boolean light=false;
 
     private static final Vector2f ZERO = new Vector2f();
+    final float damagePercent = 0.25f;
 
     private final DamagingExplosionSpec explosion = new DamagingExplosionSpec(0.05f,
             67,
@@ -34,11 +35,14 @@ public class vic_laidlawMassDriverOnHit implements OnHitEffectPlugin {
     );
 
     public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
-        if (!shieldHit && !projectile.isFading() && target instanceof ShipAPI) {
+        if (!projectile.isFading() && target instanceof ShipAPI && !((ShipAPI) target).isFighter() && !(target instanceof MissileAPI)) {
             explosion.setDamageType(DamageType.FRAGMENTATION);
             explosion.setShowGraphic(false);
+            explosion.setMinDamage(projectile.getDamageAmount() * damagePercent * 0.5f);
+            explosion.setMaxDamage(projectile.getDamageAmount() * damagePercent);
             engine.spawnDamagingExplosion(explosion, projectile.getSource(), point);
         }
+
         WaveDistortion wave = new WaveDistortion(point, ZERO);
         wave.setIntensity(0.75f);
         wave.setSize(35f);

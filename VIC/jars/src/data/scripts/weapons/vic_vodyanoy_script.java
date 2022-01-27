@@ -6,21 +6,20 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.IntervalUtil;
 import org.lazywizard.lazylib.MathUtils;
-import org.lazywizard.lazylib.combat.CombatUtils;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
-    private final List<DamagingProjectileAPI> alreadyRegisteredProjectiles = new ArrayList<>();
     private final IntervalUtil
             checkTime = new IntervalUtil(0.5f, 0.5f);
     //animation values
-    private float delay = 0.1f;
-    private float timer = 0;
-    private float SPINUP = 0.02f;
-    private float SPINDOWN = 10f;
+    float delay = 0.1f;
+    float timer = 0;
+    final float SPINUP = 0.03f;
+    final float SPINDOWN = 7.5f;
 
     //dont touch
     private boolean runOnce = false;
@@ -33,14 +32,23 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
             heat = 0f,
             currentScore = 0f;
 
+    final Color
+            noHeat = new Color(170, 245, 255, 255),
+            maxHeat = new Color(253, 137, 137, 255);
+
 
     //over heat stuff
-    private final float
-            timeToStartHeating = 1.5f, //can be 1/x where x is time to rump up
-            heatGeneration = 1 / 6f, //can be 1/x where x is time to rump up
-            heatFallOffSpeed = 0.25f, //can be 1/x where x is time to cooldown
-            scorePerProj = 1 / 8f, // 1/x where every xTh proj replaced
-            additionalScore = 1 / 5f - 1 / 8f; // 1/x where every xTh proj replaced
+    float
+            timeToStartHeating = 0f, //can be 1/x where x is time to starting gaining heat and replacing projes
+            heatGeneration = 1f / 5f, //can be 1/x where x is time to rump up
+            heatFallOffSpeed = 1f / 4f, //can be 1/x where x is time to cooldown
+            heatThreshold = 0.2f, //at what heat % start replacing projes
+            scorePerProj = 0f, // 1/x where every xTh proj replaced with no heat
+            additionalScore = 1f; // 1/x where every xTh proj replaced
+
+    {
+        additionalScore -= scorePerProj;
+    }
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
@@ -58,8 +66,6 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
                 maxFrame = theAnim.getNumFrames();
                 frame = MathUtils.getRandomNumberInRange(0, maxFrame - 1);
             }
-            SPINUP = 0.03f;
-            SPINDOWN = 7.5f;
         }
 
         if (weapon.getChargeLevel() >= 1) {
@@ -79,6 +85,14 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
             if (heat < 0) heat = 0;
 
         }
+
+        //change flash colour based on heat
+        float heatRevers = 1 - heat;
+        Color mix = new Color(limit(noHeat.getRed() * heatRevers + maxHeat.getRed() * heat),
+                limit(noHeat.getGreen() * heatRevers + maxHeat.getGreen() * heat),
+                limit(noHeat.getBlue() * heatRevers + maxHeat.getBlue() * heat),
+                255);
+        weapon.getMuzzleFlashSpec().setParticleColor(mix);
 
         /*
         checkTime.advance(amount);
@@ -140,7 +154,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
             Global.getSoundPlayer().playLoop(
                     "vic_vodanoy_shoting",
                     weapon,
-                    1f,
+                    1f + heat * 0.25f,
                     Math.max(0, 10 * weapon.getChargeLevel() - 9),
                     weapon.getLocation(),
                     weapon.getShip().getVelocity()
@@ -149,7 +163,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
             Global.getSoundPlayer().playLoop(
                     "vic_vodanoy_spin",
                     weapon,
-                    0.25f + weapon.getChargeLevel(),
+                    0.25f + weapon.getChargeLevel() + heat * 0.25f,
                     0.15f,
 //                    0.5f+0.5f*weapon.getChargeLevel(),
                     weapon.getLocation(),
@@ -165,7 +179,8 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
 
     @Override
     public void onFire(DamagingProjectileAPI proj, WeaponAPI weapon, CombatEngineAPI engine) {
-        if (firingTime >= timeToStartHeating) currentScore += scorePerProj + (additionalScore * heat);
+        if (firingTime >= timeToStartHeating && heat >= heatThreshold)
+            currentScore += scorePerProj + (additionalScore * heat);
         if (currentScore >= 1) {
             currentScore--;
             DamagingProjectileAPI spawnedProj = (DamagingProjectileAPI) engine.spawnProjectile(
@@ -175,11 +190,14 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
                     proj.getLocation(),
                     proj.getFacing(),
                     weapon.getShip().getVelocity());
-            alreadyRegisteredProjectiles.add(spawnedProj);
+            spawnedProj.getVelocity().scale(MathUtils.getRandomNumberInRange(0.9f, 1.1f));
             engine.removeEntity(proj);
         } else {
             proj.getVelocity().scale(MathUtils.getRandomNumberInRange(0.9f, 1.1f));
-            alreadyRegisteredProjectiles.add(proj);
         }
+    }
+
+    public int limit(float value) {
+        return Math.max(0, Math.min(Math.round(value), 255));
     }
 }

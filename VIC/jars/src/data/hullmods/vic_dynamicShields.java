@@ -76,8 +76,7 @@ public class vic_dynamicShields extends BaseHullMod {
         if (index == 1) return Math.round((shieldSpeed - 1) * 100) + "%";
         if (index == 2) return Math.round((1 - ballisticRangeMult) * 100) + "%";
         if (index == 3) return Math.round(energyFlatRange) + "";
-        if (index == 4) return Math.round(energyFlatRange) + "";
-        if (index == 5) return Math.round((1 - energyFluxMult) * 100) + "%";
+        if (index == 4) return Math.round((1 - energyFluxMult) * 100) + "%";
         return null;
     }
 

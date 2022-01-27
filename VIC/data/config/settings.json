@@ -36,6 +36,7 @@
 			"vic_powerRedistributorLarge":"graphics/icons/hullsys/vic_powerRedistributorLarge.png",
 			"vic_deathProtocolIcon":"graphics/icons/hullsys/vic_deathProtocolIcon.png",
 			"vic_auxThrusters":"graphics/icons/hullsys/vic_auxThrusters.png",
+			"vic_shturmFrameSus":"graphics/icons/hullsys/vic_shturmFrameSus.png",
 		},
 		"fx":{
 			"vic_fluxRaptureSuck":"graphics/fx/vic_fluxRaptureSuckQuarter.png",

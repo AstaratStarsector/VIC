@@ -108,8 +108,9 @@ public class vic_assault extends BaseHullMod {
         ship.getMutableStats().getAcceleration().modifyPercent("vic_assault", accelBonus * boostPower * 0.01f);
         ship.getMutableStats().getDeceleration().modifyPercent("vic_assault", accelBonus * boostPower * 0.01f);
 
-        Global.getCombatEngine().maintainStatusForPlayerShip("vic_direction1", "graphics/icons/hullsys/vic_auxThrusters.png", "Acceleration increase",  Math.round(accelBonus * boostPower * 0.01f) + "%", false);
-
+        if (ship == Global.getCombatEngine().getPlayerShip()) {
+            Global.getCombatEngine().maintainStatusForPlayerShip("vic_direction1", "graphics/icons/hullsys/vic_auxThrusters.png", "Acceleration increase", Math.round(accelBonus * boostPower * 0.01f) + "%", false);
+        }
         customCombatData.put("vic_assaultBoostPower" + id, boostPower);
     }
 /*

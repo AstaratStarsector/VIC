@@ -180,6 +180,15 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
             );
 
 
+            engine.addHitParticle(
+                    new Vector2f(proj.getLocation()),
+                    new Vector2f(),
+                    1000,
+                    0.6f,
+                    //0,
+                    0.2f,
+                    Color.WHITE);
+
             engine.removePlugin(this);
         }
     }
