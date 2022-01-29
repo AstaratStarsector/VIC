@@ -6,7 +6,6 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.MutableStat;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.ui.Alignment;
-import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
@@ -26,14 +25,16 @@ public class vic_shturmProtocol extends BaseHullMod {
             pptReduction = 0.5f;
 
     private final Map<ShipAPI.HullSize, Float> rangeForClamp = new HashMap<>();
+
     {
         rangeForClamp.put(ShipAPI.HullSize.FRIGATE, 500f);
         rangeForClamp.put(ShipAPI.HullSize.DESTROYER, 700f);
         rangeForClamp.put(ShipAPI.HullSize.CRUISER, 900f);
         rangeForClamp.put(ShipAPI.HullSize.CAPITAL_SHIP, 1100f);
     }
-    
+
     private final Map<ShipAPI.HullSize, Float> rangeBonus = new HashMap<>();
+
     {
         rangeBonus.put(ShipAPI.HullSize.FRIGATE, 100f);
         rangeBonus.put(ShipAPI.HullSize.DESTROYER, 150f);
@@ -42,6 +43,7 @@ public class vic_shturmProtocol extends BaseHullMod {
     }
 
     private final Map<ShipAPI.HullSize, Float> speedBonus = new HashMap<>();
+
     {
         speedBonus.put(ShipAPI.HullSize.FRIGATE, 20f);
         speedBonus.put(ShipAPI.HullSize.DESTROYER, 15f);
@@ -50,6 +52,7 @@ public class vic_shturmProtocol extends BaseHullMod {
     }
 
     private static final Set<String> BLOCKED_HULLMODS = new HashSet<>(2);
+
     static {
         BLOCKED_HULLMODS.add("safetyoverrides");
         //BLOCKED_HULLMODS.add("stabilizedshieldemitter");
@@ -58,9 +61,9 @@ public class vic_shturmProtocol extends BaseHullMod {
 
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        stats.getBallisticWeaponRangeBonus().modifyFlat(id , rangeBonus.get(hullSize));
-        stats.getEnergyWeaponRangeBonus().modifyFlat(id , rangeBonus.get(hullSize));
-        stats.getWeaponRangeThreshold().modifyFlat(id,rangeForClamp.get(hullSize));
+        stats.getBallisticWeaponRangeBonus().modifyFlat(id, rangeBonus.get(hullSize));
+        stats.getEnergyWeaponRangeBonus().modifyFlat(id, rangeBonus.get(hullSize));
+        stats.getWeaponRangeThreshold().modifyFlat(id, rangeForClamp.get(hullSize));
         stats.getWeaponRangeMultPastThreshold().modifyMult(id, 1 - rangeReduction);
         stats.getShieldUpkeepMult().modifyMult(id, shieldUpKeep);
         stats.getSystemCooldownBonus().modifyPercent(id, systemRechargeBonus);
@@ -72,10 +75,28 @@ public class vic_shturmProtocol extends BaseHullMod {
 
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
-        if (ship.getShield().isOff() && ship.getOriginalOwner() != -1){
+        float shieldReduction = 1;
+
+        for (Map.Entry<String, MutableStat.StatMod> stat : ship.getMutableStats().getShieldUpkeepMult().getMultMods().entrySet()) {
+            float value = stat.getValue().getValue();
+            if (value < 1) {
+                shieldReduction /= value;
+            }
+        }
+        float percent = 0;
+        for (Map.Entry<String, MutableStat.StatMod> stat : ship.getMutableStats().getShieldUpkeepMult().getPercentMods().entrySet()) {
+            float value = stat.getValue().getValue();
+            if (value < 0) {
+                percent += value;
+            }
+        }
+        shieldReduction += 1 * percent;
+        ship.getMutableStats().getShieldUpkeepMult().modifyMult("vic_shturmProtocol2", shieldReduction);
+
+        if (ship.getShield() == null || ship.getShield().isOff()) {
             ship.getMutableStats().getFluxDissipation().modifyMult("vic_shturmProtocol", disBonus);
-            if (ship == Global.getCombatEngine().getPlayerShip()){
-                Global.getCombatEngine().maintainStatusForPlayerShip("vic_shturmProtocol", "graphics/icons/hullsys/vic_shturmFrameSus.png", "Shturm protocol",  "Flux dissipation is doubled", false);
+            if (ship == Global.getCombatEngine().getPlayerShip()) {
+                Global.getCombatEngine().maintainStatusForPlayerShip("vic_shturmProtocol", "graphics/icons/hullsys/vic_shturmFrameSus.png", "Shturm protocol", "Flux dissipation is doubled", false);
             }
         } else {
             ship.getMutableStats().getFluxDissipation().unmodify("vic_shturmProtocol");
@@ -96,31 +117,31 @@ public class vic_shturmProtocol extends BaseHullMod {
         MutableShipStatsAPI stats = ship.getMutableStats();
         String id = "vic_shturmProtocol";
         float tempStat = 0;
-        for (Map.Entry<String, MutableStat.StatMod> entry : stats.getShieldUpkeepMult().getFlatMods().entrySet()){
-            if (entry.getValue().getValue() < 0){
+        for (Map.Entry<String, MutableStat.StatMod> entry : stats.getShieldUpkeepMult().getFlatMods().entrySet()) {
+            if (entry.getValue().getValue() < 0) {
                 tempStat += entry.getValue().getValue();
             }
         }
         stats.getShieldUpkeepMult().modifyFlat(id, -tempStat);
 
         tempStat = 1;
-        for (Map.Entry<String, MutableStat.StatMod> entry : stats.getShieldUpkeepMult().getMultMods().entrySet()){
-            if (entry.getValue().getValue() < 1){
+        for (Map.Entry<String, MutableStat.StatMod> entry : stats.getShieldUpkeepMult().getMultMods().entrySet()) {
+            if (entry.getValue().getValue() < 1) {
                 tempStat *= entry.getValue().getValue();
             }
         }
-        stats.getShieldUpkeepMult().modifyMult(id, 1/tempStat);
+        stats.getShieldUpkeepMult().modifyMult(id, 1 / tempStat);
 
         tempStat = 0;
-        for (Map.Entry<String, MutableStat.StatMod> entry : stats.getShieldUpkeepMult().getPercentMods().entrySet()){
-            if (entry.getValue().getValue() < 0){
+        for (Map.Entry<String, MutableStat.StatMod> entry : stats.getShieldUpkeepMult().getPercentMods().entrySet()) {
+            if (entry.getValue().getValue() < 0) {
                 tempStat += entry.getValue().getValue();
             }
         }
         stats.getShieldUpkeepMult().modifyPercent(id, -tempStat);
         if (!ship.getHullSpec().getHullId().startsWith("vic_")) return false;
         if (!ship.getVariant().getHullMods().contains("vic_shturmSolutionDummy")) return false;
-        for (String Hmod : BLOCKED_HULLMODS){
+        for (String Hmod : BLOCKED_HULLMODS) {
             if (ship.getVariant().getHullMods().contains(Hmod)) return false;
         }
         return true;

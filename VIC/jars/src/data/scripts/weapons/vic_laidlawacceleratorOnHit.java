@@ -77,17 +77,27 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
         }
 
 
-        engine.spawnExplosion(point,
+        engine.spawnExplosion(
+                point,
                 new Vector2f(0, 0),
                 new Color(255, 255, 255, 255),
                 25f,
                 0.3f);
 
-        engine.spawnExplosion(point,
+        engine.spawnExplosion(
+                point,
                 new Vector2f(0, 0),
                 new Color(0, 255, 225, 75),
                 50f,
                 0.75f);
+
+        engine.addSmoothParticle(
+                point,
+                new Vector2f(),
+                200,
+                2f,
+                0.15f,
+                new Color(100, 255, 255, 255));
 
 
         float angle = 360 * (float) Math.random();
@@ -135,7 +145,7 @@ public class vic_laidlawacceleratorOnHit implements OnHitEffectPlugin {
                 true,
                 0.4f,
                 0.0f,
-                0.6f
+                0.9f
         );
 
 

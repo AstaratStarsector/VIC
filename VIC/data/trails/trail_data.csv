@@ -13,6 +13,8 @@ trails_vic_heavylaidMassDriver_shot_smoke,vic_laidlawMassDriver_shot,trails_trai
 trails_vic_heavylaidMassDriver_shot_smoke2,vic_laidlawMassDriver_shot,trails_trail_smooth,10,0.5,0,2.5,18,38,"[150,100,100]","[255,120,35]",0.10,200,-125,-50,5,1,TRUE,FALSE,TRUE,50,0,0,0,0,0,false,false
 trails_vic_laidlawMassDriver_shot_contrail,vic_laidlawMassDriver_shot,trails_trail_contrail,10,0,0.1,0.5,20,10,"[0,255,235]","[0,255,235]",1,2000,-1000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
+trails_vic_vodyanoy_sub_shot,vic_vodyanoy_sub_shot,trails_trail_clean,5,0,0.1,0.1,5,2,"[255,0,0]","[15,195,255]",1,1000,-500,15,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
 trails_vic_psotnik_shot_trail1,vic_psotnik_shot,trails_trail_zappy,10,0,0,0.2,15,5,"[255,255,255]","[255,200,0]",1,200,1000,15,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 trails_vic_psotnik_shot_trail2,vic_psotnik_shot,trails_trail_zappy,10,0,0.07,0.05,15,1,"[102,144,255]","[102,144,255]",1,200,1000,15,150,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 trails_vic_psotnik_shot_trail3,vic_psotnik_shot,trails_trail_smooth,10,0,0,1.5,10,30,"[155,155,155]","[155,155,155]",0.2,200,-300,-25,3,1,TRUE,FALSE,TRUE,-100,25,0,0,0,25,TRUE,false
@@ -41,11 +43,6 @@ trails_vic_abyssalfangs_srm_long,vic_abyssalfangs_srm,trails_trail_smooth,10,0,1
 #trails_vic_tugarin_shot,vic_tugarin_shot,SRD_trail_helix,10,0,0.1,0.3,32,256,"[235,135,5]","[255,255,255]",0.8,250,1000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 trails_vic_tugarin_shot_1,vic_tugarin_shot,trails_trail_twin,10,0,0.1,0.2,32,128,"[235,135,5]","[255,50,100]",0.5,200,200,20,0,1,TRUE,FALSE,TRUE,100,20,0.3,0,500,200,true,false
 trails_vic_tugarin_shot_2,vic_tugarin_shot,trails_trail_twin,10,0,0.1,0.25,32,64,"[235,135,5]","[255,50,100]",0.5,200,200,20,0,1,TRUE,FALSE,TRUE,100,20,0.3,0,500,200,true,false
-,,,,,,,,,,,,,,,,,,,,,,,,,,,
-#trails_vic_plasma_minigun_shot,diableavionics_opfer_shot,trails_trail_zappy,2,0,0.05,0.05,20,6,"[255,255,255]","[0,85,175]",0.8,200,300,0,50,1,TRUE,FALSE,TRUE,70,30,0.15,0,0,0,true,false
-#trails_vic_plasma_minigun_shot2,diableavionics_opfer_shot,trails_trail_zappy,2,0,0.05,0.05,20,6,"[255,255,255]","[0,0,175]",0.8,200,300,0,50,1,TRUE,FALSE,TRUE,70,30,0.15,0,0,0,true,false
-#trails_vic_plasma_minigun_shot3,diableavionics_opfer_shot,trails_trail_contrail,3,0,0.03,0.05,20,10,"[255,255,255]","[0,190,255]",1,200,300,5,0,0,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
-,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
 vic_thermalLance_trail__contrail,vic_thermalLance_trail_proj,trails_trail_smooth,10,0,0,2.5,5,100,"[235,70,5]","[235,135,5]",0.8,2000,50,-80,2,1,TRUE,FALSE,TRUE,50,50,0.1,0,0,30,true,false
 vic_thermalLance_trail__fog,vic_thermalLance_trail_proj,trails_trail_foggy,10,0,0,1.75,25,75,"[100,100,100]","[60,60,60]",0.4,2000,0,-80,5,1,TRUE,FALSE,TRUE,50,50,0.1,0,0,30,true,false

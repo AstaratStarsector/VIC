@@ -26,7 +26,7 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addBriefingItem("Test the efficiency of Aerospace Corps vessels");
 
 
-		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standart", FleetMemberType.SHIP, "ASCV Sun eater", true);
+		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standart", FleetMemberType.SHIP, "ASCV Sun Eater", true);
 		api.addToFleet(FleetSide.PLAYER, "vic_oriax_standard", FleetMemberType.SHIP, "ASCV Outbreak", false);
 
         api.addToFleet(FleetSide.PLAYER, "vic_valafar_assault", FleetMemberType.SHIP, "ASCV Void Reaver", false);
@@ -34,7 +34,7 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addToFleet(FleetSide.PLAYER, "vic_cresil_assault", FleetMemberType.SHIP, "ASCV 13", false);
 
 
-        api.addToFleet(FleetSide.PLAYER, "vic_moloch_standart", FleetMemberType.SHIP, "ASCV Maw of the Void", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_moloch_standart", FleetMemberType.SHIP, "ASCV Maw of The Void", false);
         api.addToFleet(FleetSide.PLAYER, "vic_samael_standart", FleetMemberType.SHIP, "ASCV Scarab", false);
         api.addToFleet(FleetSide.PLAYER, "vic_jezebeth_standart", FleetMemberType.SHIP, "ASCV Beast", false);
 

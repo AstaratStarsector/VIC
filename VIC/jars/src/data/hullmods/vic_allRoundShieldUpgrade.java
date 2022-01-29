@@ -67,7 +67,7 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
     @Override
     public String getUnapplicableReason(ShipAPI ship) {
         if (!ship.getVariant().hasHullMod("vic_convoyDrive"))
-            return "Can only be instead on ships with Convoy Drive";
+            return "Can only be installed on ships with Convoy Drive";
         return null;
     }
 

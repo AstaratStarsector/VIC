@@ -88,6 +88,14 @@ public class vic_laidlawMassDriverOnHit implements OnHitEffectPlugin {
                 25f,
                 0.75f);
 
+        engine.addSmoothParticle(
+                point,
+                new Vector2f(),
+                100,
+                2f,
+                0.15f,
+                new Color(100, 255, 255, 255));
+
 
         float angle = 360*(float)Math.random();
 
@@ -134,7 +142,7 @@ public class vic_laidlawMassDriverOnHit implements OnHitEffectPlugin {
                 true,
                 0.4f,
                 0.0f,
-                0.6f
+                0.9f
         );
 
     }

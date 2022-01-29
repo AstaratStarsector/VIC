@@ -5,14 +5,14 @@
 	"collisionClass":"PROJECTILE_FF",
 	"collisionClassByFighter":"PROJECTILE_FIGHTER",
 	"hitGlowRadius":16,
-	"length":70.0,
-	"width":15.0,
+	"length":100.0,
+	"width":5,
 	"fadeTime":0.15,
 	"fringeColor":[255,83,15,225],
 	"coreColor":[255,255,255,255],
 	#"glowRadius":10,
 	#"glowColor":[150,190,225,150],
-	"bulletSprite":"graphics/missiles/vic_vodyanoy_shot.png",
+	"bulletSprite":"graphics/missiles/vic_vodyanoy_shot2.png",
 	"onHitEffect":"data.scripts.weapons.vic_vodyanoyHEOnHit",
 }
 
