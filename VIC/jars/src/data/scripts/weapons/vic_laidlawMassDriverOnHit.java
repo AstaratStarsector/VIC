@@ -41,7 +41,7 @@ public class vic_laidlawMassDriverOnHit implements OnHitEffectPlugin {
             explosion.setMinDamage(projectile.getDamageAmount() * damagePercent * 0.5f);
             explosion.setMaxDamage(projectile.getDamageAmount() * damagePercent);
             engine.spawnDamagingExplosion(explosion, projectile.getSource(), point);
-        }
+
 
         WaveDistortion wave = new WaveDistortion(point, ZERO);
         wave.setIntensity(0.75f);
@@ -144,6 +144,6 @@ public class vic_laidlawMassDriverOnHit implements OnHitEffectPlugin {
                 0.0f,
                 0.9f
         );
-
+        }
     }
 }
