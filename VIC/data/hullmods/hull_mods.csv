@@ -54,9 +54,13 @@ Inertia Redirection Systems,vic_assault,2,,Volkov Industries,engines,Engines,150
 ,,,,,,,,,,,,,,,,,,
 #Commissioned Crews,,,,,,,,,,,,,,,,,,
 Commissioned Crew Bundle,vic_commissionedCrewBundle,,,,,,,,TRUE,,0,0,0,0,data.hullmods.vic_commissionedCrewBundle,,,graphics/hullmods/vic_geneticmodifications.png
-Military-grade Genetic Modifications,vic_geneticmodifications,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,data.hullmods.vic_geneticModifications,"Most VIC's soldiers are filled to the brim with top-notch genetech, endowing them with unnatural capabilities. In the case of VIC Aerospace Corps - inhuman reflexes and impressive resistance to G-overloads. 
+Ambitious Bravado,vic_geneticmodifications,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,data.hullmods.vic_geneticModifications,"To prove one's worth and become a legend - The Aerospace Corps aim for nothing less, rushing towards radiant victories and eternal glory. 
 
-With the crews being able to withstand extreme inertial strains and act faster in combat,ships receive %s increase in speed of the time flow and %s increase in all acceleration rates. However due to the increased aggression and recklessness of genemodded pilots ships take %s more damage in combat.","Genetech rules, don't pass out on stiff turns. ",graphics/hullmods/vic_geneticmodifications.png
+- Frigates' and Destroyers' damage against larger enemies is increased by %s/%s/%s depending on how big the difference between the class of the ship and the class of the enemy ship is. 
+- Cruisers' damage against capitals is increased by %s. 
+- Capital ships take %s less damage if the combined %s cost of all enemies within %s is greater than the %s cost of the ship.
+
+Pride and arrogance clouds the mind, however, and the Corps always sets its gaze high at the heavens above — all ships receive %s more damage from ships of smaller classes.","Genetech rules, don't pass out on stiff turns. ",graphics/hullmods/vic_geneticmodifications.png
 VIC Brand Engine Upgrades,vic_brandengineupgrades,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,data.hullmods.vic_brandEngineUpgrades,"To safely and quickly transport goods and xenolife test subjects (as well as to live up to their PR image of one of the more robust Megacorporations) VIC have always been investing heavily into research and production of novel aerospace propulsion systems throughout the corporation's long history.
 
 VIC's engineers like no one else know how to make even the worst engines roar mightily. Thanks to extensive modifications, Capitals' burn level is increased by %s, while ships of smaller classes consume %s less fuel. However, these upgrades also increase fleet Sensor Profiles by %s/%s/%s/%s depending on hull size for obvious reasons. ",Speed limits are for pussies.,graphics/hullmods/vic_brandengineupgrades.png

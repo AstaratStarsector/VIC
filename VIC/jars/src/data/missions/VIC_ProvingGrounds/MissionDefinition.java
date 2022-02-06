@@ -26,6 +26,8 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addBriefingItem("Test the efficiency of Aerospace Corps vessels");
 
 
+        api.addToFleet(FleetSide.PLAYER, "vic_stolas_test", FleetMemberType.SHIP, "ASCV Testbed", true);
+
 		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standart", FleetMemberType.SHIP, "ASCV Sun Eater", true);
 		api.addToFleet(FleetSide.PLAYER, "vic_oriax_standard", FleetMemberType.SHIP, "ASCV Outbreak", false);
 

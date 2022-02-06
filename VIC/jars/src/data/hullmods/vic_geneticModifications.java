@@ -26,9 +26,15 @@ public class vic_geneticModifications extends BaseHullMod {
     }
 
     public String getDescriptionParam(int index, HullSize hullSize) {
-        if (index == 0) return Math.round((timeAcellBonus - 1) * 100) + "%";
-        if (index == 1) return Math.round(acellBonus) + "%";
-        if (index == 2) return Math.round(damageTaken) + "%";
+        if (index == 0) return  Math.round(5f) + "%";
+        if (index == 1) return  Math.round(10f) + "%";
+        if (index == 2) return  Math.round(15f) + "%";
+        if (index == 3) return  Math.round(10f) + "%";
+        if (index == 4) return  Math.round(10f) + "%";
+        if (index == 5) return  "Deployment Points";
+        if (index == 6) return  "1500 su";
+        if (index == 7) return  "Deployment Points";
+        if (index == 8) return  Math.round(5f) + "%";
         return null;
     }
 }

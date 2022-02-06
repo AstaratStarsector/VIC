@@ -1,6 +1,6 @@
 name,id,tier,rarity,base value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,hints,tags,groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
 #large,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Heavy Laidlaw Accelerator,vic_heavylaidlawaccelerator,3,,6500,1000,,2000,,30,7,30,,,,FRAGMENTATION,1000,,0.75,4.25,,,0,0,0,0,,3500,,,,"STRIKE, USE_VS_FRIGATES","energy20, vic_t1weapons_bp",,Volkov Industries,,Hullbuster,Extreme,,,,%s Projectile hits create explosions dealing additional %s fragmentation damage.,Extremely fast projectiles. Deals soft flux damage. | 500,,,,6.9
+Heavy Laidlaw Accelerator,vic_heavylaidlawaccelerator,3,,6500,1000,,1600,,30,7,30,,,,FRAGMENTATION,800,,0.75,3.25,,,0,0,0,0,,3500,,,,"STRIKE, USE_VS_FRIGATES","energy20, vic_t1weapons_bp",,Volkov Industries,,Hullbuster,Extreme,,,,%s Projectile hits create explosions dealing additional %s fragmentation damage.,Extremely fast projectiles. Deals soft flux damage. | 500,,,,6.9
 Capacitons Discharger,vic_capacitonsDischarger,3,,5000,700,,300,160,0,15,28,16,1,8,KINETIC,480,,0.15,0.15,,,,,,,,5000,,,,,"energy13, vic_t1weapons_bp",,Volkov Industries,,Anti Shield,,,,,Fires electric arcs that can chain to %s additional small targets dealing %s of the weapons damage and %s of weapons EMP.,3 | 15% | 50%,,,,
 Besomar Scattercannon,vic_devastator,2,,4500,800,,100,,40,12,19,28,6,42,HIGH_EXPLOSIVE,75,,0,0.6,,,0,15,0.5,5,,700,,,,"ANTI_FTR, PD_ALSO","he16, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,"Each shell has a fuse set to explode at a random distance, resulting in a cluster shot that's increasingly more deadly at closer ranges.",,"The specified sustained DPS value is achieved only when %s are installed. Without them, the sustained damage value is %s. ",Extended Magazines | 400 ,,7.4
 Psotnik Interference Autocannon,vic_psotnik,2,,5000,900,,50,25,5,15,25,,,,KINETIC,55,,0,0.25,,,0,12,0.5,10,,850,,,,,"kinetic20, vic_t2weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",20% | 50,,,,7.8
@@ -71,7 +71,7 @@ omni lunge,VIC_OmniLungeEffect,,,,,,,,,,,,,,,,,,10,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,
 Engine Glow Universal Small,vic_engine_glow_universal_small,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Engine Glow Universal Big,vic_engine_glow_universal_big,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Engine Vernier,vic_vernierEngine,,,,1,1,,,,,,,,,,,,,10,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Engine Vernier Orange,vic_vernierEngine_orange,,,,1,1,,,,,,,,,,,,,10,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Nybbas Front Right,vic_nybbas_front_right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Nybbas Front Left,vic_nybbas_front_left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
@@ -173,6 +173,9 @@ Oriax System Glow,vic_deco_oriax_system_glow,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM
 Oriax Decal Left,vic_deco_oriaxDecalLeft,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Oriax Decal Right,vic_deco_oriaxDecalRight,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Stolas Engine Left,vic_stolas_engine_glow_left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
+Stolas Engine Central,vic_stolas_engine_glow_central,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
+Stolas Engine Right,vic_stolas_engine_glow_right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Blonkers,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Blonker red,vic_blonkerRed,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
