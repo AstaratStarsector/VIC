@@ -1,0 +1,55 @@
+{
+  "id": "vic_stolas_flux_glow",
+  "everyFrameEffect": "data.scripts.weapons.decos.vic_flux_glow_deco",
+  "collisionClass": "RAY",
+  "collisionClassByFighter": "RAY_FIGHTER",
+  "coreColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "renderHints":["RENDER_ADDITIVE"],
+  "showDamageWhenDecorative":false,
+  "renderBelowAllWeapons":true,
+
+  "numFrames":2,
+  "frameRate":0,
+  "fringeColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "glowColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    0,
+    0
+  ],
+  "hitGlowRadius": 0,
+
+  "pixelsPerTexel": 1,
+  "size": "LARGE",
+  "specClass": "beam",
+  "textureScrollSpeed": 64,
+  "textureType": ROUGH,
+  "turretAngleOffsets": [
+    0
+  ],
+  "turretOffsets": [
+    0,
+    0
+  ],
+  "turretSprite": "graphics/ships/Stolas/vic_stolas_flux_glow00.png",
+  "hardpointSprite": "graphics/ships/Stolas/vic_stolas_flux_glow00.png",
+  "type": "DECORATIVE",
+  "width": 10
+}
