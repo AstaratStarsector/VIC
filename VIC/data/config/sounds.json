@@ -255,7 +255,7 @@
 		{"file":"sounds/effects/vic_vila_chargeup.ogg","pitch":0.95, "volume":1},
 	],
 	
-		"vic_vila_shot":[
+	"vic_vila_shot":[
 	    {"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.1, "volume":0.5},
 		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.05, "volume":0.5},
 		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.0, "volume":0.5},
@@ -263,7 +263,7 @@
 		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":0.9, "volume":0.5},
 	],
 	
-			"vic_vila_pulse":[
+	"vic_vila_pulse":[
 	    {"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.2, "volume":0.3},
 		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.1, "volume":0.3},
 		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.0, "volume":0.3},
@@ -274,8 +274,15 @@
 		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":1.0, "volume":0.3},
 		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":0.9, "volume":0.3},
 		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":0.8, "volume":0.3},
+	],
+	
+	"vic_azhdaya_spin":[
+        {"file":"sounds/effects/vic_azhdaya_spin.ogg","pitch":0.5, "volume":15},
+
+	],				
+	"vic_azhdaya_shot":[
+		{"file":"sounds/effects/vic_azhdaya_shot.ogg","pitch":1.0, "volume":1.5},
+
 	]
-	
-	
 	
 }

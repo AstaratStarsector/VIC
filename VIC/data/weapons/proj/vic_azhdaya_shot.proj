@@ -1,0 +1,17 @@
+{
+	"id":"vic_azhdaya_shot",
+	"specClass":"projectile",
+	"spawnType":"BALLISTIC",
+	"collisionClass":"PROJECTILE_FF",
+	"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"length":500,
+	"hitGlowRadius":16,
+	"width":5,
+	"fadeTime":0.20,
+	#"fringeColor":[255,255,100,255],
+	#"coreColor":[255,255,200,150],
+	"fringeColor":[255,255,100,0],
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":0.0,
+	"bulletSprite":"graphics/missiles/vic_azhdaya_shot.png",
+}

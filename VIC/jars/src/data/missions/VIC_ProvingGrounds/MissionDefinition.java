@@ -34,7 +34,8 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addToFleet(FleetSide.PLAYER, "vic_valafar_assault", FleetMemberType.SHIP, "ASCV Void Reaver", false);
         api.addToFleet(FleetSide.PLAYER, "vic_thamuz_standart", FleetMemberType.SHIP, "ASCV Despoiler", false);
         api.addToFleet(FleetSide.PLAYER, "vic_cresil_assault", FleetMemberType.SHIP, "ASCV 13", false);
-
+        api.addToFleet(FleetSide.PLAYER, "vic_focalor_m_test", FleetMemberType.SHIP, "ASCV Test1", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_focalor_l_test", FleetMemberType.SHIP, "ASCV Test2", false);
 
         api.addToFleet(FleetSide.PLAYER, "vic_moloch_standart", FleetMemberType.SHIP, "ASCV Maw of The Void", false);
         api.addToFleet(FleetSide.PLAYER, "vic_samael_standart", FleetMemberType.SHIP, "ASCV Scarab", false);

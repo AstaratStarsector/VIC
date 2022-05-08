@@ -1,6 +1,7 @@
 package data.scripts.shipsystems;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.SoundAPI;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
@@ -40,6 +41,15 @@ public class vic_OmniLunge extends BaseShipSystemScript {
         strafeMulti.put(ShipAPI.HullSize.CAPITAL_SHIP, 0.25f);
     }
 
+    private final Map<ShipAPI.HullSize, Float> hullSizePitch = new HashMap<>();
+    {
+        hullSizePitch.put(ShipAPI.HullSize.FIGHTER, 3f);
+        hullSizePitch.put(ShipAPI.HullSize.FRIGATE, 2f);
+        hullSizePitch.put(ShipAPI.HullSize.DESTROYER, 1f);
+        hullSizePitch.put(ShipAPI.HullSize.CRUISER, 0.5f);
+        hullSizePitch.put(ShipAPI.HullSize.CAPITAL_SHIP, 0.25f);
+    }
+
     {
         rainbow.add(new Color(255, 0, 0, 160));
         rainbow.add(new Color(255, 127, 0, 160));
@@ -59,6 +69,7 @@ public class vic_OmniLunge extends BaseShipSystemScript {
             //stats.getAcceleration().modifyFlat(id, 100f);
             //stats.getDeceleration().modifyFlat(id, 100f);
             afterImage(ship);
+
         }
         if (state == State.ACTIVE) {
             if (doOnce_speedUp){
@@ -91,6 +102,7 @@ public class vic_OmniLunge extends BaseShipSystemScript {
             stats.getMaxTurnRate().modifyFlat(id, TURN_BONUS);
             stats.getMaxTurnRate().modifyPercent(id, TURN_BONUS);
             afterImage(ship);
+
         }
         if (state == State.OUT) {
             stats.getMaxSpeed().unmodify(id);
@@ -107,6 +119,7 @@ public class vic_OmniLunge extends BaseShipSystemScript {
         if (stats.getEntity() instanceof ShipAPI) {
             ship.getEngineController().extendFlame(this, 0.5f * effectLevel, 0.5f * effectLevel, 0.25f * effectLevel);
         }
+
     }
 
     public void afterImage (ShipAPI ship){

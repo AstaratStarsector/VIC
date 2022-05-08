@@ -1,0 +1,49 @@
+{
+  "id": "vic_azhdaya",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_azhdaya_shot",
+  "type": "BALLISTIC",
+  "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_azhdaya_script",
+  "turretSprite": "graphics/weapons/azhdaya/vic_azhdaya_barrel_turret_00.png",
+  "turretGunSprite": "graphics/weapons/azhdaya/vic_azhdaya_base_turret.png",
+  "hardpointSprite": "graphics/weapons/azhdaya/vic_azhdaya_barrel_hardpoint_00.png",
+  "hardpointGunSprite": "graphics/weapons/azhdaya/vic_azhdaya_base_hardpoint.png",
+  "visualRecoil": 2,
+  "renderHints": [
+    "SUSPEND_RECOIL"
+  ],
+  "turretOffsets": [
+    22,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    45,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "DUAL",
+  "animationType": "MUZZLE_FLASH",
+  "numFrames": 4,
+  "frameRate": 20,
+  "interruptibleBurst": true,
+  "muzzleFlashSpec": {
+    "length": 40,
+    "spread": 10,
+    "particleSizeMin": 25,
+    "particleSizeRange": 20,
+    "particleDuration": 0.05,
+    "particleCount": 10,
+    "particleColor": [
+      255,
+      146,
+      61,
+      255
+    ]
+  }
+}
