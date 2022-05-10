@@ -38,10 +38,10 @@
     "WS0026": "vic_focalor_engine_glow_right",
     "WS0027": "vic_focalor_front_missile_deco_left",
     "WS0028": "vic_focalor_front_missile_deco_right",
-    "WS0029": "vic_focalor_radar_front_left",
-    "WS0030": "vic_focalor_radar_front_right",
-    "WS0031": "vic_focalor_bridge_shield",
-    "WS0032": "vic_focalor_radar_tail"
+    "WS0032": "vic_focalor_radar_tail",
+    "WSLS01": "vic_focalor_radar_front_left",
+    "WSMS01": "vic_focalor_bridge_shield",
+    "WSRS01": "vic_focalor_radar_front_right"
   },
   "weaponSlots": [
     {
@@ -115,7 +115,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 10,
-      "angle": -45,
+      "angle": 0,
       "locations": [-25.5, -122.5]
     },
     {
@@ -124,7 +124,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 10,
-      "angle": 45,
+      "angle": -0,
       "locations": [-25.5, 122.5]
     },
     {
@@ -133,7 +133,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 134,
-      "angle": -49.5,
+      "angle": 0,
       "locations": [-39.5, -23]
     },
     {
@@ -142,7 +142,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 134,
-      "angle": 49.5,
+      "angle": -0,
       "locations": [-39.5, 23]
     },
     {
@@ -151,7 +151,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 221,
-      "angle": -95,
+      "angle": 0,
       "locations": [-60.5, -47.5]
     },
     {
@@ -160,7 +160,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 221,
-      "angle": 95,
+      "angle": -0,
       "locations": [-60.5, 47.5]
     },
     {
@@ -209,11 +209,10 @@
       "arc": 360,
       "angle": 0,
       "locations": [
-        -35, 44,
-        -46, 57,
-        -39, 50,
-        -29, 40,
-        -20, 35
+        -40.5, 63,
+        -33, 56,
+        -23.5, 45.5,
+        -16.5, 38.5
       ]
     },
     {
@@ -224,11 +223,10 @@
       "arc": 360,
       "angle": 0,
       "locations": [
-        -35, -44,
-        -21, -34,
-        -29, -40,
-        -39, -50,
-        -46, -57
+        -15, -39.5,
+        -21.5, -44,
+        -34.5, -57,
+        -41.5, -63
       ]
     },
     {
@@ -341,7 +339,7 @@
       "locations": [45.5, -16.5]
     },
     {
-      "id": "WS0029",
+      "id": "WSLS01",
       "size": "SMALL",
       "type": "DECORATIVE",
       "mount": "TURRET",
@@ -351,7 +349,7 @@
       "renderOrderMod": 1
     },
     {
-      "id": "WS0030",
+      "id": "WSRS01",
       "size": "SMALL",
       "type": "DECORATIVE",
       "mount": "TURRET",
@@ -361,7 +359,7 @@
       "renderOrderMod": 1
     },
     {
-      "id": "WS0031",
+      "id": "WSMS01",
       "size": "SMALL",
       "type": "DECORATIVE",
       "mount": "TURRET",

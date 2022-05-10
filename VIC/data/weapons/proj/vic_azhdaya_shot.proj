@@ -2,6 +2,7 @@
 	"id":"vic_azhdaya_shot",
 	"specClass":"projectile",
 	"spawnType":"BALLISTIC",
+	"onHitEffect":"data.scripts.weapons.vic_azhdaya_script",
 	"collisionClass":"PROJECTILE_FF",
 	"collisionClassByFighter":"PROJECTILE_FIGHTER",
 	"length":500,

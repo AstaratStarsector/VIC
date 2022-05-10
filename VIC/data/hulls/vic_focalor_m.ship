@@ -36,12 +36,12 @@
     "WS0032": "vic_focalor_engine_glow_left",
     "WS0033": "vic_focalor_engine_glow_central",
     "WS0034": "vic_focalor_engine_glow_central",
-    "WS0035": "vic_focalor_radar_front_right",
-    "WS0036": "vic_focalor_radar_front_left",
     "WS0037": "vic_focalor_front_missile_deco_right",
     "WS0038": "vic_focalor_front_missile_deco_left",
-    "WS0039": "vic_focalor_bridge_shield",
-    "WS0040": "vic_focalor_radar_tail"
+    "WS0040": "vic_focalor_radar_tail",
+    "WSLS01": "vic_focalor_radar_front_left",
+    "WSMS01": "vic_focalor_bridge_shield",
+    "WSRS01": "vic_focalor_radar_front_right"
   },
   "weaponSlots": [
     {
@@ -116,8 +116,8 @@
       "size": "SMALL",
       "type": "COMPOSITE",
       "mount": "TURRET",
-      "arc": 221,
-      "angle": 95,
+      "arc": 134,
+      "angle": 45,
       "locations": [-47, 51]
     },
     {
@@ -125,8 +125,8 @@
       "size": "SMALL",
       "type": "COMPOSITE",
       "mount": "TURRET",
-      "arc": 221,
-      "angle": -95,
+      "arc": 134,
+      "angle": -45,
       "locations": [-47, -51],
       "renderOrderMod": 10
     },
@@ -194,7 +194,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 10,
-      "angle": -45,
+      "angle": -90,
       "locations": [-25.5, -122.5]
     },
     {
@@ -203,7 +203,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 10,
-      "angle": 45,
+      "angle": 90,
       "locations": [-25.5, 122.5]
     },
     {
@@ -212,7 +212,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 134,
-      "angle": -49.5,
+      "angle": 0,
       "locations": [-39.5, -23]
     },
     {
@@ -221,7 +221,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 134,
-      "angle": 49.5,
+      "angle": -0,
       "locations": [-39.5, 23]
     },
     {
@@ -230,7 +230,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 221,
-      "angle": -95,
+      "angle": 0,
       "locations": [-60.5, -47.5]
     },
     {
@@ -239,7 +239,7 @@
       "type": "DECORATIVE",
       "mount": "TURRET",
       "arc": 221,
-      "angle": 95,
+      "angle": -0,
       "locations": [-60.5, 47.5]
     },
     {
@@ -372,7 +372,7 @@
       "locations": [-96, 35]
     },
     {
-      "id": "WS0035",
+      "id": "WSRS01",
       "size": "SMALL",
       "type": "DECORATIVE",
       "mount": "TURRET",
@@ -382,7 +382,7 @@
       "renderOrderMod": 2
     },
     {
-      "id": "WS0036",
+      "id": "WSLS01",
       "size": "SMALL",
       "type": "DECORATIVE",
       "mount": "TURRET",
@@ -412,7 +412,7 @@
       "renderOrderMod": 1
     },
     {
-      "id": "WS0039",
+      "id": "WSMS01",
       "size": "SMALL",
       "type": "DECORATIVE",
       "mount": "TURRET",
