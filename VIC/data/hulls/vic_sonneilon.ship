@@ -12,7 +12,8 @@
   "shieldRadius": 35,
   "viewOffset": 0,
   "builtInMods": [
-    "vic_fighteralwaysburn"
+    "vic_fighteralwaysburn",
+	"vic_overloadProtection"
   ],
   "builtInWeapons": {
     "WS0002": "vic_fighterTrail",

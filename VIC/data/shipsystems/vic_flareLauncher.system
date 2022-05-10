@@ -1,0 +1,12 @@
+{
+	"id":"vic_flareLauncher",
+	"type":"WEAPON",
+	"aiType":"CUSTOM",
+	"aiScript":"data.scripts.shipsystems.ai.vic_fighterFlareAI",
+	
+	"weaponDataId":"vic_flareLauncher",
+	"outOfUsesSound":"gun_out_of_ammo",
+	
+	#"weaponGlowColor":[55,200,255,255],
+ 	#"weaponTypes":[SYSTEM],
+}

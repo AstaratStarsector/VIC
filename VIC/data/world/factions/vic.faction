@@ -31,7 +31,7 @@
   
   # multiplier for how often hulls show up in the faction's fleets
  "hullFrequency": {
- "hulls":{
+	"hulls":{
  			"vic_pruflas":1,
 			"vic_xaphan":1,
             "vic_nybbas":0.05,
@@ -44,14 +44,15 @@
 			"vic_cresil":1,
 			"vic_oriax":0.75,
 			"vic_apollyon":0.5,
-        },
+    },
   },
   
   # ships the faction gets access to when importing S&W out-of-faction
-  "shipsWhenImporting": {
-    "tags":[],
-    "hulls":[],
-  },
+    "shipsWhenImporting":{
+        "tags":["base_bp", "midline_bp", "eis_bp", "LP_bp", "diable_ship_bp", "vic_t2hulls_bp", "vic_t1hulls_bp",],
+        "hulls":[
+        ],
+    },
   
   "knownShips":{
 		"tags":["vic_t2hulls_bp", "vic_t1hulls_bp"],
@@ -81,9 +82,24 @@
   "priorityShips": {
     "tags": [],
     "hulls": [
+			"phaeton",
+			"prometheus",
 			"buffalo",
+			"mule",
 			"colossus",
 		    "atlas",
+			"vic_pruflas",
+			"vic_xaphan",
+			"vic_nybbas",
+			"vic_kobal",
+			"vic_jezebeth",
+			"vic_moloch",
+			"vic_samael",
+			"vic_thamuz",
+			"vic_valafar",
+			"vic_cresil",
+			"vic_oriax",
+			"vic_apollyon",
       ],
   },
   "knownFighters":{

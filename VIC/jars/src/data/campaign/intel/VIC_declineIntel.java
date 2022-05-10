@@ -45,7 +45,7 @@ public class VIC_declineIntel extends BaseIntelPlugin {
 
 
 		if (mode != ListInfoMode.IN_DESC)
-			info.addPara("Colony on " + name + " has declined to size " + size, pad, faction.getBaseUIColor(), name);
+			info.addPara("Colony on " + name + " has declined to size " + Math.round(size), pad, faction.getBaseUIColor(), name);
 
 		if (size == 2){
 			info.addPara("Colony will be decivilized soon.", pad);

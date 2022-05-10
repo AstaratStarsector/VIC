@@ -37,6 +37,7 @@
 			"vic_deathProtocolIcon":"graphics/icons/hullsys/vic_deathProtocolIcon.png",
 			"vic_auxThrusters":"graphics/icons/hullsys/vic_auxThrusters.png",
 			"vic_shturmFrameSus":"graphics/icons/hullsys/vic_shturmFrameSus.png",
+			"vic_hunterWeb":"graphics/icons/hullsys/vic_hunterWeb.png",
 		},
 		"fx":{
 			"vic_fluxRaptureSuck":"graphics/fx/vic_fluxRaptureSuckQuarter.png",
@@ -74,11 +75,15 @@
 			"trails_trail_contrail":"graphics/trails/fx/trails_contrail.png",
 			"trails_trail_twin":"graphics/trails/fx/trails_twin.png",
 			"trails_trail_foggy":"graphics/trails/fx/trails_foggy.png",
+			"vic_trailSmoke":"graphics/trails/fx/vic_trailSmoke.png",
 			
 			"SRD_trail_helix":"graphics/trails/fx/SRD_trail_helix.png",
 			
 			"vic_laidlawExplosion":"graphics/fx/vic_laidlawExplosion.png",		
-			"vic_laidlawExplosion3":"graphics/fx/vic_laidlawExplosion3.png",	
+			"vic_laidlawExplosion3":"graphics/fx/vic_laidlawExplosion3.png",
+			
+			"vic_stolas_emp_main":"graphics/fx/vic_stolas_emp_main.png",	
+			"vic_stolas_emp_secondary":"graphics/fx/vic_stolas_emp_secondary.png",	
 
 		},		
 		"illustrations":{

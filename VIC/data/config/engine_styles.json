@@ -14,6 +14,34 @@
         "type":"GLOW" # GLOW or SMOKE; it's either engine with glows or that spits out smoke
     },
 	
+	"VOLKOV-LAIDLAW'S smokeless":{  #ID of engine's style, you have to specify the same into .ship files on engine slots
+		#style used in colors are RGBa red green blue alpha
+        "engineColor":[145,255,255,255],  #engines in combat
+        "engineCampaignColor":[145,255,255,255], #engines on campaign layer, very similar to combat version
+        #these are these in-combat engine trails, such as smoke and such
+        "contrailParticleSizeMult":0,
+        "contrailParticleDuration":0, 
+        "contrailParticleFinalSizeMult":0,
+        "contrailMaxSpeedMult":0.5,
+        "contrailAngularVelocityMult":0.5,
+        "contrailColor":[200,255,255,15], #the long trail in combat, usually slightly different?
+        "contrailCampaignColor":[145,255,255,75], #these long trails on campaign layer
+        "type":"GLOW" # GLOW or SMOKE; it's either engine with glows or that spits out smoke
+    },
+	
+	"LOW_TECH smokeless":{
+		"engineColor":[255,125,25,255],
+		"engineCampaignColor":[200,90,70,255],
+		"contrailParticleSizeMult":0,
+		"contrailParticleDuration":0,
+		"contrailParticleFinalSizeMult":0,
+		"contrailMaxSpeedMult":0,
+		"contrailAngularVelocityMult":0,
+		"contrailColor":[50,50,50,0],
+		"contrailCampaignColor":[200,90,70,75],
+		"type":"GLOW" # GLOW or SMOKE
+	},
+	
 	
 	"VOLKOV-LAIDLAW'S FIGHTER":{
 		"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used

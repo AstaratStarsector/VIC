@@ -1,0 +1,18 @@
+{
+	"id": "vic_deco_stolas_charge3",
+    "specClass": "projectile",
+    "projectileSpecId": "vic_dummy_proj",
+	"type": "DECORATIVE",
+	"size": "MEDIUM",
+	"turretSprite":"graphics/ships/Stolas/vic_stolas_charge_indicator_third00.png",
+	"hardpointSprite":"graphics/ships/Stolas/vic_stolas_charge_indicator_third00.png",
+	"numFrames":2,
+	"frameRate":0,
+    "renderHints": ["RENDER_ADDITIVE"],
+    "turretOffsets": [0,0],
+    "turretAngleOffsets": [0],
+    "hardpointOffsets": [0,0],
+    "hardpointAngleOffsets": [0],
+    "barrelMode": "ALTERNATING",
+    "animationType": "NONE"
+}

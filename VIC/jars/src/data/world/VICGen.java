@@ -1,18 +1,16 @@
 package data.world;
 
 
-
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.FactionAPI;
-import com.fs.starfarer.api.campaign.SectorAPI;
-import com.fs.starfarer.api.campaign.SectorEntityToken;
-import com.fs.starfarer.api.campaign.SectorGeneratorPlugin;
+import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.shared.SharedData;
-import data.world.systems.Empyrean;
+import com.fs.starfarer.api.util.Misc;
 import data.world.systems.Apotheosis;
+import data.world.systems.Empyrean;
 import data.world.systems.Ittir;
 import data.world.systems.Pelenu_Laukas;
 
@@ -31,8 +29,10 @@ public class VICGen implements SectorGeneratorPlugin {
         String marketID = planetID + "_market";
 
         MarketAPI newMarket = Global.getFactory().createMarket(marketID, name, size);
+
+
         newMarket.setFactionId(factionID);
-        newMarket.setPrimaryEntity(primaryEntity);
+
         newMarket.getTariff().modifyFlat("generator", tarrif);
 
         //Adds submarkets
@@ -62,6 +62,7 @@ public class VICGen implements SectorGeneratorPlugin {
             }
         }
 
+        newMarket.setPrimaryEntity(primaryEntity);
         globalEconomy.addMarket(newMarket, withJunkAndChatter);
         primaryEntity.setMarket(newMarket);
         primaryEntity.setFaction(factionID);
@@ -72,6 +73,14 @@ public class VICGen implements SectorGeneratorPlugin {
                 entity.setFaction(factionID);
             }
         }
+
+
+        for (MarketConditionAPI mc : newMarket.getConditions())
+        {
+            mc.setSurveyed(true);
+        }
+        newMarket.setSurveyLevel(MarketAPI.SurveyLevel.FULL);
+
 
         //Finally, return the newly-generated market
         return newMarket;

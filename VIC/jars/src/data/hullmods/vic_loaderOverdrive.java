@@ -23,7 +23,6 @@ public class vic_loaderOverdrive extends BaseHullMod {
 
         stats.getBallisticRoFMult().modifyPercent(id, ROFBonus);
         stats.getEnergyRoFMult().modifyPercent(id, ROFBonus);
-
     }
 
     public String getDescriptionParam(int index, HullSize hullSize) {

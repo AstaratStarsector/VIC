@@ -35,6 +35,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
     final Color
             noHeat = new Color(170, 245, 255, 255),
             maxHeat = new Color(253, 137, 137, 255);
+    Color a = new Color(255, 77, 22, 255);
 
 
     //over heat stuff
@@ -56,6 +57,8 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
         if (engine.isPaused() || weapon.getShip().getOriginalOwner() == -1) {
             return;
         }
+
+        //engine.maintainStatusForPlayerShip("heat", null, "heat", Math.round(heat * 100f) / 100f + "/" + Math.round(currentScore * 100f) / 100f , false);
 
         if (!runOnce) {
             runOnce = true;

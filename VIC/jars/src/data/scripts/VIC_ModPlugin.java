@@ -6,6 +6,7 @@ import com.fs.starfarer.api.PluginPick;
 import com.fs.starfarer.api.campaign.CampaignPlugin;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.SpecialItemData;
+import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.InstallableIndustryItemPlugin;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
@@ -71,6 +72,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
         //add special items
         ItemEffectsRepo.ITEM_EFFECTS.put(vic_Items.GMOfarm, GMO);
+
     }
 
     @Override
@@ -102,6 +104,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
     @Override
     public void onNewGame() {
         //Nex compatibility setting, if there is no nex or corvus mode(Nex), just generate the system
+
         boolean haveNexerelin = Global.getSettings().getModManager().isModEnabled("nexerelin");
         if (!haveNexerelin || SectorManager.getManager().isCorvusMode()) {
             new VICGen().generate(Global.getSector());
@@ -111,6 +114,16 @@ public class VIC_ModPlugin extends BaseModPlugin {
             Global.getSector().addScript(new VIC_TimeTracker());
             Global.getSector().addScript(new vic_brandEngineUpgradesDetectionRange());
         }
+
+        Global.getSector().getMemoryWithoutUpdate().set("$vicGenerated", true);
+    }
+
+    @Override
+    public void onGameLoad(boolean newGame) {
+        if (Global.getSector().getEntityById("vic_star_empyrean") == null){
+            onNewGame();
+            onNewGameAfterEconomyLoad();
+        }
     }
 
     public void onNewGameAfterProcGen() {
@@ -119,8 +132,18 @@ public class VIC_ModPlugin extends BaseModPlugin {
     }
 
     @Override
+    public void onEnabled(boolean wasEnabledBefore) {
+        /*
+        if (wasEnabledBefore) return;
+        onNewGame();
+        onNewGameAfterEconomyLoad();
+
+         */
+    }
+
+    @Override
     public void onNewGameAfterEconomyLoad() {
-        placeDryDocks();
+        placeRevCentres();
 
         MarketAPI market = Global.getSector().getEconomy().getMarket("vic_planet_cocytus_market");
         if (market != null) {
@@ -141,10 +164,9 @@ public class VIC_ModPlugin extends BaseModPlugin {
             market.getCommDirectory().addPerson(admin, 0);
             market.addPerson(admin);
         }
-
     }
 
-    public static void placeDryDocks() {
+    public static void placeRevCentres() {
 
         HashMap<String, String> h = new HashMap<>();
         h.put("yama", null);
@@ -197,8 +219,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
             BaseIndustry b = (BaseIndustry) industry;
             b.demand(9, vic_Items.GENETECH, 0, null);
             industry.getSupplyBonus().modifyFlat(spec.getId(), 0, Misc.ucFirst(spec.getName().toLowerCase()));
-
-            industry.getMarket().getHazard().unmodifyFlat(spec.getId());
+            industry.getMarket().getAccessibilityMod().unmodifyFlat(spec.getId());
         }
 
         float getShortage(Industry industry) {

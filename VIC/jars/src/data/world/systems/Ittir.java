@@ -20,7 +20,7 @@ import java.util.Arrays;
 import static data.world.VICGen.addMarketplace;
 
 
-public class Ittir {
+public class Ittir{
 
     public void generate(SectorAPI sector) {
 

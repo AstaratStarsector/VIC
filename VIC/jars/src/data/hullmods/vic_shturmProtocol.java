@@ -73,6 +73,7 @@ public class vic_shturmProtocol extends BaseHullMod {
     }
 
 
+
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
         float shieldReduction = 1;
@@ -83,14 +84,14 @@ public class vic_shturmProtocol extends BaseHullMod {
                 shieldReduction /= value;
             }
         }
-        float percent = 0;
+        float percent = 100;
         for (Map.Entry<String, MutableStat.StatMod> stat : ship.getMutableStats().getShieldUpkeepMult().getPercentMods().entrySet()) {
             float value = stat.getValue().getValue();
             if (value < 0) {
                 percent += value;
             }
         }
-        shieldReduction += 1 * percent;
+        shieldReduction *= 100 / percent;
         ship.getMutableStats().getShieldUpkeepMult().modifyMult("vic_shturmProtocol2", shieldReduction);
 
         if (ship.getShield() == null || ship.getShield().isOff()) {
@@ -110,7 +111,6 @@ public class vic_shturmProtocol extends BaseHullMod {
                 ship.getVariant().removeMod(tmp);
             }
         }
-
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {

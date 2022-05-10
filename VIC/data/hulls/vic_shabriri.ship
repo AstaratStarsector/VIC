@@ -13,7 +13,8 @@
   "viewOffset": 0,
   "builtInMods": [
     "vic_dynamicshields",
-    "vic_fighteralwaysburn"
+    "vic_fighteralwaysburn",
+	"vic_overloadProtection"
   ],
   "builtInWeapons": {
     "WS0003": "vic_fighterTrail"
@@ -24,7 +25,7 @@
       "size": "SMALL",
       "type": "ENERGY",
       "mount": "HIDDEN",
-      "arc": 15,
+      "arc": 25,
       "angle": -0,
       "locations": [13, 8.5]
     },
@@ -33,7 +34,7 @@
       "size": "SMALL",
       "type": "ENERGY",
       "mount": "HIDDEN",
-      "arc": 15,
+      "arc": 25,
       "angle": 0,
       "locations": [13, -8.5]
     },
@@ -45,6 +46,15 @@
       "arc": 15,
       "angle": 180,
       "locations": [-3, -0]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "SYSTEM",
+      "mount": "HIDDEN",
+      "arc": 15,
+      "angle": -0,
+      "locations": [14, -0]
     }
   ],
   "engineSlots": [

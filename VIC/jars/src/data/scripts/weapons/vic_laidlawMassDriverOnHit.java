@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class vic_laidlawMassDriverOnHit implements OnHitEffectPlugin {
 
-    private boolean light=false;
+    private boolean light = false;
 
     private static final Vector2f ZERO = new Vector2f();
     final float damagePercent = 0.25f;
@@ -43,107 +43,106 @@ public class vic_laidlawMassDriverOnHit implements OnHitEffectPlugin {
             engine.spawnDamagingExplosion(explosion, projectile.getSource(), point);
 
 
-        WaveDistortion wave = new WaveDistortion(point, ZERO);
-        wave.setIntensity(0.75f);
-        wave.setSize(35f);
-        wave.flip(true);
-        wave.setLifetime(0f);
-        wave.fadeOutIntensity(0.66f);
-        wave.setLocation(projectile.getLocation());
-        DistortionShader.addDistortion(wave);
+            WaveDistortion wave = new WaveDistortion(point, ZERO);
+            wave.setIntensity(0.75f);
+            wave.setSize(35f);
+            wave.flip(true);
+            wave.setLifetime(0f);
+            wave.fadeOutIntensity(0.66f);
+            wave.setLocation(projectile.getLocation());
+            DistortionShader.addDistortion(wave);
 
-        if(Global.getSettings().getModManager().isModEnabled("shaderLib")){
-            light=true;
-        }
+            if (Global.getSettings().getModManager().isModEnabled("shaderLib")) {
+                light = true;
+            }
 
-        if(light) {
-            vic_graphicLibEffects.CustomRippleDistortion(
+            if (light) {
+                vic_graphicLibEffects.CustomRippleDistortion(
+                        point,
+                        ZERO,
+                        35,
+                        3,
+                        false,
+                        0,
+                        360,
+                        1f,
+                        0.1f,
+                        0.25f,
+                        0.2f,
+                        0.3f,
+                        0f
+                );
+            }
+
+
+            engine.spawnExplosion(point,
+                    new Vector2f(0, 0),
+                    new Color(255, 255, 255, 255),
+                    12.5f,
+                    0.3f);
+
+            engine.spawnExplosion(point,
+                    new Vector2f(0, 0),
+                    new Color(0, 255, 225, 75),
+                    25f,
+                    0.75f);
+
+            engine.addSmoothParticle(
                     point,
-                    ZERO,
-                    35,
-                    3,
-                    false,
+                    new Vector2f(),
+                    100,
+                    2f,
+                    0.15f,
+                    new Color(100, 255, 255, 255));
+
+
+            float angle = 360 * (float) Math.random();
+
+            MagicRender.battlespace(
+                    Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
+                    point,
+                    new Vector2f(),
+                    new Vector2f(36, 36),
+                    new Vector2f(150, 150),
+                    //angle,
+                    360 * (float) Math.random(),
                     0,
-                    360,
-                    1f,
+                    new Color(255, 200, 200, 255),
+                    true,
+                    0,
                     0.1f,
-                    0.25f,
-                    0.2f,
-                    0.3f,
-                    0f
+                    0.15f
             );
-        }
-
-
-
-        engine.spawnExplosion(point,
-                new Vector2f(0,0),
-                new Color(255, 255, 255,255),
-                12.5f,
-                0.3f);
-
-        engine.spawnExplosion(point,
-                new Vector2f(0,0),
-                new Color(0, 255, 225,75),
-                25f,
-                0.75f);
-
-        engine.addSmoothParticle(
-                point,
-                new Vector2f(),
-                100,
-                2f,
-                0.15f,
-                new Color(100, 255, 255, 255));
-
-
-        float angle = 360*(float)Math.random();
-
-        MagicRender.battlespace(
-                Global.getSettings().getSprite("fx","vic_laidlawExplosion"),
-                point,
-                new Vector2f(),
-                new Vector2f(36,36),
-                new Vector2f(150,150),
-                //angle,
-                360*(float)Math.random(),
-                0,
-                new Color(255,200,200,255),
-                true,
-                0,
-                0.1f,
-                0.15f
-        );
-        MagicRender.battlespace(
-                Global.getSettings().getSprite("fx","vic_laidlawExplosion"),
-                point,
-                new Vector2f(),
-                new Vector2f(48,48),
-                new Vector2f(75,75),
-                //angle,
-                360*(float)Math.random(),
-                0,
-                new Color(255,225,225,225),
-                true,
-                0.2f,
-                0.0f,
-                0.3f
-        );
-        MagicRender.battlespace(
-                Global.getSettings().getSprite("fx","vic_laidlawExplosion"),
-                point,
-                new Vector2f(),
-                new Vector2f(75,75),
-                new Vector2f(37,37),
-                //angle,
-                360*(float)Math.random(),
-                0,
-                new Color(255,255,255,200),
-                true,
-                0.4f,
-                0.0f,
-                0.9f
-        );
+            MagicRender.battlespace(
+                    Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
+                    point,
+                    new Vector2f(),
+                    new Vector2f(48, 48),
+                    new Vector2f(75, 75),
+                    //angle,
+                    360 * (float) Math.random(),
+                    0,
+                    new Color(255, 225, 225, 225),
+                    true,
+                    0.2f,
+                    0.0f,
+                    0.3f
+            );
+            MagicRender.battlespace(
+                    Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
+                    point,
+                    new Vector2f(),
+                    new Vector2f(75, 75),
+                    new Vector2f(37, 37),
+                    //angle,
+                    360 * (float) Math.random(),
+                    0,
+                    new Color(255, 255, 255, 200),
+                    true,
+                    0.4f,
+                    0.0f,
+                    0.9f
+            );
         }
     }
 }

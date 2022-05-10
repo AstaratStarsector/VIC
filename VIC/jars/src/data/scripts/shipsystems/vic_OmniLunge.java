@@ -1,16 +1,12 @@
 package data.scripts.shipsystems;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.SoundAPI;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
-import com.fs.starfarer.combat.entities.Ship;
-import data.scripts.plugins.timer.VIC_TimeTracker;
 import data.scripts.util.MagicRender;
 import data.scripts.util.MagicSettings;
-import org.jetbrains.annotations.Debug;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
 
@@ -27,27 +23,23 @@ public class vic_OmniLunge extends BaseShipSystemScript {
     public final ArrayList<Color> rainbow = new ArrayList<>();
     private final IntervalUtil CD = new IntervalUtil(0.01f, 0.01f);
     private boolean caramelldansenMode = false;
+
     int colorNumber = 0;
-    private Color color;
+
+    private Color
+            engineColor;
+
     private boolean doOnce = true;
     private boolean doOnce_speedUp = true;
 
     private final Map<ShipAPI.HullSize, Float> strafeMulti = new HashMap<>();
+
     {
         strafeMulti.put(ShipAPI.HullSize.FIGHTER, 1f);
         strafeMulti.put(ShipAPI.HullSize.FRIGATE, 1f);
         strafeMulti.put(ShipAPI.HullSize.DESTROYER, 0.75f);
         strafeMulti.put(ShipAPI.HullSize.CRUISER, 0.5f);
         strafeMulti.put(ShipAPI.HullSize.CAPITAL_SHIP, 0.25f);
-    }
-
-    private final Map<ShipAPI.HullSize, Float> hullSizePitch = new HashMap<>();
-    {
-        hullSizePitch.put(ShipAPI.HullSize.FIGHTER, 3f);
-        hullSizePitch.put(ShipAPI.HullSize.FRIGATE, 2f);
-        hullSizePitch.put(ShipAPI.HullSize.DESTROYER, 1f);
-        hullSizePitch.put(ShipAPI.HullSize.CRUISER, 0.5f);
-        hullSizePitch.put(ShipAPI.HullSize.CAPITAL_SHIP, 0.25f);
     }
 
     {
@@ -69,26 +61,26 @@ public class vic_OmniLunge extends BaseShipSystemScript {
             //stats.getAcceleration().modifyFlat(id, 100f);
             //stats.getDeceleration().modifyFlat(id, 100f);
             afterImage(ship);
-
         }
         if (state == State.ACTIVE) {
-            if (doOnce_speedUp){
+            if (doOnce_speedUp) {
                 Vector2f newVector = new Vector2f();
                 if (ship.getEngineController().isAccelerating()) {
                     newVector.y += 1 * ship.getAcceleration();
                 }
-                if(ship.getEngineController().isAcceleratingBackwards() || ship.getEngineController().isDecelerating()){
+                if (ship.getEngineController().isAcceleratingBackwards() || ship.getEngineController().isDecelerating()) {
                     newVector.y -= 1 * ship.getDeceleration();
                 }
                 if (ship.getEngineController().isStrafingLeft()) {
-                    newVector.x -=  1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
+                    newVector.x -= 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
                 }
                 if (ship.getEngineController().isStrafingRight()) {
                     newVector.x += 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
                 }
                 VectorUtils.rotate(newVector, ship.getFacing() - 90);
                 Vector2f NewSpeed;
-                if (VectorUtils.isZeroVector(newVector)) NewSpeed = (Vector2f) new Vector2f(ship.getVelocity()).normalise(newVector).scale(ship.getMaxSpeed());
+                if (VectorUtils.isZeroVector(newVector))
+                    NewSpeed = (Vector2f) new Vector2f(ship.getVelocity()).normalise(newVector).scale(ship.getMaxSpeed());
                 else NewSpeed = (Vector2f) newVector.normalise(newVector).scale(ship.getMaxSpeed());
                 Global.getLogger(vic_OmniLunge.class).info(newVector.x + "/" + newVector.y);
                 ship.getVelocity().set(NewSpeed);
@@ -102,7 +94,6 @@ public class vic_OmniLunge extends BaseShipSystemScript {
             stats.getMaxTurnRate().modifyFlat(id, TURN_BONUS);
             stats.getMaxTurnRate().modifyPercent(id, TURN_BONUS);
             afterImage(ship);
-
         }
         if (state == State.OUT) {
             stats.getMaxSpeed().unmodify(id);
@@ -114,34 +105,33 @@ public class vic_OmniLunge extends BaseShipSystemScript {
             stats.getDeceleration().modifyFlat(id, 50f);
             stats.getTurnAcceleration().modifyFlat(id, TURN_BONUS * 0.5f);
             stats.getTurnAcceleration().modifyPercent(id, TURN_BONUS * 5f * 0.5f);
+
         }
 
         if (stats.getEntity() instanceof ShipAPI) {
             ship.getEngineController().extendFlame(this, 0.5f * effectLevel, 0.5f * effectLevel, 0.25f * effectLevel);
         }
-
     }
 
-    public void afterImage (ShipAPI ship){
+    public void afterImage(ShipAPI ship) {
         if (Global.getCombatEngine().isPaused()) return;
 
         if (doOnce) {
             caramelldansenMode = MagicSettings.getBoolean("vic", "OmniLunge_rainbowMode");
             ShipEngineControllerAPI.ShipEngineAPI thruster = ship.getEngineController().getShipEngines().get(0);
-            int Red = thruster.getEngineColor().getRed();
-            int Green = thruster.getEngineColor().getGreen();
-            int Blue = thruster.getEngineColor().getBlue();
-
-            if (ship.getVariant().hasHullMod("safetyoverrides")) {
-                Red = Math.round((Red * 0.8f) + (255 * 0.2f)) - 1;
-                Green = Math.round((Green * 0.8f) + (100 * 0.2f)) - 1;
-                Blue = Math.round((Blue * 0.8f) + (255 * 0.2f)) - 1;
-            }
-
-            color = new Color(Red, Green, Blue, 128);
-
+            engineColor = thruster.getEngineColor();
             doOnce = false;
         }
+
+        Color shift = ship.getEngineController().getFlameColorShifter().getCurr();
+        float ratio = shift.getAlpha() / 255f;
+
+        int Red = Math.min(255, Math.round(engineColor.getRed() * (1f - ratio) + shift.getRed() * ratio));
+        int Green = Math.min(255, Math.round(engineColor.getGreen() * (1f - ratio) + shift.getGreen() * ratio));
+        int Blue = Math.min(255, Math.round(engineColor.getBlue() * (1f - ratio) + shift.getBlue() * ratio));
+
+        Color color = new Color(Red, Green, Blue, 128);
+
         float amount = Global.getCombatEngine().getElapsedInLastFrame();
         if (ship.getSystem().isActive()) {
             CD.advance(amount);
@@ -178,11 +168,11 @@ public class vic_OmniLunge extends BaseShipSystemScript {
         if (ship.getEngineController().isAccelerating()) {
             newVector.y += 1 * ship.getAcceleration();
         }
-        if(ship.getEngineController().isAcceleratingBackwards() || ship.getEngineController().isDecelerating()){
+        if (ship.getEngineController().isAcceleratingBackwards() || ship.getEngineController().isDecelerating()) {
             newVector.y -= 1 * ship.getDeceleration();
         }
         if (ship.getEngineController().isStrafingLeft()) {
-            newVector.x -=  1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
+            newVector.x -= 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
         }
         if (ship.getEngineController().isStrafingRight()) {
             newVector.x += 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());

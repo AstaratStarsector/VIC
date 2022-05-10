@@ -2,10 +2,13 @@ package data.scripts.shipsystems;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.coreui.V;
 import data.scripts.plugins.MagicFakeBeamPlugin;
+import data.scripts.plugins.MagicTrailPlugin;
 import data.scripts.util.MagicSettings;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
@@ -18,29 +21,44 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static data.scripts.plugins.vic_combatPlugin.AddQuantumLungeBoost;
+
 //Made by PureTilt
 public class VIC_QuantumLunge extends BaseShipSystemScript {
 
     public static final float SPEED_BOOST = 8000f;
-    public final float DistPerExp = 50f;
-    public final boolean ArcAimAtShips = true; //for secondary arcs
-    public final float EmpArcDmg = 800;
-    public final float EmpArcEmp = 100;
-    public final float AllyMult = 0.1f;
-    public final DamageType EmpArmDmgType = DamageType.ENERGY;
-    public final float TimeBonus = 2f;
-    public final Map<ShipAPI.HullSize, Float> MULT = new HashMap<>();
-    public final ArrayList<String> cheesyLinesList = new ArrayList<>();
-    public boolean isActive = false;
-    public boolean isActive2 = false;
-    public boolean DoOnce = true;
-    public float PseudoRandom = 0f;
-    public float StarFacing = 0f;
-    public float shipTimeMult = 1f;
-    public Vector2f StartPos = new Vector2f();
-    public Vector2f EndPos = new Vector2f();
-    public IntervalUtil MaxTime = new IntervalUtil(1f, 1f);
-    public float SHTURM_COOLDOWN_MULT = 0.66f;
+    final boolean ArcAimAtShips = true; //for secondary arcs
+
+    final float
+            EmpArcDmg = 800,
+            EmpArcEmp = 100,
+            AllyMult = 0.1f,
+            TimeBonus = 2f,
+            DistPerExp = 50f;
+
+    Float trailID1 = null;
+    Float trailID2 = null;
+    Float trailID3 = null;
+    SpriteAPI trailSprite = Global.getSettings().getSprite("fx", "trails_trail_twin");
+
+    final DamageType EmpArmDmgType = DamageType.ENERGY;
+    final Map<ShipAPI.HullSize, Float> MULT = new HashMap<>();
+    final ArrayList<String> cheesyLinesList = new ArrayList<>();
+
+    boolean
+            isActive = false,
+            isActive2 = false,
+            DoOnce = true;
+
+    float
+            PseudoRandom = 0f,
+            StarFacing = 0f,
+            shipTimeMult = 1f;
+
+    Vector2f StartPos = new Vector2f();
+    Vector2f EndPos = new Vector2f();
+
+    //float SHTURM_COOLDOWN_MULT = 0.66f;
 
     {
         MULT.put(ShipAPI.HullSize.DEFAULT, 1.0F);
@@ -82,15 +100,82 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         } else {
             return;
         }
-        
-        if (DoOnce) {
-            MaxTime = new IntervalUtil(1f, 1f);
-            DoOnce = false;
-        }
 
         stats.getTimeMult().unmodify(id);
         float current = ship.getMutableStats().getTimeMult().getModifiedValue();
         ship.getMutableStats().getTimeMult().modifyMult(id, 1 / current);
+
+        if (state == State.IN) {
+            ship.setJitterShields(false);
+            shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 10);
+            float visualLevel = (0.5f + (0.5f * effectLevel));
+            stats.getCombatEngineRepairTimeMult().modifyMult(id, 0);
+            stats.getAcceleration().modifyFlat(id, 300f * visualLevel);
+            ship.getEngineController().extendFlame(this, 3f * effectLevel, 2f * effectLevel, 3f * effectLevel);
+            ship.setJitterUnder(ship, new Color(100, 165, 255, 155), 1f, Math.round(40 * visualLevel), 25 * visualLevel);
+            ship.setAngularVelocity(0);
+        }
+
+        if (state == State.ACTIVE) {
+            if (!isActive) {
+                StartPos = new Vector2f(ship.getLocation().x, ship.getLocation().y);
+                StarFacing = ship.getFacing();
+                isActive = true;
+            }
+
+            shipTimeMult = 1 + TimeBonus;
+            stats.getMaxSpeed().modifyFlat(id, SPEED_BOOST);
+            stats.getAcceleration().modifyFlat(id, 80000f);
+            ship.setPhased(true);
+            ship.setExtraAlphaMult(0.25f);
+
+            stats.getCombatEngineRepairTimeMult().modifyMult(id, 0);
+            ship.addAfterimage(new Color(255, 255, 255, 40), 0f, 0f, -ship.getVelocity().x * 0.5f, -ship.getVelocity().y * 0.5f, 0, 0, 0.2f, 0f, false, false, false);
+
+            if (trailID1 == null) {
+                trailID1 = MagicTrailPlugin.getUniqueID();
+            }
+            Vector2f firstTrail = new Vector2f( -153f, -83);
+            VectorUtils.rotate(firstTrail, ship.getFacing() - 90);
+            firstTrail = new Vector2f(firstTrail.x + ship.getLocation().x, firstTrail.y + ship.getLocation().y);
+            MagicTrailPlugin.AddTrailMemberSimple(
+                    ship,
+                    trailID1,
+                    trailSprite,
+                    firstTrail,
+                    0f,
+                    ship.getFacing(),
+                    10f,
+                    3f,
+                    Color.cyan,
+                    0.5f,
+                    0f,
+                    0.3f,
+                    0.4f,
+                    true);
+            
+            if (trailID2 == null) {
+                trailID2 = MagicTrailPlugin.getUniqueID();
+            }
+            Vector2f secondTrail = new Vector2f(  153f, -83);
+            VectorUtils.rotate(secondTrail, ship.getFacing() - 90);
+            secondTrail = new Vector2f(secondTrail.x + ship.getLocation().x, secondTrail.y + ship.getLocation().y);
+            MagicTrailPlugin.AddTrailMemberSimple(
+                    ship,
+                    trailID2,
+                    trailSprite,
+                    secondTrail,
+                    0f,
+                    ship.getFacing(),
+                    10f,
+                    3f,
+                    Color.cyan,
+                    0.5f,
+                    0f,
+                    0.3f,
+                    0.4f,
+                    true);
+        }
 
         if (state == State.OUT) {
             //once
@@ -106,47 +191,33 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                 }
 
             }//end once
+
             shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 5);
+
+            stats.getMaxSpeed().unmodify(id);
+            stats.getAcceleration().unmodify(id);
+            ship.setPhased(false);
+
             ship.setExtraAlphaMult(0.25f + (0.75f * (1 - effectLevel)));
+
+            if (ship.getVelocity().lengthSquared() > ship.getMaxSpeed()) ship.getVelocity().scale(1 - 0.8f * engine.getElapsedInLastFrame());
+
+            if (DoOnce){
+                AddQuantumLungeBoost(ship, 3f);
+            }
+            /*
             stats.getMaxSpeed().modifyFlat(id, 50f);
             stats.getMaxTurnRate().modifyMult(id, 3f);
             stats.getTurnAcceleration().modifyMult(id, 6f);
-        }
 
-        if (state == State.ACTIVE) {
-            shipTimeMult = 1 + TimeBonus;
-            stats.getMaxSpeed().modifyFlat(id, SPEED_BOOST);
-            stats.getAcceleration().modifyFlat(id, 80000f);
-            ship.setPhased(true);
-            ship.setExtraAlphaMult(0.25f);
-
-            if (!isActive) {
-                StartPos = new Vector2f(ship.getLocation().x, ship.getLocation().y);
-                StarFacing = ship.getFacing();
-                isActive = true;
-            }
-            stats.getCombatEngineRepairTimeMult().modifyMult(id, 0);
-            ship.addAfterimage(new Color(255, 255, 255, 40), 0f, 0f, -ship.getVelocity().x * 0.5f, -ship.getVelocity().y * 0.5f, 0, 0, 0.2f, 0f, false, false, false);
-        }
-
-        if (state == State.IN) {
-            float speedLevel = (effectLevel - 0.5f) * 2;
-            if (speedLevel < 0) speedLevel = 0;
-            ship.setJitterShields(false);
-            shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 10);
-            float visualLevel = (0.5f + (0.5f * effectLevel));
-            stats.getCombatEngineRepairTimeMult().modifyMult(id, 0);
-            stats.getAcceleration().modifyFlat(id, 300f * visualLevel);
-            ship.getEngineController().extendFlame(this, 3f * effectLevel, 2f * effectLevel, 3f * effectLevel);
-            ship.setJitterUnder(ship, new Color(100, 165, 255, 155), 7f * effectLevel, 20, 4);
-            ship.setAngularVelocity(0);
+             */
         }
         if (player) {
             Global.getCombatEngine().getTimeMult().modifyMult(id, 1f / shipTimeMult);
         }
     }
 
-
+/*
     @Override
     public boolean isUsable(ShipSystemAPI system, ShipAPI ship) {
         if ((ship != null) && (system != null) && ship.getVariant().hasHullMod("vic_ShturmSolution")) {
@@ -155,8 +226,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         return true;
     }
 
-
-
+ */
 
     @Override
     public void unapply(MutableShipStatsAPI stats, String id) {
@@ -188,7 +258,8 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 
                     if (EmpTarget instanceof DamagingProjectileAPI && !(EmpTarget instanceof MissileAPI)) continue;
                     if (EmpTarget == ship) continue;
-                    if (EmpTarget instanceof ShipAPI && ((ShipAPI) EmpTarget).getVariant().hasHullMod("vastbulk")) continue;
+                    if (EmpTarget instanceof ShipAPI && ((ShipAPI) EmpTarget).getVariant().hasHullMod("vastbulk"))
+                        continue;
 
                     Vector2f damagePos = ExpPos;
                     if (EmpTarget instanceof MissileAPI) damagePos = new Vector2f(EmpTarget.getLocation());
@@ -201,7 +272,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                         EmpArcEmpFinal *= AllyMult;
                     }
 
-                    engine.applyDamage(EmpTarget,damagePos,EmpArcDmgFinal,EmpArmDmgType,EmpArcEmpFinal,false,false,ship,true);
+                    engine.applyDamage(EmpTarget, damagePos, EmpArcDmgFinal, EmpArmDmgType, EmpArcEmpFinal, false, false, ship, true);
                 }
 
                 if (Math.random() < 0.25f + PseudoRandom) {

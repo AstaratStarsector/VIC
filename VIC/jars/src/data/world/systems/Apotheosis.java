@@ -23,7 +23,7 @@ import java.awt.*;
 import java.util.Random;
 
 
-public class Apotheosis {
+public class Apotheosis{
 
     public float syncOrbitDays = -80f;
 
@@ -40,7 +40,6 @@ public class Apotheosis {
         system.addTag(Tags.SYSTEM_CUT_OFF_FROM_HYPER);
 
 
-
         // create the star and generate the hyperspace anchor for this system
         PlanetAPI ApotheosisQuasar = system.initStar("vic_quasar_apotheosis", // unique id for this star
                 "quasar", // id in planets.json
@@ -49,7 +48,6 @@ public class Apotheosis {
                 -10f, // solar wind burn level
                 0.0f, // flare probability
                 25f); // cr loss mult
-
 
 
         SectorEntityToken IttirEventHorizonOuter = system.addTerrain(Terrain.EVENT_HORIZON,

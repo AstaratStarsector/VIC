@@ -319,12 +319,6 @@ public class vic_vernierEngines implements EveryFrameWeaponEffectPlugin {
         sprite.setColor(new Color(1f, 0.5f+length/2, 0.75f+length/4));
     }
 
-    //////////////////////////////////////////
-    //                                      //
-    //           SMOOTH DAT MOVE            //
-    //                                      //
-    //////////////////////////////////////////
-
     public float smooth (float x){
         return 0.5f - ((float)(Math.cos(x*MathUtils.FPI) /2 ));
     }

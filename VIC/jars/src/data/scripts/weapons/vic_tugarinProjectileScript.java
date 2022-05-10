@@ -183,10 +183,10 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
             engine.addHitParticle(
                     new Vector2f(proj.getLocation()),
                     new Vector2f(),
-                    1000,
-                    0.6f,
+                    700,
+                    0.4f,
                     //0,
-                    0.2f,
+                    0.15f,
                     Color.WHITE);
 
             engine.removePlugin(this);

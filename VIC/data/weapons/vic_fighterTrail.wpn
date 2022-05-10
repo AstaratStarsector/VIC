@@ -2,7 +2,7 @@
   "id": "vic_fighterTrail",
   "animationType": "NONE",
   "barrelMode": "ALTERNATING",
-  "everyFrameEffect":"data.scripts.weapons.vic_fighterTrail",
+  "everyFrameEffect":"data.scripts.weapons.decos.vic_fighterTrail",
   "hardpointAngleOffsets": [
     0
   ],

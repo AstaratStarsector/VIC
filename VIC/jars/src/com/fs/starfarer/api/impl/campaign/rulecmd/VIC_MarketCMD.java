@@ -67,6 +67,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         init(entity);
     }
 
+    float genetechCostFraction = 0.05f;
     public static int getBombardmentCost(MarketAPI market, CampaignFleetAPI fleet) {
         float planetSize = 150f; //used if market on station
         if (market.getPlanetEntity() != null){
@@ -76,7 +77,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         }
         float str = getDefenderStr(market);
 
-        float result = (str * 0.1f) + (planetSize * 10);
+        float result = (str * 0.1f) + (planetSize * 8);
 
         if (fleet != null && result < 0) result = 0;
 
@@ -467,7 +468,7 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
         text.addTooltip();
 
         temp.bombardCostOrganics = Math.round(getBombardmentCost(market, playerFleet));
-        temp.bombardCostGenetech = Math.round(getBombardmentCost(market, playerFleet) * 0.1f);
+        temp.bombardCostGenetech = Math.round(getBombardmentCost(market, playerFleet) * genetechCostFraction);
 
 
         int organics = (int) playerFleet.getCargo().getCommodityQuantity("organics");
@@ -583,13 +584,15 @@ public class VIC_MarketCMD extends BaseCommandPlugin {
 
         Misc.increaseMarketHostileTimeout(market, 120f);
 
-        playerFleet.getCargo().removeCommodity(Commodities.ORGANICS, Math.round(getBombardmentCost(market, playerFleet) ));
-        AddRemoveCommodity.addCommodityLossText(Commodities.ORGANICS, Math.round(getBombardmentCost(market, playerFleet)), text);
-        playerFleet.getCargo().removeCommodity("vic_genetech", Math.round(getBombardmentCost(market, playerFleet) * 0.1f));
-        AddRemoveCommodity.addCommodityLossText("vic_genetech", Math.round(getBombardmentCost(market, playerFleet) * 0.1f), text);
+        int organicsCost = Math.round(getBombardmentCost(market, playerFleet));
+        int genetechCost = Math.round(organicsCost * genetechCostFraction);
+        playerFleet.getCargo().removeCommodity(Commodities.ORGANICS, organicsCost);
+        AddRemoveCommodity.addCommodityLossText(Commodities.ORGANICS, organicsCost, text);
+        playerFleet.getCargo().removeCommodity("vic_genetech", genetechCost);
+        AddRemoveCommodity.addCommodityLossText("vic_genetech", genetechCost, text);
 
 
-        text.addPara(temp.willBecomeHostile.toString(), Misc.getHighlightColor());
+        //text.addPara(temp.willBecomeHostile.toString(), Misc.getHighlightColor());
         int size = market.getSize();
         for (FactionAPI curr : temp.willBecomeHostile) {
             CoreReputationPlugin.CustomRepImpact impact = new CoreReputationPlugin.CustomRepImpact();

@@ -158,7 +158,7 @@ public class vic_omniLungeAI implements ShipSystemAIScript {
             VectorUtils.rotate(newVector, ship.getFacing() - 90);
             if (VectorUtils.isZeroVector(newVector)) newVector = new Vector2f(ship.getVelocity());
             Vector2f direction = newVector;
-            float range = (vic_OmniLunge.SPEED_BONUS + ship.getMaxSpeed()) * system.getChargeActiveDur() * 1.1f;
+            float range = (vic_OmniLunge.SPEED_BONUS + ship.getMaxSpeed()) * system.getChargeActiveDur() * 1.5f;
             Misc.normalise(direction);
 
             float angleToTargetSpot = 0f;
@@ -394,9 +394,7 @@ public class vic_omniLungeAI implements ShipSystemAIScript {
                 Vector2f.add(endpoint, ship.getLocation(), endpoint);
 
                 Collections.sort(directTargets, new CollectionUtils.SortEntitiesByDistance(ship.getLocation()));
-                ListIterator<ShipAPI> iter = directTargets.listIterator();
-                while (iter.hasNext()) {
-                    ShipAPI tmp = iter.next();
+                for (ShipAPI tmp : directTargets) {
                     if ((tmp != ship) && (ship.getCollisionClass() != CollisionClass.NONE) && !tmp.isFighter() && !tmp.isDrone()) {
                         Vector2f loc = tmp.getLocation();
                         float areaChange = 1f;

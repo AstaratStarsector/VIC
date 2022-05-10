@@ -2,7 +2,9 @@ package data.world.systems;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
+import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
@@ -17,7 +19,7 @@ import java.util.Arrays;
 import static data.world.VICGen.addMarketplace;
 
 
-public class Empyrean {
+public class Empyrean{
 
     public void generate(SectorAPI sector) {
 
@@ -62,7 +64,6 @@ public class Empyrean {
                 null,
                 "Phlegethon",
                 5,
-
                 new ArrayList<>(
                         Arrays.asList(
                                 Conditions.POPULATION_5,
@@ -95,12 +96,10 @@ public class Empyrean {
                                 Industries.ORBITALWORKS
                         )
                 ),
-                //tariffs
-                0.3f,
-                //freeport
-                false,
-                //junk and chatter
-                true);
+                0.3f, //tariffs
+                false, //freeport
+                true //junk and chatter
+        );
 
 
         Phlegeton_market.getIndustry(Industries.ORBITALWORKS).setSpecialItem(new SpecialItemData(Items.CORRUPTED_NANOFORGE, null));

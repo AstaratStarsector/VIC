@@ -24,14 +24,12 @@ public class vic_fighteralwaysburn extends BaseHullMod {
     }
 
     public void advanceInCombat(ShipAPI ship, float amount) {
-        super.advanceInCombat(ship, amount);
         if (!ship.isLiftingOff() && !ship.isLanding() && !ship.getWing().getSourceShip().isPullBackFighters()) {
-            ship.giveCommand(ShipCommand.ACCELERATE, (Object)null, 0);
+            ship.giveCommand(ShipCommand.ACCELERATE, null, 0);
             ship.blockCommandForOneFrame(ShipCommand.STRAFE_LEFT);
             ship.blockCommandForOneFrame(ShipCommand.STRAFE_RIGHT);
             ship.blockCommandForOneFrame(ShipCommand.DECELERATE);
             ship.blockCommandForOneFrame(ShipCommand.ACCELERATE_BACKWARDS);
-            ship.setCollisionClass(CollisionClass.FIGHTER);
         }
     }
 }

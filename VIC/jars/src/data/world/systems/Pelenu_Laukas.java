@@ -309,7 +309,10 @@ public class Pelenu_Laukas {
         BoeRefuge.setCircularOrbitPointingDown(PelenuLaukasStar,360 * (float) Math.random(), 10800f,200f);
         BoeRefuge.setCustomDescriptionId("vic_boerefuge");
 
-        MarketAPI BoeRefuge_market = addMarketplace("pirates", BoeRefuge, null,
+        MarketAPI BoeRefuge_market = addMarketplace(
+                "pirates",
+                BoeRefuge,
+                null,
                 "Boe's Refuge",
                 4,
 

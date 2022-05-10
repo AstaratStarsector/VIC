@@ -199,18 +199,17 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         return true;
     }
 
-
-
     protected void PerconaChangeChose() {
         resetTmp();
 
         for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
-            officer.getPerson().removeTag("vic_personToChange");
+            officer.getPerson().removeTag("vic_personToChangeOfficer");
         }
 
         for (AdminData admin : Global.getSector().getCharacterData().getAdmins()) {
-            admin.getPerson().removeTag("vic_personToChange");
+            admin.getPerson().removeTag("vic_personToChangeAdmin");
         }
+        ((RuleBasedDialog)dialog.getPlugin()).updateMemory();
 
         options.clearOptions();
         options.addOption("Consider changing something about yourself", changeSelf);
@@ -265,9 +264,11 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     }
 
     protected void PerconaChangeNotPLayer() {
-        temp.personaToChange = entity.getActivePerson();
-        temp.isPlayer = false;
-        PersonaChangeMenu();
+        if (entity.getActivePerson().hasTag("vic_personToChangeAdmin") || entity.getActivePerson().hasTag("vic_personToChangeOfficer")){
+            temp.personaToChange = entity.getActivePerson();
+            temp.isPlayer = false;
+            PersonaChangeMenu();
+        }
     }
 
     //generate menu
@@ -286,6 +287,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             options.setEnabled(female, false);
             options.setTooltip(female, "Not enough credits.");
         }
+
         switch (currState) {
             case InToYou:
                 if (playerCargo.getCredits().get() < respecPlayerCost) {
@@ -322,6 +324,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             number++;
         }
 
+
         dialog.showCommDirectoryDialog(directory);
     }
 
@@ -329,6 +332,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     protected void PersonaChangeConfirm() {
 
         options.clearOptions();
+
 
         options.addOption("Confirm your choice", result);
 
@@ -380,12 +384,14 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         if (!temp.isPlayer){
             for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
-                officer.getPerson().removeTag("vic_personToChange");
+                officer.getPerson().removeTag("vic_personToChangeOfficer");
             }
             for (AdminData admin : Global.getSector().getCharacterData().getAdmins()) {
-                admin.getPerson().removeTag("vic_personToChange");
+                admin.getPerson().removeTag("vic_personToChangeAdmin");
+                admin.getPerson().getMemory().advance(1);
             }
         }
+        ((RuleBasedDialog)dialog.getPlugin()).updateMemory();
 
         options.clearOptions();
         switch (currState){
@@ -412,17 +418,33 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         playerCargo.getCredits().subtract(10000);
         AddRemoveCommodity.addCreditsLossText(10000, text);
 
+
+        text.addPara("change result");
+
+        ((RuleBasedDialog)dialog.getPlugin()).notifyActivePersonChanged();
+
         if (temp.isPlayer)
             Global.getSector().getCharacterData().setPortraitName(entity.getActivePerson().getPortraitSprite());
         else {
-            temp.personaToChange.setPortraitSprite(entity.getActivePerson().getPortraitSprite());
             for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
-                officer.getPerson().removeTag("vic_personToChange");
+                officer.getPerson().removeTag("vic_personToChangeOfficer");
             }
             for (AdminData admin : Global.getSector().getCharacterData().getAdmins()) {
-                admin.getPerson().removeTag("vic_personToChange");
+
+                for (String tag : admin.getPerson().getTags()){
+                    text.addPara(tag);
+                }
+                admin.getPerson().removeTag("vic_personToChangeAdmin");
+                text.addPara(admin.getPerson().getName().getFullName());
+                for (String tag : admin.getPerson().getTags()){
+                    text.addPara(tag);
+                }
             }
+            temp.personaToChange.setPortraitSprite(entity.getActivePerson().getPortraitSprite());
         }
+        ((RuleBasedDialog)dialog.getPlugin()).updateMemory();
+
+        dialog.getInteractionTarget().getMarket().getMemoryWithoutUpdate().advance(1f);
         //Global.getSector().getCharacterData().setName(entity.getActivePerson().getName().getFirst(), entity.getActivePerson().getGender());
 
         options.clearOptions();

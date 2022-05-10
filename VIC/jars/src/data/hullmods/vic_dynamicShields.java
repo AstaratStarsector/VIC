@@ -24,7 +24,6 @@ public class vic_dynamicShields extends BaseHullMod {
 
         stats.getShieldUnfoldRateMult().modifyMult(id, shieldSpeed);
         stats.getShieldTurnRateMult().modifyMult(id, shieldSpeed);
-
     }
 
     //shieldsChanger

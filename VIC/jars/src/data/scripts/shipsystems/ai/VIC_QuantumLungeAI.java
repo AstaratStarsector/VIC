@@ -7,7 +7,6 @@ import com.fs.starfarer.api.combat.ShipwideAIFlags.AIFlags;
 import com.fs.starfarer.api.fleet.FleetGoal;
 import com.fs.starfarer.api.mission.FleetSide;
 import com.fs.starfarer.api.util.IntervalUtil;
-import data.scripts.util.MagicRender;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
@@ -84,7 +83,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         return (Math.abs(MathUtils.getShortestRotation(angleToTarget, ship.getFacing())) <= DEGREES);
     }
 
-    public float canIFlankThisFucker(ShipAPI ship, ShipAPI target) {
+    public float flankingScore(ShipAPI ship, ShipAPI target) {
         float flankingScore = 10f;
         if (target == null || ship == null) return -100f;
         if (target.isCapital() && !rightDirection(target, ship.getLocation())) return -100f;
@@ -97,7 +96,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         float shipSide = ship.getOwner();
         float targetSide = target.getOwner();
 
-        //how fast we rotate 🤔
+        //how fast we rotate
         float TimeToMaxSpeedYou = ship.getMaxTurnRate() / ship.getTurnAcceleration();
         float TimeToTurn180You = ((180 - (ship.getMaxTurnRate() * TimeToMaxSpeedYou * 0.5f)) / ship.getMaxTurnRate()) + TimeToMaxSpeedYou;
         float TimeToMaxSpeedTarget = target.getMaxTurnRate() / target.getTurnAcceleration();
@@ -241,7 +240,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
 
         if (target != null) {
             NeededDur = (MathUtils.getDistance(ship.getLocation(), targetLocation) + (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
-            if ((rightDirection(ship, targetLocation)) && NeededDur <= ship.getSystem().getChargeActiveDur() && (canIFlankThisFucker(ship, target) > minPointsToFlank)) {
+            if ((rightDirection(ship, targetLocation)) && NeededDur <= ship.getSystem().getChargeActiveDur() && (flankingScore(ship, target) > minPointsToFlank)) {
                 useMe = true;
                 //spawnText("Flank/" + NeededDur, 0f);
             }

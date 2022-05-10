@@ -9,10 +9,6 @@
 	"effectColor1":[255,175,255,255],
 	"effectColor2":[255,0,255,150],
 	
-	"jitterColor":[100,165,255,155],
-	"jitterCopies":10,
-	"jitterRange":0,
-	"jitterRangeRadiusFraction":0.5,
 		
 	"alwaysAccelerate":true,
 
@@ -27,9 +23,9 @@
 
 	"aiHints":{
 		"averageSpeedIncrease":8000,
-		"burstMovementPotential":1600,		
-		"threatRange":1600,
-		"threatAmount":100000000,
+		"burstMovementPotential":3000,		
+		"threatRange":3000,
+		"threatAmount":100000,
 		"threatAngle":0,
 		"threatArc":5,		
 	}

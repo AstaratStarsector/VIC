@@ -7,6 +7,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.input.InputEventAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.combat.entities.Ship;
 import data.scripts.shipsystems.vic_shockDischarger;
 import data.scripts.util.MagicAnim;
 import data.scripts.util.MagicRender;
@@ -22,16 +23,16 @@ import java.util.Map;
 
 public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
-    private static final String DATA_KEY = "vic_combatPluginData";
-    private CombatEngineAPI engine;
+    static final String DATA_KEY = "vic_combatPluginData";
+    CombatEngineAPI engine;
 
     //Verlioka
     private final IntervalUtil timer = new IntervalUtil(0.25f, 0.25f);
 
 
     //FluxRapture
-    private final SpriteAPI OuterRing = Global.getSettings().getSprite("fx", "vic_fluxRaptureSuck");
-    private final SpriteAPI InnerRing = Global.getSettings().getSprite("fx", "vic_fluxRaptureZap");
+    final SpriteAPI OuterRing = Global.getSettings().getSprite("fx", "vic_fluxRaptureSuck");
+    final SpriteAPI InnerRing = Global.getSettings().getSprite("fx", "vic_fluxRaptureZap");
 
     {
         float OuterRingRadius = vic_shockDischarger.suckRange;
@@ -41,10 +42,18 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         InnerRing.setSize(InnerRingRadius, InnerRingRadius);
     }
 
+    //Hunter Drive
+    final float
+            animDuration = 0.5f,
+            waveSize = 800f;
+
+
     @Override
     public void init(CombatEngineAPI engine) {
         this.engine = engine;
         Global.getCombatEngine().getCustomData().put(DATA_KEY, new LocalData());
+        CombatLayeredRenderingPlugin layerRenderer = new vic_layerRenderPlugin(DATA_KEY, engine);
+        engine.addLayeredRenderingPlugin(layerRenderer);
     }
 
     @Override
@@ -66,9 +75,10 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 animationRenderList.remove(FX);
             }
         }
-        /*
+
+        //note:nawia
         final List<NawiaFxData> NawiaFxList = localData.NawiaFxList;
-        for (NawiaFxData FX : NawiaFxList){
+        for (NawiaFxData FX : NawiaFxList) {
             FX.timePast += amount;
         }
         List<NawiaFxData> cloneList = new ArrayList<>(NawiaFxList);
@@ -78,10 +88,10 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             }
         }
 
-         */
 
         //Defence Suppressor
         for (Map.Entry<ShipAPI, Float> entry : localData.defenceSuppressor.entrySet()) {
+            if (entry == null || entry.getKey() == null || entry.getValue() == null) continue;
             if (!entry.getKey().isAlive() || entry.getValue() - amount < 0) {
                 MutableShipStatsAPI stats = entry.getKey().getMutableStats();
 
@@ -95,7 +105,6 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 stats.getEffectiveArmorBonus().unmodify("vic_defenceSuppressor");
                 stats.getMaxArmorDamageReduction().unmodify("vic_defenceSuppressor");
             } else {
-                entry.setValue(entry.getValue() - amount);
                 entry.getKey().setJitterShields(false);
                 entry.getKey().setJitterUnder(entry.getKey(), new Color(106, 0, 255), 4, 8, 2);
                 MutableShipStatsAPI stats = entry.getKey().getMutableStats();
@@ -113,6 +122,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 if (entry.getKey() == engine.getPlayerShip())
                     engine.maintainStatusForPlayerShip("vic_defenceSuppressor_effect", "graphics/icons/hullsys/vic_defenceSuppressor.png", "Defence Suppressor", "Defenses systems suppressed", true);
             }
+            entry.setValue(entry.getValue() - amount);
         }
         cloneMap = new HashMap<>(localData.defenceSuppressor);
         for (Map.Entry<ShipAPI, Float> entry : cloneMap.entrySet()) {
@@ -120,7 +130,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 localData.defenceSuppressor.remove(entry.getKey());
         }
 
-        //Flux Rapture
+        //NOTE:Flux Rapture
         for (Map.Entry<ShipAPI, Float> entry : localData.FluxRaptureRender.entrySet()) {
             entry.setValue(entry.getValue() + amount);
         }
@@ -131,7 +141,92 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 localData.FluxRaptureRender.remove(entry.getKey());
         }
 
-        //Zlydzen
+        //NOTE:HunterDrive
+        cloneMap = new HashMap<>(localData.hunterDriveAnimation);
+        for (Map.Entry<ShipAPI, Float> entry : cloneMap.entrySet()) {
+            if (!entry.getKey().isAlive() || entry.getValue() > animDuration)
+                localData.hunterDriveAnimation.remove(entry.getKey());
+        }
+
+        for (Map.Entry<ShipAPI, Float> entry : localData.hunterDriveAnimation.entrySet()) {
+            entry.setValue(entry.getValue() + amount);
+        }
+
+        //Hunter Drive effect
+        String ID = "vic_hunterDriveWeb";
+        for (Map.Entry<ShipAPI, Float> entry : localData.hunterDriveAnimation.entrySet()) {
+            entry.setValue(entry.getValue() + amount);
+        }
+
+        for (Map.Entry<ShipAPI, HashMap<ShipAPI, Float>> entry : localData.hunterDriveTargets.entrySet()) {
+            ShipAPI ship = entry.getKey();
+
+            if (ship == engine.getPlayerShip()) {
+                float count = entry.getValue().size();
+                if (count > 0)
+                    engine.maintainStatusForPlayerShip("ID" + "hunter", "graphics/icons/hullsys/vic_hunterWeb.png", "Hunter's web", "Webbed ships: " + Math.round(count), false);
+            }
+
+            for (Map.Entry<ShipAPI, Float> entry2 : entry.getValue().entrySet()) {
+                ShipAPI target = entry2.getKey();
+                if (!target.isAlive() || entry2.getValue() - amount <= 0) {
+
+                    MutableShipStatsAPI stats = target.getMutableStats();
+
+                    stats.getMaxSpeed().unmodify(ID);
+                    stats.getAcceleration().unmodify(ID);
+                    stats.getDeceleration().unmodify(ID);
+                    stats.getMaxTurnRate().unmodify(ID);
+                    stats.getTurnAcceleration().unmodify(ID);
+
+                } else {
+                    MutableShipStatsAPI stats = target.getMutableStats();
+
+                    stats.getMaxSpeed().modifyMult(ID, 0.75f);
+                    stats.getAcceleration().modifyMult(ID, 0.75f);
+                    stats.getDeceleration().modifyMult(ID, 0.75f);
+                    stats.getMaxTurnRate().modifyMult(ID, 0.75f);
+                    stats.getTurnAcceleration().modifyMult(ID, 0.75f);
+
+                    target.getEngineController().extendFlame(ID, 0.75f, 0.75f, 0.75f);
+
+                    if (target == engine.getPlayerShip())
+                        engine.maintainStatusForPlayerShip("ID", "graphics/icons/hullsys/vic_hunterWeb.png", "EMP web " + (Math.round(entry2.getValue() * 10f) / 10f) + "s", "Speed reduced by 25%", true);
+
+                }
+                entry2.setValue(entry2.getValue() - amount);
+                if (!entry2.getKey().isAlive() && ship.isAlive() && !ship.getSystem().isActive()) {
+                    float CDReduction = 0;
+                    switch (target.getHullSize()) {
+                        case FRIGATE:
+                            CDReduction = 10;
+                            break;
+                        case DESTROYER:
+                            CDReduction = 15;
+                            break;
+                        case CRUISER:
+                            CDReduction = 20;
+                            break;
+                        case CAPITAL_SHIP:
+                            CDReduction = 25;
+                            break;
+                    }
+                    ship.getSystem().setCooldownRemaining(ship.getSystem().getCooldownRemaining() - CDReduction);
+                }
+            }
+        }
+
+        for (Map.Entry<ShipAPI, HashMap<ShipAPI, Float>> entry : new HashMap<>(localData.hunterDriveTargets).entrySet()) {
+            ShipAPI ship = entry.getKey();
+            for (Map.Entry<ShipAPI, Float> entry2 : new HashMap<>(entry.getValue()).entrySet()) {
+                if (entry2.getValue() <= 0 || !entry2.getKey().isAlive()) {
+                    localData.hunterDriveTargets.get(ship).remove(entry2.getKey());
+                }
+            }
+        }
+
+
+        //NOTE: Zlydzen
         //Shield
         for (Map.Entry<ShipAPI, ZlydzenTargetsDataShield> entry : localData.ZlydzenTargetsShield.entrySet()) {
             if (!entry.getKey().isAlive() || entry.getValue().power <= 0) {
@@ -206,7 +301,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 localData.ZlydzenTargetsArmour.remove(entry.getKey());
         }
 
-        //ArcaneMissiles
+        //NOTE:ArcaneMissiles
         for (Map.Entry<DamagingProjectileAPI, ArcaneMissilesData> entry : localData.ArcaneMissiles.entrySet()) {
             ArcaneMissilesData data = entry.getValue();
             if (data.time < data.timeBeforeCurving) {
@@ -244,39 +339,39 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                             new Vector2f()
                     );
 
-                    float sizeMult = MathUtils.getRandomNumberInRange(0.8f,1.2f);
+                    float sizeMult = MathUtils.getRandomNumberInRange(0.8f, 1.2f);
 
                     MagicRender.battlespace(
-                            Global.getSettings().getSprite("fx","vic_laidlawExplosion3"),
+                            Global.getSettings().getSprite("fx", "vic_laidlawExplosion3"),
                             proj.getLocation(),
                             new Vector2f(),
-                            new Vector2f(60 * sizeMult,60 * sizeMult),
-                            new Vector2f(40 * sizeMult,80 * sizeMult),
+                            new Vector2f(60 * sizeMult, 60 * sizeMult),
+                            new Vector2f(40 * sizeMult, 80 * sizeMult),
                             //angle,
                             180f + proj.getFacing(),
                             0,
-                            new Color(255,225,225,255),
+                            new Color(255, 225, 225, 255),
                             true,
                             0.0f,
                             0.0f,
-                            0.35f * MathUtils.getRandomNumberInRange(0.8f,1.2f)
+                            0.35f * MathUtils.getRandomNumberInRange(0.8f, 1.2f)
                     );
 
-                    sizeMult = MathUtils.getRandomNumberInRange(0.8f,1.2f);
+                    sizeMult = MathUtils.getRandomNumberInRange(0.8f, 1.2f);
                     MagicRender.battlespace(
-                            Global.getSettings().getSprite("fx","vic_laidlawExplosion3"),
+                            Global.getSettings().getSprite("fx", "vic_laidlawExplosion3"),
                             proj.getLocation(),
                             new Vector2f(),
-                            new Vector2f(60 * sizeMult,60 * sizeMult),
-                            new Vector2f(300 * sizeMult,600 * sizeMult),
+                            new Vector2f(60 * sizeMult, 60 * sizeMult),
+                            new Vector2f(300 * sizeMult, 600 * sizeMult),
                             //angle,
                             180f + proj.getFacing(),
                             0,
-                            new Color(255,225,225,175),
+                            new Color(255, 225, 225, 175),
                             true,
                             0.0f,
                             0.0f,
-                            0.2f * MathUtils.getRandomNumberInRange(0.8f,1.2f)
+                            0.2f * MathUtils.getRandomNumberInRange(0.8f, 1.2f)
                     );
 
                     //localData.animationRenderList.add(new animationRenderData("vic_vilaBlast", 5, 0.2f, proj.getFacing(), proj.getLocation(), new Vector2f(32 * sizeMult, 32 * sizeMult), true));
@@ -296,6 +391,109 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             if (!engine.isEntityInPlay(entry.getKey()))
                 localData.ArcaneMissiles.remove(entry.getKey());
         }
+
+
+        //NOTE: sprite render
+        for (spriteRender renderData : localData.spritesRender) {
+            if (renderData.timePast <= renderData.fadeIn) {
+                renderData.alphaMulti = renderData.timePast / renderData.fadeIn;
+            } else if (renderData.timePast - renderData.fadeIn <= renderData.timeFull) {
+                renderData.alphaMulti = 1;
+            } else if (renderData.timePast - renderData.fadeIn - renderData.timeFull <= renderData.fadeOut) {
+                renderData.alphaMulti = 1 - (renderData.timePast - renderData.fadeIn - renderData.timeFull) / renderData.fadeOut;
+            }
+            renderData.sizeMulti = (float) (1f - Math.pow(1f - renderData.timePast / renderData.totalTime, 2));
+
+            renderData.sprite.setAlphaMult(renderData.alphaMulti);
+            renderData.sprite.setAngle(renderData.angle + renderData.spin * renderData.timePast);
+            //renderData.sprite.setSize(renderData.startingSize.x, renderData.startingSize.y);
+            renderData.sprite.setSize(renderData.startingSize.x + renderData.grow.x * renderData.sizeMulti, renderData.startingSize.y + renderData.grow.y * renderData.sizeMulti);
+
+            renderData.timePast += amount;
+        }
+
+        for (spriteRender renderData : new ArrayList<>(localData.spritesRender)) {
+            if (renderData.timePast >= renderData.totalTime) localData.spritesRender.remove(renderData);
+        }
+
+        //NOTE: quantum lunge
+        for (Map.Entry<ShipAPI, Float> entry : localData.quantumLungeSpeedBoost.entrySet()) {
+            entry.setValue(entry.getValue() - amount);
+            MutableShipStatsAPI stats = entry.getKey().getMutableStats();
+            stats.getMaxTurnRate().modifyMult("vic_quantumLunge", 1.5f);
+            stats.getMaxTurnRate().modifyFlat("vic_quantumLunge", 7f);
+            stats.getTurnAcceleration().modifyMult("vic_quantumLunge", 3f);
+            if (engine.getPlayerShip().equals(entry.getKey())) {
+                engine.maintainStatusForPlayerShip("vic_quantumLungeBoost", "graphics/icons/hullsys/maneuvering_jets.png", "Quantum Lunge Speed Boost", "Maneuverability increased by 150%", false);
+            }
+        }
+
+        for (Map.Entry<ShipAPI, Float> entry : new HashMap<>(localData.quantumLungeSpeedBoost).entrySet()) {
+            if (entry.getValue() <= 0) {
+                MutableShipStatsAPI stats = entry.getKey().getMutableStats();
+                stats.getMaxTurnRate().unmodify("vic_quantumLunge");
+                stats.getMaxTurnRate().unmodify("vic_quantumLunge");
+                stats.getTurnAcceleration().unmodify("vic_quantumLunge");
+                localData.quantumLungeSpeedBoost.remove(entry.getKey());
+            }
+        }
+
+        //note: Nawia Rain
+        for (NawiaRainData data : new ArrayList<>(localData.NawiaRain)){
+            if (data.ship == null || !data.ship.isAlive()) continue;
+            data.amount += amount * data.ship.getMutableStats().getBallisticRoFMult().getModifiedValue();
+            while (data.amount >= data.timePerProj){
+                data.amount -= data.timePerProj;
+                data.projesSpawned ++;
+                data.ship.getFluxTracker().increaseFlux(8 * data.ship.getMutableStats().getBallisticWeaponFluxCostMod().computeEffective(1), false);
+                float toDaysRandom = MathUtils.getRandomNumberInRange(-15, 15);
+                float toDaysRandom2 = MathUtils.getRandomNumberInRange(0.8f, 1.2f);
+                Vector2f Dir = Misc.getUnitVectorAtDegreeAngle(data.projectile.getFacing() + toDaysRandom);
+                Vector2f SpawnPoint = new Vector2f(data.hitPoint.x + Dir.x * -300 * toDaysRandom2, data.hitPoint.y + Dir.y * -300 * toDaysRandom2);
+
+                DamagingProjectileAPI proj = (DamagingProjectileAPI) engine.spawnProjectile(data.projectile.getSource(),
+                        data.projectile.getWeapon(),
+                        "vic_nawia_sub",
+                        SpawnPoint,
+                        data.projectile.getFacing() + (toDaysRandom + MathUtils.getRandomNumberInRange(-5, 5)),
+                        data.targetVelocity);
+
+
+                //if (MagicRender.screenCheck (0.5f, SpawnPoint)) engine.addPlugin(new vic_nawiaVisuals(SpawnPoint, proj.getFacing()));
+                if (MagicRender.screenCheck (0.5f, SpawnPoint)) vic_combatPlugin.AddNawiaFX(SpawnPoint, proj.getFacing());
+                if (MagicRender.screenCheck(0.5f, SpawnPoint)) {
+
+                    float animTime = MathUtils.getRandomNumberInRange(0.5f, 0.6f);
+
+                    engine.addSmoothParticle(
+                            SpawnPoint,
+                            new Vector2f(),
+                            MathUtils.getRandomNumberInRange(20, 30),
+                            1,
+                            animTime,
+                            new Color(MathUtils.getRandomNumberInRange(130, 180), MathUtils.getRandomNumberInRange(20, 60), 255, 255)
+                    );
+                    for (float I = 0; I < MathUtils.getRandomNumberInRange(4, 8); I++) {
+
+                        Vector2f move = Misc.getUnitVectorAtDegreeAngle(MathUtils.getRandomNumberInRange(-20, 20) + proj.getFacing());
+                        engine.addHitParticle(
+                                SpawnPoint,
+                                new Vector2f(move.x * MathUtils.getRandomNumberInRange(25, 125), move.y * MathUtils.getRandomNumberInRange(25, 125)),
+                                MathUtils.getRandomNumberInRange(5, 20),
+                                MathUtils.getRandomNumberInRange(0.8f, 1f),
+                                animTime * MathUtils.getRandomNumberInRange(0.5f, 1.5f),
+                                new Color(MathUtils.getRandomNumberInRange(90, 180), MathUtils.getRandomNumberInRange(20, 100), 255, 255)
+                        );
+
+                    }
+                }
+                if (data.projesSpawned >= data.projMax) break;
+            }
+        }
+        for (NawiaRainData data : new ArrayList<>(localData.NawiaRain)){
+            if (data.projesSpawned >= data.projMax || !data.ship.isAlive()) localData.NawiaRain.remove(data);
+        }
+
     }
 
     @Override
@@ -303,6 +501,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         if (engine == null) return;
         final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
 
+        //Nawia
         final List<NawiaFxData> NawiaFxList = localData.NawiaFxList;
         for (NawiaFxData FX : NawiaFxList) {
             float fractionTimePast = FX.timePast / FX.animTime;
@@ -325,6 +524,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             }
         }
 
+        //Flux rapture
         //final List<ShipAPI> AurasToRender = localData.FluxRaptureRender;
         for (Map.Entry<ShipAPI, Float> entry : localData.FluxRaptureRender.entrySet()) {
             ShipAPI ship = entry.getKey();
@@ -370,6 +570,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                     }
             }
         }
+
+        //Misc Animations
         for (animationRenderData FX : localData.animationRenderList) {
             int frame = (int) (FX.FPS * FX.time);
             if (frame > FX.numFrames - 1) frame = FX.numFrames - 1;
@@ -381,16 +583,18 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             }
             SpriteAPI sprite = Global.getSettings().getSprite("fx", FX.spriteName + frameNum);
             float flip = FX.flip;
-            if (FX.size != null){
-                sprite.setSize(FX.size.x,FX.size.y * flip);
+            if (FX.size != null) {
+                sprite.setSize(FX.size.x, FX.size.y * flip);
             } else {
                 sprite.setWidth(sprite.getWidth() * flip);
             }
             sprite.setAngle(FX.angle);
             sprite.renderAtCenter(FX.position.x, FX.position.y);
+
         }
+
         //verlioka
-        for (WeaponAPI weapon : localData.verliokas){
+        for (WeaponAPI weapon : localData.verliokas) {
             if (weapon.getChargeLevel() < 1) continue;
             float range = weapon.getRange() * 1.05f;
             SpriteAPI trail = Global.getSettings().getSprite("fx", "vic_verlioka_field");
@@ -460,6 +664,23 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         localData.FluxRaptureRender.put(ship, 0f);
     }
 
+    public static void AddHunterDriveAnimation(ShipAPI ship) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        localData.hunterDriveAnimation.put(ship, 0f);
+    }
+
+    public static void AddHunterDriveTarget(ShipAPI ship, ShipAPI target) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        if (!localData.hunterDriveTargets.containsKey(ship)) {
+            localData.hunterDriveTargets.put(ship, new HashMap<ShipAPI, Float>());
+        }
+        localData.hunterDriveTargets.get(ship).put(target, 10f);
+    }
+
     public static void AddArcaneMissiles(DamagingProjectileAPI proj, Vector2f target, float time, float rangeBeforeCurving, float startingSpeed) {
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine == null) return;
@@ -467,15 +688,42 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         localData.ArcaneMissiles.put(proj, new ArcaneMissilesData(proj, target, time, rangeBeforeCurving, startingSpeed));
     }
 
+    public static void spriteRender(SpriteAPI sprite, Vector2f location, Vector2f velocity, Vector2f startingSize, Vector2f grow, float angle, float spin, float fadeIn, float timeFull, float fadeOut, CombatEngineLayers layer) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        localData.spritesRender.add(new spriteRender(sprite, location, velocity, startingSize, grow, angle, spin, fadeIn, timeFull, fadeOut, layer));
+    }
+
+    public static void AddQuantumLungeBoost(ShipAPI ship, float duration) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        localData.quantumLungeSpeedBoost.put(ship, duration);
+    }
+
+    public static void AddNawiaRain(Vector2f hitPoint, Vector2f targetVelocity, ShipAPI ship, DamagingProjectileAPI projectile) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        localData.NawiaRain.add(new NawiaRainData(hitPoint, targetVelocity, ship, projectile));
+    }
+
+    //note: local data
     public static final class LocalData {
         final List<NawiaFxData> NawiaFxList = new ArrayList<>(250);
         final List<animationRenderData> animationRenderList = new ArrayList<>(250);
         final List<WeaponAPI> verliokas = new ArrayList<>(50);
         final HashMap<ShipAPI, Float> FluxRaptureRender = new HashMap<>(10);
         final HashMap<ShipAPI, Float> defenceSuppressor = new HashMap<>(25);
+        final HashMap<ShipAPI, Float> quantumLungeSpeedBoost = new HashMap<>(25);
         final HashMap<ShipAPI, ZlydzenTargetsDataShield> ZlydzenTargetsShield = new HashMap<>(50);
         final HashMap<ShipAPI, ZlydzenTargetsDataArmour> ZlydzenTargetsArmour = new HashMap<>(50);
         final HashMap<DamagingProjectileAPI, ArcaneMissilesData> ArcaneMissiles = new HashMap<>(250);
+        final HashMap<ShipAPI, Float> hunterDriveAnimation = new HashMap<>(10);
+        final HashMap<ShipAPI, HashMap<ShipAPI, Float>> hunterDriveTargets = new HashMap<>(10);
+        final List<spriteRender> spritesRender = new ArrayList<>(50);
+        final List<NawiaRainData> NawiaRain = new ArrayList<>(50);
     }
 
     private static final class ZlydzenTargetsDataShield {
@@ -560,6 +808,24 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         float rangeBeforeCurving;
         float speedUpOnCurving = 1;
     }
+
+    private static final class NawiaRainData {
+        NawiaRainData(Vector2f hitPoint, Vector2f targetVelocity, ShipAPI ship, DamagingProjectileAPI projectile){
+            this.hitPoint = hitPoint;
+            this.targetVelocity = targetVelocity;
+            this.ship = ship;
+            this.projectile = projectile;
+        }
+        float projMax = 50;
+        float timePerProj = 1f / 25f;
+        float amount = 0;
+        float projesSpawned = 0;
+        Vector2f hitPoint;
+        Vector2f targetVelocity;
+        DamagingProjectileAPI projectile;
+        ShipAPI ship;
+    }
+
 
     private static final class NawiaFxData {
 
@@ -651,7 +917,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             this.angle = angle;
             this.position = new Vector2f(position);
             this.size = size;
-            if(flip && Math.random()>0.5f) this.flip = -1;
+            if (flip && Math.random() > 0.5f) this.flip = -1;
         }
 
         public animationRenderData(String spriteName, int numFrames, float duration, float angle, Vector2f position, Vector2f size) {
@@ -683,5 +949,51 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         private final Vector2f position;
         private final Vector2f size;
         private int flip = 1;
+    }
+
+    static final class spriteRender {
+
+        spriteRender(
+                SpriteAPI sprite,
+                Vector2f location,
+                Vector2f velocity,
+                Vector2f startingSize,
+                Vector2f grow,
+                float angle,
+                float spin,
+                float fadeIn,
+                float timeFull,
+                float fadeOut,
+                CombatEngineLayers layer) {
+            this.sprite = sprite;
+            this.location = new Vector2f(location);
+            this.velocity = new Vector2f(velocity);
+            this.startingSize = startingSize;
+            this.grow = grow;
+            this.angle = angle;
+            this.spin = spin;
+            this.fadeIn = fadeIn;
+            this.timeFull = timeFull;
+            this.fadeOut = fadeOut;
+            this.layer = layer;
+            totalTime = fadeIn + timeFull + fadeOut;
+            if (fadeIn <= 0) alphaMulti = 1;
+        }
+
+        SpriteAPI sprite;
+        Vector2f location;
+        Vector2f velocity;
+        Vector2f startingSize;
+        Vector2f grow;
+        float angle;
+        float spin;
+        float fadeIn;
+        float timeFull;
+        float fadeOut;
+        float totalTime;
+        float timePast = 0;
+        float alphaMulti = 0;
+        float sizeMulti = 0;
+        CombatEngineLayers layer;
     }
 }

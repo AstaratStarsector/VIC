@@ -1,4 +1,4 @@
-package data.scripts.weapons;
+package data.scripts.weapons.decos;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
@@ -17,9 +17,9 @@ import static com.fs.starfarer.api.util.Misc.ZERO;
 
 public class vic_fighterTrail implements EveryFrameWeaponEffectPlugin {
 
-    private IntervalUtil effectInterval = new IntervalUtil(0.05f, 0.05f);
-    private Float trailID = null;
-    private SpriteAPI trailSprite = Global.getSettings().getSprite("fx", "trails_trail_twin");
+    IntervalUtil effectInterval = new IntervalUtil(0.05f, 0.05f);
+    Float trailID = null;
+    SpriteAPI trailSprite = Global.getSettings().getSprite("fx", "trails_trail_twin");
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
@@ -29,11 +29,16 @@ public class vic_fighterTrail implements EveryFrameWeaponEffectPlugin {
         float angle = Misc.getAngleInDegrees(new Vector2f(ship.getVelocity()));
 
         effectInterval.advance(engine.getElapsedInLastFrame());
-        if (effectInterval.intervalElapsed()) {
+        float Duration = 2f * (200f / ship.getMaxSpeedWithoutBoost());
+        if (!ship.isAlive()) Duration = 0;
+        if (effectInterval.intervalElapsed() && ship.isAlive()) {
             if (trailID == null) {
                 trailID = MagicTrailPlugin.getUniqueID();
             }
-            MagicTrailPlugin.AddTrailMemberSimple(ship, trailID, trailSprite,
+            MagicTrailPlugin.AddTrailMemberSimple(
+                    ship,
+                    trailID,
+                    trailSprite,
                     weapon.getLocation(),
                     0f,
                     angle,
@@ -43,7 +48,7 @@ public class vic_fighterTrail implements EveryFrameWeaponEffectPlugin {
                     brightness,
                     0f,
                     0f,
-                    2f,
+                    Duration,
                     true);
         }
 
@@ -53,6 +58,7 @@ public class vic_fighterTrail implements EveryFrameWeaponEffectPlugin {
             trailID = null;
         }
 
+        /*
         //Switches to the proper sprite
         if (brightness > 0) {
             weapon.getAnimation().setFrame(1);
@@ -62,5 +68,7 @@ public class vic_fighterTrail implements EveryFrameWeaponEffectPlugin {
 
         Color colorToUse = new Color(0f, 1f, 1f, brightness);
         weapon.getSprite().setColor(colorToUse);
+
+         */
     }
 }

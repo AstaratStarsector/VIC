@@ -12,10 +12,11 @@ public class vic_aeroDynamicDesign extends BaseHullMod {
 
 	private final Map<HullSize, Float> mag = new HashMap<>();
 	{
-		mag.put(HullSize.FRIGATE, 10f);
-		mag.put(HullSize.DESTROYER, 20f);
-		mag.put(HullSize.CRUISER, 30f);
-		mag.put(HullSize.CAPITAL_SHIP, 50f);
+		mag.put(HullSize.FIGHTER, 10f);
+		mag.put(HullSize.FRIGATE, 30f);
+		mag.put(HullSize.DESTROYER, 60f);
+		mag.put(HullSize.CRUISER, 90f);
+		mag.put(HullSize.CAPITAL_SHIP, 150f);
 	}
 
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
