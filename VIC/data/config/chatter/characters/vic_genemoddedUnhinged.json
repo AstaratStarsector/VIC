@@ -1,0 +1,107 @@
+{
+	"name":"Unhinged Genemodded VIC Member",
+	"personalities":["aggressive", "reckless"],
+	"gender":["m","f","n"],
+	"chance":0.3,
+	"talkativeness":1,
+	"categoryTags":["original"],
+	
+	"lines":{
+		"start":[
+			{"text":"Ha-a-a, more prey."},
+			{"text":"Time to slaughter."},
+			{"text":"Feeding time is nigh."},
+		    {"text":"New playthings, ah-h-h."},
+			{"text":"More. Leave more of them for me."}
+		],
+		
+		
+		"start_boss":[
+			{"text":"Big prey. Good."},
+			{"text":"A big slaughter is coming. I shall take part."},
+			{"text":"My instincts are screaming. But I won't hide."},
+			{"text":"Predator always defeats its prey. The odds matter not."},
+		],
+		
+		"engaged":[
+			{"text":"Approaching my prey. Don't interfere."},
+			{"text":"Run, while you can. I will enjoy it more."},
+			{"text":"Look into my eyes, prey. I want to see your fear."},
+			{"text":"It is time to feast. Come."},
+		    {"text":"Be my playthings. I will love you oh so much."}
+		],
+		
+		"retreat":[
+			{"text":"This isn't over. But I need to lick my wounds."},
+			{"text":"Don't think you're safe, prey. I will find you. And I will hunt you down."},
+			{"text":"Retreating. I will hunt another day."}
+
+		],
+		"out_of_missiles":[
+			{"text":"Missiles out. Time to hunt up close."},
+			{"text":"Missiles depleted. I'm coming for you, prey."},
+			{"text":"No need in missiles. Predators hunt up close."}
+			
+		],
+		"need_help":[
+			{"text":"I'm under attack. Help required."},
+			{"text":"The prey is resisting. I request help."}
+		],
+		"pursuing":[
+			{"text":"Chasing down prey. They will not escape..."},
+			{"text":"Sing for me, prey. I want to hear your beautiful songs."},
+			{"text":"Come here, little plaything. I want to experience all of you..."},
+			{"text":"I want to play with you. Don't run, we shall both enjoy it together."},
+			{"text":"My fangs, my claws, my body. They are all longing for you. I'm so hungry and thirsty."},
+			{"text":"Your flesh. Let me experience it..."},
+			{"text":"You run. You know what makes me happy and roused."},
+
+		],
+		"running":[
+			{"text":"I have to back down. The prey resists."},
+			{"text":"Evading prey's attacks."},
+			{"text":"The prey knows how to play well. Good. I enjoy it."},
+			{"text":"Let's dance amidst the stars, my little plaything."},
+		],
+		"hull_90":[
+			{"text":"Bite into me as I bite into you. Let us experience it together."},
+			{"text":"Resist more, prey. I enjoy it."},
+			{"text":"My vessel is damaged. But I'm only happier."},
+			{"text":"You want to play, my little plaything? Good."}
+
+		],
+		"hull_50":[
+			{"text":"Ah-h-h... A worthy prey. I shall savor this one..."},
+			{"text":"Ah... An exhilirating hunt. I've been longing for this..."},
+			{"text":"No, no... Do not back down. This hunt is far from over..."},
+			{"text":"Predator and prey... Interwined in a deadly dance... Argh..."},
+			{"text":"This pain... I shall make them feel it too. And we will enjoy it all..."}
+
+		],
+		"hull_30":[
+			{"text":"The instincts... I shall endure... I will not give in..."},
+			{"text":"No... I... I will... Remain myself..."},
+			{"text":"Must... Not... Lose it..."},
+			{"text":"No, I am... A human... I must... Keep it together..."}
+
+		],
+		"overload":[
+			{"text":"My vessel has overloaded. The hunt must wait."},
+			{"text":"Predator has been de-fanged. But not for long."},
+			{"text":"Wait for me, prey. I shall be back soon."}
+		],
+		"death":[
+			{"text":"<incomprehensible screaming and wailing>"},
+			{"text":"<chaotic non-human vocalisations>"},
+			{"text":"<indecipherable whispering intermixed with the grinding of teeth>"}
+
+		],
+		"victory":[
+			{"text":"The hunt ends. I feel good."},
+			{"text":"Search for survivors. I want my playthings."},
+			{"text":"I'm satisfied. This was a good hunt."},
+			{"text":"The prey falls. The predator prevails."},
+			{"text":"Find the survivors. I want their flesh."}
+		]
+	}
+}

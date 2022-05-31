@@ -19,7 +19,7 @@ import org.lwjgl.util.vector.Vector2f;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vic_gaganaProjectileScript extends BaseEveryFrameCombatPlugin {
+public class vic_qutrubProjectileScript extends BaseEveryFrameCombatPlugin {
 	//---Settings: adjust to fill the needs of your implementation---
 	//Sets guidance mode for the projectile when a target is fed to the script (or, in the case of ONE_TURN_DUMB, always).
 	//Note that interceptor-style projectiles use notably more memory than the other types (as they practically run missile AI), so they should be used sparingly
@@ -140,7 +140,7 @@ public class vic_gaganaProjectileScript extends BaseEveryFrameCombatPlugin {
 	 * The target missile/asteroid/ship for the script's guidance.
 	 * Can be null, if the script does not follow a target ("ONE_TURN_DUMB") or to instantly activate secondary guidance mode.
 	 */
-	public vic_gaganaProjectileScript(@NotNull DamagingProjectileAPI proj, CombatEntityAPI target) {
+	public vic_qutrubProjectileScript(@NotNull DamagingProjectileAPI proj, CombatEntityAPI target) {
 		this.proj = proj;
 		this.target = target;
 		lastTargetPos = target != null ? target.getLocation() : new Vector2f(proj.getLocation());

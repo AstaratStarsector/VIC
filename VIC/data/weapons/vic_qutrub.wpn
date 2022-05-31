@@ -1,0 +1,56 @@
+{
+  "id": "vic_qutrub",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_qutrubShot",
+  "type": "BALLISTIC",
+  "size": "MEDIUM",
+  "everyFrameEffect": "data.scripts.weapons.vic_qutrubScript",
+  "displayArcRadius": 450,
+  "turretSprite": "graphics/weapons/vic_qutrub_base_turret.png",
+  "turretGunSprite": "graphics/weapons/vic_qutrub_barrel_turret.png",
+  "hardpointSprite": "graphics/weapons/vic_qutrub_base_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/vic_qutrub_barrel_hardpoint.png",
+  "renderAboveAllWeapons": 0,
+  "glowColor": [
+    178,
+    95,
+    229,
+    191
+  ],
+  "visualRecoil": 22,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    1,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    7,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "GLOW_AND_FLASH",
+  "muzzleFlashSpec": {
+    "length": 50,
+    "spread": 10,
+    "particleSizeMin": 20,
+    "particleSizeRange": 2,
+    "particleDuration": 0.5,
+    "particleCount": 5,
+    "particleColor": [
+      255,
+      66,
+      0,
+      245
+    ]
+  },
+  "textureType": ROUGH,
+  "fireSoundTwo": "vic_qutrub_shot"
+}

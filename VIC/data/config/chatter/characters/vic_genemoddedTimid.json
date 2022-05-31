@@ -1,0 +1,105 @@
+{
+	"name":"Timid Genemodded VIC Member",
+	"personalities":["timid", "cautious"],
+	"gender":["m","f","n"],
+	"chance":0.7,
+	"talkativeness":1,
+	"categoryTags":["original"],
+	
+	"lines":{
+		"start":[
+			{"text":"I hope I'll get paid extra for this, I could use an extra set of eyes I guess..."},
+			{"text":"I didn't train for this stuff..."},
+			{"text":"I think I'm going to throw up..."},
+			{"text":"I can't stop my tail from twitching..."},
+			{"text":"I was meant to be at Revitalization Centre today, not here!"},
+		],
+		
+		
+		"start_boss":[
+			{"text":"Oh goodness..."},
+			{"text":"Let me out! LET ME OUT!!!"},
+			{"text":"I didn't sign up for this! I did not! Screw all of you!"}
+		],
+		
+		"engaged":[
+			{"text":"Engaging the enemy. Hope they don't fire back..."},
+			{"text":"Alright, alright, time to prove myself."},
+			{"text":"All those combat genemods should finally be of actual use now..."}
+		],
+		
+		"retreat":[
+			{"text":"Nope! Screw this! I'm out!"},
+			{"text":"I don't know which one that is, but some instinct is telling me it's time to run!"},
+			{"text":"Whatever genemod is making me run right now, I'm very grateful to you!"}
+
+			
+		],
+		"out_of_missiles":[
+			{"text":"Out of missiles, uh-oh..."},
+			{"text":"Missiles out. I knew I should've brought more."},
+			{"text":"Goddarnit, why haven't we taken more missiles?!"}
+			
+		],
+		"need_help":[
+			{"text":"Help! Please, anyone, help me! I mean us! The crew!"},
+			{"text":"Assistance, now! We're under attack!"},
+			{"text":"Can't promise I won't scratch someone's face off from stress right now, help!"}
+		],
+		"pursuing":[
+			{"text":"Hey, this is actually fun!..."},
+			{"text":"I... I can't stop thinking about chasing them down like some prey..."},
+			{"text":"I think I've never been so excited before. It's weird, but... Feels good?"},
+			{"text":"My pupils are dilated. I feel so focused all of a sudden..."},
+			{"text":"Why do I feel like pouncing on someone right now. Huh."}
+
+		],
+		"running":[
+			{"text":"Disengaging! And very quickly!"},
+			{"text":"Evasive maneuvers!"},
+			{"text":"Gotta get back, GOTTA GET BACK!!!"},
+			{"text":"Why do I feel like hiding in some burrow right now?!"}
+		],
+		"hull_90":[
+			{"text":"All this stress is bad for my feathers!"},
+			{"text":"I didn't mean you no harm! I think..."},
+			{"text":"The enemy is shooting back, no one told me they would be shooting back!"}
+
+		],
+		"hull_50":[
+			{"text":"Hull is at 50%! Help is needed, NOW!!!"},
+			{"text":"I shouldn't have been here, I shouldn't have been here!"},
+			{"text":"Is this some xenofauna instinct making me scared or are we really in trouble?!"},
+			{"text":"Hull down to 50%! Someone, help, please!"}
+
+		],
+		"hull_30":[
+		    {"text":"No-no-no-no, please, I don't want to die!"},
+		    {"text":"Hull at 30%! We're about to die here, help, I beg of you!"},
+			{"text":"This is bad, this is really really bad!"},
+			{"text":"Hull at only a third! There are dead people in the bridge! I've scratched myself to blood with my own claws, A-A-A-A-AH!!!"},
+			{"text":"So that's what mice feel when cornered by a cat... Ha-a-a..."}
+			
+		],
+		"overload":[
+			{"text":"Oh-no-no-no... This isn't good. Isn't good at all!"},
+			{"text":"ALl this static is making my hair and fur stand up!"},
+			{"text":"What do we do?!"}
+		],
+		"death":[
+			{"text":"A-A-A-A-AH!-..."},
+			{"text":"I haven't even paid out the loans for all these genemods...-"},
+			{"text":"Well, it was fun, I guess...-"},
+			{"text":"Should've got myself a chitine exoskeleton...-"},
+
+		],
+		"victory":[
+			{"text":"We won? We won! Hooray!"},
+			{"text":"I did good! I think I did. Please, tell me I did."},
+			{"text":"That was fun! But I'd still prefer to never experience any of this again, thank you very much."},
+			{"text":"Think I need some genemods for extra courage..."},
+			{"text":"Is it just me or did my fur turn gray in places..."},
+			{"text":"I think I need to lay down for a bit..."},
+		]
+	}
+}

@@ -3,23 +3,11 @@ package data.scripts.weapons.ai;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
-import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import com.fs.starfarer.api.util.IntervalUtil;
-import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.combat.ai.missile.PhaseChargeAI;
-import com.fs.starfarer.combat.entities.Ship;
-import com.fs.starfarer.coreui.V;
-import data.scripts.plugins.vic_combatPlugin;
-import data.scripts.util.MagicLensFlare;
 import data.scripts.util.MagicRender;
-import org.lazywizard.lazylib.MathUtils;
-import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
-import com.fs.starfarer.combat.ai.missile.PhaseChargeAI;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class vic_disruptorShot_AI implements MissileAIPlugin, GuidedMissileAI {
 

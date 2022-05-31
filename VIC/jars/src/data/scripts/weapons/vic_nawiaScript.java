@@ -7,6 +7,9 @@ import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.plugins.vic_combatPlugin;
 import data.scripts.util.MagicRender;
+import data.scripts.utilities.vic_graphicLibEffects;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
 
@@ -15,6 +18,9 @@ import java.util.ArrayList;
 
 
 public class vic_nawiaScript implements OnHitEffectPlugin, OnFireEffectPlugin {
+
+    final float MUZZLE_OFFSET_HARDPOINT = 8.5f;
+    final float MUZZLE_OFFSET_TURRET = 10.0f;
 
     private final ArrayList<SpriteAPI> ringList = new ArrayList<>();
 
@@ -25,7 +31,7 @@ public class vic_nawiaScript implements OnHitEffectPlugin, OnFireEffectPlugin {
 
     public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
 
-        if (!projectile.isFading()){
+        if (!projectile.isFading()) {
             vic_combatPlugin.AddNawiaRain(point, target.getVelocity(), projectile.getSource(), projectile);
         }
 
@@ -141,7 +147,41 @@ public class vic_nawiaScript implements OnHitEffectPlugin, OnFireEffectPlugin {
                 weapon.getShip().getVelocity());
         engine.removeEntity(projectile);
 
-        weapon.getShip().getFluxTracker().decreaseFlux(400f * weapon.getShip().getMutableStats().getBallisticWeaponFluxCostMod().computeEffective(1));
+        ShipAPI ship = weapon.getShip();
+        Vector2f weaponLocation = weapon.getLocation();
+        float shipFacing = weapon.getCurrAngle();
+        Vector2f shipVelocity = ship.getVelocity();
+        Vector2f muzzleLocation = MathUtils.getPointOnCircumference(weaponLocation,
+                weapon.getSlot().isHardpoint() ? MUZZLE_OFFSET_HARDPOINT : MUZZLE_OFFSET_TURRET, shipFacing);
+
+        if (Global.getSettings().getModManager().isModEnabled("shaderLib")) {
+            vic_graphicLibEffects.CustomRippleDistortion(
+                    muzzleLocation,
+                    shipVelocity,
+                    50f,
+                    3f,
+                    false,
+                    weapon.getCurrAngle() + 180f,
+                    90,
+                    1f,
+                    0.1f,
+                    0.25f,
+                    0.15f,
+                    0.25f,
+                    0f
+            );
+        }
+
+        WaveDistortion wave = new WaveDistortion(muzzleLocation, shipVelocity);
+        wave.setIntensity(3f);
+        wave.setSize(35f);
+        wave.flip(false);
+        wave.setLifetime(0f);
+        wave.fadeOutIntensity(0.3f);
+        wave.setLocation(muzzleLocation);
+        DistortionShader.addDistortion(wave);
+
+            weapon.getShip().getFluxTracker().decreaseFlux(400f * weapon.getShip().getMutableStats().getBallisticWeaponFluxCostMod().computeEffective(1));
+        }
     }
-}
 

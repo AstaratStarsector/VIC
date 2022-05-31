@@ -458,6 +458,14 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                         data.projectile.getFacing() + (toDaysRandom + MathUtils.getRandomNumberInRange(-5, 5)),
                         data.targetVelocity);
 
+                Global.getSoundPlayer().playSound(
+                        "vic_nawia_spawn",
+                        1f,
+                        0.5f,
+                        SpawnPoint,
+                        new Vector2f()
+                );
+
 
                 //if (MagicRender.screenCheck (0.5f, SpawnPoint)) engine.addPlugin(new vic_nawiaVisuals(SpawnPoint, proj.getFacing()));
                 if (MagicRender.screenCheck (0.5f, SpawnPoint)) vic_combatPlugin.AddNawiaFX(SpawnPoint, proj.getFacing());
@@ -816,8 +824,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             this.ship = ship;
             this.projectile = projectile;
         }
-        float projMax = 50;
-        float timePerProj = 1f / 25f;
+        float projMax = 15;
+        float timePerProj = 2f / projMax;
         float amount = 0;
         float projesSpawned = 0;
         Vector2f hitPoint;

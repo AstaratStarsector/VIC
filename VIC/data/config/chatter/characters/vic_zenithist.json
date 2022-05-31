@@ -1,0 +1,123 @@
+{
+	"name":"VIC Zenithist",
+	"personalities":["aggressive", "reckless"],
+	"gender":["m","f","n"],
+	"chance":0.3,
+	"talkativeness":2,
+	"categoryTags":["original"],
+	
+	"lines":{
+		"start":[
+			{"text":"Let us obliterate the enemies of Humankind."},
+			{"text":"All shall fall before our radiant might."},
+			{"text":"Not even the angelic hordes will stop us!"},
+		    {"text":"The servants of the Tyrant shall be exterminated."},
+			{"text":"Forward, to our destined divinity!"},
+			{"text":"For those who must wage war against Heavens themselves, this is but a simple trial."},
+			{"text":"This cruel Creation shall burn."},
+			{"text":"Today, we shall prove our worth to Zenith Eternal..."},
+		],
+		
+		
+		"start_boss":[
+			{"text":"Spawn of the Tyrant will not stop our righteous march!"},
+			{"text":"Humankind is no stranger to fighting a superior foe! Exterminate!"},
+			{"text":"Watch this battle closely, <holy> servants of the Tyranny. You shall be next."},
+			{"text":"Humanity shall prevail over all monstrosities of the tyrannical Creation!"},
+			{"text":"O, Zenith Eternal, grant us strength..."},
+			{"text":"Humanity shall be Liberated. Even if at the cost of this Creation itself. You shall not stop us."}
+		],
+		
+		"engaged":[
+			{"text":"Face your destiny, adversaries of Humankind!"},
+			{"text":"Fear the wrath of Paradise's true successors!"},
+			{"text":"Liberation of Humankind is at hand!"},
+			{"text":"Exterminate! Exterminate each and every one! Exterminate them all!"},
+			{"text":"The Light of the true freedom is guiding us!"},
+			{"text":"Death to the enemies of Humankind!"},
+			{"text":"Let us reclaim our divine thrones!"},
+			{"text":"Zenith Eternal leads us to victory!"}
+		],
+		
+		"retreat":[
+			{"text":"Humanity's will remains unbroken. We shall achieve victory, even if not today."},
+			{"text":"Our triumph is imminent. You're only delaying the inevitable."},
+			{"text":"This is neither the place, nor the time to sacrifice our radiant souls. Let us retreat."},
+			{"text":"Humankind will not profit if we perish today. We should retreat."},
+			{"text":"Reclamation of Paradise is no easy task. Let us restore our strength."}
+
+			
+		],
+		"out_of_missiles":[
+			{"text":"Missile ordnance depleted. Let us drive our blades into their <holy> hearts."},
+			{"text":"Missile racks are freed of the ordnance. Let us free Humankind's foes of their existence."},
+			{"text":"All missiles have been expended. Let us face the Tyrant's servants and smite them."}
+			
+		],
+		"need_help":[
+			{"text":"Assitance is required, we are under attack of the Tyrant's servants!"},
+			{"text":"Requesting backup, our strength is not enough to push back the enemies of Humankind!"}
+		],
+		"pursuing":[
+			{"text":"Let us hunt down the servants of the Tyrant..."},
+			{"text":"O, Zenith Eternal, grant us swiftness to exterminate the grovelling masses..."},
+			{"text":"You can run, foes of Humankind, but our retribution shall not spare you."},
+			{"text":"Let none of the <holy> fiends escape! Obliterate them all!"},
+			{"text":"Are you seeing this, Tyrant?! Your servants are being slain by our hands!"},
+			{"text":"Hide, Tyrant's abominations. Hide your disgusting spawn. For all and every shall be exterminated."},
+			{"text":"The Light of Freedom, let us smite the Creation's monstrosities!"}
+
+		],
+		"running":[
+			{"text":"Evading the <holy> fiends' attacks."},
+			{"text":"Let us evade the Tyrant's rage."},
+			{"text":"Heavens lash against us, but we shall not stand still."},
+			{"text":"Those who have eaten the Fruit, did not escape the Tyrant's punishment. We shall not repeat their mistakes."}
+		],
+		"hull_90":[
+			{"text":"The Tyrant's servants are attacking us. Let us show them our radiant resolve."},
+			{"text":"Humanity is no stranger to suffering. Give us your worse, <holy> fiends."},
+			{"text":"Our will is unbreakable, such meager wounds shall not stop our righteous march."},
+			{"text":"Heavens shall not be reclaimed without pain and wounds."},
+			{"text":"Come at us, abominations. Feel our vengeful fury."}
+
+		],
+		"hull_50":[
+			{"text":"The vessel may break, but our radiant souls shall endure! Forward!"},
+			{"text":"The Tyrant's servants shall not stop us today! Attack!"},
+			{"text":"Humankind shall prevail, no surrender to the <holy> fiends!"}
+
+		],
+		"hull_30":[
+		    {"text":"FOR ZENITH ETERNAL, FOR HUMANKIND!!!"},
+		    {"text":"OUR LIBERATION IS AT HAND!!!"},
+			{"text":"DEDICATE YOUR HEARTS, RECLAIM YOUR DIVINITY!!!"},
+			{"text":"HEAVENS SHALL BELONG TO US!!!"},
+			{"text":"THE TYRANT'S END IS NIGH!!!"},
+			{"text":"DEATH TO THE ENEMIES OF HUMANKIND!!!"},
+			{"text":"THE LIGHT OF FREEDOM, GUIDE US TO OUR PARADISE!!!"}
+			
+		],
+		"overload":[
+			{"text":"Stabilise the flux grid, let us strike Humankind's foes once again."},
+			{"text":"Our vessel has overloaded. The Tyrant's treachery knows no bounds."},
+			{"text":"Do not let anything instill fear into your hearts. Humankind shall prevail."}
+		],
+		"death":[
+			{"text":"O, Our Zenith Eternal, we have failed you...-"},
+			{"text":"Humankind shall prevail...-"},
+			{"text":"Your end is nigh, Tyrant...-"},
+			{"text":"This cruel Creation, our brothers and sisters will see to its end...-"},
+			{"text":"Our brothers and sisters shall reclaim our Heavens still. You have achieved nothing...-"}
+
+		],
+		"victory":[
+			{"text":"The Tyrant's forces have lost once again. Our glorious Liberation is closer with every victory."},
+			{"text":"Every victory brings the Eternal Zenith of Humankind ever closer. Let us not slow down."},
+			{"text":"Heavens shall fall by our hands, and will be rebuilt by our radiant designs."},
+			{"text":"Humankind's foes are defeated once more. This is the proof of our destined divinity."},
+			{"text":"Execute the survivors. All those who do not seek the glorious Liberation must be exterminated. "},
+			{"text":"O, Zenith Eternal, our triumph is nigh..."}
+		]
+	}
+}

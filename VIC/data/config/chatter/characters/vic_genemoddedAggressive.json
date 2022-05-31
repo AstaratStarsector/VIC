@@ -1,0 +1,109 @@
+{
+	"name":"Aggressive Genemodded VIC Member",
+	"personalities":["steady", "aggressive"],
+	"gender":["m","f","n"],
+	"chance":1,
+	"talkativeness":1.5,
+	"categoryTags":["original", "profanity"],
+	
+	"lines":{
+		"start":[
+			{"text":"Time to earn our paychecks people!"},
+			{"text":"All systems green, time to show them what we're made of!"},
+			{"text":"Forward! To victory!"},
+			{"text":"Humanity shall prevail!"},
+			{"text":"Once we're done and paid, I'm going to buy myself a new set of iridiscent scales and no one's going to stop me!"},
+		],
+		
+		
+		"start_boss":[
+			{"text":"That's a big one for sure."},
+			{"text":"I could use some more action right now, sure, no big deal."},
+			{"text":"Who said I'm afraid? I'm not!"},
+			{"text":"What?! No, my tail isn't twitching out of fear! I'm just excited, that's all!"},
+		],
+		
+		"engaged":[
+			{"text":"Engaging the enemy, make them run!"},
+			{"text":"I'm legally bound not to say anything about leaving no prisoners!"},
+			{"text":"I can sense your fear with my antennae!"},
+			{"text":"Come on, suckers, show us what you've got!"},
+			{"text":"Fear the power of humankind!"},
+			{"text":"Let's go! Bite their freaking faces off! Figuratively, I mean. I think I do..."}
+		],
+		
+		"retreat":[
+			{"text":"Damnit, have to retreat!"},
+			{"text":"No war was won without retreating at least once!"},
+			{"text":"Don't think you've won this one, we'll be back, just you wait!"}
+		],
+		"out_of_missiles":[
+			{"text":"No more missiles. Dangit."},
+			{"text":"Missiles out. Just means we'll have to get in closer!"}
+			
+		],
+		"need_help":[
+			{"text":"Requesting support! We're in a bit of a trouble here!"},
+			{"text":"Help needed, we're getting our asses handed to us here!"},
+			{"text":"You know, I wouldn't mind having some bloody HELP here!"}
+		],
+		"pursuing":[
+			{"text":"I swear I can smell they fear, it's time to hunt..."},
+			{"text":"Chase them down! Rip them all apart like cattle!"},
+			{"text":"Wish I could test my new poison glands on them. Will have to do it the good old way I guess!"},
+			{"text":"I'm literally salivating right now. My fangs are aching..."},
+			{"text":"I wonder how their flesh would taste... Wait, what did I just say?"},
+			{"text":"I can feel the adrenaline in my veins. Those carvnivore genemods sure are paying off!"},
+			{"text":"Too bad I can't sink my claws into them myself... Oh well, full speed ahead, make them regret showing their backs to us!"},
+
+		],
+		"running":[
+			{"text":"Commencing evasive maneuvers!"},
+			{"text":"Evading enemy attacks!"},
+			{"text":"Disengaging at full speed! What? We're not retreating! YOU're retreating!"},
+			{"text":"Gotta catch our breath!"}
+		],
+		"hull_90":[
+			{"text":"So, you want to play? Alright then, bring it on!"},
+			{"text":"No fun without a proper fight!"},
+			{"text":"Being attacked by the enemy! Can handle it for now though!"},
+			{"text":"Let's show them!"},
+			{"text":"Ha, didn't even singe my whiskers!"}
+
+		],
+		"hull_50":[
+			{"text":"Let's hope this is the last time we're hit today."},
+			{"text":"Hey, I'm not complaining, but it's getting pretty hot in here."},
+			{"text":"Good thing I've purchased the hardened skin back then."},
+			{"text":"Hull at 50%. Alright, time to get serious."}
+
+		],
+		"hull_30":[
+		    {"text":"Hull at 30%, but we can still make it. Stay focused, team!"},
+		    {"text":"Hull integrity at critical levels! Time to show them what humanity's truly made of!"},
+			{"text":"Hull down to third, don't let them hit us, there is still much to do for us in this life!"},
+			{"text":"Someone, take care of that fire for fuck's sake, my fur's already burned, damnit!"}
+			
+		],
+		"overload":[
+			{"text":"Ow! Why didn't they insulate this thing?!"},
+			{"text":"Ship's overloaded! Requesting assistance NOW!"},
+			{"text":"Flux grid's in bad shape, need time to re-engage!"}
+		],
+		"death":[
+			{"text":"I die for humankind...-"},
+			{"text":"Oh, wow, so it is indeed beautiful up there...-"},
+			{"text":"See you all in Hell, motherfu-..."},
+			{"text":"Heh... And here I thought I'd buy those extra ears-..."}
+
+		],
+		"victory":[
+			{"text":"Another victory for humankind!"},
+			{"text":"Drinks are on me! Not the most expensive though, I still have bills to pay and I've been saving for new limbs for several months alread-..."},
+			{"text":"Good job us! What? No, I'm NOT wagging my tail! You're imagining things!"},
+			{"text":"All in a day's job, amiright?"},
+			{"text":"I still wonder what their flesh tastes like... What? Don't look at me like that."},
+			{"text":"Shouldn't have messed with humanity!"}
+		]
+	}
+}

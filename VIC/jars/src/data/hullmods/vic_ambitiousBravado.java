@@ -10,12 +10,12 @@ import org.lwjgl.util.vector.Vector2f;
 import java.util.HashMap;
 import java.util.Map;
 
-public class vic_geneticModifications extends BaseHullMod {
+public class vic_ambitiousBravado extends BaseHullMod {
 
     static final float damageTakenIncrease = 5f;
     final float DPCheckRange = 1500f,
             capDamageReduction = 10f;
-    final String HmodId = "vic_geneticModifications";
+    final String HmodId = "vic_ambitiousBravado";
 
     final Map<HullSize, Float> damageBonusToDestroyers = new HashMap<>();
     final Map<HullSize, Float> damageBonusToCruisers = new HashMap<>();
@@ -50,8 +50,8 @@ public class vic_geneticModifications extends BaseHullMod {
 
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
-        if (ship.getFullTimeDeployed() > 1 && !ship.hasListener(vic_geneticModificationsDamageTaken.class)) {
-            ship.addListener(new vic_geneticModificationsDamageTaken());
+        if (ship.getFullTimeDeployed() > 1 && !ship.hasListener(vic_ambitiousBravadoDamageTaken.class)) {
+            ship.addListener(new vic_ambitiousBravadoDamageTaken());
         }
 
         Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
@@ -107,7 +107,7 @@ public class vic_geneticModifications extends BaseHullMod {
         return null;
     }
 
-    public static class vic_geneticModificationsDamageTaken implements DamageTakenModifier {
+    public static class vic_ambitiousBravadoDamageTaken implements DamageTakenModifier {
 
         final Map<HullSize, Float> size = new HashMap<>();
 

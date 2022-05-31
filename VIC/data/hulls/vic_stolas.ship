@@ -14,7 +14,8 @@
   "builtInMods": [
     "vic_dynamicshields",
     "vic_aerodynamicdesign",
-    "vic_hellstormV2"
+    "vic_hellstormV2",
+    "vic_shturmSolutionDummy"
   ],
   "builtInWeapons": {
     "CH1": "vic_deco_stolas_charge1",
@@ -36,15 +37,19 @@
     "WS0004": "vic_stolas_engine_glow_right",
     "WS0005": "vic_stolas_engine_glow_left",
     "WS0006": "vic_stolas_engine_glow_central",
+    "WS0007": "vic_stolas_weapon_deco_left",
     "WS0008": "vic_stolasBuildIn",
+    "WS0009": "vic_stolas_weapon_deco_right",
+    "WS0010": "vic_stolas_wing_fin_left",
+    "WS0011": "vic_stolas_wing_fin_right",
     "WS0017": "vic_blonkerCyan",
     "WS0018": "vic_blonkerCyan",
     "WS0019": "vic_blonkerCyan",
     "WS0020": "vic_blonkerCyan",
     "WS0021": "vic_blonkerCyan",
     "WS0022": "vic_blonkerCyan",
-    "WS0023t": "vic_blonkerCyan",
     "WS0023": "vic_blonkerRed",
+    "WS0023t": "vic_blonkerCyan",
     "WS0024": "vic_blonkerCyan",
     "WS0025": "vic_blonkerRed",
     "WS0026": "vic_blonkerRed",
@@ -256,7 +261,8 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": -168,
-      "locations": [-122.5, -89]
+      "locations": [-122.5, -89],
+      "renderOrderMod": 5
     },
     {
       "id": "WS0025",
@@ -265,7 +271,8 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 168,
-      "locations": [-122.5, 87]
+      "locations": [-122.5, 87],
+      "renderOrderMod": 5
     },
     {
       "id": "CH1",
@@ -365,6 +372,42 @@
       "arc": 0,
       "angle": 0,
       "locations": [-33.5, -0]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-7.5, 31.5]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-7.5, -31.5]
+    },
+    {
+      "id": "WS0010",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 10,
+      "angle": 0,
+      "locations": [-89, 68]
+    },
+    {
+      "id": "WS0011",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 10,
+      "angle": -0,
+      "locations": [-89, -68]
     }
   ],
   "engineSlots": [

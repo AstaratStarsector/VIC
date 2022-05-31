@@ -29,7 +29,7 @@ import data.scripts.plugins.timer.VIC_TimeTracker;
 import data.scripts.plugins.vic_brandEngineUpgradesDetectionRange;
 import data.scripts.weapons.ai.VIC_SwarmMirvAI;
 import data.scripts.weapons.ai.vic_disruptorShot_AI;
-import data.scripts.weapons.ai.vic_gaganaStuckAI;
+import data.scripts.weapons.ai.vic_qutrubStuckAI;
 import data.scripts.weapons.autofireAI.vic_VerliokaAutofireAI;
 import data.world.VICGen;
 import exerelin.campaign.SectorManager;
@@ -51,7 +51,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
     public static final String
             DISRUPTOR = "vic_disruptorShot_mie",
             ABYSSAL = "vic_abyssalfangs_srm",
-            GAGANA = "vic_gaganaShot_sub";
+            QUTRUB = "vic_qutrubShot_sub";
 
     public static final String
             VERLIOKA = "vic_verlioka";
@@ -82,8 +82,8 @@ public class VIC_ModPlugin extends BaseModPlugin {
                 return new PluginPick<MissileAIPlugin>(new vic_disruptorShot_AI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case ABYSSAL:
                 return new PluginPick<MissileAIPlugin>(new VIC_SwarmMirvAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
-            case GAGANA:
-                return new PluginPick<MissileAIPlugin>(new vic_gaganaStuckAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            case QUTRUB:
+                return new PluginPick<MissileAIPlugin>(new vic_qutrubStuckAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             default:
         }
         return null;

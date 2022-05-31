@@ -1,0 +1,125 @@
+{
+	"name":"VIC Aerospace Ace",
+	"personalities":["aggressive", "reckless"],
+	"gender":["m","f","n"],
+	"chance":0.8,
+	"talkativeness":1.5,
+	"categoryTags":["original", "profanity"],
+	
+	"lines":{
+		"start":[
+			{"text":"Alright, scrubs, let's start up the party!"},
+			{"text":"Time for true heroes to shine!"},
+			{"text":"Who gets the least kills pays for the drinks!"},
+			{"text":"Just watch me, kiddos."},
+			{"text":"Time to earn us some glory!"},
+			{"text":"Who shoots down the most safepods gets a restaurant evening from me!"},
+			{"text":"Don't get in my way and ma-a-aybe I'll mention you in my memoirs someday."}
+		],
+		"start_boss":[
+			{"text":"What a glorious battle this'll be..."},
+			{"text":"Step aside, kiddos. This one's mine."},
+			{"text":"Slaughter the dragon, become the hero..."},
+			{"text":"They're going to sing songs about me after this..."},
+			{"text":"That's what I've been living for..."},
+			{"text":"TO GLO-O-O-ORY!"},
+			{"text":"I shall be remembered for all the eternity!"}
+		],
+		
+		"engaged":[
+			{"text":"Watch and learn, kiddos!"},
+			{"text":"Get in my way, and I will fuck you up the way this galaxy has never seen before!"},
+			{"text":"Don't you dare steal my moment of glory!"},
+			{"text":"My time to shine!"},
+			{"text":"Follow me, to glory and victory!"}
+		],
+		
+		"retreat":[
+			{"text":"They don't teach suicide tactics at the Aerospace Academy you know!"},
+			{"text":"A real hero knows when to save strength and face."},
+			{"text":"I'll be looking forward to the next time, sheep."},
+			{"text":"I'm not retreating! I just need to reload my weapons!"},
+			{"text":"My systems were lagging and my team are a bunch of useless rookies! Argh!"},
+			{"text":"Don't you dare post this on social media. I'll rip your bloody throat out."}
+		],
+		"out_of_missiles":[
+			{"text":"No glory in anything but close combat!"},
+			{"text":"Missiles out. Guess it's time to get close and personal then!"},
+			{"text":"Who needs missiles when glory awaits at the edge of the blade!"}
+			
+		],
+		"need_help":[
+			{"text":"Hey kiddos, cover me for a bit!"},
+			{"text":"Cover my ass and I'll give you a free autograph later!"},
+			{"text":"Assist me, and I'll make sure to give you a supporting role in my next holomovie!"},
+			{"text":"Who said I need help?! Get lost, scrubs!"}
+		],
+		"pursuing":[
+			{"text":"Time to hunt us some sheep!"},
+			{"text":"Run, run! A-HA-HA-HA-HAAAA!!!"},
+			{"text":"I love it when they run! This is the best part!"},
+			{"text":"Folks at the Academy are missing out so much fun!"},
+			{"text":"I'm the hero of this story!"},
+			{"text":"Easier than scooping out the eyes with a spoon!"},
+			{"text":"Yes! Yes! Glorious slaughter!!!"},
+			{"text":"There is no escape from me, sheep!"},
+			{"text":"Get back! This one's mine! MIIIIINE!!!"},
+			{"text":"Glory, o glory!!!"}
+		],
+		"running":[
+			{"text":"Gotta back down for a bit. Take care of them for me, kiddos."},
+			{"text":"Watch my six, kiddos, I'm out for a second."},
+			{"text":"Useless idiots, it's all because of you! Cover me at least, goddamnit!"},
+			{"text":"Not the proudest moment of mine..."},
+			{"text":"Not much glory in running, but even less in dying stupidly."}
+		],
+		"hull_90":[
+			{"text":"You think this is going to stop a hero like me? Ha!"},
+			{"text":"Hey, that was favourite paintjob!"},
+			{"text":"O-ho-ho, you're approaching ME?"},
+			{"text":"Screw around and find out, sheep."},
+			{"text":"You want to fight? Alright then, show me your resolve, sheep."},
+			{"text":"Just a scratch!"},
+			{"text":"No glory without a few scars!"}
+		],
+		"hull_50":[
+			{"text":"I like it when they bite back!"},
+			{"text":"Oh, finally something interesting."},
+			{"text":"Glorious battle! More! MORE!!!"},
+			{"text":"No retreat! To victory and glory!"},
+			{"text":"Hull at 50%? Ha! That's nothing for a real hero!"},
+		],
+		"hull_30":[
+		    {"text":"I shall rip you apart bit by bit, bastards!"},
+		    {"text":"Get yourselves together, shitheads! They won't be writing books about us if we lose!"},
+			{"text":"What glorious battle! A-HA-HA-HA!!!"},
+			{"text":"Stay back, fuckers! This is it, this is my moment! My moment of ultimate glory!"},
+			{"text":"I'll send you straight to Hell!"},
+			{"text":"The symphony of glorious destruction! And I am the epicenter of it!"}
+			
+		],
+		"overload":[
+			{"text":"Shit! Just you wait, I'll be back in a moment!"},
+			{"text":"Ha! This won't stop ME!"},
+			{"text":"You're lucky I can't shoot back, sheep!"},
+			{"text":"Get the weapons online already, scrubs!"}
+		],
+		"death":[
+			{"text":"No! I'm the Ace! I'm the hero! I can still make it! I can still-..."},
+			{"text":"GLO-O-O-ORY!!!-..."},
+			{"text":"I can't believe it... To think, that a sheep like you could defeat m-..."},
+			{"text":"My story can't end here! I'm the hero of it!-..."},
+			{"text":"I can't die like this! I'm not supposed to die at the hands of some pathetic scum! I AM THE GODDAMN HERO-..."}
+			
+		],
+		"victory":[
+			{"text":"I know, I know, no need to thank me. Get in line for the autographs."},
+			{"text":"One more glorious victory, and all thanks to me of course."},
+			{"text":"My fans are going to love this one."},
+			{"text":"Hope you've got it all on camera, kiddos. This is how the true aces do the job."},
+			{"text":"Sweet taste of victory and glory."},
+			{"text":"I shall be remembered for aeons."},
+			{"text":"Heroes ALWAYS win."}
+		]
+	}
+}

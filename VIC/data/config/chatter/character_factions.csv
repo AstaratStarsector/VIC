@@ -1,0 +1,9 @@
+character,military,corporate,criminal,free,christian,muslim,imperial,templars,spire,darkspire,crystanite
+vic_virgil,1,1,1,1,1,1,-1,-1,-1,-1,-1
+vic_aerospaceAce(hole),1,1,-1,1,0,0,-1,-1,-1,-1,-1
+vic_aerospaceProfessional,1,1,-1,1,0,0,-1,-1,-1,-1,-1
+vic_genemoddedAggressive,1,1,0,1,-1,-1,-1,-1,-1,-1,-1
+vic_genemoddedTimid,1,1,0,1,-1,-1,-1,-1,-1,-1,-1
+vic_genemoddedUnhinged,1,1,0,1,-1,-1,-1,-1,-1,-1,-1
+vic_scientist,1,1,-1,1,-1,-1,-1,-1,-1,-1,-1
+vic_zenithist,1,1,-1,-1,1,-1,-1,-1,-1,-1,-1

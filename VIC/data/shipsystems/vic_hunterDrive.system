@@ -14,9 +14,9 @@
 	"clampMaxSpeedAfter":true,
 	"alwaysAccelerate":true,
 
-	"useSound":"system_burn_drive_activate",
-	"loopSound":"system_burn_drive_loop",
-	"deactivateSound":"system_burn_drive_deactivate",
+	"useSound":"vic_hunter_drive_activate",
+	"loopSound":"vic_hunter_drive_loop",
+	"deactivateSound":"vic_hunter_drive_deactivate",
 	"outOfUsesSound":"engine_disabled",
 	
 	"aiHints":{

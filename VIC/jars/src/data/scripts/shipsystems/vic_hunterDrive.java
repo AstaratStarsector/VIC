@@ -1,16 +1,18 @@
 package data.scripts.shipsystems;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.CombatEngineLayers;
-import com.fs.starfarer.api.combat.DamageType;
-import com.fs.starfarer.api.combat.MutableShipStatsAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
+import com.fs.starfarer.combat.CombatEngine;
 import data.scripts.plugins.vic_combatPlugin;
 import data.scripts.util.MagicRender;
+import data.scripts.utilities.vic_graphicLibEffects;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lwjgl.util.vector.Vector2f;
+
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
             speedBoost = 350,
             accBoost = 200,
             waveRange = 1000,
-            waveDuration = 0.5f,
+            waveDuration = 0.8f,
             currWaveDuration = 0f;
 
     boolean doOnce = true;
@@ -62,25 +64,93 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                     affectedShips.clear();
 
                     float rotation = (float) Math.random() * 360;
-
                     Vector2f LocPulse = ship.getLocation();
 
-                    for (int i = 0; i < 2; i++){
-                        float spin = MathUtils.getRandomNumberInRange(-120, 120);
-                        MagicRender.battlespace(
-                                Global.getSettings().getSprite("fx", "vic_stolas_emp_main"),
+                    if (Global.getSettings().getModManager().isModEnabled("shaderLib")) {
+                        vic_graphicLibEffects.CustomRippleDistortion(
                                 LocPulse,
                                 ship.getVelocity(),
-                                new Vector2f(200f, 200f),
-                                (Vector2f) new Vector2f((waveRange) * 4, (waveRange) * 4),
+                                1000f,
+                                 15f,
+                                false,
+                                0,
+                                360,
+                                1f,
+                                0.1f,
+                                0.0f,
+                                0.6f,
+                                0.55f,
+                                0f
+                        );
+
+                        vic_graphicLibEffects.CustomRippleDistortion(
+                                LocPulse,
+                                ship.getVelocity(),
+                                1500f,
+                                5f,
+                                false,
+                                0,
+                                360,
+                                1f,
+                                0.1f,
+                                0.0f,
+                                0.90f,
+                                0.85f,
+                                0f
+                        );
+
+                    }
+
+                    int particleCount = 33;
+                    final Color PARTICLE_COLOR = new Color(113, 255, 237);
+                    for (int x = 0; x < particleCount; x++) {
+                        Global.getCombatEngine().addSmoothParticle(LocPulse,
+                                MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(1000f, 1750f), (float) Math.random() * 360f),
+                                MathUtils.getRandomNumberInRange(5f, 25f),
+                                MathUtils.getRandomNumberInRange(0.5f, 2f),
+                                MathUtils.getRandomNumberInRange(0.5f, 1f),
+                                PARTICLE_COLOR);
+                    }
+
+                    int particleCount1 = 33;
+                    final Color PARTICLE_COLOR1 = new Color(120, 228, 255);
+                    for (int x = 0; x < particleCount1; x++) {
+                        Global.getCombatEngine().addSmoothParticle(LocPulse,
+                                MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(1000f, 1750f), (float) Math.random() * 360f),
+                                MathUtils.getRandomNumberInRange(5f, 25f),
+                                MathUtils.getRandomNumberInRange(0.5f, 2f),
+                                MathUtils.getRandomNumberInRange(0.5f, 1f),
+                                PARTICLE_COLOR1);
+                    }
+
+                    int particleCount2 = 33;
+                    final Color PARTICLE_COLOR2 = new Color(113, 255, 210);
+                    for (int x = 0; x < particleCount2; x++) {
+                        Global.getCombatEngine().addSmoothParticle(LocPulse,
+                                MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(1000f, 1750f), (float) Math.random() * 360f),
+                                MathUtils.getRandomNumberInRange(5f, 25f),
+                                MathUtils.getRandomNumberInRange(0.5f, 2f),
+                                MathUtils.getRandomNumberInRange(0.5f, 1f),
+                                PARTICLE_COLOR2);
+                    }
+
+
+                    for (int i = 0; i < 2; i++) {
+                        float spin = MathUtils.getRandomNumberInRange(-120, 120);
+                        MagicRender.battlespace(
+                                Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                                LocPulse,
+                                ship.getVelocity(),
+                                new Vector2f(1f, 1f),
+                                (Vector2f) new Vector2f((waveRange) * 8, (waveRange) * 8),
                                 rotation,
                                 spin,
-                                new Color(MathUtils.getRandomNumberInRange(220,255),MathUtils.getRandomNumberInRange(220,255),MathUtils.getRandomNumberInRange(220,255),MathUtils.getRandomNumberInRange(130,170)),
+                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(255, 255)),
                                 true,
                                 0, 0, 0.4f, 0.8f, 0,
                                 0f,
+                                0f,
                                 0.1f,
-                                0.2f,
                                 CombatEngineLayers.BELOW_SHIPS_LAYER
                         );
 
@@ -88,16 +158,50 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                 Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
                                 LocPulse,
                                 ship.getVelocity(),
-                                new Vector2f(200f, 200f),
+                                new Vector2f(100f, 100f),
+                                (Vector2f) new Vector2f((waveRange) * 5f, (waveRange) * 5.5f),
+                                rotation,
+                                spin,
+                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(255, 255)),
+                                true,
+                                0, 0, 0.4f, 0.8f, 0,
+                                0f,
+                                0f,
+                                0.3f,
+                                CombatEngineLayers.BELOW_SHIPS_LAYER
+                        );
+
+                        MagicRender.battlespace(
+                                Global.getSettings().getSprite("fx", "vic_stolas_emp_main"),
+                                LocPulse,
+                                ship.getVelocity(),
+                                new Vector2f(500f, 500f),
                                 (Vector2f) new Vector2f((waveRange) * 4, (waveRange) * 4),
                                 rotation,
                                 spin * -1,
-                                new Color(MathUtils.getRandomNumberInRange(220,255),MathUtils.getRandomNumberInRange(220,255),MathUtils.getRandomNumberInRange(220,255),MathUtils.getRandomNumberInRange(130,170)),
+                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(199, 200)),
                                 true,
                                 0, 0, 0.4f, 0.8f, 0,
+                                0.4f,
+                                0f,
                                 0.3f,
-                                0.1f,
-                                0.25f,
+                                CombatEngineLayers.BELOW_SHIPS_LAYER
+                        );
+
+                        MagicRender.battlespace(
+                                Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                                LocPulse,
+                                ship.getVelocity(),
+                                new Vector2f(750f, 750f),
+                                (Vector2f) new Vector2f(250f, 250f),
+                                rotation,
+                                spin * -1,
+                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), 50),
+                                true,
+                                0.5f, 0.5f, 0.8f, 1.6f, 0,
+                                0.3f,
+                                0f,
+                                0.9f,
                                 CombatEngineLayers.BELOW_SHIPS_LAYER
                         );
                     }
@@ -106,13 +210,25 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                             ship.getLocation(),
                             ship.getVelocity(),
                             1000,
-                            0.6f,
+                            1f,
                             //0,
                             0.2f,
                             Color.WHITE);
+
+                    Global.getCombatEngine().addHitParticle(
+                            ship.getLocation(),
+                            ship.getVelocity(),
+                            1500,
+                            0.6f,
+                            //0,
+                            0.2f,
+                            Color.CYAN);
                 }
+
+
                 if (currWaveDuration <= waveDuration){
                     currWaveDuration += amount;
+
                     for (ShipAPI target : AIUtils.getNearbyEnemies(ship, waveRange * currWaveDuration / waveDuration)){
                         if (!affectedShips.contains(target)){
                             affectedShips.add(target);
@@ -122,6 +238,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                             Vector2f empPos = new Vector2f((ship.getLocation().x + target.getLocation().x) * 0.5f, (ship.getLocation().y + target.getLocation().y) * 0.5f);
                             float damage = 0;
                             if (target.isFighter()) damage = 150;
+
                             for (int i = 0; i < arcMulti.get(target.getHullSize()); i++){
                                 Global.getCombatEngine().spawnEmpArcPierceShields(ship,
                                         empPos,
@@ -139,7 +256,9 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                             if (!target.isFighter()) AddHunterDriveTarget(ship, target);
                         }
                     }
+
                 }
+
                 stats.getMaxSpeed().unmodify(id);
                 stats.getAcceleration().unmodify(id);
                 if (!MathUtils.isWithinRange(new Vector2f(), ship.getVelocity(), ship.getMaxSpeed())) {

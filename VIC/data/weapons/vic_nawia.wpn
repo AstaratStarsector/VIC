@@ -5,25 +5,29 @@
   "type": "BALLISTIC",
   "size": "MEDIUM",
   "displayArcRadius": 450,
-  "turretSprite": "graphics/weapons/vic_rubicon_base_turret.png",
-  "turretGlowSprite": "graphics/weapons/vic_rubicon_base_turret_glow.png",
-  "hardpointSprite": "graphics/weapons/vic_rubicon_base_hardpoint.png",
-  "hardpointGlowSprite": "graphics/weapons/vic_rubicon_base_hardpoint_glow.png",
-  "renderAboveAllWeapons": 0,
-  "glowColor": [178,95,229,191],
+  "turretSprite": "graphics/weapons/vic_nawia_base_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_nawia_base_turret_glow.png",
+  "hardpointSprite": "graphics/weapons/vic_nawia_base_hardpoint.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_nawia_base_hardpoint_glow.png",
+  "glowColor": [
+    178,
+    95,
+    229,
+    191
+  ],
   "visualRecoil": 10,
   "renderHints": [
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    34,
+    9,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    28.5,
+    9,
     0
   ],
   "hardpointAngleOffsets": [
@@ -32,11 +36,11 @@
   "barrelMode": "ALTERNATING",
   "animationType": "GLOW_AND_FLASH",
   "muzzleFlashSpec": {
-    "length": 20,
-    "spread": 5,
-    "particleSizeMin": 5,
+    "length": 25,
+    "spread": 10,
+    "particleSizeMin": 15,
     "particleSizeRange": 5,
-    "particleDuration": 0.35,
+    "particleDuration": 1,
     "particleCount": 20,
     "particleColor": [
       100,
@@ -45,6 +49,5 @@
       255
     ]
   },
-  "textureType": ROUGH,
-  "fireSoundTwo": "vic_rubicon_shot"
+  "fireSoundTwo": "vic_nawia_shot"
 }

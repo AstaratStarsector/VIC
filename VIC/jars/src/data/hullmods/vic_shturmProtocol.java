@@ -66,7 +66,7 @@ public class vic_shturmProtocol extends BaseHullMod {
         stats.getWeaponRangeThreshold().modifyFlat(id, rangeForClamp.get(hullSize));
         stats.getWeaponRangeMultPastThreshold().modifyMult(id, 1 - rangeReduction);
         stats.getShieldUpkeepMult().modifyMult(id, shieldUpKeep);
-        stats.getSystemCooldownBonus().modifyPercent(id, systemRechargeBonus);
+        stats.getSystemCooldownBonus().modifyPercent(id, -systemRechargeBonus);
         stats.getSystemRegenBonus().modifyPercent(id, systemRechargeBonus);
         stats.getMaxSpeed().modifyFlat(id, speedBonus.get(hullSize));
         stats.getPeakCRDuration().modifyMult(id, pptReduction);

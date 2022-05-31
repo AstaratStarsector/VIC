@@ -22,8 +22,8 @@ public class vic_astronomiconOnHit2 implements OnHitEffectPlugin {
     static final int NUM_PARTICLES = 50;
 
     static final DamagingExplosionSpec explosion = new DamagingExplosionSpec(0.05f,
-            250,
-            150f,
+            350,
+            200f,
             250,
             125f,
             CollisionClass.PROJECTILE_FF,
@@ -74,7 +74,7 @@ public class vic_astronomiconOnHit2 implements OnHitEffectPlugin {
         explosion.setMaxDamage(projectile.getDamageAmount() * 0.5f);
         engine.spawnDamagingExplosion(explosion, projectile.getSource(), point);
 
-        //Global.getSoundPlayer().playSound(SOUND_ID, 1f, 1f, point, ZERO);
+        Global.getSoundPlayer().playSound("vic_astronomicon_hit",1f + MathUtils.getRandomNumberInRange(-0.1f, 0.1f),10f,point,ZERO);
 
         MagicRender.battlespace(
                 Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
@@ -89,7 +89,7 @@ public class vic_astronomiconOnHit2 implements OnHitEffectPlugin {
                 true,
                 0,
                 0.1f,
-                0.2f
+                0.3f
         );
 
         MagicRender.battlespace(
@@ -97,11 +97,11 @@ public class vic_astronomiconOnHit2 implements OnHitEffectPlugin {
                 point,
                 new Vector2f(),
                 new Vector2f(128, 128),
-                new Vector2f(240, 240),
+                new Vector2f(500, 500),
                 //angle,
                 360 * (float) Math.random(),
                 0,
-                new Color(0, 255, 156, 225),
+                new Color(0, 255, 156, 255),
                 true,
                 0.2f,
                 0.0f,
@@ -112,16 +112,32 @@ public class vic_astronomiconOnHit2 implements OnHitEffectPlugin {
                 Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
                 point,
                 new Vector2f(),
-                new Vector2f(196, 196),
-                new Vector2f(120, 120),
+                new Vector2f(250, 250),
+                new Vector2f(150, 150),
                 //angle,
                 360 * (float) Math.random(),
                 0,
-                new Color(255, 101, 101, 200),
+                new Color(149, 35, 35, 200),
                 true,
-                0.4f,
+                0.35f,
                 0.0f,
-                0.8f
+                1f
+        );
+
+        MagicRender.battlespace(
+                Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
+                point,
+                new Vector2f(),
+                new Vector2f(200, 200),
+                new Vector2f(150, 150),
+                //angle,
+                360 * (float) Math.random(),
+                0,
+                new Color(0, 255, 194, 100),
+                true,
+                0.35f,
+                0.0f,
+                1f
         );
     }
 }

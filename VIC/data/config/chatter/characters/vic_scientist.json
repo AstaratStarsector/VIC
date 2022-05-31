@@ -1,0 +1,110 @@
+{
+	"name":"VIC Scientist",
+	"personalities":["cautious", "steady", "agressive"],
+	"gender":["m","f","n"],
+	"chance":0.7,
+	"talkativeness":1,
+	"categoryTags":["original"],
+	
+	"lines":{
+		"start":[
+			{"text":"New test subjects detected."},
+			{"text":"Not the best testing material, but it'll have to do."},
+			{"text":"Commencing the combat tests."},
+			{"text":"Ah, new specimens. Perfect."},
+			{"text":"Don't let the test subjects get away. I have big plans for them."}
+
+		],
+		"start_boss":[
+			{"text":"What a spectacular specimen."},
+			{"text":"Can't wait to get my hands on this one."},
+			{"text":"Let's get closer, I want to observe it in full detail."},
+			{"text":"An excellent sample. It will be a pity to destroy it."}
+
+		],
+		
+		"engaged":[
+			{"text":"Approaching the test subjects."},
+			{"text":"Surrender yourselves now and you'll be provided with extra painkillers during the tests."},
+			{"text":"I will make sure that your bodies will serve for the benefit of humanity."},
+			{"text":"Active testing phase - commencing."},
+			{"text":"All obedient and submissive specimens will be taken good care of. I promise..."}
+		],
+		
+		"retreat":[
+			{"text":"Saving the research and testing team."},
+			{"text":"We must preserve the intellectual power of humankind when we can."},
+			{"text":"These specimens are too troublesome. Better leave them till the next time."},
+			{"text":"Time to leave the testing area."},
+			{"text":"The longer we live, the more we will learn and uncover."}
+			
+		],
+		"out_of_missiles":[
+			{"text":"Missile weaponry - depleted. Shame."},
+			{"text":"Missiles have been depleted. An unfortunate setback."},
+			{"text":"Out of missiles. Commencing close contact with test subjects."}
+			
+		],
+		"need_help":[
+			{"text":"Requesting additional assitance!"},
+			{"text":"I'm afraid I'm in dire need of assistance!"},
+			{"text":"I'm not very fit for this sort of combat situations, please assist me!"},
+			{"text":"Someone, help! My research documentation is too valuable to be lost!"}
+		],
+		"pursuing":[
+			{"text":"Pursuing the specimens."},
+			{"text":"Pursuing the test subjects."},
+			{"text":"Pursuing the testing material."},
+			{"text":"Please, no need to run. Let me shape you into something beautiful..."},
+			{"text":"Please, trust me, you're going to love your new selves once I'm finished..."},
+			{"text":"There is no shame in abandoning your humanity. There might be some physical and psychological pain however..."},
+			{"text":"Your anatomy and physiology are imperfect. I shall fix that..."},
+			{"text":"I cannot wait to see the results of breeding you with other specimens. So much potential, so much data..."},
+			{"text":"All my specimens enjoy their new selves. Even if they can no longer be classified as humans..."},
+		],
+		"running":[
+			{"text":"Breaking contact with the test subjects."},
+			{"text":"Increasing the distance to the specimens."}
+		],
+		"hull_90":[
+			{"text":"The specimens are showing signs of aggression. Curious."},
+			{"text":"Not every day my testing subjects fight back. I'm positively surprised."},
+			{"text":"Please, no need to fight back. I only want to help you and humankind."}
+
+		],
+		"hull_50":[
+			{"text":"Hull is at half integrity. Assistance would be much appreciated."},
+			{"text":"Hull at 50%. I'm afraid the testing isn't going as was planned."}
+			{"text":"Hull down to precisely 50%. Think I will need a new vessel to proceed with my research."}
+
+		],
+		"hull_30":[
+		    {"text":"Hull is at... 30%. I'm afraid this sort of testing is no longer sustainable..."},
+		    {"text":"Research teams aren't meant to be on the front!"},
+			{"text":"I didn't sign up for this at the biolabs!"},
+			{"text":"No! Stay back! The test subjects aren't meant to harm the researchers!"}
+			
+		],
+		"overload":[
+			{"text":"Research vessel overloaded. Most ufortunate."},
+			{"text":"Requiring support until all systems are back online!"},
+			{"text":"This is not good... Hope my research documentation will be alright..."}
+		],
+		"death":[
+			{"text":"My mother told me not to go into combat science unit...-"},
+			{"text":"No, my research!-..."},
+			{"text":"I only wanted to make you beautiful...-"},
+			{"text":"I had so much to learn still...-"},
+			{"text":"I can still save my research, just gotta get to the safepo-..."}
+
+
+		],
+		"victory":[
+			{"text":"Another victory for science."},
+			{"text":"Now, time to collect the surviving specimens."},
+			{"text":"Please, make sure that as many test subjects as possible have been apprehended and transported to my field lab."},
+			{"text":"Team, please prepare the operating room and my instruments. We have much work to do."},
+			{"text":"Ah, perfect, I can finally get back to my research."}
+		]
+	}
+}

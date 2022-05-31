@@ -8,6 +8,9 @@ import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.loading.WeaponSlotAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.util.MagicAnim;
+import data.scripts.utilities.vic_graphicLibEffects;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
 
@@ -36,6 +39,9 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
             animTimeIn = 0.4f,
             animStay = 0.4f,
             animTimeOut = 0.8f;
+
+    final float MUZZLE_OFFSET_HARDPOINT = 65f;
+    final float MUZZLE_OFFSET_TURRET = 65f;
 
     WeaponAPI
             bar1,
@@ -363,13 +369,21 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
         }
     }
 
-    final Color PARTICLE_COLOR = new Color(24, 181, 239);
-    final Color GLOW_COLOR = new Color(11, 241, 222, 50);
-    final Color FLASH_COLOR = new Color(0, 219, 255);
+    final Color PARTICLE_COLOR = new Color(113, 255, 237);
+    final Color GLOW_COLOR = new Color(0, 203, 186, 225);
+    final Color FLASH_COLOR = new Color(255, 255, 255);
 
     @Override
     public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
-        int particleCount = 10;
+
+        ShipAPI ship = weapon.getShip();
+        Vector2f weaponLocation = weapon.getLocation();
+        float shipFacing = weapon.getCurrAngle();
+        Vector2f shipVelocity = ship.getVelocity();
+        Vector2f muzzleLocation = MathUtils.getPointOnCircumference(weaponLocation,
+                weapon.getSlot().isHardpoint() ? MUZZLE_OFFSET_HARDPOINT : MUZZLE_OFFSET_TURRET, shipFacing);
+
+        int particleCount = 15;
 
         if (ammoOnShot == 1) {
             BL.superThrust = true;
@@ -383,7 +397,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
             BR.superThrust = true;
             ML.superThrust = true;
             MR.superThrust = true;
-            particleCount = 20;
+            particleCount = 30;
         } else if (ammoOnShot == 3) {
             CombatEntityAPI proj = engine.spawnProjectile(weapon.getShip(), weapon, "vic_stolasBuildIn3", projectile.getLocation(), projectile.getFacing(), weapon.getShip().getVelocity());
             engine.removeEntity(projectile);
@@ -396,7 +410,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
             FL.superThrust = true;
             FR.superThrust = true;
 
-            particleCount = 30;
+            particleCount = 50;
 
             Vector2f offset = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle() + 90).scale(10);
             Vector2f from = bar1.getLocation();
@@ -407,8 +421,8 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
                         proj.getLocation(),
                         proj,
                         15,
-                        new Color(2, 140, 189,255),
-                        new Color(0, 230, 255,255));
+                        new Color(66, 255, 225,255),
+                        new Color(255, 255, 255,255));
 
             }
         }
@@ -419,16 +433,27 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
         Global.getCombatEngine().spawnExplosion(point, new Vector2f(0f, 0f), FLASH_COLOR, 80f, 0.2f);
         engine.addSmoothParticle(point, ZERO, 200f, 0.7f, 0.1f, PARTICLE_COLOR);
         engine.addSmoothParticle(point, ZERO, 300f, 0.7f, 1f, GLOW_COLOR);
-        engine.addHitParticle(point, ZERO, 400f, 1f, 0.05f, FLASH_COLOR);
+        engine.addHitParticle(point, ZERO, 500f, 1f, 0.1f, FLASH_COLOR);
 
         for (int x = 0; x < particleCount; x++) {
             engine.addHitParticle(point,
-                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(50f, 150f), (float) Math.random() * 360f),
-                    5f,
+                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(10f, 150f), (float) Math.random() * 360f),
+                    MathUtils.getRandomNumberInRange(5f, 15f),
                     1f,
-                    MathUtils.getRandomNumberInRange(0.3f, 0.6f),
+                    MathUtils.getRandomNumberInRange(0.5f, 1f),
                     PARTICLE_COLOR);
         }
+
+
+        WaveDistortion wave = new WaveDistortion(muzzleLocation, shipVelocity);
+        wave.setIntensity(10f);
+        wave.setSize(150f);
+        wave.flip(false);
+        wave.setLifetime(0f);
+        wave.fadeOutIntensity(0.5f);
+        wave.setLocation(muzzleLocation);
+        DistortionShader.addDistortion(wave);
+
     }
 
     private void thrust(vernierEngine data, float thrust) {

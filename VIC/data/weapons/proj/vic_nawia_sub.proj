@@ -10,7 +10,7 @@
 	"fadeTime":0.20,
 	#"fringeColor":[255,255,100,255],
 	#"coreColor":[255,255,200,150],
-	"fringeColor":[235,255,215,235],
+	"fringeColor":[255,200,50,235],
 	"coreColor":[225,255,205,200],	
 	"textureScrollSpeed":64.0,
 	"pixelsPerTexel":5.0,

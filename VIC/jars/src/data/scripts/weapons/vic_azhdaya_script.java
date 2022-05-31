@@ -63,12 +63,20 @@ public class vic_azhdaya_script implements EveryFrameWeaponEffectPlugin, OnHitEf
         }
 
         //play the spinning sound
+
+        float shootPitch = 1f;
+
+        if (weapon.getShip().getSystem().isActive()){
+            shootPitch = 1.2f;
+        }
+
+
         if (weapon.getChargeLevel()>0){
 
             Global.getSoundPlayer().playLoop(
                     "vic_azhdaya_shot",
                     weapon,
-                    1,
+                    shootPitch,
                     Math.max(0,10*weapon.getChargeLevel()-9),
                     weapon.getLocation(),
                     weapon.getShip().getVelocity()
@@ -160,4 +168,5 @@ public class vic_azhdaya_script implements EveryFrameWeaponEffectPlugin, OnHitEf
             engine.addPlugin(new vic_azhdayaHoming(projectile, target));
         }
     }
+
 }

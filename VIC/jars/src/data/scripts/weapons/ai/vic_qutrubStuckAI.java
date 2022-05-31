@@ -5,7 +5,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.util.MagicRender;
-import data.scripts.weapons.vic_gaganaScript;
+import data.scripts.weapons.vic_qutrubScript;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
@@ -13,7 +13,7 @@ import org.lwjgl.util.vector.Vector2f;
 import java.awt.*;
 import java.util.List;
 
-public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
+public class vic_qutrubStuckAI implements MissileAIPlugin, GuidedMissileAI {
 
     private final MissileAPI missile;
     private final IntervalUtil timer = new IntervalUtil(0.1f, 0.2f);
@@ -35,7 +35,7 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
     //  DATA COLLECTING //
     //////////////////////
 
-    public vic_gaganaStuckAI(MissileAPI missile, ShipAPI launchingShip) {
+    public vic_qutrubStuckAI(MissileAPI missile, ShipAPI launchingShip) {
         this.missile = missile;
         this.ship = launchingShip;
     }
@@ -64,7 +64,7 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
 
         if (!runOnce) {
             runOnce = true;
-            List<CombatEntityAPI> list = ((vic_gaganaScript) missile.getWeapon().getEffectPlugin()).getHITS();
+            List<CombatEntityAPI> list = ((vic_qutrubScript) missile.getWeapon().getEffectPlugin()).getHITS();
 
             if (list.isEmpty()) {
                 missile.flameOut();
@@ -85,7 +85,7 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
             }
 
             //put the anchor in the weapon's detonation list
-            ((vic_gaganaScript) missile.getWeapon().getEffectPlugin()).setDetonation(anchor);
+            ((vic_qutrubScript) missile.getWeapon().getEffectPlugin()).setDetonation(anchor);
 
             projected = new Vector2f(anchor.getVelocity());
             projected.scale(0.1f);
@@ -99,7 +99,7 @@ public class vic_gaganaStuckAI implements MissileAIPlugin, GuidedMissileAI {
             angle = MathUtils.getShortestRotation(anchor.getFacing(), missile.getFacing());
             return;
         } else {
-            if (anchor == null || ((vic_gaganaScript) missile.getWeapon().getEffectPlugin()).getDetonation(anchor)) {
+            if (anchor == null || ((vic_qutrubScript) missile.getWeapon().getEffectPlugin()).getDetonation(anchor)) {
                 missile.setCollisionClass(CollisionClass.MISSILE_FF);
                 return;
             }

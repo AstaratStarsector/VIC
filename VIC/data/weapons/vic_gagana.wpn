@@ -1,35 +1,32 @@
 {
   "id": "vic_gagana",
   "specClass": "projectile",
-  "projectileSpecId": "vic_gaganaShot",
+  "projectileSpecId": "vic_gagana_shot",
   "type": "BALLISTIC",
   "size": "MEDIUM",
-  "everyFrameEffect": "data.scripts.weapons.vic_gaganaScript",
   "displayArcRadius": 450,
   "turretSprite": "graphics/weapons/vic_gagana_base_turret.png",
+  "turretGlowSprite": "graphics/weapons/vic_gagana_glow_turret.png",
   "turretGunSprite": "graphics/weapons/vic_gagana_barrel_turret.png",
   "hardpointSprite": "graphics/weapons/vic_gagana_base_hardpoint.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_gagana_glow_hardpoint.png",
   "hardpointGunSprite": "graphics/weapons/vic_gagana_barrel_hardpoint.png",
-  "renderAboveAllWeapons": 0,
   "glowColor": [
-    178,
-    95,
-    229,
-    191
+    255,
+    255,
+    255,
+    255
   ],
-  "visualRecoil": 22,
-  "renderHints": [
-    RENDER_BARREL_BELOW
-  ],
+  "visualRecoil": 5,
   "turretOffsets": [
-    1,
+    25,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    7,
+    25,
     0
   ],
   "hardpointAngleOffsets": [
@@ -38,19 +35,21 @@
   "barrelMode": "ALTERNATING",
   "animationType": "GLOW_AND_FLASH",
   "muzzleFlashSpec": {
-    "length": 50,
+    "length": 25,
     "spread": 10,
     "particleSizeMin": 20,
     "particleSizeRange": 2,
     "particleDuration": 0.5,
-    "particleCount": 5,
+    "particleCount": 20,
     "particleColor": [
       255,
       66,
       0,
-      245
+      255
     ]
   },
-  "textureType": ROUGH,
-  "fireSoundTwo": "vic_gagana_shot"
+  "autocharge": true,
+  "fireSoundOne": "vic_gagana_charge",
+  "fireSoundTwo": "vic_gagana_shot",
+  "everyFrameEffect": "data.scripts.weapons.vic_gaganaScript",
 }

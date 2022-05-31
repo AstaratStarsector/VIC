@@ -1,0 +1,107 @@
+{
+	"name":"VIC Aerospace Professional",
+	"personalities":["cautious", "steady", "aggressive"],
+	"gender":["m","f","n"],
+	"chance":1,
+	"talkativeness":1,
+	"categoryTags":["original"],
+	
+	"lines":{
+		"start":[
+			{"text":"Weapons online, engines at full burn. Ready for action."},
+			{"text":"For Humankind."},
+			{"text":"All systems nominal, full combat readiness."},
+			{"text":"The crew is ready for battle and awaiting your orders, commander."},
+			{"text":"Ready to strike down the foes of Humankind. Just give us the target, commander."}
+		],
+		"start_boss":[
+			{"text":"Stay focused, this enemy is more dangerous than the others."},
+			{"text":"Analyse its weakpoints and commence a focused strike."},
+			{"text":"No time for heroics, work as a team this time, or die alone."},
+			{"text":"Our crew is always with you, commander. Even this foe will not be the end of ours."}
+			
+		],
+		"retreat":[
+			{"text":"Leaving the battlefield."},
+			{"text":"The odds are against us, commander. Retreat is advised."},
+			{"text":"Retreating at full burn."},
+			{"text":"The crew's safety is the priority, retreating."},
+			{"text":"Some battles aren't meant to be won. No need to sacrifice lives for nothing."},
+		],
+		"out_of_missiles":[
+			{"text":"Out of missiles. Switching to other weaponry."},
+			{"text":"Missiles depleted. Redirecting power to remaining systems."},
+			{"text":"Missile ordnance has been depleted. Ready to close the distance."}
+		],
+
+		"engaged":[
+			{"text":"Engaging enemy, combined strike is suggested."},
+			{"text":"All power to combat systems, closing on the enemy."},
+			{"text":"Enemy units engaged. Commencing combat maneuvers."}
+		],
+
+		"need_help":[
+			{"text":"Backup is requested, the enemy is pushing us."},
+			{"text":"Asisstance is required, the enemy forces are prevailing."},
+			{"text":"Commander, we need reinforcements in this grid square!"}
+		],
+
+		"pursuing":[
+			{"text":"Pursuing the target."},
+			{"text":"Focusing fire on the enemy."},
+			{"text":"Target locked, proceeding with the strike."},
+			{"text":"Suggest combined strike against the marked opponent."},
+			{"text":"Don't let the target escape. Focus the offensive."}
+		],
+
+		"running":[
+			{"text":"Breaking engagement with the enemy."},
+			{"text":"Initiating evasive maneuvers."},
+			{"text":"Commencing tactical regrouping."},
+			{"text":"Moving to a safer spot."},
+			{"text":"Enemy forces are advancing. Changing our position."}
+		],
+
+		"hull_90":[
+			{"text":"Our hull has been slightly damaged."},
+			{"text":"Light breaches detected."},
+			{"text":"Our vessel has sustained damage. Vital systems still functional."},
+			{"text":"Armor and hull have been scratched. Nothing to worry about, commander."}
+		],
+
+		"hull_50":[
+			{"text":"Hull at 50%. Damage control teams have been deployed."},
+			{"text":"Hull down to 50%. Significant damage has been sustained, but the vessel is still operational."},
+			{"text":"Hull at half integrity. We can still pull it through, commander."}
+		],
+
+		"hull_30":[
+			{"text":"Hull integrity at 30%! Engineering suggests immediate retreat, commander!."},
+			{"text":"The vessel has been severely damaged! Requesting allowance to retreat!"},
+			{"text":"Multiple breaches detected! We won't hold on for much longer, commander!"},
+			{"text":"Crew evacuation protocols active! Leave not a soul behind!"},
+			{"text":"Commander, the crew is in critical danger! We need backup!"}
+		],
+
+		"overload":[
+			{"text":"Flux grid overloaded, the vessel is partially inoperational."},
+			{"text":"Flux control systems are down, requesting covering fire."},
+			{"text":"Flux capacitors are out. We'll be back in action in a moment, commander."}
+		],
+
+		"death":[
+			{"text":"All crew, evacuate immediately!"},
+			{"text":"The reactor is about to explode, abandon ship!"},
+			{"text":"Commande-..."},
+			{"text":"Abandon ship! I repeat, abandon sh-..."},
+			{"text":"I failed Humankind...-"}
+		],
+		"victory":[
+			{"text":"Mission successful. Stellar job, crew."},
+			{"text":"Glory to Humankind!"},
+			{"text":"Humanity prevails once again."},
+			{"text":"Yet another victory. We're proud to serve you, commander."},
+			{"text":"All that training at the Aerospace Academy has certainly paid off."}
+		],
+	}
+}
