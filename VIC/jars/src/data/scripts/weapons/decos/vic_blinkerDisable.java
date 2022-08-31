@@ -1,6 +1,7 @@
 package data.scripts.weapons.decos;
 
 import com.fs.starfarer.api.AnimationAPI;
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.combat.EveryFrameWeaponEffectPlugin;
 import com.fs.starfarer.api.combat.WeaponAPI;
@@ -16,8 +17,8 @@ public class vic_blinkerDisable implements EveryFrameWeaponEffectPlugin {
     public float frameCounter = 0;
     public float neededCount = 0;
 
-    public float redCount = 30;
-    public float cyanCount = 42;
+    public float redCount = 20;
+    public float cyanCount = 30;
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
@@ -25,7 +26,7 @@ public class vic_blinkerDisable implements EveryFrameWeaponEffectPlugin {
             animation = weapon.getAnimation();
             alt = weapon.getSlot().isHardpoint();
             red = weapon.getId().equals("vic_blonkerRed");
-            neededCount = (red ? redCount : cyanCount);
+            neededCount = (red ? redCount : cyanCount) - (alt ? 6 : 0);
             DoOnce = false;
         }
         if (alt && animation.getFrame() == 4) animation.setFrame(8);

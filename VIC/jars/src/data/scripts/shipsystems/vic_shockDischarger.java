@@ -1,17 +1,19 @@
 package data.scripts.shipsystems;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.*;
-import com.fs.starfarer.api.graphics.SpriteAPI;
+import com.fs.starfarer.api.combat.DamageType;
+import com.fs.starfarer.api.combat.MutableShipStatsAPI;
+import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.WeaponAPI;
+import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
-import data.scripts.util.MagicRender;
+import data.scripts.plugins.vic_combatPlugin;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
-import data.scripts.plugins.vic_combatPlugin;
 
 import java.awt.*;
 import java.util.*;
@@ -22,6 +24,8 @@ public class vic_shockDischarger extends BaseShipSystemScript {
     public static float suckRange = 2000f;
     public float suckDurationPowerMult = 1;
     public float Threshold = 6000f;
+    public float hardCap = 12000f;
+
     public float Factor = 3000f;
     public Color ghostColour = new Color(0, 144, 255, 193);
 
@@ -37,10 +41,8 @@ public class vic_shockDischarger extends BaseShipSystemScript {
     public float basePowerPerArc = 50;
     public float powerPerArc = 0;
     public static float shockRange = 1500f;
-    public float empFraction = 0.5f;
-    public float fluxFraction = 0.5f;
     public float hardFluxFraction = 0f;
-    public Color arcColor = new Color(0, 123, 255,255);
+    public Color arcColor = new Color(0, 123, 255, 255);
 
     public IntervalUtil particleCD = new IntervalUtil(0.2f, 0.2f);
 
@@ -69,52 +71,67 @@ public class vic_shockDischarger extends BaseShipSystemScript {
             amount = 0;
         }
 
-        switch (state) {
-            case IN:
-                if (doOnce2) {
-                    for (WeaponAPI weapon : ship.getAllWeapons()) {
-                        if (weapon.getSlot().getId().startsWith("SYS")) {
-                            SystemWeapons.add(weapon);
-                        }
-                    }
-                    suckDurationPowerMult = 1 / ship.getSystem().getChargeUpDur();
-                    vic_combatPlugin.AddFluxRaptureShip(ship);
-                    suckedHard = 0;
-                    suckedSoft = 0;
-                    doOnce2 = false;
+        Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
+
+
+        if (doOnce2) {
+            for (WeaponAPI weapon : ship.getAllWeapons()) {
+                if (weapon.getSlot().getId().startsWith("SYS")) {
+                    SystemWeapons.add(weapon);
                 }
-                List<ShipAPI> listOfSuckTargets = CombatUtils.getShipsWithinRange(ship.getLocation(), suckRange);
-                Collections.shuffle(listOfSuckTargets);
-                float PowerMult = 1f * suckDurationPowerMult;
+            }
+            suckDurationPowerMult = 1 / ship.getSystem().getChargeUpDur();
+            vic_combatPlugin.AddFluxRaptureShip(ship);
+            suckedHard = 0;
+            suckedSoft = 0;
+            doOnce2 = false;
+        }
+
+        switch (state) {
+            case IDLE:
+                float PowerMult = 0.1f;
+                if (powerCollected >= hardCap) break;
                 if (powerCollected >= Threshold) PowerMult = Factor / (powerCollected - (Threshold - Factor));
+
+                List<ShipAPI> listOfSuckTargets = CombatUtils.getShipsWithinRange(ship.getLocation(), suckRange);
+                //Collections.shuffle(listOfSuckTargets);
+
+                float suckSpeed = 0;
                 for (ShipAPI target : listOfSuckTargets) {
+
                     if (target.isHulk() ||
                             target.getFluxTracker().isVenting() ||
                             target.isDrone() ||
-                            target.isFighter()) continue;
+                            target.isFighter() ||
+                            target.getOwner() != ship.getOwner()) continue;
+
                     float fluxToCollect = target.getMutableStats().getFluxDissipation().getModifiedValue() * amount * PowerMult;
                     if (target == ship) fluxToCollect *= 2;
+
                     float softFlux = target.getFluxTracker().getCurrFlux() - target.getFluxTracker().getHardFlux();
-                    if (fluxToCollect > target.getFluxTracker().getCurrFlux())
+
+                    if (softFlux <= target.getMutableStats().getFluxDissipation().getModifiedValue() * amount) continue;
+
+                    if (fluxToCollect > target.getFluxTracker().getCurrFlux()){
                         fluxToCollect = target.getFluxTracker().getCurrFlux();
-                    float hardFlux = 0f;
-                    suckedSoft = fluxToCollect;
+                    }
+
                     if (fluxToCollect > softFlux) {
-                        hardFlux = ((fluxToCollect - softFlux) * 0.5f * (1 + target.getMutableStats().getHardFluxDissipationFraction().getModifiedValue()));
-                        fluxToCollect = softFlux + hardFlux;
-                        suckedSoft = softFlux;
-                        suckedHard = hardFlux;
+                        fluxToCollect = softFlux;
                     }
+
                     target.getFluxTracker().decreaseFlux(fluxToCollect);
-                    if (target.getShield() != null){
-                        hardFlux = hardFlux / target.getShield().getFluxPerPointOfDamage() - hardFlux;
-                        fluxToCollect += hardFlux;
-                        suckedHard +=hardFlux;
-                    }
-                    target.getFluxTracker().decreaseFlux(fluxToCollect);
-                    if (target.getOwner() == ship.getOwner()) fluxToCollect *= 0.5f;
                     powerCollected += fluxToCollect;
+                    suckSpeed += fluxToCollect;
+                    if (powerCollected > hardCap) powerCollected = hardCap;
+
+                    if (Global.getCombatEngine().getPlayerShip().equals(target) && !target.equals(ship)) {
+                        Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischarger", "graphics/icons/hullsys/emp_emitter.png", "Flux Rapture", "soft flux being removed", false);
+                    }
                 }
+                //Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischargerSuck", "graphics/icons/hullsys/emp_emitter.png", "SuckSpeed", suckSpeed / amount + "", false);
+
+                /*
                 particleCD.advance(amount);
                 if (particleCD.intervalElapsed()) {
                     for (ShipAPI target : listOfSuckTargets) {
@@ -147,11 +164,12 @@ public class vic_shockDischarger extends BaseShipSystemScript {
                                 0.3f,
                                 CombatEngineLayers.UNDER_SHIPS_LAYER);
                     }
-                }
+                 }
+                 */
                 break;
             case ACTIVE:
                 if (doOnce) {
-                    if (powerCollected <= scalingThreshold){
+                    if (powerCollected <= scalingThreshold) {
                         powerPerArc = powerCollected * 0.035f + basePowerPerArc;
                         arcFrequency = (powerCollected / powerPerArc) / ship.getSystem().getChargeActiveDur();
                     } else {
@@ -169,7 +187,7 @@ public class vic_shockDischarger extends BaseShipSystemScript {
                     arcAmount--;
                     ShipAPI target;
                     ShipAPI shipTarget = ship.getShipTarget();
-                    if (shipTarget != null && !shipTarget.isHulk() && MathUtils.isWithinRange(shipTarget, ship.getLocation(), shockRange)){
+                    if (shipTarget != null && !shipTarget.isHulk() && MathUtils.isWithinRange(shipTarget, ship.getLocation(), shockRange)) {
                         target = ship.getShipTarget();
                     } else {
                         List<ShipAPI> enemies = AIUtils.getNearbyEnemies(ship, shockRange - ship.getCollisionRadius());
@@ -189,62 +207,64 @@ public class vic_shockDischarger extends BaseShipSystemScript {
                         }
                     }
                     float power = powerPerArc;
-                    if (powerCollected < powerPerArc){
+                    if (powerCollected < powerPerArc) {
                         power = powerCollected;
                     }
-                    float ArcDamage;
-                    float addEMP = 0;
-                    if (target.isFighter()){
-                        ArcDamage = power;
-                    } else {
-                        ArcDamage = power * (1 - fluxFraction);
-                        float FluxDamage = power * fluxFraction;
-                        float freeFlux = target.getFluxTracker().getMaxFlux() - target.getFluxTracker().getCurrFlux();
-                        if (freeFlux >= FluxDamage){
-                            target.getFluxTracker().increaseFlux(FluxDamage * (1 -hardFluxFraction), false);
-                            target.getFluxTracker().increaseFlux(FluxDamage * hardFluxFraction, true);
-                        } else {
-                            addEMP = FluxDamage - freeFlux;
-                            float softFluxToAdd = FluxDamage * (1 -hardFluxFraction) - addEMP;
-                            float hardFluxToAdd = FluxDamage * hardFluxFraction;
-                            if (softFluxToAdd < 0){
-                                hardFluxToAdd -= softFluxToAdd;
-                                softFluxToAdd = 0;
-                            }
-                            target.getFluxTracker().increaseFlux(softFluxToAdd, false);
-                            target.getFluxTracker().increaseFlux(hardFluxToAdd, true);
-                        }
+                    float ArcDamage = power;
 
+                    float pierceChance = target.getHardFluxLevel() + ((target.getFluxLevel() - target.getHardFluxLevel()) * 0.5f);
+                    pierceChance *= target.getMutableStats().getDynamic().getValue(Stats.SHIELD_PIERCED_MULT);
+
+                    if (pierceChance > Math.random()){
+                        Global.getCombatEngine().spawnEmpArcPierceShields(ship,
+                                from,
+                                null,
+                                target,
+                                DamageType.ENERGY,
+                                (target.isFighter() ? ArcDamage : 0),
+                                ArcDamage,
+                                3000,
+                                "tachyon_lance_emp_impact",
+                                2 + (power * 0.025f),
+                                arcColor,
+                                Color.WHITE);
+                    } else {
+                        Global.getCombatEngine().spawnEmpArc(ship,
+                                from,
+                                null,
+                                target,
+                                DamageType.ENERGY,
+                                (target.isFighter() ? ArcDamage : 0),
+                                ArcDamage,
+                                3000,
+                                "tachyon_lance_emp_impact",
+                                2 + (power * 0.025f),
+                                arcColor,
+                                Color.WHITE);
                     }
-                    Global.getCombatEngine().spawnEmpArc(ship,
-                            from,
-                            null,
-                            target,
-                            DamageType.ENERGY,
-                            ArcDamage,
-                            ArcDamage * empFraction + addEMP,
-                            3000,
-                            "tachyon_lance_emp_impact",
-                            2 + (power * 0.025f),
-                            arcColor,
-                            Color.WHITE);
                     powerCollected -= power;
                 }
                 break;
             case OUT:
-                powerCollected = 0f;
                 arcAmount = 0f;
                 doOnce = true;
-                doOnce2 = true;
                 break;
         }
+
+        String customDataID = "vic_shockDischargerPower" + ship.getId();
+        float powerPercent = 0;
+        if (customCombatData.get(customDataID) instanceof Float)
+            powerPercent = (float) customCombatData.get(customDataID);
+
+        powerPercent = MathUtils.clamp(powerCollected / hardCap, 0f, 1f);
+
+        customCombatData.put(customDataID, powerPercent);
     }
 
     @Override
     public StatusData getStatusData(int index, State state, float effectLevel) {
         if (index == 0) {
-            if (state == State.IN || state == State.ACTIVE)
-                return new StatusData("power " + Math.round(powerCollected), false);
+            return new StatusData("power " + Math.round(powerCollected), false);
         }
         return null;
     }

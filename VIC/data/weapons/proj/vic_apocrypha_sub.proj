@@ -1,0 +1,43 @@
+{
+	"id":"vic_apocrypha_sub",
+	"specClass":"missile",
+	"missileType":"ROCKET",
+	"sprite":"graphics/missiles/vic_apocrypha_missile_sub.png",
+	"size":[18,26],	
+	"center":[9,13],
+	"collisionRadius":13,
+	"collisionClass":"MISSILE_FF",
+	"explosionColor":[245,164,19,255],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":15, # purely visual
+	"flameoutTime":3, # total time from flameout to full fadeout
+	"armingTime":0.5,
+	"noEngineGlowTime":0.5, # time spent without the engine glow being rendered
+	"fadeTime":0.5, # fadeout duration					 
+	"engineSpec":{"turnAcc":0,
+				  "turnRate":0,
+				  #"acc":35,
+				  "acc":500,
+				  "dec":0},
+	"engineSlots":[{"id":"ES1",
+					"loc":[-9, 0],
+				    "style":"CUSTOM",
+					"styleSpec":{
+						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+						"engineColor":[255,143,0,255],
+						"contrailDuration":0.25,
+						"contrailWidthMult":0.5,
+						"contrailWidthAddedFractionAtEnd":1,  # can be negative. makes trail spread out/narrow at the end
+						"contrailMinSeg":5, # min segment length, in pixels
+						"contrailMaxSpeedMult":0f,
+						"contrailAngularVelocityMult":0.5f,
+						"contrailSpawnDistMult":0f, # how far away from engine it starts
+						"contrailColor":[255,143,0,255],
+						"glowSizeMult":1,
+						"glowAlternateColor":[255,0,0,255],
+						"type":"GLOW" # GLOW or SMOKE; additive or regular blend mode
+					},
+				    "width":5.0,
+				    "length":20.0,
+				    "angle":180.0}]
+}
+			

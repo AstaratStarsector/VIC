@@ -1,4 +1,4 @@
-package data.scripts.conditions;
+package data.campaign.econ.conditions;
 
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;

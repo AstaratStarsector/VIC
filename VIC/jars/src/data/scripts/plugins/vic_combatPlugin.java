@@ -89,7 +89,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         }
 
 
-        //Defence Suppressor
+        //note:Defence Suppressor
         for (Map.Entry<ShipAPI, Float> entry : localData.defenceSuppressor.entrySet()) {
             if (entry == null || entry.getKey() == null || entry.getValue() == null) continue;
             if (!entry.getKey().isAlive() || entry.getValue() - amount < 0) {
@@ -137,7 +137,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
         cloneMap = new HashMap<>(localData.FluxRaptureRender);
         for (Map.Entry<ShipAPI, Float> entry : cloneMap.entrySet()) {
-            if (entry.getKey().getSystem().getState().equals(ShipSystemAPI.SystemState.COOLDOWN) || entry.getKey().getSystem().getState().equals(ShipSystemAPI.SystemState.IDLE))
+            if (entry.getKey().isHulk() || !entry.getKey().isAlive())
                 localData.FluxRaptureRender.remove(entry.getKey());
         }
 
@@ -445,7 +445,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             while (data.amount >= data.timePerProj){
                 data.amount -= data.timePerProj;
                 data.projesSpawned ++;
-                data.ship.getFluxTracker().increaseFlux(8 * data.ship.getMutableStats().getBallisticWeaponFluxCostMod().computeEffective(1), false);
+                data.ship.getFluxTracker().increaseFlux(data.weapon.getFluxCostToFire() * 0.5f * (1/data.projMax), false);
                 float toDaysRandom = MathUtils.getRandomNumberInRange(-15, 15);
                 float toDaysRandom2 = MathUtils.getRandomNumberInRange(0.8f, 1.2f);
                 Vector2f Dir = Misc.getUnitVectorAtDegreeAngle(data.projectile.getFacing() + toDaysRandom);
@@ -532,7 +532,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             }
         }
 
-        //Flux rapture
+        //note: Flux rapture
         //final List<ShipAPI> AurasToRender = localData.FluxRaptureRender;
         for (Map.Entry<ShipAPI, Float> entry : localData.FluxRaptureRender.entrySet()) {
             ShipAPI ship = entry.getKey();
@@ -542,40 +542,53 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             ShipSystemAPI.SystemState state = system.getState();
 
             float alphaMultOuter = 0.35f;
+            /*
             if (effectLevel <= 0.2f) {
                 alphaMultOuter *= MagicAnim.smooth(effectLevel * 5f);
             } else if (effectLevel >= 0.8f) {
                 alphaMultOuter *= MagicAnim.smooth((1 - effectLevel) * 5f);
             }
 
+             */
+
+
             float alphaMultInner = 0.35f;
             switch (state) {
                 case IN:
-                    if (effectLevel <= 0.2f) {
-                        alphaMultInner *= MagicAnim.smooth(effectLevel * 5f);
-                    }
+                    alphaMultOuter *= 1 - effectLevel;
+                    alphaMultInner *= effectLevel;
                     break;
                 case OUT:
-                    alphaMultInner *= MagicAnim.smooth(effectLevel);
+                    alphaMultInner *= effectLevel;
+                    alphaMultOuter =  0;
                     break;
-            }
-
-            switch (state) {
-                case IN:
-                    OuterRing.setAlphaMult(alphaMultOuter);
-                    OuterRing.setCenter(OuterRing.getHeight(), 0);
-                    for (float i = 0; i < 4; i++) {
-                        OuterRing.setAngle(-angle + 90 * i);
-                        OuterRing.renderAtCenter(ship.getLocation().getX(), ship.getLocation().getY());
-                    }
                 case ACTIVE:
-                case OUT:
-                    InnerRing.setAlphaMult(alphaMultInner);
-                    InnerRing.setCenter(InnerRing.getHeight(), 0);
-                    for (float i = 0; i < 4; i++) {
-                        InnerRing.setAngle(angle + 90 * i);
-                        InnerRing.renderAtCenter(ship.getLocation().getX(), ship.getLocation().getY());
-                    }
+                    alphaMultOuter = 0;
+                    break;
+                case COOLDOWN:
+                    float CD = system.getCooldownRemaining();
+                    if (CD <=1) alphaMultOuter *= 1 - CD;
+                    else alphaMultOuter = 0;
+                case IDLE:
+                    alphaMultInner = 0;
+            }
+            //Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischarger", "graphics/icons/hullsys/emp_emitter.png", "Flux Rapture", Math.round(alphaMultInner * 100f)/100f + "n/" + Math.round(alphaMultOuter * 100f)/100f, false);
+
+            if (alphaMultOuter > 0){
+                OuterRing.setAlphaMult(alphaMultOuter);
+                OuterRing.setCenter(OuterRing.getHeight(), 0);
+                for (float i = 0; i < 4; i++) {
+                    OuterRing.setAngle(-angle + 90 * i);
+                    OuterRing.renderAtCenter(ship.getLocation().getX(), ship.getLocation().getY());
+                }
+            }
+            if (alphaMultInner > 0){
+                InnerRing.setAlphaMult(alphaMultInner);
+                InnerRing.setCenter(InnerRing.getHeight(), 0);
+                for (float i = 0; i < 4; i++) {
+                    InnerRing.setAngle(angle + 90 * i);
+                    InnerRing.renderAtCenter(ship.getLocation().getX(), ship.getLocation().getY());
+                }
             }
         }
 
@@ -669,7 +682,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine == null) return;
         final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
-        localData.FluxRaptureRender.put(ship, 0f);
+        localData.FluxRaptureRender.put(ship, MathUtils.getRandomNumberInRange(0f,360f));
     }
 
     public static void AddHunterDriveAnimation(ShipAPI ship) {
@@ -823,6 +836,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             this.targetVelocity = targetVelocity;
             this.ship = ship;
             this.projectile = projectile;
+            this.weapon = projectile.getWeapon();
         }
         float projMax = 15;
         float timePerProj = 2f / projMax;
@@ -832,6 +846,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         Vector2f targetVelocity;
         DamagingProjectileAPI projectile;
         ShipAPI ship;
+        WeaponAPI weapon;
     }
 
 

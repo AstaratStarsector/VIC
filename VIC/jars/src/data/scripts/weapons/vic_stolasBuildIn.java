@@ -28,7 +28,8 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
     ShipAPI ship;
     boolean
             doOnce = true,
-            devMode = false;
+            devMode = false,
+            changeDoOnce = false;
 
     animateState
             firstMark = new animateState(),
@@ -223,6 +224,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
             secondMark.animationTime = 0;
             thirdMark.animationTime = 0;
 
+            String sound = "vic_astronomicon_charge1";
             if (ammoOnShot >= 1) {
                 mark00.getSprite().setColor(color);
                 mark01.getSprite().setColor(color);
@@ -230,10 +232,16 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
             if (ammoOnShot >= 2) {
                 mark10.getSprite().setColor(color);
                 mark11.getSprite().setColor(color);
+                sound = "vic_astronomicon_charge2";
             }
             if (ammoOnShot >= 3) {
                 mark20.getSprite().setColor(color);
                 mark21.getSprite().setColor(color);
+                sound = "vic_astronomicon_charge3";
+            }
+            if (changeDoOnce){
+                Global.getSoundPlayer().playSound(sound, 1, 1, weapon.getLocation(), weapon.getShip().getVelocity());
+                changeDoOnce = false;
             }
         } else {
             mark00.getSprite().setColor(fullBlack);
@@ -243,6 +251,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
             mark20.getSprite().setColor(fullBlack);
             mark21.getSprite().setColor(fullBlack);
             ammoOnShot = weapon.getAmmo();
+            changeDoOnce = true;
         }
 
         if (weapon.getChargeLevel() <= 0) {
@@ -344,7 +353,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
         //ship.getEngineController().fadeToOtherColor("shift2", new Color(255, 0, 0, 255), null, 1, 1);
         Color shift = ship.getEngineController().getFlameColorShifter().getCurr();
         String text = shift.getRed() + "/" + shift.getGreen() + "/" + shift.getBlue() + "/" + shift.getAlpha();
-        engine.maintainStatusForPlayerShip("enginecolour", null, "shift", text, false);
+        //engine.maintainStatusForPlayerShip("enginecolour", null, "shift", text, false);
     }
 
     private void animateMarker(animateState animation, float amount, WeaponAPI marker1, WeaponAPI marker2) {
@@ -382,6 +391,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
         Vector2f shipVelocity = ship.getVelocity();
         Vector2f muzzleLocation = MathUtils.getPointOnCircumference(weaponLocation,
                 weapon.getSlot().isHardpoint() ? MUZZLE_OFFSET_HARDPOINT : MUZZLE_OFFSET_TURRET, shipFacing);
+        String sound = "vic_astronomicon_shot1";
 
         int particleCount = 15;
 
@@ -389,6 +399,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
             BL.superThrust = true;
             BR.superThrust = true;
         } else if (ammoOnShot == 2) {
+            sound = "vic_astronomicon_shot2";
             engine.spawnProjectile(weapon.getShip(), weapon, "vic_stolasBuildIn2", projectile.getLocation(), projectile.getFacing(), weapon.getShip().getVelocity());
             engine.removeEntity(projectile);
             weapon.setAmmo(0);
@@ -399,6 +410,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
             MR.superThrust = true;
             particleCount = 30;
         } else if (ammoOnShot == 3) {
+            sound = "vic_astronomicon_shot3";
             CombatEntityAPI proj = engine.spawnProjectile(weapon.getShip(), weapon, "vic_stolasBuildIn3", projectile.getLocation(), projectile.getFacing(), weapon.getShip().getVelocity());
             engine.removeEntity(projectile);
             weapon.setAmmo(0);
@@ -453,6 +465,8 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
         wave.fadeOutIntensity(0.5f);
         wave.setLocation(muzzleLocation);
         DistortionShader.addDistortion(wave);
+
+        Global.getSoundPlayer().playSound(sound, 1, 1, weaponLocation, weapon.getShip().getVelocity());
 
     }
 

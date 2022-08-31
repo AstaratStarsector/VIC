@@ -23,7 +23,6 @@ public class vic_qutrubStuckAI implements MissileAIPlugin, GuidedMissileAI {
     private CombatEngineAPI engine;
     private ShipAPI ship;
     private CombatEntityAPI target;
-    private CombatEntityAPI anchor;
     private Vector2f offset = new Vector2f();
     private float angle = 0;
     private boolean runOnce = false;
@@ -64,42 +63,26 @@ public class vic_qutrubStuckAI implements MissileAIPlugin, GuidedMissileAI {
 
         if (!runOnce) {
             runOnce = true;
-            List<CombatEntityAPI> list = ((vic_qutrubScript) missile.getWeapon().getEffectPlugin()).getHITS();
 
-            if (list.isEmpty()) {
-                missile.flameOut();
-                return;
-            }
-
-            //get the anchor
-            float range = 1000000;
-            for (CombatEntityAPI e : list) {
-                if (MathUtils.getDistanceSquared(missile, e) < range) {
-                    target = e;
-                    anchor = e; //some scripts change the target so I can't really use that for the anchor
-                }
-            }
-
-            if (anchor == null) {
+            if (target == null) {
                 return;
             }
 
             //put the anchor in the weapon's detonation list
-            ((vic_qutrubScript) missile.getWeapon().getEffectPlugin()).setDetonation(anchor);
 
-            projected = new Vector2f(anchor.getVelocity());
+            projected = new Vector2f(target.getVelocity());
             projected.scale(0.1f);
             Vector2f.add(missile.getLocation(), projected, projected);
             previousLoc = new Vector2f(missile.getLocation());
 
             offset = new Vector2f(missile.getLocation());
-            Vector2f.sub(offset, new Vector2f(anchor.getLocation()), offset);
-            VectorUtils.rotate(offset, -anchor.getFacing(), offset);
+            Vector2f.sub(offset, new Vector2f(target.getLocation()), offset);
+            VectorUtils.rotate(offset, -target.getFacing(), offset);
 
-            angle = MathUtils.getShortestRotation(anchor.getFacing(), missile.getFacing());
+            angle = MathUtils.getShortestRotation(target.getFacing(), missile.getFacing());
             return;
         } else {
-            if (anchor == null || ((vic_qutrubScript) missile.getWeapon().getEffectPlugin()).getDetonation(anchor)) {
+            if (target == null || ((vic_qutrubScript) missile.getWeapon().getEffectPlugin()).getDetonation(target)) {
                 missile.setCollisionClass(CollisionClass.MISSILE_FF);
                 return;
             }
@@ -117,12 +100,10 @@ public class vic_qutrubStuckAI implements MissileAIPlugin, GuidedMissileAI {
 //            engine.addHitParticle(projected, new Vector2f(), 20, 2, 0.2f, Color.GREEN);
 //            engine.addFloatingText(missile.getLocation(), ""+(float)(Math.round(dist*10000))/10000,12, Color.green, missile,0.1f,0.1f);
 
-            boolean fooled = (target != anchor);
-            boolean escaped = (anchor.getCollisionClass() == CollisionClass.NONE);
+            boolean escaped = (target.getCollisionClass() == CollisionClass.NONE);
             //boolean outlasted = missile.isFading();
 
-            if (fooled ||
-                    escaped
+            if (escaped
             ) {
                 tearOff = true;
                 missile.setArmingTime(missile.getElapsed() + 0.25f);
@@ -137,10 +118,10 @@ public class vic_qutrubStuckAI implements MissileAIPlugin, GuidedMissileAI {
 
         //stuck effect
 
-        VectorUtils.rotate(offset, anchor.getFacing(), loc);
-        Vector2f.add(loc, anchor.getLocation(), loc);
+        VectorUtils.rotate(offset, target.getFacing(), loc);
+        Vector2f.add(loc, target.getLocation(), loc);
         missile.getLocation().set(loc);
-        missile.setFacing(anchor.getFacing() + angle);
+        missile.setFacing(target.getFacing() + angle);
 
         //detonation
         if (missile.getElapsed() > 0.5f) {
@@ -149,9 +130,6 @@ public class vic_qutrubStuckAI implements MissileAIPlugin, GuidedMissileAI {
             //if detonation fails
             if (missile.getElapsed() > 0.6f) engine.removeEntity(missile);
         }
-
-
-
     }
 
     @Override

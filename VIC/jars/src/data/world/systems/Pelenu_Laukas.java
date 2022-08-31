@@ -1,11 +1,6 @@
 package data.world.systems;
 
 
-
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
@@ -14,8 +9,12 @@ import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
-import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin.MagneticFieldParams;
+import com.fs.starfarer.api.util.Misc;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static data.world.VICGen.addMarketplace;
 
@@ -33,15 +32,13 @@ public class Pelenu_Laukas {
         // create the star and generate the hyperspace anchor for this system
         PlanetAPI PelenuLaukasStar = system.initStar("vic_star_pelenulaukas", // unique id for this star
                 "star_blue_giant", // id in planets.json
-                1150f,		// radius (in pixels at default zoom)
+                1150f,        // radius (in pixels at default zoom)
                 800, // corona radius, from star edge
                 15f, // solar wind burn level
                 3f, // flare probability
                 5f); // cr loss mult
 
         system.setLightColor(new Color(245, 225, 255)); // light color in entire system, affects all entities
-
-
 
 
         PlanetAPI KeliautojasStar = system.addPlanet("vic_planet_keliautojas",
@@ -58,13 +55,12 @@ public class Pelenu_Laukas {
         system.addCorona(KeliautojasStar, 200, 2f, 0.5f, 2f);
 
 
-
         // Lemtis planet - Bad position
         PlanetAPI Lemtis = system.addPlanet("vic_planet_lemtis",
                 PelenuLaukasStar,
                 "Lemtis",
                 "rocky_metallic",
-               45f,
+                45f,
                 120f,
                 2375f,
                 100f);
@@ -137,20 +133,11 @@ public class Pelenu_Laukas {
         system.addRingBand(PelenuLaukasStar, "misc", "rings_asteroids0", 256f, 3, new Color(101, 76, 49), 160f, 4700f, 90f);
 
 
-
         //Inner Jump Point
-        JumpPointAPI innerJumpPoint = Global.getFactory().createJumpPoint(
-
-                "inner_jump_point",
-
-                "Pelenu Laukas Jump Point");
+        JumpPointAPI innerJumpPoint = Global.getFactory().createJumpPoint("inner_jump_point", "Pelenu Laukas Jump Point");
 
         innerJumpPoint.setCircularOrbit(system.getEntityById("vic_star_pelenulaukas"), 225, 2500, 100);
         system.addEntity(innerJumpPoint);
-
-
-
-
 
 
         // Pyktis planet - Angery military base
@@ -210,8 +197,6 @@ public class Pelenu_Laukas {
                 false);
 
 
-
-
         // Ramus planet - calm farming borderland planet
         PlanetAPI Ramus = system.addPlanet("vic_planet_ramus",
                 PelenuLaukasStar,
@@ -268,7 +253,6 @@ public class Pelenu_Laukas {
                 false);
 
 
-
         // Siaubas planet - The Atrocity
         PlanetAPI Siaubas = system.addPlanet("vic_planet_siaubas",
                 PelenuLaukasStar,
@@ -294,19 +278,15 @@ public class Pelenu_Laukas {
         beacon.getMemoryWithoutUpdate().set("$pelenulaukas", true);
 
 
-
-
         system.addRingBand(PelenuLaukasStar, "misc", "rings_dust0", 300f, 3, Color.white, 300f, 10200f, 350f);
         system.addAsteroidBelt(PelenuLaukasStar, 75, 10400, 800, 250, 400, Terrain.ASTEROID_BELT, "Outer Asteroid Belt");
         system.addRingBand(PelenuLaukasStar, "misc", "rings_asteroids0", 256f, 3, Color.black, 160f, 10500f, 325f);
         system.addRingBand(PelenuLaukasStar, "misc", "rings_dust0", 300f, 2, Color.gray, 300f, 10400f, 300);
 
 
-
-
         //Boe's Refuge - Pirates' party place
         SectorEntityToken BoeRefuge = system.addCustomEntity("vic_planet_boe_refuge", "Boe's Refuge", "station_side06", "pirates");
-        BoeRefuge.setCircularOrbitPointingDown(PelenuLaukasStar,360 * (float) Math.random(), 10800f,200f);
+        BoeRefuge.setCircularOrbitPointingDown(PelenuLaukasStar, 360 * (float) Math.random(), 10800f, 200f);
         BoeRefuge.setCustomDescriptionId("vic_boerefuge");
 
         MarketAPI BoeRefuge_market = addMarketplace(
@@ -347,17 +327,14 @@ public class Pelenu_Laukas {
                 false);
 
 
-
-
-                // add Comm Relay
+        // add Comm Relay
         SectorEntityToken OuterCommRelay = system.addCustomEntity("outer_comm_relay", "Outer Comm Relay", "comm_relay_makeshift", "luddic_path");
-        OuterCommRelay.setCircularOrbitPointingDown( PelenuLaukasStar, 360f * (float) Math.random(), 9000f, 200);
-
+        OuterCommRelay.setCircularOrbitPointingDown(PelenuLaukasStar, 360f * (float) Math.random(), 9000f, 200);
 
 
         // add Sensor Array
         SectorEntityToken RamusSensorArray = system.addCustomEntity("Ramus_sensor_array", "Ramus Sensor Array", "sensor_array_makeshift", "luddic_path");
-        RamusSensorArray.setCircularOrbitPointingDown( Ramus, 360f * (float) Math.random(), 400, 20f);
+        RamusSensorArray.setCircularOrbitPointingDown(Ramus, 360f * (float) Math.random(), 400, 20f);
 
 
         //add Nav Buoy
@@ -368,15 +345,12 @@ public class Pelenu_Laukas {
         CentralNavBuoy.setCircularOrbitPointingDown(PelenuLaukasStar, 360f * (float) Math.random(), 6000, 170);
 
 
-
-
         // Let's procgen some stuff here cause fuck doing that manually
         float ProcgenOne = StarSystemGenerator.addOrbitingEntities(system, PelenuLaukasStar, StarAge.AVERAGE,
                 4, 5, // min/max entities to add
                 9000, // radius to start adding at
                 3, // name offset - next planet will be <system name> <roman numeral of this parameter + 1>
                 true); // whether to use custom or system-name based names
-
 
 
         // generates hyperspace destinations for in-system jump points
@@ -390,7 +364,7 @@ public class Pelenu_Laukas {
 
     //Learning from Tart scripts
     //Clean nearby Nebula
-    private void cleanup (StarSystemAPI system){
+    private void cleanup(StarSystemAPI system) {
         HyperspaceTerrainPlugin plugin = (HyperspaceTerrainPlugin) Misc.getHyperspaceTerrain().getPlugin();
         NebulaEditor editor = new NebulaEditor(plugin);
         float minRadius = plugin.getTileSize() * 2f;

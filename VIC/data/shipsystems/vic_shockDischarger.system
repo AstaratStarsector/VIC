@@ -5,7 +5,9 @@
 	"aiScript":"data.scripts.shipsystems.ai.vic_shockDischargerAI",
 	
 	"statsScript":"data.scripts.shipsystems.vic_shockDischarger",
-
+	
+	"runScriptWhileIdle":true,
+	
 	"fadeActivationSoundOnChargedown":true,
 	"useSound":"vic_FluxRaptur",
 	"outOfUsesSound":"gun_out_of_ammo",

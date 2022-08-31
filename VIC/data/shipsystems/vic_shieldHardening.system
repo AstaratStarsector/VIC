@@ -1,9 +1,12 @@
 {
 	"id":"vic_shieldHardening",
 	"type":"SHIELD_MOD",
-	"aiType":"FORTRESS_SHIELD",
+	"aiType":"CUSTOM",
+	"aiScript":"data.scripts.shipsystems.ai.vic_shieldEntrenchmentAI",
 
 	"statsScript":"data.scripts.shipsystems.vic_shieldHardening",
+	
+	"runScriptWhileIdle":true,
 	
 	"shieldRingColor":[255,255,255,255],
 	"shieldInnerColor":[0,255,255,255],

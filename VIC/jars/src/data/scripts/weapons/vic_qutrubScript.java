@@ -24,6 +24,7 @@ public class vic_qutrubScript implements EveryFrameWeaponEffectPlugin {
             hit.clear();
         }
 
+
         if (engine.isPaused()) {
             return;
         }

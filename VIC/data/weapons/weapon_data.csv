@@ -7,7 +7,7 @@ Psotnik Interference Autocannon,vic_psotnik,2,,5000,900,,50,25,5,15,25,,,,KINETI
 Tugarin Stellar Catapult,vic_tugarin,3,,6000,950,,1200,,200,6,24,,,,HIGH_EXPLOSIVE,1860,,0.5,3.5,1,,0,5,2.5,10,,350,,,400,STRIKE,"he21, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,"Projectile slows down overtime. Explodes on hit or when reaching 0 velocity, dealing up to %s damage.",360 High Explosive,,,,8
 Vodyanoy Plasma Minigun,vic_vodyanoy,2,0.5,8000,700,,15,,20,12,22,,,,ENERGY,15,,0.4,0.6,999999999,0.05,0,15,0.1,4,,1200,,,25,"ANTI_FTR, FIRE_WHEN_INEFFICIENT","energy15, vic_t2weapons_bp",,Volkov Industries,,Suppression,,,,,Every second of firing increases the %s of the weapon by %s. At %s and higher projectiles have a chance to be overcharged and deal additional %s of their damage directly to armor. Direct damage to armor counts as %s stronger for armor reduction calculation. The chance to overcharge a projectile is equal to the %s. %s decreases over time when not firing.,heat | 20% | 20% of heat | 33.3% | 2000% | level of heat | The heat level,,,,8.1
 ,vic_vodyanoy_sub,,,8000,700,,15,,20,12,22,,,,HIGH_EXPLOSIVE,15,,0.4,0.6,999999999,0.05,0,10,0.1,3,,1200,,,25,SYSTEM,,,Volkov Industries,,"Suppression, Point Defense",,,,,,,,,,8.1
-Rubezahl Thermal Lance,vic_thermalLance,3,,6500,800,1500,,,0,10,20,2,0.11111111111111111111111111111111,1,HIGH_EXPLOSIVE,,1204.819277,2,0.1025,0.8,1.5975,,,,,10000,,,,,,"he20, beam15, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,,,,,,15.6
+Rubezahl Thermal Lance,vic_thermalLance,3,,6500,900,1500,,,0,10,20,2,0.11111111111111111111111111111111,1,HIGH_EXPLOSIVE,,1204.819277,2,0.1025,0.8,1.5975,,,,,10000,,,,,,"he20, beam15, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,,,,,,15.6
 ,vic_thermalLance_trail,,,6500,1000,,0,,30,7,35,,,,ENERGY,650,,0.75,1.25,,,0,0,0,0,,10000,,,,SYSTEM,,,Volkov Industries,,General,,,,,Extremely fast projectiles. Deals soft flux. Projectile hits on shields and hull create explosions dealing additional %s fragmentation damage.,150,,,,6.9
 Zlydzen Wave Destabilizer,vic_zlydzen,3,,4500,1000,50,,1000,0,6,20,,,,ENERGY,,500,2,1,,,,,,,1000,,,,,FIRE_WHEN_INEFFICIENT,"energy18, beam13, vic_t1weapons_bp",,Volkov Industries,,Support,,,,,"Applies debuffs that ramp up in power in %s seconds, and fall off within %s seconds if the target is not hit by the beam.
 
@@ -19,34 +19,70 @@ The debuffs when hitting hull:
 +%s to Phase Cloak Upkeep
 -%s to Armour Efficiency
 -%s to Weapon Turn Rate",6 | 4 | 25% | 25% | 100% | 25% | 25%,"Hits on hull or armor frequently arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,
+Apocrypha Suicide Drone Swarm,vic_apocrypha,3,,6500,1500,,4000,,0,15,25,2,0.1,,HIGH_EXPLOSIVE,3000,,,5,,,0,5,0,10,,400,100,4,500,"FIRE_WHEN_INEFFICIENT,STRIKE","rocket15, strike20, vic_t1weapons_bp",,Volkov Industries,,Support,,,,,"%s: Doesn't generate flux while firing instead generate flux of shot in time it takes to reload missile.
+
+If ship does not has enough flux reload will be reset and ceased until ship has enough flux capacity for reload.
+
+Lauches %s missiles around main warhead each deals %s damage.",Autoreplicator | 16 | 150 FRAG,,,,
+,vic_apocrypha_sub,3,,6500,1500,,150,,0,15,,,,,FRAGMENTATION,,,,5,,,0,5,0,10,,400,0,4,100,SYSTEM,,,Volkov Industries,,Support,,,,,,,,,,
+Falak Flux Collapse Torpedo,vic_falak,3,,6500,2000,,4000,,0,15,25,2,0.15,,ENERGY,2000,,,5,,,0,5,0,10,,400,100,4,500,"FIRE_WHEN_INEFFICIENT,STRIKE","rocket20, strike15, vic_t1weapons_bp",,Volkov Industries,,Support,,,,,"%s: Doesn't generate flux while firing instead generate flux of shot in time it takes to reload missile.
+
+If ship does not has enough flux reload will be reset and ceased until ship has enough flux capacity for reload.
+
+Doesn't deal direct damage. On hit releases %s EMP arcs which dealing from %s to %s energy damage and from %s to %s EMP damage depending on target's flux level. If target overloaded it will count like it has %s flux.",Autoreplicator | 20 | 50 | 200 | 150 | 0 | 100%,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Gatling Beam,vic_gatlingbeam,3,0.5,8000,1000,900,,0,0,7,25,,,,ENERGY,,600,0,0.2,0.2,0,,,,,100000,,,,,FIRE_WHEN_INEFFICIENT,"energy20, beam15, LR",,Volkov Industries,,Suppression,,,,,"Hits on hull or armor arc to weapons and engines, dealing extra EMP and energy damage. Hits on shields have a chance to generate a shield-penetrating arc based on the target's hard flux level.",,,,,27
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #med,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Nawia Quantum Cannon,vic_nawia,1,,900,700,,1000,,10,14,12,4,0.16666666666666666666666666666667,1,KINETIC,800,,0,2,,,0,4,2,6,,800,,,,"STRIKE, USE_VS_FRIGATES","kinetic14, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,"Shoots a projectile which deals %s damage and generates %s flux for the firing ship.
+Nawia Quantum Cannon,vic_nawia,1,,900,700,,1000,,10,14,12,4,0.16666666666666666666666666666667,1,KINETIC,700,,0,2,,,0,4,2,6,,800,,,,"STRIKE, USE_VS_FRIGATES","kinetic14, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,"Shoots a projectile which deals %s damage and generates %s flux for the firing ship.
 On successful hit %s projectiles appear close to the target, with a %s second delay between each. Each projectile deals %s kinetic damage and generates %s flux for the firing ship when it appears.
-%s affects delay between projectiles.",250 | 400 | 15 | 0.13 | 50 | 26.5 | Rate of fire,,,,5
+%s affects delay between projectiles.",250 | 350 | 15 | 0.13 | 50 | 23 | Rate of fire,,,,5
 ,vic_nawia_real,,,900,800,,250,,10,14,12,,,,KINETIC,400,,0,1.6,,,0,5,2,10,,800,,,,SYSTEM,kinetic14,,Volkov Industries,,Anti Shield,,,,,"Shoots projectile which deals %s damage and generates %s flux.
 On successful hit %s projectiles appear close to target, with %s second delay betwin projectiles. Each projectile deals %s kinetic damage and generates %s flux when it apears.",250 | 400 | 50 | 0.04 | 15 | 8,,,,5
 ,vic_nawia_sub,,,69,550,,50,,10,14,10,,,,KINETIC,26.5,,0,1,,,0,0,0,,,1000,,,,SYSTEM,,,,,,,,,,,,,,,
 Verlioka Field Disruptor,vic_verlioka,1,0.75,900,400,100,,,500,35,12,,,,FRAGMENTATION,,250,0.1,,,,0,,,,10000,,,,,"PD, PD_ONLY, ANTI_FTR, FIRE_WHEN_INEFFICIENT","pd14, vic_t2weapons_bp",,Volkov Industries,,Point Defense (Area),,,,,"Emits %s field, which slows down and damages fighters and missiles.",30 degrees,,,,
 Laidlaw Accelerator,vic_lightlaidlawaccelerator,2,,1200,800,,2000,,10,10,15,,,,FRAGMENTATION,1200,,0.5,4.5,,,0,10,1.25,10,,3500,,,,"STRIKE, USE_VS_FRIGATES","energy16, vic_t1weapons_bp",,Volkov Industries,,Hullbuster,Extreme,,,,%s Projectile hits create explosions dealing additional %s fragmentation damage.,Extremely fast projectiles. Deals soft flux damage. | 500,,,,7.5
-Gagana AMR-Cannon,vic_gagana,2,,1200,900,,350,,10,30,13,,,,HIGH_EXPLOSIVE,500,,0.55,2.45,,,0,0,0,0,,1000,,,,ANTI_FTR,"he16, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,Damage dealt is increased by %s of the target's armor with maximum being additional %s damage. The maximum amount of additional damage scales with weapon damage modifiers.,10% | 150,,,,5
-Psotnik Interference Machinegun,vic_psotnikmed,2,,1000,900,,25,12,5,15,12,,,,KINETIC,30,,0,0.375,4,0.083,0,12,0.5,10,,850,,,,,"kinetic16, vic_t2weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",20% | 50,,,,7.8
+Gagana AMR-Cannon,vic_gagana,2,,1200,900,,350,,10,30,13,,,,HIGH_EXPLOSIVE,500,,0.25,2.75,,,0,0,0,0,,1000,,,,ANTI_FTR,"he16, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,Damage dealt is increased by %s of the target's armor with maximum being additional %s damage. The maximum amount of additional damage scales with weapon damage modifiers.,10% | 150,,,,5
+Psotnik Interference Machinegun,vic_psotnikmed,2,,1000,900,,25,12,5,15,12,,,,KINETIC,27.5,,0,0.375,4,0.083,0,12,0.5,10,,850,,,,,"kinetic16, vic_t2weapons_bp",,Volkov Industries,,Anti Shield Suppression,,,,,"Submunition hits on hull or armor have a %s chance to arc to weapons and engines, dealing %s EMP damage.",20% | 50,,,,7.8
 Vila Bolt Converger,vic_vila,2,,2000,600,,150,,5,15,12,28,1.7,7,ENERGY,150,,0.75,1,,,8,15,0.5,5,,650,,,,,"energy16, vic_t2weapons_bp",,Volkov Industries,,Strike,,,,Unnatural,On fire the projectiles converge on the cursor's position along the weapon's facing. Has a minimum range of convergence. Deals no damage to allies.,,,,,7.8
 Balachko Cryoheat Generator,vic_balachko,2,,1500,600,,250,,5,15,12,,,,ENERGY,312.5,,0,1.4,3,0.3,0,0,0,0,,700,,,,,"energy16, vic_t1weapons_bp",,Volkov Industries,,Guardbreaker,,,,,Alternates between %s and %s damage on every shot. Does %s less damage to hull.,Kinetic | High Explosive | 35%,,,,7.8
 ,vic_balachkoIce,,,2000,600,,200,,5,15,12,,,,KINETIC,75,,0,0.5,,,0,15,0.5,5,,700,,,,SYSTEM,,,Volkov Industries,,,,,,,,,,,,7.8
 ,vic_balachkoFire,,,2000,600,,200,,5,15,12,,,,HIGH_EXPLOSIVE,75,,0,0.5,,,0,15,0.5,5,,700,,,,SYSTEM,,,Volkov Industries,,,,,,,,,,,,7.8
-Qutrub Smartdart Launcher,vic_qutrub,2,,1200,800,,200,,10,14,13,,,,HIGH_EXPLOSIVE,250,,0,1,,,0,5,2,10,,700,,,,ANTI_FTR,"he16, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,,,,,Homing projectiles which stick to the hull and explode after %s seconds dealing %s damage.,0.5 | 50 High Explosive,,,,5
+Qutrub Smartdart Launcher,vic_qutrub,2,,1500,1200,,300,,10,14,12,10,0.25,5,HIGH_EXPLOSIVE,150,,0,0.75,,,0,5,2,10,,500,350,3,75,,"he16, vic_t1weapons_bp",,Volkov Industries,,Anti Armor,Fast,Medium,,,,0.5 | 50 High Explosive,,,,5
 ,vic_qutrub_sub,,,2000,800,,50,,10,14,13,,,,HIGH_EXPLOSIVE,50,,0,0.25,,,0,5,2,10,,100,100,1,500,SYSTEM,,,Volkov Industries,,Anti Shield,,,,,,,,,,5
+Saih Flechette Carrier,vic_saih_med,2,,1800,1500,,500,,10,14,12,4,0.3,2,KINETIC,250,,0,2.5,,,5,5,0,10,,250,100,6.5,200,"DO_NOT_AIM, DO_NOT_CONSERVE","missile12, strike4, vic_t1weapons_bp",,Volkov Industries,,Anti Shield,,,,,"%s: Doesn't generate flux while firing instead generate flux of shot in time it takes to reload missile.
+
+If ship does not has enough flux reload will be reset and ceased until ship has enough flux capacity for reload.",Autoreplicator,,,,5
+Hatif Distraction Missile,vic_hatif_med,1,,800,2500,,10,,10,14,8,8,0.2,4,ENERGY,,,0,3.5,2,1.5,5,5,0,10,,500,200,7,500,"DO_NOT_AIM, DO_NOT_CONSERVE","missile4, vic_t2weapons_bp",,Volkov Industries,,Suppression,,,,,Deploys decoy flaers which distract enemy PD.,,,,,5
+Ifrit Burst Swarmer,vic_ifrit_med,1,,1200,1200,,50,,10,14,8,60,4,20,HIGH_EXPLOSIVE,20,,0,2.5,,,5,5,0,10,,500,350,3,50,DO_NOT_CONSERVE,"missile10, vic_t2weapons_bp",,Volkov Industries,,Hullbuster,Good,None,,,"%s: Doesn't generate flux while firing instead generate flux of shot in time it takes to reload missile.
+
+If ship does not has enough flux reload will be reset and ceased until ship has enough flux capacity for reload.",Autoreplicator,,,,5
+Hungruf Armor Scorcher,vic_hungruf_med,2,,1800,2000,,1200,,15,14,10,6,0.125,2,HIGH_EXPLOSIVE,600,,0,4.75,2,0.25,5,5,0,10,,350,150,6.5,250,"DO_NOT_AIM, DO_NOT_CONSERVE","missile12, strike4, vic_t1weapons_bp",,,,Anti Armor,,,,,"%s: Doesn't generate flux while firing instead generate flux of shot in time it takes to reload missile.
+
+If ship does not has enough flux reload will be reset and ceased until ship has enough flux capacity for reload.",Autoreplicator,,,,
+,vic_hungruf_sub,2,,1200,2000,,1200,,15,14,10,6,0.125,2,HIGH_EXPLOSIVE,600,,0,4.75,2,0.25,5,5,0,10,,350,500,3,250,SYSTEM,,,,,Anti Armor,,,,,"%s: Doesn't generate flux while firing instead generate flux of shot in time it takes to reload missile.
+
+If ship does not has enough flux reload will be reset and ceased until ship has enough flux capacity for reload.",Autoreplicator,,,,
+,vic_hungruf_sub_engine,2,,1200,2000,,0,,15,14,10,6,0.125,2,HIGH_EXPLOSIVE,600,,0,4.75,2,0.25,5,5,0,10,,350,150,0,100,SYSTEM,,,,,Anti Armor,,,,,"%s: Doesn't generate flux while firing instead generate flux of shot in time it takes to reload missile.
+
+If ship does not has enough flux reload will be reset and ceased until ship has enough flux capacity for reload.",Autoreplicator,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #smal,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Strigoy Flak Cannon,vic_strigoy,0,,500,350,,30,,0,75,6,,,,FRAGMENTATION,10,,0,1,,,0,10,0.5,5,,800,,,,"ANTI_FTR, PD, PD_ALSO","pd5, vic_t2weapons_bp",,Volkov Industries,,Point Defense (Area),,,,,,,,,,18
 Rarog Atomic Emitter,vic_rarog,0,,400,450,125,,,0,100,5,,,,HIGH_EXPLOSIVE,,125,0.2,0.1,,,,,,,10000,,,,,ANTI_FTR,"beam6, he6, vic_t2weapons_bp",,Volkov Industries,,Anti Armor,,,,,,,,,,15.6
 Laidlaw Mass Driver,vic_laidlawMassDriver,0,,600,700,,1000,,2,30,7,,,,FRAGMENTATION,600,,0.5,4.5,,,0,10,1.25,10,,2500,,,25,"STRIKE, USE_VS_FRIGATES","energy8, vic_t2weapons_bp",,Volkov Industries,,Hullbuster,Extreme,,,,%s Projectile hits create explosions dealing additional %s fragmentation damage.,Extremely fast projectiles. Deals soft flux damage. | 250,,,,7.5
-Upyr Autocannon,vic_upyr,0,,600,600,,20,,1,30,7,,,,KINETIC,17,,0,0.1,2,0.1,0,18,1,9,,850,,,20,,"kinetic7, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,,,,,,2.5
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Upyr Autocannon,vic_upyr,0,,600,600,,20,,1,30,7,,,,KINETIC,16,,0,0.1,2,0.1,0,18,1,9,,850,,,20,,"kinetic7, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,,,,,,2.5
+Saih Rack Flechette Carrier,vic_saih_small,2,,1800,1500,,500,,10,14,5,4,0.15,2,KINETIC,250,,0,2.5,,,5,5,0,10,,250,100,6.5,200,"DO_NOT_AIM, DO_NOT_CONSERVE","missile6, strike1, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,"%s: Doesn't generate flux while firing instead generate flux of shot in time it takes to reload missile.
+
+If ship does not has enough flux reload will be reset and ceased until ship has enough flux capacity for reload.",Autoreplicator,,,,5
+Hatif Rack Distraction Missile,vic_hatif_small,1,,350,2500,,10,,10,14,3,4,0.1,2,ENERGY,,,0,4,,,5,5,0,10,,500,200,7,500,"DO_NOT_AIM, DO_NOT_CONSERVE","missile2, vic_t2weapons_bp",,Volkov Industries,,Suppression,,,,,Deploys decoy flaers which distract enemy PD.,,,,,5
+Ifrit Rack Burst Swarmer,vic_ifrit_small,1,,500,1200,,50,,10,14,4,30,2,10,HIGH_EXPLOSIVE,20,,0,2.5,,,5,5,0,10,,500,350,3,50,DO_NOT_CONSERVE,"missile5, vic_t2weapons_bp",,Volkov Industries,,Hullbuster,Good,None,,,"%s: Doesn't generate flux while firing instead generate flux of shot in time it takes to reload missile.
+
+If ship does not has enough flux reload will be reset and ceased until ship has enough flux capacity for reload.",Autoreplicator,,,,5
+Hungruf Rack Armor Scorcher,vic_hungruf_small,2,,800,2000,,1200,,15,14,4,3,0.05,1,HIGH_EXPLOSIVE,600,,0,5,,,5,5,0,10,,350,150,6.5,250,"DO_NOT_AIM, DO_NOT_CONSERVE","missile6, strike1, vic_t2weapons_bp",,,,Anti Armor,,,,,"%s: Doesn't generate flux while firing instead generate flux of shot in time it takes to reload missile.
+
+If ship does not has enough flux reload will be reset and ceased until ship has enough flux capacity for reload.",Autoreplicator,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Build-ins,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Volkov Industries,,,,,,,,,,,,
@@ -209,6 +245,10 @@ Focalor Radar Tail,vic_focalor_radar_tail,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,
 Focalor Engine Glow Right,vic_focalor_engine_glow_right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Focalor Engine Glow Left,vic_focalor_engine_glow_left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Focalor Engine Glow Central,vic_focalor_engine_glow_central,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
+Focalor Tail Glow,vic_focalor_radar_tail_glow,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
+Focalor Right Glow,vic_focalor_radar_right_glow,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
+Focalor Left Glow,vic_focalor_radar_left_glow,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
+Focalor Bridge Glow,vic_focalor_radar_bridge_glow,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Blonkers,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Blonker red,vic_blonkerRed,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,

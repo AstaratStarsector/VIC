@@ -12,8 +12,9 @@ import java.util.List;
 
 public class vic_convoyDrive extends BaseHullMod {
 
-    final int ZERO_FLUX_BONUS = 35;
-    final float RANGE_BONUS = 1.25f;
+    final int zFluxBonus = 35;
+    final float rangeBonus = 0.25f;
+    final float altModRangeReduction = 0.5f;
 
     final List<String> allowedShips = new ArrayList<>();
     {
@@ -24,9 +25,12 @@ public class vic_convoyDrive extends BaseHullMod {
 
 
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        stats.getZeroFluxSpeedBoost().modifyFlat(id, ZERO_FLUX_BONUS);
-        stats.getBallisticWeaponRangeBonus().modifyMult(id, RANGE_BONUS);
-        stats.getEnergyWeaponRangeBonus().modifyMult(id, RANGE_BONUS);
+        boolean hasFortress = false;
+        if (stats.getEntity() instanceof ShipAPI) hasFortress = ((ShipAPI) stats.getEntity()).getVariant().hasHullMod("vic_allRoundShieldUpgrade");
+        stats.getZeroFluxSpeedBoost().modifyFlat(id, zFluxBonus);
+        float rangeBonus = 1f + this.rangeBonus * (hasFortress ? 1f - altModRangeReduction : 1f);
+        stats.getBallisticWeaponRangeBonus().modifyMult(id, rangeBonus);
+        stats.getEnergyWeaponRangeBonus().modifyMult(id, rangeBonus);
     }
 
     @Override
@@ -56,8 +60,9 @@ public class vic_convoyDrive extends BaseHullMod {
     }
 
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize, ShipAPI ship) {
-        if (index == 0) return "" + ZERO_FLUX_BONUS;
-        if (index == 1) return "x" + RANGE_BONUS + "";
+        if (index == 0) return "" + zFluxBonus;
+        if (index == 1) return "x" + (1f + rangeBonus) + "";
+        if (index == 2) return (altModRangeReduction * 100f) + "%";
         return null;
     }
 }

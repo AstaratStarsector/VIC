@@ -1,6 +1,8 @@
 package data.scripts.weapons;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.combat.listeners.DamageDealtModifier;
 import data.scripts.plugins.vic_weaponDamageListener;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
@@ -273,8 +275,8 @@ public class vic_gaganaScript implements EveryFrameWeaponEffectPlugin {
         if (weapon == null || amount <= 0f) {return;}
 
         if (doOnce) {
-            if (!weapon.getShip().hasListenerOfClass(vic_weaponDamageListener.class)){
-                weapon.getShip().addListener(new vic_weaponDamageListener());
+            if (!weapon.getShip().hasListenerOfClass(vic_gaganaListner.class)){
+                weapon.getShip().addListener(new vic_gaganaListner());
             }
             doOnce = false;
         }
@@ -480,6 +482,26 @@ public class vic_gaganaScript implements EveryFrameWeaponEffectPlugin {
                     engine.addHitParticle(spawnLocation, velocity, size, 10f, duration, color);
                     break;
             }
+        }
+    }
+
+    public static class vic_gaganaListner implements DamageDealtModifier {
+
+        @Override
+        public String modifyDamageDealt(Object param, CombatEntityAPI target, DamageAPI damage, Vector2f point, boolean shieldHit) {
+            if (param instanceof DamagingProjectileAPI && !shieldHit && target instanceof ShipAPI) {
+                if (((DamagingProjectileAPI) param).getProjectileSpecId().equals("vic_gagana_shot")) {
+                    float addDamage = ((ShipAPI) target).getArmorGrid().getArmorRating() * 0.1f;
+                    if (addDamage > 150) addDamage = 150;
+                    /*
+                    float statMult = damage.getStats().getBallisticWeaponDamageMult().getModifiedValue();
+                    float mult = (damage.getDamage() / 350f) / statMult;
+                     */
+                    damage.setDamage(damage.getBaseDamage() + addDamage);
+                    //Global.getCombatEngine().addFloatingText(point, addDamage + "/" + damage.getDamage() + "/" + mult, 30, Color.WHITE, null, 0, 0);
+                }
+            }
+            return null;
         }
     }
 

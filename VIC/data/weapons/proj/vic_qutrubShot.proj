@@ -1,18 +1,37 @@
 {
 	"id":"vic_qutrubShot",
-	"specClass":"projectile",
-	"spawnType":"BALLISTIC",
-	"collisionClass":"PROJECTILE_FF",
-	"collisionClassByFighter":"PROJECTILE_FIGHTER",
-	"length":30,
-	"hitGlowRadius":15,
-	"width":15,
-	"fadeTime":0.20,
-	#"fringeColor":[255,255,100,255],
-	#"coreColor":[255,255,200,150],
-	"fringeColor":[255,255,100,0],
-	"textureScrollSpeed":64.0,
-	"pixelsPerTexel":0.0,
-	"bulletSprite":"graphics/missiles/Ichor_Dart.png",
-	"onHitEffect":"data.scripts.weapons.vic_qutrubOnHit",
+	"specClass":"missile",	
+	"missileType":"MISSILE",
+	"sprite":"graphics/missiles/Ichor_Dart.png",
+	#"onHitEffect":"data.scripts.weapons.vic_qutrubOnHit",
+	"size":[15,31],	
+	"center":[7,15],
+	"collisionRadius":25,
+	"collisionClass":"MISSILE_NO_FF",
+	"explosionColor":[255,255,100,0],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":30, # purely visual
+	"engineSpec":{"turnAcc":420,
+				  "turnRate":140,
+				  "acc":1000,
+				  "dec":500},
+	"engineSlots":[{"id":"ES1",
+					"loc":[5, 0],
+				    #"style":"MISSILE_HIGH_TECH",
+				    "style":"CUSTOM",
+					"styleSpec":{
+						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+						"engineColor":[0,0,0,0],
+						"contrailDuration":0,
+						"contrailWidthMult":0,
+						"contrailWidthAddedFractionAtEnd":0,  # can be negative. makes trail spread out/narrow at the end
+						"contrailMinSeg":5, # min segment length, in pixels
+						"contrailMaxSpeedMult":0f,
+						"contrailAngularVelocityMult":0f,
+						"contrailColor":[0,0,0,0],
+						"type":"GLOW" # GLOW or SMOKE; additive or regular blend mode
+					},
+				    "width":7.0,
+				    "length":40.0,
+				    "angle":180.0},
+				    ]
 }

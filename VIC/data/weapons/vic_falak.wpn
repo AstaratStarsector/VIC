@@ -1,0 +1,51 @@
+{
+  "id": "vic_falak",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_falak_main",
+  "type": "MISSILE",
+  "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_falakScript",
+  "displayArcRadius": 300,
+  "turretSprite": "graphics/weapons/vic_falak.png",
+  "turretGunSprite": "graphics/weapons/vic_falak_barrel.png",
+  "hardpointSprite": "graphics/weapons/vic_falak_hardpoint.png",
+  "hardpointGunSprite": "graphics/weapons/vic_falak_hardpoint_barrel.png",
+  "visualRecoil": 25,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    11,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    15,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "SMOKE",
+  "smokeSpec": {
+    "particleSizeMin": 20,
+    "particleSizeRange": 20,
+    "cloudParticleCount": 3,
+    "cloudDuration": 1,
+    "cloudRadius": 10,
+    "blowbackParticleCount": 3,
+    "blowbackDuration": 2,
+    "blowbackLength": 30,
+    "blowbackSpread": 10,
+    "particleColor": [
+      100,
+      100,
+      100,
+      200
+    ]
+  },
+  "fireSoundTwo": "reaper_fire"
+}

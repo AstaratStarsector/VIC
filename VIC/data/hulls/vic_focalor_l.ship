@@ -39,6 +39,10 @@
     "WS0027": "vic_focalor_front_missile_deco_left",
     "WS0028": "vic_focalor_front_missile_deco_right",
     "WS0032": "vic_focalor_radar_tail",
+    "WSGS01": "vic_focalor_radar_tail_glow",
+    "WSGS02": "vic_focalor_radar_right_glow",
+    "WSGS03": "vic_focalor_radar_left_glow",
+    "WSGS04": "vic_focalor_radar_bridge_glow",
     "WSLS01": "vic_focalor_radar_front_left",
     "WSMS01": "vic_focalor_bridge_shield",
     "WSRS01": "vic_focalor_radar_front_right"
@@ -375,6 +379,42 @@
       "arc": 0,
       "angle": 0,
       "locations": [-108, -0]
+    },
+    {
+      "id": "WSGS01",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-107.5, -0]
+    },
+    {
+      "id": "WSGS02",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-5.5, -23]
+    },
+    {
+      "id": "WSGS03",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-5.5, 23]
+    },
+    {
+      "id": "WSGS04",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [29.5, -0]
     }
   ],
   "engineSlots": [
@@ -421,7 +461,7 @@
       "angle": -135,
       "contrailSize": 5.656854,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [90, 27],
@@ -430,7 +470,7 @@
       "angle": 135,
       "contrailSize": 5.656854,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [105, -26],
@@ -439,7 +479,7 @@
       "angle": -135,
       "contrailSize": 5.656854,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [105, 26],
@@ -448,7 +488,7 @@
       "angle": 135,
       "contrailSize": 5.656854,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "VOLKOV-LAIDLAW'S smokeless"
     }
   ],
   "bounds": [

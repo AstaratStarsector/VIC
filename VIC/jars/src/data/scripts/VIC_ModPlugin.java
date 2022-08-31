@@ -6,10 +6,10 @@ import com.fs.starfarer.api.PluginPick;
 import com.fs.starfarer.api.campaign.CampaignPlugin;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.SpecialItemData;
-import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.InstallableIndustryItemPlugin;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.*;
@@ -27,9 +27,7 @@ import data.campaign.ids.vic_Items;
 import data.campaign.ids.vic_industries;
 import data.scripts.plugins.timer.VIC_TimeTracker;
 import data.scripts.plugins.vic_brandEngineUpgradesDetectionRange;
-import data.scripts.weapons.ai.VIC_SwarmMirvAI;
-import data.scripts.weapons.ai.vic_disruptorShot_AI;
-import data.scripts.weapons.ai.vic_qutrubStuckAI;
+import data.scripts.weapons.ai.*;
 import data.scripts.weapons.autofireAI.vic_VerliokaAutofireAI;
 import data.world.VICGen;
 import exerelin.campaign.SectorManager;
@@ -48,12 +46,15 @@ import static com.fs.starfarer.api.impl.campaign.econ.impl.ItemEffectsRepo.NO_AT
 
 public class VIC_ModPlugin extends BaseModPlugin {
 
-    public static final String
+    public final String
             DISRUPTOR = "vic_disruptorShot_mie",
             ABYSSAL = "vic_abyssalfangs_srm",
-            QUTRUB = "vic_qutrubShot_sub";
+            QUTRUB = "vic_qutrubShot_sub",
+            IFRIT = "vic_ifrit_main",
+            hungruf_main = "vic_hungruf_main",
+            hatif_main = "vic_hatif_missile_main";
 
-    public static final String
+    public final String
             VERLIOKA = "vic_verlioka";
 
     public static boolean hasShaderLib;
@@ -84,6 +85,12 @@ public class VIC_ModPlugin extends BaseModPlugin {
                 return new PluginPick<MissileAIPlugin>(new VIC_SwarmMirvAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case QUTRUB:
                 return new PluginPick<MissileAIPlugin>(new vic_qutrubStuckAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            case IFRIT:
+                return new PluginPick<MissileAIPlugin>(new vic_swervingDumbfire(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            case hungruf_main:
+                return new PluginPick<MissileAIPlugin>(new vic_hungrufMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            case hatif_main:
+                return new PluginPick<MissileAIPlugin>(new vic_hatifMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             default:
         }
         return null;
@@ -198,20 +205,30 @@ public class VIC_ModPlugin extends BaseModPlugin {
     //Transfiguration Solutions
     BoostIndustryInstallableItemEffect GMO = new BoostIndustryInstallableItemEffect(
             vic_Items.GMOfarm, 0, 0) {
-        final int production = 4;
-        final int demand = 4;
-        final float hazard = 0.25f;
+        final Map<String,Integer> productionDemand= new HashMap<>();
+        {
+            productionDemand.put(Conditions.FARMLAND_POOR, 4);
+            productionDemand.put(Conditions.FARMLAND_ADEQUATE, 3);
+            productionDemand.put(Conditions.FARMLAND_BOUNTIFUL, 2);
+            productionDemand.put(Conditions.FARMLAND_RICH, 1);
+        }
 
         public void apply(Industry industry) {
             if (industry instanceof BaseIndustry) {
                 BaseIndustry b = (BaseIndustry) industry;
-                int productionBonus = production - Math.round(getShortage(industry));
-                b.demand(9, vic_Items.GENETECH, demand, Misc.ucFirst(spec.getName().toLowerCase()));
-
+                int production = 0;
+                for (MarketConditionAPI condition : industry.getMarket().getConditions()){
+                    if (condition.getId().startsWith("farmland")){
+                        production = productionDemand.get(condition.getId());
+                        break;
+                    }
+                }
+                int productionBonus = production - Math.round(getShortage(industry, production));
+                b.demand(9, vic_Items.GENETECH, production, Misc.ucFirst(spec.getName().toLowerCase()));
                 industry.getSupplyBonus().modifyFlat(spec.getId(), productionBonus, Misc.ucFirst(spec.getName().toLowerCase()));
 
                 //industry.getMarket().getHazard().modifyFlat(spec.getId(), hazard, Misc.ucFirst(spec.getName().toLowerCase()));
-                industry.getMarket().getAccessibilityMod().modifyFlat(spec.getId(), -hazard, Misc.ucFirst(spec.getName().toLowerCase()));
+                //industry.getMarket().getAccessibilityMod().modifyFlat(spec.getId(), -hazard, Misc.ucFirst(spec.getName().toLowerCase()));
             }
         }
 
@@ -219,21 +236,24 @@ public class VIC_ModPlugin extends BaseModPlugin {
             BaseIndustry b = (BaseIndustry) industry;
             b.demand(9, vic_Items.GENETECH, 0, null);
             industry.getSupplyBonus().modifyFlat(spec.getId(), 0, Misc.ucFirst(spec.getName().toLowerCase()));
+
+            //fix for one of the last fuck ups gona keep for now
             industry.getMarket().getAccessibilityMod().unmodifyFlat(spec.getId());
+            industry.getMarket().getHazard().unmodifyFlat(spec.getId());
         }
 
-        float getShortage(Industry industry) {
+        float getShortage(Industry industry, int demand) {
             float available = industry.getMarket().getCommodityData(vic_Items.GENETECH).getAvailable();
-            float shortageAmount = 4 - available;
+            float shortageAmount = demand - available;
             if (shortageAmount < 0) shortageAmount = 0;
             return shortageAmount;
         }
 
         protected void addItemDescriptionImpl(Industry industry, TooltipMakerAPI text, SpecialItemData data,
                                               InstallableIndustryItemPlugin.InstallableItemDescriptionMode mode, String pre, float pad) {
-            text.addPara(pre + "Increases farming production by %s units. Adds demand for %s units of genetech. Reduces accessibility by %s",
+            text.addPara(pre + "Increases farming production by from %s to %s units depending on poorness of soil and adds demand for same amount of units of genetech.",
                     pad, Misc.getHighlightColor(),
-                    "" + production, "" + demand, Math.round(hazard * 100) + "%");
+                    "" + productionDemand.get(Conditions.FARMLAND_POOR), "" + productionDemand.get(Conditions.FARMLAND_RICH));
         }
 
         @Override

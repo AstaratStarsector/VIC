@@ -35,7 +35,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
     private static final float SUBMUNITION_VELOCITY_MOD_MIN = 100f; // Min fudged extra velocity added to the submunitions
     private static final int NUMBER_SUBMUNITIONS = 1;
     private static final float SUBMUNITION_RELATIVE_OFFSET = 0f; // How much each submunition's aim point is offset relative to others if multiple
-    private static final float SUBMUNITION_INACCURACY = 0f; // How much much random offset from the ^ aim point if multiple
+    private static final float SUBMUNITION_INACCURACY = 0f; // How much random offset from the ^ aim point if multiple
     private static final String STAGE_TWO_WEAPON_ID = "vic_abyssalfangs_sub";
     private static final String STAGE_TWO_SOUND_ID = "sabot_srm_split";
     private static final float VELOCITY_DAMPING_FACTOR = 0.5f;
@@ -160,7 +160,6 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
 
             if (absDAng < Math.abs(missile.getAngularVelocity()) * VELOCITY_DAMPING_FACTOR) {
                 missile.setAngularVelocity(angularDistance / VELOCITY_DAMPING_FACTOR);
-
             }
 
             //Global.getCombatEngine().addFloatingText(missile.getLocation(), Math.round(distance) + "", 60, Color.WHITE, null, 0.25f, 0.25f);

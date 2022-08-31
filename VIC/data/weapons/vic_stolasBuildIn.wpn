@@ -26,6 +26,4 @@
 	"autocharge":true,
 	#"interruptibleBurst":true,
 	"projectileSpecId":"vic_astronomiconShot",  # projectile that will be fired
-	"fireSoundOne":"vic_astronomicon_charge3",
-	"fireSoundTwo":"vic_astronomicon_shot3",
 }

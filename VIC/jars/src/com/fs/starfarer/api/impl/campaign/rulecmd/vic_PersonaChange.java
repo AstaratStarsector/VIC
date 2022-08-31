@@ -9,13 +9,12 @@ import com.fs.starfarer.api.combat.MutableStat;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
 import com.fs.starfarer.api.impl.campaign.ids.Strings;
-import com.fs.starfarer.api.ui.LabelAPI;
-import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.impl.campaign.ui.vic_portraitSelectUiPlugin;
+import com.fs.starfarer.api.ui.*;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Misc.Token;
 import com.fs.starfarer.campaign.CommDirectory;
 import com.fs.starfarer.rpg.Person;
-import data.scripts.utilities.StringHelper;
 import org.apache.log4j.Logger;
 import org.lazywizard.lazylib.MathUtils;
 
@@ -81,6 +80,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         if (temp != null) {
             temp.isPlayer = true;
             temp.personaToChange = null;
+            temp.portrait = null;
         }
     }
 
@@ -177,10 +177,10 @@ public class vic_PersonaChange extends BaseCommandPlugin {
                 PersonaChangeMenu();
                 break;
             case "vic_PersonaChangeFemale":
-                CommsSummon(FullName.Gender.FEMALE);
+                showPortraitSelector(FullName.Gender.FEMALE);
                 break;
             case "vic_PersonaChangeMale":
-                CommsSummon(FullName.Gender.MALE);
+                showPortraitSelector(FullName.Gender.MALE);
                 break;
             case "vic_PersonaChangeRespec":
                 PersonaChangeRespecConfirm();
@@ -201,6 +201,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
     protected void PerconaChangeChose() {
         resetTmp();
+        dialog.getVisualPanel().hideSecondPerson();
 
         for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
             officer.getPerson().removeTag("vic_personToChangeOfficer");
@@ -274,6 +275,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     //generate menu
     protected void PersonaChangeMenu() {
 
+        dialog.getVisualPanel().hideSecondPerson();
         options.clearOptions();
 
         options.addOption("Open \"Male\" section of the appearances list", male);
@@ -310,22 +312,8 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     }
 
     //comms
-    protected void CommsSummon(FullName.Gender gender) {
-
-        CommDirectory directory = new CommDirectory();
-        int number = 0;
-        for (String s : Global.getSector().getPlayerFaction().getPortraits(gender).getItems()) {
-            Person dude = new Person();
-            dude.setPortraitSprite(s);
-            dude.setRankId(null);
-            dude.addTag("vic_PortraitHolder");
-            dude.setName(new FullName(number + "-X", gender.name(), gender));
-            directory.addPerson(dude);
-            number++;
-        }
-
-
-        dialog.showCommDirectoryDialog(directory);
+    protected void showPortraitSelector(FullName.Gender gender) {
+        dialog.showCustomDialog(800, 500, new vic_portraitSelectUI(dialog, gender));
     }
 
     //portrait menu
@@ -350,11 +338,11 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         Color b = Misc.getNegativeHighlightColor();
         switch (currState) {
             case InToYou:
-                LabelAPI label = text.addPara("The manager nods affirmatively and after giving you some more information about internal organic reconfiguration, informs you that the procedure will cost %s.",
+                text.addPara("The manager nods affirmatively and after giving you some more information about internal organic reconfiguration, informs you that the procedure will cost %s.",
                         h, respecPlayerCost + " credits");
                 break;
             case InToOfficer:
-                LabelAPI label2 = text.addPara("The manager nods affirmatively and after giving you some more information about internal organic reconfiguration, informs you that the procedure will cost %s. Additionally, both you and your subordinate are warned about possible side effects," +
+                text.addPara("The manager nods affirmatively and after giving you some more information about internal organic reconfiguration, informs you that the procedure will cost %s. Additionally, both you and your subordinate are warned about possible side effects," +
                                 " the most significant of which is partial memory loss (which will result in a loss of %s of their current experience).",
                         h, respecOfficerCost + " credits", Math.round(100 - respecOfficerXP * 100) + "%");
                 break;
@@ -415,6 +403,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     //result screen
     protected void PersonaChangeResult() {
 
+        dialog.getVisualPanel().hideSecondPerson();
         playerCargo.getCredits().subtract(10000);
         AddRemoveCommodity.addCreditsLossText(10000, text);
 
@@ -423,9 +412,9 @@ public class vic_PersonaChange extends BaseCommandPlugin {
 
         ((RuleBasedDialog)dialog.getPlugin()).notifyActivePersonChanged();
 
-        if (temp.isPlayer)
-            Global.getSector().getCharacterData().setPortraitName(entity.getActivePerson().getPortraitSprite());
-        else {
+        if (temp.isPlayer){
+            Global.getSector().getCharacterData().setPortraitName(temp.portrait);
+        } else {
             for (OfficerDataAPI officer : Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy()) {
                 officer.getPerson().removeTag("vic_personToChangeOfficer");
             }
@@ -440,7 +429,8 @@ public class vic_PersonaChange extends BaseCommandPlugin {
                     text.addPara(tag);
                 }
             }
-            temp.personaToChange.setPortraitSprite(entity.getActivePerson().getPortraitSprite());
+            temp.personaToChange.setPortraitSprite(temp.portrait);
+            temp.personaToChange.setGender(temp.gender);
         }
         ((RuleBasedDialog)dialog.getPlugin()).updateMemory();
 
@@ -507,9 +497,11 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     private static void respecOfficer(OfficerDataAPI toRespec, CampaignFleetAPI sourceFleet){
 
         // Technically it should be called cloneOfficer(), but whatever...
-        final PersonAPI oldPerson = toRespec.getPerson(),
+        final PersonAPI
+                oldPerson = toRespec.getPerson(),
                 newPerson = OfficerManagerEvent.createOfficer(oldPerson.getFaction(), 1, OfficerManagerEvent.SkillPickPreference.ANY,
                         false, sourceFleet, false, false, -1, MathUtils.getRandom());
+
         final FleetMemberAPI ship = sourceFleet.getFleetData().getMemberWithCaptain(oldPerson);
 
         // Copy the old person's memory to the new person
@@ -594,5 +586,119 @@ public class vic_PersonaChange extends BaseCommandPlugin {
     protected static class vic_personaChangeData {
         public boolean isPlayer;
         public PersonAPI personaToChange;
+        public String portrait;
+        public FullName.Gender gender;
+    }
+
+    public class vic_portraitSelectUI implements CustomDialogDelegate {
+
+        public TooltipMakerAPI UI;
+        public PositionAPI highlight;
+        public InteractionDialogAPI dialog;
+        public FullName.Gender gender;
+
+        public vic_portraitSelectUI(InteractionDialogAPI dialog, FullName.Gender gender){
+            this.dialog = dialog;
+            this.gender = gender;
+        }
+
+
+        HashMap<ButtonAPI, String> buttons = new HashMap<>();
+        //List<ButtonAPI> buttons = new ArrayList<>();
+
+        @Override
+        public void createCustomDialog(CustomPanelAPI panel) {
+            float width = 800;
+            float height = 500;
+
+            UI = panel.createUIElement(width,height, true);
+
+            float imageSize = 128;
+            float imagePad = 4;
+            int column = 0;
+            int row = 0;
+
+            UI.addSpacer(imagePad);
+            UI.addImage("graphics/hud/minimap_bg2.png", 0,0,0);
+            highlight = UI.getPrev().getPosition();
+            highlight.setSize(imageSize + imagePad,imageSize+ imagePad);
+            highlight.inTL(-333,-333);
+
+            for (String s : Global.getSector().getPlayerFaction().getPortraits(gender).getItems()) {
+
+                if (column == 6){
+                    row++;
+                    column = 0;
+                    UI.addSpacer(imagePad);
+                }
+                float size = 0;
+                if (column == 0) size = imageSize;
+
+
+                ButtonAPI button = UI.addAreaCheckbox("",null, Misc.getBasePlayerColor(), Misc.getDarkPlayerColor(), Misc.getBrightPlayerColor(),size,size,0);
+
+                button.getPosition().setSize(imageSize,imageSize);
+                button.getPosition().inTL((imageSize + imagePad) * column + 2, (imageSize + imagePad) * row + 2);
+                button.getPosition().setLocation((imageSize + imagePad) * column + 2, (imageSize + imagePad) * row + 2);
+
+                UI.addImage(s,0,0,0);
+                UI.getPrev().getPosition().setSize(imageSize,imageSize);
+                UI.getPrev().getPosition().inTL((imageSize + imagePad) * column + 2, (imageSize + imagePad) * row + 2);
+                UI.getPrev().getPosition().setLocation((imageSize + imagePad) * column + 2, (imageSize + imagePad) * row + 2);
+
+
+                buttons.put(button,s);
+                column++;
+            }
+            UI.addSpacer(imagePad);
+            panel.addUIElement(UI).inTL(0f, 0f);
+        }
+
+        @Override
+        public boolean hasCancelButton() {
+            return true;
+        }
+
+        @Override
+        public String getConfirmText() {
+            return "Confirm";
+        }
+
+        @Override
+        public String getCancelText() {
+            return "Close";
+        }
+
+        @Override
+
+        public void customDialogConfirm() {
+            String sprite = null;
+            for (Map.Entry<ButtonAPI, String> pair : buttons.entrySet()) {
+                ButtonAPI button = pair.getKey();
+                if (button.isChecked()) {
+                    sprite = pair.getValue();
+                    break;
+                }
+            }
+            if (sprite == null) return;
+            PersonAPI person =  new Person();
+            person.setPortraitSprite(sprite);
+            //dialog.getVisualPanel().showPersonInfo(person,true,false);
+            dialog.getVisualPanel().hideSecondPerson();
+            dialog.getVisualPanel().showSecondPerson(person);
+            temp.portrait = sprite;
+            temp.gender = gender;
+            PersonaChangeConfirm();
+        }
+
+        @Override
+        public void customDialogCancel() {
+
+        }
+
+        @Override
+        public CustomUIPanelPlugin getCustomPanelPlugin() {
+            return new vic_portraitSelectUiPlugin(buttons, this);
+        }
     }
 }

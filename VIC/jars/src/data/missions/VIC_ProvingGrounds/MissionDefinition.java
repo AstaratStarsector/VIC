@@ -26,16 +26,18 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addBriefingItem("Test the efficiency of Aerospace Corps vessels");
 
 
-        api.addToFleet(FleetSide.PLAYER, "vic_stolas_test", FleetMemberType.SHIP, "ASCV Testbed", true);
+
+        FactionAPI VIC = Global.getSettings().createBaseFaction("vic");
 
 		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standart", FleetMemberType.SHIP, "ASCV Sun Eater", true);
 		api.addToFleet(FleetSide.PLAYER, "vic_oriax_standard", FleetMemberType.SHIP, "ASCV Outbreak", false);
 
+        api.addToFleet(FleetSide.PLAYER, "vic_stolas_test", FleetMemberType.SHIP, "ASCV " + VIC.pickRandomShipName(), true);
+        api.addToFleet(FleetSide.PLAYER, "vic_focalor_m_test", FleetMemberType.SHIP, "ASCV " + VIC.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.PLAYER, "vic_focalor_l_test", FleetMemberType.SHIP, "ASCV " + VIC.pickRandomShipName(), false);
         api.addToFleet(FleetSide.PLAYER, "vic_valafar_assault", FleetMemberType.SHIP, "ASCV Void Reaver", false);
         api.addToFleet(FleetSide.PLAYER, "vic_thamuz_standart", FleetMemberType.SHIP, "ASCV Despoiler", false);
         api.addToFleet(FleetSide.PLAYER, "vic_cresil_assault", FleetMemberType.SHIP, "ASCV 13", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_focalor_m_test", FleetMemberType.SHIP, "ASCV Test1", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_focalor_l_test", FleetMemberType.SHIP, "ASCV Test2", false);
 
         api.addToFleet(FleetSide.PLAYER, "vic_moloch_standart", FleetMemberType.SHIP, "ASCV Maw of The Void", false);
         api.addToFleet(FleetSide.PLAYER, "vic_samael_standart", FleetMemberType.SHIP, "ASCV Scarab", false);
@@ -53,9 +55,6 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         FleetMemberAPI member;
         member = api.addToFleet(FleetSide.ENEMY, "mora_Strike", FleetMemberType.SHIP, false);
         member.setShipName(hegemony.pickRandomShipName());
-
-
-        api.defeatOnShipLoss("SIN Falen");
 
         float width = 16000f;
         float height = 16000f;

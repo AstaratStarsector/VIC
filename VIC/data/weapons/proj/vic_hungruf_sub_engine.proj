@@ -1,0 +1,19 @@
+{
+	"id":"vic_hungruf_sub_engine",
+	"specClass":"missile",
+	"missileType":"BOMB",
+	"sprite":"graphics/missiles/vic_hungruf_missile_booster.png",
+	"size":[16,32],	
+	"center":[8,16],
+	"collisionRadius":10,
+	"collisionClass":"MISSILE_NO_FF",
+	#"explosionColor":[255,155,125,255],  # purely visual, will get a white additively blended core on top of this color
+	#"explosionRadius":0, # purely visual
+	"flameoutTime":15, # total time from flameout to full fadeout
+	"noEngineGlowTime":0.05, # time spent without the engine glow being rendered
+	"fadeTime":0.25, # fadeout duration		
+	"engineSpec":{"turnAcc":0,
+				  "turnRate":30,
+				  "acc":150,
+				  "dec":150}
+}

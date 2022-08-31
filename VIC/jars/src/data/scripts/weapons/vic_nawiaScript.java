@@ -181,7 +181,7 @@ public class vic_nawiaScript implements OnHitEffectPlugin, OnFireEffectPlugin {
         wave.setLocation(muzzleLocation);
         DistortionShader.addDistortion(wave);
 
-            weapon.getShip().getFluxTracker().decreaseFlux(400f * weapon.getShip().getMutableStats().getBallisticWeaponFluxCostMod().computeEffective(1));
+            weapon.getShip().getFluxTracker().decreaseFlux(weapon.getFluxCostToFire() * 0.5f);
         }
     }
 

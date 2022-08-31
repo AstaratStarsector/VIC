@@ -1,0 +1,40 @@
+{
+	"id":"vic_hungruf_sub",
+	"specClass":"missile",
+	"missileType":"BOMB",
+	"sprite":"graphics/missiles/vic_hungruf_missile_payload.png",
+	"size":[16,32],	
+	"center":[8,16],
+	"collisionRadius":10,
+	"collisionClass":"MISSILE_NO_FF",
+	"explosionColor":[253,110,14,255],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":200, # purely visual
+	"flameoutTime":0.05, # total time from flameout to full fadeout
+	"noEngineGlowTime":0.05, # time spent without the engine glow being rendered
+	"fadeTime":0.05, # fadeout duration		
+	"explosionSpec":{"duration":0.75f, # not visual
+					 "radius":200,
+					 "coreRadius":150, # full damage within core radius
+					 "collisionClass":MISSILE_FF,
+					 "collisionClassByFighter":MISSILE_FF},
+	"behaviorSpec":{"behavior":"PROXIMITY_FUSE",
+					"slowToMaxSpeed":true,
+					"range":100,
+					"vsMissileRange":0,
+					"explosionSpec":{"duration":0.75f,
+									 "radius":200,
+									 "coreRadius":150, # full damage within core radius
+									 "collisionClass":PROJECTILE_FF,
+									 "collisionClassByFighter":PROJECTILE_FIGHTER,
+									 "particleSizeMin":3.0,
+									 "particleSizeRange":3.0,
+									 "particleDuration":1,
+									 "particleCount":150,
+									 "particleColor":[253,110,14,175],
+									 "sound":"explosion_flak"},
+					},
+	"engineSpec":{"turnAcc":0,
+				  "turnRate":30,
+				  "acc":150,
+				  "dec":150}
+}

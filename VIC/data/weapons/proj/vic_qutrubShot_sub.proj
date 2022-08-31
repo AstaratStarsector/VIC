@@ -13,4 +13,5 @@
                       "acc":0,
                       "dec":0},
 	"sprite":"graphics/missiles/Ichor_Dart.png",
+	"armingTime":0.5,
 }
