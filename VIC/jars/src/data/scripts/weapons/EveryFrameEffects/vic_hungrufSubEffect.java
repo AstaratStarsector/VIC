@@ -74,6 +74,13 @@ public class vic_hungrufSubEffect extends BaseEveryFrameCombatPlugin {
                     explosion.setRadius(effectSize * 2);
                     engine.spawnDamagingExplosion(explosion, missile.getSource(), random_point);
                     engine.addNebulaSmokeParticle(random_point, new Vector2f(), effectSize / 2, smokeEndMult, NEBULA_RAMPUP, 0.3f, explosionDur, smokeColor);
+                    Global.getSoundPlayer().playSound(
+                            "vic_hungruf_pop",
+                            1,
+                            1,
+                            random_point,
+                            new Vector2f()
+                    );
                 }
             }
         }

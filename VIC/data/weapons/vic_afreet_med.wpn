@@ -1,13 +1,13 @@
 {
-  "id": "vic_ifrit_med",
+  "id": "vic_afreet_med",
   "specClass": "projectile",
-  "projectileSpecId": "vic_ifrit_main",
+  "projectileSpecId": "vic_afreet_main",
   "type": "MISSILE",
   "size": "MEDIUM",
   "everyFrameEffect": "data.scripts.weapons.vic_missileFluxGen",
   "displayArcRadius": 300,
-  "turretSprite": "graphics/weapons/vic_ifrit_medium.png",
-  "hardpointSprite": "graphics/weapons/vic_ifrit_medium_hardpoint.png",
+  "turretSprite": "graphics/weapons/vic_afreet_medium.png",
+  "hardpointSprite": "graphics/weapons/vic_afreet_medium_hardpoint.png",
   "turretOffsets": [
     5.5,
     -8,
@@ -155,5 +155,5 @@
       200
     ]
   },
-  "fireSoundTwo": "sabot_srm_fire"
+  "fireSoundTwo": "vic_afreet"
 }

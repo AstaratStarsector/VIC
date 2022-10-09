@@ -50,7 +50,8 @@ public class VIC_ModPlugin extends BaseModPlugin {
             DISRUPTOR = "vic_disruptorShot_mie",
             ABYSSAL = "vic_abyssalfangs_srm",
             QUTRUB = "vic_qutrubShot_sub",
-            IFRIT = "vic_ifrit_main",
+            AFREET = "vic_afreet_main",
+            AFREETLARGE = "vic_afreet_main_large",
             hungruf_main = "vic_hungruf_main",
             hatif_main = "vic_hatif_missile_main";
 
@@ -85,7 +86,9 @@ public class VIC_ModPlugin extends BaseModPlugin {
                 return new PluginPick<MissileAIPlugin>(new VIC_SwarmMirvAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case QUTRUB:
                 return new PluginPick<MissileAIPlugin>(new vic_qutrubStuckAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
-            case IFRIT:
+            case AFREET:
+                return new PluginPick<MissileAIPlugin>(new vic_swervingDumbfire(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            case AFREETLARGE:
                 return new PluginPick<MissileAIPlugin>(new vic_swervingDumbfire(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case hungruf_main:
                 return new PluginPick<MissileAIPlugin>(new vic_hungrufMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
@@ -160,7 +163,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
             admin.setPostId(Ranks.POST_FACTION_LEADER);
             admin.setRankId(Ranks.FACTION_LEADER);
             admin.getName().setFirst("Tatiana");
-            admin.getName().setLast("Murakami");
+            admin.getName().setLast("Vasilevskaya");
             admin.setPortraitSprite("graphics/portraits/characters/vic_tatiana.jpg");
 
             //admin.getStats().setSkillLevel(Skills.SPACE_OPERATIONS , 3);

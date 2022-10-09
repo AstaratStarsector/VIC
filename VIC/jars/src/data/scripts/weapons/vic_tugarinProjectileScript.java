@@ -120,7 +120,7 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
                 MagicTrailPlugin.AddTrailMemberAdvanced(proj, drillTrailIDs[i], spriteToUse, positionToSpawn, 0, 0 * 0.5f,
                         proj.getFacing() + 180f, 0f, 0f, 48f,
                         256f, PHASE_COLOR, Color.RED, 1f, 0f, 0.1f, 0.3f, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,
-                        420f, 100f, new Vector2f(0f, 0f), null, CombatEngineLayers.CONTRAILS_LAYER);
+                        210f, 100f, new Vector2f(0f, 0f), null, CombatEngineLayers.CONTRAILS_LAYER);
             }
 
             float newSpeedMult = speedMult - ((flightTimeFraction) * amount * (float) Math.sqrt(speedMult) * 1.8f);

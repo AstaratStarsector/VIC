@@ -6,8 +6,6 @@ import com.fs.starfarer.api.combat.listeners.DamageTakenModifier;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.input.InputEventAPI;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.campaign.ui.thisnew;
-import data.scripts.util.MagicRender;
 import data.scripts.util.MagicUI;
 import org.lwjgl.util.vector.Vector2f;
 

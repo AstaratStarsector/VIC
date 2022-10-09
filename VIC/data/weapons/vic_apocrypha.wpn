@@ -12,14 +12,14 @@
     RENDER_LOADED_MISSILES
   ],
   "turretOffsets": [
-    11,
+    5,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    15,
+    11.5,
     0
   ],
   "hardpointAngleOffsets": [
@@ -28,13 +28,13 @@
   "barrelMode": "LINKED",
   "animationType": "SMOKE",
   "smokeSpec": {
-    "particleSizeMin": 20,
-    "particleSizeRange": 20,
-    "cloudParticleCount": 3,
+    "particleSizeMin": 30,
+    "particleSizeRange": 10,
+    "cloudParticleCount": 5,
     "cloudDuration": 1,
     "cloudRadius": 10,
-    "blowbackParticleCount": 3,
-    "blowbackDuration": 2,
+    "blowbackParticleCount": 10,
+    "blowbackDuration": 4,
     "blowbackLength": 30,
     "blowbackSpread": 10,
     "particleColor": [
@@ -44,5 +44,5 @@
       200
     ]
   },
-  "fireSoundTwo": "reaper_fire"
+  "fireSoundTwo": "vic_apocrypha"
 }

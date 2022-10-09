@@ -46,10 +46,14 @@ public class vic_falakScript extends vic_missileFluxGen{
                             fluxFaction = ((ShipAPI) target).getFluxLevel();
                         }
                     }
-                    float EMP = damage.getDamage() * 0.0375f * (1f - fluxFaction);
-                    float damAmount = damage.getDamage() * 0.05f - EMP;
+                    float EMP = damage.getDamage() * 0.075f * (1f - fluxFaction);
+                    float damAmount = damage.getDamage() * 0.1f - EMP;
+                    if (((ShipAPI) target).getFluxTracker().isOverloaded()) {
+                        EMP = damage.getDamage() * 0.0375f ;
+                        damAmount = damage.getDamage() * 0.1f;
+                    }
                     //Global.getCombatEngine().addFloatingText(point, damAmount + "", 20, Color.WHITE, null, 0,0);
-                    for (int i =0; i < 20; i++){
+                    for (int i =0; i < 10; i++){
                         Global.getCombatEngine().spawnEmpArc(((MissileAPI) param).getSource(),
                                 point,
                                 target,
@@ -63,8 +67,28 @@ public class vic_falakScript extends vic_missileFluxGen{
                                 Color.cyan,
                                 Color.white);
                     }
+
+                    if (shieldHit) {
+                        for (int i = 0; i < 10; i++) {
+                            Global.getCombatEngine().spawnEmpArcPierceShields(((MissileAPI) param).getSource(),
+                                    point,
+                                    target,
+                                    target,
+                                    DamageType.ENERGY,
+                                    0,
+                                    EMP,
+                                    10000,
+                                    null,
+                                    5 + 10 * fluxFaction,
+                                    Color.cyan,
+                                    Color.white);
+                        }
+                    }
+
                     damage.getModifier().modifyMult("vic_damage", 0);
                     return "vic_damage";
+
+
                 }
             }
             return null;

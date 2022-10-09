@@ -1,13 +1,13 @@
 {
-  "id": "vic_ifrit_small",
+  "id": "vic_afreet_small_stream",
   "specClass": "projectile",
-  "projectileSpecId": "vic_ifrit_main",
+  "projectileSpecId": "vic_afreet_main",
   "type": "MISSILE",
   "size": "SMALL",
   "everyFrameEffect": "data.scripts.weapons.vic_missileFluxGen",
   "displayArcRadius": 300,
-  "turretSprite": "graphics/weapons/vic_ifrit_small.png",
-  "hardpointSprite": "graphics/weapons/vic_ifrit_small_hardpoint.png",
+  "turretSprite": "graphics/weapons/vic_afreet_small.png",
+  "hardpointSprite": "graphics/weapons/vic_afreet_small_hardpoint.png",
   "turretOffsets": [
     2,
     -2,
@@ -76,7 +76,7 @@
     0,
     0
   ],
-  "barrelMode": "LINKED",
+  "barrelMode": "ALTERNATING",
   "animationType": "SMOKE",
   "smokeSpec": {
     "particleSizeMin": 5,
@@ -95,5 +95,5 @@
       200
     ]
   },
-  "fireSoundTwo": "sabot_srm_fire"
+  "fireSoundTwo": "vic_afreet_stream"
 }

@@ -44,11 +44,11 @@
     "blowbackLength": 30,
     "blowbackSpread": 10,
     "particleColor": [
-      100,
-      100,
-      100,
+      150,
+      150,
+      150,
       200
     ]
   },
-  "fireSoundTwo": "harpoon_fire"
+  "fireSoundTwo": "vic_hungruf"
 }

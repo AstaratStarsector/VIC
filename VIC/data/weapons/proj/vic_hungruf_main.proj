@@ -19,17 +19,39 @@
 				    "style":"CUSTOM",
 					"styleSpec":{
 						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
-						"engineColor":[255,165,0,255],
-						"contrailDuration":1,
+						"engineColor":[255,200,150,255],
+						"contrailDuration":0.5,
 						"contrailWidthMult":1,
+						"contrailWidthAddedFractionAtEnd":0.5,  # can be negative. makes trail spread out/narrow at the end
+						"contrailMinSeg":5, # min segment length, in pixels
+						"contrailMaxSpeedMult":0.5f,
+						"contrailAngularVelocityMult":0.5f,
+						"contrailColor":[255,100,0,255],
+						"glowSizeMult":3,
+						"glowAlternateColor":[255,75,0,255],
+						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+					},
+				    "width":7.0,
+				    "length":40.0,
+				    "angle":180.0},
+					
+					{"id":"ES2",
+					"loc":[0, 0],
+				    #"style":"MISSILE_HIGH_TECH",
+				    "style":"CUSTOM",
+					"styleSpec":{
+						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+						"engineColor":[255,165,0,0],
+						"contrailDuration":2,
+						"contrailWidthMult":7.5,
 						"contrailWidthAddedFractionAtEnd":2.5,  # can be negative. makes trail spread out/narrow at the end
 						"contrailMinSeg":5, # min segment length, in pixels
 						"contrailMaxSpeedMult":0.5f,
 						"contrailAngularVelocityMult":0.5f,
-						"contrailColor":[255,165,0,75],
+						"contrailColor":[50,50,50,200],
 						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
 					},
-				    "width":7.0,
+				    "width":1.0,
 				    "length":40.0,
 				    "angle":180.0},
 				    ]

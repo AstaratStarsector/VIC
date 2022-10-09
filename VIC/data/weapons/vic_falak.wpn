@@ -15,14 +15,14 @@
     RENDER_BARREL_BELOW
   ],
   "turretOffsets": [
-    11,
+    19,
     0
   ],
   "turretAngleOffsets": [
     0
   ],
   "hardpointOffsets": [
-    15,
+    22,
     0
   ],
   "hardpointAngleOffsets": [
@@ -31,21 +31,21 @@
   "barrelMode": "LINKED",
   "animationType": "SMOKE",
   "smokeSpec": {
-    "particleSizeMin": 20,
+    "particleSizeMin": 30,
     "particleSizeRange": 20,
-    "cloudParticleCount": 3,
+    "cloudParticleCount": 5,
     "cloudDuration": 1,
     "cloudRadius": 10,
-    "blowbackParticleCount": 3,
+    "blowbackParticleCount": 5,
     "blowbackDuration": 2,
     "blowbackLength": 30,
     "blowbackSpread": 10,
     "particleColor": [
-      100,
-      100,
-      100,
+      200,
+      200,
+      200,
       200
     ]
   },
-  "fireSoundTwo": "reaper_fire"
+  "fireSoundTwo": "vic_falak"
 }

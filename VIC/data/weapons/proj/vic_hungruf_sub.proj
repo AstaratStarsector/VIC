@@ -8,10 +8,12 @@
 	"collisionRadius":10,
 	"collisionClass":"MISSILE_NO_FF",
 	"explosionColor":[253,110,14,255],  # purely visual, will get a white additively blended core on top of this color
-	"explosionRadius":200, # purely visual
+	"explosionRadius":250, # purely visual
 	"flameoutTime":0.05, # total time from flameout to full fadeout
 	"noEngineGlowTime":0.05, # time spent without the engine glow being rendered
 	"fadeTime":0.05, # fadeout duration		
+	"glowRadius":10,
+	"glowColor":[255,25,0,175],
 	"explosionSpec":{"duration":0.75f, # not visual
 					 "radius":200,
 					 "coreRadius":150, # full damage within core radius
@@ -31,7 +33,7 @@
 									 "particleDuration":1,
 									 "particleCount":150,
 									 "particleColor":[253,110,14,175],
-									 "sound":"explosion_flak"},
+									 "sound":"vic_hungruf_explosion"},
 					},
 	"engineSpec":{"turnAcc":0,
 				  "turnRate":30,

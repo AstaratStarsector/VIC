@@ -19,28 +19,52 @@
 				    "style":"CUSTOM",
 					"styleSpec":{
 						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
-						#"engineColor":[255,145,75,255],
 						"engineColor":[255,175,100,255],
-						"contrailDuration":1,
-						"contrailWidthMult":1,
-						"contrailWidthAddedFractionAtEnd":2,  # can be negative. makes trail spread out/narrow at the end
+						"contrailDuration":0.25,
+						"contrailWidthMult":0.75,
+						"contrailWidthAddedFractionAtEnd":1,  # can be negative. makes trail spread out/narrow at the end
 						"contrailMinSeg":7, # min segment length, in pixels
 						"contrailMaxSpeedMult":.0f,
 						"contrailAngularVelocityMult":0.5f,
 						"contrailSpawnDistMult":.5, # how far away from engine it starts
-						"contrailColor":[100,100,100,150],
-				    	"glowSizeMult":0.5,
+						"contrailColor":[255,225,100,150],
+				    	"glowSizeMult":2,
+						"glowAlternateColor":[255,175,100,255],
 						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
 					},
 				    "width":8.0,
 				    "length":20.0,
-				    "angle":180.0}],
+				    "angle":180.0},
+					
+					{"id":"ES2",
+					"loc":[-8, 0],
+				    #"style":"MISSILE_MIDLINE",
+				    "style":"CUSTOM",
+					"styleSpec":{
+						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+						"engineColor":[255,175,100,0],
+						"contrailDuration":2.5,
+						"contrailWidthMult":0.75,
+						"contrailWidthAddedFractionAtEnd":1,  # can be negative. makes trail spread out/narrow at the end
+						"contrailMinSeg":7, # min segment length, in pixels
+						"contrailMaxSpeedMult":.0f,
+						"contrailAngularVelocityMult":0.5f,
+						"contrailSpawnDistMult":.5, # how far away from engine it starts
+						"contrailColor":[150,150,150,150],
+				    	"glowSizeMult":0,
+						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+					},
+				    "width":8.0,
+				    "length":20.0,
+				    "angle":180.0}
+					
+					],
 	"behaviorSpec":{"behavior":"MIRV",
 					"splitRange":250,
 					"splitRangeRange":150,
 					"minTimeToSplit":1,
 					"canSplitEarly":true,
-					"splitSound":"sabot_srm_split",
+					"splitSound":"vic_saih_split",
 					"numShots":10,
 					"damage":50,
 					"emp":0, # needs to match highlight in weapon_data.csv

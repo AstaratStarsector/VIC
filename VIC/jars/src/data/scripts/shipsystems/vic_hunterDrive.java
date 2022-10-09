@@ -18,6 +18,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.fs.starfarer.api.util.Misc.ZERO;
 import static data.scripts.plugins.vic_combatPlugin.AddHunterDriveTarget;
 
 public class vic_hunterDrive extends BaseShipSystemScript {
@@ -26,7 +27,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
             speedBoost = 350,
             accBoost = 200,
             waveRange = 1000,
-            waveDuration = 0.8f,
+            waveDuration = 1.2f,
             currWaveDuration = 0f;
 
     boolean doOnce = true;
@@ -67,39 +68,33 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                     Vector2f LocPulse = ship.getLocation();
 
                     if (Global.getSettings().getModManager().isModEnabled("shaderLib")) {
-                        vic_graphicLibEffects.CustomRippleDistortion(
-                                LocPulse,
-                                ship.getVelocity(),
-                                1000f,
-                                 15f,
-                                false,
-                                0,
-                                360,
-                                1f,
-                                0.1f,
-                                0.0f,
-                                0.6f,
-                                0.55f,
-                                0f
-                        );
 
                         vic_graphicLibEffects.CustomRippleDistortion(
                                 LocPulse,
                                 ship.getVelocity(),
                                 1500f,
-                                5f,
+                                10f,
                                 false,
                                 0,
                                 360,
                                 1f,
-                                0.1f,
+                                0.5f,
                                 0.0f,
                                 0.90f,
-                                0.85f,
+                                1.1f,
                                 0f
                         );
 
                     }
+
+                    WaveDistortion wave = new WaveDistortion(LocPulse, ZERO);
+                    wave.setIntensity(15f);
+                    wave.setSize(250f);
+                    wave.flip(false);
+                    wave.setLifetime(0f);
+                    wave.fadeOutIntensity(0.5f);
+                    wave.setLocation(LocPulse);
+                    DistortionShader.addDistortion(wave);
 
                     int particleCount = 33;
                     final Color PARTICLE_COLOR = new Color(113, 255, 237);
@@ -176,7 +171,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                 LocPulse,
                                 ship.getVelocity(),
                                 new Vector2f(500f, 500f),
-                                (Vector2f) new Vector2f((waveRange) * 4, (waveRange) * 4),
+                                (Vector2f) new Vector2f((waveRange) * 3, (waveRange) * 3),
                                 rotation,
                                 spin * -1,
                                 new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(199, 200)),
@@ -184,7 +179,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                 0, 0, 0.4f, 0.8f, 0,
                                 0.4f,
                                 0f,
-                                0.3f,
+                                0.7f,
                                 CombatEngineLayers.BELOW_SHIPS_LAYER
                         );
 

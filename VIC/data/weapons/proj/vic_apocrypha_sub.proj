@@ -19,25 +19,46 @@
 				  "acc":500,
 				  "dec":0},
 	"engineSlots":[{"id":"ES1",
-					"loc":[-9, 0],
+					"loc":[0, 0],
 				    "style":"CUSTOM",
 					"styleSpec":{
 						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
-						"engineColor":[255,143,0,255],
-						"contrailDuration":0.25,
-						"contrailWidthMult":0.5,
-						"contrailWidthAddedFractionAtEnd":1,  # can be negative. makes trail spread out/narrow at the end
+						"engineColor":[255,143,100,255],
+						"contrailDuration":0.2,
+						"contrailWidthMult":1.5,
+						"contrailWidthAddedFractionAtEnd":-1,  # can be negative. makes trail spread out/narrow at the end
 						"contrailMinSeg":5, # min segment length, in pixels
 						"contrailMaxSpeedMult":0f,
-						"contrailAngularVelocityMult":0.5f,
+						"contrailAngularVelocityMult":3f,
 						"contrailSpawnDistMult":0f, # how far away from engine it starts
-						"contrailColor":[255,143,0,255],
-						"glowSizeMult":1,
-						"glowAlternateColor":[255,0,0,255],
+						"contrailColor":[255,75,0,75],
+						"glowSizeMult":0.75,
+						"glowAlternateColor":[255,75,0,255],
 						"type":"GLOW" # GLOW or SMOKE; additive or regular blend mode
 					},
 				    "width":5.0,
 				    "length":20.0,
-				    "angle":180.0}]
+				    "angle":180.0},
+
+					{"id":"ES2",
+					"loc":[0, 0],
+				    "style":"CUSTOM",
+					"styleSpec":{
+						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+						"engineColor":[255,143,0,0],
+						"contrailDuration":1,
+						"contrailWidthMult":7.5,
+						"contrailWidthAddedFractionAtEnd":-1,  # can be negative. makes trail spread out/narrow at the end
+						"contrailMinSeg":5, # min segment length, in pixels
+						"contrailMaxSpeedMult":0f,
+						"contrailAngularVelocityMult":3f,
+						"contrailSpawnDistMult":0f, # how far away from engine it starts
+						"contrailColor":[50,50,50,150],
+						"type":"GLOW" # GLOW or SMOKE; additive or regular blend mode
+					},
+				    "width":1.0,
+				    "length":0.0,
+				    "angle":180.0}
+]
 }
 			

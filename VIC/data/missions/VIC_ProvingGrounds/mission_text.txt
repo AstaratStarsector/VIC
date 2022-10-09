@@ -1,4 +1,4 @@
-Location: Empyrean System, Cocytus, the Dawn Spire
+Location: Empyrean System, Cocytus, The Dawn Spire
 Date: 203.02.26
 
 "...With the transition to the active phase of interaction with the Core Worlds of the Persean Sector, the Aerospace Corps had to face many threats for which our officers and pilots, trained only within our own star system and not facing opponents in real combat, were not fully prepared.
@@ -9,5 +9,5 @@ The system, like its previous versions, is designed for training both senior off
 
 I request your approval to update the combat simulation system, and together with the report, I provide all current technical information, as well as the commentary from the Director of the Department of the Armed Forces and the Admiralty. The introduction of the update into the training courses of the Aerospace Corps will allow us to adapt better and faster to all possible threats in the Persean Sector and ensure the superiority of the Conglomerate over our opponents in outer space."
 
-From: Director of the Department of Data and Information, Michel Kitsune
-To: Chief Executive Officer, Tatiana Murakami
+From: Director of the Department of Data and Information, Michelle Kitsune
+To: Chief Executive Officer, Tatiana Vasilevskaya

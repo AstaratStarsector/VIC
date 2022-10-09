@@ -19,22 +19,46 @@
 				    "style":"CUSTOM",
 					"styleSpec":{
 						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+						"engineColor":[100,255,100,255],
+						"contrailDuration":0.75,
+						"contrailWidthMult":1,
+						"contrailWidthAddedFractionAtEnd":1.5,  # can be negative. makes trail spread out/narrow at the end
+						"contrailMinSeg":7, # min segment length, in pixels
+						"contrailMaxSpeedMult":.0f,
+						"contrailAngularVelocityMult":0.5f,
+						"contrailSpawnDistMult":-0.5, # how far away from engine it starts
+						"contrailColor":[100,255,100,255],
+						"glowSizeMult":1.5,
+						"glowAlternateColor":[150,255,150,255],
+						"type":"GLOW" # GLOW or SMOKE; additive or regular blend mode
+					},
+				    "width":8.0,
+				    "length":20.0,
+				    "angle":180.0},
+					
+					{"id":"ES2",
+					"loc":[-8, 0],
+				    #"style":"MISSILE_MIDLINE",
+				    "style":"CUSTOM",
+					"styleSpec":{
+						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
 						#"engineColor":[255,145,75,255],
-						"engineColor":[255,175,100,255],
-						"contrailDuration":1,
+						"engineColor":[255,175,100,0],
+						"contrailDuration":1.5,
 						"contrailWidthMult":1,
 						"contrailWidthAddedFractionAtEnd":2,  # can be negative. makes trail spread out/narrow at the end
 						"contrailMinSeg":7, # min segment length, in pixels
 						"contrailMaxSpeedMult":.0f,
 						"contrailAngularVelocityMult":0.5f,
-						"contrailSpawnDistMult":.5, # how far away from engine it starts
-						"contrailColor":[100,100,100,150],
-				    	"glowSizeMult":0.5,
-						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+						"contrailSpawnDistMult":-0.5, # how far away from engine it starts
+						"contrailColor":[200,200,200,150],
+						"type":"GLOW" # GLOW or SMOKE; additive or regular blend mode
 					},
 				    "width":8.0,
 				    "length":20.0,
-				    "angle":180.0}],
+				    "angle":180.0}
+					
+					],
 	"behaviorSpec":{"behavior":"MIRV",
 					"splitRange":350,
 					"splitRangeRange":0,
@@ -63,7 +87,7 @@
 								 "blowbackDuration":0,
 								 "blowbackLength":0,
 								 "blowbackSpread":0,
-								 "particleColor":[100,100,100,200]}
+								 "particleColor":[150,150,150,200]}
 					}				    
 }
 
