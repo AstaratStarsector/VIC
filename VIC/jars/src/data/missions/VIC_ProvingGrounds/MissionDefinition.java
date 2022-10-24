@@ -48,6 +48,8 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addToFleet(FleetSide.PLAYER, "vic_pruflas_skirmish", FleetMemberType.SHIP, "ASCV Keeper of Peace", false);
         api.addToFleet(FleetSide.PLAYER, "vic_nybbas_plasma", FleetMemberType.SHIP, "ASCV Warden", false);
 
+        api.addToFleet(FleetSide.PLAYER, "vic_stolas_bounty_variant", FleetMemberType.SHIP, "ASCV " + VIC.pickRandomShipName(), true);
+
         //api.addToFleet(FleetSide.PLAYER, "vic_shabriri_drone", FleetMemberType.SHIP, "VIC Warden", false);
 
 

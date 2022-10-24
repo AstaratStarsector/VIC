@@ -505,4 +505,31 @@
 	"vic_astronomicon_hit":[
 	    {"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":1.0, "volume":1},
 	],
+	
+	"vic_gatebreaker_autocannon":[
+        {"file":"sounds/effects/vic_gatebreaker_autocannon.ogg","pitch":0.9, "volume":0.5},
+		{"file":"sounds/effects/vic_gatebreaker_autocannon.ogg","pitch":0.95, "volume":0.5},
+		{"file":"sounds/effects/vic_gatebreaker_autocannon.ogg","pitch":1, "volume":0.5},
+		{"file":"sounds/effects/vic_gatebreaker_autocannon.ogg","pitch":1.05, "volume":0.5},
+		{"file":"sounds/effects/vic_gatebreaker_autocannon.ogg","pitch":1.1, "volume":0.5},
+	],
+	
+	"vic_gatebreaker_shotgun":[
+        {"file":"sounds/effects/vic_gatebreaker_shotgun.ogg","pitch":0.9, "volume":2},
+		{"file":"sounds/effects/vic_gatebreaker_shotgun.ogg","pitch":0.95, "volume":2},
+		{"file":"sounds/effects/vic_gatebreaker_shotgun.ogg","pitch":1, "volume":2},
+		{"file":"sounds/effects/vic_gatebreaker_shotgun.ogg","pitch":1.05, "volume":2},
+		{"file":"sounds/effects/vic_gatebreaker_shotgun.ogg","pitch":1.1, "volume":2},
+	],
+	
+	"vic_gatebreaker_flamer_charge":[
+        {"file":"sounds/effects/vic_gatebreaker_flamer_charge.ogg","pitch":0.9, "volume":1},
+		{"file":"sounds/effects/vic_gatebreaker_flamer_charge.ogg","pitch":0.95, "volume":1},
+		{"file":"sounds/effects/vic_gatebreaker_flamer_charge.ogg","pitch":1, "volume":1},
+		{"file":"sounds/effects/vic_gatebreaker_flamer_charge.ogg","pitch":1.05, "volume":1},
+		{"file":"sounds/effects/vic_gatebreaker_flamer_charge.ogg","pitch":1.1, "volume":1},
+	],
+	"vic_gatebreaker_flamer_loop":[
+	    {"file":"sounds/effects/vic_gatebreaker_flamer_loop.ogg","pitch":1.0, "volume":2},
+	],
 }

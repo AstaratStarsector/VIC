@@ -1,0 +1,47 @@
+{
+  "id": "vic_gatebreaker_l_flamer",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_gatebreaker_flamer_shot",
+  "type": "ENERGY",
+  "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_gatebreakerFlamer",
+  "displayArcRadius": 600,
+  "turretSprite": "graphics/weapons/Stolas Bounty/vic_stolas_bounty_flamer_l.png",
+  "hardpointSprite": "graphics/weapons/Stolas Bounty/vic_stolas_bounty_flamer_l.png",
+  "renderHints": [
+    "RENDER_BARREL_BELOW"
+  ],
+  "turretOffsets": [
+    49.5,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    87,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "MUZZLE_FLASH",
+  "interruptibleBurst": true,
+  "muzzleFlashSpec": {
+    "length": 75,
+    "spread": 15,
+    "particleSizeMin": 25,
+    "particleSizeRange": 5,
+    "particleDuration": 0.1,
+    "particleCount": 20,
+    "particleColor": [
+      50,
+      50,
+      255,
+      100
+    ]
+  },
+  "fireSoundOne": "vic_gatebreaker_flamer_charge",
+  "noImpactSounds": true
+}

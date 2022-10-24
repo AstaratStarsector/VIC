@@ -1,0 +1,399 @@
+{
+  "hullName": "Devotee",
+  "hullId": "vic_stolas_bounty",
+  "hullSize": "CRUISER",
+  "spriteName": "graphics/ships/Stolas Bounty/vic_stolas_bounty.png",
+  "style": "VIC",
+  "height": 392,
+  "width": 188,
+  "center": [94, 201],
+  "collisionRadius": 201,
+  "shieldCenter": [0, -0],
+  "shieldRadius": 196,
+  "viewOffset": 0,
+  "builtInMods": [
+    "vic_dynamicshields",
+    "vic_aerodynamicdesign",
+    "vic_shturmSolutionDummy",
+    "vic_variable_gatebreaker_mode"
+  ],
+  "builtInWeapons": {
+    "THF0": "vic_vernierEngine_orange",
+    "THF1": "vic_vernierEngine_orange",
+    "THS0": "vic_vernierEngine_orange",
+    "THS1": "vic_vernierEngine_orange",
+    "THT0": "vic_vernierEngine_orange",
+    "THT1": "vic_vernierEngine_orange",
+    "WS0004": "vic_stolas_engine_glow_right",
+    "WS0005": "vic_stolas_engine_glow_left",
+    "WS0010": "vic_stolas_bounty_weapon_deco_left",
+    "WS0011": "vic_stolas_bounty_weapon_deco_right"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "LARGE",
+      "type": "HYBRID",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": 0,
+      "locations": [-4, -45]
+    },
+    {
+      "id": "WS0002",
+      "size": "LARGE",
+      "type": "BALLISTIC",
+      "mount": "HARDPOINT",
+      "arc": 10,
+      "angle": -0,
+      "locations": [-4, 45]
+    },
+    {
+      "id": "WS0003",
+      "size": "LARGE",
+      "type": "COMPOSITE",
+      "mount": "TURRET",
+      "arc": 143,
+      "angle": 0,
+      "locations": [-22, -0]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-101, -32]
+    },
+    {
+      "id": "WS0005",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-101, 32]
+    },
+    {
+      "id": "THF0",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -139,
+      "locations": [72, -37]
+    },
+    {
+      "id": "THF1",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 139,
+      "locations": [72, 37]
+    },
+    {
+      "id": "THS0",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -139,
+      "locations": [95, -36]
+    },
+    {
+      "id": "THS1",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 139,
+      "locations": [95, 36]
+    },
+    {
+      "id": "THT0",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -139,
+      "locations": [118, -35]
+    },
+    {
+      "id": "THT1",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 139,
+      "locations": [118, 35]
+    },
+    {
+      "id": "WS0006",
+      "size": "LARGE",
+      "type": "BUILT_IN",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": -0,
+      "locations": [97.5, -15]
+    },
+    {
+      "id": "WS0007",
+      "size": "LARGE",
+      "type": "BUILT_IN",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 0,
+      "locations": [97.5, 15]
+    },
+    {
+      "id": "WS0010",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-8, 31.5]
+    },
+    {
+      "id": "WS0011",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-8, -31.5]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-124, -0],
+      "length": 95,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "engineCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          15,
+          15,
+          15,
+          75
+        ],
+        "contrailCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "contrailParticleDuration": 3
+      }
+    },
+    {
+      "location": [-101, 32],
+      "length": 57,
+      "width": 12,
+      "angle": 180,
+      "contrailSize": 12,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-101, -32],
+      "length": 57,
+      "width": 12,
+      "angle": -180,
+      "contrailSize": 12,
+      "style": "CUSTOM",
+      "styleId": "VOLKOV-LAIDLAW'S"
+    },
+    {
+      "location": [-91, 58],
+      "length": 45.253414,
+      "width": 14.509121,
+      "angle": 164,
+      "contrailSize": 128,
+      "style": "LOW_TECH"
+    },
+    {
+      "location": [-91, -58],
+      "length": 45.253414,
+      "width": 14.509121,
+      "angle": -164,
+      "contrailSize": 128,
+      "style": "LOW_TECH"
+    },
+    {
+      "location": [-92, 66],
+      "length": 35.916431,
+      "width": 7.073851,
+      "angle": 164,
+      "contrailSize": 128,
+      "style": "LOW_TECH"
+    },
+    {
+      "location": [-92, -66],
+      "length": 35.916431,
+      "width": 7.073851,
+      "angle": -164,
+      "contrailSize": 128,
+      "style": "LOW_TECH"
+    },
+    {
+      "location": [71, -37],
+      "length": 1.035494,
+      "width": 6.907315,
+      "angle": -139,
+      "contrailSize": 6.907315,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [71, 37],
+      "length": 1.035494,
+      "width": 6.907315,
+      "angle": 139,
+      "contrailSize": 6.907315,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [94, -36],
+      "length": 1.035494,
+      "width": 6.907315,
+      "angle": -139,
+      "contrailSize": 6.907315,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [94, 36],
+      "length": 1.035494,
+      "width": 6.907315,
+      "angle": 139,
+      "contrailSize": 6.907315,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [117, -35],
+      "length": 1.035494,
+      "width": 6.907315,
+      "angle": -139,
+      "contrailSize": 6.907315,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [117, 35],
+      "length": 1.035494,
+      "width": 6.907315,
+      "angle": 139,
+      "contrailSize": 6.907315,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [-123, -0],
+      "length": 40,
+      "width": 17,
+      "angle": 180,
+      "contrailSize": 17,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "engineCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          15,
+          15,
+          15,
+          0
+        ],
+        "contrailCampaignColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "contrailParticleDuration": 3
+      }
+    }
+  ],
+  "bounds": [
+    -124, 7,
+    -191, 8,
+    -179.5, 21,
+    -113.5, 24,
+    -103, 38,
+    -72.5, 40.5,
+    -92, 54,
+    -92.5, 67,
+    -134.5, 81,
+    -135, 93,
+    -4, 67,
+    14, 42,
+    64, 30.5,
+    74.5, 42,
+    90, 33,
+    98.5, 41.5,
+    113, 32,
+    122, 40.5,
+    141, 25.5,
+    180, 27.5,
+    180, -27.5,
+    141, -25.5,
+    122, -40.5,
+    113, -32,
+    98.5, -41.5,
+    90, -33,
+    74.5, -42,
+    64, -30.5,
+    14, -42,
+    -4, -67,
+    -135, -93,
+    -134.5, -81,
+    -92.5, -67,
+    -92, -54,
+    -72.5, -40.5,
+    -103, -38,
+    -113.5, -24,
+    -179.5, -21,
+    -191, -8,
+    -124, -7
+  ]
+}

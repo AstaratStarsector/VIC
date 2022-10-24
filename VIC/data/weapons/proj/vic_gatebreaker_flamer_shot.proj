@@ -1,0 +1,20 @@
+{
+	"id":"vic_gatebreaker_flamer_shot",
+	"specClass":"projectile",
+	"onHitEffect":"data.scripts.weapons.vic_gatebreakerFlamer",
+	
+	"spawnType":"BALLISTIC_AS_BEAM",
+	"collisionClass":"RAY",
+	"collisionClassByFighter":"RAY_FIGHTER",
+	"length":80.0,
+	"width":40.0,
+	"hitGlowRadius":0,
+	"fadeTime":0.25,
+	"fringeColor":[255,138,75,100],
+	"coreColor":[255,255,255,50],
+	#"coreColor":[255,255,255,50],
+	"textureType":"SMOOTH",  # only needed for BEAM spawnType
+	"textureScrollSpeed":-256,
+	"pixelsPerTexel":5.0
+	
+}

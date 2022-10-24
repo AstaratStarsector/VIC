@@ -40,8 +40,6 @@
     "WS0007": "vic_stolas_weapon_deco_left",
     "WS0008": "vic_stolasBuildIn",
     "WS0009": "vic_stolas_weapon_deco_right",
-    "WS0010": "vic_stolas_wing_fin_left",
-    "WS0011": "vic_stolas_wing_fin_right",
     "WS0017": "vic_blonkerCyan",
     "WS0018": "vic_blonkerCyan",
     "WS0019": "vic_blonkerCyan",
@@ -390,24 +388,6 @@
       "arc": 0,
       "angle": -0,
       "locations": [-7.5, -31.5]
-    },
-    {
-      "id": "WS0010",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 10,
-      "angle": 0,
-      "locations": [-89, 68]
-    },
-    {
-      "id": "WS0011",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 10,
-      "angle": -0,
-      "locations": [-89, -68]
     }
   ],
   "engineSlots": [
@@ -443,7 +423,7 @@
       "length": 45.253414,
       "width": 14.509121,
       "angle": 164,
-      "contrailSize": 14.509121,
+      "contrailSize": 128,
       "style": "LOW_TECH"
     },
     {
@@ -451,7 +431,7 @@
       "length": 45.253414,
       "width": 14.509121,
       "angle": -164,
-      "contrailSize": 14.509121,
+      "contrailSize": 128,
       "style": "LOW_TECH"
     },
     {
@@ -459,7 +439,7 @@
       "length": 35.916431,
       "width": 7.073851,
       "angle": 164,
-      "contrailSize": 7.073851,
+      "contrailSize": 128,
       "style": "LOW_TECH"
     },
     {
@@ -467,7 +447,7 @@
       "length": 35.916431,
       "width": 7.073851,
       "angle": -164,
-      "contrailSize": 7.073851,
+      "contrailSize": 128,
       "style": "LOW_TECH"
     },
     {

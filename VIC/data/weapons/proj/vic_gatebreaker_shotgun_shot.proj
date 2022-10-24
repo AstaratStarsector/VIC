@@ -1,0 +1,17 @@
+{
+	"id":"vic_gatebreaker_shotgun_shot",
+	"onFireEffect":"data.scripts.weapons.vic_gatebreakerShotgunShot",
+	"specClass":"projectile",
+	"spawnType":"BALLISTIC",
+	"collisionClass":"PROJECTILE_FF",
+	"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"length":35.0,
+	"hitGlowRadius":50,
+	"width":7.5,
+	"fadeTime":0.25,
+	"fringeColor":[243, 56, 56, 104],
+	"coreColor":[250, 83, 18, 226],	
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":5.0,
+	"bulletSprite":"graphics/missiles/shell_large_devastator.png",
+}

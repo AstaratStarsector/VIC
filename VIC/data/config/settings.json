@@ -84,6 +84,10 @@
 			
 			"vic_stolas_emp_main":"graphics/fx/vic_stolas_emp_main.png",	
 			"vic_stolas_emp_secondary":"graphics/fx/vic_stolas_emp_secondary.png",	
+			
+			"vic_gatebreaker_autocannon_shell":"graphics/fx/vic_gatebreaker_autocannon_shell.png",	
+		
+			"vic_gatebreaker_shotgun_shockwave":"graphics/fx/vic_gatebreaker_shotgun_shockwave.png",	
 
 		},		
 		"illustrations":{

@@ -1,0 +1,19 @@
+{
+	"id":"vic_gatebreaker_autocannon_shot",
+	"specClass":"projectile",
+	"onHitEffect":"data.scripts.weapons.vic_gatebreakerAutocannonOnHit",
+	
+	"spawnType":"BALLISTIC",
+	"collisionClass":"PROJECTILE_FF",
+	"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"length":15,
+	"hitGlowRadius":15,
+	"width":7.5,
+	"fadeTime":0.20,
+	#"fringeColor":[255,255,100,255],
+	#"coreColor":[255,255,200,150],
+	"fringeColor":[255,255,100,0],
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":0.0,
+	"bulletSprite":"graphics/missiles/shell_hellbore.png",
+}

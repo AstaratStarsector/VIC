@@ -38,6 +38,11 @@ Power Redistributor,vic_powerRedistributor,4,,Volkov Industries,,,,,TRUE,,0,0,0,
 ,,,,,,,,,,,,,,,,,,
 VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_shieldsChanger,,Shield Changer,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
+Gatebreaker Mode Swapper,vic_variable_gatebreaker_mode,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_gatebreakerModeSwapper,"Taipan VLS systems incorporate an advanced internal autoforge, allowing a variety of warheads to be produced with a simple reconfiguration. Switching missile payloads can be done %s for changing hullmods.",Variable missile ammo selection. You shouldn't see this in-game.,graphics/hullmods/apex_variable_warheads.png
+Gatebreaker Autocannon,vic_gatebreaker_mode_autocannon,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,Nanoacid warheads.,graphics/hullmods/apex_warheads_acid.png
+Gatebreaker Shotgun,vic_gatebreaker_mode_shotgun,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,Kinetic warheads.,graphics/hullmods/apex_warheads_kin.png
+Gatebreaker Flamer,vic_gatebreaker_mode_flamer,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,EMP warheads.,graphics/hullmods/apex_warheads_emp.png
+,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #VIC modular,,,,,,,,,,,,,,,,,,
 "B-Series ""Fortress"" Protocol",vic_allRoundShieldUpgrade,3,,Volkov Industries,defensive,Shields,25000,,,,7,14,21,35,data.hullmods.vic_allRoundShieldUpgrade,"The B-series of VIC ships can be easily reconfigured into a more defensive form, increasing their shield efficiency but reducing offensive capabilities.",,graphics/hullmods/vic_shiledPack.png

@@ -1,11 +1,11 @@
 {
-	"id":"vic_stolas_wing_fin_right",  # this id must match what's in the spreadsheet
+	"id":"vic_stolas_bounty_weapon_deco_left",  # this id must match what's in the spreadsheet
 	"specClass":"beam",
 	"type":"DECORATIVE",
 	"size":"SMALL",
 	"showDamageWhenDecorative":true,
 	"renderBelowAllWeapons":false,	
-	"turretSprite":"graphics/ships/Stolas/vic_stolas_wing_fin_right.png",
+	"turretSprite":"graphics/ships/Stolas Bounty/vic_stolas_bounty_weapon_deco_left.png",
 	"hardpointSprite":"",
 	"numFrames":1,
 	"frameRate":0,
