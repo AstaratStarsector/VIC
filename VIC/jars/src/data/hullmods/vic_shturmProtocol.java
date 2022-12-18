@@ -1,10 +1,7 @@
 package data.hullmods;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.BaseHullMod;
-import com.fs.starfarer.api.combat.MutableShipStatsAPI;
-import com.fs.starfarer.api.combat.MutableStat;
-import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -73,7 +70,6 @@ public class vic_shturmProtocol extends BaseHullMod {
     }
 
 
-
     @Override
     public void advanceInCombat(ShipAPI ship, float amount) {
         float shieldReduction = 1;
@@ -101,6 +97,12 @@ public class vic_shturmProtocol extends BaseHullMod {
             }
         } else {
             ship.getMutableStats().getFluxDissipation().unmodify("vic_shturmProtocol");
+        }
+
+        if (Global.getCombatEngine().isPaused() || ship.getShipAI() == null) return;
+
+        if (ship.getFluxTracker().getFluxLevel() > 0.85f && !ship.getSystem().isActive() && !ship.getFluxTracker().isOverloadedOrVenting()) {
+            ship.giveCommand(ShipCommand.VENT_FLUX, null, 0);
         }
     }
 

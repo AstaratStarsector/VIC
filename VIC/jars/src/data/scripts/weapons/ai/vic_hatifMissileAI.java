@@ -127,7 +127,7 @@ public class vic_hatifMissileAI extends VIC_BaseMissile {
         timeAccum += amount;
 
         // If we have a valid target, turn to face desired intercept point
-        if (acquireTarget(amount)) {
+        if (acquireTarget()) {
             if (engineDeadTimer <= 0f) {
                 readyToFly = true;
             }
@@ -260,7 +260,7 @@ public class vic_hatifMissileAI extends VIC_BaseMissile {
     }
 
     @Override
-    protected boolean acquireTarget(float amount) {
+    protected boolean acquireTarget() {
         // If our current target is totally invalid, look for a new one
         if (!isTargetValid(target)) {
             if (target instanceof ShipAPI) {

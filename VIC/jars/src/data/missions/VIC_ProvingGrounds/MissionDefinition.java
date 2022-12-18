@@ -17,7 +17,7 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 
     @Override
     public void defineMission(MissionDefinitionAPI api) {
-        api.initFleet(FleetSide.PLAYER, "VIC", FleetGoal.ATTACK, false);
+        api.initFleet(FleetSide.PLAYER, "ASCV", FleetGoal.ATTACK, false);
         api.initFleet(FleetSide.ENEMY, "SIM", FleetGoal.ATTACK, true);
 
         api.setFleetTagline(FleetSide.PLAYER, "Simulated VIC Forces");
@@ -32,9 +32,9 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standart", FleetMemberType.SHIP, "ASCV Sun Eater", true);
 		api.addToFleet(FleetSide.PLAYER, "vic_oriax_standard", FleetMemberType.SHIP, "ASCV Outbreak", false);
 
-        api.addToFleet(FleetSide.PLAYER, "vic_stolas_test", FleetMemberType.SHIP, "ASCV " + VIC.pickRandomShipName(), true);
-        api.addToFleet(FleetSide.PLAYER, "vic_focalor_m_test", FleetMemberType.SHIP, "ASCV " + VIC.pickRandomShipName(), false);
-        api.addToFleet(FleetSide.PLAYER, "vic_focalor_l_test", FleetMemberType.SHIP, "ASCV " + VIC.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.PLAYER, "vic_stolas_standart", FleetMemberType.SHIP, VIC.pickRandomShipName(), true);
+        api.addToFleet(FleetSide.PLAYER, "vic_focalor_l_standart", FleetMemberType.SHIP, VIC.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.PLAYER, "vic_focalor_m_standart", FleetMemberType.SHIP, VIC.pickRandomShipName(), false);
         api.addToFleet(FleetSide.PLAYER, "vic_valafar_assault", FleetMemberType.SHIP, "ASCV Void Reaver", false);
         api.addToFleet(FleetSide.PLAYER, "vic_thamuz_standart", FleetMemberType.SHIP, "ASCV Despoiler", false);
         api.addToFleet(FleetSide.PLAYER, "vic_cresil_assault", FleetMemberType.SHIP, "ASCV 13", false);
@@ -47,8 +47,6 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addToFleet(FleetSide.PLAYER, "vic_kobal_standart", FleetMemberType.SHIP, "ASCV Repressor", false);
         api.addToFleet(FleetSide.PLAYER, "vic_pruflas_skirmish", FleetMemberType.SHIP, "ASCV Keeper of Peace", false);
         api.addToFleet(FleetSide.PLAYER, "vic_nybbas_plasma", FleetMemberType.SHIP, "ASCV Warden", false);
-
-        api.addToFleet(FleetSide.PLAYER, "vic_stolas_bounty_variant", FleetMemberType.SHIP, "ASCV " + VIC.pickRandomShipName(), true);
 
         //api.addToFleet(FleetSide.PLAYER, "vic_shabriri_drone", FleetMemberType.SHIP, "VIC Warden", false);
 

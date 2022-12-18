@@ -99,6 +99,9 @@
 		},
 		"characters":{
 			"tatiana":"graphics/portraits/characters/vic_tatiana.jpg",
+			"yuhas":"graphics/portraits/characters/vic_yuhas.jpg",
+			"yuhasSane":"graphics/portraits/characters/vic_yuhas_notFucked.png",
+			"stolasPilot":"graphics/portraits/vic_acehole4.png",
 		},
 		"icons":{
 			"entity":"graphics/icons/entity.png",

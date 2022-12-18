@@ -34,6 +34,8 @@ CMSNResignCancelled_vic,CMSNResignCancelled,$faction.id == vic,,"""Oh, thank God
 
 Maybe take a break, go relax at a gene-spa? Have a nice meal at VICtuals. Take some time off.""",,
 ,,,,,,
+vic_addStart,ExerelinNGCIntroPage,,vic_starterPlugin,,,
+,,,,,,
 ,,,,,,
 #Fleet Encounter Dialogues,,,,,,
 greetingVICFriendly,OpenCommLink,"$faction.id == vic

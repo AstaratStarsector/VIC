@@ -5,10 +5,10 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.ApplyDamageResultAPI;
 import com.fs.starfarer.api.combat.listeners.DamageListener;
 import com.fs.starfarer.api.graphics.SpriteAPI;
+import com.fs.starfarer.api.loading.ProjectileSpecAPI;
 import com.fs.starfarer.api.loading.WeaponSlotAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.util.MagicAnim;
-import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
@@ -86,8 +86,8 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
         if (doOnce) {
             ship = weapon.getShip();
-            engine.getListenerManager().addListener(new vic_stolasDamageListener2(weapon.getShip(), weapon));
-            weapon.setMaxAmmo(3);
+            engine.getListenerManager().addListener(new vic_stolasDamageListener(weapon.getShip(), weapon));
+            weapon.setMaxAmmo(2);
             weapon.setAmmo(0);
             for (WeaponAPI tmp : ship.getAllWeapons()) {
                 if (tmp.getId().equals("vic_stolasBuildIn")) slot = tmp.getSlot();
@@ -174,7 +174,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
         if (customCombatData.get("vic_stolasBuildIn" + ship.getId()) instanceof Float)
             currDamage = (float) customCombatData.get("vic_stolasBuildIn" + ship.getId());
 
-        while (currDamage >= Threshold && weapon.getAmmo() != 3) {
+        while (currDamage >= Threshold && weapon.getAmmo() < 3) {
             currDamage -= Threshold;
             if (weapon.getAmmo() == 0) {
                 firstMark.animate = true;
@@ -239,7 +239,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
                 mark21.getSprite().setColor(color);
                 sound = "vic_astronomicon_charge3";
             }
-            if (changeDoOnce){
+            if (changeDoOnce) {
                 Global.getSoundPlayer().playSound(sound, 1, 1, weapon.getLocation(), weapon.getShip().getVelocity());
                 changeDoOnce = false;
             }
@@ -270,7 +270,6 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
                     engine.maintainStatusForPlayerShip("vic_stolasBuildIn", null, "Charge", weapon.getAmmo() + "/3 " + Math.round(currDamage) + "/" + Math.round(ratio * 100) + "%", false);
                 } else {
                     engine.maintainStatusForPlayerShip("vic_stolasBuildIn", null, "Charge", weapon.getAmmo() + "/3 " + (Math.round(ratio * 1000) / 10f) + "%", false);
-
                 }
             }
         }
@@ -396,6 +395,11 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
         int particleCount = 15;
 
         if (ammoOnShot == 1) {
+            for (int i = 0; i < 15; i++) {
+                CombatEntityAPI newProj = engine.spawnProjectile(weapon.getShip(), weapon, "vic_stolasBuildIn1", projectile.getLocation(), projectile.getFacing() + MathUtils.getRandomNumberInRange(-5f,5f), weapon.getShip().getVelocity());
+                newProj.getVelocity().scale(MathUtils.getRandomNumberInRange(0.85f,1.15f));
+            }
+            engine.removeEntity(projectile);
             BL.superThrust = true;
             BR.superThrust = true;
         } else if (ammoOnShot == 2) {
@@ -426,15 +430,15 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
 
             Vector2f offset = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle() + 90).scale(10);
             Vector2f from = bar1.getLocation();
-            for (int i = 0; i <= 4; i++){
+            for (int i = 0; i <= 4; i++) {
                 float random = MathUtils.getRandomNumberInRange(-1, 1);
                 engine.spawnEmpArcVisual(new Vector2f(from.x + offset.x * random, from.y + offset.y * random),
                         weapon.getShip(),
                         proj.getLocation(),
                         proj,
                         15,
-                        new Color(66, 255, 225,255),
-                        new Color(255, 255, 255,255));
+                        new Color(66, 255, 225, 255),
+                        new Color(255, 255, 255, 255));
 
             }
         }
@@ -517,11 +521,11 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
     }
 
 
-    public static class vic_stolasDamageListener2 implements DamageListener {
+    public static class vic_stolasDamageListener implements DamageListener {
         ShipAPI ship;
         WeaponAPI weapon;
 
-        vic_stolasDamageListener2(ShipAPI ship, WeaponAPI weapon) {
+        vic_stolasDamageListener(ShipAPI ship, WeaponAPI weapon) {
             this.ship = ship;
             this.weapon = weapon;
         }
@@ -536,7 +540,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
                     Global.getCombatEngine().getListenerManager().removeListener(this);
                 }
             }
-            if (target instanceof ShipAPI){
+            if (target instanceof ShipAPI) {
                 if (!((ShipAPI) target).isAlive()) return;
             }
             if (weapon.getChargeLevel() != 0) {

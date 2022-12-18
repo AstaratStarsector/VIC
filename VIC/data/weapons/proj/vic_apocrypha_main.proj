@@ -1,7 +1,7 @@
 {
 	"id":"vic_apocrypha_main",
 	"specClass":"missile",
-	"missileType":"ROCKET",
+	"missileType":"MISSILE",
 	"onHitEffect":"data.scripts.weapons.vic_apocryphaOnHit",
 	#"sprite":"graphics/missiles/missile_torpedo.png",
 	#"size":[16,28],	
@@ -28,8 +28,8 @@
 	"armingTime":0.5,
 	"noEngineGlowTime":0.5, # time spent without the engine glow being rendered
 	"fadeTime":0.5, # fadeout duration					 
-	"engineSpec":{"turnAcc":0,
-				  "turnRate":0,
+	"engineSpec":{"turnAcc":60,
+				  "turnRate":20,
 				  #"acc":35,
 				  "acc":500,
 				  "dec":0},

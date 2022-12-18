@@ -176,7 +176,7 @@ public class VIC_BaseMissile implements MissileAIPlugin, GuidedMissileAI
         }
     }
 
-    protected boolean acquireTarget(float amount)
+    protected boolean acquireTarget()
     {
         if (!isTargetValid(target))
         {
@@ -212,21 +212,16 @@ public class VIC_BaseMissile implements MissileAIPlugin, GuidedMissileAI
         float distance, closestDistance = Float.MAX_VALUE;
         List<ShipAPI> ships = AIUtils.getEnemiesOnMap(missile);
         int size = ships.size();
-        for (int i = 0; i < size; i++)
-        {
-            ShipAPI tmp = ships.get(i);
+        for (ShipAPI tmp : ships) {
             float mod = 0f;
-            if (tmp.isFighter() || tmp.isDrone())
-            {
+            if (tmp.isFighter() || tmp.isDrone()) {
                 mod = range / 2f;
             }
-            if (!isTargetValid(tmp))
-            {
+            if (!isTargetValid(tmp)) {
                 mod = range;
             }
             distance = MathUtils.getDistance(tmp, missile.getLocation()) + mod;
-            if (distance < closestDistance)
-            {
+            if (distance < closestDistance) {
                 closest = tmp;
                 closestDistance = distance;
             }
@@ -236,12 +231,8 @@ public class VIC_BaseMissile implements MissileAIPlugin, GuidedMissileAI
 
     protected CombatEntityAPI getMouseTarget(ShipAPI launchingShip)
     {
-        ListIterator<ShipAPI> iter = getSortedDirectTargets(launchingShip).listIterator();
-        while (iter.hasNext())
-        {
-            ShipAPI tmp = iter.next();
-            if (isTargetValid(tmp))
-            {
+        for (ShipAPI tmp : getSortedDirectTargets(launchingShip)) {
+            if (isTargetValid(tmp)) {
                 return tmp;
             }
         }

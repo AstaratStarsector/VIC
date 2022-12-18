@@ -32,6 +32,7 @@ public class vic_psotnikOnHit implements OnHitEffectPlugin, OnFireEffectPlugin {
     DamagingProjectileAPI lastPorj = null;
     @Override
     public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
+
         if (count == 0){
             lastPorj = projectile;
             count += 1;

@@ -1,9 +1,9 @@
 package data.scripts.weapons;
 
-import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.CombatEntityAPI;
-import com.fs.starfarer.api.combat.DamagingProjectileAPI;
-import com.fs.starfarer.api.combat.WeaponAPI;
+import com.fs.starfarer.api.combat.*;
+import data.scripts.weapons.ai.vic_apocryphaSub;
+import data.scripts.weapons.ai.vic_hatifMissileAI;
+import data.scripts.weapons.ai.vic_swervingDumbfire;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
@@ -22,6 +22,7 @@ public class vic_apocryphaScript extends vic_missileFluxGen {
             Vector2f vel = new Vector2f(150 * (Math.round(i * 0.25f - 0.5f) + MathUtils.getRandomNumberInRange(-0.5f,0.5f)), 0);
             VectorUtils.rotate(vel, proj.getFacing());
             proj.getVelocity().set(proj.getVelocity().x + vel.x, proj.getVelocity().y + vel.y);
+            ((MissileAPI) proj).setMissileAI(new vic_apocryphaSub(((MissileAPI) proj), ((MissileAPI) projectile)));
         }
     }
 }

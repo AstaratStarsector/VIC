@@ -15,7 +15,7 @@ public class vic_missileFluxGen implements EveryFrameWeaponEffectPlugin, OnFireE
             FluxTrackerAPI fluxTracker = weapon.getShip().getFluxTracker();
             float addFlux = (weapon.getFluxCostToFire() / weapon.getSpec().getBurstSize()) * weapon.getAmmoTracker().getAmmoPerSecond() * weapon.getShip().getMutableStats().getMissileAmmoRegenMult().getModifiedValue();
             if (stopReload) {
-                if (fluxTracker.getMaxFlux() - fluxTracker.getCurrFlux() >= weapon.getFluxCostToFire() * weapon.getAmmoTracker().getReloadSize()) {
+                if (fluxTracker.getMaxFlux() - fluxTracker.getCurrFlux() >= (weapon.getFluxCostToFire() / weapon.getSpec().getBurstSize()) * weapon.getAmmoTracker().getReloadSize()) {
                     stopReload = false;
                 }
             }

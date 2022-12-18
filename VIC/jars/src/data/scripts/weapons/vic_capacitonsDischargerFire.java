@@ -15,7 +15,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugin {
+public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
     public float TARGET_FIND_STEP_LENGTH = 0.05f;
     public float LIGHTNING_JUMP_RANGE_PERCENTAGE = 0.25f;
@@ -77,9 +77,11 @@ public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugi
 
          */
 
-        if (weapon.getChargeLevel() >= 1) {
 
+    }
 
+    @Override
+    public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
             //Wait one frame if we are changing our projectile this frame, and ensure our spawned projectiles loose their collision after one frame (+reduce projectile speed)
 
 
@@ -234,6 +236,5 @@ public class vic_capacitonsDischargerFire implements EveryFrameWeaponEffectPlugi
                 alreadyDamagedTargets.add(nextTarget);
                 currentTarget = nextTarget;
             }
-        }
     }
 }

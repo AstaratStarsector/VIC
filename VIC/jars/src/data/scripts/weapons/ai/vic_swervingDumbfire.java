@@ -8,6 +8,8 @@ import com.fs.starfarer.api.combat.ShipCommand;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import org.lazywizard.lazylib.MathUtils;
+import org.lazywizard.lazylib.VectorUtils;
+import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
@@ -40,15 +42,15 @@ public class vic_swervingDumbfire implements MissileAIPlugin {
 
     @Override
     public void advance(float amount) {
+        if (Global.getCombatEngine().isPaused() || missile.isFading() || missile.isFizzling()) {
+            return;
+        }
         missile.giveCommand(ShipCommand.ACCELERATE);
         timer.advance(amount);
         boolean changeDirection = false;
-        if (initialAngle - missile.getFacing() > 6f && state.equals(swervingState.right)){
-            timer.forceIntervalElapsed();
-            //Global.getCombatEngine().addFloatingText(missile.getLocation(),Misc.getAngleDiff(initialAngle, missile.getFacing()) + "",10, Color.WHITE,missile,0,0 );
-        }
 
-        if (initialAngle - missile.getFacing() < -6f && state.equals(swervingState.left)){
+        if ((initialAngle - missile.getFacing() > 6f && state.equals(swervingState.right)) ||
+                (initialAngle - missile.getFacing() < -6f && state.equals(swervingState.left))){
             timer.forceIntervalElapsed();
             //Global.getCombatEngine().addFloatingText(missile.getLocation(),Misc.getAngleDiff(initialAngle, missile.getFacing()) + "",10, Color.WHITE,missile,0,0 );
         }
@@ -63,6 +65,7 @@ public class vic_swervingDumbfire implements MissileAIPlugin {
             }
         }
 
+        boolean damp = false;
         switch (state){
             case left:
                 missile.giveCommand(ShipCommand.TURN_LEFT);
@@ -71,7 +74,6 @@ public class vic_swervingDumbfire implements MissileAIPlugin {
                 missile.giveCommand(ShipCommand.TURN_RIGHT);
                 break;
         }
-
 
     }
 }

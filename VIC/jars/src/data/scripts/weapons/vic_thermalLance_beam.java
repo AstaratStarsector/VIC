@@ -1,13 +1,12 @@
 package data.scripts.weapons;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.BeamAPI;
-import com.fs.starfarer.api.combat.BeamEffectPlugin;
-import com.fs.starfarer.api.combat.CombatEngineAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.loading.WeaponSpecAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.plugins.MagicTrailPlugin;
 import org.lazywizard.lazylib.MathUtils;
+import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
@@ -48,8 +47,9 @@ public class vic_thermalLance_beam implements BeamEffectPlugin {
             beam.setWidth(45 * (float) Math.pow(beam.getWeapon().getChargeLevel(), 4f));
         }
 
-        if (charge == 1)
+        if (charge == 1){
             beam.getDamage().setDamage(baseDMG * burstDMGMult);
+        }
 
         if (lastFrameCharge > charge && runOnce2) {
             engine.spawnProjectile(beam.getWeapon().getShip(),

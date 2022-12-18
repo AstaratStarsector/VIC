@@ -2,10 +2,14 @@ package data.missions.vic_slaughterhouse;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.FactionAPI;
+import com.fs.starfarer.api.characters.FullName;
+import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.fleet.FleetGoal;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.fleet.FleetMemberType;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
+import com.fs.starfarer.api.impl.campaign.ids.Personalities;
+import com.fs.starfarer.api.impl.campaign.ids.Skills;
 import com.fs.starfarer.api.mission.FleetSide;
 import com.fs.starfarer.api.mission.MissionDefinitionAPI;
 import com.fs.starfarer.api.mission.MissionDefinitionPlugin;
@@ -14,42 +18,56 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 
     @Override
     public void defineMission(MissionDefinitionAPI api) {
-        api.initFleet(FleetSide.PLAYER, "VIC", FleetGoal.ATTACK, false);
-        api.initFleet(FleetSide.ENEMY, "SIM", FleetGoal.ESCAPE, true);
+        api.initFleet(FleetSide.PLAYER, "ASCV", FleetGoal.ATTACK, false);
+        api.initFleet(FleetSide.ENEMY, "CGR", FleetGoal.ESCAPE, true);
 
-        api.setFleetTagline(FleetSide.PLAYER, "Simulated VIC Forces");
-        api.setFleetTagline(FleetSide.ENEMY, "Simulated Enemy Forces");
+        api.setFleetTagline(FleetSide.PLAYER, "VIC Renegades");
+        api.setFleetTagline(FleetSide.ENEMY, "Luddic Church Civilian Transport");
 
-        api.addBriefingItem("Test the efficiency of Aerospace Corps vessels");
+        api.addBriefingItem("KILL THEM ALL");
 
 
-        api.addToFleet(FleetSide.PLAYER, "vic_stolas_test", FleetMemberType.SHIP, "ASCV Testbed", true);
+        FleetMemberAPI flagship = api.addToFleet(FleetSide.PLAYER, "vic_stolas_hunter", FleetMemberType.SHIP, "ASCV Pale Sun", true);
 
-		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standart", FleetMemberType.SHIP, "ASCV Sun Eater", true);
-		api.addToFleet(FleetSide.PLAYER, "vic_oriax_standard", FleetMemberType.SHIP, "ASCV Outbreak", false);
+        FactionAPI pirates = Global.getSettings().createBaseFaction(Factions.PIRATES);
+        PersonAPI officer = pirates.createRandomPerson(FullName.Gender.MALE);
+        officer.getStats().setSkillLevel(Skills.HELMSMANSHIP, 1);
+        officer.getStats().setSkillLevel(Skills.DAMAGE_CONTROL, 1);
+        officer.getStats().setSkillLevel(Skills.FIELD_MODULATION, 2);
+        officer.getStats().setSkillLevel(Skills.TARGET_ANALYSIS, 2);
+        officer.getStats().setSkillLevel(Skills.SYSTEMS_EXPERTISE, 1);
+        officer.getStats().setSkillLevel(Skills.ENERGY_WEAPON_MASTERY, 1);
+        officer.getStats().setLevel(6);
+        officer.setFaction("vic");
+        officer.setPersonality(Personalities.RECKLESS);
+        officer.getName().setFirst("Markus");
+        officer.getName().setLast("Yuhas");
+        officer.getName().setGender(FullName.Gender.MALE);
+        officer.setPortraitSprite("graphics/portraits/yuhasSane.png");
+        flagship.setCaptain(officer);
+        float maxCR = flagship.getRepairTracker().getMaxCR();
+        flagship.getRepairTracker().setCR(maxCR);
 
-        api.addToFleet(FleetSide.PLAYER, "vic_valafar_assault", FleetMemberType.SHIP, "ASCV Void Reaver", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_thamuz_standart", FleetMemberType.SHIP, "ASCV Despoiler", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_cresil_assault", FleetMemberType.SHIP, "ASCV 13", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_focalor_m_test", FleetMemberType.SHIP, "ASCV Test1", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_focalor_l_test", FleetMemberType.SHIP, "ASCV Test2", false);
-
-        api.addToFleet(FleetSide.PLAYER, "vic_moloch_standart", FleetMemberType.SHIP, "ASCV Maw of The Void", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_samael_standart", FleetMemberType.SHIP, "ASCV Scarab", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_jezebeth_standart", FleetMemberType.SHIP, "ASCV Beast", false);
-
-        api.addToFleet(FleetSide.PLAYER, "vic_xaphan_skirmisher", FleetMemberType.SHIP, "ASCV Abyss Walker", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_kobal_standart", FleetMemberType.SHIP, "ASCV Repressor", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_pruflas_skirmish", FleetMemberType.SHIP, "ASCV Keeper of Peace", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_nybbas_plasma", FleetMemberType.SHIP, "ASCV Warden", false);
+		api.addToFleet(FleetSide.PLAYER, "vic_pruflas_Demolisher", FleetMemberType.SHIP, "ASCV Sun Eater", false);
+		api.addToFleet(FleetSide.PLAYER, "vic_pruflas_Demolisher", FleetMemberType.SHIP, "ASCV Outbreak", false);
 
         //api.addToFleet(FleetSide.PLAYER, "vic_shabriri_drone", FleetMemberType.SHIP, "VIC Warden", false);
 
 
-        FactionAPI hegemony = Global.getSettings().createBaseFaction(Factions.HEGEMONY);
-        FleetMemberAPI member;
-        member = api.addToFleet(FleetSide.ENEMY, "mora_Strike", FleetMemberType.SHIP, false);
-        member.setShipName(hegemony.pickRandomShipName());
+        FactionAPI church = Global.getSettings().createBaseFaction(Factions.LUDDIC_CHURCH);
+        api.addToFleet(FleetSide.ENEMY, "legion_Escort", FleetMemberType.SHIP, church.pickRandomShipName(), true);
+        api.addToFleet(FleetSide.ENEMY, "colossus_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "starliner_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "nebula_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "nebula_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "buffalo_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "buffalo_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "hound_luddic_church_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "hound_luddic_church_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "condor_Attack", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "condor_Attack", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "eradicator_Assault", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "eradicator_Assault", FleetMemberType.SHIP, church.pickRandomShipName(), false);
 
 
         api.defeatOnShipLoss("SIN Falen");

@@ -31,16 +31,20 @@
 		
 		"vic_samael_standart":15,
 		"vic_samael_assault":15,
-
 	},
 	"combatLarge":{
 		"vic_valafar_assault":14,
 		"vic_valafar_hybrid":14,
 		"vic_valafar_laidlaw":4,
 		
-		"vic_thamuz_standart":20,
-		"vic_thamuz_burst":10,
+		"vic_thamuz_standart":15,
+		"vic_thamuz_burst":20,
 		
+		"vic_focalor_l_standart":14,
+		"vic_focalor_l_support":14,
+		
+		"vic_focalor_m_classic":14,
+		"vic_focalor_m_standart":14,
 	},
 	"combatCapital":{
 		"vic_apollyon_standart":6,

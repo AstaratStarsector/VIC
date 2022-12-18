@@ -1,0 +1,13 @@
+Location: Empyrean System, Cocytus, The Dawn Spire
+Date: 203.02.26
+
+"...With the transition to the active phase of interaction with the Core Worlds of the Persean Sector, the Aerospace Corps had to face many threats for which our officers and pilots, trained only within our own star system and not facing opponents in real combat, were not fully prepared.
+
+At the request of the initiative group of admirals and grand admirals, and with the approval of the head of the Department of the Armed Forces, Arnold Bernstein, our department has developed a new version of the system for simulating battles in outer space. The updated version of the system includes information not only about all the units at our current disposal, but also about all the currently known spacefaring vessels of both our allies and opponents within the Persean Sector, whether real or potential.
+
+The system, like its previous versions, is designed for training both senior officers and new pilots who are just beginning to take courses in the academies of the Aerospace Corps. The complexity of the simulation, the composition of fleets and the armament of combat units can be edited in real time, which allows the users to achieve a high level of system flexibility and rapidly switch between combat situations. The level of authenticity of the simulation, according to the results of tests conducted among officers and pilots of senior ranks, is 99.34%, which is within the acceptable values. Among the negative effects, according to the same sources, there is an excessively high level of similarity with reality, which can severely affect the perception of the users after prolonged drills. However, our department believes that this only proves the success of our work.
+
+I request your approval to update the combat simulation system, and together with the report, I provide all current technical information, as well as the commentary from the Director of the Department of the Armed Forces and the Admiralty. The introduction of the update into the training courses of the Aerospace Corps will allow us to adapt better and faster to all possible threats in the Persean Sector and ensure the superiority of the Conglomerate over our opponents in outer space."
+
+From: Director of the Department of Data and Information, Michelle Kitsune
+To: Chief Executive Officer, Tatiana Vasilevskaya

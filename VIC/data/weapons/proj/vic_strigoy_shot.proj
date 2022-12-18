@@ -16,10 +16,10 @@
 	"bulletSprite":"graphics/missiles/flechette_sml.png",
 	"behaviorSpec":{"behavior":"PROXIMITY_FUSE",
 	"shotRangeVariance": 0.25,
-					"range":5,
+					"range":10,
 					"explosionSpec":{"duration":0.1f,
-									 "radius":10,
-									 "coreRadius":10, # full damage within core radius - also equal to proximity fuse range
+									 "radius":15,
+									 "coreRadius":15, # full damage within core radius - also equal to proximity fuse range
 									 "collisionClass":PROJECTILE_FF,
 									 "collisionClassByFighter":PROJECTILE_FIGHTER,
 									 "particleSizeMin":30.0,

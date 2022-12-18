@@ -12,6 +12,7 @@
 	"flameoutTime":0.05, # total time from flameout to full fadeout
 	"noEngineGlowTime":0.05, # time spent without the engine glow being rendered
 	"fadeTime":0.05, # fadeout duration		
+	"armingTime":3,
 	"glowRadius":10,
 	"glowColor":[255,25,0,175],
 	"explosionSpec":{"duration":0.75f, # not visual
@@ -19,22 +20,6 @@
 					 "coreRadius":150, # full damage within core radius
 					 "collisionClass":MISSILE_FF,
 					 "collisionClassByFighter":MISSILE_FF},
-	"behaviorSpec":{"behavior":"PROXIMITY_FUSE",
-					"slowToMaxSpeed":true,
-					"range":100,
-					"vsMissileRange":0,
-					"explosionSpec":{"duration":0.75f,
-									 "radius":200,
-									 "coreRadius":150, # full damage within core radius
-									 "collisionClass":PROJECTILE_FF,
-									 "collisionClassByFighter":PROJECTILE_FIGHTER,
-									 "particleSizeMin":3.0,
-									 "particleSizeRange":3.0,
-									 "particleDuration":1,
-									 "particleCount":150,
-									 "particleColor":[253,110,14,175],
-									 "sound":"vic_hungruf_explosion"},
-					},
 	"engineSpec":{"turnAcc":0,
 				  "turnRate":30,
 				  "acc":150,

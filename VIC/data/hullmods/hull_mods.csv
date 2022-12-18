@@ -6,9 +6,10 @@ Has following effects on the ship:
 Shield's arc grows up to %s degrees, the more the shield is turned to the side of the ship
 Increases shield rotation and unfolding speed by %s
 Ballistic weapons range reduced by %s
+Ballistic weapons rate of fire increased by %s
 Energy weapons base range increased by %s su, doesn't affect beam weapons
 Energy weapons generate %s less flux","The more the shield is turned to the rear of the ship, the bigger its arc grows. Balances the perfomance of energy and ballistic weaponry.",graphics/hullmods/vic_laidlawTech.png
-Dynamic Shields Front,vic_dynamicshieldsfront,1,,Volkov Industries,,Shields,,,TRUE,,0,0,0,0,data.hullmods.vic_dynamicShieldsFront,Face front - more shield arc. ,Face front - more shield arc. ,graphics/hullmods/extended_shields.png
+#Dynamic Shields Front,vic_dynamicshieldsfront,1,,Volkov Industries,,Shields,,,TRUE,,0,0,0,0,data.hullmods.vic_dynamicShieldsFront,Face front - more shield arc. ,Face front - more shield arc. ,graphics/hullmods/extended_shields.png
 """Hellstorm"" Weapon System (exp.)",vic_hellstorm,1,,Volkov Industries,,Weapons,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_hellStorm,Extreme modifications to weapon systems which increase ballistic weapons' fire rate by %s and both energy weapons' damage and flux cost by %s.,Faster rate of fire and less flux cost for ballistic weapons. ,graphics/hullmods/vic_hellstorm.png
 """Hellstorm"" Weapon System ",vic_hellstormV2,1,,Volkov Industries,,Weapons,,,TRUE,,0,0,0,0,data.hullmods.vic_hellStormV2,"Extreme modifications to weapon systems which increase ballistic weapons' fire rate and ammo recharge rate by %s, both energy weapons' damage and flux cost by %s and max missile ammo and ammo recharge rate by %s. However, such significant alterations increase all weapon OP costs by %s.",Better weapon stats for increased OP.,graphics/hullmods/vic_hellstorm.png
 Convoy Drive,vic_convoyDrive,1,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_convoyDrive,"Increases the zero-flux speed bonus by %s and the range of ballistic and energy weapons by a factor of %s.

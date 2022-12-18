@@ -33,6 +33,8 @@ public class vic_shockDischarger extends BaseShipSystemScript {
     public float powerCollected = 0f;
     public float arcAmount = 0f;
 
+    public String powerDataKey = "vic_shockDischargerPower";
+
     public float suckedHard = 0;
     public float suckedSoft = 0;
 
@@ -91,7 +93,7 @@ public class vic_shockDischarger extends BaseShipSystemScript {
             case IDLE:
                 float PowerMult = 0.1f;
                 if (powerCollected >= hardCap) break;
-                if (powerCollected >= Threshold) PowerMult = Factor / (powerCollected - (Threshold - Factor));
+                if (powerCollected >= Threshold) PowerMult *= Threshold / powerCollected;
 
                 List<ShipAPI> listOfSuckTargets = CombatUtils.getShipsWithinRange(ship.getLocation(), suckRange);
                 //Collections.shuffle(listOfSuckTargets);
@@ -129,7 +131,7 @@ public class vic_shockDischarger extends BaseShipSystemScript {
                         Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischarger", "graphics/icons/hullsys/emp_emitter.png", "Flux Rapture", "soft flux being removed", false);
                     }
                 }
-                //Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischargerSuck", "graphics/icons/hullsys/emp_emitter.png", "SuckSpeed", suckSpeed / amount + "", false);
+                Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischargerSuck", "graphics/icons/hullsys/emp_emitter.png", "SuckSpeed", suckSpeed / amount + "", false);
 
                 /*
                 particleCD.advance(amount);
@@ -251,14 +253,23 @@ public class vic_shockDischarger extends BaseShipSystemScript {
                 break;
         }
 
-        String customDataID = "vic_shockDischargerPower" + ship.getId();
-        float powerPercent = 0;
-        if (customCombatData.get(customDataID) instanceof Float)
-            powerPercent = (float) customCombatData.get(customDataID);
-
-        powerPercent = MathUtils.clamp(powerCollected / hardCap, 0f, 1f);
+        String customDataID = powerDataKey + ship.getId();
+        float powerPercent = powerCollected;
 
         customCombatData.put(customDataID, powerPercent);
+    }
+
+    public float getPower (ShipAPI ship){
+        if ((ship == null) || (ship.getSystem() == null)) {
+            return 0f;
+        }
+
+        Object data = Global.getCombatEngine().getCustomData().get(powerDataKey + ship.getId());
+        if (data instanceof Float) {
+            return (float) data;
+        } else {
+            return 0f;
+        }
     }
 
     @Override

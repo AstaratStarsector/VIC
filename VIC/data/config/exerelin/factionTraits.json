@@ -1,0 +1,12 @@
+{	
+	"traits":[
+		{
+			"id":"vic_schizo",
+			"name":"Quantum Polarity",
+			"desc":"This faction is literally schizo changing their approach per",
+			"color":[224, 32, 48], #choose color
+			"icon":"graphics/exerelin/icons/intel/war.png",
+			"noRandom":true, #cuz we don't want anyone else aside VIC from having it? or.. i guess unless?
+		}
+	],
+}

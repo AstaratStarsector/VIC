@@ -25,12 +25,16 @@ import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
 import data.campaign.ids.vic_Items;
 import data.campaign.ids.vic_industries;
+import data.campaign.listners.vic_diploRandomizer;
+import data.campaign.listners.vic_stoalsSpawn;
 import data.scripts.plugins.timer.VIC_TimeTracker;
 import data.scripts.plugins.vic_brandEngineUpgradesDetectionRange;
 import data.scripts.weapons.ai.*;
 import data.scripts.weapons.autofireAI.vic_VerliokaAutofireAI;
 import data.world.VICGen;
 import exerelin.campaign.SectorManager;
+import exerelin.utilities.NexConfig;
+import exerelin.utilities.NexFactionConfig;
 import org.dark.shaders.light.LightData;
 import org.dark.shaders.util.ShaderLib;
 import org.dark.shaders.util.TextureData;
@@ -53,6 +57,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
             AFREET = "vic_afreet_main",
             AFREETLARGE = "vic_afreet_main_large",
             hungruf_main = "vic_hungruf_main",
+            hungruf_bomb = "vic_hungruf_sub",
             hatif_main = "vic_hatif_missile_main";
 
     public final String
@@ -75,6 +80,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
         //add special items
         ItemEffectsRepo.ITEM_EFFECTS.put(vic_Items.GMOfarm, GMO);
 
+
     }
 
     @Override
@@ -86,12 +92,15 @@ public class VIC_ModPlugin extends BaseModPlugin {
                 return new PluginPick<MissileAIPlugin>(new VIC_SwarmMirvAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case QUTRUB:
                 return new PluginPick<MissileAIPlugin>(new vic_qutrubStuckAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            //case "vic_apocrypha_sub":
             case AFREET:
                 return new PluginPick<MissileAIPlugin>(new vic_swervingDumbfire(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case AFREETLARGE:
-                return new PluginPick<MissileAIPlugin>(new vic_swervingDumbfire(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+                return new PluginPick<MissileAIPlugin>(new vic_swervingHoming(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case hungruf_main:
                 return new PluginPick<MissileAIPlugin>(new vic_hungrufMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            case hungruf_bomb:
+                return new PluginPick<MissileAIPlugin>(new vic_hungrufBombAI(missile), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case hatif_main:
                 return new PluginPick<MissileAIPlugin>(new vic_hatifMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             default:
@@ -130,6 +139,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
     @Override
     public void onGameLoad(boolean newGame) {
+        Global.getSector().addTransientListener(new vic_stoalsSpawn(false));
         if (Global.getSector().getEntityById("vic_star_empyrean") == null){
             onNewGame();
             onNewGameAfterEconomyLoad();

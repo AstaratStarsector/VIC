@@ -128,7 +128,7 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
         timeAccum += amount;
 
         // If we have a valid target, turn to face desired intercept point
-        if (acquireTarget(amount)) {
+        if (acquireTarget()) {
             if (engineDeadTimer <= 0f) {
                 readyToFly = true;
             }
@@ -227,7 +227,7 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
                 float andVel = MathUtils.getRandomNumberInRange(200,300);// * MathUtils.getRandomNumberInRange(-1,1);
                 submunition.setAngularVelocity(300);
                 //submunition.getVelocity().set(submunition.getVelocity().x * 0.75f + missile.getVelocity().x * 0.25f, submunition.getVelocity().y * 0.75f + missile.getVelocity().y * 0.25f);
-                Global.getCombatEngine().addPlugin(new vic_hungrufSubEffect((MissileAPI) submunition));
+                //Global.getCombatEngine().addPlugin(new vic_hungrufSubEffect((MissileAPI) submunition));
                 DamagingProjectileAPI submunitionDebris = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(launchingShip,
                         missile.getWeapon(), "vic_hungruf_sub_engine",
                         missile.getLocation(), angle, null);
@@ -275,7 +275,7 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
     }
 
     @Override
-    protected boolean acquireTarget(float amount) {
+    protected boolean acquireTarget() {
         // If our current target is totally invalid, look for a new one
         if (!isTargetValid(target)) {
             if (target instanceof ShipAPI) {

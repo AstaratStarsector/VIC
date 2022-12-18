@@ -1,0 +1,66 @@
+{
+    "displayName": "Classic",
+    "fluxCapacitors": 10,
+    "fluxVents": 15,
+    "hullId": "vic_focalor_m",
+	"goalVariant": true,
+    "hullMods": [
+        "missleracks",
+        "eccm"
+    ],
+    "permaMods": [],
+    "sMods": [],
+    "variantId": "vic_focalor_m_classic",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0029": "vic_azhdaya"}
+        },
+        {
+            "autofire": false,
+            "mode": "ALTERNATING",
+            "weapons": {
+                "WS0002:": "reaper",
+                "WS0003": "reaper"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "ALTERNATING",
+            "weapons": {
+                "WS0014": "harpoonpod",
+                "WS0015": "harpoonpod"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "ALTERNATING",
+            "weapons": {
+                "WS0001": "harpoonpod",
+                "WS0006": "vic_hatif_small",
+                "WS0007": "vic_hatif_small",
+                "WS0008": "vic_hatif_small",
+                "WS0009": "vic_hatif_small"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "ALTERNATING",
+            "weapons": {
+                "WS0012": "sabotpod",
+                "WS0013": "sabotpod"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0004": "vic_strigoy",
+                "WS0005": "vic_strigoy",
+                "WS0010": "vic_strigoy",
+                "WS0011": "vic_strigoy"
+            }
+        }
+    ]
+}

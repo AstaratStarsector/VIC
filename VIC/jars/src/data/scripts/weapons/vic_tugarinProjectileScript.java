@@ -101,43 +101,39 @@ public class vic_tugarinProjectileScript extends BaseEveryFrameCombatPlugin {
         phantomPos.x += proj.getLocation().x;
         phantomPos.y += proj.getLocation().y;
 
-        //If we are outside the screenspace, don't do the extra visual effects
-        if (!Global.getCombatEngine().getViewport().isNearViewport(phantomPos, ship.getCollisionRadius() * 1.5f)) {
-
-            //And finally spawn our "drill trails"
-            //If we have not gotten any IDs for them yet, get some IDs
-            if (drillTrailIDs[0] == 0f) {
-                for (int i = 0; i < drillTrailIDs.length; i++) {
-                    drillTrailIDs[i] = MagicTrailPlugin.getUniqueID();
-                }
-            }
-
-            //Then, spawn six trails, in two different positions, and offset them by angle
-            SpriteAPI spriteToUse = Global.getSettings().getSprite("fx", "SRD_trail_helix");
-            for (int i = 0; i < 1; i++) {
-                Vector2f positionToSpawn = new Vector2f(proj.getLocation().x, proj.getLocation().y);
-                positionToSpawn = VectorUtils.rotateAroundPivot(positionToSpawn, proj.getLocation(), proj.getFacing(), new Vector2f(0f, 0f));
-                MagicTrailPlugin.AddTrailMemberAdvanced(proj, drillTrailIDs[i], spriteToUse, positionToSpawn, 0, 0 * 0.5f,
-                        proj.getFacing() + 180f, 0f, 0f, 48f,
-                        256f, PHASE_COLOR, Color.RED, 1f, 0f, 0.1f, 0.3f, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,
-                        210f, 100f, new Vector2f(0f, 0f), null, CombatEngineLayers.CONTRAILS_LAYER);
-            }
-
-            float newSpeedMult = speedMult - ((flightTimeFraction) * amount * (float) Math.sqrt(speedMult) * 1.8f);
-            proj.getVelocity().scale(newSpeedMult / speedMult);
-            speedMult = speedMult - ((flightTimeFraction) * amount * (float) Math.sqrt(speedMult) * 1.8f);
-
-            rotation += rotationSpeed * amount * rotationDirection * speedMult;
-
-            ringRotation1 += ringRotationSpeed1 * amount * ringRotationDirection;
-            ringRotation2 += ringRotationSpeed2 * amount * -ringRotationDirection;
-
-            if (proj.isFading() && spawnParticle) {
-                engine.addHitParticle(proj.getLocation(), proj.getVelocity(), 400, 0.35f, 0.2f, 1.5f, PHASE_COLOR);
-                spawnParticle = false;
+        //And finally spawn our "drill trails"
+        //If we have not gotten any IDs for them yet, get some IDs
+        if (drillTrailIDs[0] == 0f) {
+            for (int i = 0; i < drillTrailIDs.length; i++) {
+                drillTrailIDs[i] = MagicTrailPlugin.getUniqueID();
             }
         }
 
+        //Then, spawn six trails, in two different positions, and offset them by angle
+        SpriteAPI spriteToUse = Global.getSettings().getSprite("fx", "SRD_trail_helix");
+        for (int i = 0; i < 1; i++) {
+            Vector2f positionToSpawn = new Vector2f(proj.getLocation().x, proj.getLocation().y);
+            positionToSpawn = VectorUtils.rotateAroundPivot(positionToSpawn, proj.getLocation(), proj.getFacing(), new Vector2f(0f, 0f));
+            MagicTrailPlugin.AddTrailMemberAdvanced(proj, drillTrailIDs[i], spriteToUse, positionToSpawn, 0, 0 * 0.5f,
+                    proj.getFacing() + 180f, 0f, 0f, 24f,
+                    128f, PHASE_COLOR, Color.RED, 1f, 0f, 0.1f, 0.3f, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,
+                    210f, 200f, new Vector2f(0f, 0f), null, CombatEngineLayers.CONTRAILS_LAYER);
+        }
+
+
+        if (proj.isFading() && spawnParticle) {
+            engine.addHitParticle(proj.getLocation(), proj.getVelocity(), 400, 0.35f, 0.2f, 1.5f, PHASE_COLOR);
+            spawnParticle = false;
+        }
+
+        float newSpeedMult = speedMult - ((flightTimeFraction) * amount * (float) Math.sqrt(speedMult) * 1.8f);
+        proj.getVelocity().scale(newSpeedMult / speedMult);
+        speedMult = speedMult - ((flightTimeFraction) * amount * (float) Math.sqrt(speedMult) * 1.8f);
+
+        rotation += rotationSpeed * amount * rotationDirection * speedMult;
+
+        ringRotation1 += ringRotationSpeed1 * amount * ringRotationDirection;
+        ringRotation2 += ringRotationSpeed2 * amount * -ringRotationDirection;
 
         if (!engine.isEntityInPlay(proj) || proj.didDamage()) {
             //lens flare

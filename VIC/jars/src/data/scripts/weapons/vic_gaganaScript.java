@@ -490,7 +490,7 @@ public class vic_gaganaScript implements EveryFrameWeaponEffectPlugin {
         @Override
         public String modifyDamageDealt(Object param, CombatEntityAPI target, DamageAPI damage, Vector2f point, boolean shieldHit) {
             if (param instanceof DamagingProjectileAPI && !shieldHit && target instanceof ShipAPI) {
-                if (((DamagingProjectileAPI) param).getProjectileSpecId().equals("vic_gagana_shot")) {
+                if (((DamagingProjectileAPI) param).getProjectileSpecId() != null && ((DamagingProjectileAPI) param).getProjectileSpecId().equals("vic_gagana_shot")) {
                     float addDamage = ((ShipAPI) target).getArmorGrid().getArmorRating() * 0.1f;
                     if (addDamage > 150) addDamage = 150;
                     /*

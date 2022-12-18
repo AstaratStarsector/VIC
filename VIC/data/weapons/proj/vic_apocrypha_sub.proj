@@ -13,8 +13,8 @@
 	"armingTime":0.5,
 	"noEngineGlowTime":0.5, # time spent without the engine glow being rendered
 	"fadeTime":0.5, # fadeout duration					 
-	"engineSpec":{"turnAcc":0,
-				  "turnRate":0,
+	"engineSpec":{"turnAcc":300,
+				  "turnRate":150,
 				  #"acc":35,
 				  "acc":500,
 				  "dec":0},

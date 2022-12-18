@@ -14,6 +14,7 @@ public class vic_dynamicShields extends BaseHullMod {
     public final float
             shieldSpeed = 1.5f,
             ballisticRangeMult = 0.9f,
+            ballisticRoFBonus = 15f,
             energyFlatRange = 100f,
             energyFluxMult = 0.9f;
 
@@ -21,6 +22,7 @@ public class vic_dynamicShields extends BaseHullMod {
     @Override
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getBallisticWeaponRangeBonus().modifyMult(id, ballisticRangeMult);
+        stats.getBallisticRoFMult().modifyPercent(id, ballisticRoFBonus);
         stats.getEnergyWeaponFluxCostMod().modifyMult(id, energyFluxMult);
 
         stats.getShieldUnfoldRateMult().modifyMult(id, shieldSpeed);
@@ -74,8 +76,9 @@ public class vic_dynamicShields extends BaseHullMod {
         if (index == 0) return Math.round(arcIncrease) + "";
         if (index == 1) return Math.round((shieldSpeed - 1) * 100) + "%";
         if (index == 2) return Math.round((1 - ballisticRangeMult) * 100) + "%";
-        if (index == 3) return Math.round(energyFlatRange) + "";
-        if (index == 4) return Math.round((1 - energyFluxMult) * 100) + "%";
+        if (index == 3) return Math.round(ballisticRoFBonus) + "%";
+        if (index == 4) return Math.round(energyFlatRange) + "";
+        if (index == 5) return Math.round((1 - energyFluxMult) * 100) + "%";
         return null;
     }
 
