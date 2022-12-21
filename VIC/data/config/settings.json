@@ -91,7 +91,11 @@
 
 		},		
 		"illustrations":{
-			"vic_cocytus_illustration":"graphics/illustrations/vic_cocytus_illustration.jpg",
+			"vic_cocytus_illustration":"graphics/illustrations/vic_cocytus_illustration.png",
+			"vic_purgatory_illustration":"graphics/illustrations/vic_purgatory_illustration.png",
+			"vic_phlegethon_illustration":"graphics/illustrations/vic_phlegethon_illustration.png",
+			"vic_megaera_illustration":"graphics/illustrations/vic_megaera_illustration.png",
+			"vic_kalada_illustration":"graphics/illustrations/vic_kalada_illustration.png",
 			
 		},
 	    "nex_vicVbombing":{

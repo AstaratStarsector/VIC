@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
+import com.fs.starfarer.api.impl.MusicPlayerPluginImpl;
 import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
@@ -25,6 +26,7 @@ public class Empyrean{
 
         StarSystemAPI system = sector.createStarSystem("Empyrean");
         system.getLocation().set(-2400, -19000);
+        system.getMemoryWithoutUpdate().set(MusicPlayerPluginImpl.MUSIC_SET_MEM_KEY, "music_vic_zenith's_call");
         system.setBackgroundTextureFilename("graphics/backgrounds/empyrean_background_blue.jpg");
 
         // create the star and generate the hyperspace anchor for this system
@@ -56,6 +58,7 @@ public class Empyrean{
                 2800f,
                 60f);
         Phlegethon.setCustomDescriptionId("vic_phlegethon"); //reference descriptions.csv
+        Phlegethon.setInteractionImage("illustrations", "vic_phlegethon_illustration");
 
 
         MarketAPI Phlegeton_market = addMarketplace(
@@ -250,6 +253,7 @@ public class Empyrean{
                 6800f,
                 180f);
         Purgatory.setCustomDescriptionId("vic_purgatory"); //reference descriptions.csv
+        Purgatory.setInteractionImage("illustrations", "vic_purgatory_illustration");
 
         MarketAPI Purgatory_market = addMarketplace("vic",
                 Purgatory,
@@ -412,6 +416,7 @@ public class Empyrean{
 
         PlanetAPI Megaera = system.addPlanet("vic_planet_megaera", Dis, "Megaera", "rocky_ice", 360f * (float) Math.random(), 110, 1400, 40);
         Megaera.setCustomDescriptionId("vic_megaera");
+        Megaera.setInteractionImage("illustrations", "vic_megaera_illustration");
 
         //Megaera_Market
         MarketAPI Megaera_market = addMarketplace(

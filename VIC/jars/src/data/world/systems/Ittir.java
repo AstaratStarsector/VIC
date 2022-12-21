@@ -50,6 +50,7 @@ public class Ittir{
                 2500f,
                 80f);
         Kalada.setCustomDescriptionId("vic_kalada"); //reference descriptions.csv
+        Kalada.setInteractionImage("illustrations", "vic_kalada_illustration");
 
         MarketAPI Kalada_market = addMarketplace(
                 "vic",

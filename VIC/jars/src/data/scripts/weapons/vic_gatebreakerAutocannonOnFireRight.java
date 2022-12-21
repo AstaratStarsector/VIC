@@ -475,6 +475,8 @@ public class vic_gatebreakerAutocannonOnFireRight implements EveryFrameWeaponEff
 
         float shellDir = weapon.getCurrAngle();
         float shellDirAngle = shellDir - MathUtils.getRandomNumberInRange(115,155);
+        float shellDecreaseScaleRandom = MathUtils.getRandomNumberInRange(0f, 1f);
+        float shellDecreaseScale = shellDecreaseScaleRandom;
 
         Vector2f shellSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shellDirAngle).scale(50f + (MathUtils.getRandomNumberInRange(-15f, 35f)));
         Vector2f origin = new Vector2f(weapon.getLocation());
@@ -485,7 +487,7 @@ public class vic_gatebreakerAutocannonOnFireRight implements EveryFrameWeaponEff
                 origin,
                 shellSpeed,
                 new Vector2f(8, 14),
-                new Vector2f(0, 0),
+                new Vector2f(-4f * shellDecreaseScale, -7f * shellDecreaseScale),
                 //angle,
                 360 * (float) Math.random(),
                 MathUtils.getRandomNumberInRange(-270f,270f),

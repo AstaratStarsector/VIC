@@ -52,7 +52,7 @@
 						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
 					},
 				    "width":10.0,
-				    "length":150.0,
+				    "length":60.0,
 				    "angle":180.0},
 
 				{"id":"ES2",

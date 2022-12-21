@@ -33,6 +33,16 @@
 			"randomStart":false, 
 		},
 	],
+	"music_vic_zenith's_call":[
+		{
+			"source":"sounds/music",
+			"volume":0.6,
+			"files":[
+				"Zeniths_Call.ogg",
+			],
+			"randomStart":false, 
+		},
+	],
 	},	
 	
 	

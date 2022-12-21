@@ -39,10 +39,10 @@ Power Redistributor,vic_powerRedistributor,4,,Volkov Industries,,,,,TRUE,,0,0,0,
 ,,,,,,,,,,,,,,,,,,
 VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_shieldsChanger,,Shield Changer,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
-Gatebreaker Mode Swapper,vic_variable_gatebreaker_mode,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_gatebreakerModeSwapper,"Taipan VLS systems incorporate an advanced internal autoforge, allowing a variety of warheads to be produced with a simple reconfiguration. Switching missile payloads can be done %s for changing hullmods.",Variable missile ammo selection. You shouldn't see this in-game.,graphics/hullmods/apex_variable_warheads.png
-Gatebreaker Autocannon,vic_gatebreaker_mode_autocannon,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,Nanoacid warheads.,graphics/hullmods/apex_warheads_acid.png
-Gatebreaker Shotgun,vic_gatebreaker_mode_shotgun,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,Kinetic warheads.,graphics/hullmods/apex_warheads_kin.png
-Gatebreaker Flamer,vic_gatebreaker_mode_flamer,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,EMP warheads.,graphics/hullmods/apex_warheads_emp.png
+Gatebreaker Mode Swapper,vic_variable_gatebreaker_mode,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_gatebreakerModeSwapper,Allows to change weapons on Devotee version of Stolas.,Variable weapon selection. You shouldn't see this in-game.,graphics/hullmods/vic_stolas_bounty_autocannon_hullmod.png
+Gatebreaker Autocannon,vic_gatebreaker_mode_autocannon,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,Kinetic Autocannon.,graphics/hullmods/vic_stolas_bounty_autocannon_hullmod.png
+Gatebreaker Shotgun,vic_gatebreaker_mode_shotgun,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,HE Shotgun.,graphics/hullmods/vic_stolas_bounty_shotgun_hullmod.png
+Gatebreaker Flamer,vic_gatebreaker_mode_flamer,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,Frag Flamer.,graphics/hullmods/vic_stolas_bounty_flamer_hullmod.png
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #VIC modular,,,,,,,,,,,,,,,,,,
