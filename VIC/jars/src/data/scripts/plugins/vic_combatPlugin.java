@@ -197,18 +197,19 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 entry2.setValue(entry2.getValue() - amount);
                 if (!entry2.getKey().isAlive() && ship.isAlive() && !ship.getSystem().isActive()) {
                     float CDReduction = 0;
+                    float CD = Global.getSettings().getShipSystemSpec("vic_hunterDrive").getCooldown(ship.getMutableStats());
                     switch (target.getHullSize()) {
                         case FRIGATE:
-                            CDReduction = 10;
+                            CDReduction = CD * 0.33f;
                             break;
                         case DESTROYER:
-                            CDReduction = 15;
+                            CDReduction = CD * 0.5f;
                             break;
                         case CRUISER:
-                            CDReduction = 20;
+                            CDReduction = CD * 0.66f;
                             break;
                         case CAPITAL_SHIP:
-                            CDReduction = 25;
+                            CDReduction = CD * 0.80f;
                             break;
                     }
                     ship.getSystem().setCooldownRemaining(ship.getSystem().getCooldownRemaining() - CDReduction);

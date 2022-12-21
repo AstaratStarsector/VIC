@@ -39,7 +39,7 @@ public class vic_astronomiconOnHit3 implements OnHitEffectPlugin {
 
     @Override
     public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
-        if (target instanceof ShipAPI) return;
+        if (target instanceof MissileAPI) return;
 
         explosion(point, engine, projectile);
     }

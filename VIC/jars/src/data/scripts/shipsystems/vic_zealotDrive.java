@@ -1,11 +1,11 @@
 package data.scripts.shipsystems;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.combat.CombatEngineLayers;
+import com.fs.starfarer.api.combat.DamageType;
+import com.fs.starfarer.api.combat.MutableShipStatsAPI;
+import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
-import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.combat.CombatEngine;
-import data.scripts.plugins.vic_combatPlugin;
 import data.scripts.util.MagicRender;
 import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
@@ -14,7 +14,6 @@ import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lwjgl.util.vector.Vector2f;
 
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +21,7 @@ import java.util.HashMap;
 import static com.fs.starfarer.api.util.Misc.ZERO;
 import static data.scripts.plugins.vic_combatPlugin.AddHunterDriveTarget;
 
-public class vic_hunterDrive extends BaseShipSystemScript {
+public class vic_zealotDrive extends BaseShipSystemScript {
 
     float
             speedBoost = 350,
@@ -141,7 +140,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                 (Vector2f) new Vector2f((waveRange) * 8, (waveRange) * 8),
                                 rotation,
                                 spin,
-                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(255, 255)),
+                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(255, 255)),
                                 true,
                                 0, 0, 0.4f, 0.8f, 0,
                                 0f,
@@ -158,7 +157,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                 (Vector2f) new Vector2f((waveRange) * 5f, (waveRange) * 5.5f),
                                 rotation,
                                 spin,
-                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(255, 255)),
+                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(255, 255)),
                                 true,
                                 0, 0, 0.4f, 0.8f, 0,
                                 0f,
@@ -175,7 +174,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                 (Vector2f) new Vector2f((waveRange) * 3, (waveRange) * 3),
                                 rotation,
                                 spin * -1,
-                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(199, 200)),
+                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(199, 200)),
                                 true,
                                 0, 0, 0.4f, 0.8f, 0,
                                 0.4f,
@@ -192,7 +191,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                 (Vector2f) new Vector2f(250f, 250f),
                                 rotation,
                                 spin * -1,
-                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), 50),
+                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(110, 128), 50),
                                 true,
                                 0.5f, 0.5f, 0.8f, 1.6f, 0,
                                 0.3f,
@@ -218,7 +217,22 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                             0.6f,
                             //0,
                             0.2f,
-                            Color.CYAN);
+                            Color.RED);
+
+                    for (int i = 0; i < arcMulti.get(ship.getHullSize()); i++){
+                        Global.getCombatEngine().spawnEmpArcPierceShields(ship,
+                                ship.getLocation(),
+                                null,
+                                ship,
+                                DamageType.ENERGY,
+                                0,
+                                200,
+                                10000,
+                                null,
+                                20,
+                                new Color(0, 118, 210,255),
+                                Color.white);
+                    }
                 }
 
 
@@ -232,8 +246,8 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                 target.getFluxTracker().beginOverloadWithTotalBaseDuration(1f);
                             }
                             Vector2f empPos = new Vector2f((ship.getLocation().x + target.getLocation().x) * 0.5f, (ship.getLocation().y + target.getLocation().y) * 0.5f);
-                            float damage = 0;
-                            if (target.isFighter()) damage = 150;
+                            float damage = 150f;
+                            if (target.isFighter()) damage = 350f;
 
                             for (int i = 0; i < arcMulti.get(target.getHullSize()); i++){
                                 Global.getCombatEngine().spawnEmpArcPierceShields(ship,
@@ -242,14 +256,13 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                         target,
                                         DamageType.ENERGY,
                                         damage,
-                                        350,
+                                        50,
                                         10000,
                                         null,
                                         20,
-                                        new Color(0, 118, 210,255),
+                                        new Color(0, 112, 210,255),
                                         Color.white);
                             }
-                            if (!target.isFighter()) AddHunterDriveTarget(ship, target);
                         }
                     }
 

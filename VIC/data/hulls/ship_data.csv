@@ -27,4 +27,4 @@ VIC-A71 Apollyon,vic_apollyon,Shturmcapital,Volkov Industries,vic_quantumlunge,3
 VIC-U61 Oriax,vic_oriax,Battlecruiser,Volkov Industries,vic_shockDischarger,25,10000,1000,15000,,1000,250,2,65,40,30,10,15,2200,OMNI,,90,0.4,0.8,,,400,600,300,600,8,30,8,350000,5,20,600,0.25,45,45,,rare_bp,,0.35,3,5,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #unique,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Devotee,vic_stolas_bounty,Graftcruiser,Volkov Industries,vic_hunterDrive,25,7500,1000,14000,,1250,230,,75,85,65,25,50,1200,OMNI,,90,0.4,1.4,,,140,160,30,60,3,30,9,125000,4,12,510,0.25,45,45,HIDE_IN_CODEX,"no_autofit, no_drop, no_bp_drop, no_dealer",,0.5,2,3,
+Devotee,vic_stolas_bounty,Graftcruiser,Volkov Industries,vic_zealotDrive,25,7500,1000,14000,,1250,230,,75,85,65,25,50,1200,OMNI,,90,0.4,1.4,,,140,160,30,60,3,30,9,125000,4,12,510,0.25,45,45,HIDE_IN_CODEX,"no_autofit, no_drop, no_bp_drop, no_dealer",,0.5,2,3,

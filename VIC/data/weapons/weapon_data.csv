@@ -241,6 +241,8 @@ Focalor Right Glow,vic_focalor_radar_right_glow,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYS
 Focalor Left Glow,vic_focalor_radar_left_glow,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Focalor Bridge Glow,vic_focalor_radar_bridge_glow,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Smoke after System,vic_smokeAfterSystem,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Blonkers,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Blonker red,vic_blonkerRed,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
 Blonker Cyan,vic_blonkerCyan,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,

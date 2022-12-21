@@ -87,7 +87,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
         if (doOnce) {
             ship = weapon.getShip();
             engine.getListenerManager().addListener(new vic_stolasDamageListener(weapon.getShip(), weapon));
-            weapon.setMaxAmmo(2);
+            weapon.setMaxAmmo(3);
             weapon.setAmmo(0);
             for (WeaponAPI tmp : ship.getAllWeapons()) {
                 if (tmp.getId().equals("vic_stolasBuildIn")) slot = tmp.getSlot();

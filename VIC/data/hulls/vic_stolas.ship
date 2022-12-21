@@ -40,6 +40,8 @@
     "WS0007": "vic_stolas_weapon_deco_left",
     "WS0008": "vic_stolasBuildIn",
     "WS0009": "vic_stolas_weapon_deco_right",
+    "WS0010": "vic_smokeAfterSystem",
+    "WS0011": "vic_smokeAfterSystem",
     "WS0017": "vic_blonkerCyan",
     "WS0018": "vic_blonkerCyan",
     "WS0019": "vic_blonkerCyan",
@@ -388,6 +390,24 @@
       "arc": 0,
       "angle": -0,
       "locations": [-7.5, -31.5]
+    },
+    {
+      "id": "WS0010",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -126,
+      "locations": [-35.5, -69]
+    },
+    {
+      "id": "WS0011",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 126,
+      "locations": [-35.5, 69]
     }
   ],
   "engineSlots": [

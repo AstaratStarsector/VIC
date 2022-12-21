@@ -41,7 +41,9 @@ public class vic_swervingHoming extends VIC_BaseMissile {
         missile.giveCommand(ShipCommand.ACCELERATE);
         timer.advance(amount);
         boolean changeDirection = false;
-        float desiredAngle = Misc.getAngleInDegrees(missile.getLocation(), target.getLocation());
+
+        float desiredAngle = missile.getFacing();
+        if (target != null) desiredAngle = Misc.getAngleInDegrees(missile.getLocation(), target.getLocation());
 
         float rotationNeeded = MathUtils.getShortestRotation(missile.getFacing(), desiredAngle);
         if ((rotationNeeded > 3f && state.equals(swervingState.right)) ||
