@@ -97,7 +97,7 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                     DistortionShader.addDistortion(wave);
 
                     int particleCount = 33;
-                    final Color PARTICLE_COLOR = new Color(113, 255, 237);
+                    final Color PARTICLE_COLOR = new Color(206, 13, 13);
                     for (int x = 0; x < particleCount; x++) {
                         Global.getCombatEngine().addSmoothParticle(LocPulse,
                                 MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(1000f, 1750f), (float) Math.random() * 360f),
@@ -108,7 +108,7 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                     }
 
                     int particleCount1 = 33;
-                    final Color PARTICLE_COLOR1 = new Color(120, 228, 255);
+                    final Color PARTICLE_COLOR1 = new Color(177, 75, 19);
                     for (int x = 0; x < particleCount1; x++) {
                         Global.getCombatEngine().addSmoothParticle(LocPulse,
                                 MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(1000f, 1750f), (float) Math.random() * 360f),
@@ -119,7 +119,7 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                     }
 
                     int particleCount2 = 33;
-                    final Color PARTICLE_COLOR2 = new Color(113, 255, 210);
+                    final Color PARTICLE_COLOR2 = new Color(255, 163, 48);
                     for (int x = 0; x < particleCount2; x++) {
                         Global.getCombatEngine().addSmoothParticle(LocPulse,
                                 MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(1000f, 1750f), (float) Math.random() * 360f),
@@ -133,14 +133,14 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                     for (int i = 0; i < 2; i++) {
                         float spin = MathUtils.getRandomNumberInRange(-120, 120);
                         MagicRender.battlespace(
-                                Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                                Global.getSettings().getSprite("fx", "vic_devotee_pulse_secondary"),
                                 LocPulse,
                                 ship.getVelocity(),
                                 new Vector2f(1f, 1f),
                                 (Vector2f) new Vector2f((waveRange) * 8, (waveRange) * 8),
                                 rotation,
                                 spin,
-                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(255, 255)),
+                                new Color(255, 100, 100, 255),
                                 true,
                                 0, 0, 0.4f, 0.8f, 0,
                                 0f,
@@ -150,14 +150,14 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                         );
 
                         MagicRender.battlespace(
-                                Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                                Global.getSettings().getSprite("fx", "vic_devotee_pulse_secondary"),
                                 LocPulse,
                                 ship.getVelocity(),
                                 new Vector2f(100f, 100f),
                                 (Vector2f) new Vector2f((waveRange) * 5f, (waveRange) * 5.5f),
                                 rotation,
                                 spin,
-                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(255, 255)),
+                                new Color(255, 100, 100, 255),
                                 true,
                                 0, 0, 0.4f, 0.8f, 0,
                                 0f,
@@ -167,14 +167,14 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                         );
 
                         MagicRender.battlespace(
-                                Global.getSettings().getSprite("fx", "vic_stolas_emp_main"),
+                                Global.getSettings().getSprite("fx", "vic_devotee_pulse_main"),
                                 LocPulse,
                                 ship.getVelocity(),
                                 new Vector2f(500f, 500f),
                                 (Vector2f) new Vector2f((waveRange) * 3, (waveRange) * 3),
                                 rotation,
                                 spin * -1,
-                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(199, 200)),
+                                new Color(255, 100, 100, 200),
                                 true,
                                 0, 0, 0.4f, 0.8f, 0,
                                 0.4f,
@@ -184,14 +184,14 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                         );
 
                         MagicRender.battlespace(
-                                Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                                Global.getSettings().getSprite("fx", "vic_devotee_pulse_secondary"),
                                 LocPulse,
                                 ship.getVelocity(),
                                 new Vector2f(750f, 750f),
                                 (Vector2f) new Vector2f(250f, 250f),
                                 rotation,
                                 spin * -1,
-                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(110, 128), MathUtils.getRandomNumberInRange(110, 128), 50),
+                                new Color(255, 100, 100, 50),
                                 true,
                                 0.5f, 0.5f, 0.8f, 1.6f, 0,
                                 0.3f,
@@ -230,7 +230,7 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                                 10000,
                                 null,
                                 20,
-                                new Color(0, 118, 210,255),
+                                new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(0, 75), 0, 255),
                                 Color.white);
                     }
                 }
@@ -246,8 +246,8 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                                 target.getFluxTracker().beginOverloadWithTotalBaseDuration(1f);
                             }
                             Vector2f empPos = new Vector2f((ship.getLocation().x + target.getLocation().x) * 0.5f, (ship.getLocation().y + target.getLocation().y) * 0.5f);
-                            float damage = 150f;
-                            if (target.isFighter()) damage = 350f;
+                            float damage = 500f;
+                            if (target.isFighter()) damage = 500f;
 
                             for (int i = 0; i < arcMulti.get(target.getHullSize()); i++){
                                 Global.getCombatEngine().spawnEmpArcPierceShields(ship,
@@ -260,7 +260,7 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                                         10000,
                                         null,
                                         20,
-                                        new Color(0, 112, 210,255),
+                                        new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(0, 75), 0, 255),
                                         Color.white);
                             }
                         }

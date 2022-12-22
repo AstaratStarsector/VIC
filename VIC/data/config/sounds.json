@@ -92,6 +92,11 @@
 		{"file":"sounds/effects/vic_hunter_drive_deactivate.ogg","pitch":0.9, "volume":1.3},
 
 	],
+
+				"vic_zealot_drive_deactivate":[
+		{"file":"sounds/effects/vic_zealot_drive_deactivate.ogg","pitch":0.9, "volume":1.3},
+
+	],
 	
 	
 	"vic_besomar_shot":[

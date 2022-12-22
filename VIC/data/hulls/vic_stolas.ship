@@ -398,7 +398,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": -126,
-      "locations": [-35.5, -69]
+      "locations": [-27.5, -69]
     },
     {
       "id": "WS0011",
@@ -407,7 +407,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 126,
-      "locations": [-35.5, 69]
+      "locations": [-27.5, 69]
     }
   ],
   "engineSlots": [

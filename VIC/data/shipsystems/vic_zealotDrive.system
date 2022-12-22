@@ -16,7 +16,7 @@
 
 	"useSound":"vic_hunter_drive_activate",
 	"loopSound":"vic_hunter_drive_loop",
-	"deactivateSound":"vic_hunter_drive_deactivate",
+	"deactivateSound":"vic_zealot_drive_deactivate",
 	"outOfUsesSound":"engine_disabled",
 	
 	"aiHints":{

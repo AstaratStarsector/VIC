@@ -26,8 +26,11 @@
     "THT1": "vic_vernierEngine_orange",
     "WS0004": "vic_stolas_engine_glow_right",
     "WS0005": "vic_stolas_engine_glow_left",
+    "WS0008": "vic_smokeAfterSystem",
+    "WS0009": "vic_smokeAfterSystem",
     "WS0010": "vic_stolas_bounty_weapon_deco_left",
-    "WS0011": "vic_stolas_bounty_weapon_deco_right"
+    "WS0011": "vic_stolas_bounty_weapon_deco_right",
+    "WS0012": "vic_deco_stolas_bounty_system_glow"
   },
   "weaponSlots": [
     {
@@ -164,6 +167,33 @@
       "arc": 0,
       "angle": -0,
       "locations": [-8, -31.5]
+    },
+    {
+      "id": "WS0008",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 10,
+      "angle": 126,
+      "locations": [-29, 69]
+    },
+    {
+      "id": "WS0009",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 10,
+      "angle": -126,
+      "locations": [-29, -69]
+    },
+    {
+      "id": "WS0012",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-5, 0.5]
     }
   ],
   "engineSlots": [
@@ -190,10 +220,10 @@
         ],
         "mode": "",
         "contrailColor": [
-          15,
-          15,
-          15,
-          75
+          33,
+          33,
+          33,
+          200
         ],
         "contrailCampaignColor": [
           255,
