@@ -18,7 +18,7 @@ import java.util.Map;
 
 import static com.fs.starfarer.api.util.Misc.ZERO;
 
-public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
+public class vic_gatebreakerShotgunOnFir implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
     boolean firstBarrel = true;
 
@@ -96,25 +96,35 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
     //The position the particles are spawned (or at least where their arc originates when using offsets) compared to their weapon's center [or shot offset, see
     //SPAWN_POINT_ANCHOR_ALTERNATION above], if the weapon is a turret (or HIDDEN)
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_TURRET = new HashMap<>();
+    private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_TURRET_RIGHT = new HashMap<>();
 
     static {
         PARTICLE_SPAWN_POINT_TURRET.put("default", new Vector2f(0f, 100f));
-        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_1", new Vector2f(-3f, -5f));
-        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_2", new Vector2f(-3f, -5f));
-        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_3", new Vector2f(-3f, -5f));
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_1", new Vector2f(3f, -5f));
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_2", new Vector2f(3f, -5f));
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_3", new Vector2f(3f, -5f));
+
+        PARTICLE_SPAWN_POINT_TURRET_RIGHT .put("default", new Vector2f(0f, 100f));
+        PARTICLE_SPAWN_POINT_TURRET_RIGHT .put("BLOWBACK_ID_1", new Vector2f(-3f, -5f));
+        PARTICLE_SPAWN_POINT_TURRET_RIGHT .put("BLOWBACK_ID_2", new Vector2f(-3f, -5f));
+        PARTICLE_SPAWN_POINT_TURRET_RIGHT .put("BLOWBACK_ID_3", new Vector2f(-3f, -5f));
 
     }
-
     //The position the particles are spawned (or at least where their arc originates when using offsets) compared to their weapon's center [or shot offset, see
     //SPAWN_POINT_ANCHOR_ALTERNATION above], if the weapon is a hardpoint
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_HARDPOINT = new HashMap<>();
+    private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_HARDPOINT_RIGHT = new HashMap<>();
 
     static {
         PARTICLE_SPAWN_POINT_HARDPOINT.put("default", new Vector2f(0f, 100f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_1", new Vector2f(-3f, -5f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_2", new Vector2f(-3f, -5f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_3", new Vector2f(-3f, -5f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_1", new Vector2f(3f, -5f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_2", new Vector2f(3f, -5f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_3", new Vector2f(3f, -5f));
 
+        PARTICLE_SPAWN_POINT_HARDPOINT_RIGHT.put("default", new Vector2f(0f, 100f));
+        PARTICLE_SPAWN_POINT_HARDPOINT_RIGHT.put("BLOWBACK_ID_1", new Vector2f(-3f, -5f));
+        PARTICLE_SPAWN_POINT_HARDPOINT_RIGHT.put("BLOWBACK_ID_2", new Vector2f(-3f, -5f));
+        PARTICLE_SPAWN_POINT_HARDPOINT_RIGHT.put("BLOWBACK_ID_3", new Vector2f(-3f, -5f));
     }
 
     //Which kind of particle is spawned (valid values are "SMOOTH", "BRIGHT" and "SMOKE")
@@ -152,7 +162,7 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
         PARTICLE_SIZE_MIN.put("FLASH_CORE_1", 150f);
         PARTICLE_SIZE_MIN.put("BLOWBACK_ID_1", 10f);
         PARTICLE_SIZE_MIN.put("BLOWBACK_ID_2", 50f);
-        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_3", 35f);
+        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_3", 50f);
 
 
     }
@@ -166,7 +176,7 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
         PARTICLE_SIZE_MAX.put("FLASH_CORE_1", 150f);
         PARTICLE_SIZE_MAX.put("BLOWBACK_ID_1", 20f);
         PARTICLE_SIZE_MAX.put("BLOWBACK_ID_2", 50f);
-        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_3", 35f);
+        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_3", 50f);
 
     }
 
@@ -202,8 +212,8 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
         PARTICLE_DURATION_MIN.put("FLASH_FRINGE_1", 0.15f);
         PARTICLE_DURATION_MIN.put("FLASH_CORE_1", 0.25f);
         PARTICLE_DURATION_MIN.put("BLOWBACK_ID_1", 0.75f);
-        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_2", 0.3f);
-        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_3", 0.2f);
+        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_2", 0.2f);
+        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_3", 0.1f);
 
     }
 
@@ -215,8 +225,8 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
         PARTICLE_DURATION_MAX.put("FLASH_FRINGE_1", 0.15f);
         PARTICLE_DURATION_MAX.put("FLASH_CORE_1", 0.25f);
         PARTICLE_DURATION_MAX.put("BLOWBACK_ID_1", 1.5f);
-        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_2", 0.3f);
-        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_3", 0.2f);
+        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_2", 0.2f);
+        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_3", 0.1f);
 
     }
 
@@ -256,10 +266,14 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
     //The offset of the "arc" the particles spawn in, compared to the weapon's forward facing.
     //  For example: 90f = the center of the arc is 90 degrees clockwise around the weapon, 0f = the same arc center as the weapon's facing.
     private static final Map<String, Float> PARTICLE_ARC_FACING = new HashMap<>();
+    private static final Map<String, Float> PARTICLE_ARC_FACING_RIGHT = new HashMap<>();
 
     static {
         PARTICLE_ARC_FACING.put("default", 0f);
-        PARTICLE_ARC_FACING.put("BLOWBACK_ID_1", -135f);
+        PARTICLE_ARC_FACING.put("BLOWBACK_ID_1", 135f);
+
+        PARTICLE_ARC_FACING_RIGHT.put("default", 0f);
+        PARTICLE_ARC_FACING_RIGHT.put("BLOWBACK_ID_1", -135f);
 
     }
 
@@ -276,18 +290,21 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
     //-----------------------------------------------------------You don't need to touch stuff beyond this point!------------------------------------------------------------
 
 
-    //These ones are used in-script, so don't touch them!
+    //These are used in-script, so don't touch them!
     private boolean hasFiredThisCharge = false;
     private int currentBarrel = 0;
     private boolean shouldOffsetBarrelExtra = false;
+    private boolean RIGHT = false;
 
     //Instantiator
-    public vic_gatebreakerShotgunOnFireRight() {
-    }
 
     boolean doOnce = true;
 
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
+        if (doOnce){
+            RIGHT = weapon.getSlot().getLocation().y > 0;
+            doOnce = false;
+        }
         //Don't run while paused, or without a weapon
         if (weapon == null || amount <= 0f) {
             return;
@@ -551,7 +568,7 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
         Vector2f weaponLocation = weapon.getLocation();
         float shipFacing = weapon.getCurrAngle();
         float shellDir = weapon.getCurrAngle();
-        float shellDirAngle = shellDir - MathUtils.getRandomNumberInRange(115, 155);
+        float shellDirAngle = shellDir + MathUtils.getRandomNumberInRange(115, 155);
         float nebulaSideDir1 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
         float nebulaSideDir2 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
         float nebulaSideDir3 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
@@ -564,14 +581,6 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
                 weapon.getSlot().isHardpoint() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE : MUZZLE_OFFSET_TURRET_SHOCKWAVE, shipFacing);
         Vector2f shellSpawnLocation = new Vector2f(weapon.getLocation());
 
-        Vector2f nebulaSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(15f, 22.5f));
-        Vector2f nebulaSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(5f, 15f));
-        Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(0f, 5f));
-        Vector2f nebulaSideSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir1).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-        Vector2f nebulaSideSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir2).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-        Vector2f nebulaSideSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir3).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-        Vector2f nebulaSideSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir4).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-        Vector2f nebulaSideSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir5).scale(MathUtils.getRandomNumberInRange(0f, 15f));
         Vector2f shellSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shellDirAngle).scale(30f + (MathUtils.getRandomNumberInRange(-10f, 15f)));
 
 
@@ -628,6 +637,15 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
             DistortionShader.addDistortion(wave);
 
 
+            Vector2f nebulaSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(15f, 22.5f));
+            Vector2f nebulaSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+            Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(0f, 5f));
+            Vector2f nebulaSideSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir1).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+            Vector2f nebulaSideSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir2).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+            Vector2f nebulaSideSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir3).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+            Vector2f nebulaSideSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir4).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+            Vector2f nebulaSideSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir5).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+
             Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed3, 10f, 5f, 0.2f, 0.2f, 2.5f, new Color(100, 100, 100, 255));
             Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed2, 15f, 3f, 0.2f, 0.2f, 2.25f, new Color(100, 100, 100, 255));
             Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed, 30f, 3f, 0.2f, 0.2f, 2f, new Color(100, 100, 100, 255));
@@ -648,5 +666,4 @@ public class vic_gatebreakerShotgunOnFireRight implements EveryFrameWeaponEffect
 
 
     }
-
 }

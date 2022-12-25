@@ -1,10 +1,7 @@
 package data.scripts.shipsystems;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.CombatEngineLayers;
-import com.fs.starfarer.api.combat.DamageType;
-import com.fs.starfarer.api.combat.MutableShipStatsAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import data.scripts.util.MagicRender;
 import data.scripts.utilities.vic_graphicLibEffects;
@@ -33,6 +30,7 @@ public class vic_zealotDrive extends BaseShipSystemScript {
     boolean doOnce = true;
 
     ArrayList<ShipAPI> affectedShips = new ArrayList<>();
+    ArrayList<MissileAPI> affectedMissiles = new ArrayList<>();
 
     HashMap<ShipAPI.HullSize, Float> arcMulti = new HashMap<>();
     {
@@ -63,6 +61,7 @@ public class vic_zealotDrive extends BaseShipSystemScript {
 
                     currWaveDuration = 0f;
                     affectedShips.clear();
+                    affectedMissiles.clear();
 
                     float rotation = (float) Math.random() * 360;
                     Vector2f LocPulse = ship.getLocation();
@@ -233,13 +232,15 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                                 new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(0, 75), 0, 255),
                                 Color.white);
                     }
+                    ship.getFluxTracker().beginOverloadWithTotalBaseDuration(2f);
                 }
 
 
                 if (currWaveDuration <= waveDuration){
                     currWaveDuration += amount;
+                    float range = waveRange * currWaveDuration / waveDuration;
 
-                    for (ShipAPI target : AIUtils.getNearbyEnemies(ship, waveRange * currWaveDuration / waveDuration)){
+                    for (ShipAPI target : AIUtils.getNearbyEnemies(ship, range)){
                         if (!affectedShips.contains(target)){
                             affectedShips.add(target);
                             if (target.isPhased()){
@@ -266,6 +267,24 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                         }
                     }
 
+                    for (MissileAPI missile : AIUtils.getNearbyEnemyMissiles(ship, range)) {
+                        if (!affectedMissiles.contains(missile)) {
+                            affectedMissiles.add(missile);
+                            Vector2f empPos = new Vector2f((ship.getLocation().x + missile.getLocation().x) * 0.5f, (ship.getLocation().y + missile.getLocation().y) * 0.5f);
+                            Global.getCombatEngine().spawnEmpArcPierceShields(ship,
+                                    empPos,
+                                    null,
+                                    missile,
+                                    DamageType.ENERGY,
+                                    350,
+                                    0,
+                                    10000,
+                                    null,
+                                    20,
+                                    new Color(0, 118, 210, 255),
+                                    Color.white);
+                        }
+                    }
                 }
 
                 stats.getMaxSpeed().unmodify(id);

@@ -3,9 +3,6 @@ package data.scripts.shipsystems;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
-import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.combat.CombatEngine;
-import data.scripts.plugins.vic_combatPlugin;
 import data.scripts.util.MagicRender;
 import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
@@ -13,7 +10,6 @@ import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lwjgl.util.vector.Vector2f;
-
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -34,8 +30,10 @@ public class vic_hunterDrive extends BaseShipSystemScript {
     boolean doOnce = true;
 
     ArrayList<ShipAPI> affectedShips = new ArrayList<>();
+    ArrayList<MissileAPI> affectedMissiles = new ArrayList<>();
 
     HashMap<ShipAPI.HullSize, Float> arcMulti = new HashMap<>();
+
     {
         arcMulti.put(ShipAPI.HullSize.FIGHTER, 2f);
         arcMulti.put(ShipAPI.HullSize.FRIGATE, 4f);
@@ -64,6 +62,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
 
                     currWaveDuration = 0f;
                     affectedShips.clear();
+                    affectedMissiles.clear();
 
                     float rotation = (float) Math.random() * 360;
                     Vector2f LocPulse = ship.getLocation();
@@ -172,7 +171,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                 LocPulse,
                                 ship.getVelocity(),
                                 new Vector2f(500f, 500f),
-                                (Vector2f) new Vector2f((waveRange) * 3, (waveRange) * 3),
+                                new Vector2f((waveRange) * 3, (waveRange) * 3),
                                 rotation,
                                 spin * -1,
                                 new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(199, 200)),
@@ -189,7 +188,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                 LocPulse,
                                 ship.getVelocity(),
                                 new Vector2f(750f, 750f),
-                                (Vector2f) new Vector2f(250f, 250f),
+                                new Vector2f(250f, 250f),
                                 rotation,
                                 spin * -1,
                                 new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(220, 255), 50),
@@ -222,20 +221,21 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                 }
 
 
-                if (currWaveDuration <= waveDuration){
+                if (currWaveDuration <= waveDuration) {
                     currWaveDuration += amount;
+                    float range = waveRange * currWaveDuration / waveDuration;
 
-                    for (ShipAPI target : AIUtils.getNearbyEnemies(ship, waveRange * currWaveDuration / waveDuration)){
-                        if (!affectedShips.contains(target)){
+                    for (ShipAPI target : AIUtils.getNearbyEnemies(ship, range)) {
+                        if (!affectedShips.contains(target)) {
                             affectedShips.add(target);
-                            if (target.isPhased()){
+                            if (target.isPhased()) {
                                 target.getFluxTracker().beginOverloadWithTotalBaseDuration(1f);
                             }
                             Vector2f empPos = new Vector2f((ship.getLocation().x + target.getLocation().x) * 0.5f, (ship.getLocation().y + target.getLocation().y) * 0.5f);
                             float damage = 0;
                             if (target.isFighter()) damage = 150;
 
-                            for (int i = 0; i < arcMulti.get(target.getHullSize()); i++){
+                            for (int i = 0; i < arcMulti.get(target.getHullSize()); i++) {
                                 Global.getCombatEngine().spawnEmpArcPierceShields(ship,
                                         empPos,
                                         null,
@@ -246,12 +246,32 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                         10000,
                                         null,
                                         20,
-                                        new Color(0, 118, 210,255),
+                                        new Color(0, 118, 210, 255),
                                         Color.white);
                             }
                             if (!target.isFighter()) AddHunterDriveTarget(ship, target);
                         }
                     }
+                    for (MissileAPI missile : AIUtils.getNearbyEnemyMissiles(ship, range)) {
+                        if (!affectedMissiles.contains(missile)) {
+                            affectedMissiles.add(missile);
+                            Vector2f empPos = new Vector2f((ship.getLocation().x + missile.getLocation().x) * 0.5f, (ship.getLocation().y + missile.getLocation().y) * 0.5f);
+                            Global.getCombatEngine().spawnEmpArcPierceShields(ship,
+                                    empPos,
+                                    null,
+                                    missile,
+                                    DamageType.ENERGY,
+                                    0,
+                                    350,
+                                    10000,
+                                    null,
+                                    20,
+                                    new Color(0, 118, 210, 255),
+                                    Color.white);
+                            missile.flameOut();
+                        }
+                    }
+
 
                 }
 

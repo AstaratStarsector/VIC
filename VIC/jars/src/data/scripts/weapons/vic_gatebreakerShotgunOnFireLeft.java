@@ -24,8 +24,8 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
     final float MUZZLE_OFFSET_HARDPOINT = 100f;
     final float MUZZLE_OFFSET_TURRET = 100f;
-    final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE = 90f + MathUtils.getRandomNumberInRange(-5f,5f);
-    final float MUZZLE_OFFSET_TURRET_SHOCKWAVE = 90f + MathUtils.getRandomNumberInRange(-5f,5f);
+    final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE = 90f + MathUtils.getRandomNumberInRange(-5f, 5f);
+    final float MUZZLE_OFFSET_TURRET_SHOCKWAVE = 90f + MathUtils.getRandomNumberInRange(-5f, 5f);
 
     /*
 
@@ -545,22 +545,17 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
     }
 
     int projNumber = 0;
+
     public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
 
         Vector2f weaponLocation = weapon.getLocation();
         float shipFacing = weapon.getCurrAngle();
-        float shellDir = weapon.getCurrAngle();
-        float shellDirAngle = shellDir + MathUtils.getRandomNumberInRange(115,155);
-        float shrapnelDir = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-22.5f,22.5f);
-        float shrapnelDir2 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-22.5f,22.5f);
-        float shrapnelDir3 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-22.5f,22.5f);
-        float shrapnelDir4 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-22.5f,22.5f);
-        float shrapnelDir5 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-22.5f,22.5f);
-        float nebulaSideDir1 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f,360f);
-        float nebulaSideDir2 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f,360f);
-        float nebulaSideDir3 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f,360f);
-        float nebulaSideDir4 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f,360f);
-        float nebulaSideDir5 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f,360f);
+        float shellDirAngle = shipFacing + MathUtils.getRandomNumberInRange(115, 155);
+        float nebulaSideDir1 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
+        float nebulaSideDir2 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
+        float nebulaSideDir3 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
+        float nebulaSideDir4 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
+        float nebulaSideDir5 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
 
         Vector2f muzzleLocation = MathUtils.getPointOnCircumference(weaponLocation,
                 weapon.getSlot().isHardpoint() ? MUZZLE_OFFSET_HARDPOINT : MUZZLE_OFFSET_TURRET, shipFacing);
@@ -568,38 +563,20 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
                 weapon.getSlot().isHardpoint() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE : MUZZLE_OFFSET_TURRET_SHOCKWAVE, shipFacing);
         Vector2f shellSpawnLocation = new Vector2f(weapon.getLocation());
 
-        Vector2f nebulaSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(15f,22.5f));
-        Vector2f nebulaSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(5f,15f));
-        Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(0f,5f));
-        Vector2f nebulaSideSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir1).scale(MathUtils.getRandomNumberInRange(0f,15f));
-        Vector2f nebulaSideSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir2).scale(MathUtils.getRandomNumberInRange(0f,15f));
-        Vector2f nebulaSideSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir3).scale(MathUtils.getRandomNumberInRange(0f,15f));
-        Vector2f nebulaSideSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir4).scale(MathUtils.getRandomNumberInRange(0f,15f));
-        Vector2f nebulaSideSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir5).scale(MathUtils.getRandomNumberInRange(0f,15f));
         Vector2f shellSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shellDirAngle).scale(30f + (MathUtils.getRandomNumberInRange(-10f, 15f)));
 
 
-
-        if (projNumber < 19){
+        if (projNumber < 19) {
             projNumber += 1;
-        } else if (projNumber == 19){
+        } else if (projNumber == 19) {
 
-
-            DamagingProjectileAPI gatebreakerShrapnelLeft = (DamagingProjectileAPI)Global.getCombatEngine().spawnProjectile(weapon.getShip(), null, "vic_gatebreaker_shotgun_shrapnel", muzzleLocation,
-                    shrapnelDir, weapon.getShip().getVelocity());
-            gatebreakerShrapnelLeft.getVelocity().scale(MathUtils.getRandomNumberInRange(0.25f, 0.75f));
-            DamagingProjectileAPI gatebreakerShrapnelLeft2 = (DamagingProjectileAPI)Global.getCombatEngine().spawnProjectile(weapon.getShip(), null, "vic_gatebreaker_shotgun_shrapnel", muzzleLocation,
-                    shrapnelDir2, weapon.getShip().getVelocity());
-            gatebreakerShrapnelLeft2.getVelocity().scale(MathUtils.getRandomNumberInRange(0.25f, 0.75f));
-            DamagingProjectileAPI gatebreakerShrapnelLeft3 = (DamagingProjectileAPI)Global.getCombatEngine().spawnProjectile(weapon.getShip(), null, "vic_gatebreaker_shotgun_shrapnel", muzzleLocation,
-                    shrapnelDir3, weapon.getShip().getVelocity());
-            gatebreakerShrapnelLeft3.getVelocity().scale(MathUtils.getRandomNumberInRange(0.25f, 0.75f));
-            DamagingProjectileAPI gatebreakerShrapnelLeft4 = (DamagingProjectileAPI)Global.getCombatEngine().spawnProjectile(weapon.getShip(), null, "vic_gatebreaker_shotgun_shrapnel", muzzleLocation,
-                    shrapnelDir4, weapon.getShip().getVelocity());
-            gatebreakerShrapnelLeft4.getVelocity().scale(MathUtils.getRandomNumberInRange(0.25f, 0.75f));
-            DamagingProjectileAPI gatebreakerShrapnelLeft5 = (DamagingProjectileAPI)Global.getCombatEngine().spawnProjectile(weapon.getShip(), null, "vic_gatebreaker_shotgun_shrapnel", muzzleLocation,
-                    shrapnelDir5, weapon.getShip().getVelocity());
-            gatebreakerShrapnelLeft5.getVelocity().scale(MathUtils.getRandomNumberInRange(0.25f, 0.75f));
+            Vector2f speed = weapon.getShip().getVelocity();
+            for (int I = 0; I < 5; I++){
+                float shrapnelDir = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-22.5f, 22.5f);
+                DamagingProjectileAPI gatebreakerShrapnelRight = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(weapon.getShip(), weapon, "vic_gatebreaker_shotgun_shrapnel", muzzleLocation,
+                        shrapnelDir, speed);
+                gatebreakerShrapnelRight.getVelocity().scale(MathUtils.getRandomNumberInRange(0.25f, 0.75f));
+            }
 
 
             MagicRender.battlespace(
@@ -609,12 +586,12 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
                     new Vector2f(12, 16),
                     new Vector2f(0, 0),
                     360 * (float) Math.random(),
-                    MathUtils.getRandomNumberInRange(-270f,270f),
+                    MathUtils.getRandomNumberInRange(-270f, 270f),
                     new Color(255, 255, 255, 255),
                     true,
                     0.0f,
                     1f,
-                    MathUtils.getRandomNumberInRange(1.5f,2.5f)
+                    MathUtils.getRandomNumberInRange(1.5f, 2.5f)
             );
 
             MagicRender.battlespace(
@@ -642,24 +619,32 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
             DistortionShader.addDistortion(wave);
 
 
-            Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed3,10f,5f,0.2f,0.2f,2.5f, new Color(100, 100, 100,255));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed2,15f,3f,0.2f,0.2f,2.25f, new Color(100, 100, 100,255));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed,30f,3f,0.2f,0.2f,2f, new Color(100, 100, 100,255));
+            Vector2f nebulaSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(15f, 22.5f));
+            Vector2f nebulaSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+            Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(0f, 5f));
+            Vector2f nebulaSideSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir1).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+            Vector2f nebulaSideSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir2).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+            Vector2f nebulaSideSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir3).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+            Vector2f nebulaSideSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir4).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+            Vector2f nebulaSideSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir5).scale(MathUtils.getRandomNumberInRange(0f, 15f));
 
-            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed1,MathUtils.getRandomNumberInRange(10f,25f),MathUtils.getRandomNumberInRange(3f,5f),0.2f,0.2f,MathUtils.getRandomNumberInRange(1.5f,3f), new Color(62, 46, 29,50));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed2,MathUtils.getRandomNumberInRange(10f,25f),MathUtils.getRandomNumberInRange(3f,5f),0.2f,0.2f,MathUtils.getRandomNumberInRange(1.5f,3f), new Color(50, 50, 50,150));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed3,MathUtils.getRandomNumberInRange(10f,25f),MathUtils.getRandomNumberInRange(3f,5f),0.2f,0.2f,MathUtils.getRandomNumberInRange(1.5f,3f), new Color(144, 102, 58,50));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed4,MathUtils.getRandomNumberInRange(10f,25f),MathUtils.getRandomNumberInRange(3f,5f),0.2f,0.2f,MathUtils.getRandomNumberInRange(1.5f,3f), new Color(50, 50, 50,150));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed5,MathUtils.getRandomNumberInRange(10f,25f),MathUtils.getRandomNumberInRange(3f,5f),0.2f,0.2f,MathUtils.getRandomNumberInRange(1.5f,3f), new Color(62, 46, 29,50));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed1,MathUtils.getRandomNumberInRange(10f,25f),MathUtils.getRandomNumberInRange(3f,5f),0.2f,0.2f,MathUtils.getRandomNumberInRange(1.5f,3f), new Color(50, 50, 50,150));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed2,MathUtils.getRandomNumberInRange(10f,25f),MathUtils.getRandomNumberInRange(3f,5f),0.2f,0.2f,MathUtils.getRandomNumberInRange(1.5f,3f), new Color(38, 22, 14,50));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed3,MathUtils.getRandomNumberInRange(10f,25f),MathUtils.getRandomNumberInRange(3f,5f),0.2f,0.2f,MathUtils.getRandomNumberInRange(1.5f,3f), new Color(50, 50, 50,150));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed4,MathUtils.getRandomNumberInRange(10f,25f),MathUtils.getRandomNumberInRange(3f,5f),0.2f,0.2f,MathUtils.getRandomNumberInRange(1.5f,3f), new Color(83, 47, 13,50));
-            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed5,MathUtils.getRandomNumberInRange(10f,25f),MathUtils.getRandomNumberInRange(3f,5f),0.2f,0.2f,MathUtils.getRandomNumberInRange(1.5f,3f), new Color(50, 50, 50,150));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed3, 10f, 5f, 0.2f, 0.2f, 2.5f, new Color(100, 100, 100, 255));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed2, 15f, 3f, 0.2f, 0.2f, 2.25f, new Color(100, 100, 100, 255));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed, 30f, 3f, 0.2f, 0.2f, 2f, new Color(100, 100, 100, 255));
+
+            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed1, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(62, 46, 29, 50));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed2, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(50, 50, 50, 150));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed3, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(144, 102, 58, 50));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed4, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(50, 50, 50, 150));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed5, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(62, 46, 29, 50));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed1, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(50, 50, 50, 150));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed2, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(38, 22, 14, 50));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed3, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(50, 50, 50, 150));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed4, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(83, 47, 13, 50));
+            Global.getCombatEngine().addNebulaParticle(muzzleLocationShockwave, nebulaSideSpeed5, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(50, 50, 50, 150));
 
             projNumber = 0;
         }
-
 
 
     }
