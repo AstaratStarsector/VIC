@@ -1,6 +1,6 @@
 {
     "displayName": "Laidlaw",
-    "fluxCapacitors": 17,
+    "fluxCapacitors": 32,
     "fluxVents": 50,
     "goalVariant": true,
     "hullId": "vic_apollyon",

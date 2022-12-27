@@ -1,6 +1,6 @@
 {
     "displayName": "Assault",
-    "fluxCapacitors": 14,
+    "fluxCapacitors": 16,
     "fluxVents": 16,
     "goalVariant": true,
     "hullId": "vic_jezebeth",

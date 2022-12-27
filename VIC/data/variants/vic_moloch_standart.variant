@@ -1,6 +1,6 @@
 {
     "displayName": "Standard",
-    "fluxCapacitors": 7,
+    "fluxCapacitors": 9,
     "fluxVents": 20,
     "goalVariant": true,
     "hullId": "vic_moloch",

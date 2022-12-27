@@ -1,6 +1,6 @@
 {
     "displayName": "Elite",
-    "fluxCapacitors": 30,
+    "fluxCapacitors": 20,
     "fluxVents": 26,
     "goalVariant": true,
     "hullId": "vic_stolas",

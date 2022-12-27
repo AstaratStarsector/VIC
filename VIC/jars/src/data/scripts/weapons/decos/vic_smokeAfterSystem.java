@@ -46,6 +46,7 @@ public class vic_smokeAfterSystem implements EveryFrameWeaponEffectPlugin {
             Vector2f loc = new Vector2f(weapon.getLocation().x + vel.x * 0.05f, weapon.getLocation().y + vel.y * 0.05f);
             if (weapon.getShip().getHullSpec().getHullId().startsWith("vic_stolas_bou")) {
                 engine.addNebulaSmokeParticle(loc, vel, MathUtils.getRandomNumberInRange(15f, 25f), 2.5f, 0.3f, 0.3f, 0.6f, new Color(33, 33, 33, 200));
+                engine.addSmokeParticle(loc, vel, MathUtils.getRandomNumberInRange(5f, 15f), 2.5f, 0.2f,  new Color(255, 75, 33, 200));
                 //engine.addSmokeParticle(loc, vel, MathUtils.getRandomNumberInRange(10f, 30f), MathUtils.getRandomNumberInRange(0.5f, 0.9f), 0.5f, new Color(50, 50, 50, 50));
             }
             else engine.addNebulaSmokeParticle(loc, vel, MathUtils.getRandomNumberInRange(15f, 25f), 2.5f, 0.3f, 0.3f, 0.6f, new Color(255, 255, 255, 50));

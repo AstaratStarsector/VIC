@@ -238,10 +238,11 @@ public class Empyrean{
         //Inner asteroid ring
         system.addAsteroidBelt(EmpyreanStar, 50, 5700, 800, 250, 400, Terrain.ASTEROID_BELT, "Inner Band");
         system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 3, Color.gray, 256f, 5700f - 200, 250f);
-        system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 0, Color.gray, 256f, 5700f, 350f);
-        system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 2, Color.gray, 256f, 5700f + 200, 400f);
-        system.addRingBand(EmpyreanStar, "misc", "rings_ice0", 600 + 256f, 1, Color.blue, 600 + 256f, 5700, 450f);
-
+        system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 0, Color.YELLOW, 256f, 5700f, 350f);
+        system.addRingBand(EmpyreanStar, "misc", "rings_asteroids0", 256f, 2, Color.red, 256f, 5700f + 200, 400f);
+        system.addRingBand(EmpyreanStar, "misc", "rings_dust0", 512f, 1, Color.blue,  512f, 5500, 450f);
+        system.addRingBand(EmpyreanStar, "misc", "rings_dust0", 512f, 4, Color.yellow, 512f, 5600, 500f);
+        system.addRingBand(EmpyreanStar, "misc", "rings_dust0", 512f, 3, Color.gray, 512f, 5750, 600f);
 
         // Purgatory: Hell Toxic World
         PlanetAPI Purgatory = system.addPlanet("vic_planet_purgatory",

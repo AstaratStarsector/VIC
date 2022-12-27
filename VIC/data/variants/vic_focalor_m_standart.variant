@@ -1,9 +1,9 @@
 {
     "displayName": "Standart",
-    "fluxCapacitors": 14,
+    "fluxCapacitors": 24,
     "fluxVents": 30,
+    "goalVariant": true,
     "hullId": "vic_focalor_m",
-	"goalVariant": true,
     "hullMods": [],
     "permaMods": [],
     "sMods": [],

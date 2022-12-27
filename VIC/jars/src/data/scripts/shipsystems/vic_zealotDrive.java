@@ -281,7 +281,7 @@ public class vic_zealotDrive extends BaseShipSystemScript {
                                     10000,
                                     null,
                                     20,
-                                    new Color(0, 118, 210, 255),
+                                    new Color(MathUtils.getRandomNumberInRange(220, 255), MathUtils.getRandomNumberInRange(0, 75), 0, 255),
                                     Color.white);
                         }
                     }

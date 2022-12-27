@@ -1,9 +1,9 @@
 {
     "displayName": "Classic",
-    "fluxCapacitors": 10,
+    "fluxCapacitors": 20,
     "fluxVents": 15,
+    "goalVariant": true,
     "hullId": "vic_focalor_m",
-	"goalVariant": true,
     "hullMods": [
         "missleracks",
         "eccm"
