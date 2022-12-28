@@ -29,7 +29,7 @@ public class vic_starterPlugin extends BaseCommandPlugin {
                 }
             }
         }
-        NexConfig.getFactionConfig("vic").alignments.put(Alliance.Alignment.CORPORATE, 5f);
+        //NexConfig.getFactionConfig("vic").alignments.put(Alliance.Alignment.CORPORATE, 5f);
         //Global.getLogger(vic_starterPlugin.class).info("executed");
         return true;
     }
