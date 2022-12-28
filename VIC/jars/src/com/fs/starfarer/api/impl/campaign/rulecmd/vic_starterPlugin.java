@@ -17,7 +17,7 @@ public class vic_starterPlugin extends BaseCommandPlugin {
     @Override
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
         Global.getSettings().resetCached();
-        if (Global.getSettings().getMissionScore("vic_slaughterhouse") > 0) {
+        if (Global.getSettings().getMissionScore("VIC_LiberationOfMind") > 0) {
             for (int i = 1; i <= NexConfig.getFactionConfig("vic").getStartFleetSet(NexFactionConfig.StartFleetType.SUPER.name()).getNumFleets(); i++) {
                 if ("vic_stolas_hunter".equals(NexConfig.getFactionConfig("vic").getStartFleetSet(NexFactionConfig.StartFleetType.SUPER.name()).getFleet(i).get(0))) {break;}
                 if ((i) == NexConfig.getFactionConfig("vic").getStartFleetSet(NexFactionConfig.StartFleetType.SUPER.name()).getNumFleets()) {
