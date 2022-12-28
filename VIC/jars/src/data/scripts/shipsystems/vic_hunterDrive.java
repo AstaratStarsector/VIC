@@ -246,7 +246,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                         10000,
                                         null,
                                         20,
-                                        new Color(0, MathUtils.getRandomNumberInRange(100f, 120f), MathUtils.getRandomNumberInRange(200f, 220f), 255),
+                                        new Color(0, MathUtils.getRandomNumberInRange(100, 120), MathUtils.getRandomNumberInRange(200, 220), 255),
                                         Color.white);
                             }
                             if (!target.isFighter()) AddHunterDriveTarget(ship, target);
@@ -266,7 +266,7 @@ public class vic_hunterDrive extends BaseShipSystemScript {
                                     10000,
                                     null,
                                     20,
-                                    new Color(0, MathUtils.getRandomNumberInRange(100f, 120f), MathUtils.getRandomNumberInRange(200f, 220f), 255),
+                                    new Color(0, MathUtils.getRandomNumberInRange(100, 120), MathUtils.getRandomNumberInRange(200, 220), 255),
                                     Color.white);
                             missile.flameOut();
                         }
