@@ -680,10 +680,14 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
     }
 
     public static void AddFluxRaptureShip(ShipAPI ship) {
-        CombatEngineAPI engine = Global.getCombatEngine();
-        if (engine == null) return;
-        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
-        localData.FluxRaptureRender.put(ship, MathUtils.getRandomNumberInRange(0f,360f));
+        try {
+            CombatEngineAPI engine = Global.getCombatEngine();
+            if (engine == null) return;
+            final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+            localData.FluxRaptureRender.put(ship, MathUtils.getRandomNumberInRange(0f, 360f));
+        } catch (Exception ignored){
+
+        }
     }
 
     public static void AddHunterDriveAnimation(ShipAPI ship) {

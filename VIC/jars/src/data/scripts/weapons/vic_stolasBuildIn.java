@@ -264,12 +264,12 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
         //TODO: add actual icons
         if (ship == engine.getPlayerShip()) {
             if (weapon.getAmmo() == 3) {
-                engine.maintainStatusForPlayerShip("vic_stolasBuildIn", null, "Charge", "Fully charged", false);
+                engine.maintainStatusForPlayerShip("vic_stolasBuildIn", "graphics/icons/hullsys/ammo_feeder.png", "Charge", "Fully charged", false);
             } else {
                 if (devMode) {
-                    engine.maintainStatusForPlayerShip("vic_stolasBuildIn", null, "Charge", weapon.getAmmo() + "/3 " + Math.round(currDamage) + "/" + Math.round(ratio * 100) + "%", false);
+                    engine.maintainStatusForPlayerShip("vic_stolasBuildIn", "graphics/icons/hullsys/ammo_feeder.png", "Charge", weapon.getAmmo() + "/3 " + Math.round(currDamage) + "/" + Math.round(ratio * 100) + "%", false);
                 } else {
-                    engine.maintainStatusForPlayerShip("vic_stolasBuildIn", null, "Charge", weapon.getAmmo() + "/3 " + (Math.round(ratio * 1000) / 10f) + "%", false);
+                    engine.maintainStatusForPlayerShip("vic_stolasBuildIn", "graphics/icons/hullsys/ammo_feeder.png", "Charge", weapon.getAmmo() + "/3 " + (Math.round(ratio * 1000) / 10f) + "%", false);
                 }
             }
         }

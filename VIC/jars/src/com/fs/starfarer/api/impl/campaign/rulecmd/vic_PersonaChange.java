@@ -408,7 +408,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         AddRemoveCommodity.addCreditsLossText(10000, text);
 
 
-        text.addPara("change result");
+        //text.addPara("change result");
 
         ((RuleBasedDialog)dialog.getPlugin()).notifyActivePersonChanged();
 
