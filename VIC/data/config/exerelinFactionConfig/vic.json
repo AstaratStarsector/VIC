@@ -116,7 +116,7 @@
 		
     },
 	
-    "diplomacyTraits":["lowprofile", "stalwart", "envious", "monopolist"],
+    "diplomacyTraits":["lowprofile", "devious", "envious", "monopolist", "predatory"],
 
 	"allowAgentActions":true,
     "allowPrisonerActions":true,
@@ -142,22 +142,22 @@
     "startShipsSolo":[
 	["vic_xaphan_skirmisher"],
 	["vic_pruflas_skirmish"],
-	["vic_kobal_standart"]
+	["vic_kobal_standard"]
 	],
 	
     "startShipsCombatSmall":[
-	["vic_samael_standart", "vic_xaphan_skirmisher", "vic_pruflas_skirmish"],
-    ["vic_jezebeth_standart", "vic_kobal_standart", "vic_pruflas_skirmish"],
-	["vic_moloch_standart", "vic_kobal_standart", "vic_xaphan_skirmisher"]
+	["vic_samael_standard", "vic_xaphan_skirmisher", "vic_pruflas_skirmish"],
+    ["vic_jezebeth_standard", "vic_kobal_standard", "vic_pruflas_skirmish"],
+	["vic_moloch_standard", "vic_kobal_standard", "vic_xaphan_skirmisher"]
     ],
     "startShipsCombatLarge":[
-      ["vic_valafar_assault", "vic_jezebeth_standart", "vic_samael_standart", "vic_buffalo_vic_standart"],
-      ["vic_thamuz_standart", "vic_moloch_standart", "vic_jezebeth_standart", "vic_buffalo_vic_standart"],
-      ["vic_cresil_assault", "vic_moloch_standart", "vic_samael_standart", "vic_buffalo_vic_standart"]	  
+      ["vic_valafar_assault", "vic_jezebeth_standard", "vic_samael_standard", "vic_buffalo_vic_standard"],
+      ["vic_thamuz_standard", "vic_moloch_standard", "vic_jezebeth_standard", "vic_buffalo_vic_standard"],
+      ["vic_cresil_assault", "vic_moloch_standard", "vic_samael_standard", "vic_buffalo_vic_standard"]	  
     ],
     "startShipsSuper":[
-	["vic_nybbas_plasma", "vic_buffalo_vic_standart"],
-	["vic_apollyon_standart"],
+	["vic_nybbas_plasma", "vic_buffalo_vic_standard"],
+	["vic_apollyon_standard"],
 	["vic_oriax_standard"]
 	],
     

@@ -29,22 +29,21 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 
         FactionAPI VIC = Global.getSettings().createBaseFaction("vic");
 
-		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standart", FleetMemberType.SHIP, "ASCV Sun Eater", true);
+		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standard", FleetMemberType.SHIP, "ASCV Sun Eater", true);
 		api.addToFleet(FleetSide.PLAYER, "vic_oriax_standard", FleetMemberType.SHIP, "ASCV Outbreak", false);
 
-        api.addToFleet(FleetSide.PLAYER, "vic_stolas_standart", FleetMemberType.SHIP, VIC.pickRandomShipName(), true);
-        api.addToFleet(FleetSide.PLAYER, "vic_focalor_l_standart", FleetMemberType.SHIP, VIC.pickRandomShipName(), false);
-        api.addToFleet(FleetSide.PLAYER, "vic_focalor_m_standart", FleetMemberType.SHIP, VIC.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.PLAYER, "vic_focalor_l_standard", FleetMemberType.SHIP, VIC.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.PLAYER, "vic_focalor_m_standard", FleetMemberType.SHIP, VIC.pickRandomShipName(), false);
         api.addToFleet(FleetSide.PLAYER, "vic_valafar_assault", FleetMemberType.SHIP, "ASCV Void Reaver", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_thamuz_standart", FleetMemberType.SHIP, "ASCV Despoiler", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_thamuz_standard", FleetMemberType.SHIP, "ASCV Despoiler", false);
         api.addToFleet(FleetSide.PLAYER, "vic_cresil_assault", FleetMemberType.SHIP, "ASCV 13", false);
 
-        api.addToFleet(FleetSide.PLAYER, "vic_moloch_standart", FleetMemberType.SHIP, "ASCV Maw of The Void", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_samael_standart", FleetMemberType.SHIP, "ASCV Scarab", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_jezebeth_standart", FleetMemberType.SHIP, "ASCV Beast", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_moloch_standard", FleetMemberType.SHIP, "ASCV Maw of The Void", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_samael_standard", FleetMemberType.SHIP, "ASCV Scarab", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_jezebeth_standard", FleetMemberType.SHIP, "ASCV Beast", false);
 
         api.addToFleet(FleetSide.PLAYER, "vic_xaphan_skirmisher", FleetMemberType.SHIP, "ASCV Abyss Walker", false);
-        api.addToFleet(FleetSide.PLAYER, "vic_kobal_standart", FleetMemberType.SHIP, "ASCV Repressor", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_kobal_standard", FleetMemberType.SHIP, "ASCV Repressor", false);
         api.addToFleet(FleetSide.PLAYER, "vic_pruflas_skirmish", FleetMemberType.SHIP, "ASCV Keeper of Peace", false);
         api.addToFleet(FleetSide.PLAYER, "vic_nybbas_plasma", FleetMemberType.SHIP, "ASCV Warden", false);
 

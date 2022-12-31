@@ -3,51 +3,59 @@
 	# for example, no Hyperions or fast beam-based kiting loadouts, or ships with damper field
 	"combatSmallForSmallFleet":{	
 		"vic_xaphan_skirmisher":20,
+		"vic_xaphan_avan_pain":10,
 		
 		"vic_pruflas_skirmish":10,
 		"vic_pruflas_Demolisher":10,
+		"vic_pruflas_avan_pain":10,
 		
-		"vic_kobal_standart":10,
+		"vic_kobal_standard":10,
 		"vic_kobal_burst":10,	
+		"vic_kobal_avan_pain":10,
 	},
 	"combatSmall":{
 		"vic_xaphan_skirmisher":20,
 		"vic_xaphan_harasher":10,
+		"vic_xaphan_avan_pain":10,
 		
 		"vic_pruflas_skirmish":10,
 		"vic_pruflas_Demolisher":10,
 		"vic_pruflas_harasher":10,
+		"vic_pruflas_avan_pain":10,
 		
-		"vic_kobal_standart":12,
+		"vic_kobal_standard":12,
+		"vic_kobal_avan_pain":10,
 		"vic_kobal_burst":12,
 		"vic_kobal_agony":6,		
 	},
 	"combatMedium":{
-		"vic_jezebeth_standart":14,
+		"vic_jezebeth_standard":14,
 		"vic_jezebeth_assault":14,
 		"vic_jezebeth_laidlaw":4,
 		
-		"vic_moloch_standart":30,
+		"vic_moloch_standard":30,
 		
-		"vic_samael_standart":15,
+		"vic_samael_standard":15,
 		"vic_samael_assault":15,
 	},
 	"combatLarge":{
 		"vic_valafar_assault":14,
 		"vic_valafar_hybrid":14,
 		"vic_valafar_laidlaw":4,
+		"vic_valafar_avan_pain":8,
 		
-		"vic_thamuz_standart":15,
+		"vic_thamuz_standard":15,
 		"vic_thamuz_burst":20,
+		"vic_thamuz_avan_pain":15,
 		
-		"vic_focalor_l_standart":14,
+		"vic_focalor_l_standard":14,
 		"vic_focalor_l_support":14,
 		
 		"vic_focalor_m_classic":14,
-		"vic_focalor_m_standart":14,
+		"vic_focalor_m_standard":14,
 	},
 	"combatCapital":{
-		"vic_apollyon_standart":6,
+		"vic_apollyon_standard":6,
 		"vic_apollyon_shieldBreaker":6,
 		"vic_apollyon_laidlaw":2,
 		
@@ -62,6 +70,7 @@
 		"vic_cresil_bombardier":10,
 		"vic_cresil_assault":10,
 		"vic_cresil_airSuperiority":10,
+		"vic_cresil_avan_pain":10,
 	},
 
 	# phase ships

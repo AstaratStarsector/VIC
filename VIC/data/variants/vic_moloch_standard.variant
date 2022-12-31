@@ -7,7 +7,7 @@
     "hullMods": ["vic_assault"],
     "permaMods": [],
     "sMods": [],
-    "variantId": "vic_moloch_standart",
+    "variantId": "vic_moloch_standard",
     "weaponGroups": [
         {
             "autofire": false,

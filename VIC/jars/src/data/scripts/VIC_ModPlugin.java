@@ -26,7 +26,7 @@ import com.fs.starfarer.api.util.Pair;
 import data.campaign.ids.vic_Items;
 import data.campaign.ids.vic_industries;
 import data.campaign.listners.vic_diploRandomizer;
-import data.campaign.listners.vic_stoalsSpawn;
+import data.campaign.listners.vic_stolasSpawn;
 import data.scripts.plugins.timer.VIC_TimeTracker;
 import data.scripts.plugins.vic_brandEngineUpgradesDetectionRange;
 import data.scripts.weapons.ai.*;
@@ -139,7 +139,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
     @Override
     public void onGameLoad(boolean newGame) {
-        Global.getSector().addTransientListener(new vic_stoalsSpawn(false));
+        Global.getSector().addTransientListener(new vic_stolasSpawn(false));
         if (Global.getSector().getEntityById("vic_star_empyrean") == null){
             onNewGame();
             onNewGameAfterEconomyLoad();

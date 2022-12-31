@@ -5,10 +5,15 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.ApplyDamageResultAPI;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import data.scripts.util.MagicRender;
+import data.scripts.utilities.vic_graphicLibEffects;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
+
+import static com.fs.starfarer.api.util.Misc.ZERO;
 
 
 public class vic_astronomiconOnHit3 implements OnHitEffectPlugin {
@@ -75,7 +80,23 @@ public class vic_astronomiconOnHit3 implements OnHitEffectPlugin {
         explosion.setMinDamage(explosion.getMaxDamage() * 0.5f);
         engine.spawnDamagingExplosion(explosion, projectile.getSource(), point);
 
-        Global.getSoundPlayer().playSound("vic_astronomicon_hit", 1f + MathUtils.getRandomNumberInRange(-0.1f, 0.1f), 10f, point, ZERO);
+        Global.getSoundPlayer().playSound("vic_astronomicon_hit", 1f + MathUtils.getRandomNumberInRange(-0.1f, 0.1f), 1f, point, ZERO);
+
+        MagicRender.battlespace(
+                Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                point,
+                new Vector2f(),
+                new Vector2f(50, 50),
+                new Vector2f(1500, 1500),
+                //angle,
+                360 * (float) Math.random(),
+                0,
+                new Color(25, 255, 225, 100),
+                true,
+                0,
+                0f,
+                0.5f
+        );
 
         MagicRender.battlespace(
                 Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
@@ -130,7 +151,7 @@ public class vic_astronomiconOnHit3 implements OnHitEffectPlugin {
                 point,
                 new Vector2f(),
                 new Vector2f(200, 200),
-                new Vector2f(150, 150),
+                new Vector2f(125, 125),
                 //angle,
                 360 * (float) Math.random(),
                 0,
@@ -138,7 +159,60 @@ public class vic_astronomiconOnHit3 implements OnHitEffectPlugin {
                 true,
                 0.35f,
                 0.0f,
-                1f
+                1.5f
         );
+
+        WaveDistortion wave = new WaveDistortion(point, ZERO);
+        wave.setIntensity(1.5f);
+        wave.setSize(225f);
+        wave.flip(true);
+        wave.setLifetime(0f);
+        wave.fadeOutIntensity(1f);
+        wave.setLocation(projectile.getLocation());
+        DistortionShader.addDistortion(wave);
+
+        boolean light = false;
+        if (Global.getSettings().getModManager().isModEnabled("shaderLib")) {
+            light = true;
+        }
+
+        if (light) {
+            vic_graphicLibEffects.CustomRippleDistortion(
+                    point,
+                    ZERO,
+                    225,
+                    3,
+                    false,
+                    0,
+                    360,
+                    1f,
+                    0.1f,
+                    0.25f,
+                    0.5f,
+                    0.5f,
+                    0f
+            );
+
+            MagicRender.battlespace(
+                    Global.getSettings().getSprite("campaignEntities", "fusion_lamp_glow"),
+                    point,
+                    new Vector2f(),
+                    new Vector2f(100 * MathUtils.getRandomNumberInRange(0.8f, 1.2f), 1000 * MathUtils.getRandomNumberInRange(0.8f, 1.2f)),
+                    new Vector2f(),
+                    360 * (float) Math.random(),
+                    0,
+                    new Color(136, 255, 209, 255),
+                    true,
+                    0,
+                    0,
+                    0.5f,
+                    0.15f,
+                    MathUtils.getRandomNumberInRange(0.05f, 0.2f),
+                    0,
+                    MathUtils.getRandomNumberInRange(0.4f, 0.6f),
+                    MathUtils.getRandomNumberInRange(0.1f, 0.3f),
+                    CombatEngineLayers.CONTRAILS_LAYER
+            );
+        }
     }
 }

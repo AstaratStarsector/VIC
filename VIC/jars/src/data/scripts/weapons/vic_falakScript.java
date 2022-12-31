@@ -5,6 +5,8 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.ApplyDamageResultAPI;
 import com.fs.starfarer.api.combat.listeners.DamageDealtModifier;
 import data.scripts.plugins.vic_weaponDamageListener;
+import data.scripts.util.MagicRender;
+import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
@@ -68,6 +70,27 @@ public class vic_falakScript extends vic_missileFluxGen{
                                 Color.white);
                     }
 
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("campaignEntities", "fusion_lamp_glow"),
+                            point,
+                            new Vector2f(),
+                            new Vector2f(80 * MathUtils.getRandomNumberInRange(0.8f, 1.2f), 800 * MathUtils.getRandomNumberInRange(0.8f, 1.2f)),
+                            new Vector2f(),
+                            360 * (float) Math.random(),
+                            0,
+                            new Color(136, 255, 209, 255),
+                            true,
+                            0,
+                            0,
+                            0.5f,
+                            0.15f,
+                            MathUtils.getRandomNumberInRange(0.05f, 0.2f),
+                            0,
+                            MathUtils.getRandomNumberInRange(0.6f, 0.8f),
+                            MathUtils.getRandomNumberInRange(0.2f, 0.5f),
+                            CombatEngineLayers.CONTRAILS_LAYER
+                    );
+
                     if (shieldHit) {
                         for (int i = 0; i < 10; i++) {
                             Global.getCombatEngine().spawnEmpArcPierceShields(((MissileAPI) param).getSource(),
@@ -83,6 +106,28 @@ public class vic_falakScript extends vic_missileFluxGen{
                                     Color.cyan,
                                     Color.white);
                         }
+
+                        MagicRender.battlespace(
+                                Global.getSettings().getSprite("campaignEntities", "fusion_lamp_glow"),
+                                point,
+                                new Vector2f(),
+                                new Vector2f(80 * MathUtils.getRandomNumberInRange(0.8f, 1.2f), 800 * MathUtils.getRandomNumberInRange(0.8f, 1.2f)),
+                                new Vector2f(),
+                                360 * (float) Math.random(),
+                                0,
+                                new Color(136, 255, 209, 255),
+                                true,
+                                0,
+                                0,
+                                0.5f,
+                                0.15f,
+                                MathUtils.getRandomNumberInRange(0.05f, 0.2f),
+                                0,
+                                MathUtils.getRandomNumberInRange(0.6f, 0.8f),
+                                MathUtils.getRandomNumberInRange(0.2f, 0.5f),
+                                CombatEngineLayers.CONTRAILS_LAYER
+                        );
+
                     }
 
                     damage.getModifier().modifyMult("vic_damage", 0);

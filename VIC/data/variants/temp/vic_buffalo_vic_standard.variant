@@ -8,7 +8,7 @@
         "insulatedengine"
     ],
     "permaMods": [],
-    "variantId": "vic_buffalo_vic_standart",
+    "variantId": "vic_buffalo_vic_standard",
     "weaponGroups": [{
         "autofire": true,
         "mode": "LINKED",

@@ -24,7 +24,7 @@ import static com.fs.starfarer.api.util.Misc.ZERO;
 public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
 
-    final float Threshold = 5000f;
+    final float Threshold = 7500f;
     ShipAPI ship;
     boolean
             doOnce = true,
@@ -463,10 +463,10 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
 
         WaveDistortion wave = new WaveDistortion(muzzleLocation, shipVelocity);
         wave.setIntensity(10f);
-        wave.setSize(150f);
-        wave.flip(false);
+        wave.setSize(300f);
+        wave.flip(true);
         wave.setLifetime(0f);
-        wave.fadeOutIntensity(0.5f);
+        wave.fadeOutIntensity(0.75f);
         wave.setLocation(muzzleLocation);
         DistortionShader.addDistortion(wave);
 

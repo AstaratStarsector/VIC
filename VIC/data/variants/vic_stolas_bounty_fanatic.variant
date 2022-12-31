@@ -1,0 +1,47 @@
+{
+    "displayName": "Fanatic",
+    "fluxCapacitors": 8,
+    "fluxVents": 30,
+    "hullId": "vic_stolas_bounty",
+    "hullMods": [
+        "stabilizedshieldemitter",
+        "targetingunit",
+        "vic_PDArcEmitter",
+        "auxiliarythrusters",
+        "heavyarmor",
+        "hardenedshieldemitter",
+        "vic_gatebreaker_mode_autocannon"
+    ],
+    "permaMods": [
+        "heavyarmor",
+        "hardenedshieldemitter"
+    ],
+    "sMods": [
+        "heavyarmor",
+        "hardenedshieldemitter"
+    ],
+    "variantId": "vic_stolas_bounty_fanatic",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0006": "vic_gatebreaker_r_autocannon",
+                "WS0007": "vic_gatebreaker_l_autocannon"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0001": "vic_devastator",
+                "WS0002": "vic_devastator"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {"WS0003": "devastator"}
+        }
+    ]
+}

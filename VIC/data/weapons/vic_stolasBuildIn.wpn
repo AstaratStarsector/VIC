@@ -3,7 +3,7 @@
 	"specClass":"projectile",
 	"type":"ENERGY",
 	"size":"LARGE",
-	"turretSprite":"",
+	"turretSprite":"graphics/ships/stolas/vic_stolas_astronomicon_refit.png",	
 	"turretGlowSprite":"",
 	"hardpointSprite":"",
 	"hardpointGlowSprite":"graphics/ships/stolas/vic_stolas_main_weapon_glow.png",	

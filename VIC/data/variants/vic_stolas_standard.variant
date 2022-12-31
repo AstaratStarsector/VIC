@@ -1,5 +1,5 @@
 {
-    "displayName": "Standart",
+    "displayName": "Standard",
     "fluxCapacitors": 14,
     "fluxVents": 30,
     "goalVariant": true,
@@ -12,7 +12,7 @@
     ],
     "permaMods": [],
     "sMods": [],
-    "variantId": "vic_stolas_standart",
+    "variantId": "vic_stolas_standard",
     "weaponGroups": [
         {
             "autofire": false,

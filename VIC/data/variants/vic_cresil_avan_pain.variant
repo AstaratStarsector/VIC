@@ -1,0 +1,45 @@
+{
+    "displayName": "Cleanser",
+    "fluxCapacitors": 0,
+    "fluxVents": 3,
+    "goalVariant": false,
+    "hullId": "vic_cresil",
+    "hullMods": [
+        "pointdefenseai",
+        "targetingunit"
+    ],
+    "permaMods": [],
+    "sMods": [],
+    "variantId": "vic_cresil_avan_pain",
+    "weaponGroups": [
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {"WS0011": "vic_targetingLazer"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0001": "dualflak",
+                "WS0002": "dualflak"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0003": "vic_strigoy",
+                "WS0004": "vic_strigoy",
+                "WS0005": "vic_strigoy",
+                "WS0006": "vic_strigoy"
+            }
+        }
+    ],
+    "wings": [
+        "vic_uvall_wing",
+        "vic_uvall_wing",
+        "vic_shabriri_wing",
+        "vic_shabriri_wing"
+    ]
+}

@@ -68,7 +68,9 @@ The $PersonRank salutes you in a rather official manner, VIC insignia glistening
 OR
 ""Greetings, $playerName! Heard the news? They're paying extra for bringing test material to Purgatory this month. Better not miss the opportunity.""
 OR
-""Greetings, colleague! Hope your day's going well!"", $PersonRank gleefully blurts out and cuts the link before you can respond. ",,
+""Greetings, colleague! Hope your day's going well!"", $PersonRank gleefully blurts out and cuts the link before you can respond. 
+OR
+""Hail, comrade. May the Zenith Eternal light your way.""",,
 greetingVICNeutral,OpenCommLink,"$faction.id == vic
 $faction.neutralToPlayer","$menuState = fleetConvMain 0 
 FireAll PopulateOptions","An automated message pops up. ""Volkov Industrial Conglomerate - Make Our Own Future. Make Our Own Paradise. To return to this menu, enter the number '0' in your comm-link. For a short history of the Conglomerate, enter '1.' For a long history of the Conglomerate, enter '2.' For a list of available commercial genetic modifications, enter '3.' For a list of commercial hulls-""
@@ -81,7 +83,7 @@ Your comm officer cuts the link even before you issue the order.
 OR
 ""Have you ever felt that something isn't right? Thought to yourself, 'why should I have hands like everybody else, when I could have tentacles?' Or perhaps you've found yourself feeling that your geni-"" The sound cuts out for a second, and the words ""COMSEC Protects You"" flash on the display over static. ""-lacking a certain explosive 'OOOMPH?' Well the Volkov Industrial Conglomerate is here to help! For the low, low price of-""
 
-This time, it's you cutting off the audio. Whoever was on the other end of the line clearly wasn't interested in talking.
+This time, it's you cutting off the audio of an automated response. Whoever was on the other end of the line clearly wasn't interested in talking themselves.
 OR
 ""Hello? This is $personName of the Volkov Industrial Conglomerate speaking. How can I help you achieve paradise?"" The obviously-rehearsed line is spoken with much less enthusiasm than whoever wrote it had originally intended, and it's clear the $personRank is sick of repeating it.
 
@@ -108,6 +110,7 @@ OR
 ""Greetings, citizen. I hope everything is alright? Remember, that assisting Volkov Industrial Conglomerate and the Humankind in any way or form will be generously rewarded. Consider that, when you're ready to choose your side.""
 OR 
 ""Glory to Humankind, citizen! Please, keep your distance. Otherwise our defense systems will consider you a threat and your $shipOrFleet will be dealt with accordingly.""
+
 
 ",,
 greetingVICHostileWeaker,OpenCommLink,"$faction.id == vic
@@ -183,7 +186,7 @@ $faction.id == vic",,"Destroying the enemies of Humankind, active assistance to 
 relLevelCooperativevic,RelationshipLevelDesc,"$faction.rel == COOPERATIVE
 $faction.id == vic",,"Few are destined to become heroes and living symbols of Humankind. But you can rest easy - this right and and this achievement are entirely yours, earned with, hopefully, hard work and unquestionable loyalty. Do not fall victim to pride, as crowds of citizens are chanting your name and dreaming of your autographs on their personal belongings, as the employees of the corporation throw glances sparkling with true admiration at you, and as the services reserved only to the top management and, formerly, the Domain's ruling parties, are provided to you with alluring, if unnaturally toothy, smiles and increasingly religious, almost cult-like undertones. 
 
-And most importantly, the Supreme Directorate regularly invites you to their meetings at the top of the Dawn Spire, from where you too may get a view of the Humanity's bright future.",,
+",,
 relLevelSuspiciousvic,RelationshipLevelDesc,"$faction.rel == SUSPICIOUS
 $faction.id == vic",,"The Conglomerate's list of untrustworthy individuals contains your name among many others. The Aerospace and Law Enforcement Corps are watching you rather closely both in space and on the corporation's grounds, while the managers in grey and orange uniforms are clearly taking pleasure in slowing you down with an endless stream of bureaucratic shenanigans whenever you arrive at their ports. Thankfully, however, all of this is just an irritating inconvenience. At least for now.",,
 relLevelInhospitablevic,RelationshipLevelDesc,"$faction.rel == INHOSPITABLE
@@ -199,7 +202,7 @@ You have become an Enemy of Humankind, threatening its future, and for its good 
 #Ai Core hand in,,,,,,
 aiCores_turnInOptionSelVICFriendly,DialogOptionSelected,"$option == aiCores_startTurnIn
 $faction.id == vic
-$faction.friendlyToPlayer",FireAll PopulateCoresTurnInOptions,"""Oh, a core of an artificial intelligence? This is great news, colleague! It's dreadful to think what kinds of atrocities some less educated and responsible sort of people would commit by using such technology. We'll make sure this never happens and that this synthetic mind serves Humankind in a right way. And, of course, I'll make sure the management is informed about your efforts as soon as possible.""",,
+$faction.friendlyToPlayer",FireAll PopulateCoresTurnInOptions,"""Oh, a core of an artificial intelligence? This is great news, colleague! It's dreadful to think what kinds of atrocities some less educated and responsible sort of people would commit by using such technology. We'll make sure this never happens and that this synthetic mind serves Humankind in a right way. Before being disposed of, obviously, I mean.  And, of course, I'll make sure the management is informed about your efforts as soon as possible.""",,
 aiCores_turnInOptionSelVIC,DialogOptionSelected,"$option == aiCores_startTurnIn
 $faction.id == vic",FireAll PopulateCoresTurnInOptions,"""Oh, an AI core? How peculiar... It's good that you've brought it to us, citizen. The Conglomerate is well informed about the Domain's protocols regarding the containment of synthetic minds. Rest assured, after being thoroughly scanned and drained of all valuable data, this AI core will be terminated to avoid any undesired consequences. And, of course, your efforts will be handsomely rewarded."" ",,
 aiCores_turnInOptionSelVICHostile,DialogOptionSelected,"$option == aiCores_startTurnIn

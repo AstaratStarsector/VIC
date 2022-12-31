@@ -7,7 +7,7 @@
     "hullMods": ["targetingunit"],
     "permaMods": [],
     "sMods": [],
-    "variantId": "vic_samael_standart",
+    "variantId": "vic_samael_standard",
     "weaponGroups": [
         {
             "autofire": true,

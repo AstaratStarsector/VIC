@@ -1,5 +1,5 @@
 {
-    "displayName": "Standart",
+    "displayName": "Standard",
     "fluxCapacitors": 18,
     "fluxVents": 30,
     "goalVariant": true,
@@ -10,7 +10,7 @@
     ],
     "permaMods": [],
     "sMods": [],
-    "variantId": "vic_focalor_l_standart",
+    "variantId": "vic_focalor_l_standard",
     "weaponGroups": [
         {
             "autofire": false,

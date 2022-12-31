@@ -7,9 +7,9 @@ import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Personalities;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 
-public class vic_stoalsSpawn extends BaseCampaignEventListener {
+public class vic_stolasSpawn extends BaseCampaignEventListener {
 
-    public vic_stoalsSpawn(boolean permaRegister) {
+    public vic_stolasSpawn(boolean permaRegister) {
         super(permaRegister);
     }
 
@@ -19,7 +19,8 @@ public class vic_stoalsSpawn extends BaseCampaignEventListener {
         variants.add("vic_stolas_standart");
         variants.add("vic_stolas_hunter");
         variants.add("vic_stolasPlasma", 0.5f);
-        variants.add("vic_stoals_gauss", 0.25f);
+        variants.add("vic_stolas_gauss", 0.25f);
+        variants.add("vic_stolas_crusher", 0.25f);
     }
 
     @Override

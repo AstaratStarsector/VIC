@@ -96,6 +96,12 @@ public class vic_gatebreakerModeSwapper extends BaseHullMod
     }
 
     @Override
+    public int getDisplayCategoryIndex()
+    {
+        return 2;
+    }
+
+    @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize)
     {
         return "without the normal CR penalty";

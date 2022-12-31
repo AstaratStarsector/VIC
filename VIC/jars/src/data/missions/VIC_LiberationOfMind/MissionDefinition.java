@@ -55,7 +55,8 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 
 
         FactionAPI church = Global.getSettings().createBaseFaction(Factions.LUDDIC_CHURCH);
-        api.addToFleet(FleetSide.ENEMY, "legion_Escort", FleetMemberType.SHIP, church.pickRandomShipName(), true);
+
+        FleetMemberAPI enemyFlagship = api.addToFleet(FleetSide.ENEMY, "legion_Escort", FleetMemberType.SHIP, church.pickRandomShipName(), true);
         api.addToFleet(FleetSide.ENEMY, "colossus_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
         api.addToFleet(FleetSide.ENEMY, "starliner_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
         api.addToFleet(FleetSide.ENEMY, "nebula_Standard", FleetMemberType.SHIP, church.pickRandomShipName(), false);
@@ -68,6 +69,26 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addToFleet(FleetSide.ENEMY, "condor_Attack", FleetMemberType.SHIP, church.pickRandomShipName(), false);
         api.addToFleet(FleetSide.ENEMY, "eradicator_Assault", FleetMemberType.SHIP, church.pickRandomShipName(), false);
         api.addToFleet(FleetSide.ENEMY, "eradicator_Assault", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "enforcer_Assault", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+        api.addToFleet(FleetSide.ENEMY, "enforcer_Assault", FleetMemberType.SHIP, church.pickRandomShipName(), false);
+
+        PersonAPI officerChurch = church.createRandomPerson(FullName.Gender.MALE);
+        officerChurch.getStats().setSkillLevel(Skills.IMPACT_MITIGATION, 2);
+        officerChurch.getStats().setSkillLevel(Skills.DAMAGE_CONTROL, 2);
+        officerChurch.getStats().setSkillLevel(Skills.FIELD_MODULATION, 1);
+        officerChurch.getStats().setSkillLevel(Skills.TARGET_ANALYSIS, 1);
+        officerChurch.getStats().setSkillLevel(Skills.FIGHTER_UPLINK, 1);
+        officerChurch.getStats().setSkillLevel(Skills.CARRIER_GROUP, 1);
+        officerChurch.getStats().setLevel(6);
+        officerChurch.setFaction("luddic_church");
+        officerChurch.setPersonality(Personalities.STEADY);
+        officerChurch.getName().setFirst("Andrew");
+        officerChurch.getName().setLast("Uele");
+        officerChurch.getName().setGender(FullName.Gender.MALE);
+        officerChurch.setPortraitSprite("graphics/portraits/portrait_luddic00.png");
+        enemyFlagship.setCaptain(officerChurch);
+        float maxCRChurch = enemyFlagship.getRepairTracker().getMaxCR();
+        enemyFlagship.getRepairTracker().setCR(maxCRChurch);
 
 
         api.defeatOnShipLoss("ASCV Pale Sun");

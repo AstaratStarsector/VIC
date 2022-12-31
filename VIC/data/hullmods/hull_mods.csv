@@ -40,9 +40,9 @@ Power Redistributor,vic_powerRedistributor,4,,Volkov Industries,,,,,TRUE,,0,0,0,
 VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_shieldsChanger,,Shield Changer,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
 Gatebreaker Mode Swapper,vic_variable_gatebreaker_mode,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_gatebreakerModeSwapper,Allows to change weapons on Devotee version of Stolas.,Variable weapon selection. You shouldn't see this in-game.,graphics/hullmods/vic_stolas_bounty_autocannon_hullmod.png
-Gatebreaker Autocannon,vic_gatebreaker_mode_autocannon,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,Kinetic Autocannon.,graphics/hullmods/vic_stolas_bounty_autocannon_hullmod.png
-Gatebreaker Shotgun,vic_gatebreaker_mode_shotgun,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,HE Shotgun.,graphics/hullmods/vic_stolas_bounty_shotgun_hullmod.png
-Gatebreaker Flamer,vic_gatebreaker_mode_flamer,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,Frag Flamer.,graphics/hullmods/vic_stolas_bounty_flamer_hullmod.png
+Rebellion Autocannon,vic_gatebreaker_mode_autocannon,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,Installs rapid-firing kinetic autocannons as the main armament. Removing this hullmod swaps the weapons to the next.,Kinetic Autocannon.,graphics/hullmods/vic_stolas_bounty_autocannon_hullmod.png
+Gatebreaker Shrapnel Cannon,vic_gatebreaker_mode_shotgun,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,Installs powerful high explosive shrapnel cannons as the main armament. Removing this hullmod swaps the weapon to the next.,HE Shotgun.,graphics/hullmods/vic_stolas_bounty_shotgun_hullmod.png
+Nemesis Heavy Flamer,vic_gatebreaker_mode_flamer,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,Installs devastating heavy flamers as the main armament. Removing this hullmod swaps the weapon to the next.,Frag Flamer.,graphics/hullmods/vic_stolas_bounty_flamer_hullmod.png
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 #VIC modular,,,,,,,,,,,,,,,,,,

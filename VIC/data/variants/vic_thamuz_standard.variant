@@ -7,7 +7,7 @@
     "hullMods": ["targetingunit"],
     "permaMods": [],
     "sMods": [],
-    "variantId": "vic_thamuz_standart",
+    "variantId": "vic_thamuz_standard",
     "weaponGroups": [
         {
             "autofire": false,

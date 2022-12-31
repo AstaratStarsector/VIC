@@ -248,7 +248,7 @@ public class Apotheosis{
         neutralStation.setMarket(market);
         neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addSupplies(MathUtils.getRandomNumberInRange(40, 60));
         neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addCommodity(Commodities.ORGANS, MathUtils.getRandomNumberInRange(30, 40));
-        neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addMothballedShip(FleetMemberType.SHIP, "vic_buffalo_vic_standart", "Techoblade");
+        neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().addMothballedShip(FleetMemberType.SHIP, "vic_buffalo_vic_standard", "Techoblade");
         neutralStation.getMarket().getSubmarket(Submarkets.SUBMARKET_STORAGE).getCargo().sort();
 
         //Inner Jump Point
@@ -269,12 +269,12 @@ public class Apotheosis{
         ResearchStation.setCircularOrbit(ApotheosisQuasar, 180, 2000, syncOrbitDays);
 
         addDerelict(system, ApotheosisQuasar, "vic_valafar_assault", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 0, (Math.random() < 0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_thamuz_standart", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 120, (Math.random() < 0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_thamuz_standard", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 120, (Math.random() < 0.4));
         addDerelict(system, ApotheosisQuasar, "vic_cresil_bombardier", ShipRecoverySpecial.ShipCondition.WRECKED, 800 + ((float) Math.random() * 200f), 240, (Math.random() < 0.4));
 
         addDerelict(system, ApotheosisQuasar, "vic_jezebeth_assault", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 0, (Math.random() < 0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_moloch_standart", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 120, (Math.random() < 0.4));
-        addDerelict(system, ApotheosisQuasar, "vic_samael_standart", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 240, (Math.random() < 0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_moloch_standard", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 120, (Math.random() < 0.4));
+        addDerelict(system, ApotheosisQuasar, "vic_samael_standard", ShipRecoverySpecial.ShipCondition.BATTERED, 1500 + ((float) Math.random() * 200f), 240, (Math.random() < 0.4));
 
         addDerelict(system, ApotheosisQuasar, "vic_xaphan_skirmisher", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 0, (Math.random() < 0.4));
         addDerelict(system, ApotheosisQuasar, "vic_kobal_agony", ShipRecoverySpecial.ShipCondition.BATTERED, 2200 + ((float) Math.random() * 200f), 120, (Math.random() < 0.4));

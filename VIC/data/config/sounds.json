@@ -518,7 +518,19 @@
 	
 	
 	"vic_astronomicon_hit":[
-	    {"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":1.0, "volume":1},
+	    {"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":1.1, "volume":1},
+		{"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":1.05, "volume":1},
+		{"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":1.0, "volume":1},
+		{"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":0.95, "volume":1},
+		{"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":0.9, "volume":1},
+	],
+
+	"vic_astronomicon_hit_small":[
+	    {"file":"sounds/effects/vic_astronomicon_hit_small.ogg","pitch":1.1, "volume":1},
+		{"file":"sounds/effects/vic_astronomicon_hit_small.ogg","pitch":1.05, "volume":1},
+		{"file":"sounds/effects/vic_astronomicon_hit_small.ogg","pitch":1.0, "volume":1},
+		{"file":"sounds/effects/vic_astronomicon_hit_small.ogg","pitch":0.95, "volume":1},
+		{"file":"sounds/effects/vic_astronomicon_hit_small.ogg","pitch":0.9, "volume":1},
 	],
 	
 	"vic_gatebreaker_autocannon":[

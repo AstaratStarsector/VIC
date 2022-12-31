@@ -1,0 +1,37 @@
+{
+    "displayName": "Beamer",
+    "fluxCapacitors": 7,
+    "fluxVents": 10,
+    "goalVariant": false,
+    "hullId": "vic_pruflas",
+    "hullMods": [
+        "vic_PDArcEmitter",
+        "frontemitter"
+    ],
+    "permaMods": [],
+    "sMods": [],
+    "variantId": "vic_pruflas_avan_pain",
+    "weaponGroups": [
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0001": "vic_rarog",
+                "WS0002": "vic_rarog"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "ALTERNATING",
+            "weapons": {
+                "WS0003": "vic_saih_small",
+                "WS0004": "vic_saih_small"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {"WS0005": "phasebeam"}
+        }
+    ]
+}
