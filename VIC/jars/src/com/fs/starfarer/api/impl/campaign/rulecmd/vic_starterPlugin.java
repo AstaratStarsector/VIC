@@ -23,7 +23,7 @@ public class vic_starterPlugin extends BaseCommandPlugin {
                 if ((i) == NexConfig.getFactionConfig("vic").getStartFleetSet(NexFactionConfig.StartFleetType.SUPER.name()).getNumFleets()) {
                     List<String> indomitableFleet = new ArrayList<>(2);
                     indomitableFleet.add("vic_stolas_hunter");
-                    indomitableFleet.add("vic_buffalo_vic_standart");
+                    indomitableFleet.add("vic_buffalo_vic_standard");
                     NexConfig.getFactionConfig("vic").getStartFleetSet(NexFactionConfig.StartFleetType.SUPER.name()).addFleet(indomitableFleet);
                     break;
                 }
