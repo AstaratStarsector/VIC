@@ -74,7 +74,7 @@ Frag Proxy Mine for System (dont use),vic_fragMine,0,,100,500,,200,,10,0,1,,,,FR
 Proxy Mine Launcher,vic_UvalFlagCanister,0,,100,500,,300,,10,0,5,6,0.666666666666666666666,2,FRAGMENTATION,150,,0,0.85,2,0.15,30,60,15,30,,0,300,5,50,"PD, DO_NOT_AIM, PD_ALSO, SYSTEM",he0,,Volkov Industries,,Anti Fighter,,,,,,,,,,
 Astronomicon,vic_stolasBuildIn,0,,50000,1000,,750,,10,0,50,3,0,1,ENERGY,750,,1,3,,,,0,0,0,,1250,,,,"SYSTEM, CONSERVE_3, STRIKE, DANGEROUS",,,Volkov Industries,,Strike,,,,,"Gain charges for every %s damage dealt, can't get charges while firing or cooling down.
 Consumes all charges when fired, effect depends on amount of charges consumed:
-%s charge: Fires %s projectiles each dealing %s energy and %s EMP damage, which arc on hull and armor hits, addittionally dealing %s EMP damage.
+%s charge: Fires %s projectiles each dealing %s energy and %s EMP damage, which arc on hull and armor hits, additionally dealing %s EMP damage.
 %s charges: damage increased to %s, on hull impact releases %s arcs dealing %s of projectile damage. On shield impact the arcs penetrate the shield, dealing %s of damage instead.
 %s charges: damage increased to %s, on impact explodes dealing additional %s fragmentation damage in big radius.",7500 | 1 | 15 | 50 | 150 | 150 | 2 | 1000 | 10 | 10% | 25% | 3 | 1500 | 1500,,,TRUE,
 Astronomicon 1,vic_stolasBuildIn1,0,,50000,1000,,50,150,10,0,50,3,0,1,ENERGY,750,,1,3,,,,0,0,0,,1250,,,,SYSTEM,,,Volkov Industries,,Strike,,,,,,,,,TRUE,
@@ -82,7 +82,7 @@ Astronomicon 2,vic_stolasBuildIn2,0,,50000,1000,,1000,,10,0,50,3,0,0,ENERGY,1250
 Astronomicon 3,vic_stolasBuildIn3,0,,50000,1000,,1500,,10,0,50,3,0,0,ENERGY,1500,,1,3,,,,0,0,0,,1250,,,,SYSTEM,,,Volkov Industries,,Strike,,,,,,,,,,
 Flare Launcher,vic_flareLauncher,,,,400,,10,100,,,,,0,,ENERGY,0,0,0,0.1,,,60,60,0,0,,150,300,3,25,SYSTEM,,,,,,,,,,,,,,,
 Pulse PD,vic_pulsePD,1,,200,400,150,,,0,400,4,,,,ENERGY,,40,0,0,0.5,0.5,,,,,100000,,,,,"SYSTEM, PD",,,,,Point Defense,,,,,,,,,,
-Azhdaya Smart Autocannon,vic_azhdaya,13,,8000,700,,12,,20,12,30,,,,KINETIC,10.8,,0.4,0.8,999999999,0.05,0,20,0.25,6,,1200,,,25,"ANTI_FTR, FIRE_WHEN_INEFFICIENT, SYSTEM","energy15, vic_t2weapons_bp",,Volkov Industries,,Suppression,,,,,On hit eplodes dealing %s damage. Explosion has %s chance to instead deal %s damage.,4 Fragmentation | 5% | 100 high explosive,,,,8.1
+Azhdaya Smart Autocannon,vic_azhdaya,13,,8000,700,,12,,20,12,30,,,,KINETIC,10.8,,0.4,0.8,999999999,0.05,0,20,0.25,6,,1200,,,25,"ANTI_FTR, FIRE_WHEN_INEFFICIENT, SYSTEM","energy15, vic_t2weapons_bp",,Volkov Industries,,Suppression,,,,,On hit explodes dealing %s damage. Explosion has %s chance to instead deal %s damage.,4 Fragmentation | 5% | 100 high explosive,,,,8.1
 Nemesis Heavy Flamer,vic_gatebreaker_r_flamer,3,,6500,750,,150,,3,60,0,,,,FRAGMENTATION,60,,1,1,999999999,0.05,0,0,0,0,,500,,,,"SYSTEM, SHOW_IN_CODEX","no_drop, no_salvage",,Volkov Industries,,Assault,,,,,,,,,,
 Nemesis Heavy Flamer,vic_gatebreaker_l_flamer,3,,6500,750,,150,,3,60,0,,,,FRAGMENTATION,60,,1,1,999999999,0.05,0,0,0,0,,500,,,,"SYSTEM, SHOW_IN_CODEX","no_drop, no_salvage",,Volkov Industries,,Assault,,,,,,,,,,
 Gatebreaker Shrapnel Cannon,vic_gatebreaker_r_shotgun,0,,3000,750,,100,,200,5,0,,,,HIGH_EXPLOSIVE,100,,0,5,,,30,30,0,0,,1000,,,400,"SYSTEM, SHOW_IN_CODEX","no_drop, no_salvage",,Volkov Industries,,Anti Armor,,,,,,,,,,
