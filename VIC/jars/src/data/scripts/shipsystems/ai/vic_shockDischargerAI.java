@@ -31,7 +31,7 @@ public class vic_shockDischargerAI implements ShipSystemAIScript {
     @Override
     public void advance(float amount, Vector2f missileDangerDir, Vector2f collisionDangerDir, ShipAPI target) {
         float powerCollected = system.getPower(ship);
-        Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischargerAI", "graphics/icons/hullsys/emp_emitter.png", "powerSucked", powerCollected + "", false);
+        //Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischargerAI", "graphics/icons/hullsys/emp_emitter.png", "powerSucked", powerCollected + "", false);
 
         if (!ship.getSystem().getState().equals(ShipSystemAPI.SystemState.IDLE)) return;
         timer.advance(amount);
@@ -46,7 +46,8 @@ public class vic_shockDischargerAI implements ShipSystemAIScript {
         } else {
             List<ShipAPI> enemyShips = AIUtils.getNearbyEnemies(ship, vic_shockDischarger.shockRange);
             for (ShipAPI enemy : enemyShips){
-                weight += (enemy.getFleetMember().getFleetPointCost() * (enemy.getHardFluxLevel() + ((enemy.getFluxLevel() - enemy.getHardFluxLevel()) * 0.5f))) / enemyShips.size();
+                if (enemy.getFleetMember() != null)
+                    weight += (enemy.getFleetMember().getFleetPointCost() * (enemy.getHardFluxLevel() + ((enemy.getFluxLevel() - enemy.getHardFluxLevel()) * 0.5f))) / enemyShips.size();
             }
         }
 
@@ -71,7 +72,7 @@ public class vic_shockDischargerAI implements ShipSystemAIScript {
         if (weight > neededWeight){
             ship.useSystem();
         }
-        Global.getCombatEngine().addFloatingText(ship.getLocation(),weight + "/" + neededWeight + "", 40, Color.WHITE,null, 0,0);
+        //Global.getCombatEngine().addFloatingText(ship.getLocation(),weight + "/" + neededWeight + "", 40, Color.WHITE,null, 0,0);
 
         /*
         boolean useSystem = false;
