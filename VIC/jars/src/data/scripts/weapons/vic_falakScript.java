@@ -41,18 +41,20 @@ public class vic_falakScript extends vic_missileFluxGen{
             if (param instanceof MissileAPI) {
                 if (((DamagingProjectileAPI) param).getProjectileSpecId().equals("vic_falak_main")) {
                     float fluxFaction = 0;
+                    float EMP = damage.getDamage() * 0.075f * (1f - fluxFaction);
+                    float damAmount = damage.getDamage() * 0.1f - EMP;
                     if (target instanceof ShipAPI) {
                         if (((ShipAPI) target).getFluxTracker().isOverloaded()) {
                             fluxFaction = 1;
                         } else {
                             fluxFaction = ((ShipAPI) target).getFluxLevel();
                         }
-                    }
-                    float EMP = damage.getDamage() * 0.075f * (1f - fluxFaction);
-                    float damAmount = damage.getDamage() * 0.1f - EMP;
-                    if (((ShipAPI) target).getFluxTracker().isOverloaded()) {
-                        EMP = damage.getDamage() * 0.0375f ;
-                        damAmount = damage.getDamage() * 0.1f;
+                        EMP = damage.getDamage() * 0.075f * (1f - fluxFaction);
+                        damAmount = damage.getDamage() * 0.1f - EMP;
+                        if (((ShipAPI) target).getFluxTracker().isOverloaded()) {
+                            EMP = damage.getDamage() * 0.0375f ;
+                            damAmount = damage.getDamage() * 0.1f;
+                        }
                     }
                     //Global.getCombatEngine().addFloatingText(point, damAmount + "", 20, Color.WHITE, null, 0,0);
                     for (int i =0; i < 10; i++){
