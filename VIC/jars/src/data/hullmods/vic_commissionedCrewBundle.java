@@ -8,8 +8,8 @@ public class vic_commissionedCrewBundle extends BaseHullMod {
     @Override
     public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
         super.applyEffectsAfterShipCreation(ship, id);
-        if (!(ship.getVariant().hasHullMod("vic_brandengineupgrades") || ship.getVariant().hasHullMod("vic_geneticmodifications"))) {
-            ship.getVariant().addMod("vic_geneticmodifications");
+        if (!(ship.getVariant().hasHullMod("vic_brandengineupgrades") || ship.getVariant().hasHullMod("vic_ambitiousBravado"))) {
+            ship.getVariant().addMod("vic_ambitiousBravado");
             ship.getVariant().addMod("vic_brandengineupgrades");
         }
         ship.getVariant().removeMod("vic_commissionedCrewBundle");
