@@ -41,12 +41,14 @@ public class vic_shockDischargerAI implements ShipSystemAIScript {
 
 
         if (target != null){
-            float targetsWorth = target.getFleetMember().getFleetPointCost() * (target.getHardFluxLevel() + ((target.getFluxLevel() - target.getHardFluxLevel()) * 0.5f));
-            weight += targetsWorth;
+            if (target.getFleetMember() != null){
+                float targetsWorth = target.getFleetMember().getFleetPointCost() * (target.getHardFluxLevel() + ((target.getFluxLevel() - target.getHardFluxLevel()) * 0.5f));
+                weight += targetsWorth;
+            }
         } else {
             List<ShipAPI> enemyShips = AIUtils.getNearbyEnemies(ship, vic_shockDischarger.shockRange);
             for (ShipAPI enemy : enemyShips){
-                if (enemy.getFleetMember() != null)
+                if (enemy != null && enemy.getFleetMember() != null)
                     weight += (enemy.getFleetMember().getFleetPointCost() * (enemy.getHardFluxLevel() + ((enemy.getFluxLevel() - enemy.getHardFluxLevel()) * 0.5f))) / enemyShips.size();
             }
         }
