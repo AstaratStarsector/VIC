@@ -129,7 +129,7 @@ public class vic_shockDischarger extends BaseShipSystemScript {
                         Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischarger", "graphics/icons/hullsys/emp_emitter.png", "Flux Rapture", "soft flux being removed", false);
                     }
                 }
-                Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischargerSuck", "graphics/icons/hullsys/emp_emitter.png", "SuckSpeed", suckSpeed / amount + "", false);
+                //Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischargerSuck", "graphics/icons/hullsys/emp_emitter.png", "SuckSpeed", suckSpeed / amount + "", false);
 
                 /*
                 particleCD.advance(amount);

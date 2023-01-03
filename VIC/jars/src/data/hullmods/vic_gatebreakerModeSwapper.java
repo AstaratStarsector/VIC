@@ -82,16 +82,24 @@ public class vic_gatebreakerModeSwapper extends BaseHullMod
     @Override
     public void applyEffectsAfterShipCreation(ShipAPI ship, String id)
     {
-        // how the fuck can ALL of these be null
-        // alex pls
-        if (Global.getSector() == null || Global.getSector().getPlayerFleet() == null || Global.getSector().getPlayerFleet().getCargo() == null)
-            return;
-        if (Global.getSector().getPlayerFleet().getCargo().getStacksCopy() == null || Global.getSector().getPlayerFleet().getCargo().getStacksCopy().isEmpty())
-            return;
-        for (CargoStackAPI stack : Global.getSector().getPlayerFleet().getCargo().getStacksCopy())
-        {
-            if (stack.isWeaponStack() && stack.getWeaponSpecIfWeapon().getWeaponId().contains("vic_gatebreaker"))
-                Global.getSector().getPlayerFleet().getCargo().removeStack(stack);
+        if(ship.getOriginalOwner()<0){
+            //undo fix for weapons put in cargo
+            if(
+                    Global.getSector()!=null &&
+                            Global.getSector().getPlayerFleet()!=null &&
+                            Global.getSector().getPlayerFleet().getCargo()!=null &&
+                            Global.getSector().getPlayerFleet().getCargo().getStacksCopy()!=null &&
+                            !Global.getSector().getPlayerFleet().getCargo().getStacksCopy().isEmpty()
+            ){
+                for (CargoStackAPI s : Global.getSector().getPlayerFleet().getCargo().getStacksCopy()){
+                    if(
+                            s.isWeaponStack()
+                                    && s.getWeaponSpecIfWeapon().getWeaponId().startsWith("vic_gatebreaker")
+                    ){
+                        Global.getSector().getPlayerFleet().getCargo().removeStack(s);
+                    }
+                }
+            }
         }
     }
 
