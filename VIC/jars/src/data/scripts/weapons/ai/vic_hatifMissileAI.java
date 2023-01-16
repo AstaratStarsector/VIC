@@ -2,6 +2,7 @@ package data.scripts.weapons.ai;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.combat.ai.missile.FlareJammerAI;
 import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.FastTrig;
 import org.lazywizard.lazylib.MathUtils;
@@ -203,7 +204,8 @@ public class vic_hatifMissileAI extends VIC_BaseMissile {
 
             CombatFleetManagerAPI fleetManager = Global.getCombatEngine().getFleetManager(launchingShip.getOwner());
             fleetManager.setSuppressDeploymentMessages(true);
-            ShipAPI dummyShip = fleetManager.spawnShipOrWing("mining_drone_Standard", missile.getLocation(), 0);
+            Vector2f origPos = new Vector2f(missile.getSource().getLocation());
+            //ShipAPI dummyShip = fleetManager.spawnShipOrWing("kite_original_Stock", missile.getLocation(), 0);
             for (int i = 0; i < NUMBER_SUBMUNITIONS; i++) {
                 float angle = missile.getFacing() + initialOffset + i * SUBMUNITION_RELATIVE_OFFSET
                         + MathUtils.getRandomNumberInRange(-SUBMUNITION_INACCURACY, SUBMUNITION_INACCURACY);
@@ -216,17 +218,19 @@ public class vic_hatifMissileAI extends VIC_BaseMissile {
                 Vector2f vel = STAGE_ONE_TRANSFER_MOMENTUM ? missile.getVelocity() : ZERO;
                 Vector2f boost = VectorUtils.rotate(submunitionVelocityMod, missile.getFacing());
                 vel.translate(boost.x, boost.y);
+                missile.getSource().getLocation().set(missile.getLocation());
                 submunition = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(
-                        dummyShip,
+                        missile.getSource(),
                         missile.getWeapon(),
                         STAGE_TWO_WEAPON_ID,
                         missile.getLocation(),
                         angle,
                         null);
+                missile.getSource().getLocation().set(origPos);
                 submunition.getVelocity().scale(MathUtils.getRandomNumberInRange(-5f, 5f));
                 //submunition.setFromMissile(true);
             }
-            Global.getCombatEngine().removeEntity(dummyShip);
+            //Global.getCombatEngine().removeEntity(dummyShip);
             fleetManager.setSuppressDeploymentMessages(false);
             // Only used for missile submunitions, which this is not
 

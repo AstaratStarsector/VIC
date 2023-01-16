@@ -18,8 +18,10 @@ import static com.fs.starfarer.api.util.Misc.ZERO;
 public class vic_fighterTrail implements EveryFrameWeaponEffectPlugin {
 
     IntervalUtil effectInterval = new IntervalUtil(0.05f, 0.05f);
-    Float trailID = null;
+    Float trailID = null,
+            Duration = 0f;
     SpriteAPI trailSprite = Global.getSettings().getSprite("fx", "trails_trail_twin");
+
 
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
@@ -29,11 +31,12 @@ public class vic_fighterTrail implements EveryFrameWeaponEffectPlugin {
         float angle = Misc.getAngleInDegrees(new Vector2f(ship.getVelocity()));
 
         effectInterval.advance(engine.getElapsedInLastFrame());
-        float Duration = 2f * (200f / ship.getMaxSpeedWithoutBoost());
-        if (!ship.isAlive()) Duration = 0;
-        if (effectInterval.intervalElapsed() && ship.isAlive()) {
+        //if (!ship.isAlive()) Duration = 0f;
+        //if (effectInterval.intervalElapsed() && ship.isAlive()) {
+        if (ship.isAlive()) {
             if (trailID == null) {
                 trailID = MagicTrailPlugin.getUniqueID();
+                Duration = 2f * (200f / ship.getMaxSpeedWithoutBoost());
             }
             MagicTrailPlugin.AddTrailMemberSimple(
                     ship,

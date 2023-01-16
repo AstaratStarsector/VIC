@@ -201,7 +201,12 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
             if (ship.getVelocity().lengthSquared() > ship.getMaxSpeed()) ship.getVelocity().scale(1 - 0.8f * engine.getElapsedInLastFrame());
 
             if (DoOnce){
+                Vector2f newSpeed = new Vector2f();
+                ship.getVelocity().normalise(newSpeed);
+                newSpeed.scale(120);
+                ship.getVelocity().set(newSpeed);
                 AddQuantumLungeBoost(ship, 3f);
+                DoOnce = false;
             }
             /*
             stats.getMaxSpeed().modifyFlat(id, 50f);
@@ -236,6 +241,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         stats.getDeceleration().unmodify(id);
         stats.getCombatEngineRepairTimeMult().unmodify(id);
         stats.getTimeMult().unmodify(id);
+        DoOnce = true;
 
         if (isActive) {
             ShipAPI ship = (ShipAPI) stats.getEntity();

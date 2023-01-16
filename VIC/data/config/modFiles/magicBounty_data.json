@@ -218,7 +218,7 @@
         "target_skill_preference": "ANY",
         "fleet_name": "Zanzin Studios Camerata",
         "fleet_faction": "Hegemony",
-        "fleet_flagship_variant": "kite_Stock_actual",
+        "fleet_flagship_variant": "kite_original_Stock",
         "fleet_flagship_name": "Long Take",
         "fleet_flagship_recoverable": true,
         "fleet_scaling_multiplier": 1,
