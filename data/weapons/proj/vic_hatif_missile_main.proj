@@ -65,11 +65,11 @@
 					"minTimeToSplit":1,
 					"canSplitEarly":false,
 					"splitSound":"sabot_srm_split",
-					"numShots":5,
+					"numShots":6,
 					"damage":10,
 					"emp":0, # needs to match highlight in weapon_data.csv
 					"damageType":ENERGY,
-					"hitpoints":500,
+					"hitpoints":750,
 					"evenSpread":true,
 					"arc":135,
 					"spreadInaccuracy":5,

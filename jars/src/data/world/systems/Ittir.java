@@ -306,7 +306,6 @@ public class Ittir{
                 100f,
                 1000f,
                 30f);
-        Pierre.setCustomDescriptionId("vic_pierre"); //reference descriptions.csv
 
         Pierre.getMarket().addCondition(Conditions.NO_ATMOSPHERE);
         Pierre.getMarket().addCondition(Conditions.COLD);
@@ -325,7 +324,6 @@ public class Ittir{
                 60f,
                 1500f,
                 60f);
-        Becquerel.setCustomDescriptionId("vic_becquerel"); //reference descriptions.csv
 
         Becquerel.getMarket().addCondition(Conditions.NO_ATMOSPHERE);
         Becquerel.getMarket().addCondition(Conditions.VERY_COLD);

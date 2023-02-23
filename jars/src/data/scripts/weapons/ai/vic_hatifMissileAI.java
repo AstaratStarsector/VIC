@@ -33,7 +33,7 @@ public class vic_hatifMissileAI extends VIC_BaseMissile {
     final boolean STAGE_ONE_TRANSFER_MOMENTUM = true;
     final float SUBMUNITION_VELOCITY_MOD_MAX = 200f; // Max fudged extra velocity added to the submunitions
     final float SUBMUNITION_VELOCITY_MOD_MIN = 100f; // Min fudged extra velocity added to the submunitions
-    final int NUMBER_SUBMUNITIONS = 5;
+    final int NUMBER_SUBMUNITIONS = 6;
     final float SUBMUNITION_RELATIVE_OFFSET = 15f; // How much each submunition's aim point is offset relative to others if multiple
     final float SUBMUNITION_INACCURACY = 0f; // How much random offset from the ^ aim point if multiple
     final String STAGE_TWO_WEAPON_ID = "flarelauncher21";
