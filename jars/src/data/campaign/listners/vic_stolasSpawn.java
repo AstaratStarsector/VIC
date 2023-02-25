@@ -18,7 +18,7 @@ public class vic_stolasSpawn extends BaseCampaignEventListener {
     WeightedRandomPicker<String> variants = new WeightedRandomPicker<>();
 
     {
-        variants.add("vic_stolas_standart");
+        variants.add("vic_stolas_standard");
         variants.add("vic_stolas_hunter");
         variants.add("vic_stolasPlasma", 0.5f);
         variants.add("vic_stolas_gauss", 0.25f);
@@ -34,8 +34,6 @@ public class vic_stolasSpawn extends BaseCampaignEventListener {
                 if ((ship.isFlagship() && ship.getHullSpec().getFleetPoints() >= 15 && Math.random() >= 0.9f)) {
                     PersonAPI officer = OfficerManagerEvent.createOfficer(Global.getSector().getFaction("vic"), 8);
                     ship.setVariant(Global.getSettings().getVariant(variants.pick()), false, false);
-                    ship.setVariant(ship.getVariant().clone(), false, false);
-                    ship.getVariant().addTag("no_autofit");
                     ship.setCaptain(officer);
                     fleet.setCommander(officer);
                     ship.getCaptain().setPersonality(Personalities.RECKLESS);

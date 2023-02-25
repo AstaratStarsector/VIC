@@ -1,0 +1,2 @@
+id,cost,weight,faction restriction
+#id of salvage entity,cost to spawn in loot points,spawn weight,limits spawn to only those factions leave empty to allow for all factions

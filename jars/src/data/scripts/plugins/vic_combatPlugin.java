@@ -164,7 +164,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             if (ship == engine.getPlayerShip()) {
                 float count = entry.getValue().size();
                 if (count > 0)
-                    engine.maintainStatusForPlayerShip("ID" + "hunter", "graphics/icons/hullsys/vic_hunterWeb.png", "Hunter's web", "Webbed ships: " + Math.round(count), false);
+                    engine.maintainStatusForPlayerShip(ID + "hunter", "graphics/icons/hullsys/vic_hunterWeb.png", "Hunter's web", "Webbed ships: " + Math.round(count), false);
             }
 
             for (Map.Entry<ShipAPI, Float> entry2 : entry.getValue().entrySet()) {
@@ -191,29 +191,53 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                     target.getEngineController().extendFlame(ID, 0.75f, 0.75f, 0.75f);
 
                     if (target == engine.getPlayerShip())
-                        engine.maintainStatusForPlayerShip("ID", "graphics/icons/hullsys/vic_hunterWeb.png", "EMP web " + (Math.round(entry2.getValue() * 10f) / 10f) + "s", "Speed reduced by 25%", true);
+                        engine.maintainStatusForPlayerShip(ID, "graphics/icons/hullsys/vic_hunterWeb.png", "EMP web " + (Math.round(entry2.getValue() * 10f) / 10f) + " s", "Speed reduced by 25%", true);
 
                 }
                 entry2.setValue(entry2.getValue() - amount);
-                if (!entry2.getKey().isAlive() && ship.isAlive() && !ship.getSystem().isActive()) {
-                    float CDReduction = 0;
-                    float CD = Global.getSettings().getShipSystemSpec("vic_hunterDrive").getCooldown(ship.getMutableStats());
-                    switch (target.getHullSize()) {
-                        case FRIGATE:
-                            CDReduction = CD * 0.33f;
-                            break;
-                        case DESTROYER:
-                            CDReduction = CD * 0.5f;
-                            break;
-                        case CRUISER:
-                            CDReduction = CD * 0.66f;
-                            break;
-                        case CAPITAL_SHIP:
-                            CDReduction = CD * 0.80f;
-                            break;
+                if (!entry2.getKey().isAlive() && ship.isAlive()) {
+                    if (!ship.getSystem().isActive()){
+                        float CDReduction = 0;
+                        float CD = Global.getSettings().getShipSystemSpec("vic_hunterDrive").getCooldown(ship.getMutableStats());
+                        switch (target.getHullSize()) {
+                            case FRIGATE:
+                                CDReduction = CD * 0.33f;
+                                break;
+                            case DESTROYER:
+                                CDReduction = CD * 0.5f;
+                                break;
+                            case CRUISER:
+                                CDReduction = CD * 0.66f;
+                                break;
+                            case CAPITAL_SHIP:
+                                CDReduction = CD * 0.80f;
+                                break;
+                        }
+                        ship.getSystem().setCooldownRemaining(ship.getSystem().getCooldownRemaining() - CDReduction);
                     }
-                    ship.getSystem().setCooldownRemaining(ship.getSystem().getCooldownRemaining() - CDReduction);
+                    AddHunterBuff(ship, entry2.getKey().getHullSize());
                 }
+            }
+        }
+
+        for (Map.Entry<ShipAPI, hunterBuffData> entry : new HashMap<>(localData.hunterDriveBuffs).entrySet()) {
+            ShipAPI ship = entry.getKey();
+            hunterBuffData buff = entry.getValue();
+            buff.duration -= amount;
+            if (buff.duration <= 0){
+                ship.getMutableStats().getEnergyWeaponDamageMult().unmodify("vic_hunterBuff");
+                ship.getMutableStats().getBallisticWeaponDamageMult().unmodify("vic_hunterBuff");
+                ship.getMutableStats().getMaxSpeed().unmodify("vic_hunterBuff");
+                ship.getMutableStats().getShieldDamageTakenMult().unmodify("vic_hunterBuff");
+                localData.hunterDriveBuffs.remove(ship);
+            } else {
+                ship.getMutableStats().getEnergyWeaponDamageMult().modifyMult("vic_hunterBuff", 1 + (0.1f * buff.stacks));
+                ship.getMutableStats().getBallisticWeaponDamageMult().modifyMult("vic_hunterBuff", 1 + (0.1f * buff.stacks));
+                ship.getMutableStats().getMaxSpeed().modifyPercent("vic_hunterBuff", 1 + (0.05f * buff.stacks));
+                ship.getMutableStats().getShieldDamageTakenMult().modifyMult("vic_hunterBuff", 1 + (0.05f * buff.stacks));
+
+                if (ship == engine.getPlayerShip())
+                    engine.maintainStatusForPlayerShip("vic_hunterBuff", "graphics/icons/hullsys/vic_hunterWeb.png", "Hunter pride " + (Math.round(buff.duration * 10f) / 10f) + " s", "Empower " + 20 * buff.stacks + "%", false);
             }
         }
 
@@ -735,6 +759,24 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         localData.NawiaRain.add(new NawiaRainData(hitPoint, targetVelocity, ship, projectile));
     }
 
+
+
+    public static void AddHunterBuff(ShipAPI ship, ShipAPI.HullSize hullSize) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        hunterBuffData buff;
+        if (localData.hunterDriveBuffs.containsKey(ship)){
+            buff = localData.hunterDriveBuffs.get(ship);
+            buff.duration = buff.maxDuration;
+        } else {
+            buff = new hunterBuffData(ship);
+            localData.hunterDriveBuffs.put(ship, buff);
+        }
+        buff.addStacks(hullSize);
+
+    }
+
     //note: local data
     public static final class LocalData {
         final List<NawiaFxData> NawiaFxList = new ArrayList<>(250);
@@ -750,6 +792,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         final HashMap<ShipAPI, HashMap<ShipAPI, Float>> hunterDriveTargets = new HashMap<>(10);
         final List<spriteRender> spritesRender = new ArrayList<>(50);
         final List<NawiaRainData> NawiaRain = new ArrayList<>(50);
+        final HashMap<ShipAPI, hunterBuffData> hunterDriveBuffs= new HashMap<>(10);
     }
 
     private static final class ZlydzenTargetsDataShield {
@@ -932,6 +975,38 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
         private void advance(float amount) {
             timePast += amount;
+        }
+    }
+
+    private static final class hunterBuffData {
+        public hunterBuffData(ShipAPI ship){
+            this.ship = ship;
+            duration = maxDuration;
+        }
+        Integer stacks = 0;
+        float duration;
+        float maxDuration = 30;
+        Integer maxStacks = 5;
+        ShipAPI ship;
+
+        public void addStacks(ShipAPI.HullSize hullSize){
+            int add = 0;
+            switch (hullSize){
+                case FRIGATE:
+                    add = 1;
+                    break;
+                case DESTROYER:
+                    add = 2;
+                    break;
+                case CRUISER:
+                    add = 3;
+                    break;
+                case CAPITAL_SHIP:
+                    add = 5;
+                    break;
+            }
+            stacks += add;
+            stacks = Math.min(maxStacks, stacks);
         }
     }
 

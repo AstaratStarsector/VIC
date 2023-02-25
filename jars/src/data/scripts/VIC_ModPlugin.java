@@ -83,6 +83,27 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
     }
 
+    public void onDevModeF8Reload() {
+        addTags();
+    }
+
+    void addTags(){
+        List<String> variants = new ArrayList<>();
+        {
+            variants.add("vic_stolas_standard");
+            variants.add("vic_stolas_hunter");
+            variants.add("vic_stolasPlasma");
+            variants.add("vic_stolas_gauss");
+            variants.add("vic_stolas_crusher");
+        }
+        for (String variantID : variants){
+            ShipVariantAPI variant = Global.getSettings().getVariant(variantID);
+            if (!variant.hasTag("no_autofit")){
+                variant.addTag("no_autofit");
+            }
+        }
+    }
+
     @Override
     public PluginPick<MissileAIPlugin> pickMissileAI(MissileAPI missile, ShipAPI launchingShip) {
         switch (missile.getProjectileSpecId()) {
@@ -144,6 +165,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
             onNewGame();
             onNewGameAfterEconomyLoad();
         }
+        addTags();
     }
 
     public void onNewGameAfterProcGen() {
