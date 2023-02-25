@@ -14,7 +14,7 @@
   "builtInMods": [
     "vic_dynamicshields",
     "vic_aerodynamicdesign",
-    "vic_hellstormV2",
+    "vic_hellstormV3",
     "vic_shturmSolutionDummy"
   ],
   "builtInWeapons": {
