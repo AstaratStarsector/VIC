@@ -55,6 +55,7 @@ public class vic_falakScript extends vic_missileFluxGen{
                             EMP = damage.getDamage() * 0.0375f ;
                             damAmount = damage.getDamage() * 0.1f;
                         }
+                        EMP *= 2;
                     }
                     //Global.getCombatEngine().addFloatingText(point, damAmount + "", 20, Color.WHITE, null, 0,0);
                     for (int i =0; i < 10; i++){
