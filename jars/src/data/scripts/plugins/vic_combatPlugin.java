@@ -233,7 +233,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             } else {
                 ship.getMutableStats().getEnergyWeaponDamageMult().modifyMult("vic_hunterBuff", 1 + (0.1f * buff.stacks));
                 ship.getMutableStats().getBallisticWeaponDamageMult().modifyMult("vic_hunterBuff", 1 + (0.1f * buff.stacks));
-                ship.getMutableStats().getMaxSpeed().modifyPercent("vic_hunterBuff", 1 + (0.05f * buff.stacks));
+                ship.getMutableStats().getMaxSpeed().modifyPercent("vic_hunterBuff", 5f * buff.stacks);
                 ship.getMutableStats().getShieldDamageTakenMult().modifyMult("vic_hunterBuff", 1 + (0.05f * buff.stacks));
 
                 if (ship == engine.getPlayerShip())
