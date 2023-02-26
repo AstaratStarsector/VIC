@@ -32,6 +32,11 @@ public class vic_hellStormV3 extends BaseHullMod {
         if (index == 0) return "" + (int) ((bonus - 1) * 100) + "%";
         if (index == 1) return "" + (int) ((bonus - 1) * 100) + "%";
         if (index == 2) return "" + (int) ((OPIncrease - 1) * 100) + "%";
+        if (index == 3) return "30";
+        if (index == 4) return "5";
+        if (index == 5) return "+10%";
+        if (index == 6) return "+5%";
+        if (index == 7) return "+5%";
         return null;
     }
 

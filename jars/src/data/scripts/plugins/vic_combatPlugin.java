@@ -227,17 +227,21 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             if (buff.duration <= 0){
                 ship.getMutableStats().getEnergyWeaponDamageMult().unmodify("vic_hunterBuff");
                 ship.getMutableStats().getBallisticWeaponDamageMult().unmodify("vic_hunterBuff");
+                ship.getMutableStats().getEnergyWeaponFluxCostMod().unmodify("vic_hunterBuff");
+                ship.getMutableStats().getBallisticWeaponFluxCostMod().unmodify("vic_hunterBuff");
                 ship.getMutableStats().getMaxSpeed().unmodify("vic_hunterBuff");
                 ship.getMutableStats().getShieldDamageTakenMult().unmodify("vic_hunterBuff");
                 localData.hunterDriveBuffs.remove(ship);
             } else {
                 ship.getMutableStats().getEnergyWeaponDamageMult().modifyMult("vic_hunterBuff", 1 + (0.1f * buff.stacks));
                 ship.getMutableStats().getBallisticWeaponDamageMult().modifyMult("vic_hunterBuff", 1 + (0.1f * buff.stacks));
+                ship.getMutableStats().getEnergyWeaponFluxCostMod().modifyMult("vic_hunterBuff", 1 + (0.1f * buff.stacks));
+                ship.getMutableStats().getBallisticWeaponFluxCostMod().modifyMult("vic_hunterBuff", 1 + (0.1f * buff.stacks));
                 ship.getMutableStats().getMaxSpeed().modifyPercent("vic_hunterBuff", 5f * buff.stacks);
                 ship.getMutableStats().getShieldDamageTakenMult().modifyMult("vic_hunterBuff", 1 + (0.05f * buff.stacks));
 
                 if (ship == engine.getPlayerShip())
-                    engine.maintainStatusForPlayerShip("vic_hunterBuff", "graphics/icons/hullsys/vic_hunterWeb.png", "Hunter pride " + (Math.round(buff.duration * 10f) / 10f) + " s", "Empower " + 20 * buff.stacks + "%", false);
+                    engine.maintainStatusForPlayerShip("vic_hunterBuff", "graphics/icons/hullsys/vic_hunterWeb.png", "Hunter's Pride " + (Math.round(buff.duration * 10f) / 10f) + " s", "Empower " + 20 * buff.stacks + "%", false);
             }
         }
 
