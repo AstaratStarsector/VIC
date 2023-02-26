@@ -9,7 +9,6 @@
 	"effectColor1":[255,175,255,255],
 	"effectColor2":[255,0,255,150],
 	
-		
 	"alwaysAccelerate":true,
 
 	"fadeActivationSoundOnChargedown":false,

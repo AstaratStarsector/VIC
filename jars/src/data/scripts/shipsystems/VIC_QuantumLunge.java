@@ -110,7 +110,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
             stats.getCombatEngineRepairTimeMult().modifyMult(id, 0);
             stats.getAcceleration().modifyFlat(id, 300f * visualLevel);
             ship.getEngineController().extendFlame(this, 3f * effectLevel, 2f * effectLevel, 3f * effectLevel);
-            ship.setJitterUnder(ship, new Color(100, 165, 255, 155), 1f, Math.round(40 * visualLevel), 25 * visualLevel);
+            ship.setJitter(ship, new Color(100, 165, 255, 125), effectLevel, Math.round(15 * visualLevel), 15, 60 * visualLevel);
             ship.setAngularVelocity(0);
         }
 
