@@ -124,7 +124,7 @@ vic_shieldHardening,SHIP_SYSTEM,"Redirects the ship's energy to harden shields. 
 
 With the integrated AI core's data output switched to a more defensive purpose, the shields are dynamically changed based on the core's calculations, with the energy of the matrix redirected momentarily to the points of strongest impacts. While the core is online, a certain amount of power from the weapon systems has to be drained, but at least the crew doesn't have to worry about the core melting down from constant work, unlike in the offense-focused version of the ship.",Defensive,"Redirects the ship's energy to harden shields. Reduces shield damage taken by 50%, but reduces weapons' rate of fire by 25%. At above 50% flux begins using secondary energy pool to further improve the shield's capabilities.",50% | 25% | 50%,
 vic_flareLauncher,SHIP_SYSTEM,,Defensive,Launches flares that distract the guidance systems of incoming missiles and PD weapons. Any missile hitting a flare will be destroyed. Holds up 2 charges and has long reacharge time.,,
-vic_radarArray,SHIP_SYSTEM,Temporarily improves the mobility of missiles and makes the Azhdaya autocannon's projectiles home onto the enemies.,,,,
+vic_radarArray,SHIP_SYSTEM,"Temporarily improves the mobility of missiles and fighters, and makes the Azhdaya autocannon's projectiles home onto the enemies.",,,,
 vic_hunterDrive,SHIP_SYSTEM,Dramatically accelerates the ship forward. Deactivation results in a powerful EMP pulse. The acceleration can be deactivated prematurely. Destroying the ships affected by the pulse recharges the system. ,,,,
 vic_zealotDrive,SHIP_SYSTEM,"""Have no fear. Have no mercy. For our path is of blood and fire.""",,,,
 ,,,,,,
