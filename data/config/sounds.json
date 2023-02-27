@@ -6,9 +6,9 @@
 	"music_vic_market_neutral":[
 		{
 			"source":"sounds/music",
-			"volume":0.7,
+			"volume":1,
 			"files":[
-				"Psiklaw_VIC_Neutral.ogg",
+				"Haplogynae_VIC_Market_Neutral.ogg",
 			],
 			"randomStart":false, 
 		},
@@ -16,9 +16,9 @@
 	"music_vic_market_hostile":[
 		{
 			"source":"sounds/music",
-			"volume":1.5,
+			"volume":1,
 			"files":[
-				"Psiklaw_VIC_hostile.ogg",
+				"Haplogynae_VIC_Market_Hostile.ogg",
 			],
 			"randomStart":false, 
 		},
@@ -26,9 +26,40 @@
 	"music_vic_market_friendly":[
 		{
 			"source":"sounds/music",
-			"volume":0.6,
+			"volume":1,
 			"files":[
-				"Psiklaw_VIC_Friendly.ogg",
+				"Haplogynae_VIC_Market_Friendly.ogg",
+			],
+			"randomStart":false, 
+		},
+	],
+
+		"music_vic_encounter_neutral":[
+		{
+			"source":"sounds/music",
+			"volume":1,
+			"files":[
+				"Haplogynae_VIC_Fleet_Neutral.ogg",
+			],
+			"randomStart":false, 
+		},
+	],
+	"music_vic_encounter_hostile":[
+		{
+			"source":"sounds/music",
+			"volume":1,
+			"files":[
+				"Haplogynae_VIC_Fleet_Hostile.ogg",
+			],
+			"randomStart":false, 
+		},
+	],
+	"music_vic_encounter_friendly":[
+		{
+			"source":"sounds/music",
+			"volume":1,
+			"files":[
+				"Haplogynae_VIC_Fleet_Friendly.ogg",
 			],
 			"randomStart":false, 
 		},

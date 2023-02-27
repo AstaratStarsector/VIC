@@ -173,6 +173,9 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                     0.3f,
                     0.4f,
                     true);
+
+            float visualLevel = (0.5f * effectLevel);
+            ship.setJitter(ship, new Color(100, 165, 255, 125), effectLevel, Math.round(15 * visualLevel), 15, 60 * visualLevel);
         }
 
         if (state == State.OUT) {
@@ -189,6 +192,9 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                 }
 
             }//end once
+
+            float visualLevel = (0.5f * effectLevel);
+            ship.setJitter(ship, new Color(100, 165, 255, 75), effectLevel, Math.round(15 * visualLevel), 15, 60 * visualLevel);
 
             shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 5);
 
