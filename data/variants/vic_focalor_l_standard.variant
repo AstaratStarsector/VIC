@@ -1,56 +1,65 @@
 {
-    "displayName": "Standard",
-    "fluxCapacitors": 18,
-    "fluxVents": 30,
-    "goalVariant": true,
-    "hullId": "vic_focalor_l",
-    "hullMods": [
-        "targetingunit",
-        "fluxbreakers"
-    ],
-    "permaMods": [],
-    "sMods": [],
-    "variantId": "vic_focalor_l_standard",
-    "weaponGroups": [
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0012": "vic_azhdaya"}
-        },
-        {
-            "autofire": false,
-            "mode": "ALTERNATING",
-            "weapons": {
-                "WS0002:": "vic_hungruf_small",
-                "WS0003": "vic_hungruf_small"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0010": "vic_strigoy",
-                "WS0011": "vic_strigoy"
-            }
-        },
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0001": "vic_apocrypha"}
-        },
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0004": "vic_upyr"}
-        },
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0005": "vic_upyr"}
-        }
-    ],
-    "wings": [
-        "vic_uvall_wing",
-        "vic_uvall_wing"
-    ]
+  "variantId": "vic_focalor_l_standard",
+  "hullId": "vic_focalor_l",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 16,
+  "fluxVents": 30,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit",
+    "fluxbreakers"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0012": "vic_azhdaya"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0002:": "vic_hungruf_small",
+        "WS0003": "vic_hungruf_small"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0010": "vic_strigoy",
+        "WS0011": "vic_strigoy"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "vic_apocrypha"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0004": "vic_upyr"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0005": "vic_upyr"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": [
+    "vic_uvall_wing",
+    "vic_uvall_wing"
+  ]
 }

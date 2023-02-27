@@ -1,48 +1,53 @@
 {
-    "displayName": "Support",
-    "fluxCapacitors": 26,
-    "fluxVents": 30,
-    "goalVariant": true,
-    "hullId": "vic_focalor_l",
-    "hullMods": [
-        "targetingunit",
-        "fluxbreakers"
-    ],
-    "permaMods": [],
-    "sMods": [],
-    "variantId": "vic_focalor_l_support",
-    "weaponGroups": [
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0012": "vic_azhdaya"}
-        },
-        {
-            "autofire": false,
-            "mode": "ALTERNATING",
-            "weapons": {
-                "WS0002:": "vic_hatif_small",
-                "WS0003": "vic_hatif_small"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0004": "vic_strigoy",
-                "WS0005": "vic_strigoy",
-                "WS0010": "vic_strigoy",
-                "WS0011": "vic_strigoy"
-            }
-        },
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0001": "vic_afreet_large"}
-        }
-    ],
-    "wings": [
-        "vic_sonneilon_wing",
-        "vic_uvall_wing"
-    ]
+  "variantId": "vic_focalor_l_support",
+  "hullId": "vic_focalor_l",
+  "displayName": "Support",
+  "goalVariant": true,
+  "fluxCapacitors": 28,
+  "fluxVents": 30,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "targetingunit",
+    "fluxbreakers"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0012": "vic_azhdaya"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0002:": "vic_hatif_small",
+        "WS0003": "vic_hatif_small"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0004": "vic_strigoy",
+        "WS0005": "vic_strigoy",
+        "WS0010": "vic_strigoy",
+        "WS0011": "vic_strigoy"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "vic_afreet_large"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": [
+    "vic_sonneilon_wing",
+    "vic_uvall_wing"
+  ]
 }

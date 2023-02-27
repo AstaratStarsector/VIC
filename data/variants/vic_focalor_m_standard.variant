@@ -1,57 +1,61 @@
 {
-    "displayName": "Standard",
-    "fluxCapacitors": 24,
-    "fluxVents": 30,
-    "goalVariant": true,
-    "hullId": "vic_focalor_m",
-    "hullMods": [],
-    "permaMods": [],
-    "sMods": [],
-    "variantId": "vic_focalor_m_standard",
-    "weaponGroups": [
-        {
-            "autofire": false,
-            "mode": "LINKED",
-            "weapons": {"WS0029": "vic_azhdaya"}
-        },
-        {
-            "autofire": false,
-            "mode": "ALTERNATING",
-            "weapons": {
-                "WS0002:": "vic_saih_small",
-                "WS0003": "vic_saih_small",
-                "WS0012": "vic_saih_med",
-                "WS0013": "vic_saih_med"
-            }
-        },
-        {
-            "autofire": false,
-            "mode": "ALTERNATING",
-            "weapons": {
-                "WS0014": "vic_hungruf_med",
-                "WS0015": "vic_hungruf_med"
-            }
-        },
-        {
-            "autofire": false,
-            "mode": "ALTERNATING",
-            "weapons": {
-                "WS0006": "vic_hatif_small",
-                "WS0007": "vic_hatif_small",
-                "WS0008": "vic_hatif_small",
-                "WS0009": "vic_hatif_small"
-            }
-        },
-        {
-            "autofire": true,
-            "mode": "LINKED",
-            "weapons": {
-                "WS0001": "dualflak",
-                "WS0004": "vic_strigoy",
-                "WS0005": "vic_strigoy",
-                "WS0010": "vic_strigoy",
-                "WS0011": "vic_strigoy"
-            }
-        }
-    ]
+  "variantId": "vic_focalor_m_standard",
+  "hullId": "vic_focalor_m",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 26,
+  "fluxVents": 30,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0029": "vic_azhdaya"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0002:": "vic_saih_small",
+        "WS0003": "vic_saih_small",
+        "WS0012": "vic_saih_med",
+        "WS0013": "vic_saih_med"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0014": "vic_hungruf_med",
+        "WS0015": "vic_hungruf_med"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS0006": "vic_hatif_small",
+        "WS0007": "vic_hatif_small",
+        "WS0008": "vic_hatif_small",
+        "WS0009": "vic_hatif_small"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "dualflak",
+        "WS0004": "vic_strigoy",
+        "WS0005": "vic_strigoy",
+        "WS0010": "vic_strigoy",
+        "WS0011": "vic_strigoy"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
 }
