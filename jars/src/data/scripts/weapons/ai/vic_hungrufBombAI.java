@@ -4,6 +4,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import com.fs.starfarer.api.util.IntervalUtil;
+import data.scripts.util.MagicRender;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lwjgl.util.vector.Vector2f;
@@ -66,6 +67,30 @@ public class vic_hungrufBombAI implements MissileAIPlugin {
         }
         if (timeExploding >= maxTimeExploding){
             missile.explode();
+
+            //lens flare
+            MagicRender.battlespace(
+                    Global.getSettings().getSprite("campaignEntities", "fusion_lamp_glow"),
+                    new Vector2f(missile.getLocation()),
+                    new Vector2f(),
+                    new Vector2f(70 * MathUtils.getRandomNumberInRange(0.8f, 1.2f), 700 * MathUtils.getRandomNumberInRange(0.8f, 1.2f)),
+                    new Vector2f(),
+                    MathUtils.getRandomNumberInRange(0,360),
+                    0,
+                    new Color(MathUtils.getRandomNumberInRange(200, 255), MathUtils.getRandomNumberInRange(50, 86), MathUtils.getRandomNumberInRange(0, 35), 255),
+                    true,
+                    0,
+                    0,
+                    0.5f,
+                    0.15f,
+                    MathUtils.getRandomNumberInRange(0.05f, 0.2f),
+                    0,
+                    MathUtils.getRandomNumberInRange(0.4f, 0.6f),
+                    MathUtils.getRandomNumberInRange(0.1f, 0.3f),
+                    CombatEngineLayers.CONTRAILS_LAYER
+            );
+
+
             engine.removeEntity(missile);
         }
         if (exploding){
