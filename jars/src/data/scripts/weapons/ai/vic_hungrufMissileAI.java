@@ -22,7 +22,7 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
     final float FIRE_INACCURACY = 0f; // Set-once for entire shot lifetime leading offset
     final float AIM_THRESHOLD = 0.5f; // Multiplied by collision radius, how much it can be off by when deciding to MIRV
     final float maxMirvAngle = 5;
-    final float MIRV_DISTANCE = 900f;
+    final float MIRV_DISTANCE = 750f;
     final float TIME_BEFORE_CAN_MIRV = 1f; // Min time before can MIRV
     final float FLARE_OFFSET = -9f; // Set to engine location matched to missile projectile file
     final Color FLARE_COLOR = new Color(200, 165, 55, 255);
@@ -195,6 +195,7 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
 
              */
         }
+
 
         // Launch submunitions
         if (mirvNow)
@@ -374,9 +375,7 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
     protected boolean isDroneOrFighter(CombatEntityAPI target) {
         if (target instanceof ShipAPI) {
             ShipAPI ship = (ShipAPI) target;
-            if (ship.isFighter() || ship.isDrone()) {
-                return true;
-            }
+            return ship.isFighter() || ship.isDrone();
         }
         return false;
     }

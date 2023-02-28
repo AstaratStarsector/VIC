@@ -96,5 +96,9 @@ public class vic_hungrufBombAI implements MissileAIPlugin {
             }
 
         }
+        if (missile.isFizzling()){
+            missile.explode();
+            engine.removeEntity(missile);
+        }
     }
 }
