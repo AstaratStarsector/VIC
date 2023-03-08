@@ -80,6 +80,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
         //add special items
         ItemEffectsRepo.ITEM_EFFECTS.put(vic_Items.GMOfarm, GMO);
 
+        Global.getSettings().getHullModSpec("vic_test2").setEffectClass("data.hullmods.vic_test");
 
     }
 
