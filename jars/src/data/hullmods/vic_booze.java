@@ -102,9 +102,8 @@ public class vic_booze extends BaseAlcoholHullmodEffect {
                 spad,
                 positive,
                 toPercent(positiveCritChance, effectMult) + "%",
-                toPercent(positiveCritChance, 1) + "%",
-                toPercent(critDamageIncrease, effectMult) + "%",
-                toPercent(critDamageIncrease, 1) + "%");
+                toPercent(critDamageIncrease, 1) + "%",
+                toPercent(positiveCritChance, 1) + "%");
 
         tooltip.addPara("Ships without officers behave as %s",
                 spad,
@@ -138,7 +137,6 @@ public class vic_booze extends BaseAlcoholHullmodEffect {
                 negative,
                 toPercent(negativeCritChance, effectMult) + "%",
                 toPercent(negativeCritChance, 1) + "%",
-                toPercent(critDamageDecrease, effectMult) + "%",
                 toPercent(critDamageDecrease, 1) + "%");
     }
 

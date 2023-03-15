@@ -46,6 +46,7 @@ import java.util.Map;
 
 import static com.fs.starfarer.api.impl.campaign.econ.impl.ItemEffectsRepo.HABITABLE;
 import static com.fs.starfarer.api.impl.campaign.econ.impl.ItemEffectsRepo.NO_ATMOSPHERE;
+import static data.scripts.plugins.vic_addBooze.addBooze;
 
 
 public class VIC_ModPlugin extends BaseModPlugin {
@@ -80,7 +81,14 @@ public class VIC_ModPlugin extends BaseModPlugin {
         //add special items
         ItemEffectsRepo.ITEM_EFFECTS.put(vic_Items.GMOfarm, GMO);
 
-        Global.getSettings().getHullModSpec("vic_test2").setEffectClass("data.hullmods.vic_test");
+        if (Global.getSettings().getModManager().isModEnabled("alcoholism")){
+            addBooze();
+        } else {
+            Global.getSettings().getCommoditySpec("vic_booze_c").setBasePrice(0);
+            Global.getSettings().getCommoditySpec("vic_booze_c").setExportValue(0);
+            Global.getSettings().getCommoditySpec("vic_booze_c").getTags().add("nonecon");
+        }
+        //
 
     }
 

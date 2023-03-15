@@ -8,3 +8,8 @@ VIC Fighters Blueprint Package,vic_fighters_package,package_bp,Volkov Industries
 Transfiguration Solutions,vic_soil_nanites2,"hist3t, pather4, no_drop",Volkov Industries,3,400000,1000,1,EXTREME,graphics/icons/cargo/vic_soil_nanites2.png,ui_cargo_special_biotech_pickup,ui_cargo_special_tech_drop,com.fs.starfarer.api.campaign.impl.items.GenericSpecialItemPlugin,farming,"Allows to significantly increase the resilience and productivity of agricultures and livestock, drastically modifying and reshaping them via viruses, fungi or other engineered biological agents. In-built apopthosis mechanisms make sure the transfigured organisms require regular renewal of administered solutions.
 
 However, large-scale transfiguration also severely increases the difficulty of transportation of modified organisms, as well as their need for various additional organic nutrients.",151
+,,,,,,,,,,,,,,,
+Ambrosia Nectar,vic_booze,no_drop,,,170,"10000
+",0.5,,graphics/hullmods/vic_booze.png,ui_cargo_goods,ui_cargo_goods_drop,com.fs.starfarer.api.alcoholism.itemPlugins.AlcoholItemPlugin,,"A single sip of this heavenly-tasting spicy syrup, and one is ready to take on the Tyrant's regime with bare hands. But beware, the fall from grace is a one-way ticket.",60
+Ambrosia Nectar Recipe,vic_booze_item,no_drop,,,85000,"10000
+",1,,graphics/hullmods/vic_booze.png,ui_cargo_luxury,ui_cargo_luxury_drop,com.fs.starfarer.api.alcoholism.itemPlugins.RecipeItemPlugin,alcohol_brewery,A collection of old documents and recipes detailing the production method for a certain beverage.,138

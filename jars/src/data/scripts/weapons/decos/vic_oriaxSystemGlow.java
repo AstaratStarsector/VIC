@@ -39,5 +39,8 @@ public class vic_oriaxSystemGlow implements EveryFrameWeaponEffectPlugin {
             alpha = new Color(255, 255, 255, Math.round(255 * MagicAnim.smooth(power)));
         }
         weapon.getSprite().setColor(alpha);
+        if (weapon.getShip().isHulk()) {
+            animation.setFrame(0);
+        }
     }
 }
