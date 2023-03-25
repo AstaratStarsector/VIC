@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/../Substance.Abuse 1.0.k/jars/alcoholism.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../Substance.Abuse 1.0.k/jars/src" />
+    </SOURCES>
   </library>
 </component>
