@@ -192,7 +192,7 @@ public class vic_stolasBuildIn implements EveryFrameWeaponEffectPlugin, OnFireEf
 
         //charge bar
         float ratio = currDamage / Threshold;
-        Color color = new Color(255, 255, 255, (Math.round((currDamage / Threshold) * 255)));
+        Color color = new Color(255, 255, 255, MathUtils.clamp(Math.round((currDamage / Threshold) * 255), 0 ,255));
         Color fullWhite = new Color(255, 255, 255, 255);
         Color fullBlack = new Color(255, 255, 255, 0);
         if (weapon.getAmmo() == 0) {

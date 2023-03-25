@@ -47,6 +47,7 @@ import java.util.Map;
 import static com.fs.starfarer.api.impl.campaign.econ.impl.ItemEffectsRepo.HABITABLE;
 import static com.fs.starfarer.api.impl.campaign.econ.impl.ItemEffectsRepo.NO_ATMOSPHERE;
 import static data.scripts.plugins.vic_addBooze.addBooze;
+import static data.scripts.plugins.vic_addBooze.addBoozeToFaction;
 
 
 public class VIC_ModPlugin extends BaseModPlugin {
@@ -175,6 +176,9 @@ public class VIC_ModPlugin extends BaseModPlugin {
             onNewGameAfterEconomyLoad();
         }
         addTags();
+        if (Global.getSettings().getModManager().isModEnabled("alcoholism")) {
+            addBoozeToFaction();
+        }
     }
 
     public void onNewGameAfterProcGen() {

@@ -40,9 +40,6 @@ public class vic_deathProtocol extends BaseHullMod {
             damageAndCloakMult = dmgTakenAndCloakCostPenaltyMult;
         }
         */
-        stats.getBallisticWeaponRangeBonus().modifyMult(id, rangePenalty);
-        stats.getEnergyWeaponRangeBonus().modifyMult(id, rangePenalty);
-        stats.getMissileWeaponRangeBonus().modifyMult(id, rangePenalty);
         stats.getShieldDamageTakenMult().modifyMult(id, dmgTaken);
         stats.getArmorDamageTakenMult().modifyMult(id, dmgTaken);
         stats.getHullDamageTakenMult().modifyMult(id, dmgTaken);
@@ -104,7 +101,7 @@ public class vic_deathProtocol extends BaseHullMod {
         if (ship.getShield() == null) {
             ship.setWeaponGlow(1.5f, new Color(255, 0, 21, 255), EnumSet.allOf(com.fs.starfarer.api.combat.WeaponAPI.WeaponType.class));
         } else {
-            if (!ship.getSystem().isActive())
+            if (ship.getSystem() == null || !ship.getSystem().isActive())
                 ship.getShield().setInnerColor(new Color(255, 255, 255, 125));
         }
     }

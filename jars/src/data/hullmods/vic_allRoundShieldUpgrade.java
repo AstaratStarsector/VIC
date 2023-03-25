@@ -94,8 +94,10 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
         tooltip.addSectionHeading("New Ship System", Alignment.MID, pad);
         TooltipMakerAPI text = tooltip.beginImageWithText("graphics/icons/skills/defensive_systems.png", 64);
         text.addPara("Shield Entrenchment (toggle)", Misc.getTooltipTitleAndLightHighlightColor(), 2);
-        text.addPara("Redirect the ship's energy to significantly harden the shield. Reduces shield damage taken by %s but reduces ship's weapons' rate of fire by %s.",
-                2, Misc.getHighlightColor(), Math.round(shieldDamageTakenReduction * 100) + "%", Math.round(weaponRoFReduction * 100) + "%");
+        text.addPara("Redirect the ship's energy to significantly harden the shield. Reduces shield damage taken by %s but reduces ship's weapons' rate of fire by %s. " +
+                        "Has secondary battery which absorbs part of the hit. While system active battery absorbs up to %s of hit's damage at %s flux down to %s at %s flux. " +
+                        "Battery capacity equals %s ships max flux.",
+                2, Misc.getHighlightColor(), Math.round(shieldDamageTakenReduction * 100) + "%", Math.round(weaponRoFReduction * 100) + "%", "75%", "90%", "0%", "50%", "200%");
         tooltip.addImageWithText(pad);
     }
 }
