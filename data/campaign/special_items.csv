@@ -9,7 +9,7 @@ Transfiguration Solutions,vic_soil_nanites2,"hist3t, pather4, no_drop",Volkov In
 
 However, large-scale transfiguration also severely increases the difficulty of transportation of modified organisms, as well as their need for various additional organic nutrients.",151
 ,,,,,,,,,,,,,,,
-Ambrosia Nectar,vic_booze,no_drop,,,170,"10000
+#Ambrosia Nectar,vic_booze,no_drop,,,170,"10000
 ",0.5,,graphics/hullmods/vic_booze.png,ui_cargo_goods,ui_cargo_goods_drop,com.fs.starfarer.api.alcoholism.itemPlugins.AlcoholItemPlugin,,"A single sip of this heavenly-tasting spicy syrup, and one is ready to take on the Tyrant's regime with bare hands. But beware, the fall from grace is a one-way ticket.",60
-Ambrosia Nectar Recipe,vic_booze_item,no_drop,,,85000,"10000
+#Ambrosia Nectar Recipe,vic_booze_item,no_drop,,,85000,"10000
 ",1,,graphics/hullmods/vic_booze.png,ui_cargo_luxury,ui_cargo_luxury_drop,com.fs.starfarer.api.alcoholism.itemPlugins.RecipeItemPlugin,alcohol_brewery,A collection of old documents and recipes detailing the production method for a certain beverage.,138
