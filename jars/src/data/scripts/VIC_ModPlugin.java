@@ -81,7 +81,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
         //add special items
         ItemEffectsRepo.ITEM_EFFECTS.put(vic_Items.GMOfarm, GMO);
-
+/*
         if (Global.getSettings().getModManager().isModEnabled("alcoholism")){
             addBooze();
         } else {
@@ -89,7 +89,8 @@ public class VIC_ModPlugin extends BaseModPlugin {
             Global.getSettings().getCommoditySpec("vic_booze_c").setExportValue(0);
             Global.getSettings().getCommoditySpec("vic_booze_c").getTags().add("nonecon");
         }
-        //
+
+ */
 
     }
 
@@ -176,9 +177,12 @@ public class VIC_ModPlugin extends BaseModPlugin {
             onNewGameAfterEconomyLoad();
         }
         addTags();
+        /*
         if (Global.getSettings().getModManager().isModEnabled("alcoholism")) {
             addBoozeToFaction();
         }
+
+         */
     }
 
     public void onNewGameAfterProcGen() {
