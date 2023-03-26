@@ -79,5 +79,5 @@ VIC's engineers like no one else know how to make even the worst engines roar mi
 VIC Fighter Engines,vic_fighteralwaysburn,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_fighteralwaysburn,,,graphics/hullmods/axial_rotation.png
 Overload protection,vic_overloadProtection,,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_overloadProtection,,,
 ,,,,,,,,,,,,,,,,,,
-#Overload protection,vic_booze,,,Volkov Industries,,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,"A single sip of this heavenly-tasting spicy syrup, and one is ready to take on the Tyrant's regime with bare hands. But beware, the fall from grace is a one-way ticket.",,graphics/hullmods/vic_booze.png
+Ambrosia Nectar,vic_booze,,,Volkov Industries,,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,"A single sip of this heavenly-tasting spicy syrup, and one is ready to take on the Tyrant's regime with bare hands. But beware, the fall from grace is a one-way ticket.",,graphics/icons/cargo/vic_booze.png
 ,,,,,,,,,,,,,,,,,,

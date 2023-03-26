@@ -201,12 +201,9 @@ public class Empyrean{
         Cocytus_market.setImmigrationIncentivesOn(true);
         CargoAPI cargo = Cocytus_market.getSubmarket(Submarkets.GENERIC_MILITARY).getCargo();
         cargo.addSpecial(new SpecialItemData(vic_Items.GMOfarm, null), 1);
-        /*
         if (Global.getSettings().getModManager().isModEnabled("alcoholism")){
             addBrewery(Cocytus_market);
         }
-
-         */
 
         //Inner Jump Point
         JumpPointAPI innerJumpPoint = Global.getFactory().createJumpPoint(
