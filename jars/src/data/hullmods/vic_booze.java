@@ -56,6 +56,7 @@ public class vic_booze extends BaseAlcoholHullmodEffect {
         if (!isWithdrawal() && getAlcohol().getAddictionStatus().isConsuming()) {
             if (Global.getSector().getPlayerFaction().getDoctrine().getAggression() < 4)
                 ship.getShipAI().getConfig().personalityOverride = Personalities.AGGRESSIVE;
+            else ship.getShipAI().getConfig().personalityOverride = Personalities.RECKLESS;
         }
 
         if (!ship.hasListenerOfClass(vic_boozeDealtListener.class)) {
@@ -105,14 +106,20 @@ public class vic_booze extends BaseAlcoholHullmodEffect {
                 toPercent(critDamageIncrease, 1) + "%",
                 toPercent(positiveCritChance, 1) + "%");
 
-        tooltip.addPara("Ships without officers behave as %s",
+        tooltip.addPara("Ships without officers behave as %s. If already %s - as %s.",
                 spad,
                 positive,
-                Misc.ucFirst(Personalities.AGGRESSIVE));
+                Misc.ucFirst(Personalities.AGGRESSIVE),
+                Misc.ucFirst(Personalities.AGGRESSIVE),
+                Misc.ucFirst(Personalities.RECKLESS));
     }
 
     @Override
     public void addNegativeEffectTooltip(TooltipMakerAPI tooltip, float effectMult) {
+
+
+        tooltip.addSectionHeading("Negative Effect", Misc.getTextColor(), new Color(150, 100, 50, 255), Alignment.MID, 10f);
+
         tooltip.addPara("Damage taken randomized between %s-%s  [Max.: %s-%s]",
                 opad,
                 negative,
@@ -124,6 +131,10 @@ public class vic_booze extends BaseAlcoholHullmodEffect {
 
     @Override
     public void addWithdrawalEffectTooltip(TooltipMakerAPI tooltip, float effectMult) {
+
+
+        tooltip.addSectionHeading("Withdrawal Effect", Misc.getTextColor(), new Color(150, 50, 50, 255), Alignment.MID, 10f);
+
         tooltip.addPara("Damage dealt randomized between %s-%s  [Max.: %s-%s]",
                 opad,
                 negative,
