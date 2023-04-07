@@ -233,6 +233,7 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
                         missile.getWeapon(), "vic_hungruf_sub_engine",
                         missile.getLocation(), angle, null);
                 submunitionDebris.setAngularVelocity(125);
+                submunitionDebris.setOwner(100);
                 //submunitionDebris.getVelocity().set(missile.getVelocity().x - submunition.getVelocity().x * 0.5f, missile.getVelocity().y - submunition.getVelocity().y * 0.5f);
             }
 

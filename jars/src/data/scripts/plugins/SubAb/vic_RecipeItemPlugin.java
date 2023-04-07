@@ -1,11 +1,12 @@
 package data.scripts.plugins.SubAb;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.alcoholism.itemPlugins.RecipeItemPlugin;
 import com.fs.starfarer.api.campaign.CargoStackAPI;
 import com.fs.starfarer.api.campaign.CargoTransferHandlerAPI;
 import com.fs.starfarer.api.campaign.impl.items.GenericSpecialItemPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
+
+import static data.scripts.plugins.SubAb.vic_makeRecipePlugin.makePlugin;
 
 public class vic_RecipeItemPlugin extends GenericSpecialItemPlugin {
 
@@ -15,7 +16,7 @@ public class vic_RecipeItemPlugin extends GenericSpecialItemPlugin {
     public void init(CargoStackAPI stack) {
         super.init(stack);
         if (Global.getSettings().getModManager().isModEnabled("alcoholism")) {
-            plugin = new RecipeItemPlugin();
+            plugin = makePlugin();
             plugin.init(stack);
             plugin.setId(itemId);
         }
