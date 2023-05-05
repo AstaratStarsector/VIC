@@ -31,6 +31,7 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 
 		api.addToFleet(FleetSide.PLAYER, "vic_apollyon_standard", FleetMemberType.SHIP, "ASCV Sun Eater", true);
 		api.addToFleet(FleetSide.PLAYER, "vic_oriax_standard", FleetMemberType.SHIP, "ASCV Outbreak", false);
+        api.addToFleet(FleetSide.PLAYER, "vic_raum_test", FleetMemberType.SHIP, "ASCV Ruination", false);
 
         api.addToFleet(FleetSide.PLAYER, "vic_focalor_l_standard", FleetMemberType.SHIP, VIC.pickRandomShipName(), false);
         api.addToFleet(FleetSide.PLAYER, "vic_focalor_m_standard", FleetMemberType.SHIP, VIC.pickRandomShipName(), false);

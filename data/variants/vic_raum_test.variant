@@ -1,0 +1,41 @@
+{
+  "variantId": "vic_raum_test",
+  "hullId": "vic_raum",
+  "displayName": "Test Variant",
+  "goalVariant": false,
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0029": "vic_strigoy",
+        "WS0030": "vic_strigoy",
+        "WS0031": "vic_strigoy",
+        "WS0032": "vic_strigoy",
+        "WS0033": "vic_strigoy",
+        "WS0034": "vic_strigoy",
+        "WS0035": "vic_lightlaidlawaccelerator",
+        "WS0036": "vic_lightlaidlawaccelerator",
+        "WS0037": "vic_strigoy",
+        "WS0038": "vic_strigoy",
+        "WS0039": "vic_strigoy",
+        "WS0040": "vic_strigoy",
+        "WS0041": "vic_strigoy",
+        "WS0042": "vic_strigoy",
+        "WS0043": "vic_strigoy",
+        "WS0044": "vic_strigoy",
+        "WS0045": "vic_lightlaidlawaccelerator"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": [
+    "vic_uvall_wing",
+    "vic_uvall_wing"
+  ]
+}

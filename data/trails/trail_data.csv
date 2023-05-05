@@ -139,3 +139,8 @@ trails_vic_gatebreaker_shotgun_shrapnel_shot_1,vic_gatebreaker_shotgun_shrapnel_
 trails_vic_gatebreaker_shotgun_shrapnel_shot_2,vic_gatebreaker_shotgun_shrapnel_shot,trails_trail_smooth,5,0,0.04,0.1,10,2,"[255,255,255]","[255,255,255]",1,200,300,10,7,1,TRUE,FALSE,TRUE,100,20,0,0,0,0,TRUE,false
 trails_vic_gatebreaker_shotgun_shrapnel_shot_3,vic_gatebreaker_shotgun_shrapnel_shot,trails_trail_smooth,5,0,0.08,0,30,5,"[255,155,70]","[255,155,70]",1,200,300,10,3,1,TRUE,FALSE,TRUE,100,20,0,0,5,50,TRUE,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
+trails_vic_gagana_ultra_shot_2,vic_gagana_ultra_shot,trails_trail_foggy,10,0,0,0.3,15,10,"[255,160,30]","[204,50,50]",1,300,5,30,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_gagana_ultra_shot_3,vic_gagana_ultra_shot,trails_trail_twin,10,0,0,0.6,25,15,"[209,37,10]","[204,50,50]",0.8,300,5,20,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_gagana_ultra_shot_4,vic_gagana_ultra_shot,trails_trail_twin,10,0.2,0.3,0.7,15,50,"[155,155,155]","[155,155,155]",0.5,1000,5,-10,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_gagana_ultra_shot_5,vic_gagana_ultra_shot,trails_trail_contrail,5,0.05,0.05,0.1,25,20,"[150,120,100]","[50,10,10]",1,100,5,15,0,1,TRUE,FALSE,TRUE,10,30,0.3,0,0,80,false,false
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
