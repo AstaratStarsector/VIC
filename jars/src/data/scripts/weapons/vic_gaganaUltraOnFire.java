@@ -102,8 +102,8 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_SPAWN_POINT_TURRET.put("default", new Vector2f(0f, 0f));
-        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_1", new Vector2f(0f, -100f));
-        PARTICLE_SPAWN_POINT_TURRET.put("READY_STEAM_ID_1", new Vector2f(0f, -80f));
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_1", new Vector2f(-100f, 0f));
+        PARTICLE_SPAWN_POINT_TURRET.put("READY_STEAM_ID_1", new Vector2f(-80f, 0f));
 
         PARTICLE_SPAWN_POINT_TURRET_RIGHT.put("default", new Vector2f(0f, 0f));
 
@@ -546,7 +546,7 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
     }
 
     public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
-        Vector2f muzzleLocation = new Vector2f(weapon.getLocation().x, weapon.getLocation().y);
+        Vector2f muzzleLocation = new Vector2f();
         float trueArcFacing = weapon.getCurrAngle();
         if (weapon.getSlot().isHardpoint()) {
             muzzleLocation.x += weapon.getSpec().getHardpointFireOffsets().get(currentBarrel).x;
@@ -561,6 +561,10 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
             muzzleLocation.y += weapon.getSpec().getHiddenFireOffsets().get(currentBarrel).y;
             trueArcFacing += weapon.getSpec().getHiddenAngleOffsets().get(currentBarrel);
         }
+
+        muzzleLocation = VectorUtils.rotate(muzzleLocation, weapon.getCurrAngle(), new Vector2f(0f, 0f));
+        muzzleLocation.x += weapon.getLocation().x;
+        muzzleLocation.y += weapon.getLocation().y;
 
         MagicRender.battlespace(
                 Global.getSettings().getSprite("fx", "vic_gatebreaker_shotgun_shockwave"),
@@ -594,6 +598,23 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
         Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSpeed3, 10f, 5f, 0.2f, 0.2f, 2.5f, new Color(47, 42, 42, 125));
         Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSpeed2, 15f, 3f, 0.2f, 0.2f, 2.25f, new Color(45, 37, 37, 125));
         Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSpeed, 30f, 3f, 0.2f, 0.2f, 2f, new Color(36, 33, 33, 125));
+
+        /*
+        List<List<Color>> nebulasColors = new ArrayList<>();
+        nebulasColors.add(Arrays.asList(new Color(62, 46, 29, 50)));
+        nebulasColors.add(Arrays.asList(new Color(50, 50, 50, 150)));
+        nebulasColors.add(Arrays.asList(new Color(144, 102, 58, 50)));
+        nebulasColors.add(Arrays.asList(new Color(50, 50, 50, 150)));
+        nebulasColors.add(Arrays.asList(new Color(62, 46, 29, 50)));
+        nebulasColors.add();
+        nebulasColors.add();
+        nebulasColors.add();
+        nebulasColors.add(new Color(50, 50, 50, 150));
+        nebulasColors.add(new Color(38, 22, 14, 50));
+        nebulasColors.add(new Color(50, 50, 50, 150));
+        nebulasColors.add(new Color(83, 47, 13, 50));
+        nebulasColors.add(new Color(50, 50, 50, 150));
+        */
 
         Vector2f nebulaSideSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f)).scale(MathUtils.getRandomNumberInRange(0f, 15f));
         Vector2f nebulaSideSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f)).scale(MathUtils.getRandomNumberInRange(0f, 15f));
