@@ -4,6 +4,7 @@
 	"spawnType":"BALLISTIC",
 	"collisionClass":"PROJECTILE_FF",
 	"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"onHitEffect":"data.scripts.weapons.vic_gaganaUltraOnHit",
 	"length":30,
 	"hitGlowRadius":30,
 	"width":15,

@@ -11,6 +11,10 @@
   "shieldCenter": [0, 0],
   "shieldRadius": 291,
   "viewOffset": 0,
+  "builtInMods": [
+    "vic_dynamicshields",
+    "vic_aerodynamicdesign"
+  ],
   "builtInWeapons": {
     "WS0001": "vic_blonkerRed",
     "WS0002": "vic_blonkerRed",
@@ -40,7 +44,7 @@
     "WS0026": "vic_vernierEngine",
     "WS0027": "vic_vernierEngine",
     "WS0028": "vic_vernierEngine",
-    "WS0046": "vic_gagana_ultra"
+    "WS0046": "vic_alkonost"
   },
   "weaponSlots": [
     {

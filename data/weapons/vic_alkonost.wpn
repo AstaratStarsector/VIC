@@ -1,0 +1,44 @@
+{
+  "id": "vic_alkonost",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_alkonost_shot",
+  "type": "ENERGY",
+  "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_alkonostOnFire",
+  "turretSprite": "graphics/weapons/vic_alkonost_turret_base.png",
+  "turretGlowSprite": "graphics/weapons/vic_alkonost_turret_glow.png",
+  "hardpointSprite": "graphics/weapons/vic_alkonost_turret_base.png",
+  "hardpointGlowSprite": "graphics/weapons/vic_alkonost_turret_glow.png",
+  "glowColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "turretOffsets": [
+    28,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    18,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "GLOW_AND_FLASH",
+  "muzzleFlashSpec": {
+    "length": 60,
+    "spread": 10,
+    "particleSizeMin": 15,
+    "particleSizeRange": 35,
+    "particleDuration": 0.75,
+    "particleCount": 50,
+    "particleColor": [105,255,90,225]
+  },
+  "fireSoundTwo": "vic_nawia_shot"
+}

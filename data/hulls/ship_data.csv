@@ -25,7 +25,7 @@ VIC-A100 Stolas,vic_stolas,Ubercruiser,Volkov Industries,vic_hunterDrive,25,6500
 #caps,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 VIC-A71 Apollyon,vic_apollyon,Shturmcapital,Volkov Industries,vic_quantumlunge,30,15000,1300,22000,,1250,380,,55,30,20,10,10,3300,OMNI,,100,0.4,0.8,,,500,800,200,400,10,30,8,750000,4,20,660,0.25,60,60,,rare_bp,0.25,0,3,5,
 VIC-U61 Oriax,vic_oriax,Battlecruiser,Volkov Industries,vic_shockDischarger,25,10000,1000,15000,,1000,250,2,65,40,30,10,15,2200,OMNI,,90,0.4,0.8,,,400,600,300,600,8,30,8,350000,5,20,600,0.25,45,45,,rare_bp,,0.35,3,5,
-VIC-UH05 Raum,vic_raum,Heavy Battlecruiser,Volkov Industries,,25,17500,1400,15000,,1000,250,2,65,40,30,10,15,2200,OMNI,,90,0.4,0.8,,,400,600,300,600,8,30,8,350000,5,20,600,0.25,45,45,,rare_bp,,0.35,3,5,
+VIC-UH05 Räum,vic_raum,Artillery Battleship,Volkov Industries,,25,15000,1400,17500,,900,250,2,45,25,20,8,10,2750,OMNI,,90,0.4,1,,,500,1000,75,200,9,30,8,600000,5,20,600,0.25,50,50,,rare_bp,,0.35,3,5,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #unique,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Devotee,vic_stolas_bounty,Graftcruiser,Volkov Industries,vic_zealotDrive,25,7500,1250,14000,,1250,150,,75,85,65,25,50,1200,OMNI,,90,0.4,1.4,,,140,160,30,60,3,30,9,125000,4,12,510,0.25,45,45,HIDE_IN_CODEX,"no_autofit, no_drop, no_bp_drop, no_dealer",,0,0,0,

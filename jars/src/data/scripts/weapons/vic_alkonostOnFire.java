@@ -3,13 +3,16 @@ package data.scripts.weapons;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.DamageDealtModifier;
+import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.plugins.vic_weaponDamageListener;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.util.MagicRender;
+import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
+import org.lazywizard.lazylib.combat.entities.SimpleEntity;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
@@ -18,13 +21,33 @@ import java.util.List;
 
 import static com.fs.starfarer.api.util.Misc.ZERO;
 
-public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
+public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
 
-    final float MUZZLE_OFFSET_HARDPOINT = 100f;
-    final float MUZZLE_OFFSET_TURRET = 100f;
-    final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE = 90f + MathUtils.getRandomNumberInRange(-5f, 5f);
-    final float MUZZLE_OFFSET_TURRET_SHOCKWAVE = 90f + MathUtils.getRandomNumberInRange(-5f, 5f);
+    private static final Color PARTICLE_COLOR_EXTRA = new Color(45, 255, 97);
+    private static final Color GLOW_COLOR = new Color(0, 229, 4, 50);
+    private static final Color FLASH_COLOR = new Color(182, 255, 188);
+    private static final int NUM_PARTICLES = 30;
+
+    private boolean light = false;
+
+    private final String CHARGE_SOUND_ID = "vic_astronomicon_charge3";
+
+    private final IntervalUtil effectInterval = new IntervalUtil(0.05f, 0.1f);
+
+    boolean weaponChargedownBlowback = false;
+    boolean emitSmokeBlowback = false;
+
+    float
+            durationBlowback = 0.75f,
+            timeBlowback = 0f;
+
+
+    final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE = 15f;
+    final float MUZZLE_OFFSET_TURRET_SHOCKWAVE = 15f;
+    final float MUZZLE_OFFSET_TURRET_BLOWBACK = -60f;
+    final float MUZZLE_OFFSET_HARDPOINT_BLOWBACK = -60f;
+
 
     /*
 
@@ -39,11 +62,16 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
     private static final List<String> USED_IDS = new ArrayList<>();
 
     static {
-        USED_IDS.add("FLASH_CORE_1");
-        USED_IDS.add("FLASH_FRINGE_1");
+        USED_IDS.add("CHARGEUP_PARTICLES1");
+        USED_IDS.add("CHARGEUP_PARTICLES2");
+        USED_IDS.add("CHARGEUP_PARTICLES3");
+        USED_IDS.add("CHARGEUP_PARTICLES4");
+        USED_IDS.add("CHARGEUP_PARTICLES5");
+        USED_IDS.add("CHARGEUP_PARTICLES6");
         USED_IDS.add("BLOWBACK_ID_1");
-        USED_IDS.add("READY_STEAM_ID_1");
-
+        USED_IDS.add("BLOWBACK_ID_2");
+        USED_IDS.add("BLOWBACK_ID_3");
+        USED_IDS.add("BLOWBACK_ID_4");
 
     }
 
@@ -54,10 +82,14 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         ON_SHOT_PARTICLE_COUNT.put("default", 15);
-        ON_SHOT_PARTICLE_COUNT.put("FLASH_FRINGE_1", 1);
-        ON_SHOT_PARTICLE_COUNT.put("FLASH_CORE_1", 1);
-        ON_SHOT_PARTICLE_COUNT.put("BLOWBACK_ID_1", 20);
-        ON_SHOT_PARTICLE_COUNT.put("READY_STEAM_ID_1", 5);
+        ON_SHOT_PARTICLE_COUNT.put("CHARGEUP_PARTICLES1", 0);
+        ON_SHOT_PARTICLE_COUNT.put("CHARGEUP_PARTICLES2", 0);
+        ON_SHOT_PARTICLE_COUNT.put("CHARGEUP_PARTICLES3", 0);
+        ON_SHOT_PARTICLE_COUNT.put("CHARGEUP_PARTICLES4", 0);
+        ON_SHOT_PARTICLE_COUNT.put("CHARGEUP_PARTICLES5", 0);
+        ON_SHOT_PARTICLE_COUNT.put("CHARGEUP_PARTICLES6", 0);
+
+
 
     }
 
@@ -66,7 +98,17 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLES_PER_SECOND.put("default", 0f);
-        PARTICLES_PER_SECOND.put("READY_STEAM_ID_1", 5f);
+        PARTICLES_PER_SECOND.put("CHARGEUP_PARTICLES1", 25f);
+        PARTICLES_PER_SECOND.put("CHARGEUP_PARTICLES2", 25f);
+        PARTICLES_PER_SECOND.put("CHARGEUP_PARTICLES3", 25f);
+        PARTICLES_PER_SECOND.put("CHARGEUP_PARTICLES4", 30f);
+        PARTICLES_PER_SECOND.put("CHARGEUP_PARTICLES5", 30f);
+        PARTICLES_PER_SECOND.put("CHARGEUP_PARTICLES6", 30f);
+        PARTICLES_PER_SECOND.put("BLOWBACK_ID_1", 15f);
+        PARTICLES_PER_SECOND.put("BLOWBACK_ID_2", 15f);
+        PARTICLES_PER_SECOND.put("BLOWBACK_ID_3", 15f);
+        PARTICLES_PER_SECOND.put("BLOWBACK_ID_4", 15f);
+
     }
 
     //Does the PARTICLES_PER_SECOND field get multiplied by the weapon's current chargeLevel?
@@ -74,6 +116,13 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         AFFECTED_BY_CHARGELEVEL.put("default", false);
+        AFFECTED_BY_CHARGELEVEL.put("CHARGEUP_PARTICLES1", true);
+        AFFECTED_BY_CHARGELEVEL.put("CHARGEUP_PARTICLES2", true);
+        AFFECTED_BY_CHARGELEVEL.put("CHARGEUP_PARTICLES3", true);
+        AFFECTED_BY_CHARGELEVEL.put("CHARGEUP_PARTICLES4", true);
+        AFFECTED_BY_CHARGELEVEL.put("CHARGEUP_PARTICLES5", true);
+        AFFECTED_BY_CHARGELEVEL.put("CHARGEUP_PARTICLES6", true);
+
     }
 
     //When are the particles spawned (only used for PARTICLES_PER_SECOND)? Valid values are "CHARGEUP", "FIRING", "CHARGEDOWN", "READY" (not on cooldown or firing) and "COOLDOWN".
@@ -82,8 +131,16 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_SPAWN_MOMENT.put("default", "FIRING");
-        PARTICLE_SPAWN_MOMENT.put("BLOWBACK_ID_1", "FIRING");
-        PARTICLE_SPAWN_MOMENT.put("READY_STEAM_ID_1", "READY");
+        PARTICLE_SPAWN_MOMENT.put("CHARGEUP_PARTICLES1", "CHARGEUP");
+        PARTICLE_SPAWN_MOMENT.put("CHARGEUP_PARTICLES2", "CHARGEUP");
+        PARTICLE_SPAWN_MOMENT.put("CHARGEUP_PARTICLES3", "CHARGEUP");
+        PARTICLE_SPAWN_MOMENT.put("CHARGEUP_PARTICLES4", "CHARGEUP");
+        PARTICLE_SPAWN_MOMENT.put("CHARGEUP_PARTICLES5", "CHARGEUP");
+        PARTICLE_SPAWN_MOMENT.put("CHARGEUP_PARTICLES6", "CHARGEUP");
+        PARTICLE_SPAWN_MOMENT.put("BLOWBACK_ID_1", "CHARGEDOWN");
+        PARTICLE_SPAWN_MOMENT.put("BLOWBACK_ID_2", "CHARGEDOWN");
+        PARTICLE_SPAWN_MOMENT.put("BLOWBACK_ID_3", "CHARGEDOWN");
+        PARTICLE_SPAWN_MOMENT.put("BLOWBACK_ID_4", "CHARGEDOWN");
 
     }
 
@@ -92,8 +149,8 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
     private static final Map<String, Boolean> SPAWN_POINT_ANCHOR_ALTERNATION = new HashMap<>();
 
     static {
-        SPAWN_POINT_ANCHOR_ALTERNATION.put("default", true);
-        SPAWN_POINT_ANCHOR_ALTERNATION.put("READY_STEAM_ID_1", false);
+        SPAWN_POINT_ANCHOR_ALTERNATION.put("default", false);
+
     }
 
     //The position the particles are spawned (or at least where their arc originates when using offsets) compared to their weapon's center [or shot offset, see
@@ -103,8 +160,17 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_SPAWN_POINT_TURRET.put("default", new Vector2f(0f, 0f));
-        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_1", new Vector2f(0f, -130f));
-        PARTICLE_SPAWN_POINT_TURRET.put("READY_STEAM_ID_1", new Vector2f(0f, -30f));
+        PARTICLE_SPAWN_POINT_TURRET.put("CHARGEUP_PARTICLES1", new Vector2f(0f, 18f));
+        PARTICLE_SPAWN_POINT_TURRET.put("CHARGEUP_PARTICLES2", new Vector2f(0f, 18f));
+        PARTICLE_SPAWN_POINT_TURRET.put("CHARGEUP_PARTICLES3", new Vector2f(0f, 18f));
+        PARTICLE_SPAWN_POINT_TURRET.put("CHARGEUP_PARTICLES4", new Vector2f(0f, 18f));
+        PARTICLE_SPAWN_POINT_TURRET.put("CHARGEUP_PARTICLES5", new Vector2f(0f, 18f));
+        PARTICLE_SPAWN_POINT_TURRET.put("CHARGEUP_PARTICLES6", new Vector2f(0f, 18f));
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_1", new Vector2f(20f, 10f));
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_2", new Vector2f(-20f, 10f));
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_3", new Vector2f(20f, -30f));
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_4", new Vector2f(-20f, -30f));
+
 
         PARTICLE_SPAWN_POINT_TURRET_RIGHT.put("default", new Vector2f(0f, 0f));
 
@@ -127,9 +193,18 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
     private static final Map<String, String> PARTICLE_TYPE = new HashMap<>();
 
     static {
-        PARTICLE_TYPE.put("default", "SMOKE");
-        PARTICLE_TYPE.put("FLASH_FRINGE_1", "BRIGHT");
-        PARTICLE_TYPE.put("FLASH_CORE_1", "BRIGHT");
+        PARTICLE_TYPE.put("default", "BRIGHT");
+        PARTICLE_TYPE.put("CHARGEUP_PARTICLES1", "BRIGHT");
+        PARTICLE_TYPE.put("CHARGEUP_PARTICLES2", "BRIGHT");
+        PARTICLE_TYPE.put("CHARGEUP_PARTICLES3", "BRIGHT");
+        PARTICLE_TYPE.put("CHARGEUP_PARTICLES4", "BRIGHT");
+        PARTICLE_TYPE.put("CHARGEUP_PARTICLES5", "BRIGHT");
+        PARTICLE_TYPE.put("CHARGEUP_PARTICLES6", "BRIGHT");
+        PARTICLE_TYPE.put("BLOWBACK_ID_1", "SMOKE");
+        PARTICLE_TYPE.put("BLOWBACK_ID_2", "SMOKE");
+        PARTICLE_TYPE.put("BLOWBACK_ID_3", "SMOKE");
+        PARTICLE_TYPE.put("BLOWBACK_ID_4", "SMOKE");
+
 
     }
 
@@ -138,10 +213,18 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_COLOR.put("default", new Color(200, 190, 190, 50));
-        PARTICLE_COLOR.put("FLASH_FRINGE_1", new Color(255, 155, 75));
-        PARTICLE_COLOR.put("FLASH_CORE_1", new Color(255, 234, 212));
-        PARTICLE_COLOR.put("BLOWBACK_ID_1", new Color(255, 255, 255, 50));
-        PARTICLE_COLOR.put("READY_STEAM_ID_1", new Color(255, 255, 255, 75));
+        PARTICLE_COLOR.put("CHARGEUP_PARTICLES1", new Color(95, 255, 95, 255));
+        PARTICLE_COLOR.put("CHARGEUP_PARTICLES2", new Color(95, 255, 135, 255));
+        PARTICLE_COLOR.put("CHARGEUP_PARTICLES3", new Color(95, 255, 170, 255));
+        PARTICLE_COLOR.put("CHARGEUP_PARTICLES4", new Color(95, 255, 95, 255));
+        PARTICLE_COLOR.put("CHARGEUP_PARTICLES5", new Color(95, 255, 135, 255));
+        PARTICLE_COLOR.put("CHARGEUP_PARTICLES6", new Color(95, 255, 170, 255));
+        PARTICLE_COLOR.put("BLOWBACK_ID_1", new Color(255, 255, 255, 200));
+        PARTICLE_COLOR.put("BLOWBACK_ID_2", new Color(255, 255, 255, 200));
+        PARTICLE_COLOR.put("BLOWBACK_ID_3", new Color(255, 255, 255, 200));
+        PARTICLE_COLOR.put("BLOWBACK_ID_4", new Color(255, 255, 255, 200));
+
+
 
     }
 
@@ -150,10 +233,17 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_SIZE_MIN.put("default", 5f);
-        PARTICLE_SIZE_MIN.put("FLASH_FRINGE_1", 350f);
-        PARTICLE_SIZE_MIN.put("FLASH_CORE_1", 200f);
-        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_1", 10f);
-        PARTICLE_SIZE_MIN.put("READY_STEAM_ID_1", 10f);
+        PARTICLE_SIZE_MIN.put("CHARGEUP_PARTICLES1", 3f);
+        PARTICLE_SIZE_MIN.put("CHARGEUP_PARTICLES2", 3f);
+        PARTICLE_SIZE_MIN.put("CHARGEUP_PARTICLES3", 3f);
+        PARTICLE_SIZE_MIN.put("CHARGEUP_PARTICLES4", 2f);
+        PARTICLE_SIZE_MIN.put("CHARGEUP_PARTICLES5", 2f);
+        PARTICLE_SIZE_MIN.put("CHARGEUP_PARTICLES6", 2f);
+        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_1", 7.5f);
+        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_2", 7.5f);
+        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_3", 7.5f);
+        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_4", 7.5f);
+
 
 
     }
@@ -163,10 +253,17 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_SIZE_MAX.put("default", 20f);
-        PARTICLE_SIZE_MAX.put("FLASH_FRINGE_1", 350f);
-        PARTICLE_SIZE_MAX.put("FLASH_CORE_1", 200f);
-        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_1", 20f);
-        PARTICLE_SIZE_MAX.put("READY_STEAM_ID_1", 20f);
+        PARTICLE_SIZE_MAX.put("CHARGEUP_PARTICLES1", 10f);
+        PARTICLE_SIZE_MAX.put("CHARGEUP_PARTICLES2", 10f);
+        PARTICLE_SIZE_MAX.put("CHARGEUP_PARTICLES3", 10f);
+        PARTICLE_SIZE_MAX.put("CHARGEUP_PARTICLES4", 7.5f);
+        PARTICLE_SIZE_MAX.put("CHARGEUP_PARTICLES5", 7.5f);
+        PARTICLE_SIZE_MAX.put("CHARGEUP_PARTICLES6", 7.5f);
+        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_1", 15f);
+        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_2", 15f);
+        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_3", 15f);
+        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_4", 15f);
+
 
     }
 
@@ -175,10 +272,18 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_VELOCITY_MIN.put("default", 0f);
-        PARTICLE_VELOCITY_MIN.put("FLASH_FRINGE_1", 0f);
-        PARTICLE_VELOCITY_MIN.put("FLASH_CORE_1", 0f);
-        PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_1", 5f);
-        PARTICLE_VELOCITY_MIN.put("READY_STEAM_ID_1", 5f);
+        PARTICLE_VELOCITY_MIN.put("CHARGEUP_PARTICLES1", 100f);
+        PARTICLE_VELOCITY_MIN.put("CHARGEUP_PARTICLES2", 100f);
+        PARTICLE_VELOCITY_MIN.put("CHARGEUP_PARTICLES3", 100f);
+        PARTICLE_VELOCITY_MIN.put("CHARGEUP_PARTICLES4", 200f);
+        PARTICLE_VELOCITY_MIN.put("CHARGEUP_PARTICLES5", 200f);
+        PARTICLE_VELOCITY_MIN.put("CHARGEUP_PARTICLES6", 200f);
+        PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_1", 35f);
+        PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_2", 35f);
+        PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_3", 35f);
+        PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_4", 35f);
+
+
 
     }
 
@@ -187,10 +292,17 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_VELOCITY_MAX.put("default", 40f);
-        PARTICLE_VELOCITY_MAX.put("FLASH_FRINGE_1", 0f);
-        PARTICLE_VELOCITY_MAX.put("FLASH_CORE_1", 0f);
-        PARTICLE_VELOCITY_MAX.put("BLOWBACK_ID_1", 35f);
-        PARTICLE_VELOCITY_MAX.put("READY_STEAM_ID_1", 25f);
+        PARTICLE_VELOCITY_MAX.put("CHARGEUP_PARTICLES1", 450f);
+        PARTICLE_VELOCITY_MAX.put("CHARGEUP_PARTICLES2", 450f);
+        PARTICLE_VELOCITY_MAX.put("CHARGEUP_PARTICLES3", 450f);
+        PARTICLE_VELOCITY_MAX.put("CHARGEUP_PARTICLES4", 600f);
+        PARTICLE_VELOCITY_MAX.put("CHARGEUP_PARTICLES5", 600f);
+        PARTICLE_VELOCITY_MAX.put("CHARGEUP_PARTICLES6", 600f);
+        PARTICLE_VELOCITY_MAX.put("BLOWBACK_ID_1", 70f);
+        PARTICLE_VELOCITY_MAX.put("BLOWBACK_ID_2", 70f);
+        PARTICLE_VELOCITY_MAX.put("BLOWBACK_ID_3", 70f);
+        PARTICLE_VELOCITY_MAX.put("BLOWBACK_ID_4", 70f);
+
 
     }
 
@@ -199,10 +311,17 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_DURATION_MIN.put("default", 1f);
-        PARTICLE_DURATION_MIN.put("FLASH_FRINGE_1", 0.25f);
-        PARTICLE_DURATION_MIN.put("FLASH_CORE_1", 0.35f);
-        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_1", 0.75f);
-        PARTICLE_DURATION_MIN.put("READY_STEAM_ID_1", 0.75f);
+        PARTICLE_DURATION_MIN.put("CHARGEUP_PARTICLES1", 0.15f);
+        PARTICLE_DURATION_MIN.put("CHARGEUP_PARTICLES2", 0.15f);
+        PARTICLE_DURATION_MIN.put("CHARGEUP_PARTICLES3", 0.15f);
+        PARTICLE_DURATION_MIN.put("CHARGEUP_PARTICLES4", 0.10f);
+        PARTICLE_DURATION_MIN.put("CHARGEUP_PARTICLES5", 0.10f);
+        PARTICLE_DURATION_MIN.put("CHARGEUP_PARTICLES6", 0.10f);
+        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_1", 0.33f);
+        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_2", 0.33f);
+        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_3", 0.33f);
+        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_4", 0.33f);
+
 
     }
 
@@ -211,10 +330,16 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_DURATION_MAX.put("default", 1.5f);
-        PARTICLE_DURATION_MAX.put("FLASH_FRINGE_1", 0.25f);
-        PARTICLE_DURATION_MAX.put("FLASH_CORE_1", 0.35f);
-        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_1", 1.5f);
-        PARTICLE_DURATION_MAX.put("READY_STEAM_ID_1", 1.5f);
+        PARTICLE_DURATION_MAX.put("CHARGEUP_PARTICLES1", 0.30f);
+        PARTICLE_DURATION_MAX.put("CHARGEUP_PARTICLES2", 0.30f);
+        PARTICLE_DURATION_MAX.put("CHARGEUP_PARTICLES3", 0.30f);
+        PARTICLE_DURATION_MAX.put("CHARGEUP_PARTICLES4", 0.2f);
+        PARTICLE_DURATION_MAX.put("CHARGEUP_PARTICLES5", 0.2f);
+        PARTICLE_DURATION_MAX.put("CHARGEUP_PARTICLES6", 0.2f);
+        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_1", 0.66f);
+        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_2", 0.66f);
+        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_3", 0.66f);
+        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_4", 0.66f);
 
     }
 
@@ -223,6 +348,13 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_OFFSET_MIN.put("default", 0f);
+        PARTICLE_OFFSET_MIN.put("CHARGEUP_PARTICLES1", -125f);
+        PARTICLE_OFFSET_MIN.put("CHARGEUP_PARTICLES2", -125f);
+        PARTICLE_OFFSET_MIN.put("CHARGEUP_PARTICLES3", -125f);
+        PARTICLE_OFFSET_MIN.put("CHARGEUP_PARTICLES4", -200f);
+        PARTICLE_OFFSET_MIN.put("CHARGEUP_PARTICLES5", -200f);
+        PARTICLE_OFFSET_MIN.put("CHARGEUP_PARTICLES6", -200f);
+
 
     }
 
@@ -231,6 +363,12 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_OFFSET_MAX.put("default", 0f);
+        PARTICLE_OFFSET_MAX.put("CHARGEUP_PARTICLES1", -50f);
+        PARTICLE_OFFSET_MAX.put("CHARGEUP_PARTICLES2", -50f);
+        PARTICLE_OFFSET_MAX.put("CHARGEUP_PARTICLES3", -50f);
+        PARTICLE_OFFSET_MAX.put("CHARGEUP_PARTICLES4", -100f);
+        PARTICLE_OFFSET_MAX.put("CHARGEUP_PARTICLES5", -100f);
+        PARTICLE_OFFSET_MAX.put("CHARGEUP_PARTICLES6", -100f);
 
 
     }
@@ -240,10 +378,17 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_ARC.put("default", 10f);
-        PARTICLE_ARC.put("FLASH_FRINGE_1", 0f);
-        PARTICLE_ARC.put("FLASH_CORE_1", 0f);
-        PARTICLE_ARC.put("BLOWBACK_ID_1", 90f);
-        PARTICLE_ARC.put("READY_STEAM_ID_1", 90f);
+        PARTICLE_ARC.put("CHARGEUP_PARTICLES1", 300f);
+        PARTICLE_ARC.put("CHARGEUP_PARTICLES2", 300f);
+        PARTICLE_ARC.put("CHARGEUP_PARTICLES3", 300f);
+        PARTICLE_ARC.put("CHARGEUP_PARTICLES4", 25f);
+        PARTICLE_ARC.put("CHARGEUP_PARTICLES5", 25f);
+        PARTICLE_ARC.put("CHARGEUP_PARTICLES6", 25f);
+        PARTICLE_ARC.put("BLOWBACK_ID_1", 45f);
+        PARTICLE_ARC.put("BLOWBACK_ID_2", 45f);
+        PARTICLE_ARC.put("BLOWBACK_ID_3", 45f);
+        PARTICLE_ARC.put("BLOWBACK_ID_4", 45f);
+
 
     }
 
@@ -254,8 +399,14 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     static {
         PARTICLE_ARC_FACING.put("default", 0f);
-        PARTICLE_ARC_FACING.put("BLOWBACK_ID_1", 180f);
-        PARTICLE_ARC_FACING.put("READY_STEAM_ID_1", 180f);
+        PARTICLE_ARC_FACING.put("CHARGEUP_PARTICLES4", 180f);
+        PARTICLE_ARC_FACING.put("CHARGEUP_PARTICLES5", 180f);
+        PARTICLE_ARC_FACING.put("CHARGEUP_PARTICLES6", 180f);
+        PARTICLE_ARC_FACING.put("BLOWBACK_ID_1", 75f);
+        PARTICLE_ARC_FACING.put("BLOWBACK_ID_2", -75f);
+        PARTICLE_ARC_FACING.put("BLOWBACK_ID_3", 135f);
+        PARTICLE_ARC_FACING.put("BLOWBACK_ID_4", -135f);
+
 
         PARTICLE_ARC_FACING_RIGHT.put("default", 0f);
 
@@ -276,6 +427,7 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
 
     //These are used in-script, so don't touch them!
     private boolean hasFiredThisCharge = false;
+    private boolean hasFiredThisChargeBlowback = false;
     private int currentBarrel = 0;
     private boolean shouldOffsetBarrelExtra = false;
     private boolean RIGHT = false;
@@ -484,6 +636,91 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
                 currentBarrel = 0;
             }
         }
+
+        //Muzzle location calculation
+        Vector2f pointExtra = new Vector2f();
+
+        if (weapon.getSlot().isHardpoint()) {
+            pointExtra.x = weapon.getSpec().getHardpointFireOffsets().get(0).x;
+            pointExtra.y = weapon.getSpec().getHardpointFireOffsets().get(0).y;
+        } else if (weapon.getSlot().isTurret()) {
+            pointExtra.x = weapon.getSpec().getTurretFireOffsets().get(0).x;
+            pointExtra.y = weapon.getSpec().getTurretFireOffsets().get(0).y;
+        } else {
+            pointExtra.x = weapon.getSpec().getHiddenFireOffsets().get(0).x;
+            pointExtra.y = weapon.getSpec().getHiddenFireOffsets().get(0).y;
+        }
+
+        pointExtra = VectorUtils.rotate(pointExtra, weapon.getCurrAngle(), new Vector2f(0f, 0f));
+        pointExtra.x += weapon.getLocation().x;
+        pointExtra.y += weapon.getLocation().y;
+
+
+
+        //Chargeup visuals
+
+        if (chargeLevel > 0f && !hasFiredThisCharge) {
+            Global.getSoundPlayer().playLoop(CHARGE_SOUND_ID, weapon, (0.85f + weapon.getChargeLevel() * 2f), (0.6f + (weapon.getChargeLevel() * 0.4f)), weapon.getLocation(), new Vector2f(0f, 0f));
+
+            effectInterval.advance(engine.getElapsedInLastFrame());
+            if (effectInterval.intervalElapsed()) {
+                Vector2f arcPoint = MathUtils.getRandomPointInCircle(pointExtra, 150f * chargeLevel);
+                EmpArcEntityAPI arc = engine.spawnEmpArcPierceShields(weapon.getShip(), pointExtra, weapon.getShip(),
+                        new SimpleEntity(arcPoint),
+                        DamageType.FRAGMENTATION,
+                        0f,
+                        0f,
+                        150f,
+                        null,
+                        5f + 10f * chargeLevel,
+                        PARTICLE_COLOR_EXTRA,
+                        FLASH_COLOR
+                );
+            }
+        }
+
+
+
+        //chargedown blowback visuals
+
+        if (weapon.getChargeLevel() >= 1f && !hasFiredThisChargeBlowback) {
+            hasFiredThisChargeBlowback = true;
+        }
+        if (hasFiredThisChargeBlowback && (weapon.getChargeLevel() <= 0f || !weapon.isFiring())) {
+            hasFiredThisChargeBlowback = false;}
+
+        if (weapon.getChargeLevel() > 0f && hasFiredThisChargeBlowback){
+            weaponChargedownBlowback = true;
+            hasFiredThisChargeBlowback = false;
+        }
+        if (weaponChargedownBlowback){
+            emitSmokeBlowback = true;
+            weaponChargedownBlowback = false;
+        }
+
+
+        if (timeBlowback >= durationBlowback){
+            timeBlowback = 0f;
+            emitSmokeBlowback = false;
+        }
+        if (emitSmokeBlowback) {
+            timeBlowback += amount;
+
+            float smokeDir = weapon.getCurrAngle()+180f;
+            float smokeDirAngle = smokeDir + MathUtils.getRandomNumberInRange(-20, 20);
+
+            Vector2f weaponLocation = weapon.getLocation();
+            float shipFacing = weapon.getCurrAngle();
+            Vector2f muzzleLocationBlowback = MathUtils.getPointOnCircumference(weaponLocation,
+                    weapon.getSlot().isTurret() ? MUZZLE_OFFSET_TURRET_BLOWBACK : MUZZLE_OFFSET_HARDPOINT_BLOWBACK, shipFacing);
+
+            Vector2f vel = (Vector2f) Misc.getUnitVectorAtDegreeAngle(smokeDirAngle).scale(100f);
+
+                engine.addNebulaParticle(muzzleLocationBlowback, vel, MathUtils.getRandomNumberInRange(15f, 25f), 2.5f, 0.3f, 0.3f, 0.5f, new Color(95, 255, 130, 150));
+                engine.addNebulaParticle(muzzleLocationBlowback, vel, MathUtils.getRandomNumberInRange(5f, 15f), 2.5f, 0.3f, 0.3f, 0.15f, new Color(141, 255, 127, 255));
+        }
+
+
     }
 
 
@@ -554,133 +791,92 @@ public class vic_gaganaUltraOnFire implements EveryFrameWeaponEffectPlugin, OnFi
     }
 
     public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
-        Vector2f muzzleLocation = new Vector2f();
-        Vector2f shockwaveMuzzleLocation = new Vector2f();
-        float trueArcFacing = weapon.getCurrAngle();
-        if (weapon.getSlot().isHardpoint()) {
-            muzzleLocation.x += weapon.getSpec().getHardpointFireOffsets().get(currentBarrel).x;
-            muzzleLocation.y += weapon.getSpec().getHardpointFireOffsets().get(currentBarrel).y;
-            trueArcFacing += weapon.getSpec().getHardpointAngleOffsets().get(currentBarrel);
-        } else if (weapon.getSlot().isTurret()) {
-            muzzleLocation.x += weapon.getSpec().getTurretFireOffsets().get(currentBarrel).x;
-            muzzleLocation.y += weapon.getSpec().getTurretFireOffsets().get(currentBarrel).y;
-            trueArcFacing += weapon.getSpec().getTurretAngleOffsets().get(currentBarrel);
-        } else {
-            muzzleLocation.x += weapon.getSpec().getHiddenFireOffsets().get(currentBarrel).x;
-            muzzleLocation.y += weapon.getSpec().getHiddenFireOffsets().get(currentBarrel).y;
-            trueArcFacing += weapon.getSpec().getHiddenAngleOffsets().get(currentBarrel);
+
+
+        Vector2f weaponLocation = weapon.getLocation();
+        float shipFacing = weapon.getCurrAngle();
+        Vector2f muzzleLocationShockwave = MathUtils.getPointOnCircumference(weaponLocation,
+                weapon.getSlot().isTurret() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE : MUZZLE_OFFSET_TURRET_SHOCKWAVE, shipFacing);
+
+
+        WaveDistortion wave = new WaveDistortion(muzzleLocationShockwave, ZERO);
+        wave.setIntensity(10f);
+        wave.setSize(200f);
+        wave.flip(true);
+        wave.setLifetime(0f);
+        wave.fadeOutIntensity(0.2f);
+        wave.setLocation(muzzleLocationShockwave);
+        DistortionShader.addDistortion(wave);
+
+        if (Global.getSettings().getModManager().isModEnabled("shaderLib")) {
+            light = true;
         }
 
-        if (weapon.getSlot().isHardpoint()) {
-            shockwaveMuzzleLocation.x += weapon.getSpec().getHardpointFireOffsets().get(currentBarrel).x -15f;
-            shockwaveMuzzleLocation.y += weapon.getSpec().getHardpointFireOffsets().get(currentBarrel).y;
-            trueArcFacing += weapon.getSpec().getHardpointAngleOffsets().get(currentBarrel);
-        } else if (weapon.getSlot().isTurret()) {
-            shockwaveMuzzleLocation.x += weapon.getSpec().getTurretFireOffsets().get(currentBarrel).x -15f;
-            shockwaveMuzzleLocation.y += weapon.getSpec().getTurretFireOffsets().get(currentBarrel).y;
-            trueArcFacing += weapon.getSpec().getTurretAngleOffsets().get(currentBarrel);
-        } else {
-            shockwaveMuzzleLocation.x += weapon.getSpec().getHiddenFireOffsets().get(currentBarrel).x -15f;
-            shockwaveMuzzleLocation.y += weapon.getSpec().getHiddenFireOffsets().get(currentBarrel).y;
-            trueArcFacing += weapon.getSpec().getHiddenAngleOffsets().get(currentBarrel);
-        }
+        if (light) {
+            vic_graphicLibEffects.CustomRippleDistortion(
+                    muzzleLocationShockwave,
+                    ZERO,
+                    150,
+                    4,
+                    false,
+                    0,
+                    360,
+                    1f,
+                    0.1f,
+                    0.15f,
+                    0.5f,
+                    0.35f,
+                    0f
+            );
 
-        muzzleLocation = VectorUtils.rotate(muzzleLocation, weapon.getCurrAngle(), new Vector2f(0f, 0f));
-        muzzleLocation.x += weapon.getLocation().x;
-        muzzleLocation.y += weapon.getLocation().y;
-        shockwaveMuzzleLocation = VectorUtils.rotate(shockwaveMuzzleLocation, weapon.getCurrAngle(), new Vector2f(0f, 0f));
-        shockwaveMuzzleLocation.x += weapon.getLocation().x;
-        shockwaveMuzzleLocation.y += weapon.getLocation().y;
+            vic_graphicLibEffects.CustomRippleDistortion(
+                    muzzleLocationShockwave,
+                    ZERO,
+                    200,
+                    2.5f,
+                    false,
+                    0,
+                    360,
+                    1f,
+                    0.1f,
+                    0.25f,
+                    0.5f,
+                    0.6f,
+                    0f
+            );
+        }
 
         MagicRender.battlespace(
-                Global.getSettings().getSprite("fx", "vic_gatebreaker_shotgun_shockwave"),
-                shockwaveMuzzleLocation,
-                weapon.getShip().getVelocity(),
-                new Vector2f(25, 50),
-                new Vector2f(60, 250),
-                trueArcFacing,
+                Global.getSettings().getSprite("fx", "vic_alkonost_shockwave"),
+                muzzleLocationShockwave,
+                ZERO,
+                new Vector2f(75, 200),
+                new Vector2f(100, 200),
+                shipFacing,
                 0f,
                 new Color(255, 255, 255, 255),
                 true,
                 0.0f,
                 0f,
-                0.5f
+                0.75f
         );
 
-        WaveDistortion wave = new WaveDistortion(shockwaveMuzzleLocation, ZERO);
-        wave.setIntensity(3f);
-        wave.setSize(100f);
-        wave.flip(true);
-        wave.setLifetime(0f);
-        wave.fadeOutIntensity(0.25f);
-        wave.setLocation(shockwaveMuzzleLocation);
-        DistortionShader.addDistortion(wave);
+        Global.getCombatEngine().spawnExplosion(muzzleLocationShockwave, new Vector2f(0f, 0f), PARTICLE_COLOR_EXTRA, 250f, 0.33f);
+        Global.getCombatEngine().spawnExplosion(muzzleLocationShockwave, new Vector2f(0f, 0f), FLASH_COLOR, 180f, 0.33f);
+        engine.addSmoothParticle(muzzleLocationShockwave, ZERO, 350f, 0.7f, 0.2f, PARTICLE_COLOR_EXTRA);
+        engine.addSmoothParticle(muzzleLocationShockwave, ZERO, 450f, 0.7f, 1f, GLOW_COLOR);
+        engine.addHitParticle(muzzleLocationShockwave, ZERO, 750f, 1f, 0.15f, FLASH_COLOR);
+        for (int x = 0; x < NUM_PARTICLES; x++) {
+            engine.addHitParticle(muzzleLocationShockwave,
+                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(50f, 150f), (float) Math.random() * 360f),
+                    5f, 1f, MathUtils.getRandomNumberInRange(0.3f, 0.6f), PARTICLE_COLOR_EXTRA);
 
 
-        Vector2f nebulaSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(trueArcFacing).scale(MathUtils.getRandomNumberInRange(15f, 22.5f));
-        Vector2f nebulaSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(trueArcFacing).scale(MathUtils.getRandomNumberInRange(5f, 15f));
-        Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(trueArcFacing).scale(MathUtils.getRandomNumberInRange(0f, 5f));
 
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSpeed3, 10f, 5f, 0.2f, 0.2f, 2.5f, new Color(47, 42, 42, 225));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSpeed2, 15f, 3f, 0.2f, 0.2f, 2.25f, new Color(45, 37, 37, 225));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSpeed, 30f, 3f, 0.2f, 0.2f, 2f, new Color(36, 33, 33, 225));
-
-        /*
-        List<List<Color>> nebulasColors = new ArrayList<>();
-        nebulasColors.add(Arrays.asList(new Color(62, 46, 29, 50)));
-        nebulasColors.add(Arrays.asList(new Color(50, 50, 50, 150)));
-        nebulasColors.add(Arrays.asList(new Color(144, 102, 58, 50)));
-        nebulasColors.add(Arrays.asList(new Color(50, 50, 50, 150)));
-        nebulasColors.add(Arrays.asList(new Color(62, 46, 29, 50)));
-        nebulasColors.add();
-        nebulasColors.add();
-        nebulasColors.add();
-        nebulasColors.add(new Color(50, 50, 50, 150));
-        nebulasColors.add(new Color(38, 22, 14, 50));
-        nebulasColors.add(new Color(50, 50, 50, 150));
-        nebulasColors.add(new Color(83, 47, 13, 50));
-        nebulasColors.add(new Color(50, 50, 50, 150));
-        */
-
-        Vector2f nebulaSideSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-90f, 90f)).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-        Vector2f nebulaSideSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-90f, 90f)).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-        Vector2f nebulaSideSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-90f, 90f)).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-        Vector2f nebulaSideSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-270f, -90f)).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-        Vector2f nebulaSideSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-270f, -90f)).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSideSpeed1, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(62, 46, 29, 100));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSideSpeed2, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(50, 50, 50, 150));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSideSpeed3, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(144, 102, 58, 100));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSideSpeed4, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(50, 50, 50, 150));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSideSpeed5, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(62, 46, 29, 100));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSideSpeed1, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(50, 50, 50, 150));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSideSpeed2, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(38, 22, 14, 100));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSideSpeed3, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(50, 50, 50, 150));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSideSpeed4, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(83, 47, 13, 100));
-        Global.getCombatEngine().addNebulaSmokeParticle(muzzleLocation, nebulaSideSpeed5, MathUtils.getRandomNumberInRange(10f, 25f), MathUtils.getRandomNumberInRange(3f, 5f), 0.2f, 0.2f, MathUtils.getRandomNumberInRange(1.5f, 3f), new Color(50, 50, 50, 150));
-
-    }
-
-    public static class vic_gaganaUltraListner implements DamageDealtModifier {
-
-        @Override
-        public String modifyDamageDealt(Object param, CombatEntityAPI target, DamageAPI damage, Vector2f point, boolean shieldHit) {
-            if (param instanceof DamagingProjectileAPI && !shieldHit && target instanceof ShipAPI) {
-                if (((DamagingProjectileAPI) param).getProjectileSpecId() != null && ((DamagingProjectileAPI) param).getProjectileSpecId().equals("vic_gagana_ultra_shot")) {
-                    float addDamage = ((ShipAPI) target).getArmorGrid().getArmorRating() * 0.2f;
-                    if (addDamage > 300) addDamage = 300;
-                    /*
-                    float statMult = damage.getStats().getBallisticWeaponDamageMult().getModifiedValue();
-                    float mult = (damage.getDamage() / 350f) / statMult;
-                     */
-                    damage.setDamage(damage.getBaseDamage() + addDamage);
-                    //Global.getCombatEngine().addFloatingText(point, addDamage + "/" + damage.getDamage() + "/" + mult, 30, Color.WHITE, null, 0, 0);
-                }
-
-            }
-            return null;
         }
+
     }
+
 
 }
 

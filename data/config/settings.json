@@ -75,6 +75,7 @@
 			"trails_trail_contrail":"graphics/trails/fx/trails_contrail.png",
 			"trails_trail_twin":"graphics/trails/fx/trails_twin.png",
 			"trails_trail_foggy":"graphics/trails/fx/trails_foggy.png",
+			"trails_trail_sparks":"graphics/trails/fx/trails_sparks.png",
 			"vic_trailSmoke":"graphics/trails/fx/vic_trailSmoke.png",
 			
 			"SRD_trail_helix":"graphics/trails/fx/SRD_trail_helix.png",
@@ -91,6 +92,8 @@
 			"vic_gatebreaker_autocannon_shell":"graphics/fx/vic_gatebreaker_autocannon_shell.png",	
 		
 			"vic_gatebreaker_shotgun_shockwave":"graphics/fx/vic_gatebreaker_shotgun_shockwave.png",	
+
+			"vic_alkonost_shockwave":"graphics/fx/vic_alkonost_shockwave.png",	
 
 		},		
 		"illustrations":{
