@@ -28,7 +28,7 @@ public class vic_alkonostOnHit implements OnHitEffectPlugin {
     private static final Color GLOW_COLOR = new Color(175, 255, 172, 50);
     private static final Color ARC_FRINGE_COLOR = new Color(52, 255, 62);
     private static final Color ARC_CORE_COLOR = new Color(213, 255, 212);
-    private static final String SOUND_ID = "vic_apocrypha_explosion";
+    private static final String SOUND_ID = "vic_alkonost_explosion";
     private static final Vector2f ZERO = new Vector2f();
 
     private static final int NUM_PARTICLES_1 = 25;
@@ -242,7 +242,7 @@ public class vic_alkonostOnHit implements OnHitEffectPlugin {
                             MathUtils.getRandomNumberInRange(0.8f, 1.2f) * bonusDamage, //Damage
                             MathUtils.getRandomNumberInRange(0.8f, 1.2f) * bonusDamage, //Emp
                             100000f, //Max range
-                            "tachyon_lance_emp_impact", //Impact sound
+                            "vic_alkonost_emp_arc", //Impact sound
                             10f, // thickness of the lightning bolt
                             ARC_CORE_COLOR, //Central color
                             ARC_FRINGE_COLOR //Fringe Color

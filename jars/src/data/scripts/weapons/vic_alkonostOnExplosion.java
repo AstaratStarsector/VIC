@@ -239,7 +239,7 @@ public class vic_alkonostOnExplosion implements ProximityExplosionEffect {
                             MathUtils.getRandomNumberInRange(0.8f, 1.2f) * bonusDamage, //Damage
                             MathUtils.getRandomNumberInRange(0.8f, 1.2f) * bonusDamage, //Emp
                             100000f, //Max range
-                            "tachyon_lance_emp_impact", //Impact sound
+                            "vic_alkonost_emp_arc", //Impact sound
                             10f, // thickness of the lightning bolt
                             ARC_CORE_COLOR, //Central color
                             ARC_FRINGE_COLOR //Fringe Color

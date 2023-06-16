@@ -40,5 +40,7 @@
     "particleCount": 50,
     "particleColor": [105,255,90,225]
   },
-  "fireSoundTwo": "vic_nawia_shot"
+  "autocharge": true,
+  "fireSoundOne": "vic_alkonost_chargeup",
+  "fireSoundTwo": "vic_alkonost_shot"
 }

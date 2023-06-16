@@ -3,6 +3,7 @@ package data.scripts.weapons;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.DamageDealtModifier;
+import com.fs.starfarer.api.input.InputEventAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.plugins.vic_weaponDamageListener;
 import com.fs.starfarer.api.util.Misc;
@@ -31,7 +32,6 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
 
     private boolean light = false;
 
-    private final String CHARGE_SOUND_ID = "vic_astronomicon_charge3";
 
     private final IntervalUtil effectInterval = new IntervalUtil(0.05f, 0.1f);
 
@@ -660,7 +660,6 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
         //Chargeup visuals
 
         if (chargeLevel > 0f && !hasFiredThisCharge) {
-            Global.getSoundPlayer().playLoop(CHARGE_SOUND_ID, weapon, (0.85f + weapon.getChargeLevel() * 2f), (0.6f + (weapon.getChargeLevel() * 0.4f)), weapon.getLocation(), new Vector2f(0f, 0f));
 
             effectInterval.advance(engine.getElapsedInLastFrame());
             if (effectInterval.intervalElapsed()) {
@@ -790,7 +789,7 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
 
     }
 
-    public void onFire(DamagingProjectileAPI projectile, WeaponAPI weapon, CombatEngineAPI engine) {
+    public void onFire(final DamagingProjectileAPI projectile, WeaponAPI weapon, final CombatEngineAPI engine) {
 
 
         Vector2f weaponLocation = weapon.getLocation();
@@ -870,10 +869,36 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
             engine.addHitParticle(muzzleLocationShockwave,
                     MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(50f, 150f), (float) Math.random() * 360f),
                     5f, 1f, MathUtils.getRandomNumberInRange(0.3f, 0.6f), PARTICLE_COLOR_EXTRA);
-
-
-
         }
+
+
+        engine.addPlugin(new EveryFrameCombatPlugin() {
+            @Override
+            public void processInputPreCoreControls(float amount, List<InputEventAPI> events) {
+
+            }
+
+            @Override
+            public void advance(float amount, List<InputEventAPI> events) {
+                Global.getSoundPlayer().playLoop("vic_alkonost_projectile_loop", projectile, 1,1,projectile.getLocation(),projectile.getVelocity(),0.2f,0.2f);
+                if (!engine.isEntityInPlay(projectile)) engine.removePlugin(this);
+            }
+
+            @Override
+            public void renderInWorldCoords(ViewportAPI viewport) {
+
+            }
+
+            @Override
+            public void renderInUICoords(ViewportAPI viewport) {
+
+            }
+
+            @Override
+            public void init(CombatEngineAPI engine) {
+
+            }
+        });
 
     }
 
