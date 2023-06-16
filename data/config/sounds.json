@@ -634,10 +634,6 @@
 	],
 
 		"vic_alkonost_chargeup":[
-		{"file": "sounds/effects/vic_alkonost_chargeup.ogg", "pitch": 0.90, "volume": 1,},
-		{"file": "sounds/effects/vic_alkonost_chargeup.ogg", "pitch": 0.95, "volume": 1,},
-		{"file": "sounds/effects/vic_alkonost_chargeup.ogg", "pitch": 1.00, "volume": 1,},
-		{"file": "sounds/effects/vic_alkonost_chargeup.ogg", "pitch": 1.05, "volume": 1,},
 		{"file": "sounds/effects/vic_alkonost_chargeup.ogg", "pitch": 1.10, "volume": 1,},
 	],
 
