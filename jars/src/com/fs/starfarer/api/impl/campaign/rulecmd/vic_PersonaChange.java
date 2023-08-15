@@ -607,7 +607,7 @@ public class vic_PersonaChange extends BaseCommandPlugin {
         //List<ButtonAPI> buttons = new ArrayList<>();
 
         @Override
-        public void createCustomDialog(CustomPanelAPI panel) {
+        public void createCustomDialog(CustomPanelAPI panel, CustomDialogCallback callback) {
             float width = 800;
             float height = 500;
 
@@ -653,6 +653,8 @@ public class vic_PersonaChange extends BaseCommandPlugin {
             UI.addSpacer(imagePad);
             panel.addUIElement(UI).inTL(0f, 0f);
         }
+
+
 
         @Override
         public boolean hasCancelButton() {

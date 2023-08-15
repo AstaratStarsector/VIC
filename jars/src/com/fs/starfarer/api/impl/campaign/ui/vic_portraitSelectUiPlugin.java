@@ -87,4 +87,9 @@ public class vic_portraitSelectUiPlugin implements CustomUIPanelPlugin {
     public void processInput(List<InputEventAPI> events) {
 
     }
+
+    @Override
+    public void buttonPressed(Object buttonId) {
+
+    }
 }

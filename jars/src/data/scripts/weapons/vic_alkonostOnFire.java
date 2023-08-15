@@ -781,6 +781,15 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
                 case "SMOKE":
                     engine.addSmokeParticle(spawnLocation, velocity, size, 1f, duration, color);
                     break;
+                case "NEBULA":
+                    engine.addNebulaParticle(spawnLocation, velocity, size, 1.5f, 0.1f, 0.2f, duration, color);
+                    break;
+                case "NEBULA_SMOKE":
+                    engine.addNebulaSmokeParticle(spawnLocation, velocity, size, 1.5f, 0.1f, 0.2f, duration, color);
+                    break;
+                case "NEBULA_SWIRLY":
+                    engine.addSwirlyNebulaParticle(spawnLocation, velocity, size, 1.5f, 0.1f, 0.2f, duration, color, true);
+                    break;
                 default:
                     engine.addHitParticle(spawnLocation, velocity, size, 10f, duration, color);
                     break;

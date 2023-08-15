@@ -1,0 +1,58 @@
+{
+  "id": "vic_xl_laidlaw",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_xl_laidlaw_shot",
+  "type": "BALLISTIC",
+  "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_xlLaidlawOnFire",
+  "displayArcRadius": 450,
+  "turretSprite": "graphics/weapons/XL Laidlaw/vic_xl_laidlaw00.png",
+  "turretGunSprite": "graphics/weapons/XL Laidlaw/vic_xl_laidlaw_barrel.png",
+  "hardpointSprite": "graphics/weapons/XL Laidlaw/vic_xl_laidlaw00.png",
+  "hardpointGunSprite": "graphics/weapons/XL Laidlaw/vic_xl_laidlaw_barrel.png",
+  "glowColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "visualRecoil": 15,
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
+  "turretOffsets": [
+    20.5,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    61,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "GLOW_AND_FLASH",
+  "numFrames": 54,
+  "frameRate": 20,
+  "autocharge": true,
+  "muzzleFlashSpec": {
+    "length": 1,
+    "spread": 1,
+    "particleSizeMin": 500,
+    "particleSizeRange": 0,
+    "particleDuration": 0.15,
+    "particleCount": 2,
+    "particleColor": [
+      155,
+      255,
+      255,
+      155
+    ]
+  },
+  "fireSoundOne": "vic_laidlaw_accelerator_charge",
+  "fireSoundTwo": "vic_laidlaw_accelerator_shot"
+}

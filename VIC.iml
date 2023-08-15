@@ -7,12 +7,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="StarsectorCore" level="project" />
-    <orderEntry type="library" name="LazyLib" level="project" />
+    <orderEntry type="library" name="LazyLib-Console" level="project" />
+    <orderEntry type="library" name="lw_Console" level="project" />
+    <orderEntry type="library" name="Graphics" level="project" />
     <orderEntry type="library" name="MagicLib" level="project" />
     <orderEntry type="library" name="ExerelinCore" level="project" />
-    <orderEntry type="library" name="Graphics" level="project" />
-    <orderEntry type="library" name="lw_Console" level="project" />
     <orderEntry type="library" name="alcoholism" level="project" />
+    <orderEntry type="library" name="starsector_core" level="project" />
   </component>
 </module>

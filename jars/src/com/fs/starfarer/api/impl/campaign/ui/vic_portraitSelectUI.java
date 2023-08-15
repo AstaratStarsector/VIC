@@ -32,8 +32,9 @@ public class vic_portraitSelectUI implements CustomDialogDelegate {
     HashMap<ButtonAPI, String> buttons = new HashMap<>();
     //List<ButtonAPI> buttons = new ArrayList<>();
 
+
     @Override
-    public void createCustomDialog(CustomPanelAPI panel) {
+    public void createCustomDialog(CustomPanelAPI panel, CustomDialogCallback callback) {
 
 
         float pad = 3f;
@@ -111,6 +112,8 @@ public class vic_portraitSelectUI implements CustomDialogDelegate {
         */
         panel.addUIElement(UI).inTL(0f, 0f);
     }
+
+
 
     @Override
     public boolean hasCancelButton() {

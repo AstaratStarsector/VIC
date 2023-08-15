@@ -94,10 +94,12 @@ Gatebreaker Shotgun Shrapnel,vic_gatebreaker_shotgun_shrapnel,,,3000,200,,100,,2
 Rebellion Autocannon,vic_gatebreaker_r_autocannon,0,,3000,1000,,150,35,200,5,0,,,,KINETIC,150,,0,0.4,2,0.2,0,10,5,10,,1000,,,400,,"SYSTEM, SHOW_IN_CODEX","no_drop, no_salvage",,Volkov Industries,,Anti Armor,,,,,,,,,,
 Rebellion Autocannon,vic_gatebreaker_l_autocannon,0,,3000,1000,,150,35,200,5,0,,,,KINETIC,150,,0,0.4,2,0.2,0,10,5,10,,1000,,,400,,"SYSTEM, SHOW_IN_CODEX","no_drop, no_salvage",,Volkov Industries,,Anti Armor,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Gagana Ultra AMR-Cannon,vic_gagana_ultra,0,,50000,1100,,700,,100,5,0,,,,HIGH_EXPLOSIVE,1000,,0,2.5,2,0.5,0,0,0,0,,1300,,,,,"SYSTEM, SHOW_IN_CODEX, STRIKE, USE_VS_FRIGATES,","no_drop, no_salvage",,Volkov Industries,,Anti Armor,,,,,Damage dealt is increased by %s of the target's armor with maximum being additional %s damage. The maximum amount of additional damage scales with weapon damage modifiers.,20% | 300,,,,5
+#Raum Build-ins,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Gagana Ultra AMR-Cannon,vic_gagana_ultra,0,,50000,1100,,700,,100,5,0,,,,HIGH_EXPLOSIVE,1000,,0,2.5,2,0.5,0,0,0,0,,1300,,,,,"SYSTEM, SHOW_IN_CODEX, STRIKE, USE_VS_FRIGATES,","no_drop, no_salvage",,Volkov Industries,,Anti Armor,,,,,Damage dealt is increased by %s of the target's armor with maximum being additional %s damage. The maximum amount of additional damage scales with weapon damage modifiers.,20% | 300,,,,
 Gagana Ultra Shrapnel,vic_gagana_ultra_shrapnel,,,3000,75,,100,,200,5,0,,,,HIGH_EXPLOSIVE,100,,0,5,,,45,45,0,0,,500,,,400,,SYSTEM,"no_drop, no_salvage",,Volkov Industries,,Anti Armor,,,,,,,,,,
 Strzyga Flak Array,vic_strzyga,0,,50000,850,,150,,10,15,0,,,,FRAGMENTATION,30,,0,0.05,5,0.05,0,10,0.1,1,,700,,,,0.75,"SYSTEM, SHOW_IN_CODEX, PD, ANTI_FTR","no_drop, no_salvage",,Volkov Industries,,Point Defense (Area),,,,,,,,,,
 Alkonost Plasmoid Oscillatron,vic_alkonost,0,,50000,1000,,4500,2250,200,5,0,,,,ENERGY,6750,,2.5,9.5,,,,,,,,300,,,500,1,"SYSTEM, SHOW_IN_CODEX, STRIKE, USE_VS_FRIGATES,","no_drop, no_salvage",,Volkov Industries,,Area Cleansing,,,,,,,,,,
+Laidlaw Hyperaccelerator,vic_xl_laidlaw,2,,100000,1100,,10000,,500,3,0,,,,FRAGMENTATION,0,,1.5,8.5,,,0,0,0,0,,2000,,,,,"STRIKE, USE_VS_FRIGATES, SYSTEM, SHOW_IN_CODEX","no_drop, no_salvage",,Volkov Industries,,Hullbuster,Extreme,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Targeting Laser,vic_targetingLazer,0,,400,1500,5,,,0,100,2,,,,ENERGY,,5,0,0,,,,,,,10000,,,,,,"SYSTEM, SHOW_IN_CODEX",beam0,,Volkov Industries,,Targeting,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
