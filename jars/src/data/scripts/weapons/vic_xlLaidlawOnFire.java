@@ -27,8 +27,7 @@ import static com.fs.starfarer.api.util.Misc.ZERO;
 
 public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
-    final float animStartTime = 0f,
-    animEndTime = 3f;
+
 
 
     final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE = 15f;
@@ -306,6 +305,13 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     private int currentBarrel = 0;
     private boolean shouldOffsetBarrelExtra = false;
 
+    float animStartTime = 0f,
+            animEndTime = 0f;
+    float totalFrames = 0,
+            totalFireTime = 0,
+            startPercent = 0,
+            endPercent = 0;
+
     //Instantiator
 
     //
@@ -319,14 +325,16 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
             if (!weapon.getShip().hasListenerOfClass(vic_weaponDamageListener.class)){
                 weapon.getShip().addListener(new vic_weaponDamageListener());
             }
+            totalFireTime = ((ProjectileWeaponSpecAPI) weapon.getSpec()).getRefireDelay();
+            totalFrames = weapon.getAnimation().getNumFrames();
+            animEndTime = totalFrames / weapon.getAnimation().getFrameRate() + animStartTime;
+            weapon.getAnimation().setFrameRate(0);
+            startPercent = animStartTime / totalFireTime;
+            endPercent = animEndTime / totalFireTime;
             doOnce = false;
         }
 
         //Saves handy variables used later
-        float totalFireTime = ((ProjectileWeaponSpecAPI) weapon.getSpec()).getRefireDelay();
-        float startPercent = animStartTime / totalFireTime;
-        float endPercent = animEndTime / totalFireTime;
-        float totalFrames = weapon.getAnimation().getNumFrames();
         boolean fired = weapon.getCooldownRemaining() > 0;
         float chargeLevel = weapon.getChargeLevel();
 
@@ -347,9 +355,9 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         if (!fired){
             shotFaction = ((((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime() * chargeLevel) / totalFireTime);
         } else {
-            shotFaction = (((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime() + ((totalFireTime - ((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime()) * chargeLevel) / totalFireTime);
+            shotFaction = ((((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime() + ((totalFireTime - ((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime()) * (1 - chargeLevel))) / totalFireTime);
         }
-        float animFraction = MathUtils.clamp(shotFaction - startPercent / endPercent, 0, 1);
+        float animFraction = MathUtils.clamp((shotFaction - startPercent) / endPercent, 0, 1);
         weapon.getAnimation().setFrame(Math.round(totalFrames * animFraction));
 
 
