@@ -1,0 +1,16 @@
+{
+	"id":"vic_xl_laidlaw_shrapnel_shot",
+	"specClass":"projectile",
+	"spawnType":"BALLISTIC",
+	"collisionClass":"PROJECTILE_FF",
+	"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"length":35.0,
+	"hitGlowRadius":50,
+	"width":7.5,
+	"fadeTime":0.33,
+	"fringeColor":[50,255,235,0],
+	"coreColor":[50,166,255,0],
+	"textureScrollSpeed":64.0,
+	"pixelsPerTexel":5.0,
+	"bulletSprite":"",
+}

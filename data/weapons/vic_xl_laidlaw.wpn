@@ -36,7 +36,7 @@
   ],
   "barrelMode": "ALTERNATING",
   "animationType": "GLOW_AND_FLASH",
-  "numFrames": 54,
+  "numFrames": 60,
   "frameRate": 20,
   "autocharge": true,
   "muzzleFlashSpec": {

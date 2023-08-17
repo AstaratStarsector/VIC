@@ -18,6 +18,7 @@ import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.entities.SimpleEntity;
 import org.lwjgl.util.vector.Vector2f;
+import org.magiclib.plugins.MagicTrailPlugin;
 
 import java.awt.*;
 import java.util.*;
@@ -28,6 +29,14 @@ import static com.fs.starfarer.api.util.Misc.ZERO;
 public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
 
+    boolean weaponChargedownBlowback = false;
+    boolean emitTrailBlowback = false;
+
+    float
+            durationBlowback = 5f,
+            timeBlowback = 0f;
+
+    private final IntervalUtil trailTracker = new IntervalUtil(0.05f, 0.1f);
 
 
     final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE = 15f;
@@ -38,6 +47,9 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     final float MUZZLE_OFFSET_TURRET_SHOCKWAVE_SPRITE2 = 100f;
     final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE_SPRITE3 = 120f;
     final float MUZZLE_OFFSET_TURRET_SHOCKWAVE_SPRITE3 = 120f;
+
+    final float MUZZLE_OFFSET_TURRET_TRAIL = -50f;
+    final float MUZZLE_OFFSET_HARDPOINT_TRAIL = -50f;
 
     private boolean light = false;
 
@@ -54,6 +66,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         USED_IDS.add("MUZZLE_PARTICLE_BURST");
         USED_IDS.add("ELECTROPARTICLES_BURST_LEFT");
         USED_IDS.add("ELECTROPARTICLES_BURST_RIGHT");
+        USED_IDS.add("SMOKE_BURST_LEFT");
+        USED_IDS.add("SMOKE_BURST_RIGHT");
         USED_IDS.add("BLOWBACK_LEFT_UPPER");
         USED_IDS.add("BLOWBACK_LEFT_LOWER");
         USED_IDS.add("BLOWBACK_RIGHT_UPPER");
@@ -70,6 +84,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         ON_SHOT_PARTICLE_COUNT.put("MUZZLE_PARTICLE_BURST", 160);
         ON_SHOT_PARTICLE_COUNT.put("ELECTROPARTICLES_BURST_LEFT", 25);
         ON_SHOT_PARTICLE_COUNT.put("ELECTROPARTICLES_BURST_RIGHT", 25);
+        ON_SHOT_PARTICLE_COUNT.put("SMOKE_BURST_LEFT", 7);
+        ON_SHOT_PARTICLE_COUNT.put("SMOKE_BURST_RIGHT", 7);
         ON_SHOT_PARTICLE_COUNT.put("BLOWBACK_LEFT_UPPER", 15);
         ON_SHOT_PARTICLE_COUNT.put("BLOWBACK_LEFT_LOWER", 15);
         ON_SHOT_PARTICLE_COUNT.put("BLOWBACK_RIGHT_UPPER", 15);
@@ -122,8 +138,10 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_TURRET = new HashMap<>();
     static {
         PARTICLE_SPAWN_POINT_TURRET.put("default", new Vector2f(0f, 0f));
-        PARTICLE_SPAWN_POINT_TURRET.put("ELECTROPARTICLES_BURST_LEFT", new Vector2f(10f, 43f));
-        PARTICLE_SPAWN_POINT_TURRET.put("ELECTROPARTICLES_BURST_RIGHT", new Vector2f(-10f, 43f));
+        PARTICLE_SPAWN_POINT_TURRET.put("ELECTROPARTICLES_BURST_LEFT", new Vector2f(10f, 40f));
+        PARTICLE_SPAWN_POINT_TURRET.put("ELECTROPARTICLES_BURST_RIGHT", new Vector2f(-10f, 40f));
+        PARTICLE_SPAWN_POINT_TURRET.put("SMOKE_BURST_LEFT", new Vector2f(10f, 40f));
+        PARTICLE_SPAWN_POINT_TURRET.put("SMOKE_BURST_RIGHT", new Vector2f(-10f, 40f));
         PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_LEFT_UPPER", new Vector2f(27f, -32f));
         PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_LEFT_LOWER", new Vector2f(22f, -52f));
         PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_RIGHT_UPPER", new Vector2f(-27f, -32f));
@@ -144,6 +162,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_TYPE.put("default", "SMOOTH");
         PARTICLE_TYPE.put("ELECTROPARTICLES_BURST_LEFT", "BRIGHT");
         PARTICLE_TYPE.put("ELECTROPARTICLES_BURST_RIGHT", "BRIGHT");
+        PARTICLE_TYPE.put("SMOKE_BURST_LEFT", "NEBULA");
+        PARTICLE_TYPE.put("SMOKE_BURST_RIGHT", "NEBULA");
         PARTICLE_TYPE.put("BLOWBACK_LEFT_UPPER", "NEBULA");
         PARTICLE_TYPE.put("BLOWBACK_LEFT_LOWER", "NEBULA");
         PARTICLE_TYPE.put("BLOWBACK_RIGHT_UPPER", "NEBULA");
@@ -157,6 +177,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_COLOR.put("MUZZLE_PARTICLE_BURST", new Color(155, 255, 255, 165));
         PARTICLE_COLOR.put("ELECTROPARTICLES_BURST_LEFT", new Color(120, 120, 255, 255));
         PARTICLE_COLOR.put("ELECTROPARTICLES_BURST_RIGHT", new Color(120, 120, 255, 255));
+        PARTICLE_COLOR.put("SMOKE_BURST_LEFT", new Color(200, 200, 255, 155));
+        PARTICLE_COLOR.put("SMOKE_BURST_RIGHT", new Color(200, 200, 255, 155));
         PARTICLE_COLOR.put("BLOWBACK_LEFT_UPPER", new Color(155, 255, 255, 200));
         PARTICLE_COLOR.put("BLOWBACK_LEFT_LOWER", new Color(155, 255, 255, 200));
         PARTICLE_COLOR.put("BLOWBACK_RIGHT_UPPER", new Color(155, 255, 255, 200));
@@ -169,7 +191,9 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_SIZE_MIN.put("default", 5f);
         PARTICLE_SIZE_MIN.put("MUZZLE_PARTICLE_BURST", 20f);
         PARTICLE_SIZE_MIN.put("ELECTROPARTICLES_BURST_LEFT", 6f);
-        PARTICLE_SIZE_MIN.put("ELECTROPARTICLES_BURST_RIGHT", 4f);
+        PARTICLE_SIZE_MIN.put("ELECTROPARTICLES_BURST_RIGHT", 6f);
+        PARTICLE_SIZE_MIN.put("SMOKE_BURST_LEFT", 10f);
+        PARTICLE_SIZE_MIN.put("SMOKE_BURST_RIGHT", 10f);
         PARTICLE_SIZE_MIN.put("BLOWBACK_LEFT_UPPER", 15f);
         PARTICLE_SIZE_MIN.put("BLOWBACK_LEFT_LOWER", 10f);
         PARTICLE_SIZE_MIN.put("BLOWBACK_RIGHT_UPPER", 15f);
@@ -183,6 +207,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_SIZE_MAX.put("MUZZLE_PARTICLE_BURST", 50f);
         PARTICLE_SIZE_MAX.put("ELECTROPARTICLES_BURST_LEFT", 12f);
         PARTICLE_SIZE_MAX.put("ELECTROPARTICLES_BURST_RIGHT", 12f);
+        PARTICLE_SIZE_MAX.put("SMOKE_BURST_LEFT", 15f);
+        PARTICLE_SIZE_MAX.put("SMOKE_BURST_RIGHT", 15f);
         PARTICLE_SIZE_MAX.put("BLOWBACK_LEFT_UPPER", 25f);
         PARTICLE_SIZE_MAX.put("BLOWBACK_LEFT_LOWER", 15f);
         PARTICLE_SIZE_MAX.put("BLOWBACK_RIGHT_UPPER", 25f);
@@ -196,6 +222,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_VELOCITY_MIN.put("MUZZLE_PARTICLE_BURST", 100f);
         PARTICLE_VELOCITY_MIN.put("ELECTROPARTICLES_BURST_LEFT", 50f);
         PARTICLE_VELOCITY_MIN.put("ELECTROPARTICLES_BURST_RIGHT", 50f);
+        PARTICLE_VELOCITY_MIN.put("SMOKE_BURST_LEFT", 10f);
+        PARTICLE_VELOCITY_MIN.put("SMOKE_BURST_RIGHT", 10f);
         PARTICLE_VELOCITY_MIN.put("BLOWBACK_LEFT_UPPER", 80f);
         PARTICLE_VELOCITY_MIN.put("BLOWBACK_LEFT_LOWER", 50f);
         PARTICLE_VELOCITY_MIN.put("BLOWBACK_RIGHT_UPPER", 80f);
@@ -207,8 +235,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     static {
         PARTICLE_VELOCITY_MAX.put("default", 20f);
         PARTICLE_VELOCITY_MAX.put("MUZZLE_PARTICLE_BURST", 750f);
-        PARTICLE_VELOCITY_MAX.put("ELECTROPARTICLES_BURST_LEFT", 100f);
-        PARTICLE_VELOCITY_MAX.put("ELECTROPARTICLES_BURST_RIGHT", 100f);
+        PARTICLE_VELOCITY_MAX.put("SMOKE_BURST_LEFT", 30f);
+        PARTICLE_VELOCITY_MAX.put("SMOKE_BURST_RIGHT", 30f);
         PARTICLE_VELOCITY_MAX.put("BLOWBACK_LEFT_UPPER", 120f);
         PARTICLE_VELOCITY_MAX.put("BLOWBACK_LEFT_LOWER", 75f);
         PARTICLE_VELOCITY_MAX.put("BLOWBACK_RIGHT_UPPER", 120f);
@@ -222,6 +250,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_DURATION_MIN.put("MUZZLE_PARTICLE_BURST", 0.37f);
         PARTICLE_DURATION_MIN.put("ELECTROPARTICLES_BURST_LEFT", 0.15f);
         PARTICLE_DURATION_MIN.put("ELECTROPARTICLES_BURST_RIGHT", 0.15f);
+        PARTICLE_DURATION_MIN.put("SMOKE_BURST_LEFT", 0.75f);
+        PARTICLE_DURATION_MIN.put("SMOKE_BURST_RIGHT", 0.75f);
         PARTICLE_DURATION_MIN.put("BLOWBACK_LEFT_UPPER", 0.15f);
         PARTICLE_DURATION_MIN.put("BLOWBACK_LEFT_LOWER", 0.15f);
         PARTICLE_DURATION_MIN.put("BLOWBACK_RIGHT_UPPER", 0.15f);
@@ -236,6 +266,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_DURATION_MAX.put("MUZZLE_PARTICLE_BURST", 0.75f);
         PARTICLE_DURATION_MAX.put("ELECTROPARTICLES_BURST_LEFT", 0.5f);
         PARTICLE_DURATION_MAX.put("ELECTROPARTICLES_BURST_RIGHT", 0.5f);
+        PARTICLE_DURATION_MAX.put("SMOKE_BURST_LEFT", 1.5f);
+        PARTICLE_DURATION_MAX.put("SMOKE_BURST_RIGHT", 1.5f);
         PARTICLE_DURATION_MAX.put("BLOWBACK_LEFT_UPPER", 0.5f);
         PARTICLE_DURATION_MAX.put("BLOWBACK_LEFT_LOWER", 0.5f);
         PARTICLE_DURATION_MAX.put("BLOWBACK_RIGHT_UPPER", 0.5f);
@@ -249,6 +281,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_OFFSET_MIN.put("MUZZLE_PARTICLE_BURST", 5f);
         PARTICLE_OFFSET_MIN.put("ELECTROPARTICLES_BURST_LEFT", -15f);
         PARTICLE_OFFSET_MIN.put("ELECTROPARTICLES_BURST_RIGHT", -15f);
+        PARTICLE_OFFSET_MIN.put("SMOKE_BURST_LEFT", -10f);
+        PARTICLE_OFFSET_MIN.put("SMOKE_BURST_RIGHT", -10f);
     }
 
     //The furthest along their velocity vector any individual particle is allowed to spawn (can be negative to spawn behind their origin point)
@@ -257,6 +291,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_OFFSET_MAX.put("default", 10f);
         PARTICLE_OFFSET_MAX.put("ELECTROPARTICLES_BURST_LEFT", 15f);
         PARTICLE_OFFSET_MAX.put("ELECTROPARTICLES_BURST_RIGHT", 15f);
+        PARTICLE_OFFSET_MAX.put("SMOKE_BURST_LEFT", 10f);
+        PARTICLE_OFFSET_MAX.put("SMOKE_BURST_RIGHT", 10f);
     }
 
     //The width of the "arc" the particles spawn in; affects both offset and velocity. 360f = full circle, 0f = straight line
@@ -266,6 +302,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_ARC.put("MUZZLE_PARTICLE_BURST", 8f);
         PARTICLE_ARC.put("ELECTROPARTICLES_BURST_LEFT", 120f);
         PARTICLE_ARC.put("ELECTROPARTICLES_BURST_RIGHT", 120f);
+        PARTICLE_ARC.put("SMOKE_BURST_LEFT", 120f);
+        PARTICLE_ARC.put("SMOKE_BURST_RIGHT", 120f);
         PARTICLE_ARC.put("BLOWBACK_LEFT_UPPER", 45f);
         PARTICLE_ARC.put("BLOWBACK_LEFT_LOWER", 30f);
         PARTICLE_ARC.put("BLOWBACK_RIGHT_UPPER", 45f);
@@ -282,6 +320,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         PARTICLE_ARC_FACING.put("MUZZLE_PARTICLE_BURST", 0f);
         PARTICLE_ARC_FACING.put("ELECTROPARTICLES_BURST_LEFT", 90f);
         PARTICLE_ARC_FACING.put("ELECTROPARTICLES_BURST_RIGHT", -90f);
+        PARTICLE_ARC_FACING.put("SMOKE_BURST_LEFT", 90f);
+        PARTICLE_ARC_FACING.put("SMOKE_BURST_RIGHT", -90f);
         PARTICLE_ARC_FACING.put("BLOWBACK_LEFT_UPPER", 135f);
         PARTICLE_ARC_FACING.put("BLOWBACK_LEFT_LOWER", 135f);
         PARTICLE_ARC_FACING.put("BLOWBACK_RIGHT_UPPER", -135f);
@@ -302,6 +342,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //These ones are used in-script, so don't touch them!
     private boolean hasFiredThisCharge = false;
+    private boolean hasFiredThisChargeBlowback = false;
     private int currentBarrel = 0;
     private boolean shouldOffsetBarrelExtra = false;
 
@@ -318,11 +359,16 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     boolean doOnce = true;
 
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
+
+        trailTracker.advance(amount);
+
         //Don't run while paused, or without a weapon
-        if (weapon == null || amount <= 0f) {return;}
+        if (weapon == null || amount <= 0f) {
+            return;
+        }
 
         if (doOnce) {
-            if (!weapon.getShip().hasListenerOfClass(vic_weaponDamageListener.class)){
+            if (!weapon.getShip().hasListenerOfClass(vic_weaponDamageListener.class)) {
                 weapon.getShip().addListener(new vic_weaponDamageListener());
             }
             totalFireTime = ((ProjectileWeaponSpecAPI) weapon.getSpec()).getRefireDelay();
@@ -352,7 +398,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         }
 
         float shotFaction = 0;
-        if (!fired){
+        if (!fired) {
             shotFaction = ((((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime() * chargeLevel) / totalFireTime);
         } else {
             shotFaction = ((((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime() + ((totalFireTime - ((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime()) * (1 - chargeLevel))) / totalFireTime);
@@ -361,10 +407,9 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         weapon.getAnimation().setFrame(Math.round(totalFrames * animFraction));
 
 
-
         //Adjustment for burst beams, since they are a pain
         if (weapon.isBurstBeam() && sequenceState.contains("CHARGEDOWN")) {
-            chargeLevel = Math.max(0f, Math.min(Math.abs(weapon.getCooldownRemaining()-weapon.getCooldown()) / weapon.getSpec().getDerivedStats().getBurstFireDuration(), 1f));
+            chargeLevel = Math.max(0f, Math.min(Math.abs(weapon.getCooldownRemaining() - weapon.getCooldown()) / weapon.getSpec().getDerivedStats().getBurstFireDuration(), 1f));
         }
 
         //The sequenceStates "CHARGEDOWN" and "COOLDOWN" counts its barrel as 1 earlier than usual, due to code limitations
@@ -374,66 +419,106 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         for (String ID : USED_IDS) {
             //Screenspace check: simplified but should do the trick 99% of the time
             float screenspaceCullingDistance = PARTICLE_SCREENSPACE_CULL_DISTANCE.get("default");
-            if (PARTICLE_SCREENSPACE_CULL_DISTANCE.containsKey(ID)) { screenspaceCullingDistance = PARTICLE_SCREENSPACE_CULL_DISTANCE.get(ID); }
-            if (!engine.getViewport().isNearViewport(weapon.getLocation(), screenspaceCullingDistance)) {continue;}
+            if (PARTICLE_SCREENSPACE_CULL_DISTANCE.containsKey(ID)) {
+                screenspaceCullingDistance = PARTICLE_SCREENSPACE_CULL_DISTANCE.get(ID);
+            }
+            if (!engine.getViewport().isNearViewport(weapon.getLocation(), screenspaceCullingDistance)) {
+                continue;
+            }
 
             //Store all the values used for this check, and use default values if we don't have specific values for our ID specified
             //Note that particle count, specifically, is not declared here and is only used in more local if-cases
             boolean affectedByChargeLevel = AFFECTED_BY_CHARGELEVEL.get("default");
-            if (AFFECTED_BY_CHARGELEVEL.containsKey(ID)) { affectedByChargeLevel = AFFECTED_BY_CHARGELEVEL.get(ID); }
+            if (AFFECTED_BY_CHARGELEVEL.containsKey(ID)) {
+                affectedByChargeLevel = AFFECTED_BY_CHARGELEVEL.get(ID);
+            }
 
             String particleSpawnMoment = PARTICLE_SPAWN_MOMENT.get("default");
-            if (PARTICLE_SPAWN_MOMENT.containsKey(ID)) { particleSpawnMoment = PARTICLE_SPAWN_MOMENT.get(ID); }
+            if (PARTICLE_SPAWN_MOMENT.containsKey(ID)) {
+                particleSpawnMoment = PARTICLE_SPAWN_MOMENT.get(ID);
+            }
 
             boolean spawnPointAnchorAlternation = SPAWN_POINT_ANCHOR_ALTERNATION.get("default");
-            if (SPAWN_POINT_ANCHOR_ALTERNATION.containsKey(ID)) { spawnPointAnchorAlternation = SPAWN_POINT_ANCHOR_ALTERNATION.get(ID); }
+            if (SPAWN_POINT_ANCHOR_ALTERNATION.containsKey(ID)) {
+                spawnPointAnchorAlternation = SPAWN_POINT_ANCHOR_ALTERNATION.get(ID);
+            }
 
             //Here, we only store one value, depending on if we're a hardpoint or not
             Vector2f particleSpawnPoint = PARTICLE_SPAWN_POINT_TURRET.get("default");
             if (weapon.getSlot().isHardpoint()) {
                 particleSpawnPoint = PARTICLE_SPAWN_POINT_HARDPOINT.get("default");
-                if (PARTICLE_SPAWN_POINT_HARDPOINT.containsKey(ID)) { particleSpawnPoint = PARTICLE_SPAWN_POINT_HARDPOINT.get(ID); }
+                if (PARTICLE_SPAWN_POINT_HARDPOINT.containsKey(ID)) {
+                    particleSpawnPoint = PARTICLE_SPAWN_POINT_HARDPOINT.get(ID);
+                }
             } else {
-                if (PARTICLE_SPAWN_POINT_TURRET.containsKey(ID)) { particleSpawnPoint = PARTICLE_SPAWN_POINT_TURRET.get(ID); }
+                if (PARTICLE_SPAWN_POINT_TURRET.containsKey(ID)) {
+                    particleSpawnPoint = PARTICLE_SPAWN_POINT_TURRET.get(ID);
+                }
             }
 
             String particleType = PARTICLE_TYPE.get("default");
-            if (PARTICLE_TYPE.containsKey(ID)) { particleType = PARTICLE_TYPE.get(ID); }
+            if (PARTICLE_TYPE.containsKey(ID)) {
+                particleType = PARTICLE_TYPE.get(ID);
+            }
 
             Color particleColor = PARTICLE_COLOR.get("default");
-            if (PARTICLE_COLOR.containsKey(ID)) { particleColor = PARTICLE_COLOR.get(ID); }
+            if (PARTICLE_COLOR.containsKey(ID)) {
+                particleColor = PARTICLE_COLOR.get(ID);
+            }
 
             float particleSizeMin = PARTICLE_SIZE_MIN.get("default");
-            if (PARTICLE_SIZE_MIN.containsKey(ID)) { particleSizeMin = PARTICLE_SIZE_MIN.get(ID); }
+            if (PARTICLE_SIZE_MIN.containsKey(ID)) {
+                particleSizeMin = PARTICLE_SIZE_MIN.get(ID);
+            }
             float particleSizeMax = PARTICLE_SIZE_MAX.get("default");
-            if (PARTICLE_SIZE_MAX.containsKey(ID)) { particleSizeMax = PARTICLE_SIZE_MAX.get(ID); }
+            if (PARTICLE_SIZE_MAX.containsKey(ID)) {
+                particleSizeMax = PARTICLE_SIZE_MAX.get(ID);
+            }
 
             float particleVelocityMin = PARTICLE_VELOCITY_MIN.get("default");
-            if (PARTICLE_VELOCITY_MIN.containsKey(ID)) { particleVelocityMin = PARTICLE_VELOCITY_MIN.get(ID); }
+            if (PARTICLE_VELOCITY_MIN.containsKey(ID)) {
+                particleVelocityMin = PARTICLE_VELOCITY_MIN.get(ID);
+            }
             float particleVelocityMax = PARTICLE_VELOCITY_MAX.get("default");
-            if (PARTICLE_VELOCITY_MAX.containsKey(ID)) { particleVelocityMax = PARTICLE_VELOCITY_MAX.get(ID); }
+            if (PARTICLE_VELOCITY_MAX.containsKey(ID)) {
+                particleVelocityMax = PARTICLE_VELOCITY_MAX.get(ID);
+            }
 
             float particleDurationMin = PARTICLE_DURATION_MIN.get("default");
-            if (PARTICLE_DURATION_MIN.containsKey(ID)) { particleDurationMin = PARTICLE_DURATION_MIN.get(ID); }
+            if (PARTICLE_DURATION_MIN.containsKey(ID)) {
+                particleDurationMin = PARTICLE_DURATION_MIN.get(ID);
+            }
             float particleDurationMax = PARTICLE_DURATION_MAX.get("default");
-            if (PARTICLE_DURATION_MAX.containsKey(ID)) { particleDurationMax = PARTICLE_DURATION_MAX.get(ID); }
+            if (PARTICLE_DURATION_MAX.containsKey(ID)) {
+                particleDurationMax = PARTICLE_DURATION_MAX.get(ID);
+            }
 
             float particleOffsetMin = PARTICLE_OFFSET_MIN.get("default");
-            if (PARTICLE_OFFSET_MIN.containsKey(ID)) { particleOffsetMin = PARTICLE_OFFSET_MIN.get(ID); }
+            if (PARTICLE_OFFSET_MIN.containsKey(ID)) {
+                particleOffsetMin = PARTICLE_OFFSET_MIN.get(ID);
+            }
             float particleOffsetMax = PARTICLE_OFFSET_MAX.get("default");
-            if (PARTICLE_OFFSET_MAX.containsKey(ID)) { particleOffsetMax = PARTICLE_OFFSET_MAX.get(ID); }
+            if (PARTICLE_OFFSET_MAX.containsKey(ID)) {
+                particleOffsetMax = PARTICLE_OFFSET_MAX.get(ID);
+            }
 
             float particleArc = PARTICLE_ARC.get("default");
-            if (PARTICLE_ARC.containsKey(ID)) { particleArc = PARTICLE_ARC.get(ID); }
+            if (PARTICLE_ARC.containsKey(ID)) {
+                particleArc = PARTICLE_ARC.get(ID);
+            }
             float particleArcFacing = PARTICLE_ARC_FACING.get("default");
-            if (PARTICLE_ARC_FACING.containsKey(ID)) { particleArcFacing = PARTICLE_ARC_FACING.get(ID); }
+            if (PARTICLE_ARC_FACING.containsKey(ID)) {
+                particleArcFacing = PARTICLE_ARC_FACING.get(ID);
+            }
             //---------------------------------------END OF DECLARATIONS-----------------------------------------
 
             //First, spawn "on full firing" particles, since those ignore sequence state
             if (chargeLevel >= 1f && !hasFiredThisCharge) {
                 //Count spawned particles: only trigger if the spawned particles are more than 0
                 float particleCount = ON_SHOT_PARTICLE_COUNT.get("default");
-                if (ON_SHOT_PARTICLE_COUNT.containsKey(ID)) { particleCount = ON_SHOT_PARTICLE_COUNT.get(ID); }
+                if (ON_SHOT_PARTICLE_COUNT.containsKey(ID)) {
+                    particleCount = ON_SHOT_PARTICLE_COUNT.get(ID);
+                }
 
                 if (particleCount > 0) {
                     spawnParticles(engine, weapon, particleCount, particleType, spawnPointAnchorAlternation, particleSpawnPoint, particleColor, particleSizeMin, particleSizeMax, particleVelocityMin, particleVelocityMax,
@@ -445,10 +530,16 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
             if (particleSpawnMoment.contains(sequenceState)) {
                 //Get how many particles should be spawned this frame
                 float particleCount = PARTICLES_PER_SECOND.get("default");
-                if (PARTICLES_PER_SECOND.containsKey(ID)) { particleCount = PARTICLES_PER_SECOND.get(ID); }
+                if (PARTICLES_PER_SECOND.containsKey(ID)) {
+                    particleCount = PARTICLES_PER_SECOND.get(ID);
+                }
                 particleCount *= amount;
-                if (affectedByChargeLevel && (sequenceState.contains("CHARGEUP") || sequenceState.contains("CHARGEDOWN"))) { particleCount *= chargeLevel; }
-                if (affectedByChargeLevel && sequenceState.contains("COOLDOWN")) { particleCount *= (weapon.getCooldownRemaining()/weapon.getCooldown()); }
+                if (affectedByChargeLevel && (sequenceState.contains("CHARGEUP") || sequenceState.contains("CHARGEDOWN"))) {
+                    particleCount *= chargeLevel;
+                }
+                if (affectedByChargeLevel && sequenceState.contains("COOLDOWN")) {
+                    particleCount *= (weapon.getCooldownRemaining() / weapon.getCooldown());
+                }
 
                 //Then, if the particle count is greater than 0, we actually spawn the particles
                 if (particleCount > 0f) {
@@ -482,7 +573,76 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
                 currentBarrel = 0;
             }
         }
-    }
+
+
+        //chargedown blowback visuals
+
+        if (weapon.getChargeLevel() >= 1f && !hasFiredThisChargeBlowback) {
+            hasFiredThisChargeBlowback = true;
+        }
+        if (hasFiredThisChargeBlowback && (weapon.getChargeLevel() <= 0f || !weapon.isFiring())) {
+            hasFiredThisChargeBlowback = false;
+        }
+
+        if (weapon.getChargeLevel() > 0f && hasFiredThisChargeBlowback) {
+            weaponChargedownBlowback = true;
+            hasFiredThisChargeBlowback = false;
+        }
+        if (weaponChargedownBlowback) {
+            emitTrailBlowback = true;
+            weaponChargedownBlowback = false;
+        }
+
+
+        if (timeBlowback >= durationBlowback) {
+            timeBlowback = 0f;
+            emitTrailBlowback = false;
+        }
+        if (emitTrailBlowback) {
+            timeBlowback += amount;
+
+            float trailDirLeft = weapon.getCurrAngle() + 135f;
+            float trailDirRight = weapon.getCurrAngle() - 135f;
+            Float trailID = null;
+
+
+            Vector2f weaponLocation = weapon.getLocation();
+            float shipFacing = weapon.getCurrAngle();
+
+            Vector2f additionalOffset = VectorUtils.rotate(new Vector2f(0, 50), shipFacing - 90);
+            // to change offset ^
+            Vector2f muzzleLocationTrailBlowbackRight = MathUtils.getPointOnCircumference(Vector2f.add(additionalOffset, weaponLocation, null),
+            weapon.getSlot().isTurret() ? MUZZLE_OFFSET_TURRET_TRAIL : MUZZLE_OFFSET_HARDPOINT_TRAIL, shipFacing);
+
+            if (trailTracker.intervalElapsed()) {
+
+                if (trailID == null) {
+                    trailID = MagicTrailPlugin.getUniqueID();
+                }
+                MagicTrailPlugin.addTrailMemberSimple(
+                        weapon.getShip(),
+                        trailID,
+                        Global.getSettings().getSprite("fx", "trails_trail_clean"),
+                        muzzleLocationTrailBlowbackRight,
+                        50f,
+                        trailDirRight,
+                        50f,
+                        5f,
+                        new Color(255, 50, 50, 255),
+                        1f,
+                        1f,
+                        4f,
+                        4f,
+                        true
+            );
+                }
+
+
+            }
+
+
+        }
+
 
 
     //Shorthand function for actually spawning the particles
@@ -574,6 +734,24 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
         float trueArcFacing = weapon.getCurrAngle();
         trueArcFacing += weapon.getSpec().getTurretAngleOffsets().get(currentBarrel);
+
+
+        Vector2f speed = weapon.getShip().getVelocity();
+        for (int I = 0; I < 3; I++){
+            float shrapnelDir1 = weapon.getCurrAngle() +5f + MathUtils.getRandomNumberInRange(-2.5f, 2.5f);
+            DamagingProjectileAPI xlLaidlawShrapnel1 = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(weapon.getShip(), weapon, "vic_xl_laidlaw_shrapnel", muzzleLocationShockwave,
+                    shrapnelDir1, speed);
+            xlLaidlawShrapnel1.getVelocity().scale(MathUtils.getRandomNumberInRange(0.20f, 0.60f));
+            xlLaidlawShrapnel1.getProjectileSpec().setFadeTime(MathUtils.getRandomNumberInRange(0.25f, 0.4f));
+        }
+        for (int I = 0; I < 3; I++){
+            float shrapnelDir2 = weapon.getCurrAngle() -5f + MathUtils.getRandomNumberInRange(-2.5f, 2.5f);
+            DamagingProjectileAPI xlLaidlawShrapnel2 = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(weapon.getShip(), weapon, "vic_xl_laidlaw_shrapnel", muzzleLocationShockwave,
+                    shrapnelDir2, speed);
+            xlLaidlawShrapnel2.getVelocity().scale(MathUtils.getRandomNumberInRange(0.20f, 0.60f));
+            xlLaidlawShrapnel2.getProjectileSpec().setFadeTime(MathUtils.getRandomNumberInRange(0.25f, 0.4f));
+        }
+
 
 
         WaveDistortion wave = new WaveDistortion(muzzleLocationShockwave, ZERO);

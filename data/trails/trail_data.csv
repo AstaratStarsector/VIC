@@ -6,11 +6,11 @@ trails_vic_heavylaidlawaccelerator_shot_smoke,vic_heavylaidlawaccelerator_shot,t
 trails_vic_heavylaidlawaccelerator_shot_smoke2,vic_heavylaidlawaccelerator_shot,trails_trail_smooth,10,0.5,0,2.5,35,75,"[150,100,100]","[255,120,35]",0.10,200,-125,-50,5,1,TRUE,FALSE,TRUE,50,0,0,0,0,0,false,false
 trails_vic_heavylaidlawaccelerator_shot_contrail,vic_heavylaidlawaccelerator_shot,trails_trail_contrail,10,0,0.1,0.5,40,20,"[0,255,235]","[0,255,235]",1,2000,-1000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
-trails_vic_laidlawMassDriver_shot_glow,vic_laidlawMassDriver_shot,trails_trail_smooth,10,0,0.05,0.4,40,1,"[0,255,235]","[255,120,35]",1,5000,-500,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,,false
-trails_vic_laidlawMassDriver_shot_core,vic_laidlawMassDriver_shot,trails_trail_zappy,10,0,0.2,0.3,9,4,"[255,255,255]","[0,255,235]",1,500,-3000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,,false
-trails_vic_laidlawMassDriver_shot_core,vic_laidlawMassDriver_shot,trails_trail_zappy,10,0,0.2,0.7,9,4,"[255,120,35]","[255,120,35]",1,500,-3000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,,false
-trails_vic_heavylaidMassDriver_shot_smoke,vic_laidlawMassDriver_shot,trails_trail_smooth,10,0,0,2.5,1,25,"[100,150,150]","[255,120,35]",0.2,200,-350,-100,2,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,,false
-trails_vic_heavylaidMassDriver_shot_smoke2,vic_laidlawMassDriver_shot,trails_trail_smooth,10,0.5,0,2.5,18,38,"[150,100,100]","[255,120,35]",0.10,200,-125,-50,5,1,TRUE,FALSE,TRUE,50,0,0,0,0,0,,false
+trails_vic_laidlawMassDriver_shot_glow,vic_laidlawMassDriver_shot,trails_trail_smooth,10,0,0.05,0.4,40,1,"[0,255,235]","[255,120,35]",1,5000,-500,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_laidlawMassDriver_shot_core,vic_laidlawMassDriver_shot,trails_trail_zappy,10,0,0.2,0.3,9,4,"[255,255,255]","[0,255,235]",1,500,-3000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_laidlawMassDriver_shot_core,vic_laidlawMassDriver_shot,trails_trail_zappy,10,0,0.2,0.7,9,4,"[255,120,35]","[255,120,35]",1,500,-3000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_heavylaidMassDriver_shot_smoke,vic_laidlawMassDriver_shot,trails_trail_smooth,10,0,0,2.5,1,25,"[100,150,150]","[255,120,35]",0.2,200,-350,-100,2,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_heavylaidMassDriver_shot_smoke2,vic_laidlawMassDriver_shot,trails_trail_smooth,10,0.5,0,2.5,18,38,"[150,100,100]","[255,120,35]",0.10,200,-125,-50,5,1,TRUE,FALSE,TRUE,50,0,0,0,0,0,false,false
 trails_vic_laidlawMassDriver_shot_contrail,vic_laidlawMassDriver_shot,trails_trail_contrail,10,0,0.1,0.5,20,10,"[0,255,235]","[0,255,235]",1,2000,-1000,0,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
 trails_vic_vodyanoy_sub_shot,vic_vodyanoy_sub_shot,trails_trail_clean,5,0,0.1,0.1,5,2,"[255,0,0]","[15,195,255]",1,1000,-500,15,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
@@ -161,4 +161,10 @@ trails_vic_xl_laidlaw_shot__smoke2,vic_xl_laidlaw_shot,trails_trail_smooth,10,0.
 trails_vic_xl_laidlaw_shot__smoke3,vic_xl_laidlaw_shot,vic_trailSmoke,10,0.5,0,2.5,1,50,"[255,255,255]","[255,150,90]",0.10,200,-125,-50,5,1,TRUE,FALSE,TRUE,50,0,0,0,0,0,false,false
 trails_vic_xl_laidlaw_shot__contrail,vic_xl_laidlaw_shot,trails_trail_contrail,10,0,0.1,0.5,40,20,"[0,255,235]","[0,255,235]",1,2000,-1000,-20,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 trails_vic_xl_laidlaw_shot__contrail,vic_xl_laidlaw_shot,trails_trail_twin,10,0,0.1,0.5,30,20,"[0,255,235]","[0,255,235]",1,2000,-1000,-20,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_xl_laidlaw_shrapnel_shot_glow,vic_xl_laidlaw_shrapnel_shot,trails_trail_smooth,10,0,0.05,0.4,40,1,"[0,255,235]","[255,120,35]",1,5000,-500,0,5,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_xl_laidlaw_shrapnel_shot_core,vic_xl_laidlaw_shrapnel_shot,trails_trail_zappy,10,0,0.2,0.3,9,4,"[255,255,255]","[0,255,235]",1,500,-3000,0,5,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_xl_laidlaw_shrapnel_shot_core,vic_xl_laidlaw_shrapnel_shot,trails_trail_zappy,10,0,0.2,0.7,9,4,"[255,120,35]","[255,120,35]",1,500,-3000,0,5,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_xl_laidlaw_shrapnel_shot_smoke,vic_xl_laidlaw_shrapnel_shot,trails_trail_smooth,10,0,0,2.5,1,25,"[100,150,150]","[255,120,35]",0.2,200,-350,-100,10,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
+trails_vic_xl_laidlaw_shrapnel_shot_smoke2,vic_xl_laidlaw_shrapnel_shot,trails_trail_smooth,10,0.5,0,2.5,18,38,"[150,100,100]","[255,120,35]",0.10,200,-125,-50,10,1,TRUE,FALSE,TRUE,50,0,0,0,0,0,false,false
+trails_vic_xl_laidlaw_shrapnel_shot_contrail,vic_xl_laidlaw_shrapnel_shot,trails_trail_contrail,10,0,0.1,0.5,20,10,"[0,255,235]","[0,255,235]",1,2000,-1000,0,5,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
