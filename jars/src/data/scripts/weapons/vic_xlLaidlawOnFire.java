@@ -4,25 +4,23 @@ package data.scripts.weapons;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
-import com.fs.starfarer.api.combat.listeners.DamageDealtModifier;
-import com.fs.starfarer.api.input.InputEventAPI;
 import com.fs.starfarer.api.loading.ProjectileWeaponSpecAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.plugins.vic_weaponDamageListener;
-import com.fs.starfarer.api.util.Misc;
 import data.scripts.util.MagicRender;
 import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
-import org.lazywizard.lazylib.combat.entities.SimpleEntity;
 import org.lwjgl.util.vector.Vector2f;
 import org.magiclib.plugins.MagicTrailPlugin;
 
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.fs.starfarer.api.util.Misc.ZERO;
 
@@ -36,7 +34,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
             durationBlowback = 5f,
             timeBlowback = 0f;
 
-    private final IntervalUtil trailTracker = new IntervalUtil(0.05f, 0.1f);
+    private final IntervalUtil trailTracker = new IntervalUtil(0.1f, 0.1f);
 
 
     final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE = 15f;
@@ -62,6 +60,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         in the USED_IDS list; any field not filled in for a specific ID will revert to "default" instead.
     */
     private static final List<String> USED_IDS = new ArrayList<>();
+
     static {
         USED_IDS.add("MUZZLE_PARTICLE_BURST");
         USED_IDS.add("ELECTROPARTICLES_BURST_LEFT");
@@ -79,6 +78,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     //  -For projectile weapons, this is when the projectile is actually fired
     //  -For beam weapons, this is when the beam has reached maximum brightness
     private static final Map<String, Integer> ON_SHOT_PARTICLE_COUNT = new HashMap<>();
+
     static {
         ON_SHOT_PARTICLE_COUNT.put("default", 0);
         ON_SHOT_PARTICLE_COUNT.put("MUZZLE_PARTICLE_BURST", 160);
@@ -96,6 +96,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //How many particles are spawned each second the weapon is firing, on average
     private static final Map<String, Float> PARTICLES_PER_SECOND = new HashMap<>();
+
     static {
         PARTICLES_PER_SECOND.put("default", 0f);
         PARTICLES_PER_SECOND.put("BLOWBACK_LEFT_UPPER", 35f);
@@ -106,6 +107,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //Does the PARTICLES_PER_SECOND field get multiplied by the weapon's current chargeLevel?
     private static final Map<String, Boolean> AFFECTED_BY_CHARGELEVEL = new HashMap<>();
+
     static {
         AFFECTED_BY_CHARGELEVEL.put("default", false);
         AFFECTED_BY_CHARGELEVEL.put("BLOWBACK_LEFT_UPPER", true);
@@ -118,6 +120,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     //When are the particles spawned (only used for PARTICLES_PER_SECOND)? Valid values are "CHARGEUP", "FIRING", "CHARGEDOWN", "READY" (not on cooldown or firing) and "COOLDOWN".
     //  Multiple of these values can be combined via "-" inbetween; "CHARGEUP-CHARGEDOWN" is for example valid
     private static final Map<String, String> PARTICLE_SPAWN_MOMENT = new HashMap<>();
+
     static {
         PARTICLE_SPAWN_MOMENT.put("default", "FIRING");
         PARTICLE_SPAWN_MOMENT.put("BLOWBACK_LEFT_UPPER", "CHARGEDOWN");
@@ -129,6 +132,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     //If this is set to true, the particles spawn with regard to *barrel*, not *center*. Only works for ALTERNATING barrel types on weapons: for LINKED barrels you
     //  should instead set up their coordinates manually with PARTICLE_SPAWN_POINT_TURRET and PARTICLE_SPAWN_POINT_HARDPOINT
     private static final Map<String, Boolean> SPAWN_POINT_ANCHOR_ALTERNATION = new HashMap<>();
+
     static {
         SPAWN_POINT_ANCHOR_ALTERNATION.put("default", false);
     }
@@ -136,6 +140,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     //The position the particles are spawned (or at least where their arc originates when using offsets) compared to their weapon's center [or shot offset, see
     //SPAWN_POINT_ANCHOR_ALTERNATION above], if the weapon is a turret (or HIDDEN)
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_TURRET = new HashMap<>();
+
     static {
         PARTICLE_SPAWN_POINT_TURRET.put("default", new Vector2f(0f, 0f));
         PARTICLE_SPAWN_POINT_TURRET.put("ELECTROPARTICLES_BURST_LEFT", new Vector2f(10f, 40f));
@@ -152,12 +157,14 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     //The position the particles are spawned (or at least where their arc originates when using offsets) compared to their weapon's center [or shot offset, see
     //SPAWN_POINT_ANCHOR_ALTERNATION above], if the weapon is a hardpoint
     private static final Map<String, Vector2f> PARTICLE_SPAWN_POINT_HARDPOINT = new HashMap<>();
+
     static {
         PARTICLE_SPAWN_POINT_HARDPOINT.put("default", new Vector2f(0f, 0f));
     }
 
     //Which kind of particle is spawned (valid values are "SMOOTH", "BRIGHT" , "SMOKE", "NEBULA", "NEBULA_SMOKE", "NEBULA_SWIRLY")
     private static final Map<String, String> PARTICLE_TYPE = new HashMap<>();
+
     static {
         PARTICLE_TYPE.put("default", "SMOOTH");
         PARTICLE_TYPE.put("ELECTROPARTICLES_BURST_LEFT", "BRIGHT");
@@ -172,6 +179,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //What color does the particles have?
     private static final Map<String, Color> PARTICLE_COLOR = new HashMap<>();
+
     static {
         PARTICLE_COLOR.put("default", new Color(155, 255, 255, 165));
         PARTICLE_COLOR.put("MUZZLE_PARTICLE_BURST", new Color(155, 255, 255, 165));
@@ -187,6 +195,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //What's the smallest size the particles can have?
     private static final Map<String, Float> PARTICLE_SIZE_MIN = new HashMap<>();
+
     static {
         PARTICLE_SIZE_MIN.put("default", 5f);
         PARTICLE_SIZE_MIN.put("MUZZLE_PARTICLE_BURST", 20f);
@@ -202,6 +211,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //What's the largest size the particles can have?
     private static final Map<String, Float> PARTICLE_SIZE_MAX = new HashMap<>();
+
     static {
         PARTICLE_SIZE_MAX.put("default", 10f);
         PARTICLE_SIZE_MAX.put("MUZZLE_PARTICLE_BURST", 50f);
@@ -217,6 +227,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //What's the lowest velocity a particle can spawn with (can be negative)?
     private static final Map<String, Float> PARTICLE_VELOCITY_MIN = new HashMap<>();
+
     static {
         PARTICLE_VELOCITY_MIN.put("default", 2f);
         PARTICLE_VELOCITY_MIN.put("MUZZLE_PARTICLE_BURST", 100f);
@@ -232,6 +243,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //What's the highest velocity a particle can spawn with (can be negative)?
     private static final Map<String, Float> PARTICLE_VELOCITY_MAX = new HashMap<>();
+
     static {
         PARTICLE_VELOCITY_MAX.put("default", 20f);
         PARTICLE_VELOCITY_MAX.put("MUZZLE_PARTICLE_BURST", 750f);
@@ -245,6 +257,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //The shortest duration a particle will last before completely fading away
     private static final Map<String, Float> PARTICLE_DURATION_MIN = new HashMap<>();
+
     static {
         PARTICLE_DURATION_MIN.put("default", 0.75f);
         PARTICLE_DURATION_MIN.put("MUZZLE_PARTICLE_BURST", 0.37f);
@@ -261,6 +274,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //The longest duration a particle will last before completely fading away
     private static final Map<String, Float> PARTICLE_DURATION_MAX = new HashMap<>();
+
     static {
         PARTICLE_DURATION_MAX.put("default", 1.5f);
         PARTICLE_DURATION_MAX.put("MUZZLE_PARTICLE_BURST", 0.75f);
@@ -276,6 +290,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //The shortest along their velocity vector any individual particle is allowed to spawn (can be negative to spawn behind their origin point)
     private static final Map<String, Float> PARTICLE_OFFSET_MIN = new HashMap<>();
+
     static {
         PARTICLE_OFFSET_MIN.put("default", 0f);
         PARTICLE_OFFSET_MIN.put("MUZZLE_PARTICLE_BURST", 5f);
@@ -287,6 +302,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //The furthest along their velocity vector any individual particle is allowed to spawn (can be negative to spawn behind their origin point)
     private static final Map<String, Float> PARTICLE_OFFSET_MAX = new HashMap<>();
+
     static {
         PARTICLE_OFFSET_MAX.put("default", 10f);
         PARTICLE_OFFSET_MAX.put("ELECTROPARTICLES_BURST_LEFT", 15f);
@@ -297,6 +313,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     //The width of the "arc" the particles spawn in; affects both offset and velocity. 360f = full circle, 0f = straight line
     private static final Map<String, Float> PARTICLE_ARC = new HashMap<>();
+
     static {
         PARTICLE_ARC.put("default", 10f);
         PARTICLE_ARC.put("MUZZLE_PARTICLE_BURST", 8f);
@@ -315,6 +332,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     //The offset of the "arc" the particles spawn in, compared to the weapon's forward facing.
     //  For example: 90f = the center of the arc is 90 degrees clockwise around the weapon, 0f = the same arc center as the weapon's facing.
     private static final Map<String, Float> PARTICLE_ARC_FACING = new HashMap<>();
+
     static {
         PARTICLE_ARC_FACING.put("default", 80f);
         PARTICLE_ARC_FACING.put("MUZZLE_PARTICLE_BURST", 0f);
@@ -332,6 +350,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     //too low values will cause pop-in of particles. Generally, the longer the particle's lifetime, the higher this
     //value should be
     private static final Map<String, Float> PARTICLE_SCREENSPACE_CULL_DISTANCE = new HashMap<>();
+
     static {
         PARTICLE_SCREENSPACE_CULL_DISTANCE.put("default", 600f);
     }
@@ -353,6 +372,9 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
             startPercent = 0,
             endPercent = 0;
 
+    Float trailID = null;
+    Float trailID2 = null;
+
     //Instantiator
 
     //
@@ -360,12 +382,13 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
 
-        trailTracker.advance(amount);
 
         //Don't run while paused, or without a weapon
         if (weapon == null || amount <= 0f) {
             return;
         }
+
+        trailTracker.advance(amount);
 
         if (doOnce) {
             if (!weapon.getShip().hasListenerOfClass(vic_weaponDamageListener.class)) {
@@ -598,27 +621,32 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
             timeBlowback = 0f;
             emitTrailBlowback = false;
         }
+
         if (emitTrailBlowback) {
             timeBlowback += amount;
 
             float trailDirLeft = weapon.getCurrAngle() + 135f;
             float trailDirRight = weapon.getCurrAngle() - 135f;
-            Float trailID = null;
 
 
             Vector2f weaponLocation = weapon.getLocation();
             float shipFacing = weapon.getCurrAngle();
 
-            Vector2f additionalOffset = VectorUtils.rotate(new Vector2f(0, 50), shipFacing - 90);
-            // to change offset ^
-            Vector2f muzzleLocationTrailBlowbackRight = MathUtils.getPointOnCircumference(Vector2f.add(additionalOffset, weaponLocation, null),
-            weapon.getSlot().isTurret() ? MUZZLE_OFFSET_TURRET_TRAIL : MUZZLE_OFFSET_HARDPOINT_TRAIL, shipFacing);
+            Vector2f additionalOffset = VectorUtils.rotate(new Vector2f(0, 100), shipFacing - 90);
+            Vector2f additionalOffset2 = VectorUtils.rotate(new Vector2f(0, -100), shipFacing - 90);
+
 
             if (trailTracker.intervalElapsed()) {
 
                 if (trailID == null) {
                     trailID = MagicTrailPlugin.getUniqueID();
                 }
+                if (trailID2 == null) {
+                    trailID2 = MagicTrailPlugin.getUniqueID();
+                }
+                Vector2f muzzleLocationTrailBlowbackRight = MathUtils.getPointOnCircumference(Vector2f.add(additionalOffset, weaponLocation, null),
+                        weapon.getSlot().isTurret() ? MUZZLE_OFFSET_TURRET_TRAIL : MUZZLE_OFFSET_HARDPOINT_TRAIL, shipFacing);
+
                 MagicTrailPlugin.addTrailMemberSimple(
                         weapon.getShip(),
                         trailID,
@@ -634,21 +662,39 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
                         4f,
                         4f,
                         true
-            );
-                }
-
-
+                );
+                MagicTrailPlugin.addTrailMemberSimple(
+                        weapon.getShip(),
+                        trailID2,
+                        Global.getSettings().getSprite("fx", "trails_trail_clean"),
+                        muzzleLocationTrailBlowbackRight,
+                        50f,
+                        trailDirRight,
+                        50f,
+                        5f,
+                        new Color(255, 50, 50, 255),
+                        1f,
+                        1f,
+                        4f,
+                        4f,
+                        true
+                );
             }
 
 
+        } else {
+            trailID = null;
+            trailID2 = null;
         }
 
 
+    }
+
 
     //Shorthand function for actually spawning the particles
-    private void spawnParticles (CombatEngineAPI engine, WeaponAPI weapon, float count, String type, boolean anchorAlternation, Vector2f spawnPoint, Color color, float sizeMin, float sizeMax,
-                                 float velocityMin, float velocityMax, float durationMin, float durationMax,
-                                 float offsetMin, float offsetMax, float arc, float arcFacing) {
+    private void spawnParticles(CombatEngineAPI engine, WeaponAPI weapon, float count, String type, boolean anchorAlternation, Vector2f spawnPoint, Color color, float sizeMin, float sizeMax,
+                                float velocityMin, float velocityMax, float durationMin, float durationMax,
+                                float offsetMin, float offsetMax, float arc, float arcFacing) {
         //First, ensure we take barrel position into account if we use Anchor Alternation (note that the spawn location is actually rotated 90 degrees wrong, so we invert their x and y values)
         Vector2f trueCenterLocation = new Vector2f(spawnPoint.y, spawnPoint.x);
         float trueArcFacing = arcFacing;
@@ -681,7 +727,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
             counter--;
 
             //Gets a velocity for the particle
-            float arcPoint = MathUtils.getRandomNumberInRange(trueArcFacing-(arc/2f), trueArcFacing+(arc/2f));
+            float arcPoint = MathUtils.getRandomNumberInRange(trueArcFacing - (arc / 2f), trueArcFacing + (arc / 2f));
             Vector2f velocity = MathUtils.getPointOnCircumference(weapon.getShip().getVelocity(), MathUtils.getRandomNumberInRange(velocityMin, velocityMax),
                     arcPoint);
 
@@ -723,6 +769,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
         Vector2f weaponLocation = weapon.getLocation();
         float shipFacing = weapon.getCurrAngle();
+        Vector2f additionalOffset = VectorUtils.rotate(new Vector2f(0, 50), shipFacing - 90);
+        Vector2f.add(additionalOffset, weaponLocation, null);
         Vector2f muzzleLocationShockwave = MathUtils.getPointOnCircumference(weaponLocation,
                 weapon.getSlot().isTurret() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE : MUZZLE_OFFSET_TURRET_SHOCKWAVE, shipFacing);
         Vector2f muzzleLocationShockwaveSprite1 = MathUtils.getPointOnCircumference(weaponLocation,
@@ -737,21 +785,20 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
 
         Vector2f speed = weapon.getShip().getVelocity();
-        for (int I = 0; I < 3; I++){
-            float shrapnelDir1 = weapon.getCurrAngle() +5f + MathUtils.getRandomNumberInRange(-2.5f, 2.5f);
+        for (int I = 0; I < 3; I++) {
+            float shrapnelDir1 = weapon.getCurrAngle() + 5f + MathUtils.getRandomNumberInRange(-2.5f, 2.5f);
             DamagingProjectileAPI xlLaidlawShrapnel1 = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(weapon.getShip(), weapon, "vic_xl_laidlaw_shrapnel", muzzleLocationShockwave,
                     shrapnelDir1, speed);
             xlLaidlawShrapnel1.getVelocity().scale(MathUtils.getRandomNumberInRange(0.20f, 0.60f));
             xlLaidlawShrapnel1.getProjectileSpec().setFadeTime(MathUtils.getRandomNumberInRange(0.25f, 0.4f));
         }
-        for (int I = 0; I < 3; I++){
-            float shrapnelDir2 = weapon.getCurrAngle() -5f + MathUtils.getRandomNumberInRange(-2.5f, 2.5f);
+        for (int I = 0; I < 3; I++) {
+            float shrapnelDir2 = weapon.getCurrAngle() - 5f + MathUtils.getRandomNumberInRange(-2.5f, 2.5f);
             DamagingProjectileAPI xlLaidlawShrapnel2 = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(weapon.getShip(), weapon, "vic_xl_laidlaw_shrapnel", muzzleLocationShockwave,
                     shrapnelDir2, speed);
             xlLaidlawShrapnel2.getVelocity().scale(MathUtils.getRandomNumberInRange(0.20f, 0.60f));
             xlLaidlawShrapnel2.getProjectileSpec().setFadeTime(MathUtils.getRandomNumberInRange(0.25f, 0.4f));
         }
-
 
 
         WaveDistortion wave = new WaveDistortion(muzzleLocationShockwave, ZERO);
@@ -774,7 +821,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
                     150,
                     4,
                     false,
-                    trueArcFacing+180f,
+                    trueArcFacing + 180f,
                     160,
                     1f,
                     0.1f,
@@ -790,7 +837,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
                     200,
                     2.5f,
                     false,
-                    trueArcFacing+180f,
+                    trueArcFacing + 180f,
                     160,
                     1f,
                     0.1f,
