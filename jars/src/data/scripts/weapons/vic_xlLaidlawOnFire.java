@@ -6,6 +6,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.loading.ProjectileWeaponSpecAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
+import com.fs.starfarer.api.util.Misc;
 import data.scripts.plugins.vic_weaponDamageListener;
 import data.scripts.util.MagicRender;
 import data.scripts.utilities.vic_graphicLibEffects;
@@ -31,10 +32,10 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     boolean emitTrailBlowback = false;
 
     float
-            durationBlowback = 5f,
+            durationBlowback = 6f,
             timeBlowback = 0f;
 
-    private final IntervalUtil trailTracker = new IntervalUtil(0.1f, 0.1f);
+    private final IntervalUtil trailTracker = new IntervalUtil(0.05f, 0.05f);
 
 
     final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE = 15f;
@@ -46,8 +47,10 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE_SPRITE3 = 120f;
     final float MUZZLE_OFFSET_TURRET_SHOCKWAVE_SPRITE3 = 120f;
 
-    final float MUZZLE_OFFSET_TURRET_TRAIL = -50f;
-    final float MUZZLE_OFFSET_HARDPOINT_TRAIL = -50f;
+    final float MUZZLE_OFFSET_TURRET_TRAIL = -37f;
+    final float MUZZLE_OFFSET_HARDPOINT_TRAIL = -37f;
+    final float MUZZLE_OFFSET_TURRET_TRAIL2 = -25f;
+    final float MUZZLE_OFFSET_HARDPOINT_TRAIL2 = -25f;
 
     private boolean light = false;
 
@@ -374,6 +377,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
 
     Float trailID = null;
     Float trailID2 = null;
+    Float trailID3 = null;
+    Float trailID4 = null;
 
     //Instantiator
 
@@ -628,12 +633,15 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
             float trailDirLeft = weapon.getCurrAngle() + 135f;
             float trailDirRight = weapon.getCurrAngle() - 135f;
 
+            float angle = Misc.getAngleInDegrees(new Vector2f(weapon.getShip().getVelocity()));
 
             Vector2f weaponLocation = weapon.getLocation();
-            float shipFacing = weapon.getCurrAngle();
+            float weaponFacing = weapon.getCurrAngle();
 
-            Vector2f additionalOffset = VectorUtils.rotate(new Vector2f(0, 100), shipFacing - 90);
-            Vector2f additionalOffset2 = VectorUtils.rotate(new Vector2f(0, -100), shipFacing - 90);
+            Vector2f additionalTrailOffset = VectorUtils.rotate(new Vector2f(15, 0), weaponFacing - 90);
+            Vector2f additionalTrailOffset2 = VectorUtils.rotate(new Vector2f(-15, 0), weaponFacing - 90);
+            Vector2f additionalTrailOffset3 = VectorUtils.rotate(new Vector2f(15, 0), weaponFacing - 90);
+            Vector2f additionalTrailOffset4 = VectorUtils.rotate(new Vector2f(-15, 0), weaponFacing - 90);
 
 
             if (trailTracker.intervalElapsed()) {
@@ -644,41 +652,89 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
                 if (trailID2 == null) {
                     trailID2 = MagicTrailPlugin.getUniqueID();
                 }
-                Vector2f muzzleLocationTrailBlowbackRight = MathUtils.getPointOnCircumference(Vector2f.add(additionalOffset, weaponLocation, null),
-                        weapon.getSlot().isTurret() ? MUZZLE_OFFSET_TURRET_TRAIL : MUZZLE_OFFSET_HARDPOINT_TRAIL, shipFacing);
+                if (trailID3 == null) {
+                    trailID3 = MagicTrailPlugin.getUniqueID();
+                }
+                if (trailID4 == null) {
+                    trailID4 = MagicTrailPlugin.getUniqueID();
+                }
+
+                Vector2f muzzleLocationTrailBlowbackRight = MathUtils.getPointOnCircumference(Vector2f.add(additionalTrailOffset, weaponLocation, null),
+                        weapon.getSlot().isTurret() ? MUZZLE_OFFSET_TURRET_TRAIL : MUZZLE_OFFSET_HARDPOINT_TRAIL, weaponFacing);
+                Vector2f muzzleLocationTrailBlowbackLeft = MathUtils.getPointOnCircumference(Vector2f.add(additionalTrailOffset2, weaponLocation, null),
+                        weapon.getSlot().isTurret() ? MUZZLE_OFFSET_TURRET_TRAIL : MUZZLE_OFFSET_HARDPOINT_TRAIL, weaponFacing);
+                Vector2f muzzleLocationTrailBlowbackRight2 = MathUtils.getPointOnCircumference(Vector2f.add(additionalTrailOffset3, weaponLocation, null),
+                        weapon.getSlot().isTurret() ? MUZZLE_OFFSET_TURRET_TRAIL2 : MUZZLE_OFFSET_HARDPOINT_TRAIL2, weaponFacing);
+                Vector2f muzzleLocationTrailBlowbackLeft2 = MathUtils.getPointOnCircumference(Vector2f.add(additionalTrailOffset4, weaponLocation, null),
+                        weapon.getSlot().isTurret() ? MUZZLE_OFFSET_TURRET_TRAIL2 : MUZZLE_OFFSET_HARDPOINT_TRAIL2, weaponFacing);
 
                 MagicTrailPlugin.addTrailMemberSimple(
                         weapon.getShip(),
                         trailID,
-                        Global.getSettings().getSprite("fx", "trails_trail_clean"),
-                        muzzleLocationTrailBlowbackRight,
-                        50f,
-                        trailDirRight,
-                        50f,
-                        5f,
-                        new Color(255, 50, 50, 255),
-                        1f,
-                        1f,
-                        4f,
-                        4f,
+                        Global.getSettings().getSprite("fx", "trails_trail_smooth"),
+                        muzzleLocationTrailBlowbackLeft,
+                        250f,
+                        trailDirLeft,
+                        40f,
+                        150f,
+                        new Color(162, 255, 235, 255),
+                        1f-(timeBlowback * 0.1f),
+                        0f,
+                        0f,
+                        0.33f,
                         true
                 );
                 MagicTrailPlugin.addTrailMemberSimple(
                         weapon.getShip(),
                         trailID2,
-                        Global.getSettings().getSprite("fx", "trails_trail_clean"),
+                        Global.getSettings().getSprite("fx", "trails_trail_smooth"),
                         muzzleLocationTrailBlowbackRight,
-                        50f,
+                        250f,
                         trailDirRight,
-                        50f,
-                        5f,
-                        new Color(255, 50, 50, 255),
-                        1f,
-                        1f,
-                        4f,
-                        4f,
+                        40f,
+                        150f,
+                        new Color(166, 255, 233, 255),
+                        1f-(timeBlowback * 0.1f),
+                        0f,
+                        0f,
+                        0.33f,
                         true
                 );
+
+/*                MagicTrailPlugin.addTrailMemberSimple(
+                        weapon.getShip(),
+                        trailID3,
+                        Global.getSettings().getSprite("fx", "trails_trail_smooth"),
+                        muzzleLocationTrailBlowbackLeft2,
+                        250f,
+                        trailDirLeft,
+                        25f,
+                        100f,
+                        new Color(194, 255, 240, 255),
+                        1f,
+                        0f,
+                        0f,
+                        0.25f,
+                        true
+                );
+
+                MagicTrailPlugin.addTrailMemberSimple(
+                        weapon.getShip(),
+                        trailID4,
+                        Global.getSettings().getSprite("fx", "trails_trail_smooth"),
+                        muzzleLocationTrailBlowbackRight2,
+                        250f,
+                        trailDirRight,
+                        25f,
+                        100f,
+                        new Color(194, 255, 240, 255),
+                        1f,
+                        0f,
+                        0f,
+                        0.25f,
+                        true
+                );
+                */
             }
 
 
@@ -768,17 +824,17 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     public void onFire(final DamagingProjectileAPI projectile, WeaponAPI weapon, final CombatEngineAPI engine) {
 
         Vector2f weaponLocation = weapon.getLocation();
-        float shipFacing = weapon.getCurrAngle();
-        Vector2f additionalOffset = VectorUtils.rotate(new Vector2f(0, 50), shipFacing - 90);
+        float weaponFacing = weapon.getCurrAngle();
+        Vector2f additionalOffset = VectorUtils.rotate(new Vector2f(0, 50), weaponFacing - 90);
         Vector2f.add(additionalOffset, weaponLocation, null);
         Vector2f muzzleLocationShockwave = MathUtils.getPointOnCircumference(weaponLocation,
-                weapon.getSlot().isTurret() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE : MUZZLE_OFFSET_TURRET_SHOCKWAVE, shipFacing);
+                weapon.getSlot().isTurret() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE : MUZZLE_OFFSET_TURRET_SHOCKWAVE, weaponFacing);
         Vector2f muzzleLocationShockwaveSprite1 = MathUtils.getPointOnCircumference(weaponLocation,
-                weapon.getSlot().isTurret() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE_SPRITE1 : MUZZLE_OFFSET_TURRET_SHOCKWAVE_SPRITE1, shipFacing);
+                weapon.getSlot().isTurret() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE_SPRITE1 : MUZZLE_OFFSET_TURRET_SHOCKWAVE_SPRITE1, weaponFacing);
         Vector2f muzzleLocationShockwaveSprite2 = MathUtils.getPointOnCircumference(weaponLocation,
-                weapon.getSlot().isTurret() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE_SPRITE2 : MUZZLE_OFFSET_TURRET_SHOCKWAVE_SPRITE2, shipFacing);
+                weapon.getSlot().isTurret() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE_SPRITE2 : MUZZLE_OFFSET_TURRET_SHOCKWAVE_SPRITE2, weaponFacing);
         Vector2f muzzleLocationShockwaveSprite3 = MathUtils.getPointOnCircumference(weaponLocation,
-                weapon.getSlot().isTurret() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE_SPRITE3 : MUZZLE_OFFSET_TURRET_SHOCKWAVE_SPRITE3, shipFacing);
+                weapon.getSlot().isTurret() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE_SPRITE3 : MUZZLE_OFFSET_TURRET_SHOCKWAVE_SPRITE3, weaponFacing);
 
         float trueArcFacing = weapon.getCurrAngle();
         trueArcFacing += weapon.getSpec().getTurretAngleOffsets().get(currentBarrel);
@@ -885,7 +941,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
                 ZERO,
                 new Vector2f(25f, 100),
                 new Vector2f(25, 100),
-                shipFacing,
+                weaponFacing,
                 0f,
                 new Color(255, 255, 255, 255),
                 true,
@@ -899,7 +955,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
                 ZERO,
                 new Vector2f(17.5f, 70),
                 new Vector2f(17.5f, 70),
-                shipFacing,
+                weaponFacing,
                 0f,
                 new Color(255, 255, 255, 255),
                 true,
@@ -913,7 +969,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
                 ZERO,
                 new Vector2f(10f, 40),
                 new Vector2f(10, 40),
-                shipFacing,
+                weaponFacing,
                 0f,
                 new Color(255, 255, 255, 255),
                 true,

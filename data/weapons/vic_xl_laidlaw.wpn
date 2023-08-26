@@ -42,7 +42,7 @@
   "muzzleFlashSpec": {
     "length": 1,
     "spread": 1,
-    "particleSizeMin": 500,
+    "particleSizeMin": 750,
     "particleSizeRange": 0,
     "particleDuration": 0.15,
     "particleCount": 2,
@@ -50,9 +50,9 @@
       155,
       255,
       255,
-      155
+      255
     ]
   },
-  "fireSoundOne": "vic_laidlaw_accelerator_charge",
-  "fireSoundTwo": "vic_laidlaw_accelerator_shot"
+  "fireSoundOne": "vic_xl_laidlaw_charge",
+  "fireSoundTwo": "vic_xl_laidlaw_shot"
 }

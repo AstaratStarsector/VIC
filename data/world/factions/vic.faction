@@ -278,6 +278,7 @@
 	"ranks":{
 		"ranks":{	
 		    "factionLeader":{"name":"CEO"},
+			"vicHighExecutive":{"name":"High Executive Manager"},
 		        
 		    "spaceSailor":{"name":"Able Spacer"},
 			"spaceChief":{"name":"Aerospace Corps Warrant Officer"},
@@ -315,6 +316,8 @@
 			
 			"administrator":{"name":"Planetary Manager"},
 			"freeAdmin":{"name":"Freelance Planetary Manager"},
+
+			"vicPRDirector":{"name":"Advertisment and PR Dept. Director"},
 		},
 	},
 	

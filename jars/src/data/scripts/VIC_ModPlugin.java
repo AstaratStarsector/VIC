@@ -179,6 +179,20 @@ public class VIC_ModPlugin extends BaseModPlugin {
         if (Global.getSettings().getModManager().isModEnabled("alcoholism")) {
             addBoozeToFaction();
         }
+
+        if (Global.getSector().getImportantPeople().getPerson("vic_JeremyHoloGuide") == null) {
+            PersonAPI vicJeremyHoloGuide = Global.getFactory().createPerson();
+            vicJeremyHoloGuide.setFaction("vic");
+            vicJeremyHoloGuide.setId("vic_JeremyHoloGuide");
+            vicJeremyHoloGuide.getName().setFirst("Jeremiah");
+            vicJeremyHoloGuide.getName().setLast("Rainier-Gianni");
+            vicJeremyHoloGuide.setRankId("vicHighExecutive");
+            vicJeremyHoloGuide.setPostId("vicPRDirector");
+            vicJeremyHoloGuide.setGender(FullName.Gender.MALE);
+            vicJeremyHoloGuide.setPortraitSprite("graphics/portraits/characters/vic_jeremy_tv.jpg");
+            Global.getSector().getImportantPeople().addPerson(vicJeremyHoloGuide);
+        }
+
     }
 
     public void onNewGameAfterProcGen() {
@@ -202,22 +216,22 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
         MarketAPI market = Global.getSector().getEconomy().getMarket("vic_planet_cocytus_market");
         if (market != null) {
-            PersonAPI admin = Global.getFactory().createPerson();
-            admin.setFaction("vic");
-            admin.setGender(FullName.Gender.FEMALE);
-            admin.setPostId(Ranks.POST_FACTION_LEADER);
-            admin.setRankId(Ranks.FACTION_LEADER);
-            admin.getName().setFirst("Tatiana");
-            admin.getName().setLast("Vasilevskaya");
-            admin.setPortraitSprite("graphics/portraits/characters/vic_tatiana.jpg");
+            PersonAPI vicTatiana = Global.getFactory().createPerson();
+            vicTatiana.setFaction("vic");
+            vicTatiana.setGender(FullName.Gender.FEMALE);
+            vicTatiana.setPostId(Ranks.POST_FACTION_LEADER);
+            vicTatiana.setRankId(Ranks.FACTION_LEADER);
+            vicTatiana.getName().setFirst("Tatiana");
+            vicTatiana.getName().setLast("Vasilevskaya");
+            vicTatiana.setPortraitSprite("graphics/portraits/characters/vic_tatiana.jpg");
 
             //admin.getStats().setSkillLevel(Skills.SPACE_OPERATIONS , 3);
-            admin.getStats().setSkillLevel(Skills.INDUSTRIAL_PLANNING, 3);
+            vicTatiana.getStats().setSkillLevel(Skills.INDUSTRIAL_PLANNING, 3);
             //admin.getStats().setSkillLevel(Skills.PLANETARY_OPERATIONS, 3);
 
-            market.setAdmin(admin);
-            market.getCommDirectory().addPerson(admin, 0);
-            market.addPerson(admin);
+            market.setAdmin(vicTatiana);
+            market.getCommDirectory().addPerson(vicTatiana, 0);
+            market.addPerson(vicTatiana);
         }
     }
 

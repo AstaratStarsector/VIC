@@ -657,4 +657,19 @@
 		{"file": "sounds/effects/vic_alkonost_projectile_loop.ogg", "pitch": 1.00, "volume": 0.5,},
 	],
 
+			"vic_xl_laidlaw_shot":[
+		{"file": "sounds/effects/vic_xl_laidlaw_shot.ogg", "pitch": 0.90, "volume": 1,},
+		{"file": "sounds/effects/vic_xl_laidlaw_shot.ogg", "pitch": 0.95, "volume": 1,},
+		{"file": "sounds/effects/vic_xl_laidlaw_shot.ogg", "pitch": 1.00, "volume": 1,},
+		{"file": "sounds/effects/vic_xl_laidlaw_shot.ogg", "pitch": 1.05, "volume": 1,},
+		{"file": "sounds/effects/vic_xl_laidlaw_shot.ogg", "pitch": 1.10, "volume": 1,},
+	],
+
+			"vic_xl_laidlaw_charge":[
+		{"file": "sounds/effects/vic_xl_laidlaw_charge.ogg", "pitch": 1.00, "volume": 1,},
+		{"file": "sounds/effects/vic_xl_laidlaw_charge.ogg", "pitch": 1.05, "volume": 1,},
+		{"file": "sounds/effects/vic_xl_laidlaw_charge.ogg", "pitch": 1.10, "volume": 1,},
+	],
+
+
 }

@@ -1,43 +1,44 @@
 id,trigger,conditions,script,text,options,notes
-#Commission Dialogues,,,,,,
-CMSNTextRejectHostile_vic,CMSNTextRejectHostile,$faction.id == vic,,"""Wonderful! I'm sure our board of directors will be delighted that you've signed up for human testing! I know they've been looking forward to seeing what you're made of (quite literally), so this should come as a fantastic development. I might even get promoted for bringing them some of your organs! So, why, exactly, did you want to collect on your own bounty? Did you have family you wanted to make the payout to?
+"#RULESET_NAME VIC",,,,,,
+,,,,,,
+# Commission Dialogues,,,,,,
+CMSNTextRejectHostile_vic,CMSNTextRejectHostile,"$faction.id == vic",,"""Wonderful! I'm sure our board of directors will be delighted that you've signed up for human testing! I know they've been looking forward to seeing what you're made of (quite literally), so this should come as a fantastic development. I might even get promoted for bringing them some of your organs! So, why, exactly, did you want to collect on your own bounty? Did you have family you wanted to make the payout to?
 
 I’m sorry, you aren’t here to turn yourself in and collect on your bounty? You want to be commissioned with the Conglomerate?!?""
 
 The representatives stares at you incredulously, then breaks out into about twenty seconds of uninterrupted, boisterous laughter. They do not give you the courtesy of even slightly trying to hide it.
 
 ""Oh dear, oh dear. I’ll be frank with you: the only thing preventing me from personally dragging you back to headquarters in multiple, still-living pieces is that it takes a while for the launch authorization forms to process. If you don’t want that to happen, I suggest you leave. Quickly.""",,
-CMSNTextHasOther_vic,CMSNTextHasOther,$faction.id == vic,,"""I would recommend you reconsider your application. It seems you already have a commission with $theOtherCommissionFaction, which would be an immediate violation of your contract, should we accept you. This wouldn’t be a problem for us, per se, but it would activate the standard breach-of-contract clause. I’m not allowed to divulge the details of this clause due to a company-wide NDA, but save to say it would be… invasive. Feel free to return when you are without any such unfortunate legal obstacles.""",,
-CMSNTextUnsuited_vic,CMSNTextUnsuited,$faction.id == vic,,"""Hmm, it seems you don’t have enough VolkovPoints accumulated on your profile to qualify for a commission. Don’t feel bad, though, you can accumulate more by purchasing some of our many genetic modification therapies. Visit one of our soothing gene spas, perhaps? You’ll feel 30 years younger afterwards (and, biologically speaking, you will be)!
+CMSNTextHasOther_vic,CMSNTextHasOther,"$faction.id == vic",,"""I would recommend you reconsider your application. It seems you already have a commission with $theOtherCommissionFaction, which would be an immediate violation of your contract, should we accept you. This wouldn’t be a problem for us, per se, but it would activate the standard breach-of-contract clause. I’m not allowed to divulge the details of this clause due to a company-wide NDA, but save to say it would be… invasive. Feel free to return when you are without any such unfortunate legal obstacles.""",,
+CMSNTextUnsuited_vic,CMSNTextUnsuited,"$faction.id == vic",,"""Hmm, it seems you don’t have enough VolkovPoints accumulated on your profile to qualify for a commission. Don’t feel bad, though, you can accumulate more by purchasing some of our many genetic modification therapies. Visit one of our soothing gene spas, perhaps? You’ll feel 30 years younger afterwards (and, biologically speaking, you will be)!
 
 If you for some reason don’t find yourself currently in need of improvements--don’t worry, you will in time--, you can always acquire more points by participating in VIC’s Fair Competition program, where we pay you to adjust certain opposing parties’ asset portfolios in our favor while improving the sector's economic growth. For more information, please visit our Asset Adjustment office, which you can find under the directory for ‘bounties.’""",,
-CMSNTextSuitedPart1_vic,CMSNTextSuitedPart1,$faction.id == vic,,"""Fan-tastic! It seems your Net Benefit Assessment score was in the highest quartile - you have an amazing profile here. As a side note, did you know you’ve accumulated enough VolkovPoints to qualify for a free cellular manicure? You should really spend those soon, they expire at the end of every cycle.
+CMSNTextSuitedPart1_vic,CMSNTextSuitedPart1,"$faction.id == vic",,"""Fan-tastic! It seems your Net Benefit Assessment score was in the highest quartile - you have an amazing profile here. As a side note, did you know you’ve accumulated enough VolkovPoints to qualify for a free cellular manicure? You should really spend those soon, they expire at the end of every cycle.
 
 Down to business, then: you want to be commissioned. What does this entail, you ask? Well, here at the Volkov Industrial Conglomerate, we have a vision for the sector. You hear a lot in our advertisement about ‘making the future’ and ‘paradise.’ Now, the marketing department may not really believe in those things, but I do. It’s been more than 200 cycles since this sector collapsed, and we haven’t survived on empty promises.
 
 I’ll be frank: the sector doesn’t have the assets left to transform the scant selection of technically-habitable planets into places where humans can thrive. Eridani-Utopia is long dead around these parts. But, we here at VIC do have the technology, and the drive, to make humans that can thrive here, more so than even on the fabled old Earth. Your job would be to help the Conglomerate achieve this goal.
 
 It won’t always be clean; as a Volkov commission-holder, you may be asked to kill, to assassinate, to invade, to destroy the competition. But I can promise that everything you do for us is in service of helping VIC secure a better future for humanity.""",,
-CMSNTextSuitedPart2_vic,CMSNTextSuitedPart2,$faction.id == vic,,"""Now, are you prepared to sign up with VIC and do your service to humanity? Note that this contract includes the standard provision where we retain the rights to your genetic profile in perpetuity, but that shouldn’t be a problem. This right would be retained if you were to exit the contract, which you’re free to do so at any time, not that you would want to. Please submit your identity verification where indicated, and we can get to work.""",,
-CMSNTextWelcomePart1_vic,CMSNTextWelcomePart1,$faction.id == vic,,"""Welcome to the family! I have a feeling you’re going to love your time at VIC.
+CMSNTextSuitedPart2_vic,CMSNTextSuitedPart2,"$faction.id == vic",,"""Now, are you prepared to sign up with VIC and do your service to humanity? Note that this contract includes the standard provision where we retain the rights to your genetic profile in perpetuity, but that shouldn’t be a problem. This right would be retained if you were to exit the contract, which you’re free to do so at any time, not that you would want to. Please submit your identity verification where indicated, and we can get to work.""",,
+CMSNTextWelcomePart1_vic,CMSNTextWelcomePart1,"$faction.id == vic",,"""Welcome to the family! I have a feeling you’re going to love your time at VIC.
 
 Do take advantage of the 25% employee discount to all genetic services. Try the new face you’ve been thinking about. Get a new skin texture. Have the body you always wanted. Go nuts!""",,
-CMSNTextWelcomePart2_vic,CMSNTextWelcomePart2,$faction.id == vic,,"""Oh, and make sure to subscribe to the company playlist on VICtify. It has some excellent synthwave!""",,
-CMSNTextChangeMind_vic,CMSNTextChangeMind,$faction.id == vic,,"""Unfortunate, but we here at VIC bear you no ill will for your decision. Besides, I’m sure you’ll come around. They always do.
+CMSNTextWelcomePart2_vic,CMSNTextWelcomePart2,"$faction.id == vic",,"""Oh, and make sure to subscribe to the company playlist on VICtify. It has some excellent synthwave!""",,
+CMSNTextChangeMind_vic,CMSNTextChangeMind,"$faction.id == vic",,"""Unfortunate, but we here at VIC bear you no ill will for your decision. Besides, I’m sure you’ll come around. They always do.
 
 Even though you aren’t an employee, I should remind you that you’re still contractually obligated not to share any of the company details I’ve divulged here. I’d stick to that contract; the penalties for breaching it are… unpleasant, to say the least.""",,
-CMSNResignAskToConfirm_vic,CMSNResignAskToConfirm,$faction.id == vic,,"The manager places their head in their not-quite-a-human-hand, and sighs heavily.
+CMSNResignAskToConfirm_vic,CMSNResignAskToConfirm,"$faction.id == vic",,"The manager places their head in their not-quite-a-human-hand, and sighs heavily.
 
 ""Are you certain you want to do this? You should know that former employees are not exempt to VIC 'testing campaigns.' I’d strenuously urge you to reconsider your resignation. The patrol supervisors have been known to show a certain… vindictiveness to ex-employees.""",,
-CMSNResignConfirmed_vic,CMSNResignConfirmed,$faction.id == vic,,"""Very, very unfortunate, but we will survive your resignation. Make no mistake, VIC will bring the future to the sector. I can’t understand why you wouldn’t want to be a part of it, but perhaps paradise isn’t for everyone. We’ll keep your genetic profile on hand, to know what to avoid from now on.""",,
-CMSNResignCancelled_vic,CMSNResignCancelled,$faction.id == vic,,"""Oh, thank God you aren’t going through with it. That was unpleasant to even think about. You must be under a lot of stress - bringing the sector into the future can be a tough job, after all.
+CMSNResignConfirmed_vic,CMSNResignConfirmed,"$faction.id == vic",,"""Very, very unfortunate, but we will survive your resignation. Make no mistake, VIC will bring the future to the sector. I can’t understand why you wouldn’t want to be a part of it, but perhaps paradise isn’t for everyone. We’ll keep your genetic profile on hand, to know what to avoid from now on.""",,
+CMSNResignCancelled_vic,CMSNResignCancelled,"$faction.id == vic",,"""Oh, thank God you aren’t going through with it. That was unpleasant to even think about. You must be under a lot of stress - bringing the sector into the future can be a tough job, after all.
 
 Maybe take a break, go relax at a gene-spa? Have a nice meal at VICtuals. Take some time off.""",,
+vic_addStart,ExerelinNGCIntroPage,,"vic_starterPlugin",,,
+"#END Commission Dialogues",,,,,,
 ,,,,,,
-vic_addStart,ExerelinNGCIntroPage,,vic_starterPlugin,,,
-,,,,,,
-,,,,,,
-#Fleet Encounter Dialogues,,,,,,
+# Fleet Encounter Dialogues,,,,,,
 greetingVICFriendly,OpenCommLink,"$faction.id == vic
 $faction.friendlyToPlayer","$menuState = fleetConvMain 0
 FireAll PopulateOptions","The $PersonRank smiles at the screen with inhumanly sharp teeth.  
@@ -115,7 +116,7 @@ OR
 ",,
 greetingVICHostileWeaker,OpenCommLink,"$faction.id == vic
 $entity.isHostile
-$entity.relativeStrength < 0",$entity.ignorePlayerCommRequests = true 1,"""What'cha doing there, friend?"" The VIC $personRank laughs nervously. ""You wouldn't be planning to attack us, would you? Everybody likes the Conglomerate!""
+$entity.relativeStrength < 0","$entity.ignorePlayerCommRequests = true 1","""What'cha doing there, friend?"" The VIC $personRank laughs nervously. ""You wouldn't be planning to attack us, would you? Everybody likes the Conglomerate!""
 OR
 ""The Conglomerate fights for the future of Humanity."" The words sound brave, but the look on $HisOrHer face tells you it's an act.
 OR
@@ -125,11 +126,11 @@ OR
 OR
 ""Now think about this, our fleet is more valuable to you alive. I can arrange for you to get a discount on genemods or our military tech or something; we can make a deal,"" $heOrShe pleads for mercy.
 OR
-""You cannot kill us; with our genetic code recorded, we will live on forever, and we will come back for revenge. Think about that before you proceed,"" - the $PersonRank tries to sound as convincing as they possibly can.",cutCommLink:Cut the comm link,
+""You cannot kill us; with our genetic code recorded, we will live on forever, and we will come back for revenge. Think about that before you proceed,"" - the $PersonRank tries to sound as convincing as they possibly can.","cutCommLink:Cut the comm link",
 greetingVICHostileWeakerDefiant,OpenCommLink,"$faction.id == vic
 $entity.isHostile
 $entity.relativeStrength < 0
-$entity.weakerThanPlayerButHolding",$entity.ignorePlayerCommRequests = true 1,"The VIC $personRank stares you down, hatred in $HisOrHer eyes. ""You have made yourself an enemy of the Conglomerate, and that makes you an enemy of the sector's future. Do not think cowardice will keep us from your throat.""
+$entity.weakerThanPlayerButHolding","$entity.ignorePlayerCommRequests = true 1","The VIC $personRank stares you down, hatred in $HisOrHer eyes. ""You have made yourself an enemy of the Conglomerate, and that makes you an enemy of the sector's future. Do not think cowardice will keep us from your throat.""
 OR
 ""You may kill us, but at least we die in perfect forms,"" the $personRank says, and $heOrShe flourishes a modified appendage to emphasize. ""You, however, will be trapped for the rest of your life in your disgusting, mediocre body.""
 OR
@@ -143,10 +144,10 @@ Scowling $PersonRank shows $HisOrHer unnaturaly sharp teeth, and distinctively i
 OR
 ""Don't expect our current disadvantage to be indicative for the rest of the Conglomerate,"" $heOrShe says, voice full of a little bluster and a lot of conviction.
 
-""That fleet you're so proud of? VIC will crush it under our industrial might!"" The $personRank slams $HisOrHer fist on the console and cuts off the feed.",cutCommLink:Cut the comm link,
+""That fleet you're so proud of? VIC will crush it under our industrial might!"" The $personRank slams $HisOrHer fist on the console and cuts off the feed.","cutCommLink:Cut the comm link",
 greetingVICHostileStronger,OpenCommLink,"$faction.id == vic
 $entity.isHostile
-$entity.relativeStrength >= 0",$entity.ignorePlayerCommRequests = true 1,"""When we're finished destroying your $shipOrFleet,"" the VIC $personRank boasts, ""we're going to drag your corpse out of the wreckage so we can analyze your genetic code. Then we can figure out what went so wrong as to end up with you.""
+$entity.relativeStrength >= 0","$entity.ignorePlayerCommRequests = true 1","""When we're finished destroying your $shipOrFleet,"" the VIC $personRank boasts, ""we're going to drag your corpse out of the wreckage so we can analyze your genetic code. Then we can figure out what went so wrong as to end up with you.""
 OR
 ""Normally, when we're removing subversives such as yourself from the sector, we end up taking them back to the labs for some 'voluntary scientific testing.'""
 
@@ -171,10 +172,10 @@ OR
 ""The white coats on Purgatory will enjoy testing their new stuff on you. Wish I could see that. The enemy of Humankind, being turned into all sorts of disgusting things to help us bring Paradise just a bit closer,"" - the $PersonRank gloats creepily, their slitted pupils dilating in a vicious manner.
 OR
 ""Try not to die too quickly, please. The footage of our battle will make for a great inspirational movie for the children!"" - the $PersonRank says light-heartedly and turns off the comms before you can say anything.
-",cutCommLink:Cut the comm link,
+","cutCommLink:Cut the comm link",
+"#END Fleet Encounter Dialogues",,,,,,
 ,,,,,,
-,,,,,,
-# relationship level descriptions,,,,,,
+# Relationship level descriptions,,,,,,
 relLevelNeutralvic,RelationshipLevelDesc,"$faction.rel == NEUTRAL
 $faction.id == vic",,"At the moment, you are not of particular interest to the Conglomerate. You are treated like thousands, millions of others - with the respect and reasonable suspicion prescribed in the Customer Interaction Guidelines. You do not get any preferences, but at the same time you can count on normal business communication and the absence of problems on the behalf of the Megacorporation's power structures.",,
 relLevelFavorablevic,RelationshipLevelDesc,"$faction.rel == FAVORABLE
@@ -197,23 +198,23 @@ relLevelVengefulvic,RelationshipLevelDesc,"$faction.rel == VENGEFUL
 $faction.id == vic",,"Aerospace Corps personnel are looking for you all over the Sector with hungry eyes and a thirst for murder, financial reward, and promotion; gene-mimic operatives are being dispatched, lurking in the crowds and perhaps even among your subordinates to deliver a fatal blow when you least expect it. The PR Department allocates enormous budgets to dehumanize your image among the public and employees through all available media, and the Special Forces Corps are capturing and/or eliminating those who may have been associated with you in one way or another. Even some members of the Supreme Directorate, if one is to believe the rumours, are planning to personally go in pursuit of you, to bring you back alive and turn your very existence into an endless torture with the help of their most sophisticated methods, refined throughout the centuries of the Conglomerate's history. 
 
 You have become an Enemy of Humankind, threatening its future, and for its good and in its name, you WILL be terminated.",,
+"#END Relationship level descriptions",,,,,,
 ,,,,,,
-,,,,,,
-#Ai Core hand in,,,,,,
+# Ai Core hand in,,,,,,
 aiCores_turnInOptionSelVICFriendly,DialogOptionSelected,"$option == aiCores_startTurnIn
 $faction.id == vic
-$faction.friendlyToPlayer",FireAll PopulateCoresTurnInOptions,"""Oh, a core of an artificial intelligence? This is great news, colleague! It's dreadful to think what kinds of atrocities some less educated and responsible sort of people would commit by using such technology. We'll make sure this never happens and that this synthetic mind serves Humankind in a right way. Before being disposed of, obviously, I mean.  And, of course, I'll make sure the management is informed about your efforts as soon as possible.""",,
+$faction.friendlyToPlayer","FireAll PopulateCoresTurnInOptions","""Oh, a core of an artificial intelligence? This is great news, colleague! It's dreadful to think what kinds of atrocities some less educated and responsible sort of people would commit by using such technology. We'll make sure this never happens and that this synthetic mind serves Humankind in a right way. Before being disposed of, obviously, I mean.  And, of course, I'll make sure the management is informed about your efforts as soon as possible.""",,
 aiCores_turnInOptionSelVIC,DialogOptionSelected,"$option == aiCores_startTurnIn
-$faction.id == vic",FireAll PopulateCoresTurnInOptions,"""Oh, an AI core? How peculiar... It's good that you've brought it to us, citizen. The Conglomerate is well informed about the Domain's protocols regarding the containment of synthetic minds. Rest assured, after being thoroughly scanned and drained of all valuable data, this AI core will be terminated to avoid any undesired consequences. And, of course, your efforts will be handsomely rewarded."" ",,
+$faction.id == vic","FireAll PopulateCoresTurnInOptions","""Oh, an AI core? How peculiar... It's good that you've brought it to us, citizen. The Conglomerate is well informed about the Domain's protocols regarding the containment of synthetic minds. Rest assured, after being thoroughly scanned and drained of all valuable data, this AI core will be terminated to avoid any undesired consequences. And, of course, your efforts will be handsomely rewarded."" ",,
 aiCores_turnInOptionSelVICHostile,DialogOptionSelected,"$option == aiCores_startTurnIn
 $faction.id == vic
-$faction.hostileToPlayer",FireAll PopulateCoresTurnInOptions,"""An AI core? In YOUR possesion?... Ahem. I hope you're informed about the Domain's laws regarding artificial intelligences, ""citizen"". In any other circumstances you'd be already detained, convicted and sentenced to capital punishment. However, I think we can still come to an agreement in this particular situation. The Conglomerate would be glad if you allowed us to dispose of this dangerous technology. Of course, an additional payment would be provided.""",,
+$faction.hostileToPlayer","FireAll PopulateCoresTurnInOptions","""An AI core? In YOUR possesion?... Ahem. I hope you're informed about the Domain's laws regarding artificial intelligences, ""citizen"". In any other circumstances you'd be already detained, convicted and sentenced to capital punishment. However, I think we can still come to an agreement in this particular situation. The Conglomerate would be glad if you allowed us to dispose of this dangerous technology. Of course, an additional payment would be provided.""",,
 aiCores_turnInOptionSellVICFriendly,AICoresTurnedIn,"$faction.id == vic
-$faction.friendlyToPlayer",FireAll PopulateOptions,"""Glory to Humankind.""$PersonRank $personLastName smiles gratefully and genuinely thanks you for helping humanity on its way to a brighter future, before the conversation moves on to other matters.",,
-aiCores_turnInOptionSellVIC,AICoresTurnedIn,$faction.id == vic,FireAll PopulateOptions,"$PersonRank $personLastName calmly thanks you for assisting the Conglomerate and its cause, before the conversation moves on to other matters.",,
+$faction.friendlyToPlayer","FireAll PopulateOptions","""Glory to Humankind.""$PersonRank $personLastName smiles gratefully and genuinely thanks you for helping humanity on its way to a brighter future, before the conversation moves on to other matters.",,
+aiCores_turnInOptionSellVIC,AICoresTurnedIn,"$faction.id == vic","FireAll PopulateOptions","$PersonRank $personLastName calmly thanks you for assisting the Conglomerate and its cause, before the conversation moves on to other matters.",,
+"#END Ai Core hand in",,,,,,
 ,,,,,,
-,,,,,,
-#Generic Market Descriptions,,,,,,
+# Generic Market Descriptions,,,,,,
 flavorTextMarketVICGen,TradePanelFlavorText,"$faction.id == vic
 $stability > 3","AddText ""The port concourse is surprisingly vivacious, with numerous spacers and traders coursing between ships of various models and sizes, either being offloaded or filled up with goods and supplies. Meanwhile, the grey-orange uniformed Law Enforcement Corps units are patrolling the area on the lookout for any suspicious activity, and the logistics managers are scrupulously processing every arrival and departure, in some cases wasting up to several hours of captains' lives."" marketFlavorTextColor
 
@@ -222,9 +223,9 @@ flavorTextMarketVICGen_lowStab,TradePanelFlavorText,"$faction.id == vic
 $stability == 3","AddText ""The port welcomes visitors with half-empty hangars, unloading military transports and hurrying people who do not want to stay here longer than necessary. Soldiers and numerous units of the Law Enforcement Corps move around the area with weapons on display, catching captains and merchants in random order, while holo-screens and loudspeakers instead of their usual advertising broadcast about the curfew and ask citizens to stay at home. From time to time, muffled single shots are heard somewhere in the distance, and at these moments the soldiers grip their weapons much tighter."" marketFlavorTextColor",,,
 flavorTextMarketVICGen_veryLowStab,TradePanelFlavorText,"$faction.id == vic
 $stability < 3","AddText ""The gloomy port greets its guests with civil defense sirens and emergency messages broadcast over holographic screens and loudspeakers that have remained intact. Explosions and gunfire are heard somewhere in the distance, but the spaceport looks ready for any turn of events. Ground Operations Corps soldiers can be seen literally everywhere, their Laidlaw Accelerator rifles unlocked and glowing menacingly with energy. Heavy armored vehicles bearing Conglomerate insignia are unloaded from large military transport ships, and Special Forces agents drill all the few remaining spacers and traders with the ravenous glances of their barely human eyes."" marketFlavorTextColor",,,
+"#END Generic Market Descriptions",,,,,,
 ,,,,,,
-,,,,,,
-#Custom Markets Descriptions,,,,,,
+# Custom Markets Descriptions,,,,,,
 flavorTextMarketVICCocytus,TradePanelFlavorText,"$id == vic_planet_cocytus score:1000
 $faction.id == vic
 $stability > 3","AddText ""After passing the first round of security checks in the lobbies of massive orbital stations, with panoramic screens offering spectacular views of the Conglomerate's ever-vibrant shipyards, one of the helpful managers finally invites you to board a comfortable shuttle to the surface."" marketFlavorTextColor
@@ -266,63 +267,63 @@ $stability > 3","AddText ""The new planetary capital, where your shuttle arrives
 AddText ""Despite all the efforts of the new government, which has taken over civil affairs, as is the case on almost all planets of the Persean Union of Domain Colonies, there is still some tension around. Many residents are much quieter and more restrained in the presence of employees of the Conglomerate, and in the side streets every now and then graffiti with clearly protesting statements come across."" marketFlavorTextColor
 
 AddText ""Trying not to get involved in tumultuous political discussions and talks about the new regime and the future of the planet, you head to the trading district by public maglev. And on your way you note to yourself - there are already quite a lot of those who have decided to use genetic technologies and the services of the new 'benevolent hosts'."" marketFlavorTextColor",,,
+"#END Custom Markets Descriptions",,,,,,
 ,,,,,,
-,,,,,,
-#Beacons and Stuff,,,,,,
+# Beacons and Stuff,,,,,,
 beaconOpenDialogSiaubas,OpenInteractionDialog,"$tag:warning_beacon
 $pelenulaukas","ShowDefaultVisual
 SetShortcut beaconLeave ""ESCAPE""","This autonomous warning beacon emits a looping message.
 
 ""WARNING!!! Citizens of the Domain, this planet is heavily contaminated by indigenous viral agents. Extreme precautions and biological protection measures required. All infected must be isolated and cremated IMMEDIATELY. Any malicious attempts to spread the disease are punishable by death. For additional information citizens are to contact the local department of the Domain Interplanetary Sanitary-Epidemiological Control Service (DISECS).""
- ",beaconLeave:Leave,
+ ","beaconLeave:Leave",
+"#END Beacons and Stuff",,,,,,
 ,,,,,,
-,,,,,,
-#Unconventional Military Options,,,,,,
+# Unconventional Military Options,,,,,,
 vic_UMO,PopulateOptions,"$hasMarket
 $menuState == main
 $faction.id != player
 !$faction.isNeutralFaction
-!haveNex","SetShortcut VICUMOMenu ""V"" true",,21:UMOMenu:Unconventional military option,
-# vic_UMOwithNEX,ExerelinMarketSpecial,,"SetShortcut VICUMOMenu ""V"" true",,9:UMOMenu:Unconventional military option,
+!haveNex","SetShortcut VICUMOMenu ""V"" true",,"21:UMOMenu:Unconventional military option",
+# vic_UMOwithNEX,ExerelinMarketSpecial,,"SetShortcut VICUMOMenu ""V"" true",,"9:UMOMenu:Unconventional military option",
 ,,,,,,
-vic_UMOMenu,DialogOptionSelected,$option == UMOMenu,VIC_MarketCMD UMOMenu,,,
-vic_VBombMenu,DialogOptionSelected,$option == VBombMenu,VIC_MarketCMD VBombMenu,,,
-vic_VBombConfirm,DialogOptionSelected,$option == VBombConfirm,VIC_MarketCMD VBombConfirm,,,
-vic_VBombResults,DialogOptionSelected,$option == VBombResults,VIC_MarketCMD VBombResults,,,
+vic_UMOMenu,DialogOptionSelected,"$option == UMOMenu","VIC_MarketCMD UMOMenu",,,
+vic_VBombMenu,DialogOptionSelected,"$option == VBombMenu","VIC_MarketCMD VBombMenu",,,
+vic_VBombConfirm,DialogOptionSelected,"$option == VBombConfirm","VIC_MarketCMD VBombConfirm",,,
+vic_VBombResults,DialogOptionSelected,"$option == VBombResults","VIC_MarketCMD VBombResults",,,
+"#END Unconventional Military Options",,,,,,
 ,,,,,,
-,,,,,,
-,,,,,,
-#Revitalization Center Texts,,,,,,
+# Revitalization Center Texts,,,,,,
 vic_PersonaChange,PopulateOptions,"$hasMarket
 $menuState == main
 vic_marketHasIndustry vic_revCenter
-RepIsAtWorst $faction.id SUSPICIOUS",,,22:VICPCMenu:Visit a local VIC Revitalization Centre,
-vic_portraitChangingMenu,DialogOptionSelected,$option == VICPCMenu,vic_PersonaChange vic_PerconaChangeChose,"After a short trip on a shuttle, it doesn't take you much time to find a tall slick-looking building covered in the Conglomerate's imposing logos and various holo-ads promoting ""endless opportunities"", as the corporation likes to call them.
+RepIsAtWorst $faction.id SUSPICIOUS",,,"22:VICPCMenu:Visit a local VIC Revitalization Centre",
+vic_portraitChangingMenu,DialogOptionSelected,"$option == VICPCMenu","vic_PersonaChange vic_PerconaChangeChose","After a short trip on a shuttle, it doesn't take you much time to find a tall slick-looking building covered in the Conglomerate's imposing logos and various holo-ads promoting ""endless opportunities"", as the corporation likes to call them.
 
 The insides of the Centre greet you with sterile cleanliness, overly polite personnel (some of which clearly sport non-human features and bodyparts) and even more ads with quite propagandistic statements and rather ""exotic"" options of bodily transformations, made possible through the power of innovative genetech. As usual, all the customers, including you, are given a short run-down on the procedure and its nuances, as well as a list of possible side effects and the basic non-responsibility agreement from the corporation. A brightly-eyed manager proudly reminds that the Conglomerate's geneticists and cyberneticists are the best in the field of Personal Modification and Transfiguration and that it's nigh-impossible to find any kind of analogues anywhere else in the whole Sector.
 
 It is possible to change your appearance, the appearance of your officers and administrators, and respec their skills, thanks to several rather curious paragraphs in their contracts, which legally (but maybe not morally) allows you to disregard their opinion on the matter.",,
-vic_portraitChangingMenuBackToit,DialogOptionSelected,$option == vic_PerconaChangeChoseBack,vic_PersonaChange vic_PerconaChangeChoseBack,"After some hesitation, you tell the managers that you need to think about all this a bit more, to which they nod understandably, saying that there is nothing wrong in taking it slow and making a deliberate, well-thought decision.",,
+vic_portraitChangingMenuBackToit,DialogOptionSelected,"$option == vic_PerconaChangeChoseBack","vic_PersonaChange vic_PerconaChangeChoseBack","After some hesitation, you tell the managers that you need to think about all this a bit more, to which they nod understandably, saying that there is nothing wrong in taking it slow and making a deliberate, well-thought decision.",,
 ,,,,,,
-vic_portraitChangingMale,DialogOptionSelected,$option == vic_PersonaChangeMale,vic_PersonaChange vic_PersonaChangeMale,,,
-vic_portraitChangingFemale,DialogOptionSelected,$option == vic_PersonaChangeFemale,vic_PersonaChange vic_PersonaChangeFemale,,,
-vic_PersonaChangeRespec,DialogOptionSelected,$option == vic_PersonaChangeRespec,vic_PersonaChange vic_PersonaChangeRespec,,,
-vic_portraitChangingClikOnPortrait,OpenCDE,$tag:vic_PortraitHolder == true,"ShowPersonVisual
+vic_portraitChangingMale,DialogOptionSelected,"$option == vic_PersonaChangeMale","vic_PersonaChange vic_PersonaChangeMale",,,
+vic_portraitChangingFemale,DialogOptionSelected,"$option == vic_PersonaChangeFemale","vic_PersonaChange vic_PersonaChangeFemale",,,
+vic_PersonaChangeRespec,DialogOptionSelected,"$option == vic_PersonaChangeRespec","vic_PersonaChange vic_PersonaChangeRespec",,,
+vic_portraitChangingClikOnPortrait,OpenCDE,"$tag:vic_PortraitHolder == true","ShowPersonVisual
 vic_PersonaChange vic_PersonaChangeConfirm
 ","After going through the list you settle on one of the options. A yet unfamiliar person is looking at you from the screen and the detailed information about this particular body is presented in several sub-menus.
 
 The manager informs you that the procedure is 100 percent reversible if the necessity arises. The only thing left is your confirmation. ",,
-vic_PersonaChangeResult,DialogOptionSelected,$option == vic_PersonaChangeResult,vic_PersonaChange vic_PersonaChangeResult,"A predatory grin spreads on the manager's face, and after the fund transaction is complete, the patient is invited into the operating theatre. 
+vic_PersonaChangeResult,DialogOptionSelected,"$option == vic_PersonaChangeResult","vic_PersonaChange vic_PersonaChangeResult","A predatory grin spreads on the manager's face, and after the fund transaction is complete, the patient is invited into the operating theatre. 
 
 The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help the patient settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, the patient are given an offer of anesthesia and a mirroring screen in case they desire to watch the process themselves. And at last, after the first injection of DNA-altering virus, the procedure begins.
 
 Several hours later the patient finally gets up from the chair and makes their first steps as a completely new person. Gone is the old shell, and they're ready to take on the world with their new body. The doctor and the nurses seem quite happy with the result of their hard work and mention that one can always go back to their old self or even try something else. If they have sufficient funds for the procedures of course. ",,
-vic_PersonaChangeRespecResult,DialogOptionSelected,$option == vic_PersonaChangeRespecResult,vic_PersonaChange vic_PersonaChangeRespecResult,"A predatory grin spreads on the manager's face, and after the fund transaction is complete, the patient is invited into the operating theatre. 
+vic_PersonaChangeRespecResult,DialogOptionSelected,"$option == vic_PersonaChangeRespecResult","vic_PersonaChange vic_PersonaChangeRespecResult","A predatory grin spreads on the manager's face, and after the fund transaction is complete, the patient is invited into the operating theatre. 
 
 The white room's temperature is rather pleasing and quiet calm music can be heard from the loudspeakers. The nurses help the patient settle onto the medical chair and soon the doctor arrives. After a couple of brief questions about some little details, the patient are given an offer of anesthesia. A mirroring screen can be seen nearby, but it won't be necessary this time, as the changes will be happening on the inside. And at last, after the first injection of DNA-altering virus, the procedure begins.
 
 Several hours later the patient finally gets up from the chair and makes their first steps with a somewhat new body and reconfigured innards, their neural system renewed. The doctor and the nurses seem quite happy with the result of their hard work and mention that one can always come back for additional reconfiguration or even try something else from the vast variety of VIC services. If they have sufficient funds for the procedures of course. ",,
-#menu close,,,,,,
+,,,,,,
+# menu close,,,,,,
 vic_PersonaChangeEnd,DialogOptionSelected,"$option == vic_PersonaChangeEnd
 ","ShowDefaultVisual
 EndConversation
@@ -339,7 +340,9 @@ vic_PersonaChangeEndAdmin,DialogOptionSelected,"$option == vic_PersonaChangeEndA
 ","ShowDefaultVisual
 EndConversation
 ","You leave the Revitalization Centre with your administrators unchanged. Interestingly, you can't really tell, whether they're relieved or somewhat disappointed. Meanwhile, the holo-ad behind you slyly reminds you that the choise is fully yours, but the road to Paradise is only for the bold.",,
-#result exit,,,,,,
+"#END menu close",,,,,,
+,,,,,,
+# result exit,,,,,,
 vic_PersonaChangeEndNew,DialogOptionSelected,"$option == vic_PersonaChangeEndNew
 ","ShowDefaultVisual
 EndConversation
@@ -356,17 +359,71 @@ vic_PersonaChangeEndNewAdmin,DialogOptionSelected,"$option == vic_PersonaChangeE
 ","ShowDefaultVisual
 EndConversation
 ","You leave the Revitalization Centre with your administrator, who's still adjusting to their new body. Whether they're happy with their transformation or not - it doesn't matter too much, for what's done is done, and their genetically altered body is there to stay, until you decide otherwise or terminate the contract.",,
-,,,,,,
-vic_PersonaChangeOtherPersonaOfficer,OpenCDE,$tag:vic_personToChangeOfficer == true,"ShowPersonVisual
+vic_PersonaChangeOtherPersonaOfficer,OpenCDE,"$tag:vic_personToChangeOfficer == true","ShowPersonVisual
 vic_PersonaChange vic_PerconaChangeNotPLayer","After all the standard introductions, discussions and QAs, you are given a short rundown on currently available services, including the list of physical appearances to choose from for your fortunate (or unfortunate) officer. The list is conveniently divided into ""Male"" and ""Female"" sections, each option costing 10000 credits. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats. 
 
 The officer is patiently waiting too with a remarkably stoic facial expression. You wonder what's going on in their head right now, considering all the circumstances. Maybe their resolve is a mere facade, hiding their excitement, or pure, unadulterated rage and hatred towards you and the local VIC personnel? Or maybe they don't indeed care about all this, as long as their contract is followed strictly by both parties.",,
-vic_PersonaChangeOtherPersonaAdmin,OpenCDE,$tag:vic_personToChangeAdmin == true,"ShowPersonVisual 
+vic_PersonaChangeOtherPersonaAdmin,OpenCDE,"$tag:vic_personToChangeAdmin == true","ShowPersonVisual 
 vic_PersonaChange vic_PerconaChangeNotPLayer","After all the standard introductions, discussions and QAs, you are given a short rundown on currently available services, including the list of physical appearances to choose from for your fortunate (or unfortunate) administrator. The list is conveniently divided into ""Male"" and ""Female"" sections, each option costing 10000 credits. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats. 
 
 The administrator is patiently waiting too with a remarkably stoic facial expression. You wonder what's going on in their head right now, considering all the circumstances. Maybe their resolve is a mere facade, hiding their excitement, or pure, unadulterated rage and hatred towards you and the local VIC personnel? Or maybe they don't indeed care about all this, as long as their contract is followed strictly by both parties.",,
-vic_PersonaChangeOtherPortraitOfficer,DialogOptionSelected,$option == vic_PersonaChangeOtherPortraitOfficer,vic_PersonaChange vic_PersonaChangeOtherPortraitOfficer,,,
-vic_PersonaChangeYou,DialogOptionSelected,$option == vic_PersonaChangeYou,vic_PersonaChange vic_PersonaChangeYou,"After all the standard introductions, discussions and QAs, you are given a short rundown on currently available services, including the list of currently available physical appearances to choose from. It is conveniently divided into ""Male"" and ""Female"" sections, each option costing 10000 credits. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats.",,
-vic_PersonaChangeAdmin,DialogOptionSelected,$option == vic_PersonaChangeAdmin,vic_PersonaChange vic_PersonaChangeAdmin,,,
-vic_PersonaChangeOfficer,DialogOptionSelected,$option == vic_PersonaChangeOfficer,vic_PersonaChange vic_PersonaChangeOfficer,,,
+vic_PersonaChangeOtherPortraitOfficer,DialogOptionSelected,"$option == vic_PersonaChangeOtherPortraitOfficer","vic_PersonaChange vic_PersonaChangeOtherPortraitOfficer",,,
+vic_PersonaChangeYou,DialogOptionSelected,"$option == vic_PersonaChangeYou","vic_PersonaChange vic_PersonaChangeYou","After all the standard introductions, discussions and QAs, you are given a short rundown on currently available services, including the list of currently available physical appearances to choose from. It is conveniently divided into ""Male"" and ""Female"" sections, each option costing 10000 credits. The managers are eagerly awaiting your next steps with pleased smiles and bets muttered under their breath when you seemingly do not pay enough attention to their chats.",,
+vic_PersonaChangeAdmin,DialogOptionSelected,"$option == vic_PersonaChangeAdmin","vic_PersonaChange vic_PersonaChangeAdmin",,,
+vic_PersonaChangeOfficer,DialogOptionSelected,"$option == vic_PersonaChangeOfficer","vic_PersonaChange vic_PersonaChangeOfficer",,,
+"#END result exit",,,,,,
+"#END Revitalization Center Texts",,,,,,
 ,,,,,,
+# Jeremy Holo Guide,,,,,,
+vic_meetJeremyHoloGuide,AddBarEvents,"$faction.id == vic
+!$global.firsttalkedwithJeremyHoloGuide
+!$global.talkedwithJeremyHoloGuide","AddBarEvent vic_JeremyHoloGuideEventFirstTime ""Stare at the TV"" ""There's a TV talking about hot single catgirls in the area.""",,,
+vic_metJeremyHoloGuide,AddBarEvents,"$faction.id == vic
+$global.firsttalkedwithJeremyHoloGuide
+!$global.talkedwithJeremyHoloGuide","AddBarEvent vic_JeremyHoloGuideEvent ""Stare at the TV"" ""There's that TV person that you talked to.""",,,
+vic_meetJeremyHoloGuideFirstTimeIntro,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTime
+!$global.firsttalkedwithJeremyHoloGuide","ShowPersonVisual false vic_JeremyHoloGuide
+#$global.talkedwithJeremyHoloGuide = true 30
+$global.firsttalkedwithJeremyHoloGuide = true
+FireAll vic_JeremyHoloGuideEventFirstTime","First intro
+1 About Self
+2 About Credibility
+3 About WhyGuide
+4 Lets get to business",,
+vic_JeremyHoloGuideEventFirstTimeAboutSelf,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutSelfAlreadySaid","AddOption 0 vic_JeremyHoloGuideEventFirstTimeAboutSelf ""About Self""",,,
+vic_JeremyHoloGuideEventFirstTimeAboutCredibility,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutCredibilityAlreadySaid","AddOption 1 vic_JeremyHoloGuideEventFirstTimeAboutCredibility ""About Credibility""",,,
+vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAlreadySaid","AddOption 2 vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide ""About WhyGuide""",,,
+vic_JeremyHoloGuideEventFirstTimeStraightToBusiness,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeStraightToBusinessAlreadySaid","AddOption 3 vic_JeremyHoloGuideEventFirstTimeStraightToBusiness ""Let's get to business""",,,
+vic_JeremyHoloGuideEventFirstTimeAboutSelfAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeAboutSelf","$vic_JeremyHoloGuideEventFirstTimeAboutSelfAlreadySaid = true 0
+FireAll vic_JeremyHoloGuideEventFirstTime","Telling about self",,
+vic_JeremyHoloGuideEventFirstTimeAboutCredibilityAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeAboutCredibility","$vic_JeremyHoloGuideEventFirstTimeAboutCredibilityAlreadySaid = true 0
+FireAll vic_JeremyHoloGuideEventFirstTime","Telling about credibility",,
+vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide","$vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAlreadySaid = true 0
+FireAll vic_JeremyHoloGuideEventFirstTime","Telling about WhyGuide",,
+vic_JeremyHoloGuideEventFirstTimeStraightToBusinessAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeStraightToBusiness",,"Alright let's get to business","vic_meetJeremyHoloGuideAboutHistory:history
+vic_meetJeremyHoloGuideAboutManagement:management
+vic_meetJeremyHoloGuideAboutGenetech:genetech
+vic_meetJeremyHoloGuideFirstTimeLeave:leave",
+vic_meetJeremyHoloGuideAboutHistory,DialogOptionSelected,"$option == meetJeremyHoloGuideAboutHistory",,"Telling about history","vic_meetJeremyHoloGuideAboutManagement:management
+vic_meetJeremyHoloGuideAboutGenetech:genetech
+vic_meetJeremyHoloGuideFirstTimeLeave:leave",
+vic_meetJeremyHoloGuideManagement,DialogOptionSelected,"$option == meetJeremyHoloGuideAboutManagement",,"Telling about management","vic_meetJeremyHoloGuideAboutHistory:history
+vic_meetJeremyHoloGuideAboutGenetech:genetech
+vic_meetJeremyHoloGuideFirstTimeLeave:leave",
+vic_meetJeremyHoloGuideAboutGenetech,DialogOptionSelected,"$option == meetJeremyHoloGuideAboutGenetech",,"Telling about genetech","vic_meetJeremyHoloGuideAboutHistory:history
+vic_meetJeremyHoloGuideAboutManagement:management
+vic_meetJeremyHoloGuideFirstTimeLeave:leave",
+vic_meetJeremyHoloGuideFirstTimeLeave,DialogOptionSelected,"$option == meetJeremyHoloGuideFirstTimeLeave",,"The screen flickers again. ""Well la-dee-dah Galatia Academy errand slave.""","backToBar:""Hmm, I'm sorry but I like working for Sebestian.""",
+,,,,,,
+# Jeremy Holo Guide Random Dialogue,,,,,,
+vic_meetJeremyHoloGuide2unique,DialogOptionSelected,"$option == vic_JeremyHoloGuideEvent
+$global.firsttalkedwithJeremyHoloGuide","ShowPersonVisual false vic_JeremyHoloGuide
+#$global.talkedwithJeremyHoloGuide = true 30
+FireAll vic_JeremyHoloGuideEvent","Random intro 1",,
+vic_meetJeremyHoloGuide3unique,DialogOptionSelected,"$option == vic_JeremyHoloGuideEvent
+$global.firsttalkedwithJeremyHoloGuide","ShowPersonVisual false vic_JeremyHoloGuide
+#$global.talkedwithJeremyHoloGuide = true 30
+FireAll vic_JeremyHoloGuideEvent","Random intro 2",,
+"#END Jeremy Holo Guide Random Dialogue",,,,,,
+"#END Jeremy Holo Guide",,,,,,
+
