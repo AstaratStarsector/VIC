@@ -1,5 +1,5 @@
 {
-  "id": "vic_strzyga",
+  "id": "vic_raum_weapon_strzyga",
   "specClass": "projectile",
   "projectileSpecId": "vic_strzyga_shot",
   "type": "BALLISTIC",

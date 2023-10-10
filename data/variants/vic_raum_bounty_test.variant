@@ -1,0 +1,26 @@
+{
+  "variantId": "vic_raum_bounty_test",
+  "hullId": "vic_raum_bounty",
+  "displayName": "Raum Bounty Test",
+  "goalVariant": false,
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "quality": 1,
+  "permaMods": [],
+
+  "hullMods": [       
+      "vic_notorious_big_iron_mode_buckshot"
+  ],
+
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0046": "vic_notorious_big_iron_buckshot"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

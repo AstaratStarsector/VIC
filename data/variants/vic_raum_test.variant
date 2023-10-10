@@ -7,7 +7,9 @@
   "fluxVents": 0,
   "quality": 1,
   "permaMods": [],
-  "hullMods": [],
+  "hullMods": [ 
+     "vic_raum_weapon_swapper_gagana_ultra"
+   ],
   "weaponGroups": [
     {
       "autofire": false,
@@ -29,7 +31,8 @@
         "WS0042": "vic_strigoy",
         "WS0043": "vic_strigoy",
         "WS0044": "vic_strigoy",
-        "WS0045": "vic_lightlaidlawaccelerator"
+        "WS0045": "vic_lightlaidlawaccelerator",
+        "WS0046": "vic_raum_weapon_gagana_ultra"
       }
     }
   ],

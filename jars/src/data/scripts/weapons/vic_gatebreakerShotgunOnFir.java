@@ -606,7 +606,7 @@ public class vic_gatebreakerShotgunOnFir implements EveryFrameWeaponEffectPlugin
                     360 * (float) Math.random(),
                     MathUtils.getRandomNumberInRange(-270f, 270f),
                     new Color(255, 255, 255, 255),
-                    true,
+                    false,
                     0.0f,
                     1f,
                     MathUtils.getRandomNumberInRange(1.5f, 2.5f)

@@ -492,7 +492,7 @@ public class vic_gatebreakerAutocannonOnFireRight implements EveryFrameWeaponEff
                 360 * (float) Math.random(),
                 MathUtils.getRandomNumberInRange(-270f,270f),
                 new Color(255, 255, 255, 255),
-                true,
+                false,
                 0.0f,
                 1f,
                 MathUtils.getRandomNumberInRange(0.5f,1.5f)

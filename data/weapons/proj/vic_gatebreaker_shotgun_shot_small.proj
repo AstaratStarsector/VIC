@@ -1,6 +1,5 @@
 {
 	"id":"vic_gatebreaker_shotgun_shot_small",
-	"onFireEffect":"data.scripts.weapons.vic_gatebreakerShotgunShot",
 	"specClass":"projectile",
 	"spawnType":"BALLISTIC",
 	"collisionClass":"PROJECTILE_FF",

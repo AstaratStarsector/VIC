@@ -90,12 +90,17 @@
 			"vic_devotee_pulse_secondary":"graphics/fx/vic_devotee_pulse_secondary.png",	
 			
 			"vic_gatebreaker_autocannon_shell":"graphics/fx/vic_gatebreaker_autocannon_shell.png",	
-		
 			"vic_gatebreaker_shotgun_shockwave":"graphics/fx/vic_gatebreaker_shotgun_shockwave.png",	
 
 			"vic_alkonost_shockwave":"graphics/fx/vic_alkonost_shockwave.png",	
 
 			"vic_xl_laidlaw_shockwave":"graphics/fx/vic_xl_laidlaw_shockwave.png",
+
+			"vic_notorious_big_iron_buckshot_shockwave":"graphics/fx/vic_notorious_big_iron_buckshot_shockwave.png",
+			"vic_notorious_big_iron_slug_shell":"graphics/fx/vic_notorious_big_iron_slug_shell.png",
+			"vic_notorious_big_iron_dragon_breath_shockwave":"graphics/fx/vic_notorious_big_iron_dragon_breath_shockwave.png",
+			"vic_notorious_big_iron_dragon_breath_shell":"graphics/fx/vic_notorious_big_iron_dragon_breath_shell.png",
+
 
 		},		
 		"illustrations":{
@@ -110,10 +115,11 @@
 		    "nex_vicVbombingIcon":"graphics/hullmods/vic_VBombHmod.png",
 		},
 		"characters":{
-			"tatiana":"graphics/portraits/characters/vic_tatiana.jpg",
-			"yuhas":"graphics/portraits/characters/vic_yuhas.png",
-			"yuhasSane":"graphics/portraits/characters/vic_yuhas_notFucked.png",
-			"stolasPilot":"graphics/portraits/vic_acehole4.png",
+			"vic_tatiana":"graphics/portraits/characters/vic_tatiana.jpg",
+			"vic_jrg":"graphics/portraits/characters/vic_jeremy_tv.jpg",
+			"vic_yuhas":"graphics/portraits/characters/vic_yuhas.png",
+			"vic_yuhasSane":"graphics/portraits/characters/vic_yuhas_notFucked.png",
+			"vic_stolasPilot":"graphics/portraits/vic_acehole4.png",
 		},
 		"icons":{
 			"entity":"graphics/icons/entity.png",

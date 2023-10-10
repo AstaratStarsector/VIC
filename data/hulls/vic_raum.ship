@@ -13,6 +13,7 @@
   "viewOffset": 0,
   "builtInMods": [
     "vic_dynamicshields",
+    "vic_raum_weapon_swapper",
     "vic_aerodynamicdesign"
   ],
   "builtInWeapons": {
@@ -43,8 +44,7 @@
     "WS0025": "vic_vernierEngine",
     "WS0026": "vic_vernierEngine",
     "WS0027": "vic_vernierEngine",
-    "WS0028": "vic_vernierEngine",
-    "WS0046": "vic_xl_laidlaw"
+    "WS0028": "vic_vernierEngine"
   },
   "weaponSlots": [
     {

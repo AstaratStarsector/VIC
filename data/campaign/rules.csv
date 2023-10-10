@@ -377,22 +377,28 @@ vic_PersonaChangeOfficer,DialogOptionSelected,"$option == vic_PersonaChangeOffic
 # Jeremy Holo Guide,,,,,,
 vic_meetJeremyHoloGuide,AddBarEvents,"$faction.id == vic
 !$global.firsttalkedwithJeremyHoloGuide
-!$global.talkedwithJeremyHoloGuide","AddBarEvent vic_JeremyHoloGuideEventFirstTime ""Stare at the TV"" ""There's a TV talking about hot single catgirls in the area.""",,,
+!$global.talkedwithJeremyHoloGuide","AddBarEvent vic_JeremyHoloGuideEventFirstTime ""Approach the holo-projector platform."" ""A little apart from the other tables there is a small platform with several chairs and a holographic projector. One of the chairs is occupied by a hologram of a bored man with a cigarette. The projector creates Conglomerate logos around the platform and flying strips of text: «VIC Holo-Guide, learn more about us in a friendly conversation!»""",,,
 vic_metJeremyHoloGuide,AddBarEvents,"$faction.id == vic
 $global.firsttalkedwithJeremyHoloGuide
-!$global.talkedwithJeremyHoloGuide","AddBarEvent vic_JeremyHoloGuideEvent ""Stare at the TV"" ""There's that TV person that you talked to.""",,,
+!$global.talkedwithJeremyHoloGuide","AddBarEvent vic_JeremyHoloGuideEvent ""Approach the holo-projector platform."" ""You easily spot the VIC Holo-Guide booth, inviting you with flashy colours and quirky info-dumps.""",,,
 vic_meetJeremyHoloGuideFirstTimeIntro,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTime
 !$global.firsttalkedwithJeremyHoloGuide","ShowPersonVisual false vic_JeremyHoloGuide
 #$global.talkedwithJeremyHoloGuide = true 30
-$global.firsttalkedwithJeremyHoloGuide = true
-FireAll vic_JeremyHoloGuideEventFirstTime","First intro
-1 About Self
-2 About Credibility
-3 About WhyGuide
-4 Lets get to business",,
+$global.firsttalkedwithJeremyHoloGuide = true","Greetings! - the hologram cheers up when it sees you approaching. A joyous and just a little bit smug smile spreads on its semi-transparent face, as it puffs out a cloud of holographic smoke, thick enough for you to almost smell it. Unless this holo-booth has actual olfactory simulation. 
+
+""It seems you're not in the Guide's databases yet, so let me just..."" - the man squints for a moment, and then proudly puts one leg on another, - And done! $playerName, I welcome you to the one and only, official VIC Holo-Guide. Do not worry about your personal data, it will only be kept for the sake of naturality of our conversations. Allow me to introduce myself, - the smoking man stands up from the chair. You can see that he's not exactly in a perfectly fit shape under his smart suit, an unusual occurrence among the megacorp's ideal-loving employees. He makes a short, but elegant bow.
+
+- I am Jeremiah Rainier-Galante, or, simply, Jeremy, the current head of the Conglomerate's PR department. Or, to be fully honest, an AI-driven replica of his persona, created and maintained for the VIC Holo-Guide project. Just to set things straight, I'm as close to the real ""me"" as it can possibly be, but I'm not sentient per se, only a complex simulation. ","vic_meetJeremyHoloGuideFirstTimeIntro2:Continue",
+vic_meetJeremyHoloGuideFirstTimeIntro2,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideFirstTimeIntro2
+","FireAll vic_JeremyHoloGuideEventFirstTime","- It is my job and my pleasure to provide you with all necessary information about the Conglomerate's past, present, and future, as well as any details, regarding our products, services, and all things related, - Not-a-Jeremy says, sitting back into his place. The sunglasses partially hide his eyes, yet they still glint with delight. 
+
+ - We can get straight to business and move onto the main topics, or, perhaps, you have any other additional questions? I'll gladly answer them to the best of my abilities. ",,
 vic_JeremyHoloGuideEventFirstTimeAboutSelf,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutSelfAlreadySaid","AddOption 0 vic_JeremyHoloGuideEventFirstTimeAboutSelf ""About Self""",,,
 vic_JeremyHoloGuideEventFirstTimeAboutCredibility,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutCredibilityAlreadySaid","AddOption 1 vic_JeremyHoloGuideEventFirstTimeAboutCredibility ""About Credibility""",,,
 vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAlreadySaid","AddOption 2 vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide ""About WhyGuide""",,,
+vic_JeremyHoloGuideEventFirstTimePoke,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimePokeAlreadySaid","AddOption 2 vic_JeremyHoloGuideEventFirstTimePoke ""Poke""",,,
+vic_JeremyHoloGuideEventFirstTimeKeepPoking,vic_JeremyHoloGuideEventFirstTime,"$vic_JeremyHoloGuideEventFirstTimePokeAlreadySaid","AddOption 2 vic_JeremyHoloGuideEventFirstTimeKeepPoking ""Keep poking""
+",,,
 vic_JeremyHoloGuideEventFirstTimeStraightToBusiness,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeStraightToBusinessAlreadySaid","AddOption 3 vic_JeremyHoloGuideEventFirstTimeStraightToBusiness ""Let's get to business""",,,
 vic_JeremyHoloGuideEventFirstTimeAboutSelfAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeAboutSelf","$vic_JeremyHoloGuideEventFirstTimeAboutSelfAlreadySaid = true 0
 FireAll vic_JeremyHoloGuideEventFirstTime","Telling about self",,
@@ -400,30 +406,41 @@ vic_JeremyHoloGuideEventFirstTimeAboutCredibilityAnswer,DialogOptionSelected,"$o
 FireAll vic_JeremyHoloGuideEventFirstTime","Telling about credibility",,
 vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide","$vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAlreadySaid = true 0
 FireAll vic_JeremyHoloGuideEventFirstTime","Telling about WhyGuide",,
+vic_JeremyHoloGuideEventFirstTimePokeAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimePoke","$vic_JeremyHoloGuideEventFirstTimePokeAlreadySaid = true 0
+FireAll vic_JeremyHoloGuideEventFirstTime","Poke Answer",,
+vic_JeremyHoloGuideEventFirstTimeKeepPokingAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeKeepPoking","$vic_JeremyHoloGuideEventFirstTimePokeAlreadySaid = true 0
+FireAll vic_JeremyHoloGuideEventFirstTime","Poke Answer",,
 vic_JeremyHoloGuideEventFirstTimeStraightToBusinessAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeStraightToBusiness",,"Alright let's get to business","vic_meetJeremyHoloGuideAboutHistory:history
 vic_meetJeremyHoloGuideAboutManagement:management
 vic_meetJeremyHoloGuideAboutGenetech:genetech
 vic_meetJeremyHoloGuideFirstTimeLeave:leave",
-vic_meetJeremyHoloGuideAboutHistory,DialogOptionSelected,"$option == meetJeremyHoloGuideAboutHistory",,"Telling about history","vic_meetJeremyHoloGuideAboutManagement:management
+vic_meetJeremyHoloGuideAboutHistory,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutHistory",,"Telling about history","vic_meetJeremyHoloGuideAboutManagement:management
 vic_meetJeremyHoloGuideAboutGenetech:genetech
 vic_meetJeremyHoloGuideFirstTimeLeave:leave",
-vic_meetJeremyHoloGuideManagement,DialogOptionSelected,"$option == meetJeremyHoloGuideAboutManagement",,"Telling about management","vic_meetJeremyHoloGuideAboutHistory:history
+vic_meetJeremyHoloGuideManagement,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutManagement",,"Telling about management","vic_meetJeremyHoloGuideAboutHistory:history
 vic_meetJeremyHoloGuideAboutGenetech:genetech
 vic_meetJeremyHoloGuideFirstTimeLeave:leave",
-vic_meetJeremyHoloGuideAboutGenetech,DialogOptionSelected,"$option == meetJeremyHoloGuideAboutGenetech",,"Telling about genetech","vic_meetJeremyHoloGuideAboutHistory:history
+vic_meetJeremyHoloGuideAboutGenetech,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutGenetech",,"Telling about genetech","vic_meetJeremyHoloGuideAboutHistory:history
 vic_meetJeremyHoloGuideAboutManagement:management
 vic_meetJeremyHoloGuideFirstTimeLeave:leave",
-vic_meetJeremyHoloGuideFirstTimeLeave,DialogOptionSelected,"$option == meetJeremyHoloGuideFirstTimeLeave",,"The screen flickers again. ""Well la-dee-dah Galatia Academy errand slave.""","backToBar:""Hmm, I'm sorry but I like working for Sebestian.""",
+vic_meetJeremyHoloGuideFirstTimeLeave,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideFirstTimeLeave",,"See ya firsttimer","backToBar:Return to the bar",
+vic_meetJeremyHoloGuideLeave,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideLeave",,"See ya","backToBar:Return to the bar",
 ,,,,,,
 # Jeremy Holo Guide Random Dialogue,,,,,,
 vic_meetJeremyHoloGuide2unique,DialogOptionSelected,"$option == vic_JeremyHoloGuideEvent
 $global.firsttalkedwithJeremyHoloGuide","ShowPersonVisual false vic_JeremyHoloGuide
 #$global.talkedwithJeremyHoloGuide = true 30
-FireAll vic_JeremyHoloGuideEvent","Random intro 1",,
+","Random intro 1","vic_meetJeremyHoloGuideAboutHistory:history
+vic_meetJeremyHoloGuideAboutManagement:management
+vic_meetJeremyHoloGuideAboutGenetech:genetech
+vic_meetJeremyHoloGuideLeave:leave",
 vic_meetJeremyHoloGuide3unique,DialogOptionSelected,"$option == vic_JeremyHoloGuideEvent
 $global.firsttalkedwithJeremyHoloGuide","ShowPersonVisual false vic_JeremyHoloGuide
 #$global.talkedwithJeremyHoloGuide = true 30
-FireAll vic_JeremyHoloGuideEvent","Random intro 2",,
+","Random intro 2","vic_meetJeremyHoloGuideAboutHistory:history
+vic_meetJeremyHoloGuideAboutManagement:management
+vic_meetJeremyHoloGuideAboutGenetech:genetech
+vic_meetJeremyHoloGuideLeave:leave",
 "#END Jeremy Holo Guide Random Dialogue",,,,,,
 "#END Jeremy Holo Guide",,,,,,
 

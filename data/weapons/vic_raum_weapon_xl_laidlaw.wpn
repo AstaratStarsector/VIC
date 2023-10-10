@@ -1,5 +1,5 @@
 {
-  "id": "vic_xl_laidlaw",
+  "id": "vic_raum_weapon_xl_laidlaw",
   "specClass": "projectile",
   "projectileSpecId": "vic_xl_laidlaw_shot",
   "type": "BALLISTIC",

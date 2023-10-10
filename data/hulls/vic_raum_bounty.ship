@@ -1,0 +1,1047 @@
+{
+  "hullName": "Raumpant",
+  "hullId": "vic_raum_bounty",
+  "hullSize": "CAPITAL_SHIP",
+  "spriteName": "graphics/ships/Raum Bounty/vic_raum_bounty.png",
+  "style": "LOW_TECH",
+  "height": 556,
+  "width": 204,
+  "center": [102, 278],
+  "collisionRadius": 294,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 291,
+  "viewOffset": 0,
+  "builtInMods": [
+    "insulatedengine",
+    "vic_variable_notorious_big_iron_mode"
+  ],
+  "builtInWeapons": {
+    "WS0001": "vic_blonkerRed",
+    "WS0002": "vic_blonkerRed",
+    "WS0003": "vic_blonkerCyan",
+    "WS0004": "vic_blonkerCyan",
+    "WS0012": "vic_blonkerRed",
+    "WS0013": "vic_blonkerRed",
+    "WS0014": "vic_blonkerRed",
+    "WS0015": "vic_blonkerRed",
+    "WS0016": "vic_blonkerRed",
+    "WS0017": "vic_vernierEngine",
+    "WS0018": "vic_vernierEngine",
+    "WS0019": "vic_blonkerRed",
+    "WS0020": "vic_blonkerRed",
+    "WS0021": "vic_vernierEngine",
+    "WS0022": "vic_vernierEngine",
+    "WS0023": "vic_vernierEngine",
+    "WS0024": "vic_vernierEngine",
+    "WS0025": "vic_blonkerRed"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-118, 95]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-118, -95]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-116.5, -23]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-116.5, 23]
+    },
+    {
+      "id": "WS0013",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [255.5, -46.5]
+    },
+    {
+      "id": "WS0014",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [255.5, 46.5]
+    },
+    {
+      "id": "WS0015",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-261.5, -23.5]
+    },
+    {
+      "id": "WS0016",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-261.5, 23.5]
+    },
+    {
+      "id": "WS0017",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -135,
+      "locations": [15.5, -74]
+    },
+    {
+      "id": "WS0018",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 135,
+      "locations": [15.5, 74]
+    },
+    {
+      "id": "WS0021",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -135,
+      "locations": [113, -49]
+    },
+    {
+      "id": "WS0022",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 135,
+      "locations": [113, 49]
+    },
+    {
+      "id": "WS0023",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -135,
+      "locations": [128, -48]
+    },
+    {
+      "id": "WS0024",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 135,
+      "locations": [128, 48]
+    },
+    {
+      "id": "WS0029",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 246,
+      "angle": -135,
+      "locations": [-133, -16]
+    },
+    {
+      "id": "WS0030",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 246,
+      "angle": 135,
+      "locations": [-133, 16]
+    },
+    {
+      "id": "WS0031",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 170,
+      "angle": -98,
+      "locations": [-98, -27]
+    },
+    {
+      "id": "WS0032",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 170,
+      "angle": 98,
+      "locations": [-98, 27]
+    },
+    {
+      "id": "WS0035",
+      "size": "MEDIUM",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 155,
+      "angle": -77.5,
+      "locations": [12, -38]
+    },
+    {
+      "id": "WS0036",
+      "size": "MEDIUM",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 155,
+      "angle": 77.5,
+      "locations": [12, 38]
+    },
+    {
+      "id": "WS0039",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 125,
+      "angle": -90,
+      "locations": [167, -33]
+    },
+    {
+      "id": "WS0040",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 125,
+      "angle": 90,
+      "locations": [167, 33]
+    },
+    {
+      "id": "WS0041",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 125,
+      "angle": -90,
+      "locations": [187, -33]
+    },
+    {
+      "id": "WS0042",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 125,
+      "angle": 90,
+      "locations": [187, 33]
+    },
+    {
+      "id": "WS0043",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": -71.5,
+      "locations": [207, -33]
+    },
+    {
+      "id": "WS0044",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": 71.5,
+      "locations": [207, 33]
+    },
+    {
+      "id": "WS0045",
+      "size": "MEDIUM",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 293,
+      "angle": 0,
+      "locations": [188, -0]
+    },
+    {
+      "id": "WS0046",
+      "size": "LARGE",
+      "type": "BUILT_IN",
+      "mount": "TURRET",
+      "arc": 120,
+      "angle": -0,
+      "locations": [-46, -0]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -169, -0,
+        -173.5, 7.5,
+        -172.5, -0,
+        -173.5, -7.5
+      ]
+    },
+    {
+      "id": "LB 2",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -170.5, -0,
+        -173.5, 7.5,
+        -172.5, -0,
+        -173.5, -7.5
+      ]
+    },
+    {
+      "id": "WS0005",
+      "size": "LARGE",
+      "type": "BALLISTIC",
+      "mount": "HARDPOINT",
+      "arc": 5,
+      "angle": -0,
+      "locations": [260, -0]
+    },
+    {
+      "id": "WS0006",
+      "size": "LARGE",
+      "type": "COMPOSITE",
+      "mount": "HARDPOINT",
+      "arc": 5,
+      "angle": 45,
+      "locations": [88, 39]
+    },
+    {
+      "id": "WS0007",
+      "size": "LARGE",
+      "type": "COMPOSITE",
+      "mount": "HARDPOINT",
+      "arc": 5,
+      "angle": -45,
+      "locations": [88, -39]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 135,
+      "angle": -62,
+      "locations": [-49, -64]
+    },
+    {
+      "id": "WS0009",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 135,
+      "angle": 62,
+      "locations": [-49, 64]
+    },
+    {
+      "id": "WS0010",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 199,
+      "angle": -98,
+      "locations": [-65, -71]
+    },
+    {
+      "id": "WS0011",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 199,
+      "angle": 98,
+      "locations": [-65, 71]
+    },
+    {
+      "id": "WS0012",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-204, -45]
+    },
+    {
+      "id": "WS0019",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-204, 45]
+    },
+    {
+      "id": "WS0020",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [153, -49]
+    },
+    {
+      "id": "WS0025",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [153, 49]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-127.5, 61],
+      "length": 78,
+      "width": 20,
+      "angle": -180,
+      "contrailSize": 20,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "engineCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          33,
+          33,
+          33,
+          200
+        ],
+        "contrailCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "contrailParticleDuration": 3
+      }
+    },
+    {
+      "location": [-127.5, -61],
+      "length": 78,
+      "width": 20,
+      "angle": 180,
+      "contrailSize": 20,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "engineCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          33,
+          33,
+          33,
+          200
+        ],
+        "contrailCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "contrailParticleDuration": 3
+      }
+    },
+    {
+      "location": [-135, 45.5],
+      "length": 45,
+      "width": 15,
+      "angle": -180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "engineCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          50,
+          50,
+          50,
+          200
+        ],
+        "contrailCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "contrailParticleDuration": 3
+      }
+    },
+    {
+      "location": [-135, -45.5],
+      "length": 45,
+      "width": 15,
+      "angle": 180,
+      "contrailSize": 15,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "engineCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          50,
+          50,
+          50,
+          200
+        ],
+        "contrailCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "contrailParticleDuration": 3
+      }
+    },
+    {
+      "location": [-180.5, 27],
+      "length": 55,
+      "width": 17,
+      "angle": -180,
+      "contrailSize": 17,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "engineCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          65,
+          65,
+          65,
+          200
+        ],
+        "contrailCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "contrailParticleDuration": 3
+      }
+    },
+    {
+      "location": [-180.5, -27],
+      "length": 55,
+      "width": 17,
+      "angle": 180,
+      "contrailSize": 17,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "engineCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          65,
+          65,
+          65,
+          200
+        ],
+        "contrailCampaignColor": [
+          255,
+          125,
+          75,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "contrailParticleDuration": 3
+      }
+    },
+    {
+      "location": [15, 75],
+      "length": 0,
+      "width": 9.899495,
+      "angle": 135,
+      "contrailSize": 9.899495,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [15, -75],
+      "length": 0,
+      "width": 9.899495,
+      "angle": -135,
+      "contrailSize": 9.899495,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [113, 49],
+      "length": 0,
+      "width": 5.656854,
+      "angle": 135,
+      "contrailSize": 5.656854,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [113, -49],
+      "length": 0,
+      "width": 5.656854,
+      "angle": -135,
+      "contrailSize": 5.656854,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [128, 48],
+      "length": 0,
+      "width": 7.071068,
+      "angle": 135,
+      "contrailSize": 7.071068,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [128, -48],
+      "length": 0,
+      "width": 7.071068,
+      "angle": -135,
+      "contrailSize": 7.071068,
+      "style": "CUSTOM",
+      "styleId": "LOW_TECH smokeless"
+    },
+    {
+      "location": [-126.5, 61],
+      "length": 47.5,
+      "width": 30,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "engineCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "contrailCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
+        "contrailParticleDuration": 0
+      }
+    },
+    {
+      "location": [-126.5, -61],
+      "length": 47.5,
+      "width": 30,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "engineCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "contrailCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
+        "contrailParticleDuration": 0
+      }
+    },
+    {
+      "location": [-134, 45.5],
+      "length": 27.5,
+      "width": 26,
+      "angle": -180,
+      "contrailSize": 26,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "engineCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "contrailCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
+        "contrailParticleDuration": 0
+      }
+    },
+    {
+      "location": [-134, -45.5],
+      "length": 27.5,
+      "width": 26,
+      "angle": 180,
+      "contrailSize": 26,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "engineCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "contrailCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
+        "contrailParticleDuration": 0
+      }
+    },
+    {
+      "location": [-179.5, 27],
+      "length": 32.5,
+      "width": 25,
+      "angle": -180,
+      "contrailSize": 25,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "engineCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "contrailCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
+        "contrailParticleDuration": 0
+      }
+    },
+    {
+      "location": [-179.5, -27],
+      "length": 32.5,
+      "width": 25,
+      "angle": 180,
+      "contrailSize": 25,
+      "style": "CUSTOM",
+      "styleSpec": {
+        "type": "SMOKE",
+        "engineColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "engineCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "mode": "",
+        "contrailColor": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "contrailCampaignColor": [
+          0,
+          100,
+          255,
+          255
+        ],
+        "contrailParticleSizeMult": 2.5,
+        "contrailParticleFinalSizeMult": 1.5,
+        "contrailMaxSpeedMult": 1,
+        "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
+        "contrailParticleDuration": 0
+      }
+    }
+  ],
+  "bounds": [
+    -274.5, 0.5,
+    -260, 13,
+    -177, 20,
+    -177, 35,
+    -147, 35.5,
+    -141.5, 40,
+    -128.5, 38,
+    -124, 67,
+    -85.5, 71,
+    -111, 87.5,
+    -110, 91.5,
+    -99.5, 100.5,
+    -78.5, 100.5,
+    -57, 88.5,
+    -57, 83.5,
+    -26, 64.5,
+    -18.5, 69,
+    -9, 66,
+    -9, 58.5,
+    0, 54.5,
+    15.5, 55,
+    50.5, 57.5,
+    62, 66.5,
+    80.5, 53,
+    76, 48.5,
+    101, 39.5,
+    146.5, 48.5,
+    155.5, 40.5,
+    248, 43.5,
+    250.5, 47,
+    255.5, 47,
+    263.5, 40,
+    264, 33.5,
+    276, 22,
+    276, 11,
+    269.5, 5,
+    269.5, -5,
+    276, -11,
+    276, -22,
+    264, -33.5,
+    263.5, -40,
+    255.5, -47,
+    250.5, -47,
+    248, -43.5,
+    155.5, -40.5,
+    146.5, -48.5,
+    101, -39.5,
+    76, -48.5,
+    80.5, -53,
+    62, -66.5,
+    50.5, -57.5,
+    15.5, -55,
+    0, -54.5,
+    -9, -58.5,
+    -9, -66,
+    -18.5, -69,
+    -26, -64.5,
+    -57, -83.5,
+    -57, -88.5,
+    -78.5, -100.5,
+    -99.5, -100.5,
+    -110, -91.5,
+    -111, -87.5,
+    -85.5, -71,
+    -124, -67,
+    -128.5, -38,
+    -141.5, -40,
+    -147, -35.5,
+    -177, -35,
+    -177, -20,
+    -260, -13,
+    -274.5, -0.5
+  ]
+}

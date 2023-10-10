@@ -1,0 +1,47 @@
+{
+  "id": "vic_notorious_big_iron_slug",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_notorious_big_iron_slug_shot",
+  "type": "BALLISTIC",
+  "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_notoriousBigIronSlugOnFire",
+  "displayArcRadius": 600,
+  "turretSprite": "graphics/weapons/Raum Bounty/vic_notorious_big_iron00.png",
+  "turretGunSprite": "graphics/weapons/Raum Bounty/vic_notorious_big_iron_recoil.png",
+  "hardpointSprite": "graphics/weapons/Raum Bounty/vic_notorious_big_iron00.png",
+  "hardpointGunSprite": "graphics/weapons/Raum Bounty/vic_notorious_big_iron_recoil.png",
+  "visualRecoil": 16,
+  "turretOffsets": [
+    79,
+    0.5
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    124.5,
+    0.5
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "MUZZLE_FLASH",
+  "numFrames": 28,
+  "frameRate": 28,
+  "muzzleFlashSpec": {
+    "length": 65,
+    "spread": 15,
+    "particleSizeMin": 10,
+    "particleSizeRange": 35,
+    "particleDuration": 0.75,
+    "particleCount": 30,
+    "particleColor": [
+      255,
+      120,
+      50,
+      245
+    ]
+  },
+  "fireSoundTwo": "vic_notorious_big_iron_slug_shot"
+}

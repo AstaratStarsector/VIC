@@ -1,9 +1,10 @@
 {
-  "id": "vic_xl_laidlaw_shrapnel",
+  "id": "vic_raum_weapon_gagana_ultra_shrapnel",
   "specClass": "projectile",
-  "projectileSpecId": "vic_xl_laidlaw_shrapnel_shot",
+  "projectileSpecId": "vic_gatebreaker_shotgun_shrapnel_shot",
   "type": "BALLISTIC",
   "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_gatebreakerShotgunOnFireLeft",
   "displayArcRadius": 600,
   "turretSprite": "graphics/weapons/Stolas Bounty/vic_stolas_bounty_main_gun_l.png",
   "turretGunSprite": "graphics/weapons/Stolas Bounty/vic_stolas_bounty_main_gun_barrel_l.png",

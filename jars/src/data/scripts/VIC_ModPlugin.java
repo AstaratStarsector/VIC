@@ -185,7 +185,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
             vicJeremyHoloGuide.setFaction("vic");
             vicJeremyHoloGuide.setId("vic_JeremyHoloGuide");
             vicJeremyHoloGuide.getName().setFirst("Jeremiah");
-            vicJeremyHoloGuide.getName().setLast("Rainier-Gianni");
+            vicJeremyHoloGuide.getName().setLast("Rainier-Galante");
             vicJeremyHoloGuide.setRankId("vicHighExecutive");
             vicJeremyHoloGuide.setPostId("vicPRDirector");
             vicJeremyHoloGuide.setGender(FullName.Gender.MALE);

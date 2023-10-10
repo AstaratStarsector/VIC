@@ -1,5 +1,5 @@
 {
-  "id": "vic_gagana_ultra",
+  "id": "vic_raum_weapon_gagana_ultra",
   "specClass": "projectile",
   "projectileSpecId": "vic_gagana_ultra_shot",
   "type": "BALLISTIC",
