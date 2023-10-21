@@ -1,25 +1,33 @@
 package data.scripts.plugins;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.AsteroidAPI;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.input.InputEventAPI;
+import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.combat.entities.Ship;
 import data.scripts.shipsystems.vic_shockDischarger;
 import data.scripts.util.MagicAnim;
-import data.scripts.util.MagicRender;
+import org.dark.shaders.light.StandardLight;
+import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
+import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
+import org.magiclib.util.MagicRender;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static data.scripts.utilities.vic_color.randomizeColor;
+import static data.scripts.utilities.vic_finders.damagableEnemiesInRangeWOAsteroids;
+import static data.scripts.weapons.vic_alkonostExplosion.explosion;
 
 public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
@@ -87,7 +95,6 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 NawiaFxList.remove(FX);
             }
         }
-
 
         //note:Defence Suppressor
         for (Map.Entry<ShipAPI, Float> entry : localData.defenceSuppressor.entrySet()) {
@@ -196,7 +203,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 }
                 entry2.setValue(entry2.getValue() - amount);
                 if (!entry2.getKey().isAlive() && ship.isAlive()) {
-                    if (!ship.getSystem().isActive()){
+                    if (!ship.getSystem().isActive()) {
                         float CDReduction = 0;
                         float CD = Global.getSettings().getShipSystemSpec("vic_hunterDrive").getCooldown(ship.getMutableStats());
                         switch (target.getHullSize()) {
@@ -224,7 +231,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             ShipAPI ship = entry.getKey();
             hunterBuffData buff = entry.getValue();
             buff.duration -= amount;
-            if (buff.duration <= 0){
+            if (buff.duration <= 0) {
                 ship.getMutableStats().getEnergyWeaponDamageMult().unmodify("vic_hunterBuff");
                 ship.getMutableStats().getBallisticWeaponDamageMult().unmodify("vic_hunterBuff");
                 ship.getMutableStats().getEnergyWeaponFluxCostMod().unmodify("vic_hunterBuff");
@@ -467,14 +474,14 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             }
         }
 
-        //note: Nawia Rain
-        for (NawiaRainData data : new ArrayList<>(localData.NawiaRain)){
+        //NOTE: Nawia Rain
+        for (NawiaRainData data : new ArrayList<>(localData.NawiaRain)) {
             if (data.ship == null || !data.ship.isAlive()) continue;
             data.amount += amount * data.ship.getMutableStats().getBallisticRoFMult().getModifiedValue();
-            while (data.amount >= data.timePerProj){
+            while (data.amount >= data.timePerProj) {
                 data.amount -= data.timePerProj;
-                data.projesSpawned ++;
-                data.ship.getFluxTracker().increaseFlux(data.weapon.getFluxCostToFire() * 0.5f * (1/data.projMax), false);
+                data.projesSpawned++;
+                data.ship.getFluxTracker().increaseFlux(data.weapon.getFluxCostToFire() * 0.5f * (1 / data.projMax), false);
                 float toDaysRandom = MathUtils.getRandomNumberInRange(-15, 15);
                 float toDaysRandom2 = MathUtils.getRandomNumberInRange(0.8f, 1.2f);
                 Vector2f Dir = Misc.getUnitVectorAtDegreeAngle(data.projectile.getFacing() + toDaysRandom);
@@ -497,7 +504,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
 
                 //if (MagicRender.screenCheck (0.5f, SpawnPoint)) engine.addPlugin(new vic_nawiaVisuals(SpawnPoint, proj.getFacing()));
-                if (MagicRender.screenCheck (0.5f, SpawnPoint)) vic_combatPlugin.AddNawiaFX(SpawnPoint, proj.getFacing());
+                if (MagicRender.screenCheck(0.5f, SpawnPoint))
+                    vic_combatPlugin.AddNawiaFX(SpawnPoint, proj.getFacing());
                 if (MagicRender.screenCheck(0.5f, SpawnPoint)) {
 
                     float animTime = MathUtils.getRandomNumberInRange(0.5f, 0.6f);
@@ -527,9 +535,466 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                 if (data.projesSpawned >= data.projMax) break;
             }
         }
-        for (NawiaRainData data : new ArrayList<>(localData.NawiaRain)){
+        for (NawiaRainData data : new ArrayList<>(localData.NawiaRain)) {
             if (data.projesSpawned >= data.projMax || !data.ship.isAlive()) localData.NawiaRain.remove(data);
         }
+
+        //NOTE: XL Laidlaw
+        for (XLLaidlawProjData data : new ArrayList<>(localData.XLLaidlawProjes)) {
+            DamagingProjectileAPI projectile = data.proj;
+
+            float distanceTraveled = projectile.getMoveSpeed() * amount;
+
+            List<Vector2f> damagePoints = new ArrayList<>();
+
+            while (data.distanceCounter + distanceTraveled >= 75f) {
+                float leftToCover = 75 - data.distanceCounter;
+                Vector2f damagePoint = (Vector2f) new Vector2f(projectile.getVelocity()).normalise().scale(leftToCover);
+                Vector2f.add(damagePoint, data.locLastFrame, damagePoint);
+                damagePoints.add(damagePoint);
+                distanceTraveled -= 75 - data.distanceCounter;
+                data.distanceCounter = 0;
+            }
+            data.distanceCounter += distanceTraveled;
+
+            //get all targets in between loc last frame and current loc
+            Vector2f searchPoint = (Vector2f) Vector2f.add(projectile.getLocation(), data.locLastFrame, null).scale(0.5f);
+            List<CombatEntityAPI> targets = CombatUtils.getEntitiesWithinRange(searchPoint, (projectile.getMoveSpeed() * amount + projectile.getProjectileSpec().getWidth()) * 0.5f);
+            //MathUtils.getNearestPointOnLine()
+
+
+            boolean shieldHit = false;
+
+            Vector2f collisionPoint = null;
+
+            targets.remove(projectile.getSource());
+
+            //detect if hull hit or shield hit
+            for (CombatEntityAPI target : targets) {
+                if (target instanceof DamagingProjectileAPI || target instanceof BattleObjectiveAPI) continue;
+
+                if (target instanceof ShipAPI) {
+                    ShipAPI ship = (ShipAPI) target;
+                    if (ship.getOwner() == projectile.getOwner() && (ship.isFighter() || ship.isDrone())
+                            || ship.getCollisionClass() == CollisionClass.NONE) {
+                        continue;
+                    }
+                    if (ship.getShield() != null
+                            && ship.getShield().isOn()
+                            && MathUtils.isWithinRange(projectile.getLocation(), ((ShipAPI) target).getShieldCenterEvenIfNoShield(), ((ShipAPI) target).getShieldRadiusEvenIfNoShield() + (projectile.getProjectileSpec().getWidth() * 0.5f))
+                            && ship.getShield().isWithinArc(projectile.getLocation())) {
+                        shieldHit = true;
+                        float angle = VectorUtils.getAngle(ship.getShield().getLocation(), projectile.getLocation());
+                        collisionPoint = MathUtils.getPointOnCircumference(ship.getShield().getLocation(), ship.getShield().getRadius(), angle);
+                    }
+                }
+                if (!shieldHit) {
+                    if (target.getExactBounds() == null) {
+                        collisionPoint = projectile.getLocation();
+                    } else {
+                        collisionPoint = CollisionUtils.getCollisionPoint(data.locLastFrame, projectile.getLocation(), target);
+                    }
+
+                    if (collisionPoint == null) {
+                        if (target instanceof ShipAPI && ((ShipAPI) target).isFighter()) {
+                            collisionPoint = target.getLocation();
+                        } else if (CollisionUtils.isPointWithinBounds(projectile.getLocation(), target)) {
+                            collisionPoint = projectile.getLocation();
+                        }
+                    }
+                }
+                if (collisionPoint == null) {
+                    break;
+                }
+                if (shieldHit && !data.damagedAlready.contains(target)) {
+                    engine.applyDamage(target,
+                            collisionPoint,
+                            projectile.getDamageAmount(),
+                            DamageType.FRAGMENTATION,
+                            projectile.getEmpAmount(),
+                            false,
+                            true,
+                            projectile.getSource());
+                    if (target instanceof ShipAPI && !((ShipAPI) target).isFighter()) engine.removeEntity(projectile);
+                } else {
+                    if (!data.damagedAlready.contains(target)) {
+                        //Get total armor on hit point by adding armor of all cells
+                        float totalArmor = 0f;
+                        if (target instanceof ShipAPI) {
+                            ArmorGridAPI grid = ((ShipAPI) target).getArmorGrid();
+                            int[] cell = grid.getCellAtLocation(collisionPoint);
+                            if (cell == null) return;
+                            int gridWidth = grid.getGrid().length;
+                            int gridHeight = grid.getGrid()[0].length;
+                            for (int i = -2; i <= 2; i++) {
+                                for (int j = -2; j <= 2; j++) {
+                                    if ((i == 2 || i == -2) && (j == 2 || j == -2)) continue; // skip corners
+
+                                    int cx = cell[0] + i;
+                                    int cy = cell[1] + j;
+
+                                    if (cx < 0 || cx >= gridWidth || cy < 0 || cy >= gridHeight) continue;
+
+                                    float mult = 0.5f;
+                                    if ((i <= 1 && i >= -1 && j <= 1 && j >= -1)) { // S hits
+                                        mult = 1f;
+                                    }
+
+                                    float armorInCell = grid.getArmorValue(cx, cy) * mult;
+                                    totalArmor += armorInCell;
+                                }
+                            }
+                        }
+                        if (totalArmor >= 1500) {
+                            engine.applyDamage(target,
+                                    collisionPoint,
+                                    projectile.getDamageAmount(),
+                                    DamageType.FRAGMENTATION,
+                                    0,
+                                    true,
+                                    true,
+                                    projectile.getSource());
+                            engine.removeEntity(projectile);
+                            //Global.getLogger(vic_combatPlugin.class).info("no pen hit damage: " + projectile.getDamageAmount());
+                        } else {
+                            engine.applyDamage(target,
+                                    collisionPoint,
+                                    projectile.getDamageAmount() * 0.45f,
+                                    DamageType.FRAGMENTATION,
+                                    0,
+                                    true,
+                                    true,
+                                    projectile.getSource());
+                            data.damagedAlready.add(target);
+                            //Global.getLogger(vic_combatPlugin.class).info("initial hit damage: " + projectile.getDamageAmount() * 0.35f);
+                        }
+                    } else {
+                        for (Vector2f damagePoint : damagePoints) {
+                            engine.applyDamage(target,
+                                    damagePoint,
+                                    projectile.getDamageAmount() * 0.25f,
+                                    DamageType.FRAGMENTATION,
+                                    0,
+                                    true,
+                                    true,
+                                    projectile.getSource());
+                        }
+                        //Global.getLogger(vic_combatPlugin.class).info("in hull hits damage: " + projectile.getDamageAmount() * 0.15f);
+                    }
+                }
+            }
+            data.locLastFrame = new Vector2f(projectile.getLocation());
+            if (!engine.isEntityInPlay(projectile)) {
+                localData.XLLaidlawProjes.remove(data);
+            }
+        }
+
+        final Color ARC_FRINGE_COLOR = new Color(52, 255, 62);
+        final Color ARC_CORE_COLOR = new Color(213, 255, 212);
+        final int NUM_ARCS = 10;
+
+        //NOTE: alkonost
+        for (Map.Entry<DamagingProjectileAPI, alkonostData> entry : new HashMap<>(localData.alkonostProjes).entrySet()) {
+            DamagingProjectileAPI proj = entry.getKey();
+            IntervalUtil timer = entry.getValue().timer;
+            Global.getSoundPlayer().playLoop("vic_alkonost_projectile_loop", proj, 1, 1, proj.getLocation(), proj.getVelocity(), 0.2f, 0.2f);
+
+            //Arc damage
+            float bonusDamage = proj.getDamageAmount() * 0.015f;
+            float EMPBonusDamage = bonusDamage * 5;
+
+            float passiveArcFrequencyMulti = 1;
+            if (proj.getElapsed() != 0)
+                passiveArcFrequencyMulti += org.magiclib.util.MagicAnim.smooth(proj.getElapsed() / entry.getValue().flightTime) * 0.5f;
+            timer.advance(amount * passiveArcFrequencyMulti);
+            if (timer.intervalElapsed()) {
+                List<CombatEntityAPI> validTargets = damagableEnemiesInRangeWOAsteroids(proj.getLocation(), 300, proj.getOwner());
+                int numArcs = MathUtils.getRandomNumberInRange(2, 3);
+                Global.getSoundPlayer().playSound("vic_alkonost_emp_arc", MathUtils.getRandomNumberInRange(0.8f, 1.2f), 0.5f, proj.getLocation(), new Vector2f());
+                for (int i = 0; i < numArcs; i++) {
+                    if (validTargets.isEmpty()) {
+                        engine.spawnEmpArcVisual(proj.getLocation(),
+                                proj,
+                                MathUtils.getRandomPointInCircle(proj.getLocation(), MathUtils.getRandomNumberInRange(100, 300)),
+                                null, 10f, // thickness of the lightning bolt
+                                randomizeColor(ARC_CORE_COLOR, 0.2f), //Central color
+                                randomizeColor(ARC_FRINGE_COLOR, 0.2f));
+
+                    } else {
+
+                        //And finally, fire at a random valid target
+                        CombatEntityAPI arcTarget = validTargets.get(MathUtils.getRandomNumberInRange(0, validTargets.size() - 1));
+
+                        Global.getCombatEngine().spawnEmpArc(
+                                proj.getSource(),
+                                proj.getLocation(),
+                                null,
+                                arcTarget,
+                                DamageType.ENERGY, //Damage type
+                                bonusDamage, //Damage
+                                EMPBonusDamage, //Emp
+                                100000f, //Max range
+                                "vic_alkonost_emp_arc", //Impact sound
+                                10f, // thickness of the lightning bolt
+                                randomizeColor(ARC_CORE_COLOR, 0.2f), //Central color
+                                randomizeColor(ARC_FRINGE_COLOR, 0.2f) //Fringe Color
+                        );
+                        validTargets.remove(arcTarget);
+                    }
+                }
+
+            }
+
+
+            if (entry.getValue().flightTime - proj.getElapsed() <= 1) {
+                float effectsMulti = (1f - (entry.getValue().flightTime - proj.getElapsed()));
+                float speedMulti = 1f + (effectsMulti * 2f);
+                float spriteSize = 1f + (effectsMulti * 0.5f);
+                entry.getValue().endFlightTimer.advance(amount * speedMulti);
+                if (entry.getValue().endFlightTimer.intervalElapsed()) {
+                    float duration = entry.getValue().endFlightTimer.getMaxInterval() * 1 / speedMulti;
+                    engine.addHitParticle(proj.getLocation(), proj.getVelocity(), 300, 1, duration * 0.3f, duration, randomizeColor(ARC_FRINGE_COLOR, 0.3f));
+
+
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("campaignEntities", "fusion_lamp_glow"),
+                            new Vector2f(proj.getLocation()),
+                            new Vector2f(proj.getVelocity()),
+                            new Vector2f(40 * spriteSize, 350 * spriteSize),
+                            new Vector2f(),
+                            proj.getFacing() - 45,
+                            0,
+                            Misc.setAlpha(randomizeColor(ARC_CORE_COLOR, 0.15f), Math.round(100 * speedMulti)),
+                            true,
+                            0,
+                            0,
+                            0f,
+                            0f,
+                            0,
+                            0,
+                            duration,
+                            0f,
+                            CombatEngineLayers.CONTRAILS_LAYER
+                    );
+                    //engine.addFloatingText(proj.getLocation(),"signal",30,Color.RED,null,0,0);
+                }
+
+            }
+            //ensure that proj detonates with full damage on end of flight
+            if (proj.isFading()) {
+                engine.removeEntity(proj);
+            }
+
+            //detonate
+            if (!engine.isEntityInPlay(proj)) {
+                float damage = proj.getDamageAmount() * 0.7f;
+                DamagingExplosionSpec explosion = new DamagingExplosionSpec(0.2f,
+                        180,
+                        90,
+                        damage,
+                        damage * 0.5f,
+                        CollisionClass.PROJECTILE_FF,
+                        CollisionClass.PROJECTILE_FIGHTER,
+                        3,
+                        3,
+                        0.5f,
+                        10,
+                        new Color(33, 255, 122, 255),
+                        new Color(MathUtils.getRandomNumberInRange(215, 255), MathUtils.getRandomNumberInRange(130, 170), MathUtils.getRandomNumberInRange(15, 55), 255)
+                );
+                explosion.setShowGraphic(false);
+                explosion.setDamageType(DamageType.ENERGY);
+                DamagingProjectileAPI exp = engine.spawnDamagingExplosion(
+                        explosion,
+                        proj.getSource(),
+                        new Vector2f(proj.getLocation()),
+                        false
+                );
+                for (CombatEntityAPI target : entry.getValue().damaged) {
+                    exp.addDamagedAlready(target);
+                }
+
+
+                // Arcing stuff
+                List<CombatEntityAPI> validTargets = new ArrayList<>();
+                for (CombatEntityAPI entityToTest : CombatUtils.getEntitiesWithinRange(proj.getLocation(), 400)) {
+                    if (entityToTest instanceof ShipAPI || entityToTest instanceof AsteroidAPI || entityToTest instanceof MissileAPI) {
+                        //Phased targets, and targets with no collision, are ignored
+                        if (entityToTest instanceof ShipAPI) {
+                            if (((ShipAPI) entityToTest).isPhased()) {
+                                continue;
+                            }
+                        }
+                        if (entityToTest.getCollisionClass().equals(CollisionClass.NONE)) {
+                            continue;
+                        }
+
+                        validTargets.add(entityToTest);
+                    }
+                }
+
+                for (int x = 0; x < NUM_ARCS; x++) {
+                    //If we have no valid targets, zap a random point near us
+
+                    if (validTargets.isEmpty()) {
+                        engine.spawnEmpArcVisual(proj.getLocation(),
+                                null,
+                                MathUtils.getRandomPointInCircle(proj.getLocation(), MathUtils.getRandomNumberInRange(250, 500)),
+                                null, 10f, // thickness of the lightning bolt
+                                randomizeColor(ARC_CORE_COLOR, 0.2f), //Central color
+                                randomizeColor(ARC_FRINGE_COLOR, 0.2f));
+                        Global.getSoundPlayer().playSound("vic_alkonost_emp_arc", MathUtils.getRandomNumberInRange(0.8f, 1.2f), 1, proj.getLocation(), new Vector2f());
+                        continue;
+                    }
+
+
+                    //And finally, fire at a random valid target
+                    CombatEntityAPI arcTarget = validTargets.get(MathUtils.getRandomNumberInRange(0, validTargets.size() - 1));
+
+                    Global.getCombatEngine().spawnEmpArc(
+                            proj.getSource(),
+                            proj.getLocation(),
+                            null,
+                            arcTarget,
+                            DamageType.ENERGY, //Damage type
+                            bonusDamage, //Damage
+                            EMPBonusDamage, //Emp
+                            100000f, //Max range
+                            "vic_alkonost_emp_arc", //Impact sound
+                            10f, // thickness of the lightning bolt
+                            randomizeColor(ARC_CORE_COLOR, 0.2f), //Central color
+                            randomizeColor(ARC_FRINGE_COLOR, 0.2f) //Fringe Color
+                    );
+                }
+                //Visual explosion shit too big, so it has its own class
+                explosion(proj, Global.getCombatEngine());
+                localData.alkonostProjes.remove(proj);
+            }
+
+        }
+
+        for (vic_combatPlugin.rokhAnimationData data : new ArrayList<>(localData.rokhs)) {
+            if (!data.weapon.getShip().isAlive()){
+                localData.rokhs.remove(data);
+                continue;
+            }
+            WeaponAPI weapon = data.weapon;
+            if (weapon == null) continue;
+            //render stuff
+            if (weapon.getAmmo() == 0){
+                //holoFlicker
+                data.timerFlicker.advance(amount * 0.5f);
+                data.timerRateChange.advance(amount);
+                if (data.timerFlicker.intervalElapsed()) {
+                    data.alphaChangeRate = MathUtils.getRandomNumberInRange(2.5f, 1f) * data.alphaChangeRate >= 0 ? -1 : 1;
+                }
+                if (data.timerFlicker.intervalElapsed()) {
+                    //data.holoAlpha = Math.random() > 0.5f ? 0.5f : 1;
+                }
+                data.holoAlpha += data.alphaChangeRate * amount;
+                data.holoAlpha = MathUtils.clamp(data.holoAlpha, 0.5f, 1);
+
+                //glow
+                data.timerGlowFlicker.advance(amount * 0.5f);
+                data.timerGlowRateChange.advance(amount);
+                if (data.timerGlowFlicker.intervalElapsed()) {
+                    data.glowAlphaChangeRate = MathUtils.getRandomNumberInRange(2.5f, 1f) * data.glowAlphaChangeRate >= 0 ? -1 : 1;
+                }
+                if (data.timerGlowFlicker.intervalElapsed()) {
+                    //data.glowAlpha = Math.random() > 0.5f ? 0.5f : 1;
+                }
+                data.glowAlpha += data.alphaChangeRate * amount;
+                data.glowAlpha = MathUtils.clamp(data.holoAlpha, 0.5f, 1);
+
+                float progress = weapon.getAmmoTracker().getReloadProgress();
+                //pos of printer
+                Vector2f renderPoint = data.printerPos;
+                if (progress >= 0.95f){
+                    float localProgress = org.magiclib.util.MagicAnim.smooth((progress - 0.95f)/ (0.05f));
+                    renderPoint = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle()).scale(-64 + 26 * localProgress);
+
+                } else if (progress >= 0.15f){
+                    Global.getSoundPlayer().playLoop("vic_printer",data.weapon.getShip(),1,1,data.weapon.getLocation(),data.weapon.getShip().getVelocity(), 0.3f,0.3f);
+                    float localProgress = org.magiclib.util.MagicAnim.smooth((progress - 0.15f) / (1 - 0.2f));
+
+                    renderPoint = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle()).scale(64 - 128 * localProgress);
+                } else if (progress >= 0.05f){
+                    float localProgress = org.magiclib.util.MagicAnim.smooth((progress - 0.05f)/ (0.1f));
+
+                    renderPoint = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle()).scale(-64 + 128 * localProgress);
+                } else {
+                    float localProgress = org.magiclib.util.MagicAnim.smooth((progress)/ (0.05f));
+                    renderPoint = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle()).scale(-38 - 26 * localProgress);
+                }
+
+                data.headAlpha = 1;
+                if (progress >= 0.95f){
+                    data.glowAlpha = 0;
+                    data.headAlpha = 0;
+                } else if(progress >= 0.93f){
+                    float localProgress = MathUtils.clamp(1 - (progress - 0.93f) / 0.02f, 0, 1);
+                    data.glowAlpha = localProgress;
+                } else if (progress >= 0.15f && progress <= 0.17f){
+                    float localProgress = MathUtils.clamp((progress - 0.15f) / 0.02f, 0, 1);
+                    data.glowAlpha = localProgress;
+                } else if (progress <= 0.15f){
+                    data.glowAlpha = 0;
+                    data.headAlpha = 0;
+                }
+                Vector2f.add(renderPoint, weapon.getLocation(), renderPoint);
+                data.printerPos = new Vector2f(renderPoint);
+                //pos of sparks and secondary glow
+                float cycleTime = 0.05f;
+                float reminder = (progress % cycleTime) / cycleTime;
+                float printerHeadSway = (float) Math.cos((reminder * Math.PI * 2));
+                Vector2f sideVector = Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle() - 90);
+                data.headPos = Vector2f.add(renderPoint, (Vector2f) new Vector2f(sideVector).scale(13 * printerHeadSway), null);
+
+            } else {
+                Vector2f renderPoint = (Vector2f) Misc.getUnitVectorAtDegreeAngle(weapon.getCurrAngle()).scale(-38);
+                Vector2f.add(renderPoint, weapon.getLocation(), renderPoint);
+                data.printerPos = renderPoint;
+                data.glowAlpha = 0;
+                data.headAlpha = 0;
+            }
+
+            if (weapon.getAmmo() == 0) {
+                data.timer.advance(amount);
+                if (data.timer.intervalElapsed()) {
+                    float progress = weapon.getAmmoTracker().getReloadProgress();
+                    if (progress >= 0.155f && progress < 0.935f) {
+                        for (int i = 0; i <= MathUtils.getRandomNumberInRange(4, 6); i++) {
+                            Color smoothColor = Math.random() >= 0.5f ? new Color(183, 87, 9, 255) : new Color(0, 171, 158, 255);
+                            Color hitColor = Math.random() >= 0.5f ? new Color(241, 139, 63, 255) : new Color(0, 218, 200, 255);
+                            float particleAngle = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-40f, 40f);
+                            if (Math.random() >= 0.5){
+                                particleAngle -= 180;
+                            }
+                            Vector2f velocity = (Vector2f) Misc.getUnitVectorAtDegreeAngle(particleAngle).scale(MathUtils.getRandomNumberInRange(75f, 200f));
+                            Vector2f.add(velocity,weapon.getShip().getVelocity(),velocity);
+                            float duration = MathUtils.getRandomNumberInRange(0.15f, 0.3f);
+                            engine.addSmoothParticle(data.headPos,
+                                    velocity,
+                                    MathUtils.getRandomNumberInRange(3f, 5f),
+                                    MathUtils.getRandomNumberInRange(0.8f, 2f),
+                                    duration * 0.1f,
+                                    duration,
+                                    randomizeColor(smoothColor, 0.2f));
+                            engine.addHitParticle(data.headPos,
+                                    velocity,
+                                    MathUtils.getRandomNumberInRange(2f, 4f),
+                                    MathUtils.getRandomNumberInRange(0.8f, 2f),
+                                    duration * 0.2f,
+                                    duration,
+                                    randomizeColor(hitColor,0.2f));
+
+                        }
+
+                    }
+                }
+            }
+        }
+
 
     }
 
@@ -589,21 +1054,21 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                     break;
                 case OUT:
                     alphaMultInner *= effectLevel;
-                    alphaMultOuter =  0;
+                    alphaMultOuter = 0;
                     break;
                 case ACTIVE:
                     alphaMultOuter = 0;
                     break;
                 case COOLDOWN:
                     float CD = system.getCooldownRemaining();
-                    if (CD <=1) alphaMultOuter *= 1 - CD;
+                    if (CD <= 1) alphaMultOuter *= 1 - CD;
                     else alphaMultOuter = 0;
                 case IDLE:
                     alphaMultInner = 0;
             }
             //Global.getCombatEngine().maintainStatusForPlayerShip("vic_shockDischarger", "graphics/icons/hullsys/emp_emitter.png", "Flux Rapture", Math.round(alphaMultInner * 100f)/100f + "n/" + Math.round(alphaMultOuter * 100f)/100f, false);
 
-            if (alphaMultOuter > 0){
+            if (alphaMultOuter > 0) {
                 OuterRing.setAlphaMult(alphaMultOuter);
                 OuterRing.setCenter(OuterRing.getHeight(), 0);
                 for (float i = 0; i < 4; i++) {
@@ -611,7 +1076,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                     OuterRing.renderAtCenter(ship.getLocation().getX(), ship.getLocation().getY());
                 }
             }
-            if (alphaMultInner > 0){
+            if (alphaMultInner > 0) {
                 InnerRing.setAlphaMult(alphaMultInner);
                 InnerRing.setCenter(InnerRing.getHeight(), 0);
                 for (float i = 0; i < 4; i++) {
@@ -713,7 +1178,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             if (engine == null) return;
             final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
             localData.FluxRaptureRender.put(ship, MathUtils.getRandomNumberInRange(0f, 360f));
-        } catch (Exception ignored){
+        } catch (Exception ignored) {
 
         }
     }
@@ -764,13 +1229,12 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
     }
 
 
-
     public static void AddHunterBuff(ShipAPI ship, ShipAPI.HullSize hullSize) {
         CombatEngineAPI engine = Global.getCombatEngine();
         if (engine == null) return;
         final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
         hunterBuffData buff;
-        if (localData.hunterDriveBuffs.containsKey(ship)){
+        if (localData.hunterDriveBuffs.containsKey(ship)) {
             buff = localData.hunterDriveBuffs.get(ship);
             buff.duration = buff.maxDuration;
         } else {
@@ -779,6 +1243,36 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         }
         buff.addStacks(hullSize);
 
+    }
+
+    public static void AddXLLaidlawProj(DamagingProjectileAPI projectile) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        localData.XLLaidlawProjes.add(new XLLaidlawProjData(projectile));
+    }
+
+    public static void AddAlkonostProj(DamagingProjectileAPI projectile) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        localData.alkonostProjes.put(projectile, new alkonostData(projectile));
+    }
+
+    public static void SetAsDamagedForAlkonost(DamagingProjectileAPI projectile, CombatEntityAPI target) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        if (localData.alkonostProjes.containsKey(projectile)) {
+            localData.alkonostProjes.get(projectile).damaged.add(target);
+        }
+    }
+
+    public static void AddRokh(WeaponAPI weapon) {
+        CombatEngineAPI engine = Global.getCombatEngine();
+        if (engine == null) return;
+        final LocalData localData = (LocalData) engine.getCustomData().get(DATA_KEY);
+        localData.rokhs.add(new rokhAnimationData(weapon));
     }
 
     //note: local data
@@ -796,7 +1290,10 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         final HashMap<ShipAPI, HashMap<ShipAPI, Float>> hunterDriveTargets = new HashMap<>(10);
         final List<spriteRender> spritesRender = new ArrayList<>(50);
         final List<NawiaRainData> NawiaRain = new ArrayList<>(50);
-        final HashMap<ShipAPI, hunterBuffData> hunterDriveBuffs= new HashMap<>(10);
+        final HashMap<ShipAPI, hunterBuffData> hunterDriveBuffs = new HashMap<>(10);
+        final List<XLLaidlawProjData> XLLaidlawProjes = new ArrayList<>(50);
+        final HashMap<DamagingProjectileAPI, alkonostData> alkonostProjes = new HashMap<>(10);
+        public final List<rokhAnimationData> rokhs = new ArrayList<>(10);
     }
 
     private static final class ZlydzenTargetsDataShield {
@@ -883,13 +1380,14 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
     }
 
     private static final class NawiaRainData {
-        NawiaRainData(Vector2f hitPoint, Vector2f targetVelocity, ShipAPI ship, DamagingProjectileAPI projectile){
+        NawiaRainData(Vector2f hitPoint, Vector2f targetVelocity, ShipAPI ship, DamagingProjectileAPI projectile) {
             this.hitPoint = hitPoint;
             this.targetVelocity = targetVelocity;
             this.ship = ship;
             this.projectile = projectile;
             this.weapon = projectile.getWeapon();
         }
+
         float projMax = 15;
         float timePerProj = 2f / projMax;
         float amount = 0;
@@ -983,19 +1481,20 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
     }
 
     private static final class hunterBuffData {
-        public hunterBuffData(ShipAPI ship){
+        public hunterBuffData(ShipAPI ship) {
             this.ship = ship;
             duration = maxDuration;
         }
+
         Integer stacks = 0;
         float duration;
         float maxDuration = 30;
         Integer maxStacks = 5;
         ShipAPI ship;
 
-        public void addStacks(ShipAPI.HullSize hullSize){
+        public void addStacks(ShipAPI.HullSize hullSize) {
             int add = 0;
-            switch (hullSize){
+            switch (hullSize) {
                 case FRIGATE:
                     add = 1;
                     break;
@@ -1012,6 +1511,59 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             stacks += add;
             stacks = Math.min(maxStacks, stacks);
         }
+    }
+
+    static final class XLLaidlawProjData {
+        public XLLaidlawProjData(DamagingProjectileAPI proj) {
+            this.proj = proj;
+            locLastFrame = proj.getLocation();
+        }
+
+        DamagingProjectileAPI proj;
+        float distanceCounter;
+        Vector2f locLastFrame;
+        List<CombatEntityAPI> damagedAlready = new ArrayList<>();
+
+
+    }
+
+    static final class alkonostData {
+        public alkonostData(DamagingProjectileAPI proj) {
+            this.proj = proj;
+            this.flightTime = proj.getWeapon().getRange() / proj.getMoveSpeed();
+        }
+
+        DamagingProjectileAPI proj;
+        List<CombatEntityAPI> damaged = new ArrayList<>();
+        IntervalUtil timer = new IntervalUtil(0.3f, 0.5f);
+        IntervalUtil endFlightTimer = new IntervalUtil(0.2f, 0.2f);
+        float flightTime;
+
+    }
+
+    static final class rokhAnimationData {
+        public rokhAnimationData(WeaponAPI weapon) {
+            this.weapon = weapon;
+        }
+
+        WeaponAPI weapon;
+        IntervalUtil timer = new IntervalUtil(0.05f, 0.1f);
+        float holoAlpha = 1;
+        float alphaChangeRate = 0.1f;
+        IntervalUtil timerRateChange = new IntervalUtil(0.7f, 1.5f);
+        IntervalUtil timerFlicker = new IntervalUtil(0.05f, 0.25f);
+
+        float glowAlpha = 1;
+        float glowAlphaChangeRate = 0.1f;
+        IntervalUtil timerGlowRateChange = new IntervalUtil(0.7f, 1.5f);
+        IntervalUtil timerGlowFlicker = new IntervalUtil(0.1f, 0.3f);
+
+        Vector2f printerPos = new Vector2f();
+        Vector2f headPos = new Vector2f();
+
+        float headAlpha = 1;
+
+
     }
 
     private static final class animationRenderData {

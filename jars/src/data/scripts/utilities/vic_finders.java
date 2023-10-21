@@ -1,12 +1,15 @@
 package data.scripts.utilities;
 
-import com.fs.starfarer.api.combat.CombatEntityAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.api.combat.WeaponAPI;
-import data.scripts.weapons.autofireAI.vic_VerliokaAutofireAI;
+import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.combat.*;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
+import org.lwjgl.util.vector.Vector2f;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vic_finders {
 
@@ -29,6 +32,7 @@ public class vic_finders {
         }
         return closest;
     }
+
     public static ShipAPI nearestEnemyFighterInWeaponArc(WeaponAPI weapon) {
 
         ShipAPI closest = null;
@@ -50,5 +54,30 @@ public class vic_finders {
 
         }
         return closest;
+    }
+
+    public static List<CombatEntityAPI> damagableEnemiesInRangeWOAsteroids(Vector2f location, float range, int side) {
+
+        List<CombatEntityAPI> entities = new ArrayList<>();
+
+        for (ShipAPI ship : Global.getCombatEngine().getShips())
+        {
+            if (ship.getOwner() != side && !ship.isPhased() && ship.getCollisionClass() != CollisionClass.NONE && MathUtils.isWithinRange(ship, location, range))
+            {
+
+                entities.add(ship);
+            }
+        }
+
+        // This also includes missiles
+        for (CombatEntityAPI proj : Global.getCombatEngine().getProjectiles())
+        {
+            if (proj instanceof MissileAPI && proj.getOwner() != side && proj.getCollisionClass() != CollisionClass.NONE &&  MathUtils.isWithinRange(proj, location, range))
+            {
+                entities.add(proj);
+            }
+        }
+
+        return entities;
     }
 }

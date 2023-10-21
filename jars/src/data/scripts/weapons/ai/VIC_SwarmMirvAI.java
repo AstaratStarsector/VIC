@@ -255,7 +255,7 @@ public class VIC_SwarmMirvAI extends VIC_BaseMissile {
                 ShipAPI ship = (ShipAPI) target;
                 if (ship.isPhased() && ship.isAlive()) {
                     // We were locked onto a ship that has now phased, do not attempt to acquire a new target
-                    return false;
+                    return true;
                 }
             }
             // Look for a target that is not a drone or fighter, if available

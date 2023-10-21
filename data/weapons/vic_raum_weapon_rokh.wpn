@@ -1,0 +1,46 @@
+{
+  "id": "vic_raum_weapon_rokh",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_rokh_main",
+  "type": "MISSILE",
+  "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_RochWeaponScript",
+  "displayArcRadius": 300,
+  "turretSprite": "graphics/weapons/vic_rokh_launcher.png",
+  "hardpointSprite": "graphics/weapons/vic_rokh_launcher.png",
+  #"renderHints": [    RENDER_LOADED_MISSILES],
+  "turretOffsets": [
+    0,
+    0
+  ],
+  "turretAngleOffsets": [
+    0
+  ],
+  "hardpointOffsets": [
+    11.5,
+    0
+  ],
+  "hardpointAngleOffsets": [
+    0
+  ],
+  "barrelMode": "LINKED",
+  "animationType": "SMOKE",
+  "smokeSpec": {
+    "particleSizeMin": 30,
+    "particleSizeRange": 10,
+    "cloudParticleCount": 5,
+    "cloudDuration": 1,
+    "cloudRadius": 20,
+    "blowbackParticleCount": 10,
+    "blowbackDuration": 2,
+    "blowbackLength": -30,
+    "blowbackSpread": 20,
+    "particleColor": [
+      100,
+      100,
+      100,
+      0
+    ]
+  },
+  "fireSoundTwo": "vic_apocrypha"
+}

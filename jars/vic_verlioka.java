@@ -7,7 +7,7 @@ import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.plugins.vic_combatPlugin;
 import data.scripts.util.MagicLensFlare;
-import data.scripts.util.MagicRender;
+import org.magiclib.util.MagicRender;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;

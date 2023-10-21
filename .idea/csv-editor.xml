@@ -31,7 +31,28 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\data\campaign\procgen\star_gen_data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\data\campaign\rules.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data\campaign\sim_opponents.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data\campaign\sim_opponents_dev.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -130,6 +151,20 @@
           </value>
         </entry>
         <entry key="\data\hulls\wing_data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data\lights\vic_light_data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data\lights\vic_texture_data — копия.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

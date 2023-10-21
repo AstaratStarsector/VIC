@@ -38,6 +38,7 @@ public class vic_brandEngineUpgradesDetectionRange implements EveryFrameScript {
         }
         String ID = "vic_brandEngineUpgrades";
         player.getStats().getDetectedRangeMod().modifyPercent(ID, total, "VIC engines");
+
     }
 
     @Override

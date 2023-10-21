@@ -284,7 +284,7 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
                 ShipAPI ship = (ShipAPI) target;
                 if (ship.isPhased() && ship.isAlive()) {
                     // We were locked onto a ship that has now phased, do not attempt to acquire a new target
-                    return false;
+                    return true;
                 }
             }
             // Look for a target that is not a drone or fighter, if available
@@ -293,11 +293,8 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
             if (target == null) {
                 setTarget(findBestTarget(true));
             }
-            if (target == null) {
-                return false;
-            }
+            return target != null;
         }
-
         // If our target is valid but a drone or fighter, see if there's a bigger ship we can aim for instead
         else {
             if (isDroneOrFighter(target)) {

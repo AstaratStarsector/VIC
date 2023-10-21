@@ -599,7 +599,7 @@
 		{"file": "sounds/effects/vic_gagana_ultra_shot.ogg", "pitch": 1.10, "volume": 0.7,},
 	],
 
-		"vic_gagana_ultra_hit":[
+	"vic_gagana_ultra_hit":[
 		{"file": "sounds/effects/vic_gagana_ultra_hit.ogg", "pitch": 0.90, "volume": 1,},
 		{"file": "sounds/effects/vic_gagana_ultra_hit.ogg", "pitch": 0.95, "volume": 1,},
 		{"file": "sounds/effects/vic_gagana_ultra_hit.ogg", "pitch": 1.00, "volume": 1,},
@@ -607,25 +607,25 @@
 		{"file": "sounds/effects/vic_gagana_ultra_hit.ogg", "pitch": 1.10, "volume": 1,},
 	],
 
-			"vic_strzyga_start":[
+	"vic_strzyga_start":[
 		{"file":"sounds/effects/vic_strzyga_start.ogg","pitch":0.9,"volume":0.5},
 	],
 
-			"vic_strzyga_loop":[
+	"vic_strzyga_loop":[
 		{"file": "sounds/effects/vic_strzyga_loop.ogg", "pitch": 1.00, "volume": 0.5,},
 	],
 
-			"vic_strzyga_end":[
+	"vic_strzyga_end":[
 		{"file": "sounds/effects/vic_strzyga_end.ogg", "pitch": 1.00, "volume": 0.35,},
 	],
 
-			"vic_strzyga_explosion":[
+	"vic_strzyga_explosion":[
 		{"file": "sounds/effects/vic_strzyga_explosion_1.ogg", "pitch": 1, "volume": 0.25,},
 		{"file": "sounds/effects/vic_strzyga_explosion_2.ogg", "pitch": 1, "volume": 0.25,},
 		{"file": "sounds/effects/vic_strzyga_explosion_3.ogg", "pitch": 1, "volume": 0.25,},
 	],
 
-		"vic_alkonost_shot":[
+	"vic_alkonost_shot":[
 		{"file": "sounds/effects/vic_alkonost_shot.ogg", "pitch": 0.90, "volume": 1,},
 		{"file": "sounds/effects/vic_alkonost_shot.ogg", "pitch": 0.95, "volume": 1,},
 		{"file": "sounds/effects/vic_alkonost_shot.ogg", "pitch": 1.00, "volume": 1,},
@@ -633,11 +633,11 @@
 		{"file": "sounds/effects/vic_alkonost_shot.ogg", "pitch": 1.10, "volume": 1,},
 	],
 
-		"vic_alkonost_chargeup":[
+	"vic_alkonost_chargeup":[
 		{"file": "sounds/effects/vic_alkonost_chargeup.ogg", "pitch": 1.10, "volume": 1,},
 	],
 
-		"vic_alkonost_explosion":[
+	"vic_alkonost_explosion":[
 		{"file": "sounds/effects/vic_alkonost_explosion.ogg", "pitch": 0.90, "volume": 1.25,},
 		{"file": "sounds/effects/vic_alkonost_explosion.ogg", "pitch": 0.95, "volume": 1.25,},
 		{"file": "sounds/effects/vic_alkonost_explosion.ogg", "pitch": 1.00, "volume": 1.25,},
@@ -645,7 +645,7 @@
 		{"file": "sounds/effects/vic_alkonost_explosion.ogg", "pitch": 1.10, "volume": 1.25,},
 	],
 
-		"vic_alkonost_emp_arc":[
+	"vic_alkonost_emp_arc":[
 		{"file": "sounds/effects/vic_alkonost_emp_arc.ogg", "pitch": 0.90, "volume": 0.7,},
 		{"file": "sounds/effects/vic_alkonost_emp_arc.ogg", "pitch": 0.95, "volume": 0.7,},
 		{"file": "sounds/effects/vic_alkonost_emp_arc.ogg", "pitch": 1.00, "volume": 0.7,},
@@ -653,11 +653,11 @@
 		{"file": "sounds/effects/vic_alkonost_emp_arc.ogg", "pitch": 1.10, "volume": 0.7,},
 	],
 
-		"vic_alkonost_projectile_loop":[
+	"vic_alkonost_projectile_loop":[
 		{"file": "sounds/effects/vic_alkonost_projectile_loop.ogg", "pitch": 1.00, "volume": 0.5,},
 	],
 
-			"vic_xl_laidlaw_shot":[
+	"vic_xl_laidlaw_shot":[
 		{"file": "sounds/effects/vic_xl_laidlaw_shot.ogg", "pitch": 0.90, "volume": 1,},
 		{"file": "sounds/effects/vic_xl_laidlaw_shot.ogg", "pitch": 0.95, "volume": 1,},
 		{"file": "sounds/effects/vic_xl_laidlaw_shot.ogg", "pitch": 1.00, "volume": 1,},
@@ -665,13 +665,13 @@
 		{"file": "sounds/effects/vic_xl_laidlaw_shot.ogg", "pitch": 1.10, "volume": 1,},
 	],
 
-			"vic_xl_laidlaw_charge":[
+	"vic_xl_laidlaw_charge":[
 		{"file": "sounds/effects/vic_xl_laidlaw_charge.ogg", "pitch": 1.00, "volume": 1,},
 		{"file": "sounds/effects/vic_xl_laidlaw_charge.ogg", "pitch": 1.05, "volume": 1,},
 		{"file": "sounds/effects/vic_xl_laidlaw_charge.ogg", "pitch": 1.10, "volume": 1,},
 	],
 
-				"vic_notorious_big_iron_buckshot_shot":[
+	"vic_notorious_big_iron_buckshot_shot":[
 		{"file": "sounds/effects/vic_notorious_big_iron_buckshot_shot.ogg", "pitch": 0.90, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_buckshot_shot.ogg", "pitch": 0.95, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_buckshot_shot.ogg", "pitch": 1.00, "volume": 1.5,},
@@ -679,19 +679,22 @@
 		{"file": "sounds/effects/vic_notorious_big_iron_buckshot_shot.ogg", "pitch": 1.10, "volume": 1.5,},
 	],
 
-				"vic_notorious_big_iron_slug_shot":[
+	"vic_notorious_big_iron_slug_shot":[
 		{"file": "sounds/effects/vic_notorious_big_iron_slug_shot.ogg", "pitch": 0.90, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_slug_shot.ogg", "pitch": 0.95, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_slug_shot.ogg", "pitch": 1.00, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_slug_shot.ogg", "pitch": 1.05, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_slug_shot.ogg", "pitch": 1.10, "volume": 1.5,},
 	],
-					"vic_notorious_big_iron_dragon_breath_shot":[
+	"vic_notorious_big_iron_dragon_breath_shot":[
 		{"file": "sounds/effects/vic_notorious_big_iron_dragon_breath_shot.ogg", "pitch": 0.90, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_dragon_breath_shot.ogg", "pitch": 0.95, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_dragon_breath_shot.ogg", "pitch": 1.00, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_dragon_breath_shot.ogg", "pitch": 1.05, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_dragon_breath_shot.ogg", "pitch": 1.10, "volume": 1.5,},
+	],
+	"vic_printer":[
+		{"file": "sounds/effects/vic_printer.ogg", "pitch": 1, "volume": 1,},
 	],
 	
 

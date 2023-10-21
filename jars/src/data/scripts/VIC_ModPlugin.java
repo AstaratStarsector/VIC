@@ -25,16 +25,14 @@ import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
 import data.campaign.ids.vic_Items;
 import data.campaign.ids.vic_industries;
-import data.campaign.listners.vic_diploRandomizer;
 import data.campaign.listners.vic_stolasSpawn;
 import data.scripts.plugins.timer.VIC_TimeTracker;
 import data.scripts.plugins.vic_brandEngineUpgradesDetectionRange;
+import data.scripts.plugins.vic_combatPlugin;
 import data.scripts.weapons.ai.*;
 import data.scripts.weapons.autofireAI.vic_VerliokaAutofireAI;
 import data.world.VICGen;
 import exerelin.campaign.SectorManager;
-import exerelin.utilities.NexConfig;
-import exerelin.utilities.NexFactionConfig;
 import org.dark.shaders.light.LightData;
 import org.dark.shaders.util.ShaderLib;
 import org.dark.shaders.util.TextureData;
@@ -48,6 +46,7 @@ import static com.fs.starfarer.api.impl.campaign.econ.impl.ItemEffectsRepo.HABIT
 import static com.fs.starfarer.api.impl.campaign.econ.impl.ItemEffectsRepo.NO_ATMOSPHERE;
 import static data.scripts.plugins.vic_addBooze.addBooze;
 import static data.scripts.plugins.vic_addBooze.addBoozeToFaction;
+import static data.scripts.utilities.vic_trailSpawner.getTrailData;
 
 
 public class VIC_ModPlugin extends BaseModPlugin {
@@ -60,7 +59,8 @@ public class VIC_ModPlugin extends BaseModPlugin {
             AFREETLARGE = "vic_afreet_main_large",
             hungruf_main = "vic_hungruf_main",
             hungruf_bomb = "vic_hungruf_sub",
-            hatif_main = "vic_hatif_missile_main";
+            hatif_main = "vic_hatif_missile_main",
+            rokhMain = "vic_rokh_main";
 
     public final String
             VERLIOKA = "vic_verlioka";
@@ -82,7 +82,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
         //add special items
         ItemEffectsRepo.ITEM_EFFECTS.put(vic_Items.GMOfarm, GMO);
 
-        if (Global.getSettings().getModManager().isModEnabled("alcoholism")){
+        if (Global.getSettings().getModManager().isModEnabled("alcoholism")) {
             addBooze();
         } else {
             Global.getSettings().getCommoditySpec("vic_booze_c").setBasePrice(0);
@@ -90,13 +90,15 @@ public class VIC_ModPlugin extends BaseModPlugin {
             Global.getSettings().getCommoditySpec("vic_booze_c").getTags().add("nonecon");
         }
 
+        getTrailData();
     }
 
     public void onDevModeF8Reload() {
         addTags();
+        getTrailData();
     }
 
-    void addTags(){
+    void addTags() {
         List<String> variants = new ArrayList<>();
         {
             variants.add("vic_stolas_standard");
@@ -105,9 +107,9 @@ public class VIC_ModPlugin extends BaseModPlugin {
             variants.add("vic_stolas_gauss");
             variants.add("vic_stolas_crusher");
         }
-        for (String variantID : variants){
+        for (String variantID : variants) {
             ShipVariantAPI variant = Global.getSettings().getVariant(variantID);
-            if (!variant.hasTag("no_autofit")){
+            if (!variant.hasTag("no_autofit")) {
                 variant.addTag("no_autofit");
             }
         }
@@ -133,6 +135,8 @@ public class VIC_ModPlugin extends BaseModPlugin {
                 return new PluginPick<MissileAIPlugin>(new vic_hungrufBombAI(missile), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case hatif_main:
                 return new PluginPick<MissileAIPlugin>(new vic_hatifMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            case rokhMain:
+                return new PluginPick<MissileAIPlugin>(new vic_rokhAltMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             default:
         }
         return null;
@@ -147,7 +151,6 @@ public class VIC_ModPlugin extends BaseModPlugin {
         }
         return null;
     }
-
 
 
     @Override
@@ -170,7 +173,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
     @Override
     public void onGameLoad(boolean newGame) {
         Global.getSector().addTransientListener(new vic_stolasSpawn(false));
-        if (Global.getSector().getEntityById("vic_star_empyrean") == null){
+        if (Global.getSector().getEntityById("vic_star_empyrean") == null) {
             onNewGame();
             onNewGameAfterEconomyLoad();
         }
@@ -245,7 +248,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
         placeIndustries(h, vic_industries.VIC_REVCENTER);
     }
 
-    private static void placeIndustries(Map<String, String> planetIdMap, String industryId){
+    private static void placeIndustries(Map<String, String> planetIdMap, String industryId) {
         for (Map.Entry<String, String> entry : planetIdMap.entrySet()) {
             MarketAPI m;
 
@@ -267,7 +270,8 @@ public class VIC_ModPlugin extends BaseModPlugin {
     //Transfiguration Solutions
     BoostIndustryInstallableItemEffect GMO = new BoostIndustryInstallableItemEffect(
             vic_Items.GMOfarm, 0, 0) {
-        final Map<String,Integer> productionDemand= new HashMap<>();
+        final Map<String, Integer> productionDemand = new HashMap<>();
+
         {
             productionDemand.put(Conditions.FARMLAND_POOR, 4);
             productionDemand.put(Conditions.FARMLAND_ADEQUATE, 3);
@@ -279,8 +283,8 @@ public class VIC_ModPlugin extends BaseModPlugin {
             if (industry instanceof BaseIndustry) {
                 BaseIndustry b = (BaseIndustry) industry;
                 int production = 0;
-                for (MarketConditionAPI condition : industry.getMarket().getConditions()){
-                    if (condition.getId().startsWith("farmland")){
+                for (MarketConditionAPI condition : industry.getMarket().getConditions()) {
+                    if (condition.getId().startsWith("farmland")) {
                         production = productionDemand.get(condition.getId());
                         break;
                     }
@@ -392,7 +396,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
                     if (dist > ItemEffectsRepo.CORONAL_TAP_LIGHT_YEARS) {
                         unmet.add(curr);
                     }
-                } else if ("organics deposits".equals(curr)){
+                } else if ("organics deposits".equals(curr)) {
                     if (!market.hasCondition(Conditions.ORGANICS_TRACE) &&
                             !market.hasCondition(Conditions.ORGANICS_ABUNDANT) &&
                             !market.hasCondition(Conditions.ORGANICS_COMMON) &&

@@ -58,5 +58,6 @@
   },
   "textureType": ROUGH,
   "fireSoundOne": "vic_laidlaw_accelerator_charge",
-  "fireSoundTwo": "vic_laidlaw_accelerator_shot_heavy"
+  "fireSoundTwo": "vic_laidlaw_accelerator_shot_heavy",
+  "pierceSet":["FIGHTER","SHIP"]
 }

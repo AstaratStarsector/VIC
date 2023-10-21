@@ -1,0 +1,56 @@
+{
+  "id": "vic_raum_rokh_sub",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_rokh_sub",
+  "type": "BALLISTIC",
+  "size": "SMALL",
+  "turretSprite": "graphics/weapons/bomb_bay_turret_base.png",
+  "hardpointSprite": "graphics/weapons/bomb_bay_hardpoint_base.png",
+	"unaffectedByProjectileSpeedBonuses":true,
+  "turretOffsets": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1
+  ],
+  "turretAngleOffsets": [
+    25,
+    0,
+    -25
+  ],
+  "hardpointOffsets": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    -1
+  ],
+  "hardpointAngleOffsets": [
+    25,
+    0,
+    -25
+  ],
+  "barrelMode": "ALTERNATING",
+  "animationType": "SMOKE",
+  "smokeSpec": {
+    "particleSizeMin": 10,
+    "particleSizeRange": 8,
+    "cloudParticleCount": 5,
+    "cloudDuration": 1.5,
+    "cloudRadius": 6,
+    "blowbackParticleCount": 0,
+    "blowbackDuration": 0.45,
+    "blowbackLength": 20,
+    "blowbackSpread": 6,
+    "particleColor": [
+      120,
+      140,
+      160,
+      95
+    ]
+  },
+	"fireSoundTwo":"system_canister_flak_fire",
+}

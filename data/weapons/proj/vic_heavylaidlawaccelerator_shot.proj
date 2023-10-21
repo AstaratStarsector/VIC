@@ -19,4 +19,5 @@
 	"pixelsPerTexel":5.0,
 	"bulletSprite":"",
 	"passThroughMissiles":true,
+	"passThroughShips":true,
 }

@@ -103,6 +103,14 @@
 
 
 		},		
+		"weapons":{
+			"vic_rock_missile":"graphics/weapons/vic_rokh_missile_covered.png",
+			"vic_rock_holo":"graphics/weapons/vic_rokh_missile_holo.png",
+			"vic_rock_printer":"graphics/weapons/vic_rokh_launcher_printer.png",
+			"vic_rokh_launcher_glow_under":"graphics/weapons/vic_rokh_launcher_glow_under.png",
+			"vic_rokh_cover1":"graphics/weapons/vic_rokh_cover1.png",
+			"vic_rokh_missile_naked":"graphics/weapons/vic_rokh_missile_naked.png",
+		},
 		"illustrations":{
 			"vic_cocytus_illustration":"graphics/illustrations/vic_cocytus_illustration.png",
 			"vic_purgatory_illustration":"graphics/illustrations/vic_purgatory_illustration.png",

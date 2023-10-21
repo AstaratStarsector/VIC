@@ -7,7 +7,7 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.impl.combat.MineStrikeStatsAIInfoProvider;
-import data.scripts.util.MagicRender;
+import org.magiclib.util.MagicRender;
 import org.lwjgl.util.vector.Vector2f;
 
 import com.fs.starfarer.api.Global;

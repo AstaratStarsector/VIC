@@ -2,12 +2,8 @@ package data.scripts.weapons;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
-import com.fs.starfarer.api.combat.listeners.DamageDealtModifier;
-import com.fs.starfarer.api.input.InputEventAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
-import data.scripts.plugins.vic_weaponDamageListener;
 import com.fs.starfarer.api.util.Misc;
-import data.scripts.util.MagicRender;
 import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
@@ -15,12 +11,16 @@ import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.entities.SimpleEntity;
 import org.lwjgl.util.vector.Vector2f;
+import org.magiclib.util.MagicRender;
 
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.fs.starfarer.api.util.Misc.ZERO;
+import static data.scripts.plugins.vic_combatPlugin.AddAlkonostProj;
 
 public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
@@ -88,7 +88,6 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
         ON_SHOT_PARTICLE_COUNT.put("CHARGEUP_PARTICLES4", 0);
         ON_SHOT_PARTICLE_COUNT.put("CHARGEUP_PARTICLES5", 0);
         ON_SHOT_PARTICLE_COUNT.put("CHARGEUP_PARTICLES6", 0);
-
 
 
     }
@@ -225,7 +224,6 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
         PARTICLE_COLOR.put("BLOWBACK_ID_4", new Color(255, 255, 255, 200));
 
 
-
     }
 
     //What's the smallest size the particles can have?
@@ -243,7 +241,6 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
         PARTICLE_SIZE_MIN.put("BLOWBACK_ID_2", 7.5f);
         PARTICLE_SIZE_MIN.put("BLOWBACK_ID_3", 7.5f);
         PARTICLE_SIZE_MIN.put("BLOWBACK_ID_4", 7.5f);
-
 
 
     }
@@ -282,7 +279,6 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
         PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_2", 35f);
         PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_3", 35f);
         PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_4", 35f);
-
 
 
     }
@@ -447,7 +443,7 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
         }
 
         if (doOnce) {
-            if (!weapon.getShip().hasListenerOfClass(vic_gaganaUltraOnFire.vic_gaganaUltraListner.class)){
+            if (!weapon.getShip().hasListenerOfClass(vic_gaganaUltraOnFire.vic_gaganaUltraListner.class)) {
                 weapon.getShip().addListener(new vic_gaganaUltraOnFire.vic_gaganaUltraListner());
             }
             doOnce = false;
@@ -656,7 +652,6 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
         pointExtra.y += weapon.getLocation().y;
 
 
-
         //Chargeup visuals
 
         if (chargeLevel > 0f && !hasFiredThisCharge) {
@@ -679,33 +674,33 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
         }
 
 
-
         //chargedown blowback visuals
 
         if (weapon.getChargeLevel() >= 1f && !hasFiredThisChargeBlowback) {
             hasFiredThisChargeBlowback = true;
         }
         if (hasFiredThisChargeBlowback && (weapon.getChargeLevel() <= 0f || !weapon.isFiring())) {
-            hasFiredThisChargeBlowback = false;}
+            hasFiredThisChargeBlowback = false;
+        }
 
-        if (weapon.getChargeLevel() > 0f && hasFiredThisChargeBlowback){
+        if (weapon.getChargeLevel() > 0f && hasFiredThisChargeBlowback) {
             weaponChargedownBlowback = true;
             hasFiredThisChargeBlowback = false;
         }
-        if (weaponChargedownBlowback){
+        if (weaponChargedownBlowback) {
             emitSmokeBlowback = true;
             weaponChargedownBlowback = false;
         }
 
 
-        if (timeBlowback >= durationBlowback){
+        if (timeBlowback >= durationBlowback) {
             timeBlowback = 0f;
             emitSmokeBlowback = false;
         }
         if (emitSmokeBlowback) {
             timeBlowback += amount;
 
-            float smokeDir = weapon.getCurrAngle()+180f;
+            float smokeDir = weapon.getCurrAngle() + 180f;
             float smokeDirAngle = smokeDir + MathUtils.getRandomNumberInRange(-20, 20);
 
             Vector2f weaponLocation = weapon.getLocation();
@@ -715,8 +710,8 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
 
             Vector2f vel = (Vector2f) Misc.getUnitVectorAtDegreeAngle(smokeDirAngle).scale(100f);
 
-                engine.addNebulaParticle(muzzleLocationBlowback, vel, MathUtils.getRandomNumberInRange(15f, 25f), 2.5f, 0.3f, 0.3f, 0.5f, new Color(95, 255, 130, 150));
-                engine.addNebulaParticle(muzzleLocationBlowback, vel, MathUtils.getRandomNumberInRange(5f, 15f), 2.5f, 0.3f, 0.3f, 0.15f, new Color(141, 255, 127, 255));
+            engine.addNebulaParticle(muzzleLocationBlowback, vel, MathUtils.getRandomNumberInRange(15f, 25f), 2.5f, 0.3f, 0.3f, 0.5f, new Color(95, 255, 130, 150));
+            engine.addNebulaParticle(muzzleLocationBlowback, vel, MathUtils.getRandomNumberInRange(5f, 15f), 2.5f, 0.3f, 0.3f, 0.15f, new Color(141, 255, 127, 255));
         }
 
 
@@ -799,7 +794,7 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
     }
 
     public void onFire(final DamagingProjectileAPI projectile, WeaponAPI weapon, final CombatEngineAPI engine) {
-
+        AddAlkonostProj(projectile);
 
         Vector2f weaponLocation = weapon.getLocation();
         float shipFacing = weapon.getCurrAngle();
@@ -881,6 +876,7 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
         }
 
 
+        /*
         engine.addPlugin(new EveryFrameCombatPlugin() {
             @Override
             public void processInputPreCoreControls(float amount, List<InputEventAPI> events) {
@@ -908,6 +904,8 @@ public class vic_alkonostOnFire implements EveryFrameWeaponEffectPlugin, OnFireE
 
             }
         });
+
+         */
 
     }
 

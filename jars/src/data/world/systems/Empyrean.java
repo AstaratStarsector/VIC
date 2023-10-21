@@ -76,9 +76,10 @@ public class Empyrean{
                                 Conditions.NO_ATMOSPHERE,
                                 Conditions.TECTONIC_ACTIVITY,
                                 Conditions.POLLUTION,
-                                Conditions.RARE_ORE_RICH,
-                                Conditions.ORE_RICH,
-                                "vic_autoFactory"
+                                Conditions.RARE_ORE_MODERATE,
+                                Conditions.ORE_MODERATE,
+                                "vic_autoFactory",
+                                "vic_orbitalLazor"
                         )
                 ),
 

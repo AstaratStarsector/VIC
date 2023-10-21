@@ -1,32 +1,31 @@
 package data.scripts.weapons;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
+import data.scripts.plugins.vic_combatPlugin;
 
 public class vic_missileFluxGen implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
-    boolean stopReload = false;
-
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
-        //if (engine.isPaused()) return;
+        if (engine.isPaused()) return;
 
         //engine.maintainStatusForPlayerShip(weapon.getSlot().getId(),null, "Angle diff", Math.round(Misc.getAngleDiff(weapon.getCurrAngle(), weapon.getShip().getFacing())) + "/" + Math.round(weapon.getShip().getFacing()), false);
         if (weapon.getAmmo() < weapon.getMaxAmmo()) {
             FluxTrackerAPI fluxTracker = weapon.getShip().getFluxTracker();
+            float reloadFractionPerSecond = weapon.getAmmoTracker().getAmmoPerSecond() / weapon.getAmmoTracker().getReloadSize();
             float addFlux = (weapon.getFluxCostToFire() / weapon.getSpec().getBurstSize()) * weapon.getAmmoTracker().getAmmoPerSecond() * weapon.getShip().getMutableStats().getMissileAmmoRegenMult().getModifiedValue();
-            if (stopReload) {
-                if (fluxTracker.getMaxFlux() - fluxTracker.getCurrFlux() >= (weapon.getFluxCostToFire() / weapon.getSpec().getBurstSize()) * weapon.getAmmoTracker().getReloadSize()) {
-                    stopReload = false;
-                }
+            addFlux *= amount;
+            float availableReloadFraction = 1;
+            //Global.getLogger(vic_missileFluxGen.class).info("before " + weapon.getAmmoTracker().getReloadProgress());
+            if (fluxTracker.getCurrFlux() + addFlux > fluxTracker.getMaxFlux()){
+                availableReloadFraction = (fluxTracker.getMaxFlux() - fluxTracker.getCurrFlux()) / addFlux;
+                //Global.getLogger(vic_missileFluxGen.class).info(availableReloadFraction + " / " + reloadFractionPerSecond);
+                weapon.getAmmoTracker().setReloadProgress(weapon.getAmmoTracker().getReloadProgress() - (reloadFractionPerSecond * amount * (1 - availableReloadFraction)));
+
             }
-            if (fluxTracker.getCurrFlux() + addFlux > fluxTracker.getMaxFlux() || stopReload) {
-                weapon.getAmmoTracker().setAmmoPerSecond(0);
-                stopReload = true;
-            } else {
-                //engine.maintainStatusForPlayerShip(weapon.getDisplayName(),null, weapon.getDisplayName() + " Reload", "Generates: " + addFlux + " flux", false);
-                fluxTracker.increaseFlux(addFlux * amount, false);
-                weapon.getAmmoTracker().setAmmoPerSecond(weapon.getSpec().getAmmoPerSecond());
-            }
+            fluxTracker.increaseFlux(addFlux * availableReloadFraction, false);
+            //Global.getLogger(vic_missileFluxGen.class).info("after " + weapon.getAmmoTracker().getReloadProgress());
         }
     }
 

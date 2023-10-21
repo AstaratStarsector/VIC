@@ -3,7 +3,7 @@ package data.scripts.weapons;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.ApplyDamageResultAPI;
-import data.scripts.util.MagicRender;
+import org.magiclib.util.MagicRender;
 import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
@@ -48,7 +48,7 @@ public class vic_gaganaUltraOnHit implements OnHitEffectPlugin {
         for (int I = 0; I < 7; I++){
             float shrapnelDir = projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(-240f, -60f);
             float shrapnelDir2 = VectorUtils.getAngle(projectile.getDamageTarget().getLocation(), projectile.getLocation());
-            DamagingProjectileAPI gaganaUltraShrapnel = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(projectile.getWeapon().getShip(), projectile.getWeapon(), "vic_gagana_ultra_shrapnel", projectile.getLocation(),
+            DamagingProjectileAPI gaganaUltraShrapnel = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(projectile.getWeapon().getShip(), projectile.getWeapon(), "vic_raum_weapon_gagana_ultra_shrapnel", projectile.getLocation(),
                     shrapnelDir2 + MathUtils.getRandomNumberInRange(-90, 90), null);
             gaganaUltraShrapnel.getVelocity().scale(MathUtils.getRandomNumberInRange(0.25f, 0.75f));
             gaganaUltraShrapnel.setCollisionClass(CollisionClass.valueOf("NONE"));

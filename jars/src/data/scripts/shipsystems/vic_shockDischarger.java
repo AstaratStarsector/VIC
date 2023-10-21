@@ -252,7 +252,7 @@ public class vic_shockDischarger extends BaseShipSystemScript {
         }
 
         String customDataID = powerDataKey + ship.getId();
-        float powerPercent = powerCollected;
+        float powerPercent = powerCollected / hardCap;
 
         customCombatData.put(customDataID, powerPercent);
     }

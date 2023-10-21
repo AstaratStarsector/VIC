@@ -8,7 +8,7 @@ import com.fs.starfarer.api.loading.ProjectileWeaponSpecAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.plugins.vic_weaponDamageListener;
-import data.scripts.util.MagicRender;
+import org.magiclib.util.MagicRender;
 import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.fs.starfarer.api.util.Misc.ZERO;
+import static data.scripts.plugins.vic_combatPlugin.AddXLLaidlawProj;
 
 public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
@@ -822,6 +823,8 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
     }
 
     public void onFire(final DamagingProjectileAPI projectile, WeaponAPI weapon, final CombatEngineAPI engine) {
+        AddXLLaidlawProj(projectile);
+        projectile.setCollisionClass(CollisionClass.NONE);
 
         Vector2f weaponLocation = weapon.getLocation();
         float weaponFacing = weapon.getCurrAngle();
@@ -843,14 +846,14 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
         Vector2f speed = weapon.getShip().getVelocity();
         for (int I = 0; I < 3; I++) {
             float shrapnelDir1 = weapon.getCurrAngle() + 5f + MathUtils.getRandomNumberInRange(-2.5f, 2.5f);
-            DamagingProjectileAPI xlLaidlawShrapnel1 = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(weapon.getShip(), weapon, "vic_xl_laidlaw_shrapnel", muzzleLocationShockwave,
+            DamagingProjectileAPI xlLaidlawShrapnel1 = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(weapon.getShip(), weapon, "vic_raum_weapon_xl_laidlaw_shrapnel", muzzleLocationShockwave,
                     shrapnelDir1, speed);
             xlLaidlawShrapnel1.getVelocity().scale(MathUtils.getRandomNumberInRange(0.20f, 0.60f));
             xlLaidlawShrapnel1.getProjectileSpec().setFadeTime(MathUtils.getRandomNumberInRange(0.25f, 0.4f));
         }
         for (int I = 0; I < 3; I++) {
             float shrapnelDir2 = weapon.getCurrAngle() - 5f + MathUtils.getRandomNumberInRange(-2.5f, 2.5f);
-            DamagingProjectileAPI xlLaidlawShrapnel2 = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(weapon.getShip(), weapon, "vic_xl_laidlaw_shrapnel", muzzleLocationShockwave,
+            DamagingProjectileAPI xlLaidlawShrapnel2 = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(weapon.getShip(), weapon, "vic_raum_weapon_xl_laidlaw_shrapnel", muzzleLocationShockwave,
                     shrapnelDir2, speed);
             xlLaidlawShrapnel2.getVelocity().scale(MathUtils.getRandomNumberInRange(0.20f, 0.60f));
             xlLaidlawShrapnel2.getProjectileSpec().setFadeTime(MathUtils.getRandomNumberInRange(0.25f, 0.4f));

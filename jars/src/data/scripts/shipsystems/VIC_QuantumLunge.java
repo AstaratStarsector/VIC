@@ -6,7 +6,7 @@ import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.plugins.MagicFakeBeamPlugin;
-import data.scripts.plugins.MagicTrailPlugin;
+import org.magiclib.plugins.MagicTrailPlugin;
 import data.scripts.util.MagicSettings;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
@@ -40,7 +40,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
     SpriteAPI trailSprite = Global.getSettings().getSprite("fx", "trails_trail_twin");
 
     final DamageType EmpArmDmgType = DamageType.ENERGY;
-    final Map<ShipAPI.HullSize, Float> MULT = new HashMap<>();
+    final Map<ShipAPI.HullSize, Float> sizePushMulti = new HashMap<>();
     final ArrayList<String> cheesyLinesList = new ArrayList<>();
 
     boolean
@@ -57,14 +57,16 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
     Vector2f EndPos = new Vector2f();
 
     //float SHTURM_COOLDOWN_MULT = 0.66f;
+    float maxSafeTime = 0.25f; //its max time ship will remain in out state if its under other ship
+    float safeTime = 0f;
 
     {
-        MULT.put(ShipAPI.HullSize.DEFAULT, 1.0F);
-        MULT.put(ShipAPI.HullSize.FIGHTER, 0.75F);
-        MULT.put(ShipAPI.HullSize.FRIGATE, 0.5F);
-        MULT.put(ShipAPI.HullSize.DESTROYER, 0.3F);
-        MULT.put(ShipAPI.HullSize.CRUISER, 0.2F);
-        MULT.put(ShipAPI.HullSize.CAPITAL_SHIP, 0.1F);
+        sizePushMulti.put(ShipAPI.HullSize.DEFAULT, 1.0F);
+        sizePushMulti.put(ShipAPI.HullSize.FIGHTER, 0.75F);
+        sizePushMulti.put(ShipAPI.HullSize.FRIGATE, 0.5F);
+        sizePushMulti.put(ShipAPI.HullSize.DESTROYER, 0.3F);
+        sizePushMulti.put(ShipAPI.HullSize.CRUISER, 0.2F);
+        sizePushMulti.put(ShipAPI.HullSize.CAPITAL_SHIP, 0.1F);
 
         cheesyLinesList.add("Nothing personal, kid");
         cheesyLinesList.add("Another excellent cut");
@@ -136,7 +138,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
             Vector2f firstTrail = new Vector2f( -153f, -83);
             VectorUtils.rotate(firstTrail, ship.getFacing() - 90);
             firstTrail = new Vector2f(firstTrail.x + ship.getLocation().x, firstTrail.y + ship.getLocation().y);
-            MagicTrailPlugin.AddTrailMemberSimple(
+            MagicTrailPlugin.addTrailMemberSimple(
                     ship,
                     trailID1,
                     trailSprite,
@@ -158,7 +160,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
             Vector2f secondTrail = new Vector2f(  153f, -83);
             VectorUtils.rotate(secondTrail, ship.getFacing() - 90);
             secondTrail = new Vector2f(secondTrail.x + ship.getLocation().x, secondTrail.y + ship.getLocation().y);
-            MagicTrailPlugin.AddTrailMemberSimple(
+            MagicTrailPlugin.addTrailMemberSimple(
                     ship,
                     trailID2,
                     trailSprite,
@@ -180,10 +182,9 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 
         if (state == State.OUT) {
             //once
-            if (!isActive2) {
+            if (!isActive2 && !ship.isPhased()) {
 
                 EndPos = new Vector2f(ship.getLocation());
-                isActive2 = true;
 
                 if (MagicSettings.getBoolean("vic", "Apollyon_oneLiners") && Math.random() < 0.15f) {
                     String line = cheesyLinesList.get(MathUtils.getRandomNumberInRange(0, cheesyLinesList.size() - 1));
@@ -191,29 +192,75 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                     engine.addFloatingText(ship.getLocation(), line, 60, Color.WHITE, ship, 1, 2);
                 }
 
+                isActive2 = true;
             }//end once
 
-            float visualLevel = (0.5f * effectLevel);
-            ship.setJitter(ship, new Color(100, 165, 255, 75), effectLevel, Math.round(15 * visualLevel), 15, 60 * visualLevel);
+            float amount = engine.getElapsedInLastFrame();
+            float pushRange = ship.getCollisionRadius() + 50f;
+            boolean atLeastOneUnder = false;
+            for (ShipAPI entity : CombatUtils.getShipsWithinRange(ship.getLocation(), pushRange)) {
 
-            shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 5);
+                boolean pushShipInstead = false;
+                if (entity.isFighter()) continue;
+                if (entity.isStationModule() && entity.isAlive()) {
+                    entity = entity.getParentStation();
+                    if (MathUtils.isWithinRange(entity.getLocation(), ship.getLocation(), pushRange))
+                        continue;
+                }
+
+                if (entity.isStation())
+                    pushShipInstead = true;;
+                if (entity == ship) continue;
+
+                float angle = VectorUtils.getAngle(ship.getLocation(), entity.getLocation());
+                Misc.getUnitVectorAtDegreeAngle(angle);
+                Vector2f repulsion = Misc.getUnitVectorAtDegreeAngle(angle);
+                float pushRatio = 1 - Math.min(1, MathUtils.getDistanceSquared(ship.getLocation(), entity.getLocation()) / (float) Math.pow(pushRange, 2));
+                repulsion.scale(amount * 250.0f * pushRatio);
+
+                if (pushShipInstead) {
+                    repulsion.scale(-1);
+                    Vector2f.add(entity.getLocation(), repulsion, entity.getLocation());
+                    Vector2f.add(entity.getVelocity(), (Vector2f) new Vector2f(repulsion).scale(this.sizePushMulti.get(entity.getHullSize())), entity.getVelocity());
+                } else {
+                    Vector2f.add(entity.getLocation(), repulsion, entity.getLocation());
+                    Vector2f.add(entity.getVelocity(), (Vector2f) new Vector2f(repulsion).scale(this.sizePushMulti.get(entity.getHullSize())), entity.getVelocity());
+                }
+                atLeastOneUnder = true;
+            }
 
             stats.getMaxSpeed().unmodify(id);
-            stats.getAcceleration().unmodify(id);
-            ship.setPhased(false);
 
-            ship.setExtraAlphaMult(0.25f + (0.75f * (1 - effectLevel)));
+            if (!atLeastOneUnder || safeTime >= maxSafeTime) {
+                ship.setApplyExtraAlphaToEngines(false);
+                if (effectLevel <= 0.9) ship.setPhased(false);
+                float visualLevel = (0.5f * effectLevel);
+                ship.setJitter(ship, new Color(100, 165, 255, 75), effectLevel, Math.round(15 * visualLevel), 15, 60 * visualLevel);
 
-            if (ship.getVelocity().lengthSquared() > ship.getMaxSpeed()) ship.getVelocity().scale(1 - 0.8f * engine.getElapsedInLastFrame());
+                shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 5);
 
-            if (DoOnce){
-                Vector2f newSpeed = new Vector2f();
-                ship.getVelocity().normalise(newSpeed);
-                newSpeed.scale(120);
-                ship.getVelocity().set(newSpeed);
-                AddQuantumLungeBoost(ship, 3f);
-                DoOnce = false;
+                //ship.setPhased(false);
+
+                ship.setExtraAlphaMult(1f - (1f - 0.25f) * effectLevel);
+                ship.setExtraAlphaMult(0.25f + (0.75f * (1 - effectLevel)));
+
+                stats.getAcceleration().unmodify(id);
+                if (ship.getVelocity().lengthSquared() > ship.getMaxSpeed()) ship.getVelocity().scale(1 - 0.7f * engine.getElapsedInLastFrame());
+
+                if (DoOnce){
+                    AddQuantumLungeBoost(ship, 3f);
+                    DoOnce = false;
+                }
+            } else if (ship.isPhased()) {
+                safeTime += amount;
+                ship.getSystem().forceState(ShipSystemAPI.SystemState.OUT, 0);
             }
+
+            engine.maintainStatusForPlayerShip("lungeData",null,"enemyInRange",atLeastOneUnder + "",false);
+            engine.maintainStatusForPlayerShip("lungeData2",null,"safe time",safeTime + "",false);
+
+
+
             /*
             stats.getMaxSpeed().modifyFlat(id, 50f);
             stats.getMaxTurnRate().modifyMult(id, 3f);

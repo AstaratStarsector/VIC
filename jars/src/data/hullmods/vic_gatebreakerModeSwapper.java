@@ -5,23 +5,20 @@ import com.fs.starfarer.api.campaign.CargoStackAPI;
 import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.api.fleet.FleetMemberAPI;
 
 import java.util.HashMap;
 import java.util.Map;
 
 // controls ammo swap
-public class vic_gatebreakerModeSwapper extends BaseHullMod
-{
-    public static final String GATEBREAKER_SLOT_R = "WS0006";
-    public static final String GATEBREAKER_SLOT_L = "WS0007";
-    public static final String WEAPON_PREFIX_R = "vic_gatebreaker_r_";
-    public static final String WEAPON_PREFIX_L = "vic_gatebreaker_l_";
+public class vic_gatebreakerModeSwapper extends BaseHullMod {
+
+    final String GATEBREAKER_SLOT_R = "WS0006";
+    final String GATEBREAKER_SLOT_L = "WS0007";
+    final String WEAPON_PREFIX_R = "vic_gatebreaker_r_";
+    final String WEAPON_PREFIX_L = "vic_gatebreaker_l_";
 
     // points to the next weapon/hullmod suffix
-    public static final Map<String, String> LOADOUT_CYCLE = new HashMap<>();
-
-    static
+    final Map<String, String> LOADOUT_CYCLE = new HashMap<>();
     {
         LOADOUT_CYCLE.put("autocannon", "shotgun");
         LOADOUT_CYCLE.put("shotgun", "flamer");
@@ -29,8 +26,7 @@ public class vic_gatebreakerModeSwapper extends BaseHullMod
     }
 
     @Override
-    public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id)
-    {
+    public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
 
         if (stats.getEntity() == null)
             return;
@@ -39,30 +35,24 @@ public class vic_gatebreakerModeSwapper extends BaseHullMod
 
         // trigger a weapon switch if none of the selector hullmods are present (because one was removed, or because the ship was just spawned without one)
         boolean switchLoadout = true;
-        for (String hullmod : LOADOUT_CYCLE.values())
-        {
-            if (stats.getVariant().getHullMods().contains("vic_gatebreaker_mode_" + hullmod))
-            {
+        for (String hullmod : LOADOUT_CYCLE.values()) {
+            if (stats.getVariant().getHullMods().contains("vic_gatebreaker_mode_" + hullmod)) {
                 switchLoadout = false;
                 break;
             }
         }
 
-        if (switchLoadout)
-        {
+        if (switchLoadout) {
 
             // default to autocannon if there's no weapons
             String newWeawpon = "shotgun";
-            for (String key : LOADOUT_CYCLE.keySet())
-            {
+            for (String key : LOADOUT_CYCLE.keySet()) {
                 // cycle to whatever the next weapon is, based on the weapon currently in the slot
-                if (stats.getVariant().getWeaponId(GATEBREAKER_SLOT_R) != null && stats.getVariant().getWeaponId(GATEBREAKER_SLOT_R).contains(key))
-                {
+                if (stats.getVariant().getWeaponId(GATEBREAKER_SLOT_R) != null && stats.getVariant().getWeaponId(GATEBREAKER_SLOT_R).contains(key)) {
                     newWeawpon = LOADOUT_CYCLE.get(key);
                 }
 
-                if (stats.getVariant().getWeaponId(GATEBREAKER_SLOT_L) != null && stats.getVariant().getWeaponId(GATEBREAKER_SLOT_L).contains(key))
-                {
+                if (stats.getVariant().getWeaponId(GATEBREAKER_SLOT_L) != null && stats.getVariant().getWeaponId(GATEBREAKER_SLOT_L).contains(key)) {
                     newWeawpon = LOADOUT_CYCLE.get(key);
                 }
             }
@@ -80,22 +70,21 @@ public class vic_gatebreakerModeSwapper extends BaseHullMod
     }
 
     @Override
-    public void applyEffectsAfterShipCreation(ShipAPI ship, String id)
-    {
-        if(ship.getOriginalOwner()<0){
+    public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
+        if (ship.getOriginalOwner() < 0) {
             //undo fix for weapons put in cargo
-            if(
-                    Global.getSector()!=null &&
-                            Global.getSector().getPlayerFleet()!=null &&
-                            Global.getSector().getPlayerFleet().getCargo()!=null &&
-                            Global.getSector().getPlayerFleet().getCargo().getStacksCopy()!=null &&
+            if (
+                    Global.getSector() != null &&
+                            Global.getSector().getPlayerFleet() != null &&
+                            Global.getSector().getPlayerFleet().getCargo() != null &&
+                            Global.getSector().getPlayerFleet().getCargo().getStacksCopy() != null &&
                             !Global.getSector().getPlayerFleet().getCargo().getStacksCopy().isEmpty()
-            ){
-                for (CargoStackAPI s : Global.getSector().getPlayerFleet().getCargo().getStacksCopy()){
-                    if(
+            ) {
+                for (CargoStackAPI s : Global.getSector().getPlayerFleet().getCargo().getStacksCopy()) {
+                    if (
                             s.isWeaponStack()
                                     && s.getWeaponSpecIfWeapon().getWeaponId().startsWith("vic_gatebreaker")
-                    ){
+                    ) {
                         Global.getSector().getPlayerFleet().getCargo().removeStack(s);
                     }
                 }
@@ -104,14 +93,12 @@ public class vic_gatebreakerModeSwapper extends BaseHullMod
     }
 
     @Override
-    public int getDisplayCategoryIndex()
-    {
+    public int getDisplayCategoryIndex() {
         return 2;
     }
 
     @Override
-    public String getDescriptionParam(int index, ShipAPI.HullSize hullSize)
-    {
+    public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
         return "without the normal CR penalty";
     }
 }

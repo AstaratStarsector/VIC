@@ -49,10 +49,11 @@ Nemesis Heavy Flamer,vic_gatebreaker_mode_flamer,,,Volkov Industries,no_build_in
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 Raum Weapon Swapper,vic_raum_weapon_swapper,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_raumWeaponSwapper,Allows to change weapons on Devotee version of Stolas.,Variable weapon selection. You shouldn't see this in-game.,graphics/hullmods/vic_stolas_bounty_autocannon_hullmod.png
-Gagana Ultra,vic_raum_weapon_swapper_gagana_ultra,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,Installs rapid-firing kinetic autocannons as the main armament. Removing this hullmod swaps the weapons to the next.,Kinetic Autocannon.,graphics/hullmods/vic_stolas_bounty_autocannon_hullmod.png
-Strzyga,vic_raum_weapon_swapper_strzyga,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,Installs powerful high explosive shrapnel cannons as the main armament. Removing this hullmod swaps the weapon to the next.,HE Shotgun.,graphics/hullmods/vic_stolas_bounty_shotgun_hullmod.png
-Alkonost,vic_raum_weapon_swapper_alkonost,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,Installs devastating heavy flamers as the main armament. Removing this hullmod swaps the weapon to the next.,Frag Flamer.,graphics/hullmods/vic_stolas_bounty_flamer_hullmod.png
-XL Laidlaw,vic_raum_weapon_swapper_xl_laidlaw,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,Installs devastating heavy flamers as the main armament. Removing this hullmod swaps the weapon to the next.,Frag Flamer.,graphics/hullmods/vic_stolas_bounty_flamer_hullmod.png
+Gagana Ultra,vic_raum_weapon_swapper_gagana_ultra,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,,graphics/hullmods/vic_stolas_bounty_autocannon_hullmod.png
+Strzyga,vic_raum_weapon_swapper_strzyga,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,,graphics/hullmods/vic_stolas_bounty_shotgun_hullmod.png
+Alkonost,vic_raum_weapon_swapper_alkonost,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,,graphics/hullmods/vic_stolas_bounty_flamer_hullmod.png
+XL Laidlaw,vic_raum_weapon_swapper_xl_laidlaw,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,,graphics/hullmods/vic_stolas_bounty_flamer_hullmod.png
+Rokh,vic_raum_weapon_swapper_rokh,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,com.fs.starfarer.api.combat.BaseHullMod,,,graphics/hullmods/vic_stolas_bounty_flamer_hullmod.png
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
 Notorious Big Iron Mode Swapper,vic_variable_notorious_big_iron_mode,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_notoriousBigIronModeSwapper,Allows to change weapons on Devotee version of Stolas.,Variable weapon selection. You shouldn't see this in-game.,graphics/hullmods/vic_stolas_bounty_autocannon_hullmod.png
