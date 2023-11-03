@@ -13,5 +13,5 @@ Shield Entrenchment,vic_shieldHardening,,0.2,,,,,,,,1,,1,,TRUE,,,,,,,,,,,,graphi
 Hunter Drive,vic_hunterDrive,,,,,,,,,,1,2,2,30,TRUE,,,,,,,,,,,,graphics/icons/hullsys/infernium_injector.png
 Zealot Drive,vic_zealotDrive,,,,,,,,,,1,2,2,30,TRUE,,,,,,,,,,,,graphics/icons/hullsys/infernium_injector.png
 Flare Laucher (single),vic_flareLauncher,,,,,,,,2,0.05,,,,0.5,,,,,,,,,,,,,graphics/icons/hullsys/flare_launcher.png
-Radar Array,vic_radarArray,,,,,,,,,,0.5,20,0.5,10,,,,,,,,,,,,,
-Pirate Burn,vic_pirateBurn,1,,,,,,,,,2,5,1,10,TRUE,,,,,,TRUE,,TRUE,TRUE,,,
+Radar Array,vic_radarArray,,,,,,,,,,0.5,20,0.5,10,,,,,,,,,,,,,graphics/icons/hullsys/vic_radarArray.png
+Royal Court Advance,vic_pirateBurn,1,,,,,,,,,2,5,1,10,TRUE,,,,,,TRUE,,TRUE,TRUE,,,graphics/icons/hullsys/vic_pirateBurn.png

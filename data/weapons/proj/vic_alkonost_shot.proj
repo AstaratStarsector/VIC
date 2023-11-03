@@ -10,7 +10,7 @@
 	"fringeColor":[105,255,90,150],
 	"coreColor":[230,255,230,150],
     "glowColor":[105,255,90,150],
-	"glowRadius":120,
+	"glowRadius":300,
 	"hitGlowRadius":140,	
 	"passThroughMissiles":true,	
 	"passThroughFighters":true,

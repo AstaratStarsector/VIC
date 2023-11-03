@@ -60,7 +60,10 @@ public class VIC_ModPlugin extends BaseModPlugin {
             hungruf_main = "vic_hungruf_main",
             hungruf_bomb = "vic_hungruf_sub",
             hatif_main = "vic_hatif_missile_main",
-            rokhMain = "vic_rokh_main";
+            rokhMain = "vic_rokh_main",
+            rokhAlt = "vic_rokh_alt",
+            rokhAltSub = "vic_rokh_alt_sub";
+
 
     public final String
             VERLIOKA = "vic_verlioka";
@@ -136,7 +139,11 @@ public class VIC_ModPlugin extends BaseModPlugin {
             case hatif_main:
                 return new PluginPick<MissileAIPlugin>(new vic_hatifMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             case rokhMain:
+                return new PluginPick<MissileAIPlugin>(new vic_rokhMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            case rokhAlt:
                 return new PluginPick<MissileAIPlugin>(new vic_rokhAltMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
+            case rokhAltSub:
+                return new PluginPick<MissileAIPlugin>(new vic_rokhAltSubMissileAI(missile, launchingShip), CampaignPlugin.PickPriority.MOD_SPECIFIC);
             default:
         }
         return null;

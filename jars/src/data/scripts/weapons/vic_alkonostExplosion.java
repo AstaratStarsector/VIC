@@ -37,11 +37,12 @@ public class vic_alkonostExplosion {
     static float CoreGlowDuration = 1f;
     static float GlowRadius = 750f;
     static float GlowDuration = 1f;
-    static float FlashGlowRadius = 1250f;
-    static float FlashGlowDuration = 0.05f;
+    static float FlashGlowRadius = 2500f;
+    static float FlashGlowDuration = 0.25f;
 
     static final int NUM_PARTICLES_1 = 25;
     static final int NUM_PARTICLES_2 = 25;
+    static final int NUM_PARTICLES_3 = 25;
     static final boolean light = Global.getSettings().getModManager().isModEnabled("shaderLib");
 
 
@@ -57,14 +58,20 @@ public class vic_alkonostExplosion {
 
         for (int x = 0; x < NUM_PARTICLES_1; x++) {
             engine.addHitParticle(point,
-                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(50f, 150f), (float) Math.random() * 360f),
-                    MathUtils.getRandomNumberInRange(4, 12), 1f, MathUtils.getRandomNumberInRange(0.5f, 2f), CORE_EXPLOSION_COLOR);
+                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(50f, 100f), (float) Math.random() * 360f),
+                    MathUtils.getRandomNumberInRange(4, 12), 1f, MathUtils.getRandomNumberInRange(3f, 5.5f), CORE_EXPLOSION_COLOR);
         }
 
         for (int x = 0; x < NUM_PARTICLES_2; x++) {
             engine.addHitParticle(point,
-                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(25f, 75f), (float) Math.random() * 360f),
-                    MathUtils.getRandomNumberInRange(4, 12), 1f, MathUtils.getRandomNumberInRange(0.5f, 2f), CORE_EXPLOSION_COLOR);
+                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(75f, 150f), (float) Math.random() * 360f),
+                    MathUtils.getRandomNumberInRange(4, 12), 1f, MathUtils.getRandomNumberInRange(2.5f, 4.75f), CORE_EXPLOSION_COLOR);
+        }
+
+        for (int x = 0; x < NUM_PARTICLES_3; x++) {
+            engine.addHitParticle(point,
+                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(100f, 200f), (float) Math.random() * 360f),
+                    MathUtils.getRandomNumberInRange(4, 12), 1f, MathUtils.getRandomNumberInRange(2f, 4f), CORE_EXPLOSION_COLOR);
         }
 
 
@@ -126,11 +133,27 @@ public class vic_alkonostExplosion {
                 //angle,
                 360 * (float) Math.random(),
                 0,
-                new Color(159, 210, 132, 200),
+                new Color(159, 210, 132, 100),
                 true,
                 0.4f,
                 0.0f,
                 1.6f
+        );
+
+        MagicRender.battlespace(
+                Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                point,
+                new Vector2f(),
+                new Vector2f(392, 392),
+                new Vector2f(240, 240),
+                //angle,
+                360 * (float) Math.random(),
+                0,
+                new Color(159, 210, 132, 100),
+                true,
+                0.4f,
+                0.0f,
+                2.5f
         );
 
         MagicRender.battlespace(
@@ -187,10 +210,10 @@ public class vic_alkonostExplosion {
         Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(180f, 270f)).scale(MathUtils.getRandomNumberInRange(25f, 50f));
         Vector2f nebulaSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(270f, 360f)).scale(MathUtils.getRandomNumberInRange(25f, 50f));
 
-        Global.getCombatEngine().addNebulaSmokeParticle(point, nebulaSpeed1, 200f, 2f, 0.2f, 0.2f, (2.5f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(186, 255, 235, 100));
-        Global.getCombatEngine().addNebulaSmokeParticle(point, nebulaSpeed2, 200f, 2f, 0.2f, 0.2f, (2.5f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(135, 255, 213, 100));
-        Global.getCombatEngine().addNebulaSmokeParticle(point, nebulaSpeed3, 200f, 2f, 0.2f, 0.2f, (2.5f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(78, 212, 170, 100));
-        Global.getCombatEngine().addNebulaSmokeParticle(point, nebulaSpeed4, 200f, 2f, 0.2f, 0.2f, (2.5f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(157, 255, 174, 100));
+        Global.getCombatEngine().addNebulaSmokeParticle(point, nebulaSpeed1, 200f, 2.5f, 0.2f, 0.2f, (3.5f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(186, 255, 235, 100));
+        Global.getCombatEngine().addNebulaSmokeParticle(point, nebulaSpeed2, 200f, 2.5f, 0.2f, 0.2f, (3.5f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(135, 255, 213, 100));
+        Global.getCombatEngine().addNebulaSmokeParticle(point, nebulaSpeed3, 200f, 2.5f, 0.2f, 0.2f, (3.5f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(78, 212, 170, 100));
+        Global.getCombatEngine().addNebulaSmokeParticle(point, nebulaSpeed4, 200f, 2.5f, 0.2f, 0.2f, (3.5f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(157, 255, 174, 100));
 
 
 

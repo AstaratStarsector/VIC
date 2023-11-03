@@ -4,7 +4,7 @@
   "projectileSpecId": "vic_rokh_main",
   "type": "MISSILE",
   "size": "LARGE",
-  "everyFrameEffect": "data.scripts.weapons.vic_RochWeaponScript",
+  "everyFrameEffect": "data.scripts.weapons.vic_RokhWeaponScript",
   "displayArcRadius": 300,
   "turretSprite": "graphics/weapons/vic_rokh_launcher.png",
   "hardpointSprite": "graphics/weapons/vic_rokh_launcher.png",

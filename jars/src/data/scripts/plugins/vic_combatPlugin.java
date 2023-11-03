@@ -11,6 +11,9 @@ import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.shipsystems.vic_shockDischarger;
 import data.scripts.util.MagicAnim;
+import data.scripts.utilities.vic_graphicLibEffects;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.WaveDistortion;
 import org.dark.shaders.light.StandardLight;
 import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.MathUtils;
@@ -543,6 +546,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
         for (XLLaidlawProjData data : new ArrayList<>(localData.XLLaidlawProjes)) {
             DamagingProjectileAPI projectile = data.proj;
 
+
             float distanceTraveled = projectile.getMoveSpeed() * amount;
 
             List<Vector2f> damagePoints = new ArrayList<>();
@@ -564,10 +568,41 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
 
             boolean shieldHit = false;
+            boolean light = false;
 
             Vector2f collisionPoint = null;
 
             targets.remove(projectile.getSource());
+
+            DamagingExplosionSpec explosion = new DamagingExplosionSpec(0.05f,
+                    150,
+                    75f,
+                    0,
+                    0,
+                    CollisionClass.PROJECTILE_FF,
+                    CollisionClass.PROJECTILE_FIGHTER,
+                    3,
+                    3,
+                    1f,
+                    15,
+                    new Color(33, 255, 122, 255),
+                    new Color(255, 150, 35, 255)
+            );
+
+            DamagingExplosionSpec explosion2 = new DamagingExplosionSpec(0.05f,
+                    75,
+                    32.5f,
+                    0,
+                    0,
+                    CollisionClass.PROJECTILE_FF,
+                    CollisionClass.PROJECTILE_FIGHTER,
+                    3,
+                    3,
+                    1f,
+                    15,
+                    new Color(33, 255, 122, 255),
+                    new Color(255, 150, 35, 255)
+            );
 
             //detect if hull hit or shield hit
             for (CombatEntityAPI target : targets) {
@@ -615,6 +650,182 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                             false,
                             true,
                             projectile.getSource());
+
+                    float force = (projectile.getDamageAmount() * 0.1f);
+                    CombatUtils.applyForce(target, projectile.getVelocity(), force);
+
+
+                    explosion.setDamageType(DamageType.FRAGMENTATION);
+                    explosion.setShowGraphic(false);
+                    explosion.setMinDamage(projectile.getDamageAmount() * 0.05f);
+                    explosion.setMaxDamage(projectile.getDamageAmount() * 0.1f);
+                    engine.spawnDamagingExplosion(explosion, projectile.getSource(), collisionPoint);
+
+
+                    Global.getSoundPlayer().playSound("vic_xl_laidlaw_explosion", 1f + MathUtils.getRandomNumberInRange(-0.1f, 0.1f), 1f, collisionPoint, new Vector2f());
+
+
+                    if (Global.getSettings().getModManager().isModEnabled("shaderLib")) {
+                        light = true;
+                    }
+
+                    WaveDistortion wave = new WaveDistortion(collisionPoint, new Vector2f(0, 0));
+                    wave.setIntensity(6f);
+                    wave.setSize(300f);
+                    wave.flip(true);
+                    wave.setLifetime(0f);
+                    wave.fadeOutIntensity(0.35f);
+                    wave.setLocation(projectile.getLocation());
+                    DistortionShader.addDistortion(wave);
+
+                    if (light) {
+                        vic_graphicLibEffects.CustomRippleDistortion(
+                                collisionPoint,
+                                new Vector2f(0, 0),
+                                350,
+                                4,
+                                false,
+                                0,
+                                360,
+                                1f,
+                                0.1f,
+                                0.25f,
+                                0.5f,
+                                0.6f,
+                                0f
+                        );
+                    }
+
+
+                    engine.spawnExplosion(
+                            collisionPoint,
+                            new Vector2f(0, 0),
+                            new Color(255, 255, 255, 255),
+                            40f,
+                            0.5f);
+
+                    engine.spawnExplosion(
+                            collisionPoint,
+                            new Vector2f(0, 0),
+                            new Color(0, 255, 225, 125),
+                            80f,
+                            0.75f);
+
+                    engine.addSmoothParticle(
+                            collisionPoint,
+                            new Vector2f(),
+                            500,
+                            2f,
+                            0.5f,
+                            new Color(158, 255, 255, 125));
+
+                    engine.addHitParticle(
+                            collisionPoint,
+                            new Vector2f(),
+                            800,
+                            2f,
+                            0.35f,
+                            new Color(158, 255, 255, 255));
+
+                    engine.addHitParticle(
+                            collisionPoint,
+                            new Vector2f(),
+                            1200,
+                            2f,
+                            0.2f,
+                            new Color(195, 255, 255, 255));
+
+
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("fx", "vic_laidlawExplosion2"),
+                            collisionPoint,
+                            new Vector2f(),
+                            new Vector2f(120, 120),
+                            new Vector2f(450, 450),
+                            //angle,
+                            360 * (float) Math.random(),
+                            0,
+                            new Color(255, 200, 200, 255),
+                            true,
+                            0,
+                            0.1f,
+                            0.15f
+                    );
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("fx", "vic_laidlawExplosion2"),
+                            collisionPoint,
+                            new Vector2f(),
+                            new Vector2f(155, 155),
+                            new Vector2f(225, 225),
+                            //angle,
+                            360 * (float) Math.random(),
+                            0,
+                            new Color(255, 225, 225, 175),
+                            true,
+                            0.2f,
+                            0.0f,
+                            0.4f
+                    );
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
+                            collisionPoint,
+                            new Vector2f(),
+                            new Vector2f(250, 250),
+                            new Vector2f(75, 75),
+                            //angle,
+                            360 * (float) Math.random(),
+                            0,
+                            new Color(255, 255, 255, 125),
+                            true,
+                            0.4f,
+                            0.0f,
+                            2f
+                    );
+
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                            collisionPoint,
+                            new Vector2f(),
+                            new Vector2f(200, 200),
+                            new Vector2f(750, 750),
+                            //angle,
+                            360 * (float) Math.random(),
+                            0,
+                            new Color(95, 255, 231, 25),
+                            true,
+                            0,
+                            0,
+                            0.5f
+                    );
+
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                            collisionPoint,
+                            new Vector2f(),
+                            new Vector2f(200, 200),
+                            new Vector2f(750, 750),
+                            //angle,
+                            360 * (float) Math.random(),
+                            0,
+                            new Color(255, 119, 0, 25),
+                            true,
+                            0,
+                            0,
+                            1.25f
+                    );
+
+                    Vector2f nebulaSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(0f, 90f)).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+                    Vector2f nebulaSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(90f, 180f)).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+                    Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(180f, 270f)).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+                    Vector2f nebulaSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(270f, 360f)).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+                    Vector2f nebulaSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity()).scale(0f);
+
+                    Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed1, 80f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(153, 95, 67, 125));
+                    Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed2, 80f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(83, 51, 25, 125));
+                    Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed3, 80f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(111, 56, 7, 125));
+                    Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed4, 80f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(134, 107, 53, 125));
+                    Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed5, 80f, 2f, 0.2f, 0.2f, 0.4f, new Color(172, 255, 230, 173));
+
                     if (target instanceof ShipAPI && !((ShipAPI) target).isFighter()) engine.removeEntity(projectile);
                 } else {
                     if (!data.damagedAlready.contains(target)) {
@@ -656,6 +867,186 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                                     projectile.getSource());
                             engine.removeEntity(projectile);
                             //Global.getLogger(vic_combatPlugin.class).info("no pen hit damage: " + projectile.getDamageAmount());
+
+                            float force = (projectile.getDamageAmount() * 0.1f);
+                            CombatUtils.applyForce(target, projectile.getVelocity(), force);
+
+                            explosion.setDamageType(DamageType.FRAGMENTATION);
+                            explosion.setShowGraphic(false);
+                            explosion.setMinDamage(projectile.getDamageAmount() * 0.05f);
+                            explosion.setMaxDamage(projectile.getDamageAmount() * 0.1f);
+                            engine.spawnDamagingExplosion(explosion, projectile.getSource(), collisionPoint);
+
+
+                            Global.getSoundPlayer().playSound("vic_xl_laidlaw_explosion", 1f + MathUtils.getRandomNumberInRange(-0.1f, 0.1f), 1f, collisionPoint, new Vector2f());
+
+
+                            if (Global.getSettings().getModManager().isModEnabled("shaderLib")) {
+                                light = true;
+                            }
+
+                            WaveDistortion wave = new WaveDistortion(collisionPoint, new Vector2f(0, 0));
+                            wave.setIntensity(6f);
+                            wave.setSize(300f);
+                            wave.flip(true);
+                            wave.setLifetime(0f);
+                            wave.fadeOutIntensity(0.35f);
+                            wave.setLocation(projectile.getLocation());
+                            DistortionShader.addDistortion(wave);
+
+                            if (light) {
+                                vic_graphicLibEffects.CustomRippleDistortion(
+                                        collisionPoint,
+                                        new Vector2f(0, 0),
+                                        350,
+                                        4,
+                                        false,
+                                        0,
+                                        360,
+                                        1f,
+                                        0.1f,
+                                        0.25f,
+                                        0.5f,
+                                        0.6f,
+                                        0f
+                                );
+                            }
+
+
+                            engine.spawnExplosion(
+                                    collisionPoint,
+                                    new Vector2f(0, 0),
+                                    new Color(255, 255, 255, 255),
+                                    40f,
+                                    0.5f);
+
+                            engine.spawnExplosion(
+                                    collisionPoint,
+                                    new Vector2f(0, 0),
+                                    new Color(0, 255, 225, 125),
+                                    80f,
+                                    0.75f);
+
+                            engine.addSmoothParticle(
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    500,
+                                    2f,
+                                    0.5f,
+                                    new Color(158, 255, 255, 125));
+
+                            engine.addHitParticle(
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    800,
+                                    2f,
+                                    0.35f,
+                                    new Color(158, 255, 255, 255));
+
+                            engine.addHitParticle(
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    1200,
+                                    2f,
+                                    0.2f,
+                                    new Color(195, 255, 255, 255));
+
+
+                            MagicRender.battlespace(
+                                    Global.getSettings().getSprite("fx", "vic_laidlawExplosion2"),
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    new Vector2f(120, 120),
+                                    new Vector2f(450, 450),
+                                    //angle,
+                                    360 * (float) Math.random(),
+                                    0,
+                                    new Color(255, 200, 200, 255),
+                                    true,
+                                    0,
+                                    0.1f,
+                                    0.15f
+                            );
+                            MagicRender.battlespace(
+                                    Global.getSettings().getSprite("fx", "vic_laidlawExplosion2"),
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    new Vector2f(155, 155),
+                                    new Vector2f(225, 225),
+                                    //angle,
+                                    360 * (float) Math.random(),
+                                    0,
+                                    new Color(255, 225, 225, 175),
+                                    true,
+                                    0.2f,
+                                    0.0f,
+                                    0.4f
+                            );
+                            MagicRender.battlespace(
+                                    Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    new Vector2f(250, 250),
+                                    new Vector2f(75, 75),
+                                    //angle,
+                                    360 * (float) Math.random(),
+                                    0,
+                                    new Color(255, 255, 255, 125),
+                                    true,
+                                    0.4f,
+                                    0.0f,
+                                    2f
+                            );
+
+                            MagicRender.battlespace(
+                                    Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    new Vector2f(200, 200),
+                                    new Vector2f(750, 750),
+                                    //angle,
+                                    360 * (float) Math.random(),
+                                    0,
+                                    new Color(95, 255, 231, 25),
+                                    true,
+                                    0,
+                                    0,
+                                    0.5f
+                            );
+
+                            MagicRender.battlespace(
+                                    Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    new Vector2f(200, 200),
+                                    new Vector2f(750, 750),
+                                    //angle,
+                                    360 * (float) Math.random(),
+                                    0,
+                                    new Color(255, 119, 0, 25),
+                                    true,
+                                    0,
+                                    0,
+                                    1.25f
+                            );
+
+                            Vector2f nebulaSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(0f, 90f)).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+                            Vector2f nebulaSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(90f, 180f)).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+                            Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(180f, 270f)).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+                            Vector2f nebulaSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(270f, 360f)).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+                            Vector2f nebulaSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity()).scale(0f);
+
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed1, 80f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(153, 95, 67, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed2, 80f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(83, 51, 25, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed3, 80f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(111, 56, 7, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed4, 80f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(134, 107, 53, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed5, 80f, 2f, 0.2f, 0.2f, 0.4f, new Color(172, 255, 230, 173));
+
+
+
+
+
+
                         } else {
                             engine.applyDamage(target,
                                     collisionPoint,
@@ -667,6 +1058,182 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                                     projectile.getSource());
                             data.damagedAlready.add(target);
                             //Global.getLogger(vic_combatPlugin.class).info("initial hit damage: " + projectile.getDamageAmount() * 0.35f);
+
+                            float force = (projectile.getDamageAmount() * 0.05f);
+                            CombatUtils.applyForce(target, projectile.getVelocity(), force);
+
+                            explosion2.setDamageType(DamageType.FRAGMENTATION);
+                            explosion2.setShowGraphic(false);
+                            explosion2.setMinDamage(projectile.getDamageAmount() * 0.025f);
+                            explosion2.setMaxDamage(projectile.getDamageAmount() * 0.05f);
+                            engine.spawnDamagingExplosion(explosion2, projectile.getSource(), collisionPoint);
+
+
+                            Global.getSoundPlayer().playSound("vic_xl_laidlaw_penetration", 1f + MathUtils.getRandomNumberInRange(-0.1f, 0.1f), 1f, collisionPoint, new Vector2f());
+
+
+                            if (Global.getSettings().getModManager().isModEnabled("shaderLib")) {
+                                light = true;
+                            }
+
+                            WaveDistortion wave = new WaveDistortion(collisionPoint, new Vector2f(0, 0));
+                            wave.setIntensity(4f);
+                            wave.setSize(150f);
+                            wave.flip(true);
+                            wave.setLifetime(0f);
+                            wave.fadeOutIntensity(0.35f);
+                            wave.setLocation(projectile.getLocation());
+                            DistortionShader.addDistortion(wave);
+
+                            if (light) {
+                                vic_graphicLibEffects.CustomRippleDistortion(
+                                        collisionPoint,
+                                        new Vector2f(0, 0),
+                                        175,
+                                        3,
+                                        false,
+                                        0,
+                                        360,
+                                        1f,
+                                        0.1f,
+                                        0.25f,
+                                        0.5f,
+                                        0.6f,
+                                        0f
+                                );
+                            }
+
+
+                            engine.spawnExplosion(
+                                    collisionPoint,
+                                    new Vector2f(0, 0),
+                                    new Color(255, 255, 255, 255),
+                                    20f,
+                                    0.5f);
+
+                            engine.spawnExplosion(
+                                    collisionPoint,
+                                    new Vector2f(0, 0),
+                                    new Color(0, 255, 225, 125),
+                                    40f,
+                                    0.75f);
+
+                            engine.addSmoothParticle(
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    250,
+                                    2f,
+                                    0.5f,
+                                    new Color(158, 255, 255, 125));
+
+                            engine.addHitParticle(
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    400,
+                                    2f,
+                                    0.35f,
+                                    new Color(158, 255, 255, 255));
+
+                            engine.addHitParticle(
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    600,
+                                    2f,
+                                    0.2f,
+                                    new Color(195, 255, 255, 255));
+
+
+                            MagicRender.battlespace(
+                                    Global.getSettings().getSprite("fx", "vic_laidlawExplosion2"),
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    new Vector2f(60, 60),
+                                    new Vector2f(225, 225),
+                                    //angle,
+                                    360 * (float) Math.random(),
+                                    0,
+                                    new Color(255, 200, 200, 255),
+                                    true,
+                                    0,
+                                    0.1f,
+                                    0.15f
+                            );
+                            MagicRender.battlespace(
+                                    Global.getSettings().getSprite("fx", "vic_laidlawExplosion2"),
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    new Vector2f(75, 75),
+                                    new Vector2f(115, 115),
+                                    //angle,
+                                    360 * (float) Math.random(),
+                                    0,
+                                    new Color(255, 225, 225, 175),
+                                    true,
+                                    0.2f,
+                                    0.0f,
+                                    0.4f
+                            );
+                            MagicRender.battlespace(
+                                    Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    new Vector2f(125, 125),
+                                    new Vector2f(37.5f, 37.5f),
+                                    //angle,
+                                    360 * (float) Math.random(),
+                                    0,
+                                    new Color(255, 255, 255, 125),
+                                    true,
+                                    0.4f,
+                                    0.0f,
+                                    2f
+                            );
+
+                            MagicRender.battlespace(
+                                    Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    new Vector2f(100, 100),
+                                    new Vector2f(325, 325),
+                                    //angle,
+                                    360 * (float) Math.random(),
+                                    0,
+                                    new Color(95, 255, 231, 25),
+                                    true,
+                                    0,
+                                    0,
+                                    0.5f
+                            );
+
+                            MagicRender.battlespace(
+                                    Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
+                                    collisionPoint,
+                                    new Vector2f(),
+                                    new Vector2f(100, 100),
+                                    new Vector2f(325, 325),
+                                    //angle,
+                                    360 * (float) Math.random(),
+                                    0,
+                                    new Color(255, 119, 0, 25),
+                                    true,
+                                    0,
+                                    0,
+                                    1.25f
+                            );
+
+                            Vector2f nebulaSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(0f, 90f)).scale(MathUtils.getRandomNumberInRange(2.5f, 10f));
+                            Vector2f nebulaSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(90f, 180f)).scale(MathUtils.getRandomNumberInRange(2.5f, 10f));
+                            Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(180f, 270f)).scale(MathUtils.getRandomNumberInRange(2.5f, 10f));
+                            Vector2f nebulaSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(270f, 360f)).scale(MathUtils.getRandomNumberInRange(2.5f, 10f));
+                            Vector2f nebulaSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity()).scale(0f);
+
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed1, 40f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(153, 95, 67, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed2, 40f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(83, 51, 25, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed3, 40f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(111, 56, 7, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed4, 40f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(134, 107, 53, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed5, 40f, 2f, 0.2f, 0.2f, 0.4f, new Color(172, 255, 230, 173));
+
+
                         }
                     } else {
                         for (Vector2f damagePoint : damagePoints) {
@@ -789,8 +1356,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             if (!engine.isEntityInPlay(proj)) {
                 float damage = proj.getDamageAmount() * 0.7f;
                 DamagingExplosionSpec explosion = new DamagingExplosionSpec(0.2f,
-                        180,
-                        90,
+                        250,
+                        125,
                         damage,
                         damage * 0.5f,
                         CollisionClass.PROJECTILE_FF,

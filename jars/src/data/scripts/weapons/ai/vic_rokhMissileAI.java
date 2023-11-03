@@ -5,6 +5,9 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.loading.DamagingExplosionSpec;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.utilities.vic_graphicLibEffects;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.WaveDistortion;
 import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.FastTrig;
 import org.lazywizard.lazylib.MathUtils;
@@ -17,6 +20,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.fs.starfarer.api.util.Misc.ZERO;
 import static data.scripts.utilities.vic_color.randomizeColor;
 
 public class vic_rokhMissileAI extends VIC_BaseMissile {
@@ -56,6 +60,13 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
     final float weaveSineBPhase;
     final float inaccuracy;
 
+    private boolean light = false;
+    private static final Color PARTICLE_COLOR = new Color(255, 150, 21, 150);
+    private static final Color CORE_COLOR = new Color(255, 60, 34);
+    private static final Color AFTERMATH_COLOR = new Color(201, 123, 68);
+    private static final Color FLASH_COLOR = new Color(255, 209, 173);
+    private static final int NUM_PARTICLES = 50;
+
     boolean readyToFly = false;
     final float eccmMult;
     boolean stopEngineToTurn = false;
@@ -76,8 +87,8 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
         }
 
         explosion = new DamagingExplosionSpec(0.1f,
-                250,
-                125,
+                200,
+                100,
                 missile.getDamageAmount(),
                 missile.getDamageAmount() * 0.5f,
                 CollisionClass.PROJECTILE_FF,
@@ -331,6 +342,9 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
                             pos,
                             angle + deviation,
                             speed);
+
+                    Global.getSoundPlayer().playSound("vic_rokh_sub_launch", 1, 1f, pos, missile.getVelocity());
+
                     ((MissileAPI) mine).setMaxFlightTime(((MissileAPI) mine).getMaxFlightTime() + MathUtils.getRandomNumberInRange(-1f, 1f));
                     speed.scale(0.5f);
                     Global.getCombatEngine().addNebulaSmokeParticle(pos, speed, 5, 8f, 0.1f, 0.3f, 0.5f, randomizeColor(new Color(68, 51, 46, 100), 0.1f));
@@ -345,9 +359,107 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
                     Vector2f speed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(mine.getFacing()).scale((float) (Math.sqrt(Math.random()) * (900f - 50f) + 50f) * speedMulty);
                     velocity.set(speed);
                 }
+
+                Global.getSoundPlayer().playSound("vic_apocrypha_explosion", 1, 1f, missile.getLocation(), missile.getVelocity());
+
                 Global.getCombatEngine().spawnDamagingExplosion(explosion,missile.getSource(),missile.getLocation(),false);
                 Global.getCombatEngine().spawnExplosion(missile.getLocation(), new Vector2f(), new Color(122, 60, 40, 255), 700, 2.6f);
+
+                Global.getCombatEngine().spawnExplosion(missile.getLocation(), ZERO, PARTICLE_COLOR, 300f, 1.3f);
+                Global.getCombatEngine().spawnExplosion(missile.getLocation(), ZERO, CORE_COLOR, 150f, 1f);
+                Global.getCombatEngine().spawnExplosion(missile.getLocation(), ZERO, AFTERMATH_COLOR, 250f, 2.5f);
+                Global.getCombatEngine().addSmoothParticle(missile.getLocation(), ZERO, 1000, 1f, 0.1f, FLASH_COLOR);
+                Global.getCombatEngine().addSmoothParticle(missile.getLocation(), ZERO, 1300, 1f, 0.2f, FLASH_COLOR);
+
+                Global.getCombatEngine().addSmoothParticle(missile.getLocation(), ZERO, 400f, 0.5f, 0.1f, PARTICLE_COLOR);
+                Global.getCombatEngine().addHitParticle(missile.getLocation(), ZERO, 200f, 0.5f, 0.25f, FLASH_COLOR);
+                for (int x = 0; x < NUM_PARTICLES; x++) {
+                    Global.getCombatEngine().addHitParticle(missile.getLocation(),
+                            MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(100f, 500f), (float) Math.random() * 360f),
+                            10f, 1f, MathUtils.getRandomNumberInRange(0.3f, 0.6f), PARTICLE_COLOR);
+                }
+
+                MagicRender.battlespace(
+                        Global.getSettings().getSprite("fx","vic_stolas_emp_secondary"),
+                        missile.getLocation(),
+                        ZERO,
+                        new Vector2f(100,100),
+                        new Vector2f(750,750),
+                        //angle,
+                        360*(float)Math.random(),
+                        0,
+                        new Color(255, 51, 0, 109),
+                        true,
+                        0,
+                        0.2f,
+                        1f
+                );
+
+                MagicRender.battlespace(
+                        Global.getSettings().getSprite("fx","vic_laidlawExplosion"),
+                        missile.getLocation(),
+                        ZERO,
+                        new Vector2f(250,250),
+                        new Vector2f(100,100),
+                        //angle,
+                        360*(float)Math.random(),
+                        0,
+                        new Color(255, 153, 0, 100),
+                        true,
+                        0.3f,
+                        0f,
+                        3f
+                );
+
+                MagicRender.battlespace(
+                        Global.getSettings().getSprite("fx","vic_stolas_emp_secondary"),
+                        missile.getLocation(),
+                        ZERO,
+                        new Vector2f(200,200),
+                        new Vector2f(150,150),
+                        //angle,
+                        360*(float)Math.random(),
+                        0,
+                        new Color(255, 51, 0, 150),
+                        true,
+                        0.3f,
+                        0f,
+                        2f
+                );
+
+                WaveDistortion wave = new WaveDistortion(missile.getLocation(), ZERO);
+                wave.setIntensity(1.5f);
+                wave.setSize(300f);
+                wave.flip(true);
+                wave.setLifetime(0f);
+                wave.fadeOutIntensity(1f);
+                wave.setLocation(missile.getLocation());
+                DistortionShader.addDistortion(wave);
+
+                if (Global.getSettings().getModManager().isModEnabled("shaderLib")) {
+                    light = true;
+                }
+
+                if (light) {
+                    vic_graphicLibEffects.CustomRippleDistortion(
+                            missile.getLocation(),
+                            ZERO,
+                            300,
+                            3,
+                            false,
+                            0,
+                            360,
+                            1f,
+                            0.1f,
+                            0.25f,
+                            0.5f,
+                            0.5f,
+                            0f
+                    );
+                }
+
                 Global.getCombatEngine().removeEntity(missile);
+
             }
             /*
             Vector2f submunitionVelocityMod = new Vector2f(0, MathUtils.getRandomNumberInRange(

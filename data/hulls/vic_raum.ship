@@ -44,7 +44,13 @@
     "WS0025": "vic_vernierEngine",
     "WS0026": "vic_vernierEngine",
     "WS0027": "vic_vernierEngine",
-    "WS0028": "vic_vernierEngine"
+    "WS0028": "vic_vernierEngine",
+    "WS0047": "vic_raum_engine_glow_side_edge",
+    "WS0048": "vic_raum_engine_glow_side_edge",
+    "WS0049": "vic_raum_engine_glow_side_left",
+    "WS0050": "vic_raum_engine_glow_side_right",
+    "WS0051": "vic_raum_engine_glow_central",
+    "WS0052": "vic_raum_engine_glow_central"
   },
   "weaponSlots": [
     {
@@ -486,6 +492,60 @@
       "arc": 120,
       "angle": -0,
       "locations": [-46, -0]
+    },
+    {
+      "id": "WS0047",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-123, 57]
+    },
+    {
+      "id": "WS0048",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-123, -57]
+    },
+    {
+      "id": "WS0049",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-129, 43]
+    },
+    {
+      "id": "WS0050",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-129, -43]
+    },
+    {
+      "id": "WS0051",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-177, 27]
+    },
+    {
+      "id": "WS0052",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [-177, -27]
     }
   ],
   "engineSlots": [
