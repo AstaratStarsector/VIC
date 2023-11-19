@@ -724,6 +724,30 @@
 		{"file": "sounds/effects/vic_rokh_sub_launch.ogg", "pitch": 1.00, "volume": 0.33,},
 		{"file": "sounds/effects/vic_rokh_sub_launch.ogg", "pitch": 1.10, "volume": 0.33,},
 	],
+
+		"vic_pirate_burn_activation":[
+	    {"file":"sounds/effects/vic_pirate_burn_activation.ogg","pitch":1.1, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_activation.ogg","pitch":1.05, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_activation.ogg","pitch":1.0, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_activation.ogg","pitch":0.95, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_activation.ogg","pitch":0.9, "volume":1},
+	],
+
+			"vic_pirate_burn_loop":[
+	    {"file":"sounds/effects/vic_pirate_burn_loop.ogg","pitch":1.1, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_loop.ogg","pitch":1.05, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_loop.ogg","pitch":1.0, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_loop.ogg","pitch":0.95, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_loop.ogg","pitch":0.9, "volume":1},
+	],
+
+			"vic_pirate_burn_deactivation":[
+	    {"file":"sounds/effects/vic_pirate_burn_deactivation.ogg","pitch":1.1, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_deactivation.ogg","pitch":1.05, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_deactivation.ogg","pitch":1.0, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_deactivation.ogg","pitch":0.95, "volume":1},
+		{"file":"sounds/effects/vic_pirate_burn_deactivation.ogg","pitch":0.9, "volume":1},
+	],
 	
 
 

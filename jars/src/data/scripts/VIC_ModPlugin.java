@@ -199,9 +199,75 @@ public class VIC_ModPlugin extends BaseModPlugin {
             vicJeremyHoloGuide.setRankId("vicHighExecutive");
             vicJeremyHoloGuide.setPostId("vicPRDirector");
             vicJeremyHoloGuide.setGender(FullName.Gender.MALE);
-            vicJeremyHoloGuide.setPortraitSprite("graphics/portraits/characters/vic_jeremy_tv.jpg");
+            vicJeremyHoloGuide.setPortraitSprite("graphics/portraits/characters/vic_jeremy_tv.png");
             Global.getSector().getImportantPeople().addPerson(vicJeremyHoloGuide);
         }
+
+        if (Global.getSector().getImportantPeople().getPerson("vic_TatianaHolo") == null) {
+            PersonAPI vicTatianaHolo = Global.getFactory().createPerson();
+            vicTatianaHolo.setFaction("vic");
+            vicTatianaHolo.setId("vic_TatianaHolo");
+            vicTatianaHolo.getName().setFirst("Tatiana");
+            vicTatianaHolo.getName().setLast("Vasilevskaya, VIC CEO");
+            vicTatianaHolo.setRankId("factionLeader");
+            vicTatianaHolo.setPostId("factionLeader");
+            vicTatianaHolo.setGender(FullName.Gender.FEMALE);
+            vicTatianaHolo.setPortraitSprite("graphics/portraits/characters/vic_tatiana_tv.png");
+            Global.getSector().getImportantPeople().addPerson(vicTatianaHolo);
+        }
+
+        if (Global.getSector().getImportantPeople().getPerson("vic_ErnestoHolo") == null) {
+            PersonAPI vicErnestoHolo = Global.getFactory().createPerson();
+            vicErnestoHolo.setFaction("vic");
+            vicErnestoHolo.setId("vic_ErnestoHolo");
+            vicErnestoHolo.getName().setFirst("Ernesto");
+            vicErnestoHolo.getName().setLast("Laidlaw, Technological Advancement Dept. Director");
+            vicErnestoHolo.setRankId("vicHighExecutive");
+            vicErnestoHolo.setPostId("vicTECHDirector");
+            vicErnestoHolo.setGender(FullName.Gender.MALE);
+            vicErnestoHolo.setPortraitSprite("graphics/portraits/characters/vic_ernesto_tv.png");
+            Global.getSector().getImportantPeople().addPerson(vicErnestoHolo);
+        }
+
+        if (Global.getSector().getImportantPeople().getPerson("vic_MurkwellHolo") == null) {
+            PersonAPI vicMurkwellHolo = Global.getFactory().createPerson();
+            vicMurkwellHolo.setFaction("vic");
+            vicMurkwellHolo.setId("vic_MurkwellHolo");
+            vicMurkwellHolo.getName().setFirst("Axton");
+            vicMurkwellHolo.getName().setLast("Murkwell");
+            vicMurkwellHolo.setRankId("vicHighExecutive");
+            vicMurkwellHolo.setPostId("vicINTELDirector");
+            vicMurkwellHolo.setGender(FullName.Gender.MALE);
+            vicMurkwellHolo.setPortraitSprite("graphics/portraits/characters/vic_murkwell_tv.png");
+            Global.getSector().getImportantPeople().addPerson(vicMurkwellHolo);
+        }
+
+        if (Global.getSector().getImportantPeople().getPerson("vic_AgniezskaHolo") == null) {
+            PersonAPI vicAgniezskaHolo = Global.getFactory().createPerson();
+            vicAgniezskaHolo.setFaction("vic");
+            vicAgniezskaHolo.setId("vic_AgniezskaHolo");
+            vicAgniezskaHolo.getName().setFirst("Agniezska");
+            vicAgniezskaHolo.getName().setLast("Lazari, Bio-Research Dept. Director");
+            vicAgniezskaHolo.setRankId("vicHighExecutive");
+            vicAgniezskaHolo.setPostId("vicBIODirector");
+            vicAgniezskaHolo.setGender(FullName.Gender.ANY);
+            vicAgniezskaHolo.setPortraitSprite("graphics/portraits/characters/vic_agniezska_tv.png");
+            Global.getSector().getImportantPeople().addPerson(vicAgniezskaHolo);
+        }
+
+        if (Global.getSector().getImportantPeople().getPerson("vic_VolkovHolo") == null) {
+            PersonAPI vicVolkovHolo = Global.getFactory().createPerson();
+            vicVolkovHolo.setFaction("vic");
+            vicVolkovHolo.setId("vic_VolkovHolo");
+            vicVolkovHolo.getName().setFirst("Victor");
+            vicVolkovHolo.getName().setLast("Volkov, VIC Founder");
+            vicVolkovHolo.setRankId("formerFactionLeader");
+            vicVolkovHolo.setPostId("factionLeader");
+            vicVolkovHolo.setGender(FullName.Gender.MALE);
+            vicVolkovHolo.setPortraitSprite("graphics/portraits/characters/vic_volkov_tv.png");
+            Global.getSector().getImportantPeople().addPerson(vicVolkovHolo);
+        }
+
 
     }
 

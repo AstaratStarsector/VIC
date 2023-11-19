@@ -278,7 +278,9 @@
 	"ranks":{
 		"ranks":{	
 		    "factionLeader":{"name":"CEO"},
-			"vicHighExecutive":{"name":"High Executive Manager"},
+			"formerFactionLeader":{"name":"Former CEO"},
+			"vicHighExecutive":{"name":"High Executive Officer"},
+
 		        
 		    "spaceSailor":{"name":"Able Spacer"},
 			"spaceChief":{"name":"Aerospace Corps Warrant Officer"},
@@ -318,6 +320,10 @@
 			"freeAdmin":{"name":"Freelance Planetary Manager"},
 
 			"vicPRDirector":{"name":"Advertisment and PR Dept. Director"},
+			"vicBIODirector":{"name":"Bio-Research Dept. Director"},
+			"vicTECHDirector":{"name":"Technological Advancement Dept. Director"},
+			"vicINTELDirector":{"name":"Intelligence and Inner Sec. Dept. Director"},
+			"vicFOUNDERDirector":{"name":"VIC Founder"},
 		},
 	},
 	

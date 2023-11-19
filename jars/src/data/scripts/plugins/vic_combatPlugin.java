@@ -1078,7 +1078,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
                             WaveDistortion wave = new WaveDistortion(collisionPoint, new Vector2f(0, 0));
                             wave.setIntensity(4f);
-                            wave.setSize(150f);
+                            wave.setSize(200f);
                             wave.flip(true);
                             wave.setLifetime(0f);
                             wave.fadeOutIntensity(0.35f);
@@ -1089,7 +1089,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                                 vic_graphicLibEffects.CustomRippleDistortion(
                                         collisionPoint,
                                         new Vector2f(0, 0),
-                                        175,
+                                        240,
                                         3,
                                         false,
                                         0,
@@ -1108,20 +1108,20 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                                     collisionPoint,
                                     new Vector2f(0, 0),
                                     new Color(255, 255, 255, 255),
-                                    20f,
+                                    25f,
                                     0.5f);
 
                             engine.spawnExplosion(
                                     collisionPoint,
                                     new Vector2f(0, 0),
                                     new Color(0, 255, 225, 125),
-                                    40f,
+                                    50f,
                                     0.75f);
 
                             engine.addSmoothParticle(
                                     collisionPoint,
                                     new Vector2f(),
-                                    250,
+                                    312.5f,
                                     2f,
                                     0.5f,
                                     new Color(158, 255, 255, 125));
@@ -1129,7 +1129,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                             engine.addHitParticle(
                                     collisionPoint,
                                     new Vector2f(),
-                                    400,
+                                    500,
                                     2f,
                                     0.35f,
                                     new Color(158, 255, 255, 255));
@@ -1137,7 +1137,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                             engine.addHitParticle(
                                     collisionPoint,
                                     new Vector2f(),
-                                    600,
+                                    750,
                                     2f,
                                     0.2f,
                                     new Color(195, 255, 255, 255));
@@ -1147,8 +1147,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                                     Global.getSettings().getSprite("fx", "vic_laidlawExplosion2"),
                                     collisionPoint,
                                     new Vector2f(),
-                                    new Vector2f(60, 60),
-                                    new Vector2f(225, 225),
+                                    new Vector2f(75, 75),
+                                    new Vector2f(280, 280),
                                     //angle,
                                     360 * (float) Math.random(),
                                     0,
@@ -1162,8 +1162,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                                     Global.getSettings().getSprite("fx", "vic_laidlawExplosion2"),
                                     collisionPoint,
                                     new Vector2f(),
-                                    new Vector2f(75, 75),
-                                    new Vector2f(115, 115),
+                                    new Vector2f(95, 95),
+                                    new Vector2f(145, 145),
                                     //angle,
                                     360 * (float) Math.random(),
                                     0,
@@ -1177,8 +1177,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                                     Global.getSettings().getSprite("fx", "vic_laidlawExplosion"),
                                     collisionPoint,
                                     new Vector2f(),
-                                    new Vector2f(125, 125),
-                                    new Vector2f(37.5f, 37.5f),
+                                    new Vector2f(155, 155),
+                                    new Vector2f(47f, 47f),
                                     //angle,
                                     360 * (float) Math.random(),
                                     0,
@@ -1193,8 +1193,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                                     Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
                                     collisionPoint,
                                     new Vector2f(),
-                                    new Vector2f(100, 100),
-                                    new Vector2f(325, 325),
+                                    new Vector2f(125, 125),
+                                    new Vector2f(405, 405),
                                     //angle,
                                     360 * (float) Math.random(),
                                     0,
@@ -1209,8 +1209,8 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                                     Global.getSettings().getSprite("fx", "vic_stolas_emp_secondary"),
                                     collisionPoint,
                                     new Vector2f(),
-                                    new Vector2f(100, 100),
-                                    new Vector2f(325, 325),
+                                    new Vector2f(125, 125),
+                                    new Vector2f(405, 405),
                                     //angle,
                                     360 * (float) Math.random(),
                                     0,
@@ -1227,11 +1227,11 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                             Vector2f nebulaSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity() + MathUtils.getRandomNumberInRange(270f, 360f)).scale(MathUtils.getRandomNumberInRange(2.5f, 10f));
                             Vector2f nebulaSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(projectile.getAngularVelocity()).scale(0f);
 
-                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed1, 40f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(153, 95, 67, 125));
-                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed2, 40f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(83, 51, 25, 125));
-                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed3, 40f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(111, 56, 7, 125));
-                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed4, 40f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(134, 107, 53, 125));
-                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed5, 40f, 2f, 0.2f, 0.2f, 0.4f, new Color(172, 255, 230, 173));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed1, 50f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(153, 95, 67, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed2, 50f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(83, 51, 25, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed3, 50f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(111, 56, 7, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed4, 50f, 2.5f, 0.2f, 0.2f, (2f + MathUtils.getRandomNumberInRange(-0.5f, 0.5f)), new Color(134, 107, 53, 125));
+                            Global.getCombatEngine().addNebulaSmokeParticle(collisionPoint, nebulaSpeed5, 50f, 2f, 0.2f, 0.2f, 0.4f, new Color(172, 255, 230, 173));
 
 
                         }
