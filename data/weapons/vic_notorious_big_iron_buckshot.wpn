@@ -4,7 +4,7 @@
   "projectileSpecId": "vic_notorious_big_iron_buckshot_shot",
   "type": "BALLISTIC",
   "size": "LARGE",
-  "everyFrameEffect": "data.scripts.weapons.vic_notoriousBigIronBuckshotOnFire",
+  "everyFrameEffect": "data.scripts.weapons.bigIron.vic_notoriousBigIronBuckshotOnFire",
   "displayArcRadius": 600,
   "turretSprite": "graphics/weapons/Raum Bounty/vic_notorious_big_iron00.png",
   "turretGunSprite": "graphics/weapons/Raum Bounty/vic_notorious_big_iron_recoil.png",

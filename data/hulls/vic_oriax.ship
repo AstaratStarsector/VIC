@@ -23,14 +23,7 @@
     "SYS004": "vic_deco_dummy",
     "WS0002": "vic_deco_oriaxDecalRight",
     "WS0003": "vic_deco_oriaxDecalLeft",
-    "WS0004": "vic_vernierEngine",
-    "WS0009": "vic_vernierEngine",
-    "WS0010": "vic_vernierEngine",
-    "WS0011": "vic_vernierEngine",
-    "WS0012": "vic_vernierEngine",
-    "WS0019": "vic_vernierEngine",
-    "WS0020": "vic_vernierEngine",
-    "WS0021": "vic_vernierEngine",
+    "WS0011": "vic_vectorEngineController",
     "WS1001": "vic_blonkerRed",
     "WS1002": "vic_blonkerRed",
     "WS1007": "vic_blonkerRed",
@@ -465,76 +458,13 @@
       "locations": [-37, 60]
     },
     {
-      "id": "WS0004",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 0,
-      "angle": -135,
-      "locations": [46, -47]
-    },
-    {
-      "id": "WS0009",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 0,
-      "angle": 135,
-      "locations": [46, 47]
-    },
-    {
-      "id": "WS0010",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 0,
-      "angle": -135,
-      "locations": [41, -44]
-    },
-    {
       "id": "WS0011",
-      "size": "SMALL",
+      "size": "MEDIUM",
       "type": "DECORATIVE",
       "mount": "HARDPOINT",
       "arc": 0,
-      "angle": 135,
-      "locations": [41, 44]
-    },
-    {
-      "id": "WS0012",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 0,
-      "angle": -135,
-      "locations": [166, -32]
-    },
-    {
-      "id": "WS0019",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 0,
-      "angle": 135,
-      "locations": [166, 32]
-    },
-    {
-      "id": "WS0020",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 0,
-      "angle": -135,
-      "locations": [160, -30]
-    },
-    {
-      "id": "WS0021",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "HARDPOINT",
-      "arc": 0,
-      "angle": 135,
-      "locations": [160, 30]
+      "angle": 0,
+      "locations": [50.5, -0]
     }
   ],
   "engineSlots": [
@@ -593,76 +523,76 @@
       "styleId": "VOLKOV-LAIDLAW'S"
     },
     {
-      "location": [46, -47],
-      "length": 0,
-      "width": 5,
-      "angle": 180,
-      "contrailSize": 5,
+      "location": [47, -46.5],
+      "length": 25,
+      "width": 4,
+      "angle": -135,
+      "contrailSize": 5.980943,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     },
     {
-      "location": [46, 47],
-      "length": 0,
-      "width": 5,
-      "angle": -180,
-      "contrailSize": 5,
+      "location": [47, 46.5],
+      "length": 25,
+      "width": 4,
+      "angle": 135,
+      "contrailSize": 5.980943,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [41, -44],
-      "length": 0,
-      "width": 5,
-      "angle": 180,
-      "contrailSize": 5,
+      "length": 25,
+      "width": 4,
+      "angle": -135,
+      "contrailSize": 5.013888,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [41, 44],
-      "length": 0,
-      "width": 5,
-      "angle": -180,
-      "contrailSize": 5,
+      "length": 25,
+      "width": 4,
+      "angle": 135,
+      "contrailSize": 5.013888,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [160, -30],
-      "length": 0,
-      "width": 5,
-      "angle": 180,
+      "length": 25,
+      "width": 4,
+      "angle": -135,
       "contrailSize": 5,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [160, 30],
-      "length": 0,
-      "width": 5,
-      "angle": -180,
+      "length": 25,
+      "width": 4,
+      "angle": 135,
       "contrailSize": 5,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [166, -32],
-      "length": 0,
-      "width": 5,
-      "angle": 180,
+      "length": 25,
+      "width": 4,
+      "angle": -135,
       "contrailSize": 5,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [166, 32],
-      "length": 0,
-      "width": 5,
-      "angle": -180,
+      "length": 25,
+      "width": 4,
+      "angle": 135,
       "contrailSize": 5,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     }
   ],
   "bounds": [

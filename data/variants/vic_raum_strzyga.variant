@@ -1,0 +1,75 @@
+{
+    "displayName": "Iron Curtain",
+    "fluxCapacitors": 29,
+    "fluxVents": 50,
+    "hullId": "vic_raum",
+    "hullMods": [
+        "vic_raum_weapon_swapper_strzyga",
+        "targetingunit"
+    ],
+    "permaMods": [],
+    "sMods": [],
+    "variantId": "vic_raum_strzyga",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0045": "vic_nawia"}
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0043": "vic_laidlawMassDriver",
+                "WS0044": "vic_laidlawMassDriver"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0039": "vic_rarog",
+                "WS0040": "vic_rarog",
+                "WS0041": "vic_rarog",
+                "WS0042": "vic_rarog"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0037": "vic_laidlawMassDriver",
+                "WS0038": "vic_laidlawMassDriver"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0035": "vic_gagana",
+                "WS0036": "vic_gagana"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {"WS0046": "vic_raum_weapon_strzyga"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0029": "vic_strigoy",
+                "WS0030": "vic_strigoy",
+                "WS0031": "vic_strigoy",
+                "WS0032": "vic_strigoy",
+                "WS0033": "vic_strigoy",
+                "WS0034": "vic_strigoy"
+            }
+        }
+    ],
+    "wings": [
+        "vic_uvall_wing",
+        "vic_uvall_wing"
+    ]
+}

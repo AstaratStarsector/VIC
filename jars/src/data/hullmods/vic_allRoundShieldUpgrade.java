@@ -41,7 +41,6 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
 
         stats.getBallisticWeaponDamageMult().modifyMult(id, 1 - (damageReduction * 0.01f));
         stats.getBallisticWeaponFluxCostMod().modifyMult(id, 1 - (damageReduction * 0.01f));
-
     }
 
     @Override
@@ -97,7 +96,7 @@ public class vic_allRoundShieldUpgrade extends BaseHullMod {
         text.addPara("Redirect the ship's energy to significantly harden the shield. Reduces shield damage taken by %s but reduces ship's weapons' rate of fire by %s. " +
                         "Has secondary battery which absorbs part of shield hits. While the system is active, battery absorbs up to %s of hits' damage at %s flux down to %s at %s flux. " +
                         "Battery capacity equals %s ships max flux.",
-                2, Misc.getHighlightColor(), Math.round(shieldDamageTakenReduction * 100) + "%", Math.round(weaponRoFReduction * 100) + "%", "75%", "90%", "0%", "50%", "200%");
+                2, Misc.getHighlightColor(), Math.round(shieldDamageTakenReduction * 100) + "%", Math.round(weaponRoFReduction * 100) + "%", "70%", "90%", "0%", "50%", "150%");
         tooltip.addImageWithText(pad);
     }
 }

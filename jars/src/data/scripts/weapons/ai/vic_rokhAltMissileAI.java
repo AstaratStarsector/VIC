@@ -273,7 +273,6 @@ public class vic_rokhAltMissileAI extends VIC_BaseMissile {
             //pop out
             if (doPopOuts) {
                 for (Vector2f loc : popOuts) {
-                    //TODO: remove duplicate
                     {
                         Vector2f pos = Vector2f.add(VectorUtils.rotate(new Vector2f(loc), missile.getFacing()), missile.getLocation(), null);
                         Vector2f speed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(missile.getFacing() + MathUtils.getRandomNumberInRange(80, 100)).scale(MathUtils.getRandomNumberInRange(50f, 75f));
@@ -291,10 +290,11 @@ public class vic_rokhAltMissileAI extends VIC_BaseMissile {
                                 0,
                                 3,
                                 0.5f,
-                                CombatEngineLayers.ABOVE_SHIPS_AND_MISSILES_LAYER);
+                                CombatEngineLayers.ABOVE_SHIPS_LAYER);
                         speed.scale(0.5f);
                         Global.getCombatEngine().addNebulaSmokeParticle(pos, speed, 8, 10f, 0.1f, 0.3f, 1.5f, randomizeColor(new Color(84, 60, 52, 100), 0.1f));
 
+                        Global.getSoundPlayer().playSound("vic_giga_missile_door", 1, 1f, pos, missile.getVelocity());
                     }
                     //other sie
 

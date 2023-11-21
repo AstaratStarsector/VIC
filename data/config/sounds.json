@@ -409,7 +409,6 @@
 		{"file":"sounds/effects/vic_afreet_large_stream.ogg","pitch":1.15, "volume":0.5},
 		{"file":"sounds/effects/vic_afreet_large_stream.ogg","pitch":1.2, "volume":0.5},
 	],
-	
 	"vic_saih":[
         {"file":"sounds/effects/vic_saih.ogg","pitch":0.9, "volume":1},
 		{"file":"sounds/effects/vic_saih.ogg","pitch":0.95, "volume":1},
@@ -417,7 +416,6 @@
 		{"file":"sounds/effects/vic_saih.ogg","pitch":1.05, "volume":1},
 		{"file":"sounds/effects/vic_saih.ogg","pitch":1.1, "volume":1},
 	],
-	
 	"vic_saih_split":[
         {"file":"sounds/effects/vic_saih_split.ogg","pitch":0.9, "volume":0.75},
 		{"file":"sounds/effects/vic_saih_split.ogg","pitch":0.95, "volume":0.75},
@@ -425,7 +423,6 @@
 		{"file":"sounds/effects/vic_saih_split.ogg","pitch":1.05, "volume":0.75},
 		{"file":"sounds/effects/vic_saih_split.ogg","pitch":1.1, "volume":0.75},
 	],
-	
 	"vic_hungruf":[
         {"file":"sounds/effects/vic_hungruf.ogg","pitch":0.9, "volume":0.75},
 		{"file":"sounds/effects/vic_hungruf.ogg","pitch":0.95, "volume":0.75},
@@ -433,7 +430,6 @@
 		{"file":"sounds/effects/vic_hungruf.ogg","pitch":1.05, "volume":0.75},
 		{"file":"sounds/effects/vic_hungruf.ogg","pitch":1.1, "volume":0.75},
 	],
-	
 	"vic_hungruf_pop":[
         {"file":"sounds/effects/vic_hungruf_pop.ogg","pitch":0.8, "volume":0.5},
 		{"file":"sounds/effects/vic_hungruf_pop.ogg","pitch":0.9, "volume":0.5},
@@ -441,7 +437,6 @@
 		{"file":"sounds/effects/vic_hungruf_pop.ogg","pitch":1.1, "volume":0.5},
 		{"file":"sounds/effects/vic_hungruf_pop.ogg","pitch":1.2, "volume":0.5},
 	],
-	
 	"vic_hungruf_explosion":[
         {"file":"sounds/effects/vic_hungruf_explosion.ogg","pitch":0.8, "volume":0.75},
 		{"file":"sounds/effects/vic_hungruf_explosion.ogg","pitch":0.9, "volume":0.75},
@@ -449,7 +444,6 @@
 		{"file":"sounds/effects/vic_hungruf_explosion.ogg","pitch":1.1, "volume":0.75},
 		{"file":"sounds/effects/vic_hungruf_explosion.ogg","pitch":1.2, "volume":0.75},
 	],
-	
 	"vic_hatif":[
         {"file":"sounds/effects/vic_hatif.ogg","pitch":0.9, "volume":0.75},
 		{"file":"sounds/effects/vic_hatif.ogg","pitch":0.95, "volume":0.75},
@@ -457,7 +451,6 @@
 		{"file":"sounds/effects/vic_hatif.ogg","pitch":1.05, "volume":0.75},
 		{"file":"sounds/effects/vic_hatif.ogg","pitch":1.1, "volume":0.75},
 	],
-	
 	"vic_falak":[
         {"file":"sounds/effects/vic_falak.ogg","pitch":1.1, "volume":2},
 		{"file":"sounds/effects/vic_falak.ogg","pitch":1.15, "volume":2},
@@ -465,7 +458,6 @@
 		{"file":"sounds/effects/vic_falak.ogg","pitch":1.25, "volume":2},
 		{"file":"sounds/effects/vic_falak.ogg","pitch":1.3, "volume":2},
 	],
-	
 	"vic_falak_explosion":[
         {"file":"sounds/effects/vic_falak_explosion.ogg","pitch":0.9, "volume":1},
 		{"file":"sounds/effects/vic_falak_explosion.ogg","pitch":0.95, "volume":1},
@@ -473,15 +465,13 @@
 		{"file":"sounds/effects/vic_falak_explosion.ogg","pitch":1.05, "volume":1},
 		{"file":"sounds/effects/vic_falak_explosion.ogg","pitch":1.1, "volume":1},
 	],
-	
-	    "vic_apocrypha":[
+	"vic_apocrypha":[
         {"file":"sounds/effects/vic_apocrypha.ogg","pitch":0.9, "volume":2},
 		{"file":"sounds/effects/vic_apocrypha.ogg","pitch":0.95, "volume":2},
 		{"file":"sounds/effects/vic_apocrypha.ogg","pitch":1, "volume":2},
 		{"file":"sounds/effects/vic_apocrypha.ogg","pitch":1.05, "volume":2},
 		{"file":"sounds/effects/vic_apocrypha.ogg","pitch":1.1, "volume":2},
 	],
-	
     "vic_apocrypha_explosion":[
         {"file":"sounds/effects/vic_apocrypha_explosion.ogg","pitch":0.9, "volume":2},
 		{"file":"sounds/effects/vic_apocrypha_explosion.ogg","pitch":0.95, "volume":2},
@@ -489,7 +479,6 @@
 		{"file":"sounds/effects/vic_apocrypha_explosion.ogg","pitch":1.05, "volume":2},
 		{"file":"sounds/effects/vic_apocrypha_explosion.ogg","pitch":1.1, "volume":2},
 	],
-	
 	"vic_azhdaya_spin":[
         {"file":"sounds/effects/vic_azhdaya_spin.ogg","pitch":0.5, "volume":15},
 
@@ -498,7 +487,6 @@
 		{"file":"sounds/effects/vic_azhdaya_shot.ogg","pitch":1.0, "volume":1.5},
 
 	],
-	
 	"vic_astronomicon_shot1":[
 	    {"file":"sounds/effects/vic_astronomicon_shot1.ogg","pitch":1.1, "volume":1.15},
 		{"file":"sounds/effects/vic_astronomicon_shot1.ogg","pitch":1.05, "volume":1.15},
@@ -506,7 +494,6 @@
 		{"file":"sounds/effects/vic_astronomicon_shot1.ogg","pitch":0.95, "volume":1.15},
 		{"file":"sounds/effects/vic_astronomicon_shot1.ogg","pitch":0.9, "volume":1.15},
 	],
-	
 	"vic_astronomicon_shot2":[
 	    {"file":"sounds/effects/vic_astronomicon_shot2.ogg","pitch":1.1, "volume":1.3},
 		{"file":"sounds/effects/vic_astronomicon_shot2.ogg","pitch":1.05, "volume":1.3},
@@ -514,7 +501,6 @@
 		{"file":"sounds/effects/vic_astronomicon_shot2.ogg","pitch":0.95, "volume":1.3},
 		{"file":"sounds/effects/vic_astronomicon_shot2.ogg","pitch":0.9, "volume":1.3},
 	],
-	
 	"vic_astronomicon_shot3":[
 	    {"file":"sounds/effects/vic_astronomicon_shot3.ogg","pitch":1.1, "volume":2},
 		{"file":"sounds/effects/vic_astronomicon_shot3.ogg","pitch":1.05, "volume":2},
@@ -522,7 +508,6 @@
 		{"file":"sounds/effects/vic_astronomicon_shot3.ogg","pitch":0.95, "volume":2},
 		{"file":"sounds/effects/vic_astronomicon_shot3.ogg","pitch":0.9, "volume":2},
 	],
-	
 	"vic_astronomicon_charge1":[
 	    {"file":"sounds/effects/vic_astronomicon_charge1.ogg","pitch":1.1, "volume":1.15},
 		{"file":"sounds/effects/vic_astronomicon_charge1.ogg","pitch":1.05, "volume":1.15},
@@ -530,7 +515,6 @@
 		{"file":"sounds/effects/vic_astronomicon_charge1.ogg","pitch":0.95, "volume":1.15},
 		{"file":"sounds/effects/vic_astronomicon_charge1.ogg","pitch":0.9, "volume":1.15},
 	],
-	
 	"vic_astronomicon_charge2":[
 	    {"file":"sounds/effects/vic_astronomicon_charge2.ogg","pitch":1.1, "volume":1.3},
 		{"file":"sounds/effects/vic_astronomicon_charge2.ogg","pitch":1.05, "volume":1.3},
@@ -538,7 +522,6 @@
 		{"file":"sounds/effects/vic_astronomicon_charge2.ogg","pitch":0.95, "volume":1.3},
 		{"file":"sounds/effects/vic_astronomicon_charge2.ogg","pitch":0.9, "volume":1.3},
 	],
-	
 	"vic_astronomicon_charge3":[
 	    {"file":"sounds/effects/vic_astronomicon_charge3.ogg","pitch":1.1, "volume":2},
 		{"file":"sounds/effects/vic_astronomicon_charge3.ogg","pitch":1.05, "volume":2},
@@ -546,8 +529,6 @@
 		{"file":"sounds/effects/vic_astronomicon_charge3.ogg","pitch":0.95, "volume":2},
 		{"file":"sounds/effects/vic_astronomicon_charge3.ogg","pitch":0.9, "volume":2},
 	],
-	
-	
 	"vic_astronomicon_hit":[
 	    {"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":1.1, "volume":1},
 		{"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":1.05, "volume":1},
@@ -555,7 +536,6 @@
 		{"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":0.95, "volume":1},
 		{"file":"sounds/effects/vic_astronomicon_hit.ogg","pitch":0.9, "volume":1},
 	],
-
 	"vic_astronomicon_hit_small":[
 	    {"file":"sounds/effects/vic_astronomicon_hit_small.ogg","pitch":1.1, "volume":1},
 		{"file":"sounds/effects/vic_astronomicon_hit_small.ogg","pitch":1.05, "volume":1},
@@ -563,7 +543,6 @@
 		{"file":"sounds/effects/vic_astronomicon_hit_small.ogg","pitch":0.95, "volume":1},
 		{"file":"sounds/effects/vic_astronomicon_hit_small.ogg","pitch":0.9, "volume":1},
 	],
-	
 	"vic_gatebreaker_autocannon":[
         {"file":"sounds/effects/vic_gatebreaker_autocannon.ogg","pitch":0.9, "volume":0.5},
 		{"file":"sounds/effects/vic_gatebreaker_autocannon.ogg","pitch":0.95, "volume":0.5},
@@ -571,7 +550,6 @@
 		{"file":"sounds/effects/vic_gatebreaker_autocannon.ogg","pitch":1.05, "volume":0.5},
 		{"file":"sounds/effects/vic_gatebreaker_autocannon.ogg","pitch":1.1, "volume":0.5},
 	],
-	
 	"vic_gatebreaker_shotgun":[
         {"file":"sounds/effects/vic_gatebreaker_shotgun.ogg","pitch":0.9, "volume":2},
 		{"file":"sounds/effects/vic_gatebreaker_shotgun.ogg","pitch":0.95, "volume":2},
@@ -579,7 +557,6 @@
 		{"file":"sounds/effects/vic_gatebreaker_shotgun.ogg","pitch":1.05, "volume":2},
 		{"file":"sounds/effects/vic_gatebreaker_shotgun.ogg","pitch":1.1, "volume":2},
 	],
-	
 	"vic_gatebreaker_flamer_charge":[
         {"file":"sounds/effects/vic_gatebreaker_flamer_charge.ogg","pitch":0.9, "volume":1},
 		{"file":"sounds/effects/vic_gatebreaker_flamer_charge.ogg","pitch":0.95, "volume":1},
@@ -590,7 +567,6 @@
 	"vic_gatebreaker_flamer_loop":[
 	    {"file":"sounds/effects/vic_gatebreaker_flamer_loop.ogg","pitch":1.0, "volume":2},
 	],
-
 	"vic_gagana_ultra_shot":[
 		{"file": "sounds/effects/vic_gagana_ultra_shot.ogg", "pitch": 0.90, "volume": 0.7,},
 		{"file": "sounds/effects/vic_gagana_ultra_shot.ogg", "pitch": 0.95, "volume": 0.7,},
@@ -598,7 +574,6 @@
 		{"file": "sounds/effects/vic_gagana_ultra_shot.ogg", "pitch": 1.05, "volume": 0.7,},
 		{"file": "sounds/effects/vic_gagana_ultra_shot.ogg", "pitch": 1.10, "volume": 0.7,},
 	],
-
 	"vic_gagana_ultra_hit":[
 		{"file": "sounds/effects/vic_gagana_ultra_hit.ogg", "pitch": 0.90, "volume": 1,},
 		{"file": "sounds/effects/vic_gagana_ultra_hit.ogg", "pitch": 0.95, "volume": 1,},
@@ -606,25 +581,20 @@
 		{"file": "sounds/effects/vic_gagana_ultra_hit.ogg", "pitch": 1.05, "volume": 1,},
 		{"file": "sounds/effects/vic_gagana_ultra_hit.ogg", "pitch": 1.10, "volume": 1,},
 	],
-
 	"vic_strzyga_start":[
 		{"file":"sounds/effects/vic_strzyga_start.ogg","pitch":0.9,"volume":0.5},
 	],
-
 	"vic_strzyga_loop":[
 		{"file": "sounds/effects/vic_strzyga_loop.ogg", "pitch": 1.00, "volume": 0.5,},
 	],
-
 	"vic_strzyga_end":[
 		{"file": "sounds/effects/vic_strzyga_end.ogg", "pitch": 1.00, "volume": 0.35,},
 	],
-
 	"vic_strzyga_explosion":[
 		{"file": "sounds/effects/vic_strzyga_explosion_1.ogg", "pitch": 1, "volume": 0.25,},
 		{"file": "sounds/effects/vic_strzyga_explosion_2.ogg", "pitch": 1, "volume": 0.25,},
 		{"file": "sounds/effects/vic_strzyga_explosion_3.ogg", "pitch": 1, "volume": 0.25,},
 	],
-
 	"vic_alkonost_shot":[
 		{"file": "sounds/effects/vic_alkonost_shot.ogg", "pitch": 0.90, "volume": 1,},
 		{"file": "sounds/effects/vic_alkonost_shot.ogg", "pitch": 0.95, "volume": 1,},
@@ -632,11 +602,9 @@
 		{"file": "sounds/effects/vic_alkonost_shot.ogg", "pitch": 1.05, "volume": 1,},
 		{"file": "sounds/effects/vic_alkonost_shot.ogg", "pitch": 1.10, "volume": 1,},
 	],
-
 	"vic_alkonost_chargeup":[
 		{"file": "sounds/effects/vic_alkonost_chargeup.ogg", "pitch": 1.10, "volume": 1,},
 	],
-
 	"vic_alkonost_explosion":[
 		{"file": "sounds/effects/vic_alkonost_explosion.ogg", "pitch": 0.90, "volume": 1.25,},
 		{"file": "sounds/effects/vic_alkonost_explosion.ogg", "pitch": 0.95, "volume": 1.25,},
@@ -644,7 +612,6 @@
 		{"file": "sounds/effects/vic_alkonost_explosion.ogg", "pitch": 1.05, "volume": 1.25,},
 		{"file": "sounds/effects/vic_alkonost_explosion.ogg", "pitch": 1.10, "volume": 1.25,},
 	],
-
 	"vic_alkonost_emp_arc":[
 		{"file": "sounds/effects/vic_alkonost_emp_arc.ogg", "pitch": 0.90, "volume": 0.35,},
 		{"file": "sounds/effects/vic_alkonost_emp_arc.ogg", "pitch": 0.95, "volume": 0.35,},
@@ -652,11 +619,9 @@
 		{"file": "sounds/effects/vic_alkonost_emp_arc.ogg", "pitch": 1.05, "volume": 0.35,},
 		{"file": "sounds/effects/vic_alkonost_emp_arc.ogg", "pitch": 1.10, "volume": 0.35,},
 	],
-
 	"vic_alkonost_projectile_loop":[
 		{"file": "sounds/effects/vic_alkonost_projectile_loop.ogg", "pitch": 1.00, "volume": 0.5,},
 	],
-
 	"vic_xl_laidlaw_shot":[
 		{"file": "sounds/effects/vic_xl_laidlaw_shot_deepfried.ogg", "pitch": 0.90, "volume": 0.5,},
 		{"file": "sounds/effects/vic_xl_laidlaw_shot_deepfried.ogg", "pitch": 0.95, "volume": 0.5,},
@@ -664,29 +629,25 @@
 		{"file": "sounds/effects/vic_xl_laidlaw_shot_deepfried.ogg", "pitch": 1.05, "volume": 0.5,},
 		{"file": "sounds/effects/vic_xl_laidlaw_shot_deepfried.ogg", "pitch": 1.10, "volume": 0.5,},
 	],
-
-		"vic_xl_laidlaw_explosion":[
+	"vic_xl_laidlaw_explosion":[
 		{"file": "sounds/effects/vic_xl_laidlaw_explosion.ogg", "pitch": 0.90, "volume": 1,},
 		{"file": "sounds/effects/vic_xl_laidlaw_explosion.ogg", "pitch": 0.95, "volume": 1,},
 		{"file": "sounds/effects/vic_xl_laidlaw_explosion.ogg", "pitch": 1.00, "volume": 1,},
 		{"file": "sounds/effects/vic_xl_laidlaw_explosion.ogg", "pitch": 1.05, "volume": 1,},
 		{"file": "sounds/effects/vic_xl_laidlaw_explosion.ogg", "pitch": 1.10, "volume": 1,},
 	],
-
-			"vic_xl_laidlaw_penetration":[
+	"vic_xl_laidlaw_penetration":[
 		{"file": "sounds/effects/vic_xl_laidlaw_penetration.ogg", "pitch": 0.90, "volume": 0.5,},
 		{"file": "sounds/effects/vic_xl_laidlaw_penetration.ogg", "pitch": 0.95, "volume": 0.5,},
 		{"file": "sounds/effects/vic_xl_laidlaw_penetration.ogg", "pitch": 1.00, "volume": 0.5,},
 		{"file": "sounds/effects/vic_xl_laidlaw_penetration.ogg", "pitch": 1.05, "volume": 0.5,},
 		{"file": "sounds/effects/vic_xl_laidlaw_penetration.ogg", "pitch": 1.10, "volume": 0.5,},
 	],
-
 	"vic_xl_laidlaw_charge":[
 		{"file": "sounds/effects/vic_xl_laidlaw_charge.ogg", "pitch": 1.00, "volume": 1,},
 		{"file": "sounds/effects/vic_xl_laidlaw_charge.ogg", "pitch": 1.05, "volume": 1,},
 		{"file": "sounds/effects/vic_xl_laidlaw_charge.ogg", "pitch": 1.10, "volume": 1,},
 	],
-
 	"vic_notorious_big_iron_buckshot_shot":[
 		{"file": "sounds/effects/vic_notorious_big_iron_buckshot_shot.ogg", "pitch": 0.90, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_buckshot_shot.ogg", "pitch": 0.95, "volume": 1.5,},
@@ -694,7 +655,6 @@
 		{"file": "sounds/effects/vic_notorious_big_iron_buckshot_shot.ogg", "pitch": 1.05, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_buckshot_shot.ogg", "pitch": 1.10, "volume": 1.5,},
 	],
-
 	"vic_notorious_big_iron_slug_shot":[
 		{"file": "sounds/effects/vic_notorious_big_iron_slug_shot.ogg", "pitch": 0.90, "volume": 1.5,},
 		{"file": "sounds/effects/vic_notorious_big_iron_slug_shot.ogg", "pitch": 0.95, "volume": 1.5,},
@@ -712,19 +672,36 @@
 	"vic_printer":[
 		{"file": "sounds/effects/vic_printer.ogg", "pitch": 1, "volume": 0,},
 	],
-
-		"vic_rokh_sub_explosion":[
+	"vic_rokh_sub_explosion":[
 		{"file": "sounds/effects/vic_rokh_sub_explosion.ogg", "pitch": 0.90, "volume": 0.15,},
 		{"file": "sounds/effects/vic_rokh_sub_explosion.ogg", "pitch": 1.00, "volume": 0.15,},
 		{"file": "sounds/effects/vic_rokh_sub_explosion.ogg", "pitch": 1.10, "volume": 0.15,},
 	],
-
-			"vic_rokh_sub_launch":[
+	"vic_rokh_sub_launch":[
 		{"file": "sounds/effects/vic_rokh_sub_launch.ogg", "pitch": 0.90, "volume": 0.33,},
 		{"file": "sounds/effects/vic_rokh_sub_launch.ogg", "pitch": 1.00, "volume": 0.33,},
 		{"file": "sounds/effects/vic_rokh_sub_launch.ogg", "pitch": 1.10, "volume": 0.33,},
 	],
-	
-
-
+	"vic_giga_missile_launch":[
+		{"file": "sounds/effects/vic_giga_missile.ogg", "pitch": 1.00, "volume": 1,},
+	],
+	"vic_giga_missile_autoforge":[
+		{"file": "sounds/effects/vic_giga_missile_autoforge.ogg", "pitch": 1.00, "volume": 1,},
+	],
+	"vic_giga_missile_door":[
+		{"file": "sounds/effects/vic_giga_missile_door.ogg", "pitch": 0.90, "volume": 1,},
+		{"file": "sounds/effects/vic_giga_missile_door.ogg", "pitch": 0.95, "volume": 1,},
+		{"file": "sounds/effects/vic_giga_missile_door.ogg", "pitch": 1.00, "volume": 1,},
+		{"file": "sounds/effects/vic_giga_missile_door.ogg", "pitch": 1.05, "volume": 1,},
+		{"file": "sounds/effects/vic_giga_missile_door.ogg", "pitch": 1.10, "volume": 1,},
+	],
+	"vic_giga_missile_explosionv3":[
+		{"file": "sounds/effects/vic_giga_missile_explosionv3.ogg", "pitch": 1.00, "volume": 1,},
+	],
+	"vic_surprise":[
+		{"file": "sounds/effects/vic_surprise.ogg", "pitch": 1.00, "volume": 1,},
+	],
+	"vic_alkonost_destabilize":[
+		{"file": "sounds/effects/vic_alkonost_destabilize.ogg", "pitch": 1.00, "volume": 1,},
+	],
 }

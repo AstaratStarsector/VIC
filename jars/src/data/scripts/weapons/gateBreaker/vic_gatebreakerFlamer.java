@@ -1,4 +1,4 @@
-package data.scripts.weapons;
+package data.scripts.weapons.gateBreaker;
 
 
 import java.awt.Color;

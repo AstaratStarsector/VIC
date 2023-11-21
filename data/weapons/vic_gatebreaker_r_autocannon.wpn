@@ -4,7 +4,7 @@
   "projectileSpecId": "vic_gatebreaker_autocannon_shot",
   "type": "BALLISTIC",
   "size": "LARGE",
-  "everyFrameEffect": "data.scripts.weapons.vic_gatebreakerAutocannonOnFireRight",
+  "everyFrameEffect": "data.scripts.weapons.gateBreaker.vic_gatebreakerAutocannonOnFireRight",
   "displayArcRadius": 600,
   "turretSprite": "graphics/weapons/Stolas Bounty/vic_stolas_bounty_autocannon_refit_r.png",
   "hardpointSprite": "graphics/weapons/Stolas Bounty/vic_stolas_bounty_autocannon_r.png",

@@ -1,6 +1,6 @@
 name,id,flux/second,f/s (base rate),f/s (base cap),flux/use,f/u (base rate),f/u (base cap),cr/u,max uses,regen,charge up,active,down,cooldown,toggle,noDissipation,noHardDissipation,hardFlux,noFiring,noTurning,noStrafing,noAccel,noShield,noVent,isPhaseCloak,tags,icon
 Quantum Lunge,vic_quantumlunge,2000,,,1000,,,,,,1,0.375,1,45,TRUE,TRUE,TRUE,,TRUE,TRUE,TRUE,,TRUE,TRUE,,,graphics/icons/hullsys/displacer.png
-Assault Reconfiguration,vic_adaptiveassault,,,,,,,,,,1,8,1,20,,,,,,,,,,,,,graphics/icons/hullsys/vic_adaptive_assault.png
+Assault Reconfiguration,vic_adaptiveassault,,,,,,,,,,1,8,1,15,,,,,,,,,,,,,graphics/icons/hullsys/vic_adaptive_assault.png
 Emergency Defense,vic_emergencyDefense,,,,,,,,,,2,15,2,20,,,,,,,,,,,,,graphics/icons/hullsys/recall_device.png
 Omni-Lunge,vic_DriftBoost,,,,,,,,5,0.14,0.1,0.6,0.5,0,,,,,,,,,,,,,graphics/icons/hullsys/displacer.png
 Disruptor shot,vic_disruptorShot,,,,,,0.1,,2,0.5,0.25,,2,0,,,,,,,,,,,,,graphics/icons/hullsys/interdictor_array.png
@@ -15,3 +15,4 @@ Zealot Drive,vic_zealotDrive,,,,,,,,,,1,2,2,30,TRUE,,,,,,,,,,,,graphics/icons/hu
 Flare Laucher (single),vic_flareLauncher,,,,,,,,2,0.05,,,,0.5,,,,,,,,,,,,,graphics/icons/hullsys/flare_launcher.png
 Radar Array,vic_radarArray,,,,,,,,,,0.5,20,0.5,10,,,,,,,,,,,,,graphics/icons/hullsys/vic_radarArray.png
 Royal Court Advance,vic_pirateBurn,1,,,,,,,,,2,5,1,10,TRUE,,,,,,TRUE,,TRUE,TRUE,,,graphics/icons/hullsys/vic_pirateBurn.png
+Siege Mode,vic_raumSiege,,,,,,,,,,0.5,4.5,0,10,,,,,,,,,,,,,

@@ -1,7 +1,7 @@
 {
 	"id":"vic_gatebreaker_autocannon_shot",
 	"specClass":"projectile",
-	"onHitEffect":"data.scripts.weapons.vic_gatebreakerAutocannonOnHit",
+	"onHitEffect":"data.scripts.weapons.gateBreaker.vic_gatebreakerAutocannonOnHit",
 	
 	"spawnType":"BALLISTIC",
 	"collisionClass":"PROJECTILE_FF",

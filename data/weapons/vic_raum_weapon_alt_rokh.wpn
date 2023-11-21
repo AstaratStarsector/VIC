@@ -7,8 +7,10 @@
   "everyFrameEffect": "data.scripts.weapons.vic_RokhWeaponScript",
   "displayArcRadius": 300,
   "turretSprite": "graphics/weapons/vic_rokh_launcher.png",
+  "turretGunSprite": "graphics/weapons/vic_rokh_missile_fakebarrel.png",
   "hardpointSprite": "graphics/weapons/vic_rokh_launcher.png",
   #"renderHints": [    RENDER_LOADED_MISSILES],
+  "visualRecoil": 1,
   "turretOffsets": [
     0,
     0
@@ -42,5 +44,5 @@
       0
     ]
   },
-  "fireSoundTwo": "vic_apocrypha"
+  "fireSoundTwo": "vic_giga_missile_launch"
 }

@@ -1,4 +1,4 @@
-package data.scripts.weapons;
+package data.scripts.weapons.gateBreaker;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;

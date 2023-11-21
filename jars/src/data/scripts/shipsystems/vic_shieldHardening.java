@@ -14,8 +14,8 @@ import java.util.List;
 public class vic_shieldHardening extends BaseShipSystemScript {
 
     public static float
-            shieldDamageTakenReduction = 0.5f,
-            weaponRoFReduction = 0.25f;
+            shieldDamageTakenReduction = 0.4f,
+            weaponRoFReduction = 0.3f;
 
     public float baseOverShields = 0;
     public float currentOverShield = 0;
@@ -27,7 +27,7 @@ public class vic_shieldHardening extends BaseShipSystemScript {
         final ShipAPI ship = (ShipAPI) stats.getEntity();
 
         if (doOnce){
-            baseOverShields = ship.getMaxFlux() * 2f;
+            baseOverShields = ship.getMaxFlux() * 1.5f;
             currentOverShield = baseOverShields;
             ship.addListener(new DamageTakenModifier() {
                 @Override
@@ -35,7 +35,7 @@ public class vic_shieldHardening extends BaseShipSystemScript {
                     if (currentOverShield <= 0) return null;
                     if (target instanceof ShipAPI){
                         if (ship.getSystem().isStateActive() && ship.getFluxLevel() > 0.5f){
-                            float absorptionRate = Math.max(0,Math.min(1,(ship.getFluxLevel() - 0.5f) * 2.5f)) * 0.75f * ship.getSystem().getEffectLevel();
+                            float absorptionRate = Math.max(0,Math.min(1,(ship.getFluxLevel() - 0.5f) * 2.5f)) * 0.7f * ship.getSystem().getEffectLevel();
                             float actualDamage = damage.computeDamageDealt(Global.getCombatEngine().getElapsedInLastFrame());
                             switch (damage.getType()){
                                 case KINETIC:
@@ -95,7 +95,7 @@ public class vic_shieldHardening extends BaseShipSystemScript {
 
         stats.getEnergyRoFMult().modifyMult(id, 1f - weaponRoFReduction * effectLevel);
 
-        float absorptionRate = Math.max(0,Math.min(1,(ship.getFluxLevel() - 0.5f) * 2.5f)) * 0.75f;
+        float absorptionRate = Math.max(0,Math.min(1,(ship.getFluxLevel() - 0.5f) * 2.5f)) * 0.7f;
         if (Global.getCombatEngine().getPlayerShip() == ship && currentOverShield > 0){
             Global.getCombatEngine().maintainStatusForPlayerShip("vic_shieldHardeningPassive", "graphics/icons/hullsys/fortress_shield.png", "Absorption rate", Math.round(absorptionRate * 100f) + "%", false);
         }

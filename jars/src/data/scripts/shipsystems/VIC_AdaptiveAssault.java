@@ -15,7 +15,7 @@ import java.util.Map;
 public class VIC_AdaptiveAssault extends BaseShipSystemScript {
 
     final float
-            shieldDamageIncrease = 25f,
+            shieldDamageIncrease = 15f,
             weaponDamageIncrease = 50f,
 
             shieldDamageReduction = 50f,

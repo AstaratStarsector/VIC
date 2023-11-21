@@ -1,0 +1,54 @@
+{
+    "displayName": "Minelayer",
+    "fluxCapacitors": 26,
+    "fluxVents": 40,
+    "hullId": "vic_raum",
+    "hullMods": [
+        "vic_raum_weapon_swapper_rokh",
+        "pointdefenseai",
+        "nav_relay"
+    ],
+    "permaMods": [],
+    "sMods": [],
+    "variantId": "vic_raum_rokh",
+    "weaponGroups": [
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0035": "vic_psotnikmed",
+                "WS0036": "vic_psotnikmed",
+                "WS0045": "vic_psotnikmed"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0046": "vic_raum_weapon_rokh"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0029": "vic_strigoy",
+                "WS0030": "vic_strigoy",
+                "WS0031": "vic_strigoy",
+                "WS0032": "vic_strigoy",
+                "WS0033": "vic_strigoy",
+                "WS0034": "vic_strigoy",
+                "WS0037": "vic_strigoy",
+                "WS0038": "vic_strigoy",
+                "WS0039": "vic_strigoy",
+                "WS0040": "vic_strigoy",
+                "WS0041": "vic_strigoy",
+                "WS0042": "vic_strigoy",
+                "WS0043": "vic_strigoy",
+                "WS0044": "vic_strigoy"
+            }
+        }
+    ],
+    "wings": [
+        "vic_uvall_wing",
+        "vic_uvall_wing"
+    ]
+}

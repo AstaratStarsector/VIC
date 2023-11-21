@@ -1,0 +1,24 @@
+{
+	"id":"vic_raumSiege",
+	"type":"STAT_MOD",
+	"aiType":"CUSTOM",
+	"aiScript":"data.scripts.shipsystems.ai.vic_raumSiegeAI",
+	
+	"statsScript":"data.scripts.shipsystems.vic_raumSiege",
+
+	#"runScriptWhilePaused":true, # only for the player's ship
+	"runScriptWhileIdle":true, # unapply() never gets called
+		
+	"fadeActivationSoundOnChargedown":true,
+	#"useSound":"system_entropy",
+	#"loopSound":"system_entropy_loop",
+	#"deactivateSound":"system_entropy_off",
+	"outOfUsesSound":"gun_out_of_ammo",
+	
+	"aiHints":{
+	}
+}
+
+
+
+

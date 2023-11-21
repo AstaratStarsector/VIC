@@ -1,7 +1,7 @@
 {
 	"id":"vic_gatebreaker_flamer_shot",
 	"specClass":"projectile",
-	"onHitEffect":"data.scripts.weapons.vic_gatebreakerFlamer",
+	"onHitEffect":"data.scripts.weapons.gateBreaker.vic_gatebreakerFlamer",
 	
 	"spawnType":"BALLISTIC_AS_BEAM",
 	"collisionClass":"RAY",

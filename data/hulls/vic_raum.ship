@@ -33,18 +33,7 @@
     "WS0014": "vic_blonkerRed",
     "WS0015": "vic_blonkerRed",
     "WS0016": "vic_blonkerRed",
-    "WS0017": "vic_vernierEngine",
-    "WS0018": "vic_vernierEngine",
-    "WS0019": "vic_vernierEngine",
-    "WS0020": "vic_vernierEngine",
-    "WS0021": "vic_vernierEngine",
-    "WS0022": "vic_vernierEngine",
-    "WS0023": "vic_vernierEngine",
-    "WS0024": "vic_vernierEngine",
-    "WS0025": "vic_vernierEngine",
-    "WS0026": "vic_vernierEngine",
-    "WS0027": "vic_vernierEngine",
-    "WS0028": "vic_vernierEngine",
+    "WS0017": "vic_vectorEngineController",
     "WS0047": "vic_raum_engine_glow_side_edge",
     "WS0048": "vic_raum_engine_glow_side_edge",
     "WS0049": "vic_raum_engine_glow_side_left",
@@ -198,114 +187,6 @@
       "locations": [-261.5, 23.5]
     },
     {
-      "id": "WS0017",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [23, -62]
-    },
-    {
-      "id": "WS0018",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [23, 62]
-    },
-    {
-      "id": "WS0019",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [38, -61]
-    },
-    {
-      "id": "WS0020",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [38, 61]
-    },
-    {
-      "id": "WS0021",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [113, -49]
-    },
-    {
-      "id": "WS0022",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [113, 49]
-    },
-    {
-      "id": "WS0023",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [128, -48]
-    },
-    {
-      "id": "WS0024",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [128, 48]
-    },
-    {
-      "id": "WS0025",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [218, -48]
-    },
-    {
-      "id": "WS0026",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [218, 48]
-    },
-    {
-      "id": "WS0027",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [233, -47]
-    },
-    {
-      "id": "WS0028",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [233, 47]
-    },
-    {
       "id": "WS0029",
       "size": "SMALL",
       "type": "HYBRID",
@@ -365,7 +246,7 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 155,
-      "angle": -77.5,
+      "angle": -71,
       "locations": [12, -38]
     },
     {
@@ -374,7 +255,7 @@
       "type": "HYBRID",
       "mount": "TURRET",
       "arc": 155,
-      "angle": 77.5,
+      "angle": 71,
       "locations": [12, 38]
     },
     {
@@ -494,6 +375,15 @@
       "locations": [-46, -0]
     },
     {
+      "id": "WS0017",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [108.5, -0]
+    },
+    {
       "id": "WS0047",
       "size": "MEDIUM",
       "type": "DECORATIVE",
@@ -605,111 +495,111 @@
     },
     {
       "location": [23, 62],
-      "length": 0,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": 135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [23, -62],
-      "length": 0,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": -135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [38, 61],
-      "length": 0,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": 135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [38, -61],
-      "length": 0,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": -135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [113, 49],
-      "length": 0,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": 135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [113, -49],
-      "length": 0,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": -135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [128, 48],
-      "length": 0,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": 135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [128, -48],
-      "length": 0,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": -135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [218, 48],
-      "length": 0,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": 135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [218, -48],
-      "length": 0,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": -135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [233, 47],
-      "length": 0.707107,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": 135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     },
     {
       "location": [233, -47],
-      "length": 0.707107,
-      "width": 5.656854,
+      "length": 30,
+      "width": 5,
       "angle": -135,
-      "contrailSize": 5.656854,
+      "contrailSize": 8.485281,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S"
     }
   ],
   "bounds": [

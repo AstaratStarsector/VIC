@@ -62,6 +62,14 @@
 		"vic_oriax_standard":16,
 		"vic_oriax_missiles":16,
 		"vic_oriax_agony":4,
+		
+		"vic_raum_alkonost":7,
+		"vic_raum_gagana":7,
+		"vic_raum_laidlaw":7,
+		"vic_raum_rokh":7,
+		"vic_raum_rokh_alt":7,
+		"vic_raum_strzyga":7,
+		
 	},
 	
 

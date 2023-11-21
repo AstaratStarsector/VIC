@@ -26,10 +26,7 @@
     "WS0022": "vic_blonkerCyan",
     "WS0023": "vic_blonkerRed",
     "WS0024": "vic_blonkerRed",
-    "WS0025": "vic_vernierEngine",
-    "WS0026": "vic_vernierEngine",
-    "WS0027": "vic_vernierEngine",
-    "WS0028": "vic_vernierEngine",
+    "WS0025": "vic_vectorEngineController",
     "WS0029": "vic_azhdaya",
     "WS0030": "vic_focalor_azhdaya_deco",
     "WS0031": "vic_focalor_engine_glow_right",
@@ -285,42 +282,6 @@
       "locations": [126, 19]
     },
     {
-      "id": "WS0025",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [90, -27]
-    },
-    {
-      "id": "WS0026",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [90, 27]
-    },
-    {
-      "id": "WS0027",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [105, -26]
-    },
-    {
-      "id": "WS0028",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [105, 26]
-    },
-    {
       "id": "WS0029",
       "size": "LARGE",
       "type": "BUILT_IN",
@@ -468,6 +429,15 @@
       "arc": 0,
       "angle": 0,
       "locations": [29.5, -0]
+    },
+    {
+      "id": "WS0025",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [43, -0]
     }
   ],
   "engineSlots": [
@@ -509,39 +479,39 @@
     },
     {
       "location": [90, -27],
-      "length": 0,
-      "width": 5.656854,
+      "length": 25,
+      "width": 5,
       "angle": -135,
       "contrailSize": 5.656854,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S smokeless"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [90, 27],
-      "length": 0,
-      "width": 5.656854,
+      "length": 25,
+      "width": 5,
       "angle": 135,
       "contrailSize": 5.656854,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S smokeless"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [105, -26],
-      "length": 0,
-      "width": 5.656854,
+      "length": 25,
+      "width": 5,
       "angle": -135,
       "contrailSize": 5.656854,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S smokeless"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     },
     {
       "location": [105, 26],
-      "length": 0,
-      "width": 5.656854,
+      "length": 25,
+      "width": 5,
       "angle": 135,
       "contrailSize": 5.656854,
       "style": "CUSTOM",
-      "styleId": "VOLKOV-LAIDLAW'S smokeless"
+      "styleId": "Vectored VOLKOV-LAIDLAW'S smokeless"
     }
   ],
   "bounds": [

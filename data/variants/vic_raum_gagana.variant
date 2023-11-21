@@ -1,0 +1,59 @@
+{
+    "displayName": "Big Iron",
+    "fluxCapacitors": 43,
+    "fluxVents": 50,
+    "hullId": "vic_raum",
+    "hullMods": [
+        "vic_raum_weapon_swapper_gagana_ultra",
+        "targetingunit"
+    ],
+    "permaMods": [],
+    "sMods": [],
+    "variantId": "vic_raum_gagana",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0046": "vic_raum_weapon_gagana_ultra"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0035": "vic_psotnikmed",
+                "WS0036": "vic_psotnikmed",
+                "WS0045": "vic_psotnikmed"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0029": "vic_laidlawMassDriver",
+                "WS0030": "vic_laidlawMassDriver",
+                "WS0043": "vic_laidlawMassDriver",
+                "WS0044": "vic_laidlawMassDriver"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0031": "vic_strigoy",
+                "WS0032": "vic_strigoy",
+                "WS0033": "vic_strigoy",
+                "WS0034": "vic_strigoy",
+                "WS0037": "vic_strigoy",
+                "WS0038": "vic_strigoy",
+                "WS0039": "vic_strigoy",
+                "WS0040": "vic_strigoy",
+                "WS0041": "vic_strigoy",
+                "WS0042": "vic_strigoy"
+            }
+        }
+    ],
+    "wings": [
+        "vic_shabriri_wing",
+        "vic_shabriri_wing"
+    ]
+}

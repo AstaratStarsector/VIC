@@ -6,6 +6,7 @@ import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.plugins.MagicFakeBeamPlugin;
+import org.json.JSONException;
 import org.magiclib.plugins.MagicTrailPlugin;
 import data.scripts.util.MagicSettings;
 import org.lazywizard.lazylib.MathUtils;
@@ -14,12 +15,14 @@ import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static data.scripts.plugins.vic_combatPlugin.AddQuantumLungeBoost;
+import static data.scripts.utilities.vic_getSettings.getBoolean;
 
 //Made by PureTilt
 public class VIC_QuantumLunge extends BaseShipSystemScript {
@@ -186,10 +189,13 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
 
                 EndPos = new Vector2f(ship.getLocation());
 
-                if (MagicSettings.getBoolean("vic", "Apollyon_oneLiners") && Math.random() < 0.15f) {
-                    String line = cheesyLinesList.get(MathUtils.getRandomNumberInRange(0, cheesyLinesList.size() - 1));
-                    if (line.equals("Nothing personal, kid") && Math.random() < 0.15f) line = "Nothing personnel, kid";
-                    engine.addFloatingText(ship.getLocation(), line, 60, Color.WHITE, ship, 1, 2);
+                try {
+                    if (getBoolean("Apollyon_oneLiners") && Math.random() < 0.15f) {
+                        String line = cheesyLinesList.get(MathUtils.getRandomNumberInRange(0, cheesyLinesList.size() - 1));
+                        if (line.equals("Nothing personal, kid") && Math.random() < 0.15f) line = "Nothing personnel, kid";
+                        engine.addFloatingText(ship.getLocation(), line, 60, Color.WHITE, ship, 1, 2);
+                    }
+                } catch (JSONException | IOException ignore) {
                 }
 
                 isActive2 = true;

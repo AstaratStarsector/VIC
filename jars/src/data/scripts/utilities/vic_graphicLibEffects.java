@@ -14,7 +14,7 @@ import org.lwjgl.util.vector.Vector2f;
 
 public class vic_graphicLibEffects {
 
-    public static void customLight(Vector2f loc, CombatEntityAPI anchor, float size, float intensity, Color color, float fadeIn, float last, float fadeOut) {
+    public static StandardLight customLight(Vector2f loc, CombatEntityAPI anchor, float size, float intensity, Color color, float fadeIn, float last, float fadeOut) {
         StandardLight light = new StandardLight();
         light.setLocation(loc);
         if (anchor != null) {
@@ -27,6 +27,7 @@ public class vic_graphicLibEffects {
         light.fadeIn(fadeIn);
         light.fadeOut(fadeOut);
         LightShader.addLight(light);
+        return light;
     }
 
     public static void CustomBubbleDistortion(Vector2f loc, Vector2f vel, float size, float intensity, boolean flip, float angle, float arc, float edgeSmooth, float fadeIn, float last, float fadeOut, float growthTime, float shrinkTime) {

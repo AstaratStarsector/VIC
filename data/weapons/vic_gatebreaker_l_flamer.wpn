@@ -4,7 +4,7 @@
   "projectileSpecId": "vic_gatebreaker_flamer_shot",
   "type": "ENERGY",
   "size": "LARGE",
-  "everyFrameEffect": "data.scripts.weapons.vic_gatebreakerFlamer",
+  "everyFrameEffect": "data.scripts.weapons.gateBreaker.vic_gatebreakerFlamer",
   "displayArcRadius": 600,
   "turretSprite": "graphics/weapons/Stolas Bounty/vic_stolas_bounty_flamer_refit_l.png",
   "hardpointSprite": "graphics/weapons/Stolas Bounty/vic_stolas_bounty_flamer_l.png",

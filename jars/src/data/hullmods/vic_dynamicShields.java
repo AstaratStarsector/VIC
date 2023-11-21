@@ -4,7 +4,12 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import com.fs.starfarer.api.combat.listeners.WeaponBaseRangeModifier;
+import com.fs.starfarer.api.graphics.SpriteAPI;
+import data.scripts.weapons.decos.vic_decoEnginesController;
 import org.lazywizard.lazylib.MathUtils;
+import org.lwjgl.util.vector.Vector2f;
+
+import java.awt.*;
 
 public class vic_dynamicShields extends BaseHullMod {
 

@@ -1,7 +1,7 @@
 {
 	"id":"vic_notorious_big_iron_dragon_breath_shot",
-	"onHitEffect":"data.scripts.weapons.vic_notoriousBigIronDragonBreathOnHit",
-	"onFireEffect":"data.scripts.weapons.vic_notoriousBigIronDragonBreathShot",
+	"onHitEffect":"data.scripts.weapons.bigIron.vic_notoriousBigIronDragonBreathOnHit",
+	"onFireEffect":"data.scripts.weapons.bigIron.vic_notoriousBigIronDragonBreathShot",
 	"specClass":"projectile",
 	"spawnType":"BALLISTIC",
 	"collisionClass":"PROJECTILE_FF",

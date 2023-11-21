@@ -1,7 +1,7 @@
 {
 	"id":"vic_rokh_main",
 	"specClass":"missile",
-	"missileType":"MISSILE",
+	"missileType":"MIRV",
 	#"onHitEffect":"data.scripts.weapons.vic_apocryphaOnHit",
 	"sprite":"graphics/weapons/vic_rokh_missile_covered.png",
 	"size":[48,128],	
@@ -44,7 +44,7 @@
 						"contrailAngularVelocityMult":0.5f,
 						"contrailSpawnDistMult":0f, # how far away from engine it starts
 						"contrailColor":[255,125,50,255],
-						"glowSizeMult":4,
+						"glowSizeMult":3.5,
 						"glowAlternateColor":[255,125,0,255],
 						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
 					},
@@ -71,5 +71,35 @@
 				    "width":1.0,
 				    "length":0.0,
 				    "angle":180.0}
-					]
+					],
+	"behaviorSpec":{"behavior":"MIRV",
+					"splitRange":250,
+					"splitRangeRange":150,
+					"minTimeToSplit":1,
+					"canSplitEarly":true,
+					"splitSound":"vic_saih_split",
+					"numShots":144,
+					"damage":200,
+					"emp":0, # needs to match highlight in weapon_data.csv
+					"damageType":FRAGMENTATION,
+					"hitpoints":500,
+					"evenSpread":true,
+					"arc":25,
+					"spreadInaccuracy":5,
+					#"spreadSpeed":300,
+					"spreadSpeed":1000,
+					"spreadSpeedRange":500,
+					"projectileRange":600, # only needed if not a missile
+					"projectileSpec":"vic_rokh_sub",
+					"smokeSpec":{"particleSizeMin":20.0,
+								 "particleSizeRange":20.0,
+								 "cloudParticleCount":11,
+								 "cloudDuration":1.0,
+								 "cloudRadius":20.0,
+								 "blowbackParticleCount":0,
+								 "blowbackDuration":0,
+								 "blowbackLength":0,
+								 "blowbackSpread":0,
+								 "particleColor":[100,100,100,200]}
+	}
 }

@@ -8,6 +8,8 @@ import com.fs.starfarer.api.util.Misc;
 import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
+import data.scripts.plugins.vic_combatPlugin;
+import org.json.JSONException;
 import org.lazywizard.lazylib.CollisionUtils;
 import org.lazywizard.lazylib.FastTrig;
 import org.lazywizard.lazylib.MathUtils;
@@ -17,11 +19,15 @@ import org.lwjgl.util.vector.Vector2f;
 import org.magiclib.util.MagicRender;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.fs.starfarer.api.util.Misc.ZERO;
+import static data.scripts.plugins.vic_combatPlugin.AddRokhMine;
+import static data.scripts.plugins.vic_combatPlugin.DATA_KEY;
 import static data.scripts.utilities.vic_color.randomizeColor;
+import static data.scripts.utilities.vic_getSettings.getBoolean;
 
 public class vic_rokhMissileAI extends VIC_BaseMissile {
 
@@ -101,6 +107,10 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
                 randomizeColor(new Color(122, 60, 40, 224), 0.1f)
         );
         explosion.setDamageType(DamageType.HIGH_EXPLOSIVE);
+        try {
+            RainbowMines = getBoolean("RainbowMines");
+        } catch (JSONException | IOException ignored) {
+        }
     }
 
     public float getInaccuracyAfterECCM() {
@@ -147,6 +157,8 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
     float minesTotal = 9;
 
     Vector2f targetPoint;
+
+    private static boolean RainbowMines = false;
 
     private final DamagingExplosionSpec explosion;
     {
@@ -281,11 +293,12 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
             missile.setMaxFlightTime(99999);
             //float speedMulty = missile.getSource().getMutableStats().getMissileAccelerationBonus().computeEffective(1);
             float speedMulty = 1 + ((missile.getSource().getMutableStats().getMissileAccelerationBonus().getBonusMult() - 1) * 0.5f);
-            missile.giveCommand(ShipCommand.DECELERATE);
+            if (missile.getVelocity().length() >= 100){
+                missile.giveCommand(ShipCommand.DECELERATE);
+            }
             //pop out
             if (doPopOuts) {
                 for (Vector2f loc : popOuts) {
-                    //TODO: remove duplicate
                     {
                         Vector2f pos = Vector2f.add(VectorUtils.rotate(new Vector2f(loc), missile.getFacing()), missile.getLocation(), null);
                         Vector2f speed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(missile.getFacing() + MathUtils.getRandomNumberInRange(80, 100)).scale(MathUtils.getRandomNumberInRange(50f, 75f));
@@ -303,10 +316,11 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
                                 0,
                                 3,
                                 0.5f,
-                                CombatEngineLayers.ABOVE_SHIPS_AND_MISSILES_LAYER);
+                                CombatEngineLayers.ABOVE_SHIPS_LAYER);
                         speed.scale(0.5f);
                         Global.getCombatEngine().addNebulaSmokeParticle(pos, speed, 8, 10f, 0.1f, 0.3f, 1.5f, randomizeColor(new Color(84, 60, 52, 100), 0.1f));
 
+                        Global.getSoundPlayer().playSound("vic_giga_missile_door", 1, 1f, pos, missile.getVelocity());
                     }
                     //other sie
 
@@ -328,13 +342,14 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
             if (missile.getVelocity().length() <= 200) {
                 mirvTimer += amount;
             }
-            float minesToLaunch = MathUtils.clamp(mirvTimer / 0.6f * minesTotal, 0, minesTotal);
+            float minesToLaunch = MathUtils.clamp(mirvTimer / 0.7f * minesTotal, 0, minesTotal);
+            final vic_combatPlugin.LocalData localData = (vic_combatPlugin.LocalData) Global.getCombatEngine().getCustomData().get(DATA_KEY);
             while (minesToLaunch - minesLaunched >= 1) {
                 for (Vector2f loc : popOuts) {
                     Vector2f pos = Vector2f.add(VectorUtils.rotate(new Vector2f(loc), missile.getFacing()), missile.getLocation(), null);
                     float deviation = MathUtils.getRandomNumberInRange(-15, 15);
                     float angle = missile.getFacing() + (90 * (loc.y > 0 ? 1 : -1));
-                    Vector2f speed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(angle + deviation * 2).scale(MathUtils.getRandomNumberInRange(150f, 350f) * speedMulty);
+                    Vector2f speed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(angle + deviation * 2).scale(MathUtils.getRandomNumberInRange(50f, 300f) * speedMulty);
                     DamagingProjectileAPI mine = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(
                             missile.getSource(),
                             missile.getWeapon(),
@@ -346,6 +361,8 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
                     Global.getSoundPlayer().playSound("vic_rokh_sub_launch", 1, 1f, pos, missile.getVelocity());
 
                     ((MissileAPI) mine).setMaxFlightTime(((MissileAPI) mine).getMaxFlightTime() + MathUtils.getRandomNumberInRange(-1f, 1f));
+
+                    if (RainbowMines) AddRokhMine((MissileAPI) mine);
                     speed.scale(0.5f);
                     Global.getCombatEngine().addNebulaSmokeParticle(pos, speed, 5, 8f, 0.1f, 0.3f, 0.5f, randomizeColor(new Color(68, 51, 46, 100), 0.1f));
 
@@ -353,14 +370,14 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
                 }
                 minesLaunched++;
             }
-            if (mirvTimer >= 1.2f) {
+            if (mirvTimer >= 1.1f) {
                 for (DamagingProjectileAPI mine : mines) {
                     Vector2f velocity = mine.getVelocity();
-                    Vector2f speed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(mine.getFacing()).scale((float) (Math.sqrt(Math.random()) * (900f - 50f) + 50f) * speedMulty);
+                    Vector2f speed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(mine.getFacing()).scale((float) (Math.sqrt(Math.random()) * (600f - 75f) + 75f) * speedMulty);
                     velocity.set(speed);
                 }
 
-                Global.getSoundPlayer().playSound("vic_apocrypha_explosion", 1, 1f, missile.getLocation(), missile.getVelocity());
+                Global.getSoundPlayer().playSound("vic_giga_missile_explosionv3", 1, 1f, missile.getLocation(), missile.getVelocity());
 
                 Global.getCombatEngine().spawnDamagingExplosion(explosion,missile.getSource(),missile.getLocation(),false);
                 Global.getCombatEngine().spawnExplosion(missile.getLocation(), new Vector2f(), new Color(122, 60, 40, 255), 700, 2.6f);
@@ -459,7 +476,6 @@ public class vic_rokhMissileAI extends VIC_BaseMissile {
                 }
 
                 Global.getCombatEngine().removeEntity(missile);
-
             }
             /*
             Vector2f submunitionVelocityMod = new Vector2f(0, MathUtils.getRandomNumberInRange(

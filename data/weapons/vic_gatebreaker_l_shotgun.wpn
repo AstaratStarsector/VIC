@@ -4,7 +4,7 @@
   "projectileSpecId": "vic_gatebreaker_shotgun_shot",
   "type": "BALLISTIC",
   "size": "LARGE",
-  "everyFrameEffect": "data.scripts.weapons.vic_gatebreakerShotgunOnFireLeft",
+  "everyFrameEffect": "data.scripts.weapons.gateBreaker.vic_gatebreakerShotgunOnFireLeft",
   "displayArcRadius": 600,
   "turretSprite": "graphics/weapons/Stolas Bounty/vic_stolas_bounty_shotgun_refit_l.png",
   "hardpointSprite": "graphics/weapons/Stolas Bounty/vic_stolas_bounty_main_gun_l.png",

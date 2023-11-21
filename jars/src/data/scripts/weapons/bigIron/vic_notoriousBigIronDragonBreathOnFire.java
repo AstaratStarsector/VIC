@@ -1,8 +1,10 @@
-package data.scripts.weapons;
+package data.scripts.weapons.bigIron;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.loading.ProjectileWeaponSpecAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.plugins.vic_weaponDamageListener;
 import org.magiclib.util.MagicRender;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
@@ -18,12 +20,14 @@ import java.util.Map;
 
 import static com.fs.starfarer.api.util.Misc.ZERO;
 
-public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
+public class vic_notoriousBigIronDragonBreathOnFire implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
     boolean firstBarrel = true;
 
     final float MUZZLE_OFFSET_HARDPOINT = 100f;
     final float MUZZLE_OFFSET_TURRET = 100f;
+    final float SHELL_EJECTION_OFFSET_HARDPOINT = -33f;
+    final float SHELL_EJECTION_OFFSET_TURRET = -33f;
     final float MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE = 90f + MathUtils.getRandomNumberInRange(-5f, 5f);
     final float MUZZLE_OFFSET_TURRET_SHOCKWAVE = 90f + MathUtils.getRandomNumberInRange(-5f, 5f);
 
@@ -45,6 +49,7 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
         USED_IDS.add("BLOWBACK_ID_1");
         USED_IDS.add("BLOWBACK_ID_2");
         USED_IDS.add("BLOWBACK_ID_3");
+        USED_IDS.add("CHARGEDOWN_STEAM");
     }
 
     //The amount of particles spawned immediately when the weapon reaches full charge level
@@ -59,7 +64,7 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
         ON_SHOT_PARTICLE_COUNT.put("BLOWBACK_ID_1", 15);
         ON_SHOT_PARTICLE_COUNT.put("BLOWBACK_ID_2", 1);
         ON_SHOT_PARTICLE_COUNT.put("BLOWBACK_ID_3", 1);
-
+        ON_SHOT_PARTICLE_COUNT.put("CHARGEDOWN_STEAM", 0);
     }
 
     //How many particles are spawned each second the weapon is firing, on average
@@ -67,6 +72,7 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
     static {
         PARTICLES_PER_SECOND.put("default", 0f);
+        PARTICLES_PER_SECOND.put("CHARGEDOWN_STEAM", 30f);
     }
 
     //Does the PARTICLES_PER_SECOND field get multiplied by the weapon's current chargeLevel?
@@ -82,6 +88,7 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
     static {
         PARTICLE_SPAWN_MOMENT.put("default", "FIRING");
+        PARTICLE_SPAWN_MOMENT.put("CHARGEDOWN_STEAM", "CHARGEDOWN");
 
     }
 
@@ -99,10 +106,10 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
     static {
         PARTICLE_SPAWN_POINT_TURRET.put("default", new Vector2f(0f, 100f));
-        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_1", new Vector2f(3f, -5f));
-        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_2", new Vector2f(3f, -5f));
-        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_3", new Vector2f(3f, -5f));
-
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_1", new Vector2f(0f, -33f));
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_2", new Vector2f(0f, -33f));
+        PARTICLE_SPAWN_POINT_TURRET.put("BLOWBACK_ID_3", new Vector2f(0f, -33f));
+        PARTICLE_SPAWN_POINT_TURRET.put("CHARGEDOWN_STEAM", new Vector2f(-30f, -5f));
     }
 
     //The position the particles are spawned (or at least where their arc originates when using offsets) compared to their weapon's center [or shot offset, see
@@ -111,9 +118,9 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
     static {
         PARTICLE_SPAWN_POINT_HARDPOINT.put("default", new Vector2f(0f, 100f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_1", new Vector2f(3f, -5f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_2", new Vector2f(3f, -5f));
-        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_3", new Vector2f(3f, -5f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_1", new Vector2f(-3f, -5f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_2", new Vector2f(-3f, -5f));
+        PARTICLE_SPAWN_POINT_HARDPOINT.put("BLOWBACK_ID_3", new Vector2f(-3f, -5f));
 
     }
 
@@ -127,7 +134,7 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
         PARTICLE_TYPE.put("BLOWBACK_ID_1", "SMOKE");
         PARTICLE_TYPE.put("BLOWBACK_ID_2", "BRIGHT");
         PARTICLE_TYPE.put("BLOWBACK_ID_3", "BRIGHT");
-
+        PARTICLE_TYPE.put("CHARGEDOWN_STEAM", "NEBULA");
     }
 
     //What color does the particles have?
@@ -135,12 +142,12 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
     static {
         PARTICLE_COLOR.put("default", new Color(200, 190, 190, 50));
-        PARTICLE_COLOR.put("FLASH_FRINGE_1", new Color(255, 155, 75));
-        PARTICLE_COLOR.put("FLASH_CORE_1", new Color(255, 234, 212));
+        PARTICLE_COLOR.put("FLASH_FRINGE_1", new Color(255, 245, 200,200));
+        PARTICLE_COLOR.put("FLASH_CORE_1", new Color(255, 234, 212,255));
         PARTICLE_COLOR.put("BLOWBACK_ID_1", new Color(100, 100, 100, 150));
-        PARTICLE_COLOR.put("BLOWBACK_ID_2", new Color(255, 125, 65));
-        PARTICLE_COLOR.put("BLOWBACK_ID_3", new Color(255, 234, 212));
-
+        PARTICLE_COLOR.put("BLOWBACK_ID_2", new Color(255, 125, 65, 150));
+        PARTICLE_COLOR.put("BLOWBACK_ID_3", new Color(255, 234, 212,150));
+        PARTICLE_COLOR.put("CHARGEDOWN_STEAM", new Color(75, 75, 75, 125));
     }
 
     //What's the smallest size the particles can have?
@@ -148,12 +155,12 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
     static {
         PARTICLE_SIZE_MIN.put("default", 5f);
-        PARTICLE_SIZE_MIN.put("FLASH_FRINGE_1", 250f);
-        PARTICLE_SIZE_MIN.put("FLASH_CORE_1", 150f);
-        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_1", 10f);
-        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_2", 50f);
+        PARTICLE_SIZE_MIN.put("FLASH_FRINGE_1", 350f);
+        PARTICLE_SIZE_MIN.put("FLASH_CORE_1", 200f);
+        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_1", 15f);
+        PARTICLE_SIZE_MIN.put("BLOWBACK_ID_2", 75f);
         PARTICLE_SIZE_MIN.put("BLOWBACK_ID_3", 50f);
-
+        PARTICLE_SIZE_MIN.put("CHARGEDOWN_STEAM", 15f);
 
     }
 
@@ -162,11 +169,12 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
     static {
         PARTICLE_SIZE_MAX.put("default", 20f);
-        PARTICLE_SIZE_MAX.put("FLASH_FRINGE_1", 250f);
-        PARTICLE_SIZE_MAX.put("FLASH_CORE_1", 150f);
-        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_1", 20f);
-        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_2", 50f);
+        PARTICLE_SIZE_MAX.put("FLASH_FRINGE_1", 350f);
+        PARTICLE_SIZE_MAX.put("FLASH_CORE_1", 200f);
+        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_1", 30f);
+        PARTICLE_SIZE_MAX.put("BLOWBACK_ID_2", 75f);
         PARTICLE_SIZE_MAX.put("BLOWBACK_ID_3", 50f);
+        PARTICLE_SIZE_MAX.put("CHARGEDOWN_STEAM", 30f);
 
     }
 
@@ -178,6 +186,7 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
         PARTICLE_VELOCITY_MIN.put("FLASH_FRINGE_1", 0f);
         PARTICLE_VELOCITY_MIN.put("FLASH_CORE_1", 0f);
         PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_1", 1f);
+        PARTICLE_VELOCITY_MIN.put("CHARGEDOWN_STEAM", 15f);
 
     }
 
@@ -191,6 +200,7 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
         PARTICLE_VELOCITY_MAX.put("BLOWBACK_ID_1", 50f);
         PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_2", 0f);
         PARTICLE_VELOCITY_MIN.put("BLOWBACK_ID_3", 0f);
+        PARTICLE_VELOCITY_MIN.put("CHARGEDOWN_STEAM", 40f);
 
     }
 
@@ -202,8 +212,9 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
         PARTICLE_DURATION_MIN.put("FLASH_FRINGE_1", 0.15f);
         PARTICLE_DURATION_MIN.put("FLASH_CORE_1", 0.25f);
         PARTICLE_DURATION_MIN.put("BLOWBACK_ID_1", 0.75f);
-        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_2", 0.2f);
-        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_3", 0.1f);
+        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_2", 0.3f);
+        PARTICLE_DURATION_MIN.put("BLOWBACK_ID_3", 0.2f);
+        PARTICLE_DURATION_MIN.put("CHARGEDOWN_STEAM", 0.33f);
 
     }
 
@@ -215,8 +226,9 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
         PARTICLE_DURATION_MAX.put("FLASH_FRINGE_1", 0.15f);
         PARTICLE_DURATION_MAX.put("FLASH_CORE_1", 0.25f);
         PARTICLE_DURATION_MAX.put("BLOWBACK_ID_1", 1.5f);
-        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_2", 0.2f);
-        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_3", 0.1f);
+        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_2", 0.3f);
+        PARTICLE_DURATION_MAX.put("BLOWBACK_ID_3", 0.2f);
+        PARTICLE_DURATION_MAX.put("CHARGEDOWN_STEAM", 0.66f);
 
     }
 
@@ -233,7 +245,7 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
     private static final Map<String, Float> PARTICLE_OFFSET_MAX = new HashMap<>();
 
     static {
-        PARTICLE_OFFSET_MAX.put("default", 50f);
+        PARTICLE_OFFSET_MAX.put("default", 0f);
         PARTICLE_OFFSET_MAX.put("FLASH_FRINGE_1", 0f);
         PARTICLE_OFFSET_MAX.put("FLASH_CORE_1", 0f);
         PARTICLE_OFFSET_MAX.put("BLOWBACK_ID_1", 0f);
@@ -250,6 +262,7 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
         PARTICLE_ARC.put("FLASH_FRINGE_1", 0f);
         PARTICLE_ARC.put("FLASH_CORE_1", 0f);
         PARTICLE_ARC.put("BLOWBACK_ID_1", 120f);
+        PARTICLE_ARC.put("CHARGEDOWN_STEAM", 45f);
 
     }
 
@@ -259,7 +272,8 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
     static {
         PARTICLE_ARC_FACING.put("default", 0f);
-        PARTICLE_ARC_FACING.put("BLOWBACK_ID_1", 135f);
+        PARTICLE_ARC_FACING.put("BLOWBACK_ID_1", -180f);
+        PARTICLE_ARC_FACING.put("CHARGEDOWN_STEAM", -90f);
 
     }
 
@@ -281,8 +295,15 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
     private int currentBarrel = 0;
     private boolean shouldOffsetBarrelExtra = false;
 
+    float animStartTime = 0f,
+            animEndTime = 0f;
+    float totalFrames = 0,
+            totalFireTime = 0,
+            startPercent = 0,
+            endPercent = 0;
+
     //Instantiator
-    public vic_gatebreakerShotgunOnFireLeft() {
+    public vic_notoriousBigIronDragonBreathOnFire() {
     }
 
     boolean doOnce = true;
@@ -294,7 +315,23 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
         }
 
 
+        if (doOnce) {
+            if (!weapon.getShip().hasListenerOfClass(vic_weaponDamageListener.class)) {
+                weapon.getShip().addListener(new vic_weaponDamageListener());
+            }
+            totalFireTime = ((ProjectileWeaponSpecAPI) weapon.getSpec()).getRefireDelay();
+            totalFrames = weapon.getAnimation().getNumFrames();
+            animEndTime = totalFrames / weapon.getAnimation().getFrameRate() + animStartTime;
+            weapon.getAnimation().setFrameRate(0);
+            startPercent = animStartTime / totalFireTime;
+            endPercent = animEndTime / totalFireTime;
+            doOnce = false;
+        }
+
+
         //Saves handy variables used later
+        boolean fired = weapon.getCooldownRemaining() > 0;
+
         float chargeLevel = weapon.getChargeLevel();
         String sequenceState = "READY";
         if (chargeLevel > 0 && (!weapon.isBeam() || weapon.isFiring())) {
@@ -308,6 +345,15 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
         } else if (weapon.getCooldownRemaining() > 0) {
             sequenceState = "COOLDOWN";
         }
+
+        float shotFaction = 0;
+        if (!fired) {
+            shotFaction = ((((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime() * chargeLevel) / totalFireTime);
+        } else {
+            shotFaction = ((((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime() + ((totalFireTime - ((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime()) * (1 - chargeLevel))) / totalFireTime);
+        }
+        float animFraction = MathUtils.clamp((shotFaction - startPercent) / endPercent, 0, 1);
+        weapon.getAnimation().setFrame(Math.round(totalFrames * animFraction));
 
         //Adjustment for burst beams, since they are a pain
         if (weapon.isBurstBeam() && sequenceState.contains("CHARGEDOWN")) {
@@ -537,6 +583,15 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
                 case "SMOKE":
                     engine.addSmokeParticle(spawnLocation, velocity, size, 1f, duration, color);
                     break;
+                case "NEBULA":
+                    engine.addNebulaParticle(spawnLocation, velocity, size, 1.5f, 0.1f, 0.2f, duration, color);
+                    break;
+                case "NEBULA_SMOKE":
+                    engine.addNebulaSmokeParticle(spawnLocation, velocity, size, 1.5f, 0.1f, 0.2f, duration, color);
+                    break;
+                case "NEBULA_SWIRLY":
+                    engine.addSwirlyNebulaParticle(spawnLocation, velocity, size, 1.5f, 0.1f, 0.2f, duration, color, true);
+                    break;
                 default:
                     engine.addHitParticle(spawnLocation, velocity, size, 10f, duration, color);
                     break;
@@ -550,7 +605,8 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
         Vector2f weaponLocation = weapon.getLocation();
         float shipFacing = weapon.getCurrAngle();
-        float shellDirAngle = shipFacing + MathUtils.getRandomNumberInRange(115, 155);
+        float shellDir = weapon.getCurrAngle();
+        float shellDirAngle = shellDir - MathUtils.getRandomNumberInRange(115, 155);
         float nebulaSideDir1 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
         float nebulaSideDir2 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
         float nebulaSideDir3 = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-360f, 360f);
@@ -561,29 +617,29 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
                 weapon.getSlot().isHardpoint() ? MUZZLE_OFFSET_HARDPOINT : MUZZLE_OFFSET_TURRET, shipFacing);
         Vector2f muzzleLocationShockwave = MathUtils.getPointOnCircumference(weaponLocation,
                 weapon.getSlot().isHardpoint() ? MUZZLE_OFFSET_HARDPOINT_SHOCKWAVE : MUZZLE_OFFSET_TURRET_SHOCKWAVE, shipFacing);
-        Vector2f shellSpawnLocation = new Vector2f(weapon.getLocation());
+        Vector2f shellSpawnLocation = MathUtils.getPointOnCircumference(weaponLocation,
+                weapon.getSlot().isHardpoint() ? SHELL_EJECTION_OFFSET_HARDPOINT : SHELL_EJECTION_OFFSET_TURRET, shipFacing);
 
+        Vector2f nebulaSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(15f, 22.5f));
+        Vector2f nebulaSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(5f, 15f));
+        Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(0f, 5f));
+        Vector2f nebulaSideSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir1).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+        Vector2f nebulaSideSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir2).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+        Vector2f nebulaSideSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir3).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+        Vector2f nebulaSideSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir4).scale(MathUtils.getRandomNumberInRange(0f, 15f));
+        Vector2f nebulaSideSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir5).scale(MathUtils.getRandomNumberInRange(0f, 15f));
         Vector2f shellSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shellDirAngle).scale(30f + (MathUtils.getRandomNumberInRange(-10f, 15f)));
 
 
-        if (projNumber < 19) {
+        if (projNumber < 9) {
             projNumber += 1;
-        } else if (projNumber == 19) {
-
-            Vector2f speed = weapon.getShip().getVelocity();
-            for (int I = 0; I < 5; I++){
-                float shrapnelDir = weapon.getCurrAngle() + MathUtils.getRandomNumberInRange(-22.5f, 22.5f);
-                DamagingProjectileAPI gatebreakerShrapnelRight = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(weapon.getShip(), weapon, "vic_gatebreaker_shotgun_shrapnel", muzzleLocation,
-                        shrapnelDir, speed);
-                gatebreakerShrapnelRight.getVelocity().scale(MathUtils.getRandomNumberInRange(0.25f, 0.75f));
-            }
-
+        } else if (projNumber == 9) {
 
             MagicRender.battlespace(
-                    Global.getSettings().getSprite("fx", "vic_gatebreaker_autocannon_shell"),
+                    Global.getSettings().getSprite("fx", "vic_notorious_big_iron_dragon_breath_shell"),
                     shellSpawnLocation,
                     shellSpeed,
-                    new Vector2f(12, 16),
+                    new Vector2f(15, 20),
                     new Vector2f(0, 0),
                     360 * (float) Math.random(),
                     MathUtils.getRandomNumberInRange(-270f, 270f),
@@ -595,7 +651,7 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
             );
 
             MagicRender.battlespace(
-                    Global.getSettings().getSprite("fx", "vic_gatebreaker_shotgun_shockwave"),
+                    Global.getSettings().getSprite("fx", "vic_notorious_big_iron_dragon_breath_shockwave"),
                     muzzleLocationShockwave,
                     weapon.getShip().getVelocity(),
                     new Vector2f(25, 50),
@@ -619,15 +675,6 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
             DistortionShader.addDistortion(wave);
 
 
-            Vector2f nebulaSpeed = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(15f, 22.5f));
-            Vector2f nebulaSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(5f, 15f));
-            Vector2f nebulaSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(shipFacing).scale(MathUtils.getRandomNumberInRange(0f, 5f));
-            Vector2f nebulaSideSpeed1 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir1).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-            Vector2f nebulaSideSpeed2 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir2).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-            Vector2f nebulaSideSpeed3 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir3).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-            Vector2f nebulaSideSpeed4 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir4).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-            Vector2f nebulaSideSpeed5 = (Vector2f) Misc.getUnitVectorAtDegreeAngle(nebulaSideDir5).scale(MathUtils.getRandomNumberInRange(0f, 15f));
-
             Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed3, 10f, 5f, 0.2f, 0.2f, 2.5f, new Color(100, 100, 100, 255));
             Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed2, 15f, 3f, 0.2f, 0.2f, 2.25f, new Color(100, 100, 100, 255));
             Global.getCombatEngine().addNebulaParticle(muzzleLocation, nebulaSpeed, 30f, 3f, 0.2f, 0.2f, 2f, new Color(100, 100, 100, 255));
@@ -648,4 +695,5 @@ public class vic_gatebreakerShotgunOnFireLeft implements EveryFrameWeaponEffectP
 
 
     }
+
 }

@@ -7,13 +7,17 @@ import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.scripts.util.MagicRender;
 import data.scripts.util.MagicSettings;
+import org.json.JSONException;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static data.scripts.utilities.vic_getSettings.getBoolean;
 
 public class vic_OmniLunge extends BaseShipSystemScript {
 
@@ -117,7 +121,10 @@ public class vic_OmniLunge extends BaseShipSystemScript {
         if (Global.getCombatEngine().isPaused()) return;
 
         if (doOnce) {
-            caramelldansenMode = MagicSettings.getBoolean("vic", "OmniLunge_rainbowMode");
+            try {
+                caramelldansenMode = getBoolean("OmniLunge_rainbowMode");
+            } catch (JSONException | IOException ignore) {
+            }
             ShipEngineControllerAPI.ShipEngineAPI thruster = ship.getEngineController().getShipEngines().get(0);
             engineColor = thruster.getEngineColor();
             doOnce = false;

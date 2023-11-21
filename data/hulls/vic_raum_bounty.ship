@@ -25,14 +25,9 @@
     "WS0014": "vic_blonkerRed",
     "WS0015": "vic_blonkerRed",
     "WS0016": "vic_blonkerRed",
-    "WS0017": "vic_vernierEngine",
-    "WS0018": "vic_vernierEngine",
+    "WS0017": "vic_vectorEngineController",
     "WS0019": "vic_blonkerRed",
     "WS0020": "vic_blonkerRed",
-    "WS0021": "vic_vernierEngine",
-    "WS0022": "vic_vernierEngine",
-    "WS0023": "vic_vernierEngine",
-    "WS0024": "vic_vernierEngine",
     "WS0025": "vic_blonkerRed"
   },
   "weaponSlots": [
@@ -109,60 +104,6 @@
       "locations": [-261.5, 23.5]
     },
     {
-      "id": "WS0017",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [15.5, -74]
-    },
-    {
-      "id": "WS0018",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [15.5, 74]
-    },
-    {
-      "id": "WS0021",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [113, -49]
-    },
-    {
-      "id": "WS0022",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [113, 49]
-    },
-    {
-      "id": "WS0023",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": -135,
-      "locations": [128, -48]
-    },
-    {
-      "id": "WS0024",
-      "size": "SMALL",
-      "type": "DECORATIVE",
-      "mount": "TURRET",
-      "arc": 0,
-      "angle": 135,
-      "locations": [128, 48]
-    },
-    {
       "id": "WS0029",
       "size": "SMALL",
       "type": "BALLISTIC",
@@ -204,7 +145,7 @@
       "type": "BALLISTIC",
       "mount": "TURRET",
       "arc": 155,
-      "angle": -77.5,
+      "angle": -71,
       "locations": [12, -38]
     },
     {
@@ -213,7 +154,7 @@
       "type": "BALLISTIC",
       "mount": "TURRET",
       "arc": 155,
-      "angle": 77.5,
+      "angle": 71,
       "locations": [12, 38]
     },
     {
@@ -414,6 +355,15 @@
       "arc": 0,
       "angle": -0,
       "locations": [153, 49]
+    },
+    {
+      "id": "WS0017",
+      "size": "MEDIUM",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [131, -0]
     }
   ],
   "engineSlots": [
@@ -665,57 +615,57 @@
     },
     {
       "location": [15, 75],
-      "length": 0,
-      "width": 9.899495,
+      "length": 22.98097,
+      "width": 10.606602,
       "angle": 135,
-      "contrailSize": 9.899495,
+      "contrailSize": 10.606602,
       "style": "CUSTOM",
-      "styleId": "LOW_TECH smokeless"
+      "styleId": "Vectored LOW_TECH smokeless"
     },
     {
       "location": [15, -75],
-      "length": 0,
-      "width": 9.899495,
+      "length": 22.98097,
+      "width": 10.606602,
       "angle": -135,
-      "contrailSize": 9.899495,
+      "contrailSize": 10.606602,
       "style": "CUSTOM",
-      "styleId": "LOW_TECH smokeless"
+      "styleId": "Vectored LOW_TECH smokeless"
     },
     {
-      "location": [113, 49],
-      "length": 0,
-      "width": 5.656854,
+      "location": [112, 50],
+      "length": 15.909903,
+      "width": 9.192388,
       "angle": 135,
-      "contrailSize": 5.656854,
+      "contrailSize": 9.192388,
       "style": "CUSTOM",
-      "styleId": "LOW_TECH smokeless"
+      "styleId": "Vectored LOW_TECH smokeless"
     },
     {
-      "location": [113, -49],
-      "length": 0,
-      "width": 5.656854,
+      "location": [112, -50],
+      "length": 15.909903,
+      "width": 9.192388,
       "angle": -135,
-      "contrailSize": 5.656854,
+      "contrailSize": 9.192388,
       "style": "CUSTOM",
-      "styleId": "LOW_TECH smokeless"
+      "styleId": "Vectored LOW_TECH smokeless"
     },
     {
-      "location": [128, 48],
-      "length": 0,
-      "width": 7.071068,
+      "location": [127, 49],
+      "length": 13.788582,
+      "width": 7.778174,
       "angle": 135,
-      "contrailSize": 7.071068,
+      "contrailSize": 7.778174,
       "style": "CUSTOM",
-      "styleId": "LOW_TECH smokeless"
+      "styleId": "Vectored LOW_TECH smokeless"
     },
     {
-      "location": [128, -48],
-      "length": 0,
-      "width": 7.071068,
+      "location": [127, -49],
+      "length": 13.788582,
+      "width": 7.778174,
       "angle": -135,
-      "contrailSize": 7.071068,
+      "contrailSize": 7.778174,
       "style": "CUSTOM",
-      "styleId": "LOW_TECH smokeless"
+      "styleId": "Vectored LOW_TECH smokeless"
     },
     {
       "location": [-126.5, 61],
@@ -755,7 +705,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -797,7 +746,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -839,7 +787,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -881,7 +828,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -923,7 +869,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -965,7 +910,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     }

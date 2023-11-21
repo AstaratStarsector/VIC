@@ -7,6 +7,7 @@ import com.fs.starfarer.api.util.Misc;
 import data.scripts.utilities.vic_graphicLibEffects;
 import org.dark.shaders.distortion.DistortionShader;
 import org.dark.shaders.distortion.WaveDistortion;
+import org.json.JSONException;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lazywizard.lazylib.combat.entities.SimpleEntity;
@@ -14,9 +15,12 @@ import org.lwjgl.util.vector.Vector2f;
 import org.magiclib.util.MagicRender;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static data.scripts.utilities.vic_getSettings.getBoolean;
 
 public class vic_alkonostExplosion {
 
@@ -47,7 +51,7 @@ public class vic_alkonostExplosion {
 
 
     public static void explosion(DamagingProjectileAPI projectile, CombatEngineAPI engine){
-        Global.getLogger(vic_alkonostExplosion.class).info("exploded");
+        //Global.getLogger(vic_alkonostExplosion.class).info("exploded");
         Vector2f point = projectile.getLocation();
 
         engine.spawnExplosion(point, ZERO, CORE_EXPLOSION_COLOR, CoreExplosionRadius, CoreExplosionDuration);
@@ -75,7 +79,14 @@ public class vic_alkonostExplosion {
         }
 
 
-        Global.getSoundPlayer().playSound(SOUND_ID, 1f, 1f, point, ZERO);
+        try {
+            if (getBoolean("BFGfart")){
+                Global.getSoundPlayer().playSound("vic_surprise", 1f, 1f, point, ZERO);
+            } else {
+                Global.getSoundPlayer().playSound(SOUND_ID, 1f, 1f, point, ZERO);
+            }
+        } catch (JSONException | IOException ignore) {
+        }
 
 
         MagicRender.battlespace(

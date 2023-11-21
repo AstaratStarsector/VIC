@@ -1,7 +1,9 @@
 package data.hullmods;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.*;
+import com.fs.starfarer.api.combat.BaseHullMod;
+import com.fs.starfarer.api.combat.MutableShipStatsAPI;
+import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import com.fs.starfarer.api.util.Misc;
 import org.lazywizard.lazylib.MathUtils;
@@ -14,6 +16,7 @@ import java.util.Map;
 public class vic_assault extends BaseHullMod {
 
     private final Map<HullSize, Float> strafeMulti = new HashMap<>();
+
     {
         strafeMulti.put(HullSize.FIGHTER, 1f);
         strafeMulti.put(HullSize.FRIGATE, 1f);
@@ -22,21 +25,24 @@ public class vic_assault extends BaseHullMod {
         strafeMulti.put(HullSize.CAPITAL_SHIP, 0.25f);
     }
 
-    private final Map<HullSize, Float> baseDecay = new HashMap<>();
+    private final Map<HullSize, Float> boostRateMulti = new HashMap<>();
+
     {
-        baseDecay.put(HullSize.FIGHTER, 35f);
-        baseDecay.put(HullSize.FRIGATE, 35f);
-        baseDecay.put(HullSize.DESTROYER, 25f);
-        baseDecay.put(HullSize.CRUISER, 20f);
-        baseDecay.put(HullSize.CAPITAL_SHIP, 15f);
+        boostRateMulti.put(HullSize.FIGHTER, 2f);
+        boostRateMulti.put(HullSize.FRIGATE, 2f);
+        boostRateMulti.put(HullSize.DESTROYER, 1f);
+        boostRateMulti.put(HullSize.CRUISER, 0.75f);
+        boostRateMulti.put(HullSize.CAPITAL_SHIP, 0.5f);
     }
 
     float accelBonus = 200f;
     float minAngle = 60f;
+    float boostRate = 0.5f;
+    float boostLossMulti = 2f;
 
-	@Override
-	public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
-	}
+    @Override
+    public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
+    }
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
     }
@@ -70,32 +76,46 @@ public class vic_assault extends BaseHullMod {
         if (ship.getEngineController().isAccelerating()) {
             newVector.y += 1 * ship.getAcceleration();
         }
-        if(ship.getEngineController().isAcceleratingBackwards() || ship.getEngineController().isDecelerating()){
+        if (ship.getEngineController().isAcceleratingBackwards()) {
             newVector.y -= 1 * ship.getDeceleration();
         }
         if (ship.getEngineController().isStrafingLeft()) {
-            newVector.x -=  1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
+            newVector.x -= 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
         }
         if (ship.getEngineController().isStrafingRight()) {
             newVector.x += 1 * ship.getAcceleration() * strafeMulti.get(ship.getHullSize());
         }
+        if (ship.getEngineController().isDecelerating()) {
+            if (ship.getVelocity().lengthSquared() > 0) {
+                Vector2f normalizedVel = new Vector2f(ship.getVelocity());
+                normalizedVel = Misc.normalise(normalizedVel);
+                normalizedVel = VectorUtils.rotate(normalizedVel, -ship.getFacing() - 90);
+                Vector2f.add(newVector, normalizedVel, newVector);
+            }
+        }
 
         float angleDifferance = 0;
-        if (!VectorUtils.isZeroVector(newVector)){
+        if (!VectorUtils.isZeroVector(newVector)) {
             float angle = Misc.getAngleInDegrees(new Vector2f(ship.getVelocity()));
             float accelAngle = Misc.getAngleInDegrees(new Vector2f(newVector)) + ship.getFacing() - 90f;
             angleDifferance = Math.abs(MathUtils.getShortestRotation(angle, accelAngle));
         }
-        if (angleDifferance <= minAngle) angleDifferance = 0f;
 
-        float powerIncrease = 75f * angleDifferance/180f * amount;
-        if (powerIncrease > 0){
+        float boostLevel = (float) Math.pow((minAngle - angleDifferance) / minAngle, 0.4);
+        float effectLevel = (float) Math.pow((angleDifferance - minAngle) / (180f - minAngle), 0.4);
+        if (angleDifferance <= minAngle || newVector.equals(new Vector2f())) {
+            effectLevel = 0f;
+            angleDifferance = 0f;
+        }
+
+        float shipsBoostRate = boostRate * strafeMulti.get(ship.getHullSize());
+        float powerIncrease = shipsBoostRate * effectLevel * amount;
+        if (powerIncrease > 0) {
             boostPower += powerIncrease;
-            if (boostPower > 100f) boostPower = 100f;
+            if (boostPower > 1f) boostPower = 1f;
         } else {
-            if (boostPower > 0f){
-                float base = baseDecay.get(ship.getHullSize());
-                boostPower -= (base + (boostPower * 0.10f)) * amount;
+            if (boostPower > 0f && !newVector.equals(new Vector2f())) {
+                boostPower -= shipsBoostRate* boostLossMulti * boostLevel * amount;
                 if (boostPower < 0f) boostPower = 0f;
             }
         }
@@ -105,11 +125,21 @@ public class vic_assault extends BaseHullMod {
         ship.getMutableStats().getDeceleration().modifyMult("vic_assault", 1 + (boostPower / 50f));
          */
 
-        ship.getMutableStats().getAcceleration().modifyPercent("vic_assault", accelBonus * boostPower * 0.01f);
-        ship.getMutableStats().getDeceleration().modifyPercent("vic_assault", accelBonus * boostPower * 0.01f);
+
+        ship.getMutableStats().getAcceleration().modifyPercent("vic_assaultDamper", accelBonus * effectLevel);
+        ship.getMutableStats().getDeceleration().modifyPercent("vic_assaultDamper", accelBonus * effectLevel);
+
+        if (effectLevel == 0 && boostPower > 0) {
+            ship.getMutableStats().getAcceleration().modifyPercent("vic_assaultBoost", accelBonus * boostLevel);
+            ship.getMutableStats().getDeceleration().modifyPercent("vic_assaultBoost", accelBonus * boostLevel);
+        } else {
+            ship.getMutableStats().getAcceleration().unmodifyPercent("vic_assaultBoost");
+            ship.getMutableStats().getDeceleration().unmodifyPercent("vic_assaultBoost");
+        }
 
         if (ship == Global.getCombatEngine().getPlayerShip()) {
-            Global.getCombatEngine().maintainStatusForPlayerShip("vic_direction1", "graphics/icons/hullsys/vic_auxThrusters.png", "Acceleration increase", Math.round(accelBonus * boostPower * 0.01f) + "%", false);
+            Global.getCombatEngine().maintainStatusForPlayerShip("vic_direction1", "graphics/icons/hullsys/vic_auxThrusters.png", "Booster charge level", Math.round(100 * boostPower) + "%", false);
+            Global.getCombatEngine().maintainStatusForPlayerShip("vic_direction2", "graphics/icons/hullsys/vic_auxThrusters.png", "Deceleration boost", Math.round(100 * effectLevel) + "%", false);
         }
         customCombatData.put("vic_assaultBoostPower" + id, boostPower);
     }
@@ -128,8 +158,10 @@ public class vic_assault extends BaseHullMod {
  */
 
     public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
-        if (index == 0) return Math.round(accelBonus) + "%";
-        if (index == 1) return Math.round(minAngle) + "";
+        if (index == 0) return "0%";
+        if (index == 1) return String.valueOf(Math.round(minAngle));
+        if (index == 2) return Math.round(accelBonus) + "%";
+        if (index == 3) return "180";
         return null;
     }
 }

@@ -1,6 +1,6 @@
 {
 	"id":"vic_notorious_big_iron_buckshot_shot",
-	"onFireEffect":"data.scripts.weapons.vic_notoriousBigIronBuckshotShot",
+	"onFireEffect":"data.scripts.weapons.bigIron.vic_notoriousBigIronBuckshotShot",
 	"specClass":"projectile",
 	"spawnType":"BALLISTIC",
 	"collisionClass":"PROJECTILE_FF",
