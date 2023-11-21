@@ -859,6 +859,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
             xlLaidlawShrapnel2.getProjectileSpec().setFadeTime(MathUtils.getRandomNumberInRange(0.25f, 0.4f));
         }
 
+        engine.addHitParticle(weaponLocation, ZERO, 500, 1f, 0.5f, new Color(215, 241, 234, 255));
 
         WaveDistortion wave = new WaveDistortion(muzzleLocationShockwave, ZERO);
         wave.setIntensity(5f);

@@ -42,11 +42,13 @@ public class vic_alkonostExplosion {
     static float GlowRadius = 750f;
     static float GlowDuration = 1f;
     static float FlashGlowRadius = 2500f;
-    static float FlashGlowDuration = 0.25f;
+    static float FlashGlowDuration = 0.65f;
 
-    static final int NUM_PARTICLES_1 = 25;
-    static final int NUM_PARTICLES_2 = 25;
-    static final int NUM_PARTICLES_3 = 25;
+    static final int NUM_PARTICLES_1 = 15;
+    static final int NUM_PARTICLES_2 = 15;
+    static final int NUM_PARTICLES_3 = 15;
+    static final int NUM_PARTICLES_4 = 15;
+    static final int NUM_PARTICLES_5 = 15;
     static final boolean light = Global.getSettings().getModManager().isModEnabled("shaderLib");
 
 
@@ -61,22 +63,60 @@ public class vic_alkonostExplosion {
         engine.addHitParticle(point, ZERO, FlashGlowRadius, 1f, FlashGlowDuration, FLASH_GLOW_COLOR);
 
         for (int x = 0; x < NUM_PARTICLES_1; x++) {
-            engine.addHitParticle(point,
-                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(50f, 100f), (float) Math.random() * 360f),
-                    MathUtils.getRandomNumberInRange(4, 12), 1f, MathUtils.getRandomNumberInRange(3f, 5.5f), CORE_EXPLOSION_COLOR);
+            Vector2f particelVelocity = MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(50f, 100f), (float) Math.random() * 360f);
+            Vector2f offset = (Vector2f) new Vector2f(particelVelocity).scale(MathUtils.getRandomNumberInRange(0.05f, 1f));
+            Global.getCombatEngine().addHitParticle(Vector2f.add(projectile.getLocation(), offset, null),
+                    particelVelocity,
+                    MathUtils.getRandomNumberInRange(4, 12),
+                    1f,
+                    MathUtils.getRandomNumberInRange(1.5f, 5.5f),
+                    CORE_EXPLOSION_COLOR);
         }
 
         for (int x = 0; x < NUM_PARTICLES_2; x++) {
-            engine.addHitParticle(point,
-                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(75f, 150f), (float) Math.random() * 360f),
-                    MathUtils.getRandomNumberInRange(4, 12), 1f, MathUtils.getRandomNumberInRange(2.5f, 4.75f), CORE_EXPLOSION_COLOR);
+            Vector2f particelVelocity = MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(75f, 150f), (float) Math.random() * 360f);
+            Vector2f offset = (Vector2f) new Vector2f(particelVelocity).scale(MathUtils.getRandomNumberInRange(0.05f, 1f));
+            Global.getCombatEngine().addHitParticle(Vector2f.add(projectile.getLocation(), offset, null),
+                    particelVelocity,
+                    MathUtils.getRandomNumberInRange(4, 12),
+                    1f,
+                    MathUtils.getRandomNumberInRange(1.5f, 5.5f),
+                    CORE_EXPLOSION_COLOR);
         }
 
         for (int x = 0; x < NUM_PARTICLES_3; x++) {
-            engine.addHitParticle(point,
-                    MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(100f, 200f), (float) Math.random() * 360f),
-                    MathUtils.getRandomNumberInRange(4, 12), 1f, MathUtils.getRandomNumberInRange(2f, 4f), CORE_EXPLOSION_COLOR);
+            Vector2f particelVelocity = MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(100f, 200f), (float) Math.random() * 360f);
+            Vector2f offset = (Vector2f) new Vector2f(particelVelocity).scale(MathUtils.getRandomNumberInRange(0.05f, 1f));
+            Global.getCombatEngine().addHitParticle(Vector2f.add(projectile.getLocation(), offset, null),
+                    particelVelocity,
+                    MathUtils.getRandomNumberInRange(4, 12),
+                    1f,
+                    MathUtils.getRandomNumberInRange(1.5f, 5.5f),
+                    CORE_EXPLOSION_COLOR);
         }
+
+        for (int x = 0; x < NUM_PARTICLES_4; x++) {
+            Vector2f particelVelocity = MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(25f, 75f), (float) Math.random() * 360f);
+            Vector2f offset = (Vector2f) new Vector2f(particelVelocity).scale(MathUtils.getRandomNumberInRange(0.05f, 1f));
+            Global.getCombatEngine().addHitParticle(Vector2f.add(projectile.getLocation(), offset, null),
+                    particelVelocity,
+                    MathUtils.getRandomNumberInRange(4, 12),
+                    1f,
+                    MathUtils.getRandomNumberInRange(1.5f, 5.5f),
+                    CORE_EXPLOSION_COLOR);
+        }
+
+        for (int x = 0; x < NUM_PARTICLES_5; x++) {
+            Vector2f particelVelocity = MathUtils.getPointOnCircumference(null, MathUtils.getRandomNumberInRange(150f, 250f), (float) Math.random() * 360f);
+            Vector2f offset = (Vector2f) new Vector2f(particelVelocity).scale(MathUtils.getRandomNumberInRange(0.05f, 1f));
+            Global.getCombatEngine().addHitParticle(Vector2f.add(projectile.getLocation(), offset, null),
+                    particelVelocity,
+                    MathUtils.getRandomNumberInRange(4, 12),
+                    1f,
+                    MathUtils.getRandomNumberInRange(1.5f, 5.5f),
+                    CORE_EXPLOSION_COLOR);
+        }
+
 
 
         try {

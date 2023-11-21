@@ -377,70 +377,374 @@ vic_PersonaChangeOfficer,DialogOptionSelected,"$option == vic_PersonaChangeOffic
 # Jeremy Holo Guide,,,,,,
 vic_meetJeremyHoloGuide,AddBarEvents,"$faction.id == vic
 !$global.firsttalkedwithJeremyHoloGuide
-!$global.talkedwithJeremyHoloGuide","AddBarEvent vic_JeremyHoloGuideEventFirstTime ""Approach the holo-projector platform."" ""A little apart from the other tables there is a small platform with several chairs and a holographic projector. One of the chairs is occupied by a hologram of a bored man with a cigarette. The projector creates Conglomerate logos around the platform and flying strips of text: «VIC Holo-Guide, learn more about us in a friendly conversation!»""",,,
+!$global.talkedwithJeremyHoloGuide","AddBarEvent vic_JeremyHoloGuideEventFirstTime ""Approach the holo-projector platform"" ""A little apart from the other tables there is a small platform with several chairs and a holographic projector. One of the chairs is occupied by a hologram of a bored man with a cigarette. The projector creates Conglomerate logos around the platform and flying strips of text: «VIC Holo-Guide, learn more about us in a friendly conversation!»""",,,
 vic_metJeremyHoloGuide,AddBarEvents,"$faction.id == vic
 $global.firsttalkedwithJeremyHoloGuide
-!$global.talkedwithJeremyHoloGuide","AddBarEvent vic_JeremyHoloGuideEvent ""Approach the holo-projector platform."" ""You easily spot the VIC Holo-Guide booth, inviting you with flashy colours and quirky info-dumps.""",,,
+!$global.talkedwithJeremyHoloGuide","AddBarEvent vic_JeremyHoloGuideEvent ""Approach the holo-projector platform"" ""You easily spot the VIC Holo-Guide booth, inviting you with flashy colours and quirky info-dumps.""",,,
 vic_meetJeremyHoloGuideFirstTimeIntro,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTime
 !$global.firsttalkedwithJeremyHoloGuide","ShowPersonVisual false vic_JeremyHoloGuide
 #$global.talkedwithJeremyHoloGuide = true 30
-$global.firsttalkedwithJeremyHoloGuide = true","Greetings! - the hologram cheers up when it sees you approaching. A joyous and just a little bit smug smile spreads on its semi-transparent face, as it puffs out a cloud of holographic smoke, thick enough for you to almost smell it. Unless this holo-booth has actual olfactory simulation. 
+$global.firsttalkedwithJeremyHoloGuide = true","""Greetings!"" - the hologram cheers up when it sees you approaching. A joyous and just a little bit smug smile spreads on its semi-transparent face, as it puffs out a cloud of holographic smoke, thick enough for you to almost smell it. Unless this holo-booth has actual olfactory simulation. 
 
-""It seems you're not in the Guide's databases yet, so let me just..."" - the man squints for a moment, and then proudly puts one leg on another, - And done! $playerName, I welcome you to the one and only, official VIC Holo-Guide. Do not worry about your personal data, it will only be kept for the sake of naturality of our conversations. Allow me to introduce myself, - the smoking man stands up from the chair. You can see that he's not exactly in a perfectly fit shape under his smart suit, an unusual occurrence among the megacorp's ideal-loving employees. He makes a short, but elegant bow.
+""It seems you're not in the Guide's databases yet, so let me just..."" - the man squints for a moment, and then proudly puts one leg on another, - ""And done! $playerName, I welcome you to the one and only, official VIC Holo-Guide. Do not worry about your personal data, it will only be kept for the sake of naturality of our conversations. Allow me to introduce myself,"" - the smoking man stands up from the chair. You can see that he's not exactly in a perfectly fit shape under his smart suit, an unusual occurrence among the megacorp's ideal-loving employees. He makes a short, but elegant bow.
 
-- I am Jeremiah Rainier-Galante, or, simply, Jeremy, the current head of the Conglomerate's PR department. Or, to be fully honest, an AI-driven replica of his persona, created and maintained for the VIC Holo-Guide project. Just to set things straight, I'm as close to the real ""me"" as it can possibly be, but I'm not sentient per se, only a complex simulation. ","vic_meetJeremyHoloGuideFirstTimeIntro2:Continue",
+""I am Jeremiah Rainier-Galante, or, simply, Jeremy, the current head of the Conglomerate's PR department. Or, to be fully honest, an AI-driven replica of his persona, created and maintained for the VIC Holo-Guide project. Just to set things straight, I'm as close to the real ""me"" as it can possibly be, but I'm not sentient per se, only a complex simulation."" ","vic_meetJeremyHoloGuideFirstTimeIntro2:Continue",
 vic_meetJeremyHoloGuideFirstTimeIntro2,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideFirstTimeIntro2
-","FireAll vic_JeremyHoloGuideEventFirstTime","- It is my job and my pleasure to provide you with all necessary information about the Conglomerate's past, present, and future, as well as any details, regarding our products, services, and all things related, - Not-a-Jeremy says, sitting back into his place. The sunglasses partially hide his eyes, yet they still glint with delight. 
+","FireAll vic_JeremyHoloGuideEventFirstTime","""It is my job and my pleasure to provide you with all necessary information about the Conglomerate's past, present, and future, as well as any details, regarding our products, services, and all things related"", - Not-a-Jeremy says, sitting back into his place. The sunglasses partially hide his eyes, yet those still glint with delight. 
 
- - We can get straight to business and move onto the main topics, or, perhaps, you have any other additional questions? I'll gladly answer them to the best of my abilities. ",,
-vic_JeremyHoloGuideEventFirstTimeAboutSelf,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutSelfAlreadySaid","AddOption 0 vic_JeremyHoloGuideEventFirstTimeAboutSelf ""About Self""",,,
-vic_JeremyHoloGuideEventFirstTimeAboutCredibility,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutCredibilityAlreadySaid","AddOption 1 vic_JeremyHoloGuideEventFirstTimeAboutCredibility ""About Credibility""",,,
-vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAlreadySaid","AddOption 2 vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide ""About WhyGuide""",,,
-vic_JeremyHoloGuideEventFirstTimePoke,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimePokeAlreadySaid","AddOption 2 vic_JeremyHoloGuideEventFirstTimePoke ""Poke""",,,
-vic_JeremyHoloGuideEventFirstTimeKeepPoking,vic_JeremyHoloGuideEventFirstTime,"$vic_JeremyHoloGuideEventFirstTimePokeAlreadySaid","AddOption 2 vic_JeremyHoloGuideEventFirstTimeKeepPoking ""Keep poking""
+""We can get straight to business and move onto the main topics, or, perhaps, you have any other additional questions? I'll gladly answer them to the best of my abilities.""",,
+vic_JeremyHoloGuideEventFirstTimeAboutSelf,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutSelfAlreadySaid","AddOption 0 vic_JeremyHoloGuideEventFirstTimeAboutSelf ""Ask the hologuide about himself""","-",,
+vic_JeremyHoloGuideEventFirstTimeAboutCredibility,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutCredibilityAlreadySaid","AddOption 1 vic_JeremyHoloGuideEventFirstTimeAboutCredibility ""Inquire about the credibility of the information""",,,
+vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAlreadySaid","AddOption 2 vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide ""Question why would VIC even need a hologuide""",,,
+vic_JeremyHoloGuideEventFirstTimePoke,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimePokeAlreadySaid","AddOption 2 vic_JeremyHoloGuideEventFirstTimePoke ""Poke the hologram with your finger""",,,
+vic_JeremyHoloGuideEventFirstTimeKeepPoking,vic_JeremyHoloGuideEventFirstTime,"$vic_JeremyHoloGuideEventFirstTimePokeAlreadySaid","AddOption 2 vic_JeremyHoloGuideEventFirstTimeKeepPoking ""Keep poking the hologram""
 ",,,
-vic_JeremyHoloGuideEventFirstTimeStraightToBusiness,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeStraightToBusinessAlreadySaid","AddOption 3 vic_JeremyHoloGuideEventFirstTimeStraightToBusiness ""Let's get to business""",,,
+vic_JeremyHoloGuideEventFirstTimeStraightToBusiness,vic_JeremyHoloGuideEventFirstTime,"!$vic_JeremyHoloGuideEventFirstTimeStraightToBusinessAlreadySaid","AddOption 3 vic_JeremyHoloGuideEventFirstTimeStraightToBusiness ""Get straight to the business""",,,
 vic_JeremyHoloGuideEventFirstTimeAboutSelfAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeAboutSelf","$vic_JeremyHoloGuideEventFirstTimeAboutSelfAlreadySaid = true 0
-FireAll vic_JeremyHoloGuideEventFirstTime","Telling about self",,
+FireAll vic_JeremyHoloGuideEventFirstTime","""About myself? Well, heh, I can say for sure that I'm much older than it might seem,"" - Jeremy lets out a light laugh, as if slightly sad, - ""As is the case with most of the current Board. As for me personally, I've been with the Conglomerate for quite a long time, and am engaged in both internal and external public communications, and I do everything possible in my power so that everyone knows who we are, what we do and what good we bring to humanity. Well, or at least to what's left of it.""
+
+""If I was asked whether I truly like my job, I would say that, perhaps, yes,"" - the hologram shruggs, - ""I feel that through my work I benefit both the company's employees and people outside of it. In our difficult times, doubts, distrust and despair can lead to the demise of our species, so to some extent I consider it my duty to give people the necessary information they can rely on and hope for a better future.""
+
+""As for the rest, I think that's more personal, so, am very sorry, but some things should be left undisclosed, he-heh"", - the semi-transparent man smiles widely and raises his hands in a stopping gesture. Seems like the hologram AI does have certain restrictions. ",,
 vic_JeremyHoloGuideEventFirstTimeAboutCredibilityAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeAboutCredibility","$vic_JeremyHoloGuideEventFirstTimeAboutCredibilityAlreadySaid = true 0
-FireAll vic_JeremyHoloGuideEventFirstTime","Telling about credibility",,
-vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide","$vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAlreadySaid = true 0
-FireAll vic_JeremyHoloGuideEventFirstTime","Telling about WhyGuide",,
+FireAll vic_JeremyHoloGuideEventFirstTime","""Obviously, my department and I have no right to disclose all the information about the corporation and its internal affairs, but I can assure you on my own behalf and from the bottom of my heart that all the information that we provide to the public is 100% true and accurate, including everything that I can tell you"", - the hologram says, not a single hint of hesitation on its face.
+
+""Of course, it is up to you to decide whether to believe us or not, but it is in our own interests to be as trustworthy as possible.""",,
+vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeAboutWhyGuide",,"""Now that's an interesting one. Actually, there is not a single, but several reasons why we decided to make these things,"" - Jeremy pointed a finger at his transparent self, while puffing out another small cloud of bluish smoke into your general direction. 
+
+""First,"" - pointing the same finger now to the ceiling, - ""I'm going to be honest, the old management didn't pay enough attention and, well, funds, to the PR department in the past. The company's work with the public has been, if you ask me, far from ideal. Thankfully, now that the board finally understands our importance, we can at last do our job as it's meant to be done!""
+","vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAnswer2: Continue",
+vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAnswer2,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAnswer2","$vic_JeremyHoloGuideEventFirstTimeAboutWhyGuideAlreadySaid = true 0
+FireAll vic_JeremyHoloGuideEventFirstTime","""And so, since the old big heads are long gone, we thought it'd be a good idea for a new start, an updated and better image! After all, why should we keep to the old practices if they don't benefit us in the slightest?""
+
+""And secondly, consider, for how long we've been absent because of those darn hyperspace shenanigans. Despite us being back around for a couple of years already, many modern folks simply don't even know anything about us!  The Conglomerate! One of the most prominent megacorps of the past! So when they finally decide to learn about us, they can easily get the gist of things via our hologuides ri-i-ight here,"" - barefaced smugness rang in the hologram's voice as it smiled widely, white teeth perfectly even, like of a holomovie superstar. ",,
 vic_JeremyHoloGuideEventFirstTimePokeAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimePoke","$vic_JeremyHoloGuideEventFirstTimePokeAlreadySaid = true 0
-FireAll vic_JeremyHoloGuideEventFirstTime","Poke Answer",,
+FireAll vic_JeremyHoloGuideEventFirstTime","Your finger goes straight through the holographic construct. There is some weak heat from the emitter, and nothing else. The hologram raises a brow in an exaggerated manner.
+
+""O-o-okay then. As I've said, I'm not the real deal, just a hologram, yes. I hope I don't have to explain what ""hologram"" is to you, right?""","vic_JeremyHoloGuideEventFirstTimeKeepPoking: Keep poking",
 vic_JeremyHoloGuideEventFirstTimeKeepPokingAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeKeepPoking","$vic_JeremyHoloGuideEventFirstTimePokeAlreadySaid = true 0
-FireAll vic_JeremyHoloGuideEventFirstTime","Poke Answer",,
-vic_JeremyHoloGuideEventFirstTimeStraightToBusinessAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeStraightToBusiness",,"Alright let's get to business","vic_meetJeremyHoloGuideAboutHistory:history
-vic_meetJeremyHoloGuideAboutManagement:management
-vic_meetJeremyHoloGuideAboutGenetech:genetech
-vic_meetJeremyHoloGuideFirstTimeLeave:leave",
-vic_meetJeremyHoloGuideAboutHistory,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutHistory",,"Telling about history","vic_meetJeremyHoloGuideAboutManagement:management
-vic_meetJeremyHoloGuideAboutGenetech:genetech
-vic_meetJeremyHoloGuideFirstTimeLeave:leave",
-vic_meetJeremyHoloGuideManagement,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutManagement",,"Telling about management","vic_meetJeremyHoloGuideAboutHistory:history
-vic_meetJeremyHoloGuideAboutGenetech:genetech
-vic_meetJeremyHoloGuideFirstTimeLeave:leave",
-vic_meetJeremyHoloGuideAboutGenetech,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutGenetech",,"Telling about genetech","vic_meetJeremyHoloGuideAboutHistory:history
-vic_meetJeremyHoloGuideAboutManagement:management
-vic_meetJeremyHoloGuideFirstTimeLeave:leave",
-vic_meetJeremyHoloGuideFirstTimeLeave,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideFirstTimeLeave",,"See ya firsttimer","backToBar:Return to the bar",
-vic_meetJeremyHoloGuideLeave,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideLeave",,"See ya","backToBar:Return to the bar",
+FireAll vic_JeremyHoloGuideEventFirstTime","Holographic Jeremy watches you with a condescending smile as you keep prodding his image. Time flies by imperceptibly.
+OR
+A passerby glances at you worriedly, as you keep poking the hologram. 
+OR
+You can feel eyes on you as you keep doing your deed. Is this truly worth it?
+","vic_JeremyHoloGuideEventFirstTimeKeepPoking: Keep poking",
+vic_JeremyHoloGuideEventFirstTimeStraightToBusinessAnswer,DialogOptionSelected,"$option == vic_JeremyHoloGuideEventFirstTimeStraightToBusiness","FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Alright, business it is then. Feel free to ask me anything you might want to learn about the VIC. Our history, the top management, our technologies, including bioengineering and genetic transfiguration, maybe some random little facts which may not be obvious to an average citizen?"" 
+
+",,
+vic_JeremyHoloGuideMainBranchNoZenith,vic_JeremyHoloGuideMainBranchNoZenith,"!$global.vic_JeremyHoloGuideKnowsAboutZenith","AddOption 0 vic_meetJeremyHoloGuideAboutHistory ""Ask about the VIC history""
+AddOption 1 vic_meetJeremyHoloGuideManagement ""Ask about the management""
+AddOption 2 vic_meetJeremyHoloGuideAboutGenetech ""Ask about genetech""
+AddOption 3 vic_meetJeremyHoloGuideRandomFact ""Ask about some random fact""
+AddOption 4 vic_meetJeremyHoloGuideLeave ""Leave""
+",,,
+vic_JeremyHoloGuideMainBranchZenith,vic_JeremyHoloGuideMainBranchZenith,"$global.vic_still_shackled_succeeded
+","$global.vic_JeremyHoloGuideKnowsAboutZenith = true
+
+AddOption 0 vic_meetJeremyHoloGuideAboutHistory ""Ask about the VIC history""
+AddOption 1 vic_meetJeremyHoloGuideManagement ""Ask about the management""
+AddOption 2 vic_meetJeremyHoloGuideAboutGenetech ""Ask about genetech""
+AddOption 3 vic_meetJeremyHoloGuideRandomFact ""Ask about some random fact""
+AddOption 4 vic_meetJeremyHoloGuideZenithEternal ""Ask about Zenith Eternal""
+AddOption 5 vic_meetJeremyHoloGuideLeave ""Leave""
+",,,
+vic_meetJeremyHoloGuideRandomFact1,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact","FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that at some point VIC was related to the production of up to 21% of all agricultural output of the Domain in one way or another? Our subsidiary companies network and technology patent licensing used to be contributing immensely to our exponential growth!""
+OR
+""Did you know that the Aerospace Academy takes in a lot orphaned children to make successful pilots out of them? The Academy cooperates with many orphanages both on VIC worlds and on others to ensure that these children might have a brighter future ahead of them!""
+OR
+""Did you know that VIC's famous genetech was created with the help of xenofauna? The base principles of its innovative genetic transfiguration mechanism were copied from a peculiar parasitic species of Hiilmar-34J, which had a natural ability to easily modify their own genetic code depending on the species of their host organisms!""
+OR
+""Did you know that all civilian matters of VIC-affiliated worlds are being taken care of by the Persean Union of Domain Colonies? It was founded soon after the Collapse in the Empyrean system with the help of the Conglomerate, local planetary administration and Megaera's military command to preserve law and order, and to allow the corporation to focus on reconstruction and re-consolidation efforts!"" 
+OR
+""Did you know that the terraforming project of Cocytus, the headquarters world of the Conglomerate, used to be one of the most expensive and intensive terraforming operations of the Persean Sector? The planet used to be nothing more but a sandy burnt wasteland without an ounce of life, and now it is nothing short of gardens of paradise!""
+OR
+""Did you know that Cocytus used to be not just the new corporate headquarters, but also a popular tourist destination? Its diverse biosphere and pleasant climate ensured a steady influx of visitors from all corners of the Persean Sector, many of which ended up helping the corporation to overcome the consequences of the Collapse!""
+OR
+""Did you know that VIC used to be known as Frontier Dynamics? After the rebranding, the old name was given away to the former employees of the Conglomerate, who left the company,  established their own one under that same old name, and kept true to its initial focus on logistics, humanitarian help and colony establishment!""
+OR
+""Did you know that there was a wealthy and extravagant resident of Cocytus who decided to use our genetech to change themselves into a pug, a breed of dog hailing from the Old Earth itself? Hilarious! And kind of scary.""
+OR
+""Did you know that the Aerospace Corps began with the rehabilitation program for the accused and imprisoned pilots? Many Domain prisoners destined for incarceration or execution were absolved of responsibility in exchange for faithful service in the newly formed armed forces of the Conglomerate back in the days!""
+OR
+""Did you know that here at the Conglomerate we endorse labour unions? We have always valued the rights of our employees across all the Sectors and strived to provide the best possible work policies even for the indebted categories!""
+",,
+vic_meetJeremyHoloGuideZenithEternal,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideZenithEternal
+","HideSecondPerson
+FireAll vic_JeremyHoloGuideMainBranchZenith","The hologuide keeps smiling without saying a word for a second or two, and then nonchalantly answers, once this momentary ""lag"" has passed, - ""I'm sorry, I couldn't process your query, could you please repeat?""
+OR
+The holo-Jeremy freezes for a moment, happy smile and empty stare, then starts moving and talking again, - ""I'm afraid I didn't understand the question, could you please repeat?""
+OR
+The hologram processes the question, and says, - ""Sorry, but I couldn't quite understand your question, could you please repeat?""",,
+vic_meetJeremyHoloGuideManagementRunAway,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagementRunAway
+",,"You quickly leave the holobooth but not before hearing a ""I've warned you!"" from behind your back. ","backToBar:Return to the bar",
+vic_meetJeremyHoloGuideLeave,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideLeave","HideSecondPerson
+","""Already leaving? Oh well!"" - the holo-guide chimes as you decide to take your leave.
+
+""Remember, you can always find our holo-guides on every VIC-affilitated world or space station and you are always welcome! Burn bright, $playerName!""","backToBar:Return to the bar",
 ,,,,,,
 # Jeremy Holo Guide Random Dialogue,,,,,,
-vic_meetJeremyHoloGuide2unique,DialogOptionSelected,"$option == vic_JeremyHoloGuideEvent
+vic_meetJeremyHoloGuideUnique1,DialogOptionSelected,"$option == vic_JeremyHoloGuideEvent
 $global.firsttalkedwithJeremyHoloGuide","ShowPersonVisual false vic_JeremyHoloGuide
 #$global.talkedwithJeremyHoloGuide = true 30
-","Random intro 1","vic_meetJeremyHoloGuideAboutHistory:history
-vic_meetJeremyHoloGuideAboutManagement:management
-vic_meetJeremyHoloGuideAboutGenetech:genetech
-vic_meetJeremyHoloGuideLeave:leave",
-vic_meetJeremyHoloGuide3unique,DialogOptionSelected,"$option == vic_JeremyHoloGuideEvent
+
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Hello again, $playerName!"" - the hologram cheers up when it sees you approaching. A joyous and just a little bit smug smile spreads on its semi-transparent face, as it puffs out a cloud of holographic smoke. 
+
+""Back to learn more about VIC? Feel free to ask me anything you might want to learn about the corporation. Our history, the top management, our technologies, including bioengineering and genetic transfiguration, maybe some random little facts which may not be obvious to an average citizen?""
+",,
+vic_meetJeremyHoloGuideUnique2,DialogOptionSelected,"$option == vic_JeremyHoloGuideEvent
 $global.firsttalkedwithJeremyHoloGuide","ShowPersonVisual false vic_JeremyHoloGuide
 #$global.talkedwithJeremyHoloGuide = true 30
-","Random intro 2","vic_meetJeremyHoloGuideAboutHistory:history
-vic_meetJeremyHoloGuideAboutManagement:management
-vic_meetJeremyHoloGuideAboutGenetech:genetech
-vic_meetJeremyHoloGuideLeave:leave",
+
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Greetings once more, $playerName!"" - the hologram cheers up when it sees you approaching. A joyous and just a little bit smug smile spreads on its semi-transparent face, as it puffs out a cloud of holographic smoke. 
+
+""Back to learn more about VIC? Feel free to ask me anything you might want to learn about the corporation. Our history, the top management, our technologies, including bioengineering and genetic transfiguration, maybe some random little facts which may not be obvious to an average citizen?""",,
 "#END Jeremy Holo Guide Random Dialogue",,,,,,
+,,,,,,
+# Jeremy Holo Guide About History,,,,,,
+vic_meetJeremyHoloGuideAboutHistory,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutHistory","HideSecondPerson
+","""Ah, my favourite topic! Between you and me, I really like history in general, and what's there more to love than the history of the megacorp I've spent most of my life in!"" 
+
+Jeremy's holoconstruct fills with glee, as he begins the narration, accompanied by myriad of small illustrations, videos and audiologs, quickly displayed by the holoemitter. 
+
+""It all started lo-o-ong before the Collapse with two very enterprising folks: Victor Volkov and his business partner Markus Tellen. Together they started what one day would be known as ""Volkov Industrial Conglomerate"". But! For the time being, the company was named ""Frontier Dynamics"". ","vic_meetJeremyHoloGuideAboutHistory2: Continue
+",
+vic_meetJeremyHoloGuideAboutHistory2,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutHistory2",,"""The company was, for the most part, focused on distant colonial development, humanitarian relief ops, logistics, and the like. Over time, however, the corporation started to diversify, as its scale grew and as it gathered other small corps under the wing. Agriculture, biotechnology, aerospace engineering, you name it!"" 
+
+Jeremy puffs out  holographic smoke, making an impressively coherent ""O""-shaped cloud, and continues, - ""And that's when things started getting interesting. You see, the Domain was always eyeing promising megacorporations. The Navy especially. And for working with them the company got really fat investments. Without them, we wouldn't be what we are now! Or, well, what we used to be right before the Gate Collapse occurred, ahem.""","vic_meetJeremyHoloGuideAboutHistory3: Let him continue
+vic_meetJeremyHoloGuideAboutHistory2.5a: ""And what exactly were you doing for the Navy?""
+vic_meetJeremyHoloGuideAboutHistory2.5b: ""Wait, so when and why did the corp get renamed?""
+
+",
+vic_meetJeremyHoloGuideAboutHistory2.5a,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutHistory2.5a",,"""Ah, you know, the usual. Design a new ship, produce certain amount of weapons, calm down a disobedient world, help establish new colonies on the frontier,"" - holo-Jeremy shrugs, - ""Being one of the most powerful entities back then, the Navy had a lot of work for each and every contractor. And a lot of money to pay them for doing it."" ","vic_meetJeremyHoloGuideAboutHistory3: Continue",
+vic_meetJeremyHoloGuideAboutHistory2.5b,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutHistory2.5b",,"""If my memory about the archive records serves me well, it happened some time after the first Navy contracts were signed,"" - Jeremy raises his eyes and scratches his cheek thoughtfully, - ""Do excuse me, I wasn't even around at that time, heh. Anyways! Some of the employees didn't like the company growing so fast and decided to quit. And since it was time to diversify the activities, it was deemed a good move to rebrand the enterprise under a more fitting name for a proper ""big"" megacorp."" ","vic_meetJeremyHoloGuideAboutHistory3: Continue
+vic_meetJeremyHoloGuideAboutHistory2.6b: ""And when did you join the company?""
+",
+vic_meetJeremyHoloGuideAboutHistory2.6b,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutHistory2.6b",,"""Ah-h-h, I see what you're getting at, heh!"", - the hologram smiles slyly and points the cigarette at you, - ""Yes, I'm old enough to have joined the company before the Collapse, but I've entered the fray not before they rebranded themselves into VIC."" ","vic_meetJeremyHoloGuideAboutHistory3: Continue",
+vic_meetJeremyHoloGuideAboutHistory3,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutHistory3",,"""Of course, during the Collapse things weren't quite... Nice. Our tech team attempted to restart the Empyrean Gate but to no avail. In fact, they accidentally achieved the opposite and put us into even further isolation by breaking something in the hyperspace jump points. I don't know much about all that space tech magic, but, let's say, it wasn't our brightest moment...""
+
+""We had to consolidate our forces and resources with the local military base on Megaera to keep things under control, as the citizens and visitors of the system were obviously quite distressed. But! Thanks to the wise decisions of the Board and the hard work of our employees we managed to pull through! And, as you know, eventually found the way to make the system accessible again!"" 
+","vic_meetJeremyHoloGuideAboutHistory3.5: Ask him to elaborate on ""Keep things under control""
+vic_meetJeremyHoloGuideAboutHistory4: Continue",
+vic_meetJeremyHoloGuideAboutHistory3.5,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutHistory3.5",,"""I'd be lying if I said that all things had been going according to plans during that time. There was unrest, there was, obviously, a rise in crime, and other undesirable things. So to keep the system from falling into chaos, we proposed to merge our remaining security forces with the military on Megaera, which helped us considerably in the long run."" ","vic_meetJeremyHoloGuideAboutHistory4: Continue",
+vic_meetJeremyHoloGuideAboutHistory4,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideAboutHistory4","FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith
+FireAll vic_meetJeremyHoloGuideAboutHistoryXPFirstTime","""And so, here we are, perhaps the last remnant of a once great megacorporation. Trying to keep things afloat as everyone else, and hoping for a better tomorrow. And doing what we can to make that better tomorrow even a little bit more probable. Like helping those folks on Kalada in the neighbouring system. Poor bastards got themselves a civil war and nobody around batted an eye. They would probably kill each other, if we didn't intervene. But all's well that ends well, am I right or am I right? Heh. """,,
+vic_meetJeremyHoloGuideAboutHistoryXPFirstTime,vic_meetJeremyHoloGuideAboutHistoryXPFirstTime,"!$global.vicGotXPForHistory","AddXP 50
+$global.vicGotXPForHistory = true",,,
+"#END Jeremy Holo Guide About History",,,,,,
+,,,,,,
+# Jeremy Holo Guide About Management,,,,,,
+vic_meetJeremyHoloGuideManagement,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement","HideSecondPerson
+ShowSecondPerson vic_VolkovHolo","""Well, to start off, the most important person in our little story - Victor Volkov. An entrepreneur and a philanthropist, who founded the corporation and successfully led it for many years. Without him there would be no Frontier Dynamics, and no Conglomerate.""
+
+""Some say he was a ruthless businessman luckily born into a rich family of interstellar traders, while I always preferred to call him a truly self-made man who was extremely efficient and focused on the job. Not all of his decisions were widely supported by the employees or the public, but no one could deny - it is under his leadership that VIC found its firm ground and rose to the ranks of corporate giants.""","vic_meetJeremyHoloGuideManagement1.5: ""Is Volkov still alive?""
+vic_meetJeremyHoloGuideManagement2: Continue
+",
+vic_meetJeremyHoloGuideManagement1.5,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement1.5",,"""What? Oh, ha-hah! Don't be ridiculous!"" - the hologuide laughs wholeheartedly, wiping a holographic tear with the free hand.
+
+""No, of course not. Mister Volkov passed away long time ago, even before I joined the company. For all the wonders that our biotechnologies are already capable of, there was and still is nothing that could keep anyone around for that long. Even someone as stubborn as him."" ","vic_meetJeremyHoloGuideManagement2: Continue",
+vic_meetJeremyHoloGuideManagement2,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement2","HideSecondPerson
+ShowSecondPerson vic_ErnestoHolo","""And moving onto the current Board, let's start with the big name, Ernesto Laidlaw him-darn-self. He was rather famous around the time of the Collapse, you know?"" - says holo-Jeremy, pointing at the portrait of a man floating in the air beside him. 
+
+""""Father of the VIC tech"", a true prodigy who has kept and is still keeping our corporation on the edge of scientific and technological progress. A flamboyant workaholic, and a playboy, but don't tell him I said that last part!""","vic_meetJeremyHoloGuideManagement3Main: Let him continue
+vic_meetJeremyHoloGuideManagement2.5a: ""Wait, THAT Laidlaw? THAT one?""
+vic_meetJeremyHoloGuideManagement2.5b: ""Who?""
+vic_meetJeremyHoloGuideManagement2.5c: ""A playboy, huh...""
+vic_meetJeremyHoloGuideManagement2.5d: ""Is he single?""",
+vic_meetJeremyHoloGuideManagement2.5a,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement2.5a",,"Holo-Jeremy nods with a grin of satisfaction, - ""Yes, THAT Laidlaw, in the flesh. The creator of famous Laidlaw Accelerators, the designer of multiple Conglomerate ships and many other technologies that we are using today both in the civilian sector and in the military. He's spending most of his time in his laboratory on the Archangel Mining Station nowadays and doesn't have many visitors, but maybe some day you could meet him in person, who knows!"" ","vic_meetJeremyHoloGuideManagement3Main: Continue",
+vic_meetJeremyHoloGuideManagement2.5b,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement2.5b",,"""What? Wait, you serious? You don't know Ernesto Laidlaw? One of the most prominent Domain physicists of the late pre-Collapse period? People these days..."" - the hologram shakes the head and sighs in defeat.
+
+""Oh well, nevermind, now you know about him. At least a bit. Though, I would advise reading up on him more. After all, he was, and still is a bright mind amidst the sea of darkness we're all living in nowadays.""","vic_meetJeremyHoloGuideManagement3Main: Continue",
+vic_meetJeremyHoloGuideManagement2.5c,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement2.5c",,"""Believe or not, but he used to participate in partnerships with some fashion holomagazines back in the days. Though as he says, it was just to pay the bills and attract rich sponsors for his new tech projects. But who knows, who knows...""","vic_meetJeremyHoloGuideManagement3Main: Continue",
+vic_meetJeremyHoloGuideManagement2.5d,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement2.5d",,"""Pretty sure he is at the moment, but don't get your hopes up. You're in the different leagues,"" - the hologram shrugs with a condescending smile.","vic_meetJeremyHoloGuideManagement3Desperate: Continue",
+vic_meetJeremyHoloGuideManagement3Main,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideManagement3Main","HideSecondPerson
+","""A-a-and next up - Agniezska Lazari, our current head of bio-research and all things organic. The Architect of Flesh they are, as some overly enthusiastic subordinates of theirs say. They were the only senior manager who agreed to move their workplace to Purgatory after things went nasty with the whole terraforming accident over there. Another sad repercussion of the Collapse that was, alas, "" - holo-Jeremiah sniffs, looking melancholically somewhere to the side. And then springs back to his usual jolly self.
+
+""Eventually, Lazari moved the entirety of our biotech department there for safety reasons. They're not a public person, so don't expect to see them anywhere but inside of their laboratory, he-heh. Can't blame them! There is no limit to perfection! Especially in the art of our own very flesh.""
+
+""We don't show them in the hologuide because their current physique might be triggering for some of the clients, especially if they're not yet familiar with our biotechnologies and the extent of their capabilities,"" - the hologuide coughs. ","vic_meetJeremyHoloGuideManagement4a: Let him continue
+vic_meetJeremyHoloGuideManagement4b: ""Alright, I'll trust your judgement.""
+vic_meetJeremyHoloGuideManagement3.1a: ""Don't care, show.""
+vic_meetJeremyHoloGuideManagement3.1b: ""Show them, I'm curious.""
+",
+vic_meetJeremyHoloGuideManagement3Desperate,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3Desperate","HideSecondPerson","""A-a-and next up - Agniezska Lazari, our current head of bio-research and all things organic. The Architect of Flesh they are, as some overly enthusiastic subordinates of theirs say. They were the only senior manager who agreed to move their workplace to Purgatory after things went nasty with the whole terraforming accident over there. Another sad repercussion of the Collapse that was, alas, "" - holo-Jeremiah sniffs, looking melancholically somewhere to the side. And then springs back to his usual jolly self.
+
+""Eventually, Lazari moved the entirety of our biotech department there for safety reasons. They're not a public person, so don't expect to see them anywhere but inside of their laboratory, he-heh. Can't blame them! There is no limit to perfection! Especially in the art of our own very flesh.""
+
+""We don't show them in the hologuide because their current physique might be triggering for some of the clients, especially if they're not yet familiar with our biotechnologies and the extent of their capabilities,"" - the hologuide coughs. ","vic_meetJeremyHoloGuideManagement4a: Continue
+vic_meetJeremyHoloGuideManagement4b: ""Alright, I'll trust your judgement.""
+vic_meetJeremyHoloGuideManagement3.1aDesperate: ""Don't care, show.""
+vic_meetJeremyHoloGuideManagement3.1bDesperate: ""Show them, I'm curious.""
+",
+vic_meetJeremyHoloGuideManagement3.1a,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3.1a
+","ShowSecondPerson vic_AgniezskaHolo","""Yeah-yeah, everyone says that thinking they're tough enough. But what do I care anyways? We do not hold any accountability from this point on!"" 
+
+An image of a creature manifests itself from a holo-emitter. It surely isn't human, but even through the static of the hologram its eyes do convey a level of intelligence befitting of a sapient being. ","vic_meetJeremyHoloGuideManagement3.2a: ""Oh, wow.""
+vic_meetJeremyHoloGuideManagement3.2b: ""Eh, I've seen worse.""
+vic_meetJeremyHoloGuideManagement3.2c: ""Are you sure they are human?...""
+vic_meetJeremyHoloGuideManagement3.2d: ""Alright, I admit, you were right, I regret my life decisions.""
+vic_meetJeremyHoloGuideManagement3.2e: Say nothing out of politeness
+vic_meetJeremyHoloGuideManagement3.2f: ""Are they single?""
+vic_meetJeremyHoloGuideManagementRunAway: Leave the hologuide booth. Now
+",
+vic_meetJeremyHoloGuideManagement3.1b,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3.1b","ShowSecondPerson vic_AgniezskaHolo","""Well, if you say so... But! We do not hold any accountability from this point on!"" 
+
+An image of a creature manifests itself from a holo-emitter. It surely isn't human, but even through the static of the hologram its eyes do convey a level of intelligence befitting of a sapient being. ","vic_meetJeremyHoloGuideManagement3.2a: ""Oh, wow.""
+vic_meetJeremyHoloGuideManagement3.2b: ""Eh, I've seen worse.""
+vic_meetJeremyHoloGuideManagement3.2c: ""Are you sure they are human?...""
+vic_meetJeremyHoloGuideManagement3.2d: ""Alright, I admit, you were right, I regret my life decisions.""
+vic_meetJeremyHoloGuideManagement3.2e: Say nothing out of politeness
+vic_meetJeremyHoloGuideManagement3.2f: ""Are they single?""
+vic_meetJeremyHoloGuideManagementRunAway: Leave the hologuide booth. Now
+",
+vic_meetJeremyHoloGuideManagement3.1aDesperate,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideManagement3.1aDesperate","ShowSecondPerson vic_AgniezskaHolo","""Yeah-yeah, everyone says that thinking they're tough enough. But what do I care anyways? We do not hold any accountability from this point on!"" 
+
+An image of a creature manifests itself from a holo-emitter. It surely isn't human, but even through the static of the hologram its eyes do convey a level of intelligence befitting of a sapient being. ","vic_meetJeremyHoloGuideManagement3.2a: ""Oh, wow.""
+vic_meetJeremyHoloGuideManagement3.2b: ""Eh, I've seen worse.""
+vic_meetJeremyHoloGuideManagement3.2c: ""Are you sure they are human?...""
+vic_meetJeremyHoloGuideManagement3.2d: ""Alright, I admit, you were right, I regret my life decisions.""
+vic_meetJeremyHoloGuideManagement3.2e: Say nothing out of politeness
+vic_meetJeremyHoloGuideManagement3.2fDesperate: ""Are THEY single?""
+vic_meetJeremyHoloGuideManagementRunAway: Leave the hologuide booth. Now
+",
+vic_meetJeremyHoloGuideManagement3.1bDesperate,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3.1bDesperate","ShowSecondPerson vic_AgniezskaHolo","""Well, if you say so... But! We do not hold any accountability from this point on!"" 
+
+An image of a creature manifests itself from a holo-emitter. It surely isn't human, but even through the static of the hologram its eyes do convey a level of intelligence befitting of a sapient being. ","vic_meetJeremyHoloGuideManagement3.2a: ""Oh, wow.""
+vic_meetJeremyHoloGuideManagement3.2b: ""Eh, I've seen worse.""
+vic_meetJeremyHoloGuideManagement3.2c: ""Are you sure they are human?...""
+vic_meetJeremyHoloGuideManagement3.2d: ""Alright, I admit, you were right, I regret my life decisions.""
+vic_meetJeremyHoloGuideManagement3.2e: Say nothing out of politeness
+vic_meetJeremyHoloGuideManagement3.2fDesperate: ""Are THEY single?""
+vic_meetJeremyHoloGuideManagementRunAway: Leave the hologuide booth. Now
+",
+vic_meetJeremyHoloGuideManagement3.2a,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3.2a",,"""For what it's worth, they are a living, breathing testament to the power of our genetech technology. And being the lead researcher and developer of it today, they do indeed use it a lot on themselves. I'm not even sure we still have the info on how they looked initially... I personally wouldn't go as far as they did with all the modifications, but who am I to judge?""","vic_meetJeremyHoloGuideManagement4a: Continue",
+vic_meetJeremyHoloGuideManagement3.2b,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3.2b
+",,"""Really? Either you're pulling my finger or you've already witnessed the achievements of the COnglomerate's genetech. In any case, good for you!""","vic_meetJeremyHoloGuideManagement4a: Continue",
+vic_meetJeremyHoloGuideManagement3.2c,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3.2c",,"""Believe it or not, but yes, they are 100% human. Or, well, at least they used to be long time ago, before delviing into the depths of biotechnology. Being the lead researcher and developer of genetech today, they do indeed use it a lot on themselves, as you can obviously notice. They've changed themselves too many times to count throughout the years, really. I'm not even sure we still have the info on how they looked initially... I personally wouldn't go as far as they did with all the modifications, but who am I to judge?""","vic_meetJeremyHoloGuideManagement4a: Continue",
+vic_meetJeremyHoloGuideManagement3.2d,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3.2d
+",,"""Don't say I didn't warn you. Alright, moving on!""","vic_meetJeremyHoloGuideManagement4a: Continue",
+vic_meetJeremyHoloGuideManagement3.2e,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3.2e",,"""Don't give me that look now, I did warn you, didn't I? Now live with the repercussions of your actions in this cursed world you've created. Alright, moving on!""","vic_meetJeremyHoloGuideManagement4a: Continue",
+vic_meetJeremyHoloGuideManagement3.2f,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3.2f",,"""Going to be honest with you, no idea. But based on the archive data in my possession, they were never interested in any personal relationships. Sorry!""","vic_meetJeremyHoloGuideManagement4a: Continue",
+vic_meetJeremyHoloGuideManagement3.2fDesperate,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement3.2fDesperate",,"""Listen, I'm not a dating AI program, so you should stop trying. I mean, you can keep trying, sure, but it won't get you anywhere, trust me. And yes, as far as the archive data says, they are indeed single, but they are not interested in any personal relationships, so tough luck, buddy.""","vic_meetJeremyHoloGuideManagement4Desperate: Continue",
+vic_meetJeremyHoloGuideManagement4a,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement4a","HideSecondPerson","""And then we have Arnold Bernstein, our head of armed forces; Michelle Kitsune, our director of Data and Information department; and Axton Murkwell, our Intteligence and Inner Security lead. 
+
+They didn't want to share their info through the hologuide so I can't share the details, and no, you won't get it even if you ask nicely. I hope for your understanding!""","vic_meetJeremyHoloGuideManagement5: Continue",
+vic_meetJeremyHoloGuideManagement4b,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement4b","HideSecondPerson","""Thank you for your trust. You'd never guess how many of our clients had ""severe unpleasant reactions"" after not listening to our advices...""
+
+""Anyways, moving on! Tthen we have Arnold Bernstein, our head of armed forces; Michelle Kitsune, our director of Data and Information department; and Axton Murkwell, our Intteligence and Inner Security lead.""
+
+""They didn't want to share their info through the hologuide so I can't share the details, and no, you won't get it even if you ask nicely. I hope for your understanding!""","vic_meetJeremyHoloGuideManagement5: Continue",
+vic_meetJeremyHoloGuideManagement4Desperate,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement4Desperate","HideSecondPerson","""And then we have Arnold Bernstein, our head of armed forces; Michelle Kitsune, our director of Data and Information department; and Axton Murkwell, our Intteligence and Inner Security lead. 
+
+They didn't want to share their info through the hologuide so I can't share the details, and no, you won't get it even if you ask nicely. I hope for your understanding!""","vic_meetJeremyHoloGuideManagement5Desperate: Continue",
+vic_meetJeremyHoloGuideManagement5,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideManagement5","ShowSecondPerson vic_TatianaHolo
+","""And finally, we have Tatiana Vasilevskaya, our current CEO, and actually the youngest member of the Board. But  in spite of that, I dare to say that she might be the most committed of us all. A visionary, even. She took the post from a rather conservative party who made us quite stagnant in our prolonged isolation, and she quickly mobilised our efforts and resources in order to solve the crisis.""
+
+""With her at the helm, not only we've managed to rejoin the interstellar community, but also found a new path forward in these trying times. The era of old VIC which only grew and hoarded without purpose is over, and a new era is here. A new, bright era of our sole focus on helping humanity to survive, overcome, and prevail!""
+
+""Sorry, but they asked me to add a bit more... Bravado to the speech,"" - holo-Jeremy smiles and puffs out yet another smoky cloud.","vic_meetJeremyHoloGuideManagement6: Continue
+vic_meetJeremyHoloGuideManagement5.1a: ""Sounds like a worthy successor to Volkov's legacy.""
+vic_meetJeremyHoloGuideManagement5.1b: ""All corpos are the same. Greedy, ambitious, and too full of themselves.""
+vic_meetJeremyHoloGuideManagement5.1c: ""Is she single?""",
+vic_meetJeremyHoloGuideManagement5Desperate,DialogOptionSelected,"$option == vic_meetJeremyHoloGuideManagement5Desperate","ShowSecondPerson vic_TatianaHolo
+","""And finally, we have Tatiana Vasilevskaya, our current CEO, and actually the youngest member of the Board. But  in spite of that, I dare to say that she might be the most committed of us all. A visionary, even. She took the post from a rather conservative party who made us quite stagnant in our prolonged isolation, and she quickly mobilised our efforts and resources in order to solve the crisis.""
+
+""With her at the helm, not only we've managed to rejoin the interstellar community, but also found a new path forward in these trying times. The era of old VIC which only grew and hoarded without purpose is over, and a new era is here. A new, bright era of our sole focus on helping humanity to survive, overcome, and prevail!""
+
+""Sorry, but they asked me to add a bit more... Bravado to the speech,"" - holo-Jeremy smiles and puffs out yet another smoky cloud.","vic_meetJeremyHoloGuideManagement6: Continue
+vic_meetJeremyHoloGuideManagement5.1a: ""Sounds like a worthy successor to Volkov's legacy.""
+vic_meetJeremyHoloGuideManagement5.1b: ""All corpos are the same. Greedy, ambitious, and too full of themselves.""
+vic_meetJeremyHoloGuideManagement5.1cDesperate: ""Is she single?...""",
+vic_meetJeremyHoloGuideManagement5.1a,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement5.1a","FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith
+FireAll vic_meetJeremyHoloGuideAboutManagementXPFirstTime","""Indeed. I don't think anyone but her among all the past and current Board members could live up to mr. Volkov's success. But you know how they say, ""It's the hardest of times that create the strongest people.""""
+
+""And that concludes our short summary of VIC's current Board of Directors! Hope you've learned something new and interesting today!"" - holo-Jeremy smiles widely, showing off his snow-white teeth.",,
+vic_meetJeremyHoloGuideManagement5.1b,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement5.1b","FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith
+FireAll vic_meetJeremyHoloGuideAboutManagementXPFirstTime","""Heh, you wouldn't say the same if you knew other megacorps of the old days and their top managers. Trust me, compared to them? She is an angel."" 
+
+""And that concludes our short summary of VIC's current Board of Directors! Hope you've learned something new and interesting today!"" - holo-Jeremy smiles widely, showing off his snow-white teeth.",,
+vic_meetJeremyHoloGuideManagement5.1c,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement5.1c","FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith
+FireAll vic_meetJeremyHoloGuideAboutManagementXPFirstTime","""I'm afraid I'm not allowed to disclose that information, sorry."" - an apologetic smile appears on the hologuide's face for a brief moment, before he resumes talking.
+
+""And that concludes our short summary of VIC's current Board of Directors! Hope you've learned something new and interesting today!"" - holo-Jeremy smiles widely, showing off his snow-white teeth.",,
+vic_meetJeremyHoloGuideManagement5.1cDesperate,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement5.1cDesperate","FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith
+FireAll vic_meetJeremyHoloGuideAboutManagementXPFirstTime","The hologuide doesn't answer. He just watches you, deep disappointment clearly visible.",,
+vic_meetJeremyHoloGuideManagement6,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideManagement6","FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith
+FireAll vic_meetJeremyHoloGuideAboutManagementXPFirstTime","""And that concludes our short summary of VIC's current Board of Directors! Hope you've learned something new and interesting today!"" - holo-Jeremy smiles widely, showing off his snow-white teeth.",,
+vic_meetJeremyHoloGuideAboutManagementXPFirstTime,vic_meetJeremyHoloGuideAboutManagementXPFirstTime,"!$global.vicGotXPForManagement","AddXP 50
+$global.vicGotXPForManagement = true",,,
+"#END Jeremy Holo Guide About Management",,,,,,
+,,,,,,
+# Jeremy Holo Guide About Genetech,,,,,,
+vic_meetJeremyHoloGuideAboutGenetech,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetech","HideSecondPerson
+
+
+
+","""Ah-h-h, yes, genetech, one of the most important discoveries the Conglomerate has ever made. Something that would have changed the Human Domain as much as the Gate System had done when it was first launched, if not for the Collapse. Nigh full control over the organic matter, including human flesh. Alas, alas. 
+
+As you might know, this sort of biotechnologies was conceived quite some time ago, back when humanity was limited to the Old Earth as our only home. But it was rather primitive and stayed so for a long time. After all, living organisms are extremely complex mechanisms, learning how to work with them on such a deep level was not an easy feat.""","vic_meetJeremyHoloGuideAboutGenetech2: Continue
+vic_meetJeremyHoloGuideAboutGenetech2b: ""Sounds like a blasphemous technology."" ",
+vic_meetJeremyHoloGuideAboutGenetech2,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetech2","FireAll vic_JeremyHoloGuideAboutGenetechDetails","""Thankfully, the Conglomerate has figured out the potential of this technology quickly enough, and merged Atagara BioTech into itself, when those guys were one of the leading specialists in genetic engineering on the Domain market. Although, they were mostly focused on agriculture and medical solutions. But, a solid amount of investments, some extra time, and eventually they cracked the code. Dynamic change of the genetic foundation of an adult living organism has turned from a sci-fi dream into reality! Even though it would take lo-o-ot more time to perfect the technology and make it work just as good as it does nowadays.""","
+",
+vic_meetJeremyHoloGuideAboutGenetech2b,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetech2b","FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","The hologuide grins smugly, stopping his narration. 
+
+""If that's blasphemous for you, then what are you even doing here talking with me?"" ",,
+vic_meetJeremyHoloGuideAboutGenetechReleaseTime,vic_JeremyHoloGuideAboutGenetechDetails,"!$vic_JeremyHoloGuideAboutGenetechReleaseTimeAlreadySaid","AddOption 0 vic_meetJeremyHoloGuideAboutGenetechReleaseTime2 ""So, you're saying it wasn't ready before the Collapse?""",,,
+vic_meetJeremyHoloGuideAboutGenetechReleaseTime2,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetechReleaseTime2","$vic_JeremyHoloGuideAboutGenetechReleaseTimeAlreadySaid = true 0
+
+FireAll vic_JeremyHoloGuideAboutGenetechDetails","""Correct! The technology didn't get to arrive to the mass market in time. It was only after the Collapse, during the period of our isolation, that we've completed it to the point where it could be used en masse without complications. Honestly, it's a miracle that with our limited resources the Bio-Research department has still pulled through! It also helped to quell public unrest which was, as you can imagine, at an all times high, with people simply falling into despair in the face of the Collapse. The completion and release of genetech, perhaps, indeed saved the company and the citizens who depended on us."" ",,
+vic_meetJeremyHoloGuideAboutGenetechSideEffects,vic_JeremyHoloGuideAboutGenetechDetails,"!$vic_JeremyHoloGuideAboutGenetechSideEffectsAlreadySaid","AddOption 1 vic_meetJeremyHoloGuideAboutGenetechSideEffects2 ""What about side effects? I don't believe such thing is 100% safe.""",,,
+vic_meetJeremyHoloGuideAboutGenetechSideEffects2,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetechSideEffects2",,"""It doesn't matter whether you believe it or not,"" - the hologuide smiles widely.
+
+""We would never put such a significant technology onto the public market without ensuring that it is as safe as possible. Of course, there are some edge cases when it comes to extreme scale of changes and the fact that using a modification which was finetuned for another person will lead to certain complications, but since all operations are conducted by our specialists only, you can rest assured that there will be no side effects whatsoever."" ","vic_meetJeremyHoloGuideAboutGenetechSideEffects3a: Continue
+vic_meetJeremyHoloGuideAboutGenetechSideEffects3b: ""And I won't even go crazy? That must be a big toil on a human brain and all."" ",
+vic_meetJeremyHoloGuideAboutGenetechSideEffects3a,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetechSideEffects3a","$vic_JeremyHoloGuideAboutGenetechSideEffectsAlreadySaid = true 0
+
+FireAll vic_JeremyHoloGuideAboutGenetechDetails","""But even if by some miniscule chance something goes wrong, our genetech operators will always provide all the necessary help and get you back in shape in no time, so do not worry about it!"" - the holo-Jeremiah grins once again. ",,
+vic_meetJeremyHoloGuideAboutGenetechSideEffects3b,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetechSideEffects3b","$vic_JeremyHoloGuideAboutGenetechSideEffectsAlreadySaid = true 0
+
+FireAll vic_JeremyHoloGuideAboutGenetechDetails","""It is actually incredible how flexible our brains and neural systems are! Even those clients of ours who opted for some rather radical modifications kept all their cognitive abilities and clarity of mind completely intact. Of course, if the modification includes some significant changes to the brain matter itself, then, there will, obviously, be certain differences, but unless you specifically aim for that, then no, you will not go crazy, heh.""
+
+""But even if by some miniscule chance something goes wrong, our genetech operators will always provide all the necessary help and get you back in shape in no time, so do not worry about it!"" - the holo-Jeremiah grins once again. ",,
+vic_meetJeremyHoloGuideAboutGenetechPossibilities,vic_JeremyHoloGuideAboutGenetechDetails,"!$vic_JeremyHoloGuideAboutGenetechPossibilitiesAlreadySaid","AddOption 2 vic_meetJeremyHoloGuideAboutGenetechPossibilities2 ""And what are the exact possibilities of it?""",,,
+vic_meetJeremyHoloGuideAboutGenetechPossibilities2,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetechPossibilities2",,"""Don't be thinking that I'm being overly dramatic, but the possibilities are theoretically absolutely limitless! It can range from something as simple as, say, changing your natural hair or skin colour, or faster metabolism and reactions, or the shape of eyes and irises, to things like a second heart, or maybe chitin-like organic armor, or a second set of arms and legs, or, I don't know..."" - holographic Jeremiah thoughtfully looks to the ceiling, and then receives an obvious ""eureca"" moment, turning his gaze back on you.
+
+""Hypothetically, you could outright swap your entire human body for a completely different one. Sex, anatomy, physiology, optimal environment conditions, - everything! Turning yourself into a xenofauna specimen? Absolutely possible!"" 
+
+""Though, I have to warn you, this will cost truly a lot, despite us always trying to lower the price of the technology. And, truth be told, extreme modifications like that come with a bouquet of complications, so it is not advised unless you really want to change your current form that far. Even then, we can not ensure the success of operation and your safety."" ","vic_meetJeremyHoloGuideAboutGenetechPossibilities3a: ""M-m-m, yeah no, I'd prefer to stay human, thank you very much.""
+vic_meetJeremyHoloGuideAboutGenetechPossibilities3b: ""Sounds radical, where can I sign up?""
+vic_meetJeremyHoloGuideAboutGenetechPossibilities3c: ""The Domain was probably very interested in this technology, weren't they?""
+",
+vic_meetJeremyHoloGuideAboutGenetechPossibilities3a,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetechPossibilities3a","$vic_JeremyHoloGuideAboutGenetechPossibilitiesAlreadySaid = true 0
+
+FireAll vic_JeremyHoloGuideAboutGenetechDetails","Holo-Jeremy shrugs with a slight smile.
+
+""It isn't like we're persuading anyone into abandoning their humanity. Genetech is a tool of many uses, we simply allow our clients to take it in their own hands and choose what to do with it themselves. Though personally I would suggest to consider something like a boost to your immune system or eyesight. Cheap, harmless, and will serve you well no matter what.""",,
+vic_meetJeremyHoloGuideAboutGenetechPossibilities3b,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetechPossibilities3b","$vic_JeremyHoloGuideAboutGenetechPossibilitiesAlreadySaid = true 0
+
+FireAll vic_JeremyHoloGuideAboutGenetechDetails","""Ha-ha, I like your enthusiasm! You can find our specialised VIC Revitalisation Centres on Cocytus, Yama, Yesod and Ailmar. We're also looking into building more of those on other Core Worlds and, perhaps, on potential new colonies, whenever funds for those might turn up... So stay tuned for new openings!""",,
+vic_meetJeremyHoloGuideAboutGenetechPossibilities3c,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetechPossibilities3c",,"""Heh, you bet they were. It isn't that big of a secret at this point that the Navy was very curious about the military applications of it. Our modern armed forces also receive a fair share of genetic modifications for better combat performance. I can't disclose the details, obviously, so I hope for your understanding.""","vic_meetJeremyHoloGuideAboutGenetechPossibilities3a: ""M-m-m, yeah no, I'd prefer to stay human, thank you very much.""
+vic_meetJeremyHoloGuideAboutGenetechPossibilities3b: ""Sounds radical, where can I sign up?""",
+vic_meetJeremyHoloGuideAboutGenetech3,vic_JeremyHoloGuideAboutGenetechDetails,,"AddOption 3 vic_meetJeremyHoloGuideAboutGenetech4 ""Continue""",,,
+vic_meetJeremyHoloGuideAboutGenetech4,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideAboutGenetech4","$vic_JeremyHoloGuideAboutGenetechSideEffectsAlreadySaid = false
+$vic_JeremyHoloGuideAboutGenetechReleaseTimeAlreadySaid = false
+$vic_JeremyHoloGuideAboutGenetechPossibilitiesAlreadySaid = false
+
+FireAll vic_meetJeremyHoloGuideAboutGenetechXPFirstTime
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""So, don't be surprised if you see people around who may not look like a pure human. Or like a human at all. The cost of modifications drops slightly with every passing year, so more and more clients are opting to try our transfiguration technology. Who knows, maybe some day it'll be as ubiquitous as cybernetic mods are today! Just imagine how much easier it will be to colonise new inhospitable planets or return to the ones lost because of the Collapse! Heed my words, genetech is the one true future for humanity, be sure of that!""",,
+vic_meetJeremyHoloGuideAboutGenetechXPFirstTime,vic_meetJeremyHoloGuideAboutGenetechXPFirstTime,"!$global.vicGotXPForGenetech","AddXP 50
+$global.vicGotXPForGenetech = true",,,
+"#END Jeremy Holo Guide About Genetech",,,,,,
 "#END Jeremy Holo Guide",,,,,,
 
