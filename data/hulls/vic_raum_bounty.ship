@@ -327,7 +327,7 @@
       "mount": "TURRET",
       "arc": 0,
       "angle": 0,
-      "locations": [141, -49]
+      "locations": [141.5, -49]
     },
     {
       "id": "WS0025",
@@ -632,7 +632,7 @@
       "styleId": "Vectored LOW_TECH smokeless"
     },
     {
-      "location": [112, 50],
+      "location": [100.5, 49.5],
       "length": 15.909903,
       "width": 9.192388,
       "angle": 135,
@@ -641,7 +641,7 @@
       "styleId": "Vectored LOW_TECH smokeless"
     },
     {
-      "location": [112, -50],
+      "location": [100.5, -49.5],
       "length": 15.909903,
       "width": 9.192388,
       "angle": -135,
@@ -650,7 +650,7 @@
       "styleId": "Vectored LOW_TECH smokeless"
     },
     {
-      "location": [127, 49],
+      "location": [115, 48],
       "length": 13.788582,
       "width": 7.778174,
       "angle": 135,
@@ -659,7 +659,7 @@
       "styleId": "Vectored LOW_TECH smokeless"
     },
     {
-      "location": [127, -49],
+      "location": [115, -48],
       "length": 13.788582,
       "width": 7.778174,
       "angle": -135,
@@ -705,7 +705,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -747,7 +746,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -789,7 +787,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -831,7 +828,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -873,7 +869,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -915,7 +910,6 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
-        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     }
