@@ -449,27 +449,6 @@ AddOption 3 vic_meetJeremyHoloGuideRandomFact ""Ask about some random fact""
 AddOption 4 vic_meetJeremyHoloGuideZenithEternal ""Ask about Zenith Eternal""
 AddOption 5 vic_meetJeremyHoloGuideLeave ""Leave""
 ",,,
-vic_meetJeremyHoloGuideRandomFact1,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact","FireAll vic_JeremyHoloGuideMainBranchNoZenith
-FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that at some point VIC was related to the production of up to 21% of all agricultural output of the Domain in one way or another? Our subsidiary companies network and technology patent licensing used to be contributing immensely to our exponential growth!""
-OR
-""Did you know that the Aerospace Academy takes in a lot orphaned children to make successful pilots out of them? The Academy cooperates with many orphanages both on VIC worlds and on others to ensure that these children might have a brighter future ahead of them!""
-OR
-""Did you know that VIC's famous genetech was created with the help of xenofauna? The base principles of its innovative genetic transfiguration mechanism were copied from a peculiar parasitic species of Hiilmar-34J, which had a natural ability to easily modify their own genetic code depending on the species of their host organisms!""
-OR
-""Did you know that all civilian matters of VIC-affiliated worlds are being taken care of by the Persean Union of Domain Colonies? It was founded soon after the Collapse in the Empyrean system with the help of the Conglomerate, local planetary administration and Megaera's military command to preserve law and order, and to allow the corporation to focus on reconstruction and re-consolidation efforts!"" 
-OR
-""Did you know that the terraforming project of Cocytus, the headquarters world of the Conglomerate, used to be one of the most expensive and intensive terraforming operations of the Persean Sector? The planet used to be nothing more but a sandy burnt wasteland without an ounce of life, and now it is nothing short of gardens of paradise!""
-OR
-""Did you know that Cocytus used to be not just the new corporate headquarters, but also a popular tourist destination? Its diverse biosphere and pleasant climate ensured a steady influx of visitors from all corners of the Persean Sector, many of which ended up helping the corporation to overcome the consequences of the Collapse!""
-OR
-""Did you know that VIC used to be known as Frontier Dynamics? After the rebranding, the old name was given away to the former employees of the Conglomerate, who left the company,  established their own one under that same old name, and kept true to its initial focus on logistics, humanitarian help and colony establishment!""
-OR
-""Did you know that there was a wealthy and extravagant resident of Cocytus who decided to use our genetech to change themselves into a pug, a breed of dog hailing from the Old Earth itself? Hilarious! And kind of scary.""
-OR
-""Did you know that the Aerospace Corps began with the rehabilitation program for the accused and imprisoned pilots? Many Domain prisoners destined for incarceration or execution were absolved of responsibility in exchange for faithful service in the newly formed armed forces of the Conglomerate back in the days!""
-OR
-""Did you know that here at the Conglomerate we endorse labour unions? We have always valued the rights of our employees across all the Sectors and strived to provide the best possible work policies even for the indebted categories!""
-",,
 vic_meetJeremyHoloGuideZenithEternal,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideZenithEternal
 ","HideSecondPerson
 FireAll vic_JeremyHoloGuideMainBranchZenith","The hologuide keeps smiling without saying a word for a second or two, and then nonchalantly answers, once this momentary ""lag"" has passed, - ""I'm sorry, I couldn't process your query, could you please repeat?""
@@ -746,5 +725,85 @@ FireAll vic_JeremyHoloGuideMainBranchZenith","""So, don't be surprised if you se
 vic_meetJeremyHoloGuideAboutGenetechXPFirstTime,vic_meetJeremyHoloGuideAboutGenetechXPFirstTime,"!$global.vicGotXPForGenetech","AddXP 50
 $global.vicGotXPForGenetech = true",,,
 "#END Jeremy Holo Guide About Genetech",,,,,,
+,,,,,,
+# Jeremy Holo Guide Random Facts,,,,,,
+vic_meetJeremyHoloGuideRandomFact1,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact1Said","$vic_meetJeremyHoloGuideRandomFact1Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that at some point VIC was related to the production of up to 21% of all agricultural output of the Domain in one way or another? Our subsidiary companies network and technology patent licensing used to be contributing immensely to our exponential growth!""
+",,
+vic_meetJeremyHoloGuideRandomFact2,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact2Said","$vic_meetJeremyHoloGuideRandomFact2Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that the Aerospace Academy takes in a lot orphaned children to make successful pilots out of them? The Academy cooperates with many orphanages both on VIC worlds and on others to ensure that these children might have a brighter future ahead of them!""
+",,
+vic_meetJeremyHoloGuideRandomFact3,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact3Said","$vic_meetJeremyHoloGuideRandomFact3Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that VIC's famous genetech was created with the help of xenofauna? The base principles of its innovative genetic transfiguration mechanism were copied from a peculiar parasitic species of Hiilmar-34J, which had a natural ability to easily modify their own genetic code depending on the species of their host organisms!""",,
+vic_meetJeremyHoloGuideRandomFact4,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact4Said","$vic_meetJeremyHoloGuideRandomFact4Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that all civilian matters of VIC-affiliated worlds are being taken care of by the Persean Union of Domain Colonies? It was founded soon after the Collapse in the Empyrean system with the help of the Conglomerate, local planetary administration and Megaera's military command to preserve law and order, and to allow the corporation to focus on reconstruction and re-consolidation efforts!"" ",,
+vic_meetJeremyHoloGuideRandomFact5,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact5Said","$vic_meetJeremyHoloGuideRandomFact5Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that there was a wealthy and extravagant resident of Cocytus who decided to use our genetech to change themselves into a pug, a breed of dog hailing from the Old Earth itself? Hilarious! And kind of scary.""",,
+vic_meetJeremyHoloGuideRandomFact6,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact6Said","$vic_meetJeremyHoloGuideRandomFact6Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that Cocytus used to be not just the new corporate headquarters, but also a popular tourist destination? Its diverse biosphere and pleasant climate ensured a steady influx of visitors from all corners of the Persean Sector, many of which ended up helping the corporation to overcome the consequences of the Collapse!""",,
+vic_meetJeremyHoloGuideRandomFact7,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact7Said","$vic_meetJeremyHoloGuideRandomFact7Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that VIC used to be known as Frontier Dynamics? After the rebranding, the old name was given away to the former employees of the Conglomerate, who left the company,  established their own one under that same old name, and kept true to its initial focus on logistics, humanitarian help and colony establishment!""",,
+vic_meetJeremyHoloGuideRandomFact8,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact8Said","$vic_meetJeremyHoloGuideRandomFact8Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that the terraforming project of Cocytus, the headquarters world of the Conglomerate, used to be one of the most expensive and intensive terraforming operations of the Persean Sector? The planet used to be nothing more but a sandy burnt wasteland without an ounce of life, and now it is nothing short of gardens of paradise!""",,
+vic_meetJeremyHoloGuideRandomFact9,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact9Said","$vic_meetJeremyHoloGuideRandomFact9Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that the Aerospace Corps began with the rehabilitation program for the accused and imprisoned pilots? Many Domain prisoners destined for incarceration or execution were absolved of responsibility in exchange for faithful service in the newly formed armed forces of the Conglomerate back in the days!""",,
+vic_meetJeremyHoloGuideRandomFact10,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact10Said","$vic_meetJeremyHoloGuideRandomFact10Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that our Focalor cruisers use a unique targeting system, allowing its main autocannon's bullets to home onto enemies? Not only this greatly improves the accuracy of the weapon, but also prevents friendly fire accidents during ground operation with air support!""",,
+vic_meetJeremyHoloGuideRandomFact11,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact11Said","$vic_meetJeremyHoloGuideRandomFact11Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that VIC's genetech usage is forbidden for children? Although we support citizens' desire to improve and express themselves in any way they want, we, however, do think that such things should be approached with a lot of responsibility, thus our non-vitally important genetic transfiguration services are allowed for adults only!""",,
+vic_meetJeremyHoloGuideRandomFact12,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+!$vic_meetJeremyHoloGuideRandomFact12Said","$vic_meetJeremyHoloGuideRandomFact12Said = true 0
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that the naming system for VIC's military products was conceived after the marketing research showed that both the Domain Navy and the private customers were growing more and more interested in menacing names with deep mythological roots? We still don't know what exactly was the cause of that, but I suppose ships like ""Manticore"" or ""Pegasus"" might be another case of that!""",,
+vic_meetJeremyHoloGuideRandomFact13,DialogOptionSelected,"$option ==  vic_meetJeremyHoloGuideRandomFact
+$vic_meetJeremyHoloGuideRandomFact1Said
+$vic_meetJeremyHoloGuideRandomFact2Said
+$vic_meetJeremyHoloGuideRandomFact3Said
+$vic_meetJeremyHoloGuideRandomFact4Said
+$vic_meetJeremyHoloGuideRandomFact5Said
+$vic_meetJeremyHoloGuideRandomFact6Said
+$vic_meetJeremyHoloGuideRandomFact7Said
+$vic_meetJeremyHoloGuideRandomFact8Said
+$vic_meetJeremyHoloGuideRandomFact9Said
+$vic_meetJeremyHoloGuideRandomFact10Said
+$vic_meetJeremyHoloGuideRandomFact11Said
+$vic_meetJeremyHoloGuideRandomFact12Said
+","$vic_meetJeremyHoloGuideRandomFact1Said = false
+$vic_meetJeremyHoloGuideRandomFact2Said = false
+$vic_meetJeremyHoloGuideRandomFact3Said = false
+$vic_meetJeremyHoloGuideRandomFact4Said = false
+$vic_meetJeremyHoloGuideRandomFact5Said = false
+$vic_meetJeremyHoloGuideRandomFact6Said = false
+$vic_meetJeremyHoloGuideRandomFact7Said = false
+$vic_meetJeremyHoloGuideRandomFact8Said = false
+$vic_meetJeremyHoloGuideRandomFact9Said = false
+$vic_meetJeremyHoloGuideRandomFact10Said = false
+$vic_meetJeremyHoloGuideRandomFact11Said = false
+$vic_meetJeremyHoloGuideRandomFact12Said = false
+FireAll vic_JeremyHoloGuideMainBranchNoZenith
+FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that here at the Conglomerate we endorse labour unions? We have always valued the rights of our employees across all the Sectors and strived to provide the best possible work policies even for the indebted categories!""",,
+"#END Jeremy Holo Guide Random Facts",,,,,,
 "#END Jeremy Holo Guide",,,,,,
 
