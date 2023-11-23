@@ -1,0 +1,75 @@
+{
+    "displayName": "Raum Bounty Main",
+    "fluxCapacitors": 0,
+    "fluxVents": 31,
+    "hullId": "vic_raum_bounty",
+    "hullMods": [
+        "vic_notorious_big_iron_mode_slug",
+        "targetingunit",
+        "unstable_injector",
+        "turretgyros",
+        "heavyarmor"
+    ],
+    "permaMods": [],
+    "sMods": [],
+    "variantId": "vic_raum_bounty_test",
+    "weaponGroups": [
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0005": "multineedler"}
+        },
+        {
+            "autofire": false,
+            "mode": "ALTERNATING",
+            "weapons": {
+                "WS0006": "squall",
+                "WS0007": "squall"
+            }
+        },
+        {
+            "autofire": false,
+            "mode": "LINKED",
+            "weapons": {"WS0046": "vic_notorious_big_iron_slug"}
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0035": "hveldriver",
+                "WS0036": "hveldriver",
+                "WS0045": "hveldriver"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0043": "lightag",
+                "WS0044": "lightag"
+            }
+        },
+        {
+            "autofire": true,
+            "mode": "LINKED",
+            "weapons": {
+                "WS0008": "vulcan",
+                "WS0009": "vulcan",
+                "WS0010": "vulcan",
+                "WS0011": "vulcan",
+                "WS0026": "vulcan",
+                "WS0027": "vulcan",
+                "WS0029": "vulcan",
+                "WS0030": "vulcan",
+                "WS0039": "vulcan",
+                "WS0040": "vulcan",
+                "WS0041": "vulcan",
+                "WS0042": "vulcan"
+            }
+        }
+    ],
+    "wings": [
+        "sarissa_wing",
+        "sarissa_wing"
+    ]
+}

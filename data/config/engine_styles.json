@@ -73,8 +73,8 @@
     },
 	
 	"Vectored LOW_TECH smokeless":{
-		"engineColor":[255,125,25,255],
-		"engineCampaignColor":[200,90,70,255],
+		"engineColor": [255,125,75,255],
+        "engineCampaignColor": [255,125,75,255],
 		"contrailParticleSizeMult":0,
 		"contrailParticleDuration":0,
 		"contrailParticleFinalSizeMult":0,

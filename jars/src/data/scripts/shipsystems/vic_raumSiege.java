@@ -9,8 +9,8 @@ import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 public class vic_raumSiege extends BaseShipSystemScript {
 
     float
-            siegeDamage = 0.2f,
-            siegeDamageActive = 0.35f,
+            siegeDamageActiveUltra = 0.25f,
+            siegeDamageActive = 0.25f,
             siegeRoF = -0.15f,
             siegeSpeed = -0.25f,
             siegeManeuver = 0.5f,
@@ -69,37 +69,57 @@ public class vic_raumSiege extends BaseShipSystemScript {
             stats.getMaxTurnRate().unmodify(id);
             stats.getTurnAcceleration().unmodify(id);
         }
-        if (state == State.ACTIVE || state == State.IN) {
+
+        if (state == State.ACTIVE || state == State.IN || state == State.OUT ) {
             if (!swithced) {
                 siege = !siege;
                 swithced = true;
             }
 
             if (siege) {
-                stats.getBallisticWeaponDamageMult().modifyMult(id, 1 + siegeDamageActive* effectLevel);
-                stats.getEnergyWeaponDamageMult().modifyMult(id, 1 + siegeDamageActive* effectLevel);
-                stats.getMissileWeaponDamageMult().modifyMult(id, 1 + siegeDamageActive* effectLevel);
 
                 stats.getAcceleration().modifyMult(id, 1 + siegeManeuverActive* effectLevel);
                 stats.getDeceleration().modifyMult(id, 1 + siegeManeuverActive* effectLevel);
                 stats.getMaxTurnRate().modifyMult(id, 1 + siegeManeuverActive* effectLevel);
                 stats.getTurnAcceleration().modifyMult(id, 1 + (siegeManeuverActive * 2)* effectLevel);
-            } else {
-                stats.getBallisticRoFMult().modifyMult(id, 1 + assaultRoF);
-                stats.getBallisticRoFMult().modifyMult(id, 1 + assaultRoF);
-                stats.getMissileRoFMult().modifyMult(id, 1 + assaultRoF);
 
-                stats.getBallisticWeaponFluxCostMod().modifyMult(id, 1 + assaultFluxCost);
-                stats.getEnergyWeaponFluxCostMod().modifyMult(id, 1 + assaultFluxCost);
-                stats.getMissileWeaponFluxCostMod().modifyMult(id, 1 + assaultFluxCost);
+
+
+                if (state == State.IN) {
+                    stats.getBallisticWeaponDamageMult().modifyMult(id, 1 + (siegeDamageActive + siegeDamageActiveUltra));
+                    stats.getEnergyWeaponDamageMult().modifyMult(id, 1 + (siegeDamageActive + siegeDamageActiveUltra));
+                    stats.getMissileWeaponDamageMult().modifyMult(id, 1 + (siegeDamageActive + siegeDamageActiveUltra));
+                }
+
+                else  {
+                    stats.getBallisticWeaponDamageMult().modifyMult(id, 1 + siegeDamageActive * effectLevel);
+                    stats.getEnergyWeaponDamageMult().modifyMult(id, 1 + siegeDamageActive * effectLevel);
+                    stats.getMissileWeaponDamageMult().modifyMult(id, 1 + siegeDamageActive * effectLevel);
+                }
+
+
+
+
+
+            } else {
+                stats.getBallisticRoFMult().modifyMult(id, 1 + assaultRoF * effectLevel);
+                stats.getEnergyRoFMult().modifyMult(id, 1 + assaultRoF * effectLevel);
+                stats.getMissileRoFMult().modifyMult(id, 1 + assaultRoF * effectLevel);
+
+                stats.getBallisticWeaponFluxCostMod().modifyMult(id, 1 + assaultFluxCost * effectLevel);
+                stats.getEnergyWeaponFluxCostMod().modifyMult(id, 1 + assaultFluxCost * effectLevel);
+                stats.getMissileWeaponFluxCostMod().modifyMult(id, 1 + assaultFluxCost * effectLevel);
 
                 stats.getMaxSpeed().modifyMult(id, 1 + assaultSpeed);
-                stats.getAcceleration().modifyMult(id, 1 + assaultSpeed * 2);
-                stats.getDeceleration().modifyMult(id, 1 + assaultSpeed * 2);
+                stats.getAcceleration().modifyMult(id, 1 + assaultSpeed * 2 * effectLevel);
+                stats.getDeceleration().modifyMult(id, 1 + assaultSpeed * 2 * effectLevel);
             }
         } else {
             swithced = false;
+
         }
+
+
         super.apply(stats, id, state, effectLevel);
         stats.getEntity().getCustomData().put("vic_raumSiedge", siege);
     }
@@ -139,10 +159,12 @@ public class vic_raumSiege extends BaseShipSystemScript {
 
     public StatusData getStatusData(int index, State state, float effectLevel) {
         if (siege) {
-            if (index == 0) return new StatusData("Range and Damage increased", false);
-            if (index == 1) return new StatusData("Max speed reduced", true);
+            if (index == 0) return new StatusData("Range and Maneuverability increased", false);
+            if (index == 1) return new StatusData("Max speed and RoF decreased", true);
+            if (state == State.ACTIVE || state == State.IN) if (index == 2) return new StatusData("Damage and Maneuverability increased", false);
+            if (state == State.IN) if (index == 3) return new StatusData("Damage Super Increased!!!", false);
         } else {
-            if (state == State.ACTIVE || state == State.IN) if (index == 0) return new StatusData("Damage and speed increase", false);
+            if (state == State.ACTIVE || state == State.IN) if (index == 0) return new StatusData("RoF, Max speed and WPN Flux Eff. increased", false);
         }
         return null;
     }

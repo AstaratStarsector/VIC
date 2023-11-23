@@ -29,7 +29,7 @@ public class vic_dummyForRaumSwapper extends vic_dummyForSwaper{
         if (spec == null) return null;
 
         boolean knowShip = Global.getSector().getPlayerFaction().knowsShip(ship.getHullSpec().getHullId()) || (marketOrNull != null && marketOrNull.getFaction().knowsShip(ship.getHullSpec().getHullId()));
-        if (!knowShip) return "Can only be swapped if player or market's faction need to know blueprint of this ship.";
+        if (!knowShip) return "Can only be swapped if the player or the market's faction knows blueprint of this ship.";
         return "Can only be swapped at a colony with a spaceport or an orbital station";
     }
 

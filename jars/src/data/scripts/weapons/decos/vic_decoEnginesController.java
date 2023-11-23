@@ -91,6 +91,9 @@ public class vic_decoEnginesController implements EveryFrameWeaponEffectPlugin {
             if (turn != 0 && e.turn == turn) {
                 thrust += 1f;
             }
+            if (turn != 0 && e.turn != turn){
+                thrust -= 0.08f;
+            }
 
 
             thrust(e, MathUtils.clamp(thrust, 0.4f, 1f));

@@ -9,7 +9,7 @@
   "center": [107, 278],
   "collisionRadius": 294,
   "shieldCenter": [0, -0],
-  "shieldRadius": 291,
+  "shieldRadius": 310,
   "viewOffset": 0,
   "builtInMods": [
     "insulatedengine",
@@ -614,56 +614,56 @@
       }
     },
     {
-      "location": [3, 75],
-      "length": 22.98097,
-      "width": 10.606602,
+      "location": [4, 74],
+      "length": 48.436813,
+      "width": 20.506096,
       "angle": 135,
-      "contrailSize": 10.606602,
+      "contrailSize": 20.506096,
       "style": "CUSTOM",
       "styleId": "Vectored LOW_TECH smokeless"
     },
     {
-      "location": [3, -75],
-      "length": 22.98097,
-      "width": 10.606602,
+      "location": [4, -74],
+      "length": 48.436813,
+      "width": 20.506096,
       "angle": -135,
-      "contrailSize": 10.606602,
+      "contrailSize": 20.506096,
       "style": "CUSTOM",
       "styleId": "Vectored LOW_TECH smokeless"
     },
     {
       "location": [100.5, 49.5],
-      "length": 15.909903,
-      "width": 9.192388,
+      "length": 24.04163,
+      "width": 11.313708,
       "angle": 135,
-      "contrailSize": 9.192388,
+      "contrailSize": 11.313708,
       "style": "CUSTOM",
       "styleId": "Vectored LOW_TECH smokeless"
     },
     {
       "location": [100.5, -49.5],
-      "length": 15.909903,
-      "width": 9.192388,
+      "length": 24.04163,
+      "width": 11.313708,
       "angle": -135,
-      "contrailSize": 9.192388,
+      "contrailSize": 11.313708,
       "style": "CUSTOM",
       "styleId": "Vectored LOW_TECH smokeless"
     },
     {
       "location": [115, 48],
-      "length": 13.788582,
-      "width": 7.778174,
+      "length": 30.405592,
+      "width": 11.313708,
       "angle": 135,
-      "contrailSize": 7.778174,
+      "contrailSize": 11.313708,
       "style": "CUSTOM",
       "styleId": "Vectored LOW_TECH smokeless"
     },
     {
       "location": [115, -48],
-      "length": 13.788582,
-      "width": 7.778174,
+      "length": 30.405592,
+      "width": 11.313708,
       "angle": -135,
-      "contrailSize": 7.778174,
+      "contrailSize": 11.313708,
       "style": "CUSTOM",
       "styleId": "Vectored LOW_TECH smokeless"
     },
@@ -705,6 +705,7 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -746,6 +747,7 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -787,6 +789,7 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -828,6 +831,7 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -869,6 +873,7 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     },
@@ -910,6 +915,7 @@
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
         "contrailAngularVelocityMult": 1,
+        "glowAlternateColor":[0,0,0,0],
         "contrailParticleDuration": 0
       }
     }

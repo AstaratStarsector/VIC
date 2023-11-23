@@ -15,4 +15,4 @@ Zealot Drive,vic_zealotDrive,,,,,,,,,,1,2,2,30,TRUE,,,,,,,,,,,,graphics/icons/hu
 Flare Laucher (single),vic_flareLauncher,,,,,,,,2,0.05,,,,0.5,,,,,,,,,,,,,graphics/icons/hullsys/flare_launcher.png
 Radar Array,vic_radarArray,,,,,,,,,,0.5,20,0.5,10,,,,,,,,,,,,,graphics/icons/hullsys/vic_radarArray.png
 Royal Court Advance,vic_pirateBurn,1,,,,,,,,,2,5,1,10,TRUE,,,,,,TRUE,,TRUE,TRUE,,,graphics/icons/hullsys/vic_pirateBurn.png
-Siege Mode,vic_raumSiege,,,,,,,,,,0.5,4.5,0,10,,,,,,,,,,,,,
+Siege Mode,vic_raumSiege,,,,,,,,,,0.5,3.5,1,10,,,,,,,,,,,,,graphics/icons/hullsys/vic_raumSiege.png

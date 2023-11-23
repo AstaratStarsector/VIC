@@ -1,26 +1,11 @@
 id,type,text1,text2,text3,text4,notes
 #Factions,,,,,,
-vic,FACTION,"An old recording of one of the Pre-Collapse VIC ads:
+vic,FACTION,"A core remnant of a ginormous Domain-era megacorporation, now reduced to but a mere fraction of its past power and glory. The Conglomerate, as it is still colloquially known, while diversifying its businesses far and wide, has always been most focused on aerospace engineering and biotechnologies, both of which help them retain a certain level of independence and protection in the turbulent Persean Sector up to this day. And although the prolonged period of total isolation which started after the Collapse and lasted for almost 200 years has put a heavy toll on the company and its people, their re-integration into the interstellar society with the help of Hegemony has been swift and efficient. 
 
-""Volkov Industrial Conglomerate is the future! Our Corporation is the undisputed market leader in aerospace engineering, and a bleeding-edge innovator in biological, medical and genetic technologies, not to mention a plethora of other fields and industries we involve ourselves in!
+With many regulations annulled and forgotten over these times, The Conglomerate has moved to the usage of its genetic biotechnologies en masse, abandoning the purity of humanity of many of its employees and citizens for efficiency and comfort. While it has only added to an already impressive number of ideological foes and competitors, this, however, attracted just as many supporters, putting the corporation into a relatively stable position on the political arena. 
 
-Volkov Industrial Conglomerate is already a well-established supplier of agricultural produce, with over 21% of all crops and livestock grown in the Domain being the product of our tireless, innovative work. Meanwhile, we are continuing to go above and beyond in spacecraft assembly, with vessels manufactured using our novel patented Volkov Industries technologies already traversing the interstellar expanse at speeds unmatched by our competitors. Already Volkov Industrial Conglomerate is the go-to choice in the private transport industry for delivering both cargo and passengers with utmost care and comfort, all in the blink of an eye!
-
-From the pharmaceutics, terraforming and bio-engineering to military supplies & services, Volkov Industrial Conglomerate provides the best solutions for those, who want to break free of their natural limits, as our company have always strived, and will always strive forwards and beyond, to assist in any way we can the glorious cause of the Human Domain on our shared journey towards a brighter future for Humanity!
-
-Volkov Industrial Conglomerate - New Humanity. New Future. New Paradise.""
-
-
-
-
-
-Detailed information excerpted from an essay of a renowned Chicomoztoc's historian Joselyn Frye on VIC's origins, banned from further publishing by COMSEC with unusual haste:
-
-""According to the surviving data, the history of VIC goes back to the early periods of the Human Domain. Founded by business partners and longtime friends Victor Volkov and Marcus Tellen, the company was initially known as “Frontier Dynamics” and focused on supporting colonization effort of the Human Domain. An important turning point in the history of the growing business was the acquisition of Atagara BioTech, at that time actively engaged in genetic research and human life extension projects. A few months after the merger, Marcus Tellen suddenly left the company on what was reportedly an “ideological disagreement” with the CEO V. Volkov.
-
-Rebranded and renamed to VIC soon after Mr. Tellen's resignation and acquiring other companies with even greater fervor, the corporation eventually fell into a nigh-bankrupt state due to a series of highly unprofitable endeavours, and was subsequentially forced to work even more closely with the Domain’s higher echelons and the Navy, receiving hefty financial infusions and juridical privileges in return for merciless suppression of numerous rebellions, contracting with the military and providing personal services, details of which are either unknown up to this day, or too disturbing to describe in this particular essay. During that period, after accusing VIC of mass kidnappings and conduction of illegal human experiments in various fringe sectors, Marcus Tellen was soon found dead in his own house. According to the official statements, the cause of death was suicide, and the investigations against the Conglomerate were hastily terminated by the Domain’s officials after several months.
-
-Taking into consideration all the available data about the VIC's controversial past, grim reputation, and their current stance, one can clearly see that, after its sudden resurgence in c+202, the Conglomerate presents a growing danger to the established powers of the Core Worlds. With their deranged obsession with non-limited genetic modifications; scheming politics, rampant bribing, possible ties to the current criminal underworld, and ruthless predatory actions against smaller factions and weak colonies (the most infamous example being Kalada), it has become crystal clear -  VIC is a threat that should be either put under total control or terminated completely as soon as it is possible.""",,,,
+And despite the company still recuperating under the wing of Hegemony, its historically infamous ruthlessness begins to show already; newly produced fleets haughtily roaming the Sector, passionate transhumanism speeches being given to the populace, and the gaze of the leadership setting hungrily on ever bigger goals.
+",,,,
 ,,,,,,
 #fighters,,,,,,
 vic_shabriri,SHIP,"VIC-F11 ""Shabriri"" is a blindingly-quick intercepter drone design. Fast, cheap, and numerous, Shabriris were designed as an attempt to compete with common Wasp drones, and to supplement VIC's general lack of point defense emplacements, even despite the Conglomerate's strict, Domain-like policy on automated war machines and artificial intelligences. ",,,,
@@ -137,8 +122,8 @@ vic_flareLauncher,SHIP_SYSTEM,,Defensive,Launches flares that distract the guida
 vic_radarArray,SHIP_SYSTEM,"Temporarily improves the mobility of missiles and fighters, and makes the Azhdaya autocannon's projectiles home onto the enemies.",Offensive,"Temporarily improves the mobility of missiles and fighters, and makes the Azhdaya autocannon's projectiles home onto the enemies.",,
 vic_hunterDrive,SHIP_SYSTEM,Dramatically accelerates the ship forward. Deactivation results in a powerful EMP pulse. The acceleration can be deactivated prematurely. Destroying the ships affected by the pulse recharges the system. ,Offensive,Dramatically accelerates the ship forward. Deactivation results in a powerful EMP pulse. The acceleration can be deactivated prematurely. Destroying the ships affected by the pulse recharges the system. ,,
 vic_zealotDrive,SHIP_SYSTEM,"""Have no fear. Have no mercy. For our path is of blood and fire.""",Offensive,"""Have no fear. Have no mercy. For our path is of blood and fire.""",,
-vic_pirateBurn,SHIP_SYSTEM,Charges forward with increased ballistic rate of fire.,Offensive,Charges forward with increased ballistic rate of fire.,,
-,,,,,,
+vic_pirateBurn,SHIP_SYSTEM,"""Full speed ahead! Let's show 'em wankers what we're made of!""",Offensive,"""Full speed ahead! Let's show 'em wankers what we're made of!""",,
+vic_raumSiege,SHIP_SYSTEM,Switches from and to artillery mode which increases range and maneuverability in exchange for speed and rate of fire. Provides extra effects for a short time on each switch.,Offensive,Switches from and to artillery mode which increases range and maneuverability in exchange for speed and rate of fire. Provides extra effects for a short time on each switch.,,
 ,,,,,,
 ,,,,,,
 ,,,,,,
