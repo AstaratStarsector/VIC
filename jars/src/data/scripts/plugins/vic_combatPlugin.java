@@ -551,13 +551,15 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
 
             List<Vector2f> damagePoints = new ArrayList<>();
 
-            while (data.distanceCounter + distanceTraveled >= 75f) {
-                float leftToCover = 75 - data.distanceCounter;
-                Vector2f damagePoint = (Vector2f) new Vector2f(projectile.getVelocity()).normalise().scale(leftToCover);
-                Vector2f.add(damagePoint, data.locLastFrame, damagePoint);
-                damagePoints.add(damagePoint);
-                distanceTraveled -= 75 - data.distanceCounter;
-                data.distanceCounter = 0;
+            if (!projectile.getVelocity().equals(new Vector2f())){
+                while (data.distanceCounter + distanceTraveled >= 75f) {
+                    float leftToCover = 75 - data.distanceCounter;
+                    Vector2f damagePoint = (Vector2f) new Vector2f(projectile.getVelocity()).normalise().scale(leftToCover);
+                    Vector2f.add(damagePoint, data.locLastFrame, damagePoint);
+                    damagePoints.add(damagePoint);
+                    distanceTraveled -= 75 - data.distanceCounter;
+                    data.distanceCounter = 0;
+                }
             }
             data.distanceCounter += distanceTraveled;
 
@@ -573,6 +575,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
             Vector2f collisionPoint = null;
 
             targets.remove(projectile.getSource());
+
 
             DamagingExplosionSpec explosion = new DamagingExplosionSpec(0.05f,
                     150,

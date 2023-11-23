@@ -1,6 +1,5 @@
 package data.scripts.shipsystems;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipSystemAPI;
@@ -70,7 +69,7 @@ public class vic_raumSiege extends BaseShipSystemScript {
             stats.getTurnAcceleration().unmodify(id);
         }
 
-        if (state == State.ACTIVE || state == State.IN || state == State.OUT ) {
+        if (state == State.ACTIVE || state == State.IN || state == State.OUT) {
             if (!swithced) {
                 siege = !siege;
                 swithced = true;
@@ -78,20 +77,16 @@ public class vic_raumSiege extends BaseShipSystemScript {
 
             if (siege) {
 
-                stats.getAcceleration().modifyMult(id, 1 + siegeManeuverActive* effectLevel);
-                stats.getDeceleration().modifyMult(id, 1 + siegeManeuverActive* effectLevel);
-                stats.getMaxTurnRate().modifyMult(id, 1 + siegeManeuverActive* effectLevel);
-                stats.getTurnAcceleration().modifyMult(id, 1 + (siegeManeuverActive * 2)* effectLevel);
-
-
+                stats.getAcceleration().modifyMult(id, 1 + siegeManeuverActive * effectLevel);
+                stats.getDeceleration().modifyMult(id, 1 + siegeManeuverActive * effectLevel);
+                stats.getMaxTurnRate().modifyMult(id, 1 + siegeManeuverActive * effectLevel);
+                stats.getTurnAcceleration().modifyMult(id, 1 + (siegeManeuverActive * 2) * effectLevel);
 
                 if (state == State.IN) {
                     stats.getBallisticWeaponDamageMult().modifyMult(id, 1 + (siegeDamageActive + siegeDamageActiveUltra));
                     stats.getEnergyWeaponDamageMult().modifyMult(id, 1 + (siegeDamageActive + siegeDamageActiveUltra));
                     stats.getMissileWeaponDamageMult().modifyMult(id, 1 + (siegeDamageActive + siegeDamageActiveUltra));
-                }
-
-                else  {
+                } else {
                     stats.getBallisticWeaponDamageMult().modifyMult(id, 1 + siegeDamageActive * effectLevel);
                     stats.getEnergyWeaponDamageMult().modifyMult(id, 1 + siegeDamageActive * effectLevel);
                     stats.getMissileWeaponDamageMult().modifyMult(id, 1 + siegeDamageActive * effectLevel);
@@ -151,7 +146,7 @@ public class vic_raumSiege extends BaseShipSystemScript {
 
     public String getInfoText(ShipSystemAPI system, ShipAPI ship) {
         String text = null;
-        if (siege){
+        if (siege) {
             text = "Siege";
         }
         return text;
