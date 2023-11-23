@@ -158,13 +158,16 @@ public class vic_raumSiege extends BaseShipSystemScript {
     }
 
     public StatusData getStatusData(int index, State state, float effectLevel) {
-        if (siege) {
+        if (siege && (effectLevel == 0 || swithced)) {
             if (index == 0) return new StatusData("Range and Maneuverability increased", false);
             if (index == 1) return new StatusData("Max speed and RoF decreased", true);
-            if (state == State.ACTIVE || state == State.IN) if (index == 2) return new StatusData("Damage and Maneuverability increased", false);
+            if (state == State.ACTIVE || state == State.IN)
+                if (index == 2) return new StatusData("Damage and Maneuverability increased", false);
             if (state == State.IN) if (index == 3) return new StatusData("Damage Super Increased!!!", false);
         } else {
-            if (state == State.ACTIVE || state == State.IN) if (index == 0) return new StatusData("RoF, Max speed and WPN Flux Eff. increased", false);
+            if (state == State.ACTIVE || state == State.IN)
+                if (index == 0) return new StatusData("RoF, Max speed and WPN Flux Eff. increased", false);
+            if (state == State.IN) if (index == 3) return null;
         }
         return null;
     }

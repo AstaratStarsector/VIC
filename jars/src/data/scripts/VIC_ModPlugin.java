@@ -299,7 +299,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
             vicTatiana.setRankId(Ranks.FACTION_LEADER);
             vicTatiana.getName().setFirst("Tatiana");
             vicTatiana.getName().setLast("Vasilevskaya");
-            vicTatiana.setPortraitSprite("graphics/portraits/characters/vic_tatiana.jpg");
+            vicTatiana.setPortraitSprite("graphics/portraits/characters/vic_tatiana.png");
 
             //admin.getStats().setSkillLevel(Skills.SPACE_OPERATIONS , 3);
             vicTatiana.getStats().setSkillLevel(Skills.INDUSTRIAL_PLANNING, 3);

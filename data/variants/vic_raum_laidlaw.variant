@@ -3,6 +3,7 @@
     "fluxCapacitors": 31,
     "fluxVents": 50,
     "hullId": "vic_raum",
+    "goalVariant": true,
     "hullMods": [
         "targetingunit",
         "vic_raum_weapon_swapper_xl_laidlaw"

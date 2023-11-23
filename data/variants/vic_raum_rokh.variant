@@ -3,6 +3,7 @@
     "fluxCapacitors": 26,
     "fluxVents": 40,
     "hullId": "vic_raum",
+    "goalVariant": true,
     "hullMods": [
         "vic_raum_weapon_swapper_rokh",
         "pointdefenseai",

@@ -3,6 +3,7 @@
     "fluxCapacitors": 43,
     "fluxVents": 50,
     "hullId": "vic_raum",
+    "goalVariant": true,
     "hullMods": [
         "vic_raum_weapon_swapper_gagana_ultra",
         "targetingunit"

@@ -12,10 +12,10 @@
     <orderEntry type="library" name="MagicLib" level="project" />
     <orderEntry type="library" name="ExerelinCore" level="project" />
     <orderEntry type="library" name="LazyLib" level="project" />
-    <orderEntry type="library" name="alcoholism" level="project" />
     <orderEntry type="library" name="StarsectorCore" level="project" />
     <orderEntry type="library" name="LunaLib" level="project" />
     <orderEntry type="library" name="starsector-core" level="project" />
     <orderEntry type="library" name="Console Commands" level="project" />
+    <orderEntry type="library" name="alcoholism" level="project" />
   </component>
 </module>
