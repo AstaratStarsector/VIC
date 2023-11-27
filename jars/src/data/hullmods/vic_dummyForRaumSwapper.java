@@ -15,8 +15,11 @@ public class vic_dummyForRaumSwapper extends vic_dummyForSwaper{
         if (marketOrNull == null) return false;
         if (mode == CampaignUIAPI.CoreUITradeMode.NONE || mode == null) return false;
 
-        boolean knowShip = Global.getSector().getPlayerFaction().knowsShip(ship.getHullSpec().getHullId()) || marketOrNull.getFaction().knowsShip(ship.getHullSpec().getHullId());
+        boolean knowShip = Global.getSector().getPlayerFaction().knowsShip(ship.getHullSpec().getBaseHullId()) || marketOrNull.getFaction().knowsShip(ship.getHullSpec().getBaseHullId());
         if (!knowShip) return false;
+
+
+
 
         for (Industry ind : marketOrNull.getIndustries()) {
             if (ind.getSpec().hasTag(Industries.TAG_STATION) || ind.getSpec().hasTag(Industries.TAG_SPACEPORT)) return true;
