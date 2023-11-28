@@ -654,8 +654,6 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                             true,
                             projectile.getSource());
                     //todo: go over it and fix
-                    float force = (projectile.getDamageAmount() * 0.1f);
-                    CombatUtils.applyForce(target, projectile.getVelocity(), force);
 
 
                     explosion.setDamageType(DamageType.FRAGMENTATION);
@@ -872,7 +870,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                             engine.removeEntity(projectile);
                             //Global.getLogger(vic_combatPlugin.class).info("no pen hit damage: " + projectile.getDamageAmount());
 //todo: fix
-                            float force = (projectile.getDamageAmount() * 0.1f);
+                            float force = (projectile.getDamageAmount() * 0.05f);
                             CombatUtils.applyForce(target, projectile.getVelocity(), force);
 
                             explosion.setDamageType(DamageType.FRAGMENTATION);
@@ -1058,7 +1056,7 @@ public class vic_combatPlugin extends BaseEveryFrameCombatPlugin {
                             data.damagedAlready.add(target);
                             //Global.getLogger(vic_combatPlugin.class).info("initial hit damage: " + projectile.getDamageAmount() * 0.35f);
 //todo: fix
-                            float force = (projectile.getDamageAmount() * 0.05f);
+                            float force = (projectile.getDamageAmount() * 0.025f);
                             CombatUtils.applyForce(target, projectile.getVelocity(), force);
 
                             explosion2.setDamageType(DamageType.FRAGMENTATION);
