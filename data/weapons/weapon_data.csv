@@ -112,14 +112,6 @@ Max ammo limited to %s. Ammo relaod speed increased by %s for every %s max ammo 
 Can drop in salvage due to a vanilla game bug, but is not salvageable (deletes itself in player's cargo). ",Autoreplicator|1|20%|1,,
 Rokh sub (dont use),vic_raum_rokh_sub,0,,100,500,,400,,10,0,,,,,FRAGMENTATION,0,,0,0.1,3,0.15,0,0,0,0,,0,0,15,100,,"DO_NOT_AIM, ANTI_FTR, PD_ONLY, SYSTEM",he0,,Volkov Industries,,Anti Fighter,,,,,,,,,,
 Rokh alt sub (dont use),vic_raum_rokh_alt_sub,0,,100,3000,,50,,20,0,,,,,KINETIC,0,,0,0.1,3,0.15,0,0,0,0,,750,1000,10,100,,"DO_NOT_AIM, ANTI_FTR, PD_ONLY, SYSTEM",he0,,Volkov Industries,,Anti Fighter,,,,,,,,,,
-Rokh Minefield Launcher,vic_raum_weapon_rokh,,,100000,2500,,1000,,50,5,,1,0.05,1,FRAGMENTATION,5760,,,5,,,,,,,,300,50,10,2000,,"SYSTEM, SHOW_IN_CODEX","no_drop, no_salvage",,Volkov Industries,,Area Denial,,,,,"Creates a wide field of %s mines each dealing %s fragmentation damage. Explodes in the process, dealing %s HE damage.",144 | 200 | 1000,"%s: Generates flux to reload rather than fire. 
-Max ammo limited to %s. Ammo relaod speed increased by %s for every %s max ammo it would otherwise had.
-Can drop in salvage due to a vanilla game bug, but is not salvageable (deletes itself in player's cargo). ",Autoreplicator|1|20%|1,,
-Rokh Swarm Launcher,vic_raum_weapon_rakh,,,100000,2500,,1000,,50,5,,1,0.05,1,KINETIC,5760,,,5,,,,,,,,300,50,10,2000,,"SYSTEM, SHOW_IN_CODEX","no_drop, no_salvage",,Volkov Industries,,Anti Shield,,,,,"Dispenses a total of %s missiles each dealing %s kinetic damage. Explodes in the process, dealing %s kinetic damage.",144 | 40| 1000,"%s: Generates flux to reload rather than fire.
-Max ammo limited to %s. Ammo relaod speed increased by %s for every %s max ammo it would otherwise had.
-Can drop in salvage due to a vanilla game bug, but is not salvageable (deletes itself in player's cargo). ",Autoreplicator|1|20%|1,,
-Rokh sub (dont use),vic_raum_rokh_sub,0,,100,500,,200,,10,0,,,,,FRAGMENTATION,0,,0,0.1,3,0.15,0,0,0,0,,0,0,15,100,,"DO_NOT_AIM, ANTI_FTR, PD_ONLY, SYSTEM",he0,,Volkov Industries,,Anti Fighter,,,,,,,,,,
-Rokh alt sub (dont use),vic_raum_rokh_alt_sub,0,,100,3000,,40,,20,0,,,,,KINETIC,0,,0,0.1,3,0.15,0,0,0,0,,500,750,10,100,,"DO_NOT_AIM, ANTI_FTR, PD_ONLY, SYSTEM",he0,,Volkov Industries,,Anti Fighter,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
