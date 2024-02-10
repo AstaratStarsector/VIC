@@ -2,15 +2,9 @@
 	"id":"vic",
 	"name":"VIC",
 	"author":"Astarat, PureTilt",
-<<<<<<< HEAD
 	"version":"1.6.2",
 	"description":"A transhumanist Megacorporation from the Human Domain era, hell-bent on helping humanity survive and evolve through extensive genetic modification, ardently enforcing their views and regime either by pen, or by sword.",
 	"gameVersion":"0.97a-RC8",
-=======
-	"version":"1.6.1c",
-	"description":"A transhumanist quasi-religious Megacorporation from the Human Domain era, hell-bent on helping humanity survive and evolve through extensive genetic modification, ardently enforcing their views and regime either by pen, or by sword.",
-	"gameVersion":"0.96a-RC6",
->>>>>>> 7e6257d3d5fc542ee4683e987411006254071947
 	"jars": ["jars/VIC.jar"],
 	"dependencies": [
         {
