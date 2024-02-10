@@ -13,7 +13,8 @@
   "viewOffset": 0,
   "builtInMods": [
     "insulatedengine",
-    "vic_variable_notorious_big_iron_mode"
+    "vic_variable_notorious_big_iron_mode",
+    "vic_raumRangeUpgrade"
   ],
   "builtInWeapons": {
     "WS0001": "vic_blonkerRed",
@@ -704,8 +705,8 @@
         "contrailParticleSizeMult": 2.5,
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
-        "contrailAngularVelocityMult": 1,
         "glowAlternateColor":[0,0,0,0],
+        "contrailAngularVelocityMult": 1,
         "contrailParticleDuration": 0
       }
     },
@@ -746,8 +747,8 @@
         "contrailParticleSizeMult": 2.5,
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
-        "contrailAngularVelocityMult": 1,
         "glowAlternateColor":[0,0,0,0],
+        "contrailAngularVelocityMult": 1,
         "contrailParticleDuration": 0
       }
     },
@@ -788,8 +789,8 @@
         "contrailParticleSizeMult": 2.5,
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
-        "contrailAngularVelocityMult": 1,
         "glowAlternateColor":[0,0,0,0],
+        "contrailAngularVelocityMult": 1,
         "contrailParticleDuration": 0
       }
     },
@@ -830,8 +831,8 @@
         "contrailParticleSizeMult": 2.5,
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
-        "contrailAngularVelocityMult": 1,
         "glowAlternateColor":[0,0,0,0],
+        "contrailAngularVelocityMult": 1,
         "contrailParticleDuration": 0
       }
     },
@@ -872,8 +873,8 @@
         "contrailParticleSizeMult": 2.5,
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
-        "contrailAngularVelocityMult": 1,
         "glowAlternateColor":[0,0,0,0],
+        "contrailAngularVelocityMult": 1,
         "contrailParticleDuration": 0
       }
     },
@@ -914,8 +915,8 @@
         "contrailParticleSizeMult": 2.5,
         "contrailParticleFinalSizeMult": 1.5,
         "contrailMaxSpeedMult": 1,
-        "contrailAngularVelocityMult": 1,
         "glowAlternateColor":[0,0,0,0],
+        "contrailAngularVelocityMult": 1,
         "contrailParticleDuration": 0
       }
     }

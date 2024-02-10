@@ -39,6 +39,7 @@ Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,,,,,TRUE,,0,0,0,0,data
 
 - Up to %s increase in Speed when hit on the hull.",Get brawlin' and get rollin'.,graphics/hullmods/vic_adaptiveWarfare.png
 Power Redistributor,vic_powerRedistributor,4,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_powerRedistributor,Novel energy distribution system increases the ship's effectiveness in the thick of the battle. The ship receives bonuses depending on the current target.,power selector,graphics/hullmods/vic_powerRedistributor.png
+Artillery Targeting Subsystems,vic_raumRangeUpgrade,1,,Volkov Industries,,Weapons,,,TRUE,,0,0,0,0,data.hullmods.vic_raumRangeUpgrade,"Being a ship designed for long-range engagements, Räum is fitted with additional hardware and software for spaceborne artillery, which increases the range of its weapons by %s.",Increases Räum's Weapon Range,graphics/hullmods/vic_raumRangeUpgrade.png
 ,,,,,,,,,,,,,,,,,,
 VIC shields Changer,vic_shieldsChanger,0,,Volkov Industries,defensive,0,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_shieldsChanger,,Shield Changer,graphics/hullmods/vic_adaptiveWarfare.png
 ,,,,,,,,,,,,,,,,,,
@@ -48,7 +49,7 @@ Gatebreaker Shrapnel Cannon,vic_gatebreaker_mode_shotgun,,,Volkov Industries,no_
 Nemesis Heavy Flamer,vic_gatebreaker_mode_flamer,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,data.hullmods.vic_dummyForSwaper,Installs devastating heavy flamers as the main armament. Removing this hullmod swaps the weapon to the next.,Frag Flamer.,graphics/hullmods/vic_stolas_bounty_flamer_hullmod.png
 ,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,
-Raum Weapon Swapper,vic_raum_weapon_swapper,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_raumWeaponSwapper,Allows to change XL weapons on Raum.,Variable weapon selection. You shouldn't see this in-game.,graphics/hullmods/vic_raum_weapon_swapper_hmod_gaganaUltra.png
+Raum Weapon Swapper,vic_raum_weapon_swapper,,,Volkov Industries,,,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_raumWeaponSwapper,Allows to change XL weapons on Räum.,Variable weapon selection. You shouldn't see this in-game.,graphics/hullmods/vic_raum_weapon_swapper_hmod_gaganaUltra.png
 XL Weapon - Gagana Ultra,vic_raum_weapon_swapper_gagana_ultra,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,data.hullmods.vic_dummyForRaumSwapper,Installs a powerful high-velocity HE cannon as the main armament. Removing this hullmod swaps the weapon to the next.,,graphics/hullmods/vic_raum_weapon_swapper_hmod_gaganaUltra.png
 XL Weapon - Strzyga,vic_raum_weapon_swapper_strzyga,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,data.hullmods.vic_dummyForRaumSwapper,Installs a rapid-fire fragmentation flak array as the main armament. Removing this hullmod swaps the weapon to the next.,,graphics/hullmods/vic_raum_weapon_swapper_hmod_strzyga.png
 XL Weapon - Alkonost,vic_raum_weapon_swapper_alkonost,,,Volkov Industries,no_build_in,,,,TRUE,,0,0,0,0,data.hullmods.vic_dummyForRaumSwapper,Installs a devastating energy cannon as the main armament. Removing this hullmod swaps the weapon to the next.,,graphics/hullmods/vic_raum_weapon_swapper_hmod_alkonost.png

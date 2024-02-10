@@ -373,7 +373,7 @@ public class vic_rokhAltMissileAI extends VIC_BaseMissile {
             if (minesLaunched >= minesTotal) {
                 Global.getCombatEngine().spawnExplosion(missile.getLocation(), new Vector2f(), new Color(122, 60, 40, 255), 700, 2.6f);
 
-                Global.getSoundPlayer().playSound("vic_apocrypha_explosion", 1, 1f, missile.getLocation(), missile.getVelocity());
+                Global.getSoundPlayer().playSound("vic_giga_missile_explosionv3", 1, 1f, missile.getLocation(), missile.getVelocity());
 
                 Global.getCombatEngine().spawnDamagingExplosion(explosion, missile.getSource(), missile.getLocation(), false);
                 Global.getCombatEngine().spawnExplosion(missile.getLocation(), new Vector2f(), new Color(122, 60, 40, 255), 700, 2.6f);

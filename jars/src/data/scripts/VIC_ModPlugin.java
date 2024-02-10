@@ -29,6 +29,7 @@ import data.campaign.listners.vic_stolasSpawn;
 import data.scripts.plugins.timer.VIC_TimeTracker;
 import data.scripts.plugins.vic_brandEngineUpgradesDetectionRange;
 import data.scripts.plugins.vic_combatPlugin;
+import data.scripts.plugins.vic_systemWeaponFromLootRemoval;
 import data.scripts.weapons.ai.*;
 import data.scripts.weapons.autofireAI.vic_VerliokaAutofireAI;
 import data.world.VICGen;
@@ -179,6 +180,7 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
     @Override
     public void onGameLoad(boolean newGame) {
+        Global.getSector().addTransientListener(new vic_systemWeaponFromLootRemoval(false));
         Global.getSector().addTransientListener(new vic_stolasSpawn(false));
         if (Global.getSector().getEntityById("vic_star_empyrean") == null) {
             onNewGame();

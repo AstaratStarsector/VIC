@@ -1,11 +1,9 @@
 <component name="libraryTable">
   <library name="alcoholism">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../Substance.Abuse 1.0.k/jars/alcoholism.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Substance.Abuse 1.1.a/jars/alcoholism.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="file://$PROJECT_DIR$/../Substance.Abuse 1.0.k/jars/src" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

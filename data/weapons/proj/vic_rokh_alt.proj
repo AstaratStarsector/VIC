@@ -79,7 +79,7 @@
 					"canSplitEarly":true,
 					"splitSound":"vic_saih_split",
 					"numShots":144,
-					"damage":40,
+					"damage":50,
 					"emp":0, # needs to match highlight in weapon_data.csv
 					"damageType":KINETIC,
 					"hitpoints":500,

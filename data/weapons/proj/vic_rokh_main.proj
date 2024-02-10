@@ -79,7 +79,7 @@
 					"canSplitEarly":true,
 					"splitSound":"vic_saih_split",
 					"numShots":144,
-					"damage":200,
+					"damage":400,
 					"emp":0, # needs to match highlight in weapon_data.csv
 					"damageType":FRAGMENTATION,
 					"hitpoints":500,

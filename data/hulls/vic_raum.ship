@@ -14,7 +14,8 @@
   "builtInMods": [
     "vic_dynamicshields",
     "vic_raum_weapon_swapper",
-    "vic_aerodynamicdesign"
+    "vic_aerodynamicdesign",
+    "vic_raumRangeUpgrade"
   ],
   "builtInWeapons": {
     "WS0001": "vic_blonkerRed",
