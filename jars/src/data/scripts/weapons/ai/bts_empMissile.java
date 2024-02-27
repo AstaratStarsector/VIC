@@ -3,19 +3,19 @@ package data.scripts.weapons.ai;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.input.InputEventAPI;
-import data.scripts.weapons.EveryFrameEffects.vic_hungrufSubEffect;
-import org.lazywizard.lazylib.CollisionUtils;
-import org.lazywizard.lazylib.FastTrig;
-import org.lazywizard.lazylib.MathUtils;
-import org.lazywizard.lazylib.VectorUtils;
+import com.fs.starfarer.api.util.IntervalUtil;
+import com.fs.starfarer.api.util.Misc;
+import org.lazywizard.lazylib.*;
 import org.lazywizard.lazylib.combat.AIUtils;
+import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class vic_hungrufMissileAI extends VIC_BaseMissile {
+public class bts_empMissile implements MissileAIPlugin, GuidedMissileAI {
 
     final float ENGINE_DEAD_TIME_MAX = 0.75f; // Max time until engine burn starts
     final float ENGINE_DEAD_TIME_MIN = 0.25f; // Min time until engine burn starts
@@ -24,7 +24,7 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
     final float FIRE_INACCURACY = 0f; // Set-once for entire shot lifetime leading offset
     final float AIM_THRESHOLD = 0.5f; // Multiplied by collision radius, how much it can be off by when deciding to MIRV
     final float maxMirvAngle = 5;
-    final float MIRV_DISTANCE = 750f;
+    final float MIRV_DISTANCE = 350f;
     final float TIME_BEFORE_CAN_MIRV = 1f; // Min time before can MIRV
     final float FLARE_OFFSET = -9f; // Set to engine location matched to missile projectile file
     final Color FLARE_COLOR = new Color(200, 165, 55, 255);
@@ -56,8 +56,13 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
     final float eccmMult;
     boolean stopEngineToTurn = false;
 
-    public vic_hungrufMissileAI(MissileAPI missile, ShipAPI launchingShip) {
-        super(missile, launchingShip);
+    public bts_empMissile(MissileAPI missile, ShipAPI launchingShip) {
+        super();
+
+        this.missile = missile;
+        this.launchingShip = launchingShip;
+
+        defaultInitialTargetingBehavior(launchingShip);
 
         weaveSineAPhase = (float) (Math.random() * Math.PI * 2.0);
         weaveSineBPhase = (float) (Math.random() * Math.PI * 2.0);
@@ -202,83 +207,91 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
         // Launch submunitions
         if (mirvNow)
         {
-            Vector2f submunitionVelocityMod = new Vector2f(0, MathUtils.getRandomNumberInRange(
-                    SUBMUNITION_VELOCITY_MOD_MAX, SUBMUNITION_VELOCITY_MOD_MIN));
+            Global.getLogger(bts_empMissile.class).info("added");
+            Global.getCombatEngine().addPlugin(new EveryFrameCombatPlugin() {
+                final float waveRange = 600f;
+                final float waveSpeed = waveRange / 0.5f;
 
-            float initialOffset = -(NUMBER_SUBMUNITIONS - 1) / 2f * SUBMUNITION_RELATIVE_OFFSET;
-            DamagingProjectileAPI submunition = null;
-            for (int i = 0; i < NUMBER_SUBMUNITIONS; i++)
-            {
-                float angle = missile.getFacing() + initialOffset + i * SUBMUNITION_RELATIVE_OFFSET
-                        + MathUtils.getRandomNumberInRange(-SUBMUNITION_INACCURACY, SUBMUNITION_INACCURACY);
-                if (angle < 0f)
-                {
-                    angle += 360f;
+                float currRange = 0;
+
+                final List<CombatEntityAPI> alreadyHit = new ArrayList<>();
+
+                final IntervalUtil timer = new IntervalUtil(0.05f,0.05f);
+                final Vector2f point = new Vector2f(missile.getLocation());
+
+                @Override
+                public void processInputPreCoreControls(float amount, List<InputEventAPI> events) {
+
                 }
-                else if (angle >= 360f)
-                {
-                    angle -= 360f;
+
+                @Override
+                public void advance(float amount, List<InputEventAPI> events) {
+                    if (Global.getCombatEngine().isPaused()) return;
+                    currRange +=  waveSpeed * amount;
+                    timer.advance(amount);
+                    if (timer.intervalElapsed()) {
+                        for (CombatEntityAPI enemy : AIUtils.getNearbyEnemies(missile, currRange)) {
+                            if (alreadyHit.contains(enemy)) continue;
+                            Vector2f arcLoc = Vector2f.add(point, (Vector2f) Vector2f.sub(enemy.getLocation(), point, null).normalise(null).scale(currRange), null);
+                            for (int i = 0; i < 5; i++) {
+                            EmpArcEntityAPI arc = Global.getCombatEngine().spawnEmpArc(missile.getSource(),
+                                    arcLoc,
+                                    null,
+                                    enemy,
+                                    DamageType.ENERGY,
+                                    100,
+                                    500,
+                                    999999,
+                                    null,
+                                    10,
+                                    new Color(0, 202, 238,255),
+                                    new Color(35, 96, 204,255));
+                                arc.setSingleFlickerMode();
+                            }
+                            alreadyHit.add(enemy);
+                        }
+                        int numArcs = Math.round(currRange / 10);
+                        if (numArcs >= 10) {
+                            float anglePerStep = 360f / numArcs;
+                            for (int i = 0; i < numArcs; i++) {
+                                if (Math.random() <= 0.5f) continue;
+                                Vector2f locStart = Vector2f.add(Vector2f.add(point, (Vector2f) Misc.getUnitVectorAtDegreeAngle(anglePerStep * (i + MathUtils.getRandomNumberInRange(-0.2f,0.2f))).scale(currRange), null), new Vector2f(MathUtils.getRandomNumberInRange(-25f,25f),MathUtils.getRandomNumberInRange(-25f,25)),null);
+                                Vector2f locEnd = Vector2f.add(Vector2f.add(point, (Vector2f) Misc.getUnitVectorAtDegreeAngle(anglePerStep * (i + 1.5f + MathUtils.getRandomNumberInRange(-0.2f,0.2f))).scale(currRange), null), new Vector2f(MathUtils.getRandomNumberInRange(-25f,25f),MathUtils.getRandomNumberInRange(-25f,25)),null);
+                                EmpArcEntityAPI arc = Global.getCombatEngine().spawnEmpArcVisual(locStart,
+                                        null,
+                                        locEnd,
+                                        null,
+                                        10,
+                                        new Color(0, 202, 238, 255),
+                                        new Color(35, 96, 204, 255));
+                                arc.setSingleFlickerMode();
+                            }
+
+                        }
+                    }
+                    if (currRange >= waveRange) Global.getCombatEngine().removePlugin(this);
                 }
 
-                Vector2f vel = STAGE_ONE_TRANSFER_MOMENTUM ? missile.getVelocity() : ZERO;
-                Vector2f boost = VectorUtils.rotate(submunitionVelocityMod, missile.getFacing());
-                vel.translate(boost.x, boost.y);
-                submunition = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(launchingShip,
-                        missile.getWeapon(), STAGE_TWO_WEAPON_ID,
-                        missile.getLocation(), angle, null);
-                submunition.setFromMissile(true);
-                float andVel = MathUtils.getRandomNumberInRange(200,300);// * MathUtils.getRandomNumberInRange(-1,1);
-                submunition.setAngularVelocity(300);
-                //submunition.getVelocity().set(submunition.getVelocity().x * 0.75f + missile.getVelocity().x * 0.25f, submunition.getVelocity().y * 0.75f + missile.getVelocity().y * 0.25f);
-                //Global.getCombatEngine().addPlugin(new vic_hungrufSubEffect((MissileAPI) submunition));
-                DamagingProjectileAPI submunitionDebris = (DamagingProjectileAPI) Global.getCombatEngine().spawnProjectile(launchingShip,
-                        missile.getWeapon(), "vic_hungruf_sub_engine",
-                        missile.getLocation(), angle, null);
-                submunitionDebris.setAngularVelocity(125);
-                submunitionDebris.setOwner(100);
-                //submunitionDebris.getVelocity().set(missile.getVelocity().x - submunition.getVelocity().x * 0.5f, missile.getVelocity().y - submunition.getVelocity().y * 0.5f);
-            }
+                @Override
+                public void renderInWorldCoords(ViewportAPI viewport) {
 
-            // Only used for missile submunitions, which this is not
-
-            // Transfer any damage the missile has incurred if so desired
-            if (STAGE_ONE_TRANSFER_DAMAGE)
-            {
-                float damageToDeal = missile.getMaxHitpoints() - missile.getHitpoints();
-                if (damageToDeal > 0f)
-                {
-                    Global.getCombatEngine().applyDamage(submunition, missile.getLocation(), damageToDeal,
-                            DamageType.FRAGMENTATION, 0f, true, false, missile.getSource());
                 }
-            }
 
-            Global.getSoundPlayer().playSound(STAGE_TWO_SOUND_ID, 1f, 1f, missile.getLocation(), missile.getVelocity());
+                @Override
+                public void renderInUICoords(ViewportAPI viewport) {
 
-            // GFX on the spot of the switcheroo if desired
-            // Remove old missile
-            if (STAGE_ONE_EXPLODE)
-            {
-                Global.getCombatEngine().addSmokeParticle(missile.getLocation(), missile.getVelocity(), 60f, 0.75f, 0.75f, SMOKE_COLOR);
-                Global.getCombatEngine().applyDamage(missile, missile.getLocation(), missile.getHitpoints() * 100f,
-                        DamageType.FRAGMENTATION, 0f, false, false, missile);
-            }
+                }
 
-            else if (STAGE_ONE_FLARE)
-            {
-                Vector2f offset = new Vector2f(FLARE_OFFSET, 0f);
-                VectorUtils.rotate(offset, missile.getFacing(), offset);
-                Vector2f.add(offset, missile.getLocation(), offset);
-                Global.getCombatEngine().addHitParticle(offset, missile.getVelocity(), 100f, 0.5f, 0.25f, FLARE_COLOR);
-                Global.getCombatEngine().removeEntity(missile);
-            }
-            else
-            {
-                Global.getCombatEngine().removeEntity(missile);
-            }
+                @Override
+                public void init(CombatEngineAPI engine) {
+
+                }
+            });
+
+            Global.getCombatEngine().removeEntity(missile);
         }
     }
 
-    @Override
     protected boolean acquireTarget() {
         // If our current target is totally invalid, look for a new one
         if (!isTargetValid(target)) {
@@ -316,7 +329,6 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
         return true;
     }
 
-    @Override
     protected ShipAPI findBestTarget() {
         return findBestTarget(false);
     }
@@ -378,5 +390,204 @@ public class vic_hungrufMissileAI extends VIC_BaseMissile {
             return ship.isFighter() || ship.isDrone();
         }
         return false;
+    }
+
+    private static final float RETARGET_TIME = 0f;
+
+    private static Vector2f quad(float a, float b, float c)
+    {
+        Vector2f solution = null;
+        if (Float.compare(Math.abs(a), 0) == 0)
+        {
+            if (Float.compare(Math.abs(b), 0) == 0)
+            {
+                solution = (Float.compare(Math.abs(c), 0) == 0) ? new Vector2f(0, 0) : null;
+            }
+            else
+            {
+                solution = new Vector2f(-c / b, -c / b);
+            }
+        }
+        else
+        {
+            float d = b * b - 4 * a * c;
+            if (d >= 0)
+            {
+                d = (float) Math.sqrt(d);
+                float e = 2 * a;
+                solution = new Vector2f((-b - d) / e, (-b + d) / e);
+            }
+        }
+        return solution;
+    }
+
+    static List<ShipAPI> getSortedDirectTargets(ShipAPI launchingShip)
+    {
+        List<ShipAPI> directTargets = CombatUtils.getShipsWithinRange(launchingShip.getMouseTarget(), 300f);
+        if (!directTargets.isEmpty())
+        {
+            Collections.sort(directTargets, new CollectionUtils.SortEntitiesByDistance(launchingShip.getMouseTarget()));
+        }
+        return directTargets;
+    }
+
+    static Vector2f intercept(Vector2f point, float speed, Vector2f target, Vector2f targetVel)
+    {
+        final Vector2f difference = new Vector2f(target.x - point.x, target.y - point.y);
+
+        final float a = targetVel.x * targetVel.x + targetVel.y * targetVel.y - speed * speed;
+        final float b = 2 * (targetVel.x * difference.x + targetVel.y * difference.y);
+        final float c = difference.x * difference.x + difference.y * difference.y;
+
+        final Vector2f solutionSet = quad(a, b, c);
+
+        Vector2f intercept = null;
+        if (solutionSet != null)
+        {
+            float bestFit = Math.min(solutionSet.x, solutionSet.y);
+            if (bestFit < 0)
+            {
+                bestFit = Math.max(solutionSet.x, solutionSet.y);
+            }
+            if (bestFit > 0)
+            {
+                intercept = new Vector2f(target.x + targetVel.x * bestFit, target.y + targetVel.y * bestFit);
+            }
+        }
+
+        return intercept;
+    }
+
+    static Vector2f interceptAdvanced(Vector2f point, float speed, float acceleration, float maxspeed, Vector2f target, Vector2f targetVel)
+    {
+        Vector2f difference = new Vector2f(target.x - point.x, target.y - point.y);
+
+        float s = speed;
+        float a = acceleration / 2f;
+        float b = speed;
+        float c = difference.length();
+        Vector2f solutionSet = quad(a, b, c);
+        if (solutionSet != null)
+        {
+            float t = Math.min(solutionSet.x, solutionSet.y);
+            if (t < 0)
+            {
+                t = Math.max(solutionSet.x, solutionSet.y);
+            }
+            if (t > 0)
+            {
+                s = acceleration * t;
+                s = s / 2f + speed;
+                s = Math.min(s, maxspeed);
+            }
+        }
+
+        a = targetVel.x * targetVel.x + targetVel.y * targetVel.y - s * s;
+        b = 2 * (targetVel.x * difference.x + targetVel.y * difference.y);
+        c = difference.x * difference.x + difference.y * difference.y;
+
+        solutionSet = quad(a, b, c);
+
+        Vector2f intercept = null;
+        if (solutionSet != null)
+        {
+            float bestFit = Math.min(solutionSet.x, solutionSet.y);
+            if (bestFit < 0)
+            {
+                bestFit = Math.max(solutionSet.x, solutionSet.y);
+            }
+            if (bestFit > 0)
+            {
+                intercept = new Vector2f(target.x + targetVel.x * bestFit, target.y + targetVel.y * bestFit);
+            }
+        }
+
+        return intercept;
+    }
+    protected ShipAPI launchingShip;
+    protected MissileAPI missile;
+    protected float retargetTimer = RETARGET_TIME;
+    protected CombatEntityAPI target;
+
+    @Override
+    public CombatEntityAPI getTarget()
+    {
+        return target;
+    }
+
+    @Override
+    public final void setTarget(CombatEntityAPI target)
+    {
+        this.target = target;
+    }
+
+    private void defaultInitialTargetingBehavior(ShipAPI launchingShip)
+    {
+        assignMissileToShipTarget(launchingShip);
+
+        if (target == null)
+        {
+            setTarget(getMouseTarget(launchingShip));
+        }
+
+        if (target == null)
+        {
+            setTarget(findBestTarget());
+        }
+    }
+
+    protected void assignMissileToShipTarget(ShipAPI launchingShip)
+    {
+        if (isTargetValid(launchingShip.getShipTarget()))
+        {
+            setTarget(launchingShip.getShipTarget());
+        }
+    }
+
+    protected CombatEntityAPI getMouseTarget(ShipAPI launchingShip)
+    {
+        for (ShipAPI tmp : getSortedDirectTargets(launchingShip)) {
+            if (isTargetValid(tmp)) {
+                return tmp;
+            }
+        }
+        return null;
+    }
+
+    protected float getRange()
+    {
+        float maxTime = missile.getMaxFlightTime();
+        float speed = missile.getMaxSpeed();
+        return speed * maxTime;
+    }
+
+    protected float getRemainingRange()
+    {
+        float time = missile.getMaxFlightTime() - missile.getFlightTime();
+        float speed = missile.getMaxSpeed();
+        return speed * time;
+    }
+
+    protected boolean isTargetValid(CombatEntityAPI target)
+    {
+        if (target == null || (missile.getOwner() == target.getOwner()) || !Global.getCombatEngine().isEntityInPlay(target))
+        {
+            return false;
+        }
+
+        if (target instanceof ShipAPI)
+        {
+            ShipAPI ship = (ShipAPI) target;
+            if (ship.isPhased() || !ship.isAlive())
+            {
+                return false;
+            }
+        }
+        else if (target.getCollisionClass() == CollisionClass.NONE)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

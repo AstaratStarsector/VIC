@@ -56,7 +56,7 @@ Hungruf Armor Scorcher,vic_hungruf_med,2,,1800,1300,,1200,,15,14,13,6,0.1,2,HIGH
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #smal,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Strigoy Flak Cannon,vic_strigoy,0,,500,350,,30,,0,75,6,,,,FRAGMENTATION,10,,0,1,,,0,10,0.5,5,,800,,,,,"ANTI_FTR, PD, PD_ALSO","pd5, vic_t2weapons_bp",,Volkov Industries,,Point Defense (Area),,,,,,,,,,18
-Rarog Atomic Emitter,vic_rarog,0,,400,500,125,,,0,100,5,,,,HIGH_EXPLOSIVE,,125,0.2,0.1,,,,,,,10000,,,,,,ANTI_FTR,"beam6, he6, vic_t2weapons_bp",,Volkov Industries,,Anti Armor,,,,,,,,,,15.6
+Rarog Atomic Emitter,vic_rarog,0,,400,500,200,,,0,100,5,30,5,15,HIGH_EXPLOSIVE,,200,0,0.1,0.1,0,,,,,10000,,,,,,ANTI_FTR,"beam6, he6, vic_t2weapons_bp",,Volkov Industries,,Anti Armor,,,,,,,,,,15.6
 Laidlaw Mass Driver,vic_laidlawMassDriver,0,,600,700,,800,,2,30,7,,,,FRAGMENTATION,480,,0.5,3.5,,,0,10,1.25,10,,2500,,,25,,"STRIKE, USE_VS_FRIGATES","energy8, vic_t2weapons_bp",,Volkov Industries,,Hullbuster,Extreme,,,,%s Projectile hits create explosions dealing additional %s fragmentation damage.,Extremely fast projectiles. Deals soft flux damage. | 200,,,,7.5
 Upyr Autocannon,vic_upyr,0,,600,600,,20,,1,30,7,,,,KINETIC,16,,0,0.1,2,0.1,0,18,1,9,,850,,,20,,,"kinetic7, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,,,,,,2.5
 Saih Rack Flechette Carrier,vic_saih_small,2,,800,1100,,500,,10,14,5,4,0.15,2,KINETIC,250,,0,2.5,,,5,5,0,10,,250,100,4.75,200,,"DO_NOT_AIM, DO_NOT_CONSERVE","missile6, strike1, vic_t2weapons_bp",,Volkov Industries,,Anti Shield,,,,,,,%s: Generates flux to reload rather than fire.,Autoreplicator,,5

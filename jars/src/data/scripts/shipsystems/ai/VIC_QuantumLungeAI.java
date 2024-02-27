@@ -1,5 +1,6 @@
 package data.scripts.shipsystems.ai;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.CombatFleetManagerAPI.AssignmentInfo;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
@@ -7,6 +8,8 @@ import com.fs.starfarer.api.combat.ShipwideAIFlags.AIFlags;
 import com.fs.starfarer.api.fleet.FleetGoal;
 import com.fs.starfarer.api.mission.FleetSide;
 import com.fs.starfarer.api.util.IntervalUtil;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
 import org.lazywizard.lazylib.combat.AIUtils;
@@ -47,7 +50,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
     }
 
     private final IntervalUtil
-            FlickTimer = new IntervalUtil(0.2f, 0.4f),
+            FlickTimer = new IntervalUtil(0.3f, 0.4f),
             timer = new IntervalUtil(0.75f, 0.75f);
     private final HashMap<HullSize, Float> TurnMult = new HashMap<>();
     public float
@@ -76,33 +79,140 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
     }
 
     // method to check if we're facing within X degrees of target
-    private boolean rightDirection(ShipAPI ship, Vector2f targetLocation) {
+    private float getAngle(ShipAPI ship, Vector2f targetLocation) {
         Vector2f curr = ship.getLocation();
         float angleToTarget = VectorUtils.getAngle(curr, targetLocation);
         //spawnText(MathUtils.getShortestRotation(angleToTarget, ship.getFacing()) + "", 50f);
-        return (Math.abs(MathUtils.getShortestRotation(angleToTarget, ship.getFacing())) <= DEGREES);
+        return Math.abs(MathUtils.getShortestRotation(angleToTarget, ship.getFacing()));
     }
 
-    public float flankingScore(ShipAPI ship, ShipAPI target) {
+    public static int orientation(Vector2f p, Vector2f q, Vector2f r) {
+        float val = (q.y - p.y) * (r.x - q.x) -
+                (q.x - p.x) * (r.y - q.y);
+
+        if (val == 0) return 0;  // collinear
+        return (val > 0)? 1: 2; // clock or counterclock wise
+    }
+
+    public static List<Vector2f> convexHull(List<Vector2f> points) {
+        int n = points.size();
+        if (n < 3) {
+            return points;
+        }
+
+        List<Vector2f> hull = new ArrayList<>();
+
+        int l = 0;
+        for (int i = 1; i < n; i++) {
+            if (points.get(i).x < points.get(l).x) {
+                l = i;
+            }
+        }
+
+        int p = l, q;
+        do {
+            hull.add(points.get(p));
+
+            q = (p + 1) % n;
+            for (int i = 0; i < n; i++) {
+                if (orientation(points.get(p), points.get(i), points.get(q)) == 2) {
+                    q = i;
+                }
+            }
+            p = q;
+        } while (p != l);
+
+        return hull;
+    }
+
+    private boolean isPositionInsidePolygon(List<Vector2f> polygon, Vector2f position) {
+        float x = position.x;
+        float y = position.y;
+
+        boolean inside = false;
+        for (int i = 0, j = polygon.size() - 1; i < polygon.size(); j = i++) {
+            float xi = polygon.get(i).x;
+            float yi = polygon.get(i).y;
+            float xj = polygon.get(j).x;
+            float yj = polygon.get(j).y;
+
+            boolean intersect = ((yi > y) != (yj > y))
+                    && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+            if (intersect) inside = !inside;
+        }
+
+        return inside;
+    }
+
+    public float canIFlankThisFucker(ShipAPI ship, ShipAPI target) {
         float flankingScore = 10f;
         if (target == null || ship == null) return -100f;
-        if (target.isCapital() && !rightDirection(target, ship.getLocation())) return -100f;
+        //if (target.isCapital() && !(getAngle(target, ship.getLocation()) <= DEGREES)) return -100f;
         if (target.isStation() || target.isFighter()) return -100f;
         if (target.isHulk()) return -100;
         if (target.getHullLevel() < 0.15f) return -100;
         if (target.getFleetMember() == null) return -100;
+        if (target.getHullSpec().isPhase()) return -100;
+        if (getAngle(target, ship.getLocation()) > 50) return -100;
 
 
         float shipSide = ship.getOwner();
         float targetSide = target.getOwner();
 
-        //how fast we rotate
-        float TimeToMaxSpeedYou = ship.getMaxTurnRate() / ship.getTurnAcceleration();
-        float TimeToTurn180You = ((180 - (ship.getMaxTurnRate() * TimeToMaxSpeedYou * 0.5f)) / ship.getMaxTurnRate()) + TimeToMaxSpeedYou;
-        float TimeToMaxSpeedTarget = target.getMaxTurnRate() / target.getTurnAcceleration();
-        float TimeToTurn180Target = ((180 - (target.getMaxTurnRate() * TimeToMaxSpeedTarget * 0.5f)) / target.getMaxTurnRate()) + TimeToMaxSpeedTarget;
+        //how fast they rotate
+        float timeToMaxTurnRateTarget = target.getMaxTurnRate() / target.getTurnAcceleration();
+        float timeToTurnOnTarget = ((120 - (target.getMaxTurnRate() * timeToMaxTurnRateTarget * 0.5f)) / target.getMaxTurnRate()) + timeToMaxTurnRateTarget;
         //Turn advantage add to score
-        flankingScore += (TimeToTurn180Target - TimeToTurn180You) * TurnMult.get(target.getHullSize());
+        flankingScore += Math.min(40, timeToTurnOnTarget * TurnMult.get(target.getHullSize()) * 4f);
+
+        // extra adjustments, since flanking a very small ship or ship that is very agile in general is probably not a great idea
+        // in turn, the turn multipliers were raised overall
+        if (target.getHullSize().equals(ShipAPI.HullSize.FRIGATE)) {
+            flankingScore -= 50;
+        } else if (target.getHullSize().equals(ShipAPI.HullSize.DESTROYER)) {
+            flankingScore -= 25;
+        } else if (target.getHullSize().equals(ShipAPI.HullSize.CRUISER)) {
+            flankingScore -= 10;
+        }
+
+        // avoid trying to flank stinky ship systems that could be used against us before they "finish" getting flanked
+        // (I only checked vanilla systems here)
+        ShipSystemAPI targetSystem = target.getSystem();
+        if (   targetSystem != null && (targetSystem.isStateActive()
+                || (targetSystem.getCooldown() > 0 && (!targetSystem.isCoolingDown() || targetSystem.getCooldownRemaining() < timeToTurnOnTarget))
+                || (targetSystem.getMaxAmmo() > 0 && (!targetSystem.isOutOfAmmo() || targetSystem.getAmmoPerSecond() * timeToTurnOnTarget < 1f - targetSystem.getAmmoReloadProgress())))) {
+
+            // teleporting systems probably aren't flankable
+            String systemAIType = "";
+            int activeSpeedIncrease = 0;
+            try {
+                systemAIType = Global.getCombatEngine().getPlayerShip().getSystem().getSpecAPI().getSpecJson().getString("aiType");
+                activeSpeedIncrease = Global.getCombatEngine().getPlayerShip().getSystem().getSpecAPI().getSpecJson().getJSONObject("aiHints").getInt("activeSpeedIncrease");
+
+            }catch (JSONException ignored) {
+
+            }
+
+            if (systemAIType.equals("PHASE_TELEPORTER_2") || systemAIType.equals("PHASE_DISPLACER")){
+                return -100;
+            }
+
+            if (activeSpeedIncrease > 10 && targetSystem.getCooldownRemaining() <= 5){
+                flankingScore -= activeSpeedIncrease / 2f;
+            }
+
+            // these systems give a lot of mobility, making it harder to flank them
+            if (targetSystem.getId().equals("plasmajets")) {
+                flankingScore -= 80;
+            }
+            if (targetSystem.getId().equals("inferniuminjector")) {
+                flankingScore -= 60;
+            }
+            if (targetSystem.getId().equals("maneuveringjets")) {
+                flankingScore -= 60;
+            }
+        }
+
 
         Vector2f shipPos = ship.getLocation();
         Vector2f targetPos = target.getLocation();
@@ -110,32 +220,83 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         Vector2f MoveDir = VectorUtils.getDirectionalVector(shipPos, targetPos);
         float distPastTarget = (ship.getCollisionRadius() + target.getCollisionRadius()) * 0.75f;
         Vector2f ExitPos = new Vector2f(targetPos.x + (distPastTarget * MoveDir.x), targetPos.y + (distPastTarget * MoveDir.y));
-        Vector2f CheckPos = new Vector2f(ExitPos.x + (400 * MoveDir.x), ExitPos.y + (400 * MoveDir.y));
+        ExitPos = new Vector2f(ExitPos.x + (400 * MoveDir.x), ExitPos.y + (400 * MoveDir.y));
 
         //spawnText("there", CheckPos);
 
         float enemyScore = 0f;
         float allyScore = 0f;
-        List<ShipAPI> shipInExitRange = CombatUtils.getShipsWithinRange(CheckPos, distPastTarget + 1500);
-        for (ShipAPI toCheck : shipInExitRange) {
-            if (toCheck.getFleetMember() == null) continue;
+
+        // this time, only look for allies that could potentially also engage the target by proximity
+        List<ShipAPI> shipsInEngagementRange = CombatUtils.getShipsWithinRange(targetPos, 1100);
+        for (ShipAPI toCheck : shipsInEngagementRange) {
+            if (toCheck.getFleetMember() == null
+                    || toCheck.isHulk()
+                    || toCheck.isFighter()) continue;
+
             if (toCheck.getOwner() == shipSide) {
                 if (toCheck != ship) {
-                    allyScore += toCheck.getFleetMember().getDeploymentPointsCost();
+                    float checkAngle = getAngle(toCheck, targetPos);
+                    float checkDistance = MathUtils.getDistance(toCheck.getLocation(), targetPos);
+
+                    allyScore += 5;
+                    if (checkDistance < 700) {
+                        allyScore += 10;
+                    }
+                    if (checkAngle < 60) {
+                        allyScore += toCheck.getFleetMember().getDeploymentPointsCost() / 3;
+                    }
                 }
-            } else if (toCheck.getOwner() == targetSide) {
-                enemyScore += toCheck.getFleetMember().getDeploymentPointsCost();
+            }
+        }
+        if (allyScore > 60) {
+            allyScore = 60;
+        }
+
+        // try to weigh enemies by how close they will be and weigh enemies facing away less
+        List<Vector2f> enemyShipPositions = new ArrayList<>();
+        List<ShipAPI> shipsInExitRange = CombatUtils.getShipsWithinRange(ExitPos, 1800);
+        for (ShipAPI toCheck : shipsInExitRange) {
+            if (toCheck.getFleetMember() == null
+                    || toCheck.isHulk()
+                    || toCheck.isFighter()) continue;
+
+            if (toCheck.getOwner() == targetSide) {
+                enemyShipPositions.add(toCheck.getLocation());
+                if (toCheck != target) {
+                    float checkAngle = getAngle(toCheck, ExitPos);
+                    float checkDistance = MathUtils.getDistance(toCheck.getLocation(), ExitPos);
+
+
+                    if (checkDistance < 1100) {
+                        enemyScore += 10;
+                    }
+                    if (checkDistance < 700) {
+                        enemyScore += 10;
+                    }
+                    if (checkAngle < 120 && checkDistance < 900) {
+                        enemyScore += toCheck.getFleetMember().getDeploymentPointsCost() / 4 + 10;
+                    }
+                    if (checkAngle < 60 && checkDistance < 1300) {
+                        enemyScore += toCheck.getFleetMember().getDeploymentPointsCost() / 2;
+                    }
+                }
             }
         }
 
         if (ship.getFleetMember().getDeploymentPointsCost() > 0) {
-            allyScore += ship.getFleetMember().getDeploymentPointsCost();
+            //allyScore += ship.getFleetMember().getDeploymentPointsCost()/2 + 20;
         }
         float totalScore = allyScore - enemyScore;
         flankingScore += totalScore;
 
-        //how much of target's HP left
+        // if the enemy fleet would surround the exit area, try to avoid it
+        List<Vector2f> enemyPolygon = convexHull(enemyShipPositions);
+        if (enemyPolygon.size() > 2 && isPositionInsidePolygon(enemyPolygon, ExitPos)) {
+            return -100;
+        }
 
+        //how much of target's HP left
         float targetDmgMult = 400 / (target.getArmorGrid().getArmorRating() + 400);
         float HullPercent = (target.getHitpoints() / targetDmgMult) / (target.getMaxHitpoints() / targetDmgMult);
         float HPLeft = HullPercent;
@@ -145,7 +306,22 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
             HPLeft = shieldPercent * HullToShieldRatio + HullPercent * (1 - HullToShieldRatio);
         }
 
-        flankingScore -= target.getFleetMember().getDeploymentPointsCost() - (target.getFleetMember().getDeploymentPointsCost() * HPLeft);
+        //flankingScore -= target.getFleetMember().getDeploymentPointsCost() - (target.getFleetMember().getDeploymentPointsCost() * HPLeft);
+
+        // check our own vital statistics
+        if (ship.getShield() != null) {
+            float usableFlux = ship.getMaxFlux() - ship.getCurrFlux();
+            float usableFluxRatio = usableFlux / ship.getMaxFlux();
+            ship.getHardFluxLevel();
+
+            flankingScore -= 200 - (Math.min(usableFluxRatio + 0.3, 1f) * 200);
+            if (usableFluxRatio < 0.4) {
+                return -100;
+            }
+        }
+        if (ship.getHitpoints() / ship.getMaxHitpoints() < 0.3 || ship.getHitpoints() < 6000) {
+            return -100;
+        }
 
         //spawnText(flankingScore + "", 60f);
         return flankingScore;
@@ -210,7 +386,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
             } else {
                 targetLocation = new Vector2f(ship.getLocation().x, ship.getLocation().y - 800f); // if ship is player's, target loc is DOWN
             }
-            if (rightDirection(ship, targetLocation)) {
+            if (getAngle(ship, targetLocation) <= DEGREES) {
                 ship.useSystem();
                 //spawnText("retreat", 0f);
             }
@@ -239,8 +415,8 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         }
 
         if (target != null) {
-            NeededDur = (MathUtils.getDistance(ship.getLocation(), targetLocation) + (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
-            if ((rightDirection(ship, targetLocation)) && NeededDur <= ship.getSystem().getChargeActiveDur() && (flankingScore(ship, target) > minPointsToFlank)) {
+            NeededDur = (100 + MathUtils.getDistance(ship.getLocation(), targetLocation) + 0.75f * (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
+            if ((getAngle(ship, targetLocation) <= DEGREES) && NeededDur <= ship.getSystem().getChargeActiveDur() && (canIFlankThisFucker(ship, target) > minPointsToFlank)) {
                 useMe = true;
                 //spawnText("Flank/" + NeededDur, 0f);
             }
@@ -248,8 +424,8 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
 
 
         for (AIFlags f : TOWARDS) {
-            if (flags.hasFlag(f) && rightDirection(ship, targetLocation)) {
-                useMe = true;
+            if (flags.hasFlag(f) && getAngle(ship, targetLocation) <= DEGREES) {
+                //useMe = true;
                 //spawnText("towards", 0f);
             }
         }
@@ -267,7 +443,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
             ship.useSystem();
             if (TargShip) {
                 assert target != null;
-                NeededDur = (MathUtils.getDistance(ship.getLocation(), targetLocation) + (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
+                NeededDur = (100 + MathUtils.getDistance(ship.getLocation(), targetLocation) + 0.75f * (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
                 if (NeededDur > ship.getSystem().getChargeActiveDur())
                     NeededDur = ship.getSystem().getChargeActiveDur();
             }

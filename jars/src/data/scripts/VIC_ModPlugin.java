@@ -20,6 +20,7 @@ import com.fs.starfarer.api.impl.campaign.econ.impl.PopulationAndInfrastructure;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.ids.Ranks;
 import com.fs.starfarer.api.impl.campaign.ids.Skills;
+import com.fs.starfarer.api.loading.WeaponSpecAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
@@ -180,8 +181,8 @@ public class VIC_ModPlugin extends BaseModPlugin {
 
     @Override
     public void onGameLoad(boolean newGame) {
-        Global.getSector().addTransientListener(new vic_systemWeaponFromLootRemoval(false));
         Global.getSector().addTransientListener(new vic_stolasSpawn(false));
+        Global.getSector().addTransientListener(new vic_systemWeaponFromLootRemoval(false));
         if (Global.getSector().getEntityById("vic_star_empyrean") == null) {
             onNewGame();
             onNewGameAfterEconomyLoad();

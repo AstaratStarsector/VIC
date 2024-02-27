@@ -38,7 +38,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
     Color a = new Color(255, 77, 22, 255);
 
 
-    //over heat stuff
+    //overheat stuff
     float
             timeToStartHeating = 0f, //can be 1/x where x is time to starting gaining heat and replacing projes
             heatGeneration = 1f / 5f, //can be 1/x where x is time to rump up
@@ -88,6 +88,7 @@ public class vic_vodyanoy_script implements EveryFrameWeaponEffectPlugin, OnFire
             if (heat < 0) heat = 0;
 
         }
+
 
         //change flash colour based on heat
         float heatRevers = 1 - heat;

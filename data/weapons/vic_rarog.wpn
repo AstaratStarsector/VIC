@@ -3,6 +3,7 @@
   "specClass": "beam",
   "type": "ENERGY",
   "size": "SMALL",
+  "beamEffect": "data.scripts.weapons.vic_rarog",
   "collisionClass": "RAY",
   "collisionClassByFighter": "RAY_FIGHTER",
   "displayArcRadius": 400,
@@ -45,6 +46,7 @@
     255,
     255
   ],
+	"skipIdleFrameIfZeroBurstDelay":true,
   "width": 40,
   "textureType": [
     "graphics/fx/vic_rarogBeam.png",

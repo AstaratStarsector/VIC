@@ -112,7 +112,9 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
             ship.setJitterShields(false);
             shipTimeMult = 1 + TimeBonus * (float) Math.pow(effectLevel, 10);
             float visualLevel = (0.5f + (0.5f * effectLevel));
-            stats.getCombatEngineRepairTimeMult().modifyMult(id, 0);
+            for (ShipEngineControllerAPI.ShipEngineAPI shipEngine : ship.getEngineController().getShipEngines()){
+                shipEngine.repair();
+            }
             stats.getAcceleration().modifyFlat(id, 300f * visualLevel);
             ship.getEngineController().extendFlame(this, 3f * effectLevel, 2f * effectLevel, 3f * effectLevel);
             ship.setJitter(ship, new Color(100, 165, 255, 125), effectLevel, Math.round(15 * visualLevel), 15, 60 * visualLevel);
@@ -132,7 +134,9 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
             ship.setPhased(true);
             ship.setExtraAlphaMult(0.25f);
 
-            stats.getCombatEngineRepairTimeMult().modifyMult(id, 0);
+            for (ShipEngineControllerAPI.ShipEngineAPI shipEngine : ship.getEngineController().getShipEngines()){
+                shipEngine.repair();
+            }
             ship.addAfterimage(new Color(255, 255, 255, 40), 0f, 0f, -ship.getVelocity().x * 0.5f, -ship.getVelocity().y * 0.5f, 0, 0, 0.2f, 0f, false, false, false);
 
             if (trailID1 == null) {
@@ -262,8 +266,11 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                 ship.getSystem().forceState(ShipSystemAPI.SystemState.OUT, 0);
             }
 
+            /*
             engine.maintainStatusForPlayerShip("lungeData",null,"enemyInRange",atLeastOneUnder + "",false);
             engine.maintainStatusForPlayerShip("lungeData2",null,"safe time",safeTime + "",false);
+
+             */
 
 
 
@@ -298,7 +305,6 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
         stats.getTurnAcceleration().unmodify(id);
         stats.getAcceleration().unmodify(id);
         stats.getDeceleration().unmodify(id);
-        stats.getCombatEngineRepairTimeMult().unmodify(id);
         stats.getTimeMult().unmodify(id);
         DoOnce = true;
 

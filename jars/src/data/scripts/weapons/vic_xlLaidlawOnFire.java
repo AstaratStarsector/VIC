@@ -433,6 +433,7 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
             shotFaction = ((((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime() + ((totalFireTime - ((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime()) * (1 - chargeLevel))) / totalFireTime);
         }
         float animFraction = MathUtils.clamp((shotFaction - startPercent) / endPercent, 0, 1);
+        Global.getLogger(vic_xlLaidlawOnFire.class).info(Math.round(totalFrames * animFraction) + "/" + animFraction);
         weapon.getAnimation().setFrame(Math.round(totalFrames * animFraction));
 
 
