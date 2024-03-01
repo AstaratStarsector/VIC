@@ -182,7 +182,8 @@ public class VIC_ModPlugin extends BaseModPlugin {
     @Override
     public void onGameLoad(boolean newGame) {
         Global.getSector().addTransientListener(new vic_stolasSpawn(false));
-        Global.getSector().addTransientListener(new vic_systemWeaponFromLootRemoval(false));
+        Global.getSector().getListenerManager().addListener(new vic_systemWeaponFromLootRemoval(false), true);
+
         if (Global.getSector().getEntityById("vic_star_empyrean") == null) {
             onNewGame();
             onNewGameAfterEconomyLoad();
