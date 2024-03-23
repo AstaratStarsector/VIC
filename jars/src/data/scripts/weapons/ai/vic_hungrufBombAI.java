@@ -90,6 +90,14 @@ public class vic_hungrufBombAI implements MissileAIPlugin {
                     CombatEngineLayers.CONTRAILS_LAYER
             );
 
+            Global.getSoundPlayer().playSound(
+                    "vic_hungruf_explosion",
+                    1,
+                    1,
+                    new Vector2f(missile.getLocation()),
+                    new Vector2f()
+            );
+
 
             engine.removeEntity(missile);
         }
