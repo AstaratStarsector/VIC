@@ -1,0 +1,17 @@
+{
+	"id":"vic_raum_vodyanoy_ultra_sub_shot",
+	"specClass":"projectile",
+	"spawnType":"BALLISTIC",
+	"collisionClass":"PROJECTILE_FF",
+	"collisionClassByFighter":"PROJECTILE_FIGHTER",
+	"hitGlowRadius":25,
+	"length":100.0,
+	"width":10,
+	"fadeTime":0.15,
+	"fringeColor":[255,83,15,225],
+	"coreColor":[255,255,255,255],
+	"bulletSprite":"graphics/missiles/vic_vodyanoy_shot2.png",
+	"onHitEffect":"data.scripts.weapons.vic_vodyanoyHEOnHit",
+}
+
+

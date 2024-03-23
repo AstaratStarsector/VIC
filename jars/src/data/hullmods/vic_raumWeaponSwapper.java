@@ -19,12 +19,13 @@ public class vic_raumWeaponSwapper extends BaseHullMod {
     public static final Map<String, String> LOADOUT_CYCLE = new HashMap<>();
 
     static {
-        LOADOUT_CYCLE.put("rakh", "strzyga");
+        LOADOUT_CYCLE.put("vodyanoy_ultra", "strzyga");
         LOADOUT_CYCLE.put("strzyga", "alkonost");
         LOADOUT_CYCLE.put("alkonost", "xl_laidlaw");
         LOADOUT_CYCLE.put("xl_laidlaw", "gagana_ultra");
         LOADOUT_CYCLE.put("gagana_ultra", "rokh");
         LOADOUT_CYCLE.put("rokh", "rakh");
+        LOADOUT_CYCLE.put("rakh", "vodyanoy_ultra");
     }
 
     @Override

@@ -426,15 +426,16 @@ public class vic_xlLaidlawOnFire implements EveryFrameWeaponEffectPlugin, OnFire
             sequenceState = "COOLDOWN";
         }
 
-        float shotFaction = 0;
+        float shotFaction = 0.0f;
         if (!fired) {
             shotFaction = ((((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime() * chargeLevel) / totalFireTime);
         } else {
             shotFaction = ((((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime() + ((totalFireTime - ((ProjectileWeaponSpecAPI) weapon.getSpec()).getChargeTime()) * (1 - chargeLevel))) / totalFireTime);
         }
-        float animFraction = MathUtils.clamp((shotFaction - startPercent) / endPercent, 0, 1);
-        Global.getLogger(vic_xlLaidlawOnFire.class).info(Math.round(totalFrames * animFraction) + "/" + animFraction);
-        weapon.getAnimation().setFrame(Math.round(totalFrames * animFraction));
+        float animFraction = (shotFaction - startPercent) / endPercent;
+        int frame = (int) MathUtils.clamp((animFraction * totalFrames), 0, totalFrames - 1);
+        Global.getLogger(vic_xlLaidlawOnFire.class).info((frame + 1) + "/" + totalFrames);
+        weapon.getAnimation().setFrame(frame);
 
 
         //Adjustment for burst beams, since they are a pain

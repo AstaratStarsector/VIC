@@ -1,0 +1,76 @@
+{
+  "id": "vic_raum_weapon_vodyanoy_ultra_sub",
+  "specClass": "projectile",
+  "projectileSpecId": "vic_raum_vodyanoy_ultra_sub_shot",
+  "type": "ENERGY",
+  "size": "LARGE",
+  "everyFrameEffect": "data.scripts.weapons.vic_vodyanoy_ultra_script",
+  "turretSprite": "graphics/weapons/XL Vodyanoy/vic_vodyanoy_ultra_barrel_00.png",
+  "turretGunSprite": "graphics/weapons/XL Vodyanoy/vic_vodyanoy_ultra_base.png",
+  "hardpointSprite": "graphics/weapons/XL Vodyanoy/vic_vodyanoy_ultra_barrel_00.png",
+  "hardpointGunSprite": "graphics/weapons/XL Vodyanoy/vic_vodyanoy_ultra_base.png",
+  "renderAboveAllWeapons": 0,
+  "glowColor": [
+    255,
+    255,
+    255,
+    255
+  ],
+  "visualRecoil": 2,
+  "renderHints": [
+    "SUSPEND_RECOIL"
+  ],
+  "turretOffsets": [
+    43,
+    -9,
+    40,
+    4,
+    40,
+    -4,
+    43,
+    9
+  ],
+  "turretAngleOffsets": [
+    -0.3,
+    -0.1,
+    0.1,
+    0.3
+  ],
+  "hardpointOffsets": [
+    45,
+    -9,
+    42,
+    4,
+    42,
+    -4,
+    45,
+    9
+  ],
+  "hardpointAngleOffsets": [
+    -0.3,
+    -0.1,
+    0.1,
+    0.3
+  ],
+  "barrelMode": "LINKED",
+  "separateRecoilForLinkedBarrels":"TRUE",
+  "animationType": "MUZZLE_FLASH",
+  "numFrames": 4,
+  "frameRate": 20,
+  "interruptibleBurst": true,
+  "muzzleFlashSpec": {
+    "length": 12,
+    "spread": 20,
+    "particleSizeMin": 12,
+    "particleSizeRange": 24,
+    "particleDuration": 0.05,
+    "particleCount": 3,
+    "particleColor": [
+      170,
+      245,
+      255,
+      205
+    ]
+  },
+  "textureType": ROUGH
+}

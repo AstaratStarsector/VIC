@@ -170,6 +170,13 @@ trails_vic_xl_laidlaw_shrapnel_shot_smoke,vic_xl_laidlaw_shrapnel_shot,trails_tr
 trails_vic_xl_laidlaw_shrapnel_shot_smoke2,vic_xl_laidlaw_shrapnel_shot,trails_trail_smooth,10,0.5,0,2.5,18,38,"[150,100,100]","[255,120,35]",0.10,200,-125,-50,10,1,TRUE,FALSE,TRUE,50,0,0,0,0,0,false,false,TRUE
 trails_vic_xl_laidlaw_shrapnel_shot_contrail,vic_xl_laidlaw_shrapnel_shot,trails_trail_contrail,10,0,0.1,0.5,20,10,"[0,255,235]","[0,255,235]",1,2000,-1000,0,5,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false,TRUE
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+trails_vic_vodyanoy_ultra_sub_trail,vic_raum_vodyanoy_ultra_sub_shot,trails_trail_clean,5,0,0.1,0.1,10,4,"[255,0,0]","[15,195,255]",1,1000,-500,15,0,1,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false,TRUE
+trails_vic_vodyanoy_ultra_sub_glow,vic_raum_vodyanoy_ultra_sub_shot,trails_trail_smooth,5,0.03,0,0.03,100,10,"[255,83,15]","[255,83,15]",2,100,0,35,0,0,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false,TRUE
+trails_vic_vodyanoy_ultra_glow,vic_raum_vodyanoy_ultra_shot,trails_trail_smooth,5,0.03,0,0.03,65,10,"[15,195,255]","[15,195,255]",2,100,0,25,0,0,TRUE,FALSE,TRUE,0,0,0,0,0,0,false,false,TRUE
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 trails_vic_notorious_big_iron_buckshot_shot_1,vic_notorious_big_iron_buckshot_shot,trails_trail_smooth,5,0,0.04,0.05,5,1.5,"[255,245,220]","[255,245,220]",1,200,300,10,2,1,TRUE,FALSE,TRUE,100,20,0,0,0,0,TRUE,false,TRUE
 trails_vic_notorious_big_iron_buckshot_shot_2,vic_notorious_big_iron_buckshot_shot,trails_trail_smooth,0,0,0,0.35,10,1.5,"[155,155,155]","[155,155,155]",0.65,200,300,5,3,1,TRUE,FALSE,FALSE,100,20,0,0,5,50,TRUE,false,TRUE
 trails_vic_notorious_big_iron_buckshot_shot_3,vic_notorious_big_iron_buckshot_shot,trails_trail_smooth,5,0,0.08,0,20,5,"[255,200,100]","[255,200,100]",1,200,300,10,3,1,TRUE,FALSE,TRUE,100,20,0,0,5,50,TRUE,false,TRUE

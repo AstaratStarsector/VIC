@@ -10,7 +10,7 @@ import org.lwjgl.util.vector.Vector2f;
 public class vic_vodyanoyHEOnHit implements OnHitEffectPlugin {
 
     final float
-            penMulti = 200;
+            penMulti = 20;
 
     @Override
     public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
