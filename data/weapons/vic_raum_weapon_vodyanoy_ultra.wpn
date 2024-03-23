@@ -48,7 +48,7 @@
   "barrelMode": "LINKED",
   "separateRecoilForLinkedBarrels": true,
   "animationType": "MUZZLE_FLASH",
-  "numFrames": 4,
+  "numFrames": 6,
   "frameRate": 20,
   "interruptibleBurst": true,
   "muzzleFlashSpec": {
