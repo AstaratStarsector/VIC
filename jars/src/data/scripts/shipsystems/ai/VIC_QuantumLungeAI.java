@@ -1,6 +1,5 @@
 package data.scripts.shipsystems.ai;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.CombatFleetManagerAPI.AssignmentInfo;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
@@ -8,7 +7,6 @@ import com.fs.starfarer.api.combat.ShipwideAIFlags.AIFlags;
 import com.fs.starfarer.api.fleet.FleetGoal;
 import com.fs.starfarer.api.mission.FleetSide;
 import com.fs.starfarer.api.util.IntervalUtil;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
@@ -144,7 +142,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         return inside;
     }
 
-    public float canIFlankThisFucker(ShipAPI ship, ShipAPI target) {
+    public float getFlankingScore(ShipAPI ship, ShipAPI target) {
         float flankingScore = 10f;
         if (target == null || ship == null) return -100f;
         //if (target.isCapital() && !(getAngle(target, ship.getLocation()) <= DEGREES)) return -100f;
@@ -176,32 +174,33 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
         }
 
         // avoid trying to flank stinky ship systems that could be used against us before they "finish" getting flanked
-        // (I only checked vanilla systems here)
         ShipSystemAPI targetSystem = target.getSystem();
         if (   targetSystem != null && (targetSystem.isStateActive()
                 || (targetSystem.getCooldown() > 0 && (!targetSystem.isCoolingDown() || targetSystem.getCooldownRemaining() < timeToTurnOnTarget))
                 || (targetSystem.getMaxAmmo() > 0 && (!targetSystem.isOutOfAmmo() || targetSystem.getAmmoPerSecond() * timeToTurnOnTarget < 1f - targetSystem.getAmmoReloadProgress())))) {
 
-            // teleporting systems probably aren't flankable
             String systemAIType = "";
             int activeSpeedIncrease = 0;
             try {
-                systemAIType = Global.getCombatEngine().getPlayerShip().getSystem().getSpecAPI().getSpecJson().getString("aiType");
-                activeSpeedIncrease = Global.getCombatEngine().getPlayerShip().getSystem().getSpecAPI().getSpecJson().getJSONObject("aiHints").getInt("activeSpeedIncrease");
+                systemAIType = targetSystem.getSpecAPI().getSpecJson().getString("aiType");
+                activeSpeedIncrease = targetSystem.getSpecAPI().getSpecJson().getJSONObject("aiHints").getInt("activeSpeedIncrease");
 
             }catch (JSONException ignored) {
 
             }
 
+            //don't try to flank ships with teleports
             if (systemAIType.equals("PHASE_TELEPORTER_2") || systemAIType.equals("PHASE_DISPLACER")){
                 return -100;
             }
 
-            if (activeSpeedIncrease > 10 && targetSystem.getCooldownRemaining() <= 5){
+            if (activeSpeedIncrease > 10 && targetSystem.getCooldownRemaining() <= 3){
                 flankingScore -= activeSpeedIncrease / 2f;
             }
 
+            //do more general check on top will have it for now
             // these systems give a lot of mobility, making it harder to flank them
+            /*
             if (targetSystem.getId().equals("plasmajets")) {
                 flankingScore -= 80;
             }
@@ -211,6 +210,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
             if (targetSystem.getId().equals("maneuveringjets")) {
                 flankingScore -= 60;
             }
+             */
         }
 
 
@@ -416,7 +416,7 @@ public class VIC_QuantumLungeAI implements ShipSystemAIScript {
 
         if (target != null) {
             NeededDur = (100 + MathUtils.getDistance(ship.getLocation(), targetLocation) + 0.75f * (ship.getCollisionRadius() + target.getCollisionRadius())) / speed;
-            if ((getAngle(ship, targetLocation) <= DEGREES) && NeededDur <= ship.getSystem().getChargeActiveDur() && (canIFlankThisFucker(ship, target) > minPointsToFlank)) {
+            if ((getAngle(ship, targetLocation) <= DEGREES) && NeededDur <= ship.getSystem().getChargeActiveDur() && (getFlankingScore(ship, target) > minPointsToFlank)) {
                 useMe = true;
                 //spawnText("Flank/" + NeededDur, 0f);
             }

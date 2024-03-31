@@ -91,7 +91,7 @@
                 "DESTROYER":{"sounds":[1], "pitch":0.8, "volume":0.55},
                 "CRUISER":{"sounds":[2], "pitch":0.8, "volume":0.7},
                 "CAPITAL_SHIP":{"sounds":[3], "pitch":0.8, "volume":1.3},
-        },
+    },
 	
 	
 	"vic_quantum_lunge_start":[
@@ -344,30 +344,30 @@
 	
 	
 	"vic_vila_chargeup":[
-		{"file":"sounds/effects/vic_vila_chargeup.ogg","pitch":1.05, "volume":1},
-		{"file":"sounds/effects/vic_vila_chargeup.ogg","pitch":1.0, "volume":1},
-		{"file":"sounds/effects/vic_vila_chargeup.ogg","pitch":0.95, "volume":1},
+		{"file":"sounds/effects/vic_vila_chargeup.ogg","pitch":1.05, "volume":1.3},
+		{"file":"sounds/effects/vic_vila_chargeup.ogg","pitch":1.0, "volume":1.3},
+		{"file":"sounds/effects/vic_vila_chargeup.ogg","pitch":0.95, "volume":1.3},
 	],
 	
 	"vic_vila_shot":[
-	    {"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.1, "volume":0.5},
-		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.05, "volume":0.5},
-		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.0, "volume":0.5},
-		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":0.95, "volume":0.5},
-		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":0.9, "volume":0.5},
+	    {"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.1, "volume":0.75},
+		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.05, "volume":0.75},
+		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":1.0, "volume":0.75},
+		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":0.95, "volume":0.75},
+		{"file":"sounds/effects/vic_vila_shot.ogg","pitch":0.9, "volume":0.75},
 	],
 	
 	"vic_vila_pulse":[
-	    {"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.2, "volume":0.3},
-		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.1, "volume":0.3},
-		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.0, "volume":0.3},
-		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":0.9, "volume":0.3},
-		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":0.8, "volume":0.3},
-	    {"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":1.2, "volume":0.3},
-		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":1.1, "volume":0.3},
-		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":1.0, "volume":0.3},
-		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":0.9, "volume":0.3},
-		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":0.8, "volume":0.3},
+	    {"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.2, "volume":0.45},
+		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.1, "volume":0.45},
+		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":1.0, "volume":0.45},
+		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":0.9, "volume":0.45},
+		{"file":"sounds/effects/vic_vila_pulse1.ogg","pitch":0.8, "volume":0.45},
+	    {"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":1.2, "volume":0.45},
+		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":1.1, "volume":0.45},
+		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":1.0, "volume":0.45},
+		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":0.9, "volume":0.45},
+		{"file":"sounds/effects/vic_vila_pulse2.ogg","pitch":0.8, "volume":0.45},
 	],
 	
 	"vic_afreet":[

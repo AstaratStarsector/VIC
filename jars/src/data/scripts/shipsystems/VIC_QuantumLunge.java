@@ -255,7 +255,7 @@ public class VIC_QuantumLunge extends BaseShipSystemScript {
                 ship.setExtraAlphaMult(0.25f + (0.75f * (1 - effectLevel)));
 
                 stats.getAcceleration().unmodify(id);
-                if (ship.getVelocity().lengthSquared() > ship.getMaxSpeed()) ship.getVelocity().scale(1 - 0.7f * engine.getElapsedInLastFrame());
+                if (ship.getVelocity().lengthSquared() > Math.pow(ship.getMaxSpeed(),2)) ship.getVelocity().scale(1 - 0.7f * engine.getElapsedInLastFrame());
 
                 if (DoOnce){
                     AddQuantumLungeBoost(ship, 3f);

@@ -86,7 +86,6 @@ public class vic_OmniLunge extends BaseShipSystemScript {
                 if (VectorUtils.isZeroVector(newVector))
                     NewSpeed = (Vector2f) new Vector2f(ship.getVelocity()).normalise(newVector).scale(ship.getMaxSpeed());
                 else NewSpeed = (Vector2f) newVector.normalise(newVector).scale(ship.getMaxSpeed());
-                Global.getLogger(vic_OmniLunge.class).info(newVector.x + "/" + newVector.y);
                 ship.getVelocity().set(NewSpeed);
                 doOnce_speedUp = false;
             }
