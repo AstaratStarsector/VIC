@@ -12,6 +12,7 @@ import java.util.Map;
 
 // controls weapon swap
 public class vic_raumWeaponSwapper extends BaseHullMod {
+
     public static final String WEAPON_SLOT = "WS0046";
     public static final String WEAPON_PREFIX = "vic_raum_weapon_";
 
@@ -63,6 +64,15 @@ public class vic_raumWeaponSwapper extends BaseHullMod {
             // clear slot
             stats.getVariant().clearSlot(WEAPON_SLOT);
             // add gun
+            stats.getVariant().addWeapon(WEAPON_SLOT, WEAPON_PREFIX + newWeawpon);
+        } else if (stats.getVariant().getWeaponId(WEAPON_SLOT) == null){
+            String newWeawpon = "gagana_ultra";
+            for (String hullmod : LOADOUT_CYCLE.keySet()) {
+                if (stats.getVariant().getHullMods().contains("vic_raum_weapon_swapper_" + hullmod)) {
+                    newWeawpon = hullmod;
+                    break;
+                }
+            }
             stats.getVariant().addWeapon(WEAPON_SLOT, WEAPON_PREFIX + newWeawpon);
         }
     }

@@ -7,6 +7,8 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Industries;
 
+import static data.hullmods.vic_raumWeaponSwapper.WEAPON_SLOT;
+
 public class vic_dummyForRaumSwapper extends vic_dummyForSwaper{
 
     public boolean canBeAddedOrRemovedNow(ShipAPI ship, MarketAPI marketOrNull, CampaignUIAPI.CoreUITradeMode mode) {
