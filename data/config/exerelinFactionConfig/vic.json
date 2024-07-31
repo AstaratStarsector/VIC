@@ -32,7 +32,7 @@
 		"exalted": 0.6,                                  #One of the few who truly understand the value of progress.
 		"blackjack": 0.4,                                #Profitable partners. Good suppliers of resources and spare testing material.
 		"shadow_industry": -1,                           #Unfinished business. Now this will be fun...
-		"new_galactic_order":-1,			             #Everyone is born equal. Descrimination should be based on some other attributes rather than inherited ones.
+		"new_galactic_order":-1,			             #Everyone is born equal. Discrimination should be based on some other attributes rather than inherited ones.
 	    "SCY": -0.1,                                     #Data is the key to victory. No need to cut ties with these.
 		"diableavionics": 0.3,                           #Our legal team is always in touch with our fellow partners.
 		"ORA": -0.5,                                     #Brainwashed horde behind sweet lies. Disgusting.
@@ -44,7 +44,7 @@
 		"galaxytigers": -0.4,                            #Could be allies if not for ties with Tri-Tachyon. Shame, shame.
 		"galaxytigers_derelict": -0.4,                   #Old machines serving new purposes. Maybe some valuable data is still intact.
 		"galaxytigers_drone_guard": -0.4,                #Mindless things. No value.
-		"al_ars": -1,                                    #Terrorist scum. Should have dealth with them way before.
+		"al_ars": -1,                                    #Terrorist scum. Should have dealt with them way before.
 		"pearson_exotronics": -0.7,                      #Drone-loving rivals. Mergers and Acquisition Department's not fond of them especially.
 		"blackrock_driveyards": -0.7,			         #One more rival ro assimilate. Their tech could be of great use.
 		"br_consortium":-0.7,					         #Will be interesting to test our weapons on them.
@@ -58,7 +58,7 @@
 		"fang":-0.4,						             #Curious... Should be examined with special thoroughness. Lots of potential.
 		"HMI":0.2,						                 #Trusted suppliers of resources and fringe zones' data.
 		"brighton": -0.5,                                #More assets to acquire and merge. 
-		"fpe": -0.7,                                     #An agressive nuisance with no respect towards simple people. Some of their weapons are to be examined though.
+		"fpe": -0.7,                                     #An aggressive nuisance with no respect towards simple people. Some of their weapons are to be examined though.
 		"mess":-1,						                 #Dangerous anomaly. Eliminate at all costs. 
 		"junk_pirates":0,				                 #Easily hireable, easily exploitable. Junk thingies.
 		"junk_pirates_hounds":0,			             #Easily hireable, easily exploitable. Cute junk thingies.
@@ -79,13 +79,13 @@
 		"vass_shipyards": -0.5,                          #Capture their ships at ALL costs. 
 	    "rb": 0,                                         #The Sector is full of cheap gray-zone contractors, isn't it?
 		"prv": 0.3,                                      #Could be partnered with. For the time being, of course. 
-		"xlu": 0.1,                                      #In other circumstances a conflict would be inevitable. Thankfully, profittable connections have been established.
+		"xlu": 0.1,                                      #In other circumstances a conflict would be inevitable. Thankfully, profitable connections have been established.
         "ocua": -0.1,                                    #We should order more of those bakeries from them. For research purposes, obviously.
 		"Coalition": 0.1,                                #Their shipyards and the grudge against Hegemony could be of use down the line... 
-		"scalartech": -0.2,                              #Curious technologoies. Worth the possible trouble. Acquisition is in plans.
+		"scalartech": -0.2,                              #Curious technologies. Worth the possible trouble. Acquisition is in plans.
 		"tiandong": -0.15,                               #One more supplier of resources. Should be kept at a distance though.
 		"COPS": 0.2,                                     #Their investigations of our less legal connections might prove troublesome. 
-        "roider": -0.3,                                  #Yet even more assets to acquite and merge. The Department is going to beat the record.
+        "roider": -0.3,                                  #Yet even more assets to acquire and merge. The Department is going to beat the record.
 		"fringe_defence_syndicate": 0.5,                 #Loyal Domain scientists. Should keep the eyes of Hegemony from them. Relocation to Empyrean is to be considered.
 		"air": -0.8,                                     #Deranged "justice fighters". Fire at will.
 		"aic": -0.4,                                     #Additional gifts will keep them at bay for the time being. Prepare acquisition scenarios in the meantime. 
