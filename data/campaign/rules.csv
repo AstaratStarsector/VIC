@@ -37,7 +37,19 @@ CMSNResignCancelled_vic,CMSNResignCancelled,"$faction.id == vic",,"""Oh, thank G
 Maybe take a break, go relax at a gene-spa? Have a nice meal at VICtuals. Take some time off.""",,
 vic_addStart,ExerelinNGCIntroPage,,"vic_starterPlugin",,,
 "#END Commission Dialogues",,,,,,
-,,,,,,
+vic_nex_NGCPickStartingShips,ExerelinNGCStep3,"$playerFaction == vic
+!$vic_ChangeMind
+$corvusMode","AddText ""Volkov Industrial Conglomerate - also known as VIC or simply The Conglomerate, is a quasi-religious, transhumanist Megacorporation from the Domain-era - focused on bleeding-edge aerospace solutions and genetic technologies, and hell-bent on ensuring the survival and evolution of humankind through substantial DNA manipulation and breaking the universal laws.""
+SetTextHighlightColors hColor
+SetTextHighlights Volkov Industrial Conglomerate VIC The Conglomerate
+
+AddText ""Ruthless, fearless, and confident in their righteousness, they seek to impose their views on the rest of the Sector and establish the only true (in their own opinion) regime that can lead Humanity to prosperity even in the terrible reality of the Post-Collapse.""
+$vic_ChangeMind = true 0",,,
+vic_nex_NGCPickStartingShips2,ExerelinNGCStep3,"$playerFaction == vic
+EIS_HasModId timid_commissioned_hull_mods
+!$vic_ChangeMind","AddText ""Commissioned Crews Bonus: Ships deal more damage to larger enemies, and receive more damage from smaller enemies. Capital ships take less damage when severely outmatched.""
+SetTextHighlights Commissioned Crews Bonus
+$vic_ChangeMind = true 0",,,
 # Fleet Encounter Dialogues,,,,,,
 greetingVICFriendly,OpenCommLink,"$faction.id == vic
 $faction.friendlyToPlayer","$menuState = fleetConvMain 0
@@ -806,4 +818,3 @@ FireAll vic_JeremyHoloGuideMainBranchNoZenith
 FireAll vic_JeremyHoloGuideMainBranchZenith","""Did you know that here at the Conglomerate we endorse labour unions? We have always valued the rights of our employees across all the Sectors and strived to provide the best possible work policies even for the indebted categories!""",,
 "#END Jeremy Holo Guide Random Facts",,,,,,
 "#END Jeremy Holo Guide",,,,,,
-
