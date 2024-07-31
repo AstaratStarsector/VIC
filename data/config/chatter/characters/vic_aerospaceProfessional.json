@@ -42,7 +42,7 @@
 
 		"need_help":[
 			{"text":"Backup is requested, the enemy is pushing us."},
-			{"text":"Asisstance is required, the enemy forces are prevailing."},
+			{"text":"Assistance is required, the enemy forces are prevailing."},
 			{"text":"Commander, we need reinforcements in this grid square!"}
 		],
 
@@ -84,7 +84,7 @@
 		],
 
 		"overload":[
-			{"text":"Flux grid overloaded, the vessel is partially inoperational."},
+			{"text":"Flux grid overloaded, the vessel is partially inoperative."},
 			{"text":"Flux control systems are down, requesting covering fire."},
 			{"text":"Flux capacitors are out. We'll be back in action in a moment, commander."}
 		],

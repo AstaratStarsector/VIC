@@ -1,6 +1,6 @@
 {
 	"name":"VIC Scientist",
-	"personalities":["cautious", "steady", "agressive"],
+	"personalities":["cautious", "steady", "aggressive"],
 	"gender":["m","f","n"],
 	"chance":0.7,
 	"talkativeness":1,
@@ -46,7 +46,7 @@
 			
 		],
 		"need_help":[
-			{"text":"Requesting additional assitance!"},
+			{"text":"Requesting additional assistance!"},
 			{"text":"I'm afraid I'm in dire need of assistance!"},
 			{"text":"I'm not very fit for this sort of combat situations, please assist me!"},
 			{"text":"Someone, help! My research documentation is too valuable to be lost!"}
@@ -86,7 +86,7 @@
 			
 		],
 		"overload":[
-			{"text":"Research vessel overloaded. Most ufortunate."},
+			{"text":"Research vessel overloaded. Most unfortunate."},
 			{"text":"Requiring support until all systems are back online!"},
 			{"text":"This is not good... Hope my research documentation will be alright..."}
 		],
