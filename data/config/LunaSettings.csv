@@ -14,7 +14,7 @@ Make sure to set a condition for your input checks to not accept numbers of 0, a
 ",,,Examples
 #luna_exampleRadio,Example Radio,Radio,None,"None, Hegemony, Tritachyon, Persean League, Sindrian, Independent","Creates a radio button selector. 
 
-The defaultValue decides which one is selected by default, the secondaryValue creates the list of choices with a comma seperated String. 
+The defaultValue decides which one is selected by default, the secondaryValue creates the list of choices with a comma separated String. 
 Can be retrieved as a String.",,,Examples
 ,,,,,,,,
 OmniLunge_rainbowMode,caramell dansen Mode,Boolean,false,,Make Omnilunge trail rainbow,,,Joke settings
