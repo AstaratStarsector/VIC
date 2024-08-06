@@ -8,7 +8,7 @@ Increases shield rotation and unfolding speed by %s
 Ballistic weapons range reduced by %s
 Ballistic weapons rate of fire increased by %s
 Energy weapons base range increased by %s su, doesn't affect beam weapons
-Energy weapons generate %s less flux","The more the shield is turned to the rear of the ship, the bigger its arc grows. Balances the perfomance of energy and ballistic weaponry.",graphics/hullmods/vic_laidlawTech.png
+Energy weapons generate %s less flux","The more the shield is turned to the rear of the ship, the bigger its arc grows. Balances the performance of energy and ballistic weaponry.",graphics/hullmods/vic_laidlawTech.png
 #Dynamic Shields Front,vic_dynamicshieldsfront,1,,Volkov Industries,,Shields,,,TRUE,,0,0,0,0,data.hullmods.vic_dynamicShieldsFront,Face front - more shield arc. ,Face front - more shield arc. ,graphics/hullmods/extended_shields.png
 """Hellstorm"" Weapon System (exp.)",vic_hellstorm,1,,Volkov Industries,,Weapons,,,TRUE,TRUE,0,0,0,0,data.hullmods.vic_hellStorm,Extreme modifications to weapon systems which increase ballistic weapons' fire rate by %s and both energy weapons' damage and flux cost by %s.,Faster rate of fire and less flux cost for ballistic weapons. ,graphics/hullmods/vic_hellstorm.png
 """Hellstorm"" Weapon System ",vic_hellstormV2,1,,Volkov Industries,,Weapons,,,TRUE,,0,0,0,0,data.hullmods.vic_hellStormV2,"Extreme modifications to weapon systems which increase ballistic weapons' fire rate and ammo recharge rate by %s, both energy weapons' damage and flux cost by %s and max missile ammo and ammo recharge rate by %s. However, such significant alterations increase all weapon OP costs by %s.",Better weapon stats for increased OP.,graphics/hullmods/vic_hellstorm.png
@@ -29,11 +29,11 @@ Adaptive Assault Configuration,vic_adaptiveAssault,4,,Volkov Industries,defensiv
 
 With the current loadout of the ship the bonuses provided by the ship system are:
 Ballistic weapons: %s damage increase.
-Energy weapons: %s damage increase.",Ship System explanaition.,graphics/hullmods/vic_adaptiveAssault.png
+Energy weapons: %s damage increase.",Ship System explanation.,graphics/hullmods/vic_adaptiveAssault.png
 Adaptive Warfare,vic_adaptiveWarfare,4,,Volkov Industries,,,,,TRUE,,0,0,0,0,data.hullmods.vic_adaptiveWarfare,"Novel energy distribution system increases the ship's effectiveness in the thick of the battle. The ship receives bonuses to its stats under certain conditions. The bonuses decay quickly if the criteria are not met for a short time. 
 
 
-- Up to %s increase in Shield Efficency when moving. 
+- Up to %s increase in Shield Efficiency when moving. 
 
 - Up to %s increase in Damage dealt based on the amount of hard flux. 
 
@@ -77,7 +77,7 @@ Loader Overdrive,vic_loaderOverdrive,1,,Volkov Industries,offensive,Weapons,1000
 PD Arc Emitter,vic_PDArcEmitter,2,,Volkov Industries,defensive,Weapons,15000,TRUE,,,5,10,15,25,data.hullmods.vic_PDArcEmitter,"Zaps missiles in %s su range dealing %s damage to it, generates %s flux per zap, after zapping needs to recharge for %s seconds, can hold up to %s charges. All stats are depending on hull size.
 
 Counts as energy weapon for stat modifiers.",,graphics/hullmods/vic_empEmitter.png
-Inertia Redirection Systems,vic_assault,2,,Volkov Industries,engines,Engines,15000,,,,4,8,12,20,data.hullmods.vic_assault,"Allows rapid change of movement direction. For cercling around enemies and juking.
+Inertia Redirection Systems,vic_assault,2,,Volkov Industries,engines,Engines,15000,,,,4,8,12,20,data.hullmods.vic_assault,"Allows rapid change of movement direction. For circling around enemies and juking.
 
 Increase deceleration and acceleration depending on angle difference between direction of movement and direction of acceleration at %s at %s degrees and up to %s at %s degrees of difference. When this bonus is active, ship accumulates a temporary boost to acceleration.",,graphics/hullmods/vic_assault.png
 """Fervor"" Protocol",vic_deathProtocol,3,,Volkov Industries,offensive,Weapons,25000,,,,5,10,20,30,data.hullmods.vic_deathProtocol,"All damage dealt increased up to %s at close range. Full bonus damage at and below %s range, no bonus damage at and above %s range. Increases all damage taken by %s.
